@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using MySql.Data;
 
 /* Leryc*/
 namespace MSAMISUserInterface {
@@ -20,7 +19,7 @@ namespace MSAMISUserInterface {
         public static string sqlversion = "1";
         public static void VersionCheck() {
             MySqlCommand com = new MySqlCommand("select version from meta where meta_id=1", conn);
-            conn.Open();//
+            conn.Open();
             try {
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 DataTable dt = new DataTable();

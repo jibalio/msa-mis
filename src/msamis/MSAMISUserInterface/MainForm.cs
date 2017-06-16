@@ -348,8 +348,8 @@ namespace MSAMISUserInterface {
             if (GViewAllSearchTXTBX.Text == FilterText) {
                 GViewAllSearchTXTBX.Text = EmptyText;
                 ExtraQueryParams = EmptyText;
-
             }
+            GViewAllSearchLine.Visible = true;
         }
 
         private void GViewAllSearchTXTBX_Leave(object sender, EventArgs e) {
@@ -358,6 +358,7 @@ namespace MSAMISUserInterface {
                 ExtraQueryParams = EmptyText;
             }
             GUARDSRefreshGuardsList();
+            GViewAllSearchLine.Visible = false;
         }
 
         private void GViewAllSearchTXTBX_TextChanged(object sender, EventArgs e) {
@@ -462,6 +463,7 @@ namespace MSAMISUserInterface {
             }
             ExtraQueryParams = "";
             RefreshArchivedGuards();
+            label34.Visible = true;
         }
         private void GArchiveSearchBX_TextChanged(object sender, EventArgs e) {
             String temp = GArchiveSearchBX.Text;
@@ -474,6 +476,7 @@ namespace MSAMISUserInterface {
             }
             ExtraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
             RefreshArchivedGuards();
+            label34.Visible = false;
         }
 
         #endregion

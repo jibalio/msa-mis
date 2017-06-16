@@ -1,11 +1,10 @@
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\bin\Debug\rylui.exe.config
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\bin\Debug\rylui.exe
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\bin\Debug\rylui.pdb
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\bin\Debug\MySql.Data.dll
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.csprojResolveAssemblyReference.cache
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.Base.resources
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.Properties.Resources.resources
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.Tester.resources
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.csproj.GenerateResource.Cache
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.exe
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.pdb
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\bin\Debug\rylui.exe.config
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\bin\Debug\rylui.exe
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\bin\Debug\rylui.pdb
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.csprojResolveAssemblyReference.cache
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.Base.resources
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.Properties.Resources.resources
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.Tester.resources
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.csproj.GenerateResource.Cache
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.exe
+D:\Docs\Visual Studio 2017\Team Projects\Msa\MSAMIS\rylui\rylui\obj\Debug\rylui.pdb
