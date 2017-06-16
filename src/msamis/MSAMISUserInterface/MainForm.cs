@@ -154,6 +154,7 @@ namespace MSAMISUserInterface {
             SchedBTN.BackColor = accent;
             currentPage = SchedulesPage;
             currentBTN = SchedBTN;
+            SCHEDLoadPage();
         }
         private void PayrollBTN_Click(object sender, EventArgs e) {
             DashboardToBeMinimized = true;
@@ -196,7 +197,8 @@ namespace MSAMISUserInterface {
             GArchivePageBTN.Font = defaultFont;
             GSummaryPageBTN.Font = defaultFont;
             GActiveLBL.Text = SQLTools.GetNumberOfGuards("active") + " active guards";
-            GInactiveLBL.Text = SQLTools.GetNumberOfGuards("inactive") + " inactive guards";     
+            GInactiveLBL.Text = SQLTools.GetNumberOfGuards("inactive") + " inactive guards";
+            GViewAllViewByCMBX.SelectedIndex = 0;
         }
         #endregion
 
@@ -229,6 +231,7 @@ namespace MSAMISUserInterface {
             GViewAllPageBTN.Font = selectedFont;
             GArchivePageBTN.Font = defaultFont;
             GSummaryPageBTN.Font = defaultFont;
+            GViewAllViewByCMBX.SelectedIndex = 1;
         }
         private void GSummaryPageBTN_Click(object sender, EventArgs e) {
             GSummaryPNL.Show();
@@ -625,6 +628,219 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        #endregion
+
+        #endregion
+
+        #region Schedules Management System
+
+        #region SMS - Page Load
+        private void SCHEDLoadPage() {
+            SArchivePNL.Hide();
+            SDutyDetailsPNL.Hide();
+            SIncidentPNL.Hide();
+            SMonthlyDutyPNL.Hide();
+            SViewAssPNL.Hide();
+            SViewReqPNL.Show();
+
+            SDutyDetailsBTN.Font = defaultFont;
+            SIncidentBTN.Font = defaultFont;
+            SMonthlyDutyBTN.Font = defaultFont;
+            SViewAssBTN.Font = defaultFont;
+            SViewReqBTN.Font = selectedFont;
+            SArchiveBTN.Font = defaultFont;
+
+            SViewReqAssBTN.Visible = true;
+            SViewReqDisBTN.Visible = true;
+            SAddDutyDetailsBTN.Visible = false;
+        }
+        #endregion
+
+        #region SMS - Side Panel
+        private void SViewReqBTN_Click(object sender, EventArgs e) {
+            SArchivePNL.Hide();
+            SDutyDetailsPNL.Hide();
+            SIncidentPNL.Hide();
+            SMonthlyDutyPNL.Hide();
+            SViewAssPNL.Hide();
+            SViewReqPNL.Show();
+
+            SDutyDetailsBTN.Font = defaultFont;
+            SIncidentBTN.Font = defaultFont;
+            SMonthlyDutyBTN.Font = defaultFont;
+            SViewAssBTN.Font = defaultFont;
+            SViewReqBTN.Font = selectedFont;
+            SArchiveBTN.Font = defaultFont;
+
+            SViewReqAssBTN.Visible = true;
+            SViewReqDisBTN.Visible = true;
+            SAddDutyDetailsBTN.Visible = false;
+        }
+
+        private void SViewAssBTN_Click(object sender, EventArgs e) {
+            SArchivePNL.Hide();
+            SDutyDetailsPNL.Hide();
+            SIncidentPNL.Hide();
+            SMonthlyDutyPNL.Hide();
+            SViewAssPNL.Show();
+            SViewReqPNL.Hide();
+
+            SDutyDetailsBTN.Font = defaultFont;
+            SIncidentBTN.Font = defaultFont;
+            SMonthlyDutyBTN.Font = defaultFont;
+            SViewAssBTN.Font = selectedFont;
+            SViewReqBTN.Font = defaultFont;
+            SArchiveBTN.Font = defaultFont;
+
+            SViewReqAssBTN.Visible = false;
+            SViewReqDisBTN.Visible = false;
+            SAddDutyDetailsBTN.Visible = true;
+        }
+
+        private void SMonthlyDutyBTN_Click(object sender, EventArgs e) {
+            SArchivePNL.Hide();
+            SDutyDetailsPNL.Hide();
+            SIncidentPNL.Hide();
+            SMonthlyDutyPNL.Show();
+            SViewAssPNL.Hide();
+            SViewReqPNL.Hide();
+
+            SDutyDetailsBTN.Font = defaultFont;
+            SIncidentBTN.Font = defaultFont;
+            SMonthlyDutyBTN.Font = selectedFont;
+            SViewAssBTN.Font = defaultFont;
+            SViewReqBTN.Font = defaultFont;
+            SArchiveBTN.Font = defaultFont;
+
+            SViewReqAssBTN.Visible = false;
+            SViewReqDisBTN.Visible = false;
+            SAddDutyDetailsBTN.Visible = false;
+        }
+
+        private void SDutyDetailsBTN_Click(object sender, EventArgs e) {
+            SArchivePNL.Hide();
+            SDutyDetailsPNL.Show();
+            SIncidentPNL.Hide();
+            SMonthlyDutyPNL.Hide();
+            SViewAssPNL.Hide();
+            SViewReqPNL.Hide();
+
+            SDutyDetailsBTN.Font = selectedFont;
+            SIncidentBTN.Font = defaultFont;
+            SMonthlyDutyBTN.Font = defaultFont;
+            SViewAssBTN.Font = defaultFont;
+            SViewReqBTN.Font = defaultFont;
+            SArchiveBTN.Font = defaultFont;
+
+            SViewReqAssBTN.Visible = false;
+            SViewReqDisBTN.Visible = false;
+            SAddDutyDetailsBTN.Visible = false;
+        }
+
+        private void SIncidentBTN_Click(object sender, EventArgs e) {
+            SArchivePNL.Hide();
+            SDutyDetailsPNL.Hide();
+            SIncidentPNL.Show();
+            SMonthlyDutyPNL.Hide();
+            SViewAssPNL.Hide();
+            SViewReqPNL.Hide();
+
+            SDutyDetailsBTN.Font = defaultFont;
+            SIncidentBTN.Font = selectedFont;
+            SMonthlyDutyBTN.Font = defaultFont;
+            SViewAssBTN.Font = defaultFont;
+            SViewReqBTN.Font = defaultFont;
+            SArchiveBTN.Font = defaultFont;
+
+            SViewReqAssBTN.Visible = false;
+            SViewReqDisBTN.Visible = false;
+            SAddDutyDetailsBTN.Visible = false;
+        }
+
+        private void SArchiveBTN_Click(object sender, EventArgs e) {
+            SArchivePNL.Show();
+            SDutyDetailsPNL.Hide();
+            SIncidentPNL.Hide();
+            SMonthlyDutyPNL.Hide();
+            SViewAssPNL.Hide();
+            SViewReqPNL.Hide();
+
+            SDutyDetailsBTN.Font = defaultFont;
+            SIncidentBTN.Font = defaultFont;
+            SMonthlyDutyBTN.Font = defaultFont;
+            SViewAssBTN.Font = defaultFont;
+            SViewReqBTN.Font = defaultFont;
+            SArchiveBTN.Font = selectedFont;
+
+            SViewReqAssBTN.Visible = false;
+            SViewReqDisBTN.Visible = false;
+            SAddDutyDetailsBTN.Visible = false;
+        }
+
+        #endregion
+
+        #region SMS - View Assignment
+        private void SCHEDRefreshAssignments() {
+
+        }
+        private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
+            if (SViewAssSearchTXTBX.Text == FilterText) {
+                SViewAssSearchTXTBX.Text = EmptyText;
+                ExtraQueryParams = EmptyText;
+            }
+            SViewAssSearchLine.Visible = true;
+        }
+        private void SViewAssSearchTXTBX_Leave(object sender, EventArgs e) {
+            if (SViewAssSearchTXTBX.Text == EmptyText) {
+                SViewAssSearchTXTBX.Text = FilterText;
+                ExtraQueryParams = EmptyText;
+            }
+            SCHEDRefreshAssignments();
+            SViewAssSearchTXTBX.Visible = false;
+        }
+        #endregion
+
+        #region SMS - View Requests
+        private void SCHEDRefreshRequests() {
+        }
+
+        private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
+            if (SViewReqSearchTXTBX.Text == FilterText) {
+                SViewReqSearchTXTBX.Text = EmptyText;
+                ExtraQueryParams = EmptyText;
+            }
+            SViewReqSearchLine.Visible = true;
+        }
+        private void SViewReqSearchTXTBX_Leave(object sender, EventArgs e) {
+            if (SViewReqSearchTXTBX.Text == EmptyText) {
+                SViewReqSearchTXTBX.Text = FilterText;
+                ExtraQueryParams = EmptyText;
+            }
+            SCHEDRefreshRequests();
+            SViewReqSearchTXTBX.Visible = false;
+        }
+
+        #endregion
+
+        #region SMS - Archive
+        private void SCHEDRefreshArchive() {
+        }
+        private void SArchiveSearchTXTBX_Enter(object sender, EventArgs e) {
+            if (SArchiveSearchTXTBX.Text == FilterText) {
+                SArchiveSearchTXTBX.Text = EmptyText;
+                ExtraQueryParams = EmptyText;
+            }
+            SArchiveSearchLine.Visible = true;
+        }
+
+        private void SArchiveSearchTXTBX_Leave(object sender, EventArgs e) {
+            if (SArchiveSearchTXTBX.Text == EmptyText) {
+                SArchiveSearchTXTBX.Text = FilterText;
+                ExtraQueryParams = EmptyText;
+            }
+            SCHEDRefreshArchive();
+            SArchiveSearchTXTBX.Visible = false;
+        }
         #endregion
 
         #endregion
