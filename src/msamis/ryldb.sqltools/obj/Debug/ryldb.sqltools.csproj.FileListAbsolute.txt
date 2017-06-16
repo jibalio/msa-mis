@@ -1,7 +1,0 @@
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\ryldb.sqltools\bin\Debug\ryldb.sqltools.exe.config
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\ryldb.sqltools\bin\Debug\ryldb.sqltools.exe
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\ryldb.sqltools\bin\Debug\ryldb.sqltools.pdb
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\ryldb.sqltools\bin\Debug\MySql.Data.dll
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\ryldb.sqltools\obj\Debug\ryldb.sqltools.csprojResolveAssemblyReference.cache
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\ryldb.sqltools\obj\Debug\ryldb.sqltools.exe
-C:\Users\jlvibalio\Source\Workspaces\Msa\MSAMIS\ryldb.sqltools\obj\Debug\ryldb.sqltools.pdb
