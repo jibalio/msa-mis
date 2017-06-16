@@ -42,6 +42,26 @@ namespace MSAMISUserInterface {
 
 
 
+        #region Guard Management
+
+        public static int GetNumberOfGuards(String a) {
+            DataTable dt = new DataTable();
+            int x = 99;
+            try {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT count(*) as c FROM guards WHERE gstatus = " + (a=="active"?"'1'":"'2'"), conn);
+                MySqlDataReader rdr = comm.ExecuteReader();
+                while(rdr.Read()){
+                     x = int.Parse(rdr.GetString("c"));
+                }
+            } catch (Exception ee) { MessageBox.Show(ee.ToString()); ; } 
+            finally {
+                conn.Close();
+            }
+            return x;
+        }
+
+        #endregion
 
         public static void MoveRecordToArchive(string table, string idname, int id) {
             MySqlCommand com = new MySqlCommand("select * from "+table+" where "+idname+" =" + id, conn);
