@@ -195,30 +195,8 @@ namespace MSAMISUserInterface {
             GViewAllPageBTN.Font = selectedFont;
             GArchivePageBTN.Font = defaultFont;
             GSummaryPageBTN.Font = defaultFont;
-            try {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM guards WHERE gstatus = 1", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                GActiveLBL.Text = dt.Rows.Count + " active guards";
-                conn.Close();
-            }
-            catch (Exception ee) {
-                conn.Close();
-            }
-            try {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM guards WHERE gstatus = 2", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                GInactiveLBL.Text = dt.Rows.Count + " inactive guards";
-                conn.Close();
-            }
-            catch (Exception ee) {
-                conn.Close();
-            }
+            GActiveLBL.Text = SQLTools.GetNumberOfGuards("active") + " active guards";
+            GInactiveLBL.Text = SQLTools.GetNumberOfGuards("inactive") + " inactive guards";     
         }
         #endregion
 
