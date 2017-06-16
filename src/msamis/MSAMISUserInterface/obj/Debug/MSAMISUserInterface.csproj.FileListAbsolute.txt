@@ -36,3 +36,24 @@ C:\Users\Test\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAM
 C:\Users\Test\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.csproj.GenerateResource.Cache
 C:\Users\Test\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.exe
 C:\Users\Test\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.pdb
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\MSAMISUserInterface.exe.config
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\MSAMISUserInterface.exe
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\MSAMISUserInterface.pdb
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\MySql.Data.dll
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\ryldb.sqltools.exe
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\rylui.exe
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\ryldb.sqltools.pdb
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\ryldb.sqltools.exe.config
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\rylui.pdb
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\bin\Debug\rylui.exe.config
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.csprojResolveAssemblyReference.cache
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.Clients_Edit.resources
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.Clients_View.resources
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.Guards_Edit.resources
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.LoginForm.resources
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.MainForm.resources
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.Properties.Resources.resources
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.Guards_View.resources
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.csproj.GenerateResource.Cache
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.exe
+C:\Users\AJ Pasigado\Source\Repos\msa-mis\src\msamis\MSAMISUserInterface\obj\Debug\MSAMISUserInterface.pdb
