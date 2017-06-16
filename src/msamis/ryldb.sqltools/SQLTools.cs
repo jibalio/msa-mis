@@ -49,6 +49,7 @@ namespace MSAMISUserInterface {
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("SELECT count(*) as c FROM guards WHERE gstatus = " + (a=="active"?"'1'":"'2'"), conn);
                 MySqlDataReader rdr = comm.ExecuteReader();
+                rdr.Read();
                 x = int.Parse(rdr.GetString("c"));
             } catch (Exception ee) { MessageBox.Show(ee.ToString()); ; } 
             finally {
