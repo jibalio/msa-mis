@@ -7,6 +7,6 @@ An information system for Makabayan Security Agency.
 * Payroll Module
 
 ## Requirements
-MySql. Database files can be found [here](http://www.leryc.droppages.com/ssql).
+MySql. Database files can be found [here](http://www.leryc.droppages.com/ryldb).
 
 
