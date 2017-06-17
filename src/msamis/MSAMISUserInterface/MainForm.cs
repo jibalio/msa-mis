@@ -10,32 +10,6 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ryldb.sqltools;
 
-
-/*
-         ███╗   ███╗ █████╗ ██╗  ██╗ █████╗ ██████╗  █████╗ ██╗   ██╗ █████╗ ███╗   ██╗
-        ████╗ ████║██╔══██╗██║ ██╔╝██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝██╔══██╗████╗  ██║
-        ██╔████╔██║███████║█████╔╝ ███████║██████╔╝███████║ ╚████╔╝ ███████║██╔██╗ ██║
-        ██║╚██╔╝██║██╔══██║██╔═██╗ ██╔══██║██╔══██╗██╔══██║  ╚██╔╝  ██╔══██║██║╚██╗██║
-        ██║ ╚═╝ ██║██║  ██║██║  ██╗██║  ██║██████╔╝██║  ██║   ██║   ██║  ██║██║ ╚████║
-        ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝
-                                                                              
-        ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗                
-        ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝                
-        ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝                 
-        ╚════██║██╔══╝  ██║     ██║   ██║██╔══██╗██║   ██║     ╚██╔╝                  
-        ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║                   
-        ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝                   
-                                                                              
-         █████╗  ██████╗ ███████╗███╗   ██╗ ██████╗██╗   ██╗                          
-        ██╔══██╗██╔════╝ ██╔════╝████╗  ██║██╔════╝╚██╗ ██╔╝                          
-        ███████║██║  ███╗█████╗  ██╔██╗ ██║██║      ╚████╔╝                           
-        ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║██║       ╚██╔╝                            
-        ██║  ██║╚██████╔╝███████╗██║ ╚████║╚██████╗   ██║                             
-        ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝ ╚═════╝   ╚═╝                             
-                                                                              
-         **/
-
-
 namespace MSAMISUserInterface {
     public partial class MainForm : Form {
 
@@ -658,6 +632,12 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Schedules Management System
+        /* Available Methods:
+         * --public static DataTable Scheduling.AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards)
+           --public static DataTable Scheduling.GetClients(DateTime date)
+                -- or alternatively: Client.GetClient(DateTime date)
+           --public static DataTable Scheduling.GetRequests() 
+        */
 
         #region SMS - Page Load
         private void SCHEDLoadPage() {
