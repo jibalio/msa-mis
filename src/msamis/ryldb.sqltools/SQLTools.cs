@@ -12,11 +12,32 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
     public class SQLTools {
         
+
+        public static DataTable ExecuteQuery(String query) {
+            DataTable dt = new DataTable();
+            try {
+                MySqlCommand com = new MySqlCommand(query, SQLTools.conn);
+                SQLTools.conn.Open();
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                adp.Fill(dt);
+            } catch (Exception e) {
+                MessageBox.Show(e.ToString());
+            } finally {
+                SQLTools.conn.Close();
+            }
+            return dt;
+        }
+
+
+
+
+
+
         /* VersionChangeCheck : void
          * Checks if Leryc had edited MySQL database. Returns error 
          * if DB is not updated. Redirects to dropbox link to SQL file.
          */
-        public static string sqlversion = "1";
+        public static string sqlversion = "2";
         public static void VersionCheck() {
             MySqlCommand com = new MySqlCommand("select version from meta where meta_id=1", conn);
             conn.Open();
@@ -56,6 +77,18 @@ namespace MSAMISUserInterface {
                 conn.Close();
             }
             return x;
+        }
+
+        public static  void ExecuteNonQuery(string query) {
+            try {
+                MySqlCommand com = new MySqlCommand(query,conn);
+                SQLTools.conn.Open();
+                com.ExecuteNonQuery();
+            } catch (Exception e) {
+                MessageBox.Show(e.ToString());
+            } finally {
+                SQLTools.conn.Close();
+            }
         }
 
         #endregion
@@ -104,5 +137,10 @@ namespace MSAMISUserInterface {
             com.ExecuteNonQuery();
             archiveconn.Close();
         }
+
+
+
+
+
     }
 }

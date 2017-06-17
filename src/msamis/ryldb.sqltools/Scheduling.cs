@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,24 +26,27 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region View Client Request Methods
-        public static DataGrid GetRequests() {
+        public static DataTable GetRequests() {
+            String query = "SELECT rid, name, rstatus FROM msadb.request_assign inner join client on request_assign.cid=client.cid;";
+            return SQLTools.ExecuteQuery(query);
+             
+        }
+
+        public static DataTable GetRequestsFromDate(DateTime date) {
             throw new NotImplementedException();
         }
 
-        public static DataGrid GetRequestsFromDate(DateTime date) {
+        public static DataTable GetClients(DateTime date) {
+           return  Client.GetClients();
+        }
+
+        public static DataTable GetGuardsAssigned(DateTime date) {
             throw new NotImplementedException();
         }
 
-        public static DataGrid GetClients(DateTime date) {
-            throw new NotImplementedException();
-        }
 
-        public static DataGrid GetGuardsAssigned(DateTime date) {
-            throw new NotImplementedException();
-        }
-
-        public static void AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, 
-            string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards) {
+        //DONE
+        public static void AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards) {
             // Universal Format: yyyy-MM-dd
             String madeon = DateTime.Now.ToString("yyyy-MM-dd");
             String query = String.Format("INSERT INTO `msadb`.`request_assign` "+
@@ -52,24 +56,18 @@ namespace MSAMISUserInterface {
                 1, // 1 means pending request.
                 AssStreetNo,AssStreetName, AssBrgy,AssCity);
             Console.WriteLine("AddAssignmentRequest: \n" + query);
-            
-                MySqlCommand com = new MySqlCommand(query, SQLTools.conn);
-                SQLTools.conn.Open();
-                com.ExecuteNonQuery();
-            
-           
-            
+            SQLTools.ExecuteNonQuery(query);
         }
 
         public static void AddDismissalRequest (int gid) {
             throw new NotImplementedException();
         }
 
-        public static DataGrid GetAllAssignmentRequestDetails() {
+        public static DataTable GetAllAssignmentRequestDetails() {
             throw new NotImplementedException();
         }
 
-        public static DataGrid GetAllDismissalRequestDetails() {
+        public static DataTable GetAllDismissalRequestDetails() {
             throw new NotImplementedException();
         }
 
@@ -77,17 +75,17 @@ namespace MSAMISUserInterface {
 
         #region View Assignments
 
-        public static DataGrid GetAssignmentsByClient (int cid, string filter) {
+        public static DataTable GetAssignmentsByClient (int cid, string filter) {
             // Note: Filter can be EMPTY but NOT null.
             throw new NotImplementedException();
         }
 
-        public static DataGrid GetDutyDays (int did) {
+        public static DataTable GetDutyDays (int did) {
             // Return all attendance details. Columns: Date - Status
             throw new NotImplementedException();
         }
 
-        public static DataGrid GetAllDutyDetails() {
+        public static DataTable GetAllDutyDetails() {
             //Paki take note please sa mga index sa columns and paki convert sa mga ID 
             //(pero ayaw kuhaa) into values please like name sa client instead of CID
             throw new NotImplementedException();

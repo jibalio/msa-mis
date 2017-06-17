@@ -68,7 +68,7 @@ namespace MSAMISUserInterface {
             } catch (Exception) {
                 DialogResult f = MessageBox.Show("Database has been edited by Leryc. Do not make changes to DB b4 downloading updated version. Do you want to download the sql file now?", "New Database Update!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (f == DialogResult.Yes) {
-                    System.Diagnostics.Process.Start("http://www.leryc.droppages.com/ryldb");
+                    System.Diagnostics.Process.Start("https://github.com/lerycibalio/msa-mis/tree/master/sql");
                 }
                 Application.Exit();
             }
