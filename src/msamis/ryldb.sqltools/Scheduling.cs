@@ -39,7 +39,16 @@ namespace ryldb.sqltools {
             throw new NotImplementedException();
         }
 
-        public static void AddAssignmentRequest(DateTime date) {
+        public static void AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, 
+            string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards) {
+            // Universal Format: yyyy-MM-dd
+
+            String madeon = DateTime.Now.ToString("yyyy-MM-dd");
+
+            
+
+
+
             throw new NotImplementedException();
         }
 
