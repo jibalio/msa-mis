@@ -1,12 +1,14 @@
-﻿using System;
+﻿using MySql.Data;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ryldb.sqltools {
-    class Scheduling {
+namespace MSAMISUserInterface {
+    public class Scheduling {
 
         #region Sidepanel Methods
         public static String GetNumberOfUnscheduledAssignments() {
@@ -42,14 +44,21 @@ namespace ryldb.sqltools {
         public static void AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, 
             string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards) {
             // Universal Format: yyyy-MM-dd
-
             String madeon = DateTime.Now.ToString("yyyy-MM-dd");
-
+            String query = String.Format("INSERT INTO `msadb`.`request_assign` "+
+                " (`CID`, `DateEntry`, `ContractStart`, `ContractEnd`, `RStatus`, `streetno`, `streetname`, `brgy`, `city`)" +
+                " VALUES ('{0}', '{1}', '{2}', '2017-10-13', '1', '2', 'Kalamansi St.', 'Brgy. 4A', 'Davao City');",
+                CID, madeon, ContractStart.ToString("yyyy-MM-dd"), ContractEnd.ToString("yyyy-MM-dd"),
+                1, // 1 means pending request.
+                AssStreetNo,AssStreetName, AssBrgy,AssCity);
+            Console.WriteLine("AddAssignmentRequest: \n" + query);
             
-
-
-
-            throw new NotImplementedException();
+                MySqlCommand com = new MySqlCommand(query, SQLTools.conn);
+                SQLTools.conn.Open();
+                com.ExecuteNonQuery();
+            
+           
+            
         }
 
         public static void AddDismissalRequest (int gid) {
