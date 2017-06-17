@@ -231,7 +231,7 @@ namespace MSAMISUserInterface {
             GViewAllPageBTN.Font = selectedFont;
             GArchivePageBTN.Font = defaultFont;
             GSummaryPageBTN.Font = defaultFont;
-            GViewAllViewByCMBX.SelectedIndex = 1;
+            GViewAllViewByCMBX.SelectedIndex = 0;
         }
         private void GSummaryPageBTN_Click(object sender, EventArgs e) {
             GSummaryPNL.Show();
@@ -247,16 +247,27 @@ namespace MSAMISUserInterface {
 
         #region GMS - View All - Data Grid
         String ExtraQueryParams = "";
-
+        private void GViewAllViewByCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            GUARDSRefreshGuardsList();
+        }
         public void GUARDSRefreshGuardsList() {
             // All column names should be done in SQL Query
+            String query;
+            String orderbyclause;
             try {
-                String query = "Select gid,concat(ln,', ',fn,' ',mn) as NAME, " +
-                    "case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS', " +
-                    "bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', " +
-                    "cellno as 'CONTACTNO' " +
-                    "FROM Guards ";
-                String orderbyclause = "ORDER BY NAME ASC;";
+                if (GViewAllViewByCMBX.SelectedIndex == 0) {
+                    query = "Select gid,concat(ln,', ',fn,' ',mn) as NAME, " +
+                        "case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS', " +
+                        "bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', " +
+                        "cellno as 'CONTACTNO' " +
+                        "FROM Guards ";
+                    orderbyclause = "ORDER BY NAME ASC;";
+                } else {
+                    query = "Select Guards.gid,concat(ln,', ',fn,' ',mn) as NAME, " +
+                       "concat(StreetNo,', ', Brgy,', ',Street, ', ', City) As LOCATION, case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS' " +
+                       "FROM Guards LEFT JOIN Address ON Address.GID = Guards.GID ";
+                    orderbyclause = "AND Atype = 2 ORDER BY NAME ASC;";
+                }
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand(query + ExtraQueryParams + orderbyclause, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -264,17 +275,26 @@ namespace MSAMISUserInterface {
                 adp.Fill(dt);
                 GAllGuardsGRD.DataSource = dt;
                 // 0 must always be ID.
-                GAllGuardsGRD.Columns[0].Width = 0;
-                GAllGuardsGRD.Columns["NAME"].Width = 240;
-                GAllGuardsGRD.Columns["GENDER"].Width = 80;
-                GAllGuardsGRD.Columns["GENDER"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns["BIRTHDATE"].Width = 80;
-                GAllGuardsGRD.Columns["BIRTHDATE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns["CONTACTNO"].Width = 140;
-                
-                GAllGuardsGRD.Columns["STATUS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns["STATUS"].Width = 70;
+                if (GViewAllViewByCMBX.SelectedIndex == 0) {
+                    GAllGuardsGRD.Columns[0].Width = 0;
+                    GAllGuardsGRD.Columns["NAME"].Width = 240;
+                    GAllGuardsGRD.Columns["GENDER"].Width = 80;
+                    GAllGuardsGRD.Columns["GENDER"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    GAllGuardsGRD.Columns["BIRTHDATE"].Width = 80;
+                    GAllGuardsGRD.Columns["BIRTHDATE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    GAllGuardsGRD.Columns["CONTACTNO"].Width = 140;
 
+                    GAllGuardsGRD.Columns["STATUS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    GAllGuardsGRD.Columns["STATUS"].Width = 70;
+                } else {
+                    GAllGuardsGRD.Columns[0].Width = 0;
+                    GAllGuardsGRD.Columns["NAME"].Width = 240;
+                    GAllGuardsGRD.Columns["LOCATION"].Width = 300;
+                    GAllGuardsGRD.Columns["LOCATION"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                    GAllGuardsGRD.Columns["STATUS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    GAllGuardsGRD.Columns["STATUS"].Width = 70;
+                }
                 conn.Close();
             }
             catch (Exception ee) {
@@ -345,8 +365,11 @@ namespace MSAMISUserInterface {
         private void GViewAllSearchTXTBX_TextChanged(object sender, EventArgs e) {
             String temp = GViewAllSearchTXTBX.Text;
             String Kazoo;
-
+            if (GViewAllViewByCMBX.SelectedIndex == 0) {
                 Kazoo = "concat(ln,', ',fn,' ',mn)";
+            } else {
+                Kazoo = "concat(StreetNo,', ', Brgy,', ',Street, ', ', City)";
+            }
 
             if (GViewAllSearchTXTBX.Text.Contains("\\")) {
                 temp = temp + "?";
@@ -470,6 +493,8 @@ namespace MSAMISUserInterface {
         public void CLIENTSLoadPage() {
             CViewAllPNL.Show();
             CSummaryPNL.Hide();
+            CViewAllClientBTN.Font = selectedFont;
+            CViewSummaryBTN.Font = defaultFont;
             try {
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE cstatus = 1", conn);
@@ -652,7 +677,6 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = true;
             SViewReqDisBTN.Visible = true;
-            SAddDutyDetailsBTN.Visible = false;
         }
         #endregion
 
@@ -674,9 +698,7 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = true;
             SViewReqDisBTN.Visible = true;
-            SAddDutyDetailsBTN.Visible = false;
         }
-
         private void SViewAssBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Hide();
             SDutyDetailsPNL.Hide();
@@ -694,9 +716,7 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = false;
             SViewReqDisBTN.Visible = false;
-            SAddDutyDetailsBTN.Visible = true;
         }
-
         private void SMonthlyDutyBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Hide();
             SDutyDetailsPNL.Hide();
@@ -714,9 +734,7 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = false;
             SViewReqDisBTN.Visible = false;
-            SAddDutyDetailsBTN.Visible = false;
         }
-
         private void SDutyDetailsBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Hide();
             SDutyDetailsPNL.Show();
@@ -734,9 +752,7 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = false;
             SViewReqDisBTN.Visible = false;
-            SAddDutyDetailsBTN.Visible = false;
         }
-
         private void SIncidentBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Hide();
             SDutyDetailsPNL.Hide();
@@ -754,9 +770,7 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = false;
             SViewReqDisBTN.Visible = false;
-            SAddDutyDetailsBTN.Visible = false;
         }
-
         private void SArchiveBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Show();
             SDutyDetailsPNL.Hide();
@@ -774,9 +788,27 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = false;
             SViewReqDisBTN.Visible = false;
-            SAddDutyDetailsBTN.Visible = false;
         }
-
+        private void SViewReqAssBTN_Click(object sender, EventArgs e) {
+            try {
+                Sched_RequestGuard view = new Sched_RequestGuard();
+                view.reference = this;
+                view.conn = this.conn;
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+        private void SViewReqDisBTN_Click(object sender, EventArgs e) {
+            try {
+                Sched_DismissGuard view = new Sched_DismissGuard();
+                view.reference = this;
+                view.conn = this.conn;
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
         #endregion
 
         #region SMS - View Assignment
@@ -798,12 +830,31 @@ namespace MSAMISUserInterface {
             SCHEDRefreshAssignments();
             SViewAssSearchTXTBX.Visible = false;
         }
+        private void SViewAssAddDutyBTN_Click(object sender, EventArgs e) {
+            try {
+                Sched_AddDutyDetail view = new Sched_AddDutyDetail();
+                view.reference = this;
+                view.conn = this.conn;
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+        private void SViewAssAddDaysBTN_Click(object sender, EventArgs e) {
+            try {
+                Sched_AddDutyDays view = new Sched_AddDutyDays();
+                view.reference = this;
+                view.conn = this.conn;
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
         #endregion
 
         #region SMS - View Requests
         private void SCHEDRefreshRequests() {
         }
-
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {
                 SViewReqSearchTXTBX.Text = EmptyText;
@@ -841,8 +892,13 @@ namespace MSAMISUserInterface {
             SCHEDRefreshArchive();
             SArchiveSearchTXTBX.Visible = false;
         }
+
+
+
         #endregion
 
         #endregion
+
+
     }
 }

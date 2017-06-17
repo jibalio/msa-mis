@@ -32,7 +32,6 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             this.Close();
-            reference.GUARDSRefreshGuardsList();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {

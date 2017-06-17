@@ -96,6 +96,30 @@
     <Compile Include="Guards_View.Designer.cs">
       <DependentUpon>Guards_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sched_AddDutyDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_AddDutyDays.Designer.cs">
+      <DependentUpon>Sched_AddDutyDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_AddDutyDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_AddDutyDetail.Designer.cs">
+      <DependentUpon>Sched_AddDutyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_DismissGuard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_DismissGuard.Designer.cs">
+      <DependentUpon>Sched_DismissGuard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_RequestGuard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_RequestGuard.Designer.cs">
+      <DependentUpon>Sched_RequestGuard.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Clients_Edit.resx">
       <DependentUpon>Clients_Edit.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +147,18 @@
     </Compile>
     <EmbeddedResource Include="Guards_View.resx">
       <DependentUpon>Guards_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_AddDutyDays.resx">
+      <DependentUpon>Sched_AddDutyDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_AddDutyDetail.resx">
+      <DependentUpon>Sched_AddDutyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_DismissGuard.resx">
+      <DependentUpon>Sched_DismissGuard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_RequestGuard.resx">
+      <DependentUpon>Sched_RequestGuard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
