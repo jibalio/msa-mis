@@ -25,38 +25,38 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sched_AddDutyDetail));
-            this.label3 = new System.Windows.Forms.Label();
+            this.NameLBL = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ClientLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
-            this.PhilHealthBX = new System.Windows.Forms.MaskedTextBox();
+            this.TimeInBX = new System.Windows.Forms.MaskedTextBox();
             this.ContactLBL = new System.Windows.Forms.Label();
-            this.SViewAssCMBX = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.TimeInAMPMBX = new System.Windows.Forms.ComboBox();
+            this.TimeOutAMPMBX = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.TimeOutBX = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.GEditDetailsBTN = new System.Windows.Forms.Button();
+            this.DaysMBX = new System.Windows.Forms.MaskedTextBox();
+            this.AddBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label3
+            // NameLBL
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(0, 24);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(718, 61);
-            this.label3.TabIndex = 118;
-            this.label3.Text = "Laboriki, Dodong Lab W.";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.NameLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NameLBL.Location = new System.Drawing.Point(0, 24);
+            this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NameLBL.Name = "NameLBL";
+            this.NameLBL.Size = new System.Drawing.Size(718, 61);
+            this.NameLBL.TabIndex = 118;
+            this.NameLBL.Text = "Laboriki, Dodong Lab W.";
+            this.NameLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
@@ -68,21 +68,21 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(718, 24);
             this.label4.TabIndex = 119;
-            this.label4.Text = "ADD DUTY DETAILS FOR";
+            this.label4.Text = "DUTY DETAILS FOR";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label1
+            // ClientLBL
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(0, 111);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(718, 40);
-            this.label1.TabIndex = 120;
-            this.label1.Text = "Laboriki Enterprises";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ClientLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ClientLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.ClientLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ClientLBL.Location = new System.Drawing.Point(0, 111);
+            this.ClientLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ClientLBL.Name = "ClientLBL";
+            this.ClientLBL.Size = new System.Drawing.Size(718, 40);
+            this.ClientLBL.TabIndex = 120;
+            this.ClientLBL.Text = "Laboriki Enterprises";
+            this.ClientLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
@@ -99,9 +99,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.ClientLBL);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.NameLBL);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(1, 91);
             this.panel1.Name = "panel1";
@@ -120,16 +120,16 @@
             this.label20.TabIndex = 124;
             this.label20.Text = "Time-in:";
             // 
-            // PhilHealthBX
+            // TimeInBX
             // 
-            this.PhilHealthBX.BackColor = System.Drawing.Color.White;
-            this.PhilHealthBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PhilHealthBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PhilHealthBX.Location = new System.Drawing.Point(341, 354);
-            this.PhilHealthBX.Mask = "99:99";
-            this.PhilHealthBX.Name = "PhilHealthBX";
-            this.PhilHealthBX.Size = new System.Drawing.Size(40, 13);
-            this.PhilHealthBX.TabIndex = 123;
+            this.TimeInBX.BackColor = System.Drawing.Color.White;
+            this.TimeInBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TimeInBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeInBX.Location = new System.Drawing.Point(341, 354);
+            this.TimeInBX.Mask = "99:99";
+            this.TimeInBX.Name = "TimeInBX";
+            this.TimeInBX.Size = new System.Drawing.Size(40, 13);
+            this.TimeInBX.TabIndex = 123;
             // 
             // ContactLBL
             // 
@@ -143,37 +143,37 @@
             this.ContactLBL.TabIndex = 125;
             this.ContactLBL.Text = "DUTY DETAILS";
             // 
-            // SViewAssCMBX
+            // TimeInAMPMBX
             // 
-            this.SViewAssCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SViewAssCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SViewAssCMBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.SViewAssCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SViewAssCMBX.FormattingEnabled = true;
-            this.SViewAssCMBX.Items.AddRange(new object[] {
+            this.TimeInAMPMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeInAMPMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeInAMPMBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TimeInAMPMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeInAMPMBX.FormattingEnabled = true;
+            this.TimeInAMPMBX.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(380, 345);
-            this.SViewAssCMBX.Name = "SViewAssCMBX";
-            this.SViewAssCMBX.Size = new System.Drawing.Size(56, 25);
-            this.SViewAssCMBX.Sorted = true;
-            this.SViewAssCMBX.TabIndex = 126;
+            this.TimeInAMPMBX.Location = new System.Drawing.Point(380, 345);
+            this.TimeInAMPMBX.Name = "TimeInAMPMBX";
+            this.TimeInAMPMBX.Size = new System.Drawing.Size(56, 25);
+            this.TimeInAMPMBX.Sorted = true;
+            this.TimeInAMPMBX.TabIndex = 126;
             // 
-            // comboBox1
+            // TimeOutAMPMBX
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.TimeOutAMPMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeOutAMPMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeOutAMPMBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TimeOutAMPMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeOutAMPMBX.FormattingEnabled = true;
+            this.TimeOutAMPMBX.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.comboBox1.Location = new System.Drawing.Point(380, 380);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(56, 25);
-            this.comboBox1.Sorted = true;
-            this.comboBox1.TabIndex = 129;
+            this.TimeOutAMPMBX.Location = new System.Drawing.Point(380, 380);
+            this.TimeOutAMPMBX.Name = "TimeOutAMPMBX";
+            this.TimeOutAMPMBX.Size = new System.Drawing.Size(56, 25);
+            this.TimeOutAMPMBX.Sorted = true;
+            this.TimeOutAMPMBX.TabIndex = 129;
             // 
             // label5
             // 
@@ -187,16 +187,16 @@
             this.label5.TabIndex = 128;
             this.label5.Text = "Time-out:";
             // 
-            // maskedTextBox1
+            // TimeOutBX
             // 
-            this.maskedTextBox1.BackColor = System.Drawing.Color.White;
-            this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.maskedTextBox1.Location = new System.Drawing.Point(341, 389);
-            this.maskedTextBox1.Mask = "99:99";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(40, 13);
-            this.maskedTextBox1.TabIndex = 127;
+            this.TimeOutBX.BackColor = System.Drawing.Color.White;
+            this.TimeOutBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TimeOutBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeOutBX.Location = new System.Drawing.Point(341, 389);
+            this.TimeOutBX.Mask = "99:99";
+            this.TimeOutBX.Name = "TimeOutBX";
+            this.TimeOutBX.Size = new System.Drawing.Size(40, 13);
+            this.TimeOutBX.TabIndex = 127;
             // 
             // label6
             // 
@@ -210,34 +210,34 @@
             this.label6.TabIndex = 131;
             this.label6.Text = "Days:";
             // 
-            // maskedTextBox2
+            // DaysMBX
             // 
-            this.maskedTextBox2.BackColor = System.Drawing.Color.White;
-            this.maskedTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.maskedTextBox2.Location = new System.Drawing.Point(342, 424);
-            this.maskedTextBox2.Mask = "9999";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(40, 13);
-            this.maskedTextBox2.TabIndex = 130;
+            this.DaysMBX.BackColor = System.Drawing.Color.White;
+            this.DaysMBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DaysMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DaysMBX.Location = new System.Drawing.Point(342, 424);
+            this.DaysMBX.Mask = "9999";
+            this.DaysMBX.Name = "DaysMBX";
+            this.DaysMBX.Size = new System.Drawing.Size(40, 13);
+            this.DaysMBX.TabIndex = 130;
             // 
-            // GEditDetailsBTN
+            // AddBTN
             // 
-            this.GEditDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.GEditDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GEditDetailsBTN.BackgroundImage")));
-            this.GEditDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GEditDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.GEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.GEditDetailsBTN.Location = new System.Drawing.Point(285, 589);
-            this.GEditDetailsBTN.Name = "GEditDetailsBTN";
-            this.GEditDetailsBTN.Size = new System.Drawing.Size(78, 32);
-            this.GEditDetailsBTN.TabIndex = 132;
-            this.GEditDetailsBTN.Text = "ADD";
-            this.GEditDetailsBTN.UseVisualStyleBackColor = false;
+            this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
+            this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddBTN.FlatAppearance.BorderSize = 0;
+            this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddBTN.ForeColor = System.Drawing.Color.White;
+            this.AddBTN.Location = new System.Drawing.Point(285, 589);
+            this.AddBTN.Name = "AddBTN";
+            this.AddBTN.Size = new System.Drawing.Size(78, 32);
+            this.AddBTN.TabIndex = 132;
+            this.AddBTN.Text = "ADD";
+            this.AddBTN.UseVisualStyleBackColor = false;
             // 
             // CloseBTN
             // 
@@ -270,17 +270,17 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(721, 666);
             this.ControlBox = false;
-            this.Controls.Add(this.GEditDetailsBTN);
+            this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.DaysMBX);
+            this.Controls.Add(this.TimeOutAMPMBX);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.SViewAssCMBX);
+            this.Controls.Add(this.TimeOutBX);
+            this.Controls.Add(this.TimeInAMPMBX);
             this.Controls.Add(this.ContactLBL);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.PhilHealthBX);
+            this.Controls.Add(this.TimeInBX);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_AddDutyDetail";
@@ -296,21 +296,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label NameLBL;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ClientLBL;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.MaskedTextBox PhilHealthBX;
+        private System.Windows.Forms.MaskedTextBox TimeInBX;
         private System.Windows.Forms.Label ContactLBL;
-        private System.Windows.Forms.ComboBox SViewAssCMBX;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox TimeInAMPMBX;
+        private System.Windows.Forms.ComboBox TimeOutAMPMBX;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox TimeOutBX;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.Button GEditDetailsBTN;
+        private System.Windows.Forms.MaskedTextBox DaysMBX;
+        private System.Windows.Forms.Button AddBTN;
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Timer FadeTMR;
     }
