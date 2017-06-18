@@ -9,7 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
+
+
+
     public class Scheduling {
+        private class Property {
+            public const int Assignment = 1;
+            public const int Dismissal = 2;
+            public const int Pending = 1;
+            public const int Approved = 2;
+            public const int Denied = 3;
+        }
 
         #region Sidepanel Methods
         public static String GetNumberOfUnscheduledAssignments() {
@@ -27,9 +37,9 @@ namespace MSAMISUserInterface {
 
         #region View Client Request Methods
         public static DataTable GetRequests() {
-            String query = "SELECT rid, name, rstatus FROM msadb.request_assign inner join client on request_assign.cid=client.cid;";
+            String query = "SELECT rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type FROM msadb.request inner join client on request.cid=client.cid;";
             return SQLTools.ExecuteQuery(query);
-             
+
         }
 
         public static DataTable GetRequestsFromDate(DateTime date) {
@@ -37,7 +47,7 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetClients(DateTime date) {
-           return  Client.GetClients();
+            return Client.GetClients();
         }
 
         public static DataTable GetGuardsAssigned(DateTime date) {
@@ -47,20 +57,24 @@ namespace MSAMISUserInterface {
 
         //DONE
         public static void AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards) {
-            // Universal Format: yyyy-MM-dd
             String madeon = DateTime.Now.ToString("yyyy-MM-dd");
-            String query = String.Format("INSERT INTO `msadb`.`request_assign` "+
-                " (`CID`, `DateEntry`, `ContractStart`, `ContractEnd`, `RStatus`, `streetno`, `streetname`, `brgy`, `city`)" +
-                " VALUES ('{0}', '{1}', '{2}', '2017-10-13', '1', '2', 'Kalamansi St.', 'Brgy. 4A', 'Davao City');",
-                CID, madeon, ContractStart.ToString("yyyy-MM-dd"), ContractEnd.ToString("yyyy-MM-dd"),
-                1, // 1 means pending request.
-                AssStreetNo,AssStreetName, AssBrgy,AssCity);
+            String q1 = String.Format("INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('{0}', '{1}', '{2}');",
+                        Scheduling.Property.Assignment, CID, madeon);
+            SQLTools.ExecuteNonQuery(q1);
+            String query = String.Format("INSERT INTO `msadb`.`request_assign` " +
+                " ( `ContractStart`, `ContractEnd`, `RStatus`, `streetno`, `streetname`, `brgy`, `city`)" +
+                " VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}');",
+                 ContractStart.ToString("yyyy-MM-dd"), ContractEnd.ToString("yyyy-MM-dd"),
+                Scheduling.Property.Pending,
+                AssStreetNo, AssStreetName, AssBrgy, AssCity);
             Console.WriteLine("AddAssignmentRequest: \n" + query);
+
             SQLTools.ExecuteNonQuery(query);
+
         }
 
-        public static void AddDismissalRequest (int gid) {
-            throw new NotImplementedException();
+        public static void AddDismissalRequest(int gid) {
+
         }
 
         public static DataTable GetAllAssignmentRequestDetails() {
@@ -75,12 +89,12 @@ namespace MSAMISUserInterface {
 
         #region View Assignments
 
-        public static DataTable GetAssignmentsByClient (int cid, string filter) {
+        public static DataTable GetAssignmentsByClient(int cid, string filter) {
             // Note: Filter can be EMPTY but NOT null.
             throw new NotImplementedException();
         }
 
-        public static DataTable GetDutyDays (int did) {
+        public static DataTable GetDutyDays(int did) {
             // Return all attendance details. Columns: Date - Status
             throw new NotImplementedException();
         }
@@ -92,7 +106,6 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
-        
 
 
 
