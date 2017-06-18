@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1    Database: msadb
 -- ------------------------------------------------------
 -- Server version	5.7.13-log
--- n
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -72,35 +72,6 @@ CREATE TABLE `adjustments` (
 LOCK TABLES `adjustments` WRITE;
 /*!40000 ALTER TABLE `adjustments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `adjustments` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `assignment`
---
-
-DROP TABLE IF EXISTS `assignment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `assignment` (
-  `AID` int(11) NOT NULL AUTO_INCREMENT,
-  `GID` int(11) DEFAULT NULL,
-  `RID` int(11) DEFAULT NULL,
-  `AStatus` int(11) DEFAULT NULL,
-  PRIMARY KEY (`AID`),
-  KEY `Assignment-Guard_idx` (`GID`),
-  KEY `Assignment-Request_idx` (`RID`),
-  CONSTRAINT `Assignment-Guard` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Assignment-Request` FOREIGN KEY (`RID`) REFERENCES `request_assign` (`RID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `assignment`
---
-
-LOCK TABLES `assignment` WRITE;
-/*!40000 ALTER TABLE `assignment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -220,36 +191,6 @@ INSERT INTO `dependents` VALUES (3,1,'LAVENIA','SEARCHWELL','DEFOSSES',3),(4,1,'
 UNLOCK TABLES;
 
 --
--- Table structure for table `dissmisalrequest`
---
-
-DROP TABLE IF EXISTS `dissmisalrequest`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `dissmisalrequest` (
-  `DisID` int(11) NOT NULL AUTO_INCREMENT,
-  `CID` int(11) DEFAULT NULL,
-  `DateEntry` varchar(45) DEFAULT NULL,
-  `DID` int(11) DEFAULT NULL,
-  `DiStat` int(11) DEFAULT NULL,
-  PRIMARY KEY (`DisID`),
-  KEY `Dissmissal-Client_idx` (`CID`),
-  KEY `Dissmissal-DutyDetails_idx` (`DID`),
-  CONSTRAINT `Dissmissal-Client` FOREIGN KEY (`CID`) REFERENCES `client` (`CID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Dissmissal-DutyDetails` FOREIGN KEY (`DID`) REFERENCES `dutydetails` (`DID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `dissmisalrequest`
---
-
-LOCK TABLES `dissmisalrequest` WRITE;
-/*!40000 ALTER TABLE `dissmisalrequest` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dissmisalrequest` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `dutydetails`
 --
 
@@ -265,7 +206,7 @@ CREATE TABLE `dutydetails` (
   `DStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`DID`),
   KEY `Assignment-Duty_idx` (`AID`),
-  CONSTRAINT `Assignment-Duty` FOREIGN KEY (`AID`) REFERENCES `assignment` (`AID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `Assignment-Duty` FOREIGN KEY (`AID`) REFERENCES `sduty_assignment` (`AID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -357,7 +298,7 @@ CREATE TABLE `incidentreport` (
   `Description` longtext,
   PRIMARY KEY (`IID`),
   KEY `Incident-Dissmisal_idx` (`DisID`),
-  CONSTRAINT `Incident-Dissmisal` FOREIGN KEY (`DisID`) REFERENCES `dissmisalrequest` (`DisID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `Incident-Dissmisal` FOREIGN KEY (`DisID`) REFERENCES `request_dismiss` (`RDID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -390,7 +331,7 @@ CREATE TABLE `meta` (
 
 LOCK TABLES `meta` WRITE;
 /*!40000 ALTER TABLE `meta` DISABLE KEYS */;
-INSERT INTO `meta` VALUES (1,'2');
+INSERT INTO `meta` VALUES (1,'3');
 /*!40000 ALTER TABLE `meta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -468,6 +409,32 @@ LOCK TABLES `personsinvolved` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `request`
+--
+
+DROP TABLE IF EXISTS `request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `request` (
+  `RID` int(11) NOT NULL AUTO_INCREMENT,
+  `RequestType` int(11) DEFAULT NULL,
+  `CID` int(11) DEFAULT NULL,
+  `DateEntry` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`RID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `request`
+--
+
+LOCK TABLES `request` WRITE;
+/*!40000 ALTER TABLE `request` DISABLE KEYS */;
+INSERT INTO `request` VALUES (2,1,1,'2017-06-18');
+/*!40000 ALTER TABLE `request` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `request_assign`
 --
 
@@ -475,9 +442,7 @@ DROP TABLE IF EXISTS `request_assign`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `request_assign` (
-  `RID` int(11) NOT NULL AUTO_INCREMENT,
-  `CID` int(11) DEFAULT NULL,
-  `DateEntry` datetime DEFAULT NULL,
+  `RAID` int(11) NOT NULL AUTO_INCREMENT,
   `ContractStart` datetime DEFAULT NULL,
   `ContractEnd` datetime DEFAULT NULL,
   `RStatus` int(11) DEFAULT NULL,
@@ -485,10 +450,8 @@ CREATE TABLE `request_assign` (
   `streetname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `brgy` varchar(60) COLLATE utf8_bin DEFAULT NULL,
   `city` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  PRIMARY KEY (`RID`),
-  KEY `Client-Request_idx` (`CID`),
-  CONSTRAINT `Client-Request` FOREIGN KEY (`CID`) REFERENCES `client` (`CID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  PRIMARY KEY (`RAID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -497,8 +460,83 @@ CREATE TABLE `request_assign` (
 
 LOCK TABLES `request_assign` WRITE;
 /*!40000 ALTER TABLE `request_assign` DISABLE KEYS */;
-INSERT INTO `request_assign` VALUES (1,1,'2017-10-13 00:00:00','2017-10-13 00:00:00','2017-10-13 00:00:00',1,'2','Kalamansi St.','Brgy. 4A','Davao City'),(2,1,'2017-06-18 00:00:00','2017-06-18 00:00:00','2017-10-13 00:00:00',1,'2','Kalamansi St.','Brgy. 4A','Davao City'),(3,1,'2017-06-18 00:00:00','2017-06-18 00:00:00','2017-10-13 00:00:00',1,'2','Kalamansi St.','Brgy. 4A','Davao City');
+INSERT INTO `request_assign` VALUES (5,'2017-06-18 00:00:00','2017-06-18 00:00:00',1,'StreetNo','SteetName','Brgy','city');
 /*!40000 ALTER TABLE `request_assign` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `request_dismiss`
+--
+
+DROP TABLE IF EXISTS `request_dismiss`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `request_dismiss` (
+  `RDID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`RDID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `request_dismiss`
+--
+
+LOCK TABLES `request_dismiss` WRITE;
+/*!40000 ALTER TABLE `request_dismiss` DISABLE KEYS */;
+/*!40000 ALTER TABLE `request_dismiss` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sduty_assignment`
+--
+
+DROP TABLE IF EXISTS `sduty_assignment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sduty_assignment` (
+  `AID` int(11) NOT NULL AUTO_INCREMENT,
+  `GID` int(11) DEFAULT NULL,
+  `RAID` int(11) DEFAULT NULL,
+  `AStatus` int(11) DEFAULT NULL,
+  PRIMARY KEY (`AID`),
+  KEY `Assignment-Guard_idx` (`GID`),
+  KEY `Assignment-Request_idx` (`RAID`),
+  CONSTRAINT `Assignment-Guard` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sduty_assignment`
+--
+
+LOCK TABLES `sduty_assignment` WRITE;
+/*!40000 ALTER TABLE `sduty_assignment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sduty_assignment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sduty_dismissal`
+--
+
+DROP TABLE IF EXISTS `sduty_dismissal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sduty_dismissal` (
+  `DisID` int(11) NOT NULL AUTO_INCREMENT,
+  `DID` int(11) DEFAULT NULL,
+  `RDID` int(11) DEFAULT NULL,
+  `DisStatus` int(11) DEFAULT NULL,
+  PRIMARY KEY (`DisID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sduty_dismissal`
+--
+
+LOCK TABLES `sduty_dismissal` WRITE;
+/*!40000 ALTER TABLE `sduty_dismissal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sduty_dismissal` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -546,4 +584,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-18  1:35:27
+-- Dump completed on 2017-06-18 22:38:35

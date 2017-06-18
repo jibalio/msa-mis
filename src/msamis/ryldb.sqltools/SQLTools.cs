@@ -11,7 +11,7 @@ using System.Windows.Forms;
 /* Leryc*/
 namespace MSAMISUserInterface {
     public class SQLTools {
-
+        public static string sqlversion = "3";
         public static String ArchiveName = "msadbarchive";
         public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
         public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;");
@@ -78,7 +78,7 @@ namespace MSAMISUserInterface {
          * Checks if Leryc had edited MySQL database. Returns error 
          * if DB is not updated. Redirects to dropbox link to SQL file.
          */
-        public static string sqlversion = "2";
+        
         public static void VersionCheck() {
             MySqlCommand com = new MySqlCommand("select version from meta where meta_id=1", conn);
             conn.Open();
