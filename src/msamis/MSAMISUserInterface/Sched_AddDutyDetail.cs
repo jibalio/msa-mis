@@ -13,6 +13,8 @@ namespace MSAMISUserInterface {
     public partial class Sched_AddDutyDetail : Form {
         public MainForm reference;
         public MySqlConnection conn;
+        public String button = "ADD";
+        public int AID { get; set; }
 
         public Sched_AddDutyDetail() {
             InitializeComponent();
@@ -22,11 +24,14 @@ namespace MSAMISUserInterface {
         private void Sched_AddDutyDetail_Load(object sender, EventArgs e) {
             //LoadPage();
             FadeTMR.Start();
+            AddBTN.Text = button;
         }
 
         private void Sched_AddDutyDetail_FormClosing(object sender, FormClosingEventArgs e) {
-            reference.Opacity = 1;
-            reference.Show();
+            if (button.Equals("ADD")) { 
+                reference.Opacity = 1;
+                reference.Show();
+            }
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {

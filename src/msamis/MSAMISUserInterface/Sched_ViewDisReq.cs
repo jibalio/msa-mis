@@ -10,23 +10,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
-    public partial class Sched_AddDutyDays : Form {
+    public partial class Sched_ViewDisReq : Form {
+        public int RID { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
-        public String button = "ADD";
-        public int AID { get; set; }
 
-        public Sched_AddDutyDays() {
+        public Sched_ViewDisReq() {
             InitializeComponent();
             this.Opacity = 0;
         }
 
-        private void SAddDutyDays_Load(object sender, EventArgs e) {
-            //LoadPage();
+        private void Sched_ViewDisReq_Load(object sender, EventArgs e) {
+            //RefreshData();
             FadeTMR.Start();
-        }
-
-        private void SAddDutyDays_FormClosing(object sender, FormClosingEventArgs e) {
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -35,7 +31,16 @@ namespace MSAMISUserInterface {
             if (reference.Opacity > 0.7) { reference.Opacity -= 0.1; }
         }
 
+        private void Sched_ViewDisReq_FormClosing(object sender, FormClosingEventArgs e) {
+            reference.Opacity = 1;
+            reference.Show();
+        }
+
         private void CloseBTN_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void ApproveBTN_Click(object sender, EventArgs e) {
             this.Close();
         }
     }

@@ -66,7 +66,7 @@
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(275, 585);
+            this.AddBTN.Location = new System.Drawing.Point(283, 600);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(78, 32);
             this.AddBTN.TabIndex = 71;
@@ -84,7 +84,7 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(358, 585);
+            this.CloseBTN.Location = new System.Drawing.Point(366, 600);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(78, 32);
             this.CloseBTN.TabIndex = 72;
@@ -304,7 +304,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ClientGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClientGRD.EnableHeadersVisualStyles = false;
-            this.ClientGRD.Location = new System.Drawing.Point(142, 120);
+            this.ClientGRD.Location = new System.Drawing.Point(132, 113);
             this.ClientGRD.Name = "ClientGRD";
             this.ClientGRD.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -317,7 +317,7 @@
             this.ClientGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ClientGRD.RowHeadersVisible = false;
             this.ClientGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ClientGRD.Size = new System.Drawing.Size(428, 248);
+            this.ClientGRD.Size = new System.Drawing.Size(443, 248);
             this.ClientGRD.TabIndex = 104;
             // 
             // label6

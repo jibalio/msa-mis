@@ -108,6 +108,12 @@
     <Compile Include="Sched_AddDutyDetail.Designer.cs">
       <DependentUpon>Sched_AddDutyDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sched_AssignGuards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_AssignGuards.Designer.cs">
+      <DependentUpon>Sched_AssignGuards.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sched_DismissGuard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,24 @@
     </Compile>
     <Compile Include="Sched_RequestGuard.Designer.cs">
       <DependentUpon>Sched_RequestGuard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_ViewAssReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_ViewAssReq.Designer.cs">
+      <DependentUpon>Sched_ViewAssReq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_ViewDisReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_ViewDisReq.Designer.cs">
+      <DependentUpon>Sched_ViewDisReq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_ViewDutyDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_ViewDutyDetails.Designer.cs">
+      <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Clients_Edit.resx">
       <DependentUpon>Clients_Edit.cs</DependentUpon>
@@ -154,11 +178,23 @@
     <EmbeddedResource Include="Sched_AddDutyDetail.resx">
       <DependentUpon>Sched_AddDutyDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sched_AssignGuards.resx">
+      <DependentUpon>Sched_AssignGuards.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sched_DismissGuard.resx">
       <DependentUpon>Sched_DismissGuard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sched_RequestGuard.resx">
       <DependentUpon>Sched_RequestGuard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_ViewAssReq.resx">
+      <DependentUpon>Sched_ViewAssReq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_ViewDisReq.resx">
+      <DependentUpon>Sched_ViewDisReq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_ViewDutyDetails.resx">
+      <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

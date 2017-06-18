@@ -39,9 +39,9 @@
             this.TimeOutBX = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.DaysMBX = new System.Windows.Forms.MaskedTextBox();
+            this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.AddBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
-            this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -203,12 +203,12 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(293, 418);
+            this.label6.Location = new System.Drawing.Point(252, 418);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 19);
+            this.label6.Size = new System.Drawing.Size(82, 19);
             this.label6.TabIndex = 131;
-            this.label6.Text = "Days:";
+            this.label6.Text = "Days/Week:";
             // 
             // DaysMBX
             // 
@@ -221,6 +221,11 @@
             this.DaysMBX.Size = new System.Drawing.Size(40, 13);
             this.DaysMBX.TabIndex = 130;
             // 
+            // FadeTMR
+            // 
+            this.FadeTMR.Interval = 1;
+            this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
+            // 
             // AddBTN
             // 
             this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -232,7 +237,7 @@
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(285, 589);
+            this.AddBTN.Location = new System.Drawing.Point(281, 600);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(78, 32);
             this.AddBTN.TabIndex = 132;
@@ -250,18 +255,13 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(368, 589);
+            this.CloseBTN.Location = new System.Drawing.Point(364, 600);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(78, 32);
             this.CloseBTN.TabIndex = 133;
             this.CloseBTN.Text = "CANCEL";
             this.CloseBTN.UseVisualStyleBackColor = false;
             this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
-            // 
-            // FadeTMR
-            // 
-            this.FadeTMR.Interval = 1;
-            this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
             // 
             // Sched_AddDutyDetail
             // 

@@ -24,4 +24,26 @@ namespace MSAMISUserInterface {
 
         }
     }
+    class ComboBoxItem {
+        String displayValue;
+        string itemID;
+
+        //Constructor
+        public ComboBoxItem(string d, string h) {
+            displayValue = d;
+            itemID = h;
+        }
+
+        //Accessor
+        public string ItemID {
+            get {
+                return itemID;
+            }
+        }
+
+        //Override ToString method
+        public override string ToString() {
+            return displayValue;
+        }
+    }
 }

@@ -302,7 +302,7 @@
             this.DismissBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DismissBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DismissBTN.ForeColor = System.Drawing.Color.White;
-            this.DismissBTN.Location = new System.Drawing.Point(286, 607);
+            this.DismissBTN.Location = new System.Drawing.Point(279, 600);
             this.DismissBTN.Name = "DismissBTN";
             this.DismissBTN.Size = new System.Drawing.Size(78, 32);
             this.DismissBTN.TabIndex = 120;
@@ -320,7 +320,7 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(369, 607);
+            this.CloseBTN.Location = new System.Drawing.Point(362, 600);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(78, 32);
             this.CloseBTN.TabIndex = 121;

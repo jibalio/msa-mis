@@ -36,6 +36,7 @@ namespace MSAMISUserInterface {
         }
         private void initiateForm() {
             DashboardPage.Visible = true;
+            DashboardPage.BringToFront();
             GuardsPage.Visible = false;
             ClientsPage.Visible = false;
             SchedulesPage.Visible = false;
@@ -657,6 +658,8 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = true;
             SViewReqDisBTN.Visible = true;
+
+            SCHEDLoadRequestsPage();
         }
         #endregion
 
@@ -678,6 +681,8 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = true;
             SViewReqDisBTN.Visible = true;
+
+            SCHEDLoadRequestsPage();
         }
         private void SViewAssBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Hide();
@@ -686,7 +691,7 @@ namespace MSAMISUserInterface {
             SMonthlyDutyPNL.Hide();
             SViewAssPNL.Show();
             SViewReqPNL.Hide();
-
+            
             SDutyDetailsBTN.Font = defaultFont;
             SIncidentBTN.Font = defaultFont;
             SMonthlyDutyBTN.Font = defaultFont;
@@ -696,6 +701,8 @@ namespace MSAMISUserInterface {
 
             SViewReqAssBTN.Visible = false;
             SViewReqDisBTN.Visible = false;
+
+            SCHEDLoadAssignmentPage();
         }
         private void SMonthlyDutyBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Hide();
@@ -792,8 +799,21 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region SMS - View Assignment
+        private void SCHEDLoadAssignmentPage() {
+            SViewAssSearchClientCMBX.SelectedIndex = 0;
+            SViewAssCMBX.SelectedIndex = 0;
+            DataTable dt = Client.GetClients();
+            for (int i = 0; i < dt.Rows.Count; i++) SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+        }
+        private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
+            SCHEDRefreshAssignments();
+        }
         private void SCHEDRefreshAssignments() {
-
+            if (SViewAssSearchClientCMBX.Text.Equals("All")) {
+                //SViewAssGRD.DataSource = Scheduling.GetAssignments();
+            } else {
+                SViewAssGRD.DataSource = Scheduling.GetAssignmentsByClient(int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID), SViewAssCMBX.Text.ToString());
+            }
         }
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewAssSearchTXTBX.Text == FilterText) {
@@ -820,9 +840,9 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
-        private void SViewAssAddDaysBTN_Click(object sender, EventArgs e) {
+        private void SViewAssViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
-                Sched_AddDutyDays view = new Sched_AddDutyDays();
+                Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
                 view.reference = this;
                 view.conn = this.conn;
                 view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
@@ -831,9 +851,14 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
         #endregion
-
+  
         #region SMS - View Requests
+        private void SCHEDLoadRequestsPage() {
+            SViewReqFilterCMBX.SelectedIndex = 0;
+            SCHEDRefreshRequests();
+        }
         private void SCHEDRefreshRequests() {
+            SViewReqGRD.DataSource = Scheduling.GetRequests();
         }
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {
@@ -850,7 +875,16 @@ namespace MSAMISUserInterface {
             SCHEDRefreshRequests();
             SViewReqSearchTXTBX.Visible = false;
         }
-
+        private void SViewReqViewBTN_Click(object sender, EventArgs e) {
+            try {
+                Sched_ViewAssReq view = new Sched_ViewAssReq();
+                view.reference = this;
+                view.conn = this.conn;
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
         #endregion
 
         #region SMS - Archive
@@ -863,7 +897,16 @@ namespace MSAMISUserInterface {
             }
             SArchiveSearchLine.Visible = true;
         }
-
+        private void SArchiveViewDetailsBTN_Click(object sender, EventArgs e) {
+            try {
+                Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
+                view.reference = this;
+                view.conn = this.conn;
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
         private void SArchiveSearchTXTBX_Leave(object sender, EventArgs e) {
             if (SArchiveSearchTXTBX.Text == EmptyText) {
                 SArchiveSearchTXTBX.Text = FilterText;
@@ -875,10 +918,24 @@ namespace MSAMISUserInterface {
 
 
 
-        #endregion
+
+
+
+
 
         #endregion
 
+        #endregion
 
+        private void SampleBTN_Click(object sender, EventArgs e) {
+            try {
+                Sched_ViewDisReq view = new Sched_ViewDisReq();
+                view.reference = this;
+                view.conn = this.conn;
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
     }
 }

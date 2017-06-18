@@ -119,7 +119,7 @@
             // 
             // CalendarPKR
             // 
-            this.CalendarPKR.Location = new System.Drawing.Point(91, 231);
+            this.CalendarPKR.Location = new System.Drawing.Point(99, 231);
             this.CalendarPKR.Name = "CalendarPKR";
             this.CalendarPKR.TabIndex = 124;
             // 
@@ -128,7 +128,7 @@
             this.ContactLBL.AutoSize = true;
             this.ContactLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.ContactLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactLBL.Location = new System.Drawing.Point(150, 201);
+            this.ContactLBL.Location = new System.Drawing.Point(158, 201);
             this.ContactLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ContactLBL.Name = "ContactLBL";
             this.ContactLBL.Size = new System.Drawing.Size(104, 21);
@@ -140,7 +140,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(150, 417);
+            this.label5.Location = new System.Drawing.Point(158, 417);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 21);
@@ -157,7 +157,7 @@
             this.TimeOutAMPMBX.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.TimeOutAMPMBX.Location = new System.Drawing.Point(228, 490);
+            this.TimeOutAMPMBX.Location = new System.Drawing.Point(236, 490);
             this.TimeOutAMPMBX.Name = "TimeOutAMPMBX";
             this.TimeOutAMPMBX.Size = new System.Drawing.Size(56, 25);
             this.TimeOutAMPMBX.Sorted = true;
@@ -168,7 +168,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(116, 495);
+            this.label6.Location = new System.Drawing.Point(124, 495);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 19);
@@ -180,7 +180,7 @@
             this.TimeOutBX.BackColor = System.Drawing.Color.White;
             this.TimeOutBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TimeOutBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.TimeOutBX.Location = new System.Drawing.Point(189, 499);
+            this.TimeOutBX.Location = new System.Drawing.Point(197, 499);
             this.TimeOutBX.Mask = "99:99";
             this.TimeOutBX.Name = "TimeOutBX";
             this.TimeOutBX.Size = new System.Drawing.Size(40, 13);
@@ -196,7 +196,7 @@
             this.TimeInAMPMBX.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.TimeInAMPMBX.Location = new System.Drawing.Point(228, 455);
+            this.TimeInAMPMBX.Location = new System.Drawing.Point(236, 455);
             this.TimeInAMPMBX.Name = "TimeInAMPMBX";
             this.TimeInAMPMBX.Size = new System.Drawing.Size(56, 25);
             this.TimeInAMPMBX.Sorted = true;
@@ -207,7 +207,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label20.Location = new System.Drawing.Point(126, 460);
+            this.label20.Location = new System.Drawing.Point(134, 460);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(58, 19);
@@ -219,7 +219,7 @@
             this.TimeInBX.BackColor = System.Drawing.Color.White;
             this.TimeInBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TimeInBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.TimeInBX.Location = new System.Drawing.Point(189, 464);
+            this.TimeInBX.Location = new System.Drawing.Point(197, 464);
             this.TimeInBX.Mask = "99:99";
             this.TimeInBX.Name = "TimeInBX";
             this.TimeInBX.Size = new System.Drawing.Size(40, 13);
@@ -236,9 +236,9 @@
             this.AddDaysBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddDaysBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddDaysBTN.ForeColor = System.Drawing.Color.White;
-            this.AddDaysBTN.Location = new System.Drawing.Point(159, 537);
+            this.AddDaysBTN.Location = new System.Drawing.Point(161, 537);
             this.AddDaysBTN.Name = "AddDaysBTN";
-            this.AddDaysBTN.Size = new System.Drawing.Size(78, 32);
+            this.AddDaysBTN.Size = new System.Drawing.Size(96, 32);
             this.AddDaysBTN.TabIndex = 136;
             this.AddDaysBTN.Text = "ADD";
             this.AddDaysBTN.UseVisualStyleBackColor = false;
@@ -272,7 +272,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DaysGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.DaysGRD.EnableHeadersVisualStyles = false;
-            this.DaysGRD.Location = new System.Drawing.Point(380, 231);
+            this.DaysGRD.Location = new System.Drawing.Point(388, 231);
             this.DaysGRD.Name = "DaysGRD";
             this.DaysGRD.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -293,7 +293,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(468, 201);
+            this.label7.Location = new System.Drawing.Point(476, 201);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 21);
@@ -311,7 +311,7 @@
             this.ConfirmBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConfirmBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmBTN.ForeColor = System.Drawing.Color.White;
-            this.ConfirmBTN.Location = new System.Drawing.Point(267, 608);
+            this.ConfirmBTN.Location = new System.Drawing.Point(260, 600);
             this.ConfirmBTN.Name = "ConfirmBTN";
             this.ConfirmBTN.Size = new System.Drawing.Size(96, 32);
             this.ConfirmBTN.TabIndex = 140;
@@ -329,9 +329,9 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(368, 608);
+            this.CloseBTN.Location = new System.Drawing.Point(361, 600);
             this.CloseBTN.Name = "CloseBTN";
-            this.CloseBTN.Size = new System.Drawing.Size(78, 32);
+            this.CloseBTN.Size = new System.Drawing.Size(96, 32);
             this.CloseBTN.TabIndex = 141;
             this.CloseBTN.Text = "CANCEL";
             this.CloseBTN.UseVisualStyleBackColor = false;
@@ -373,7 +373,7 @@
             this.DeleteBTN.ForeColor = System.Drawing.Color.White;
             this.DeleteBTN.Location = new System.Drawing.Point(531, 535);
             this.DeleteBTN.Name = "DeleteBTN";
-            this.DeleteBTN.Size = new System.Drawing.Size(78, 32);
+            this.DeleteBTN.Size = new System.Drawing.Size(96, 32);
             this.DeleteBTN.TabIndex = 143;
             this.DeleteBTN.Text = "DELETE";
             this.DeleteBTN.UseVisualStyleBackColor = false;
