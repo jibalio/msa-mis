@@ -16,16 +16,100 @@ namespace MSAMISUserInterface {
         public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
         public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;");
 
-
-        #region Generic Methods
         /* GENERIC METHODS
          * ExecuteQuery(query)      :   DataTable
          * ExecuteReader(query)     :   MySqlDataReader
          * ExecuteNonQuery(query)   :   void
          * ExecuteSingleResult(query)  :   String
+         * ExecuteQuery (String query)
+         * ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword)
+         * ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword, String orderby)
+         * ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
          */
-        public static DataTable ExecuteQuery(String query) {
+
+        /*
+         *  HOW TO USE ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
+         *  
+         *  Package:    ryldb.sqltools
+         *  Class:      SQLTools
+         *  Method:     ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
+         *  
+         *  @return DataTable with specified filters applied
+         *  @param query:     Base query
+         *                   e.g. select * from clients
+         *  @param ColumnToFilterByKeyword:    column to sortby
+         *                  e.g. AssignmentID
+         *  @param keyword: filter column with keyword
+         *  @param orderby:  format:  "<ColumnToSort> <ASC/DESC>"
+         *  
+         *  @param filters[]: THE TRICKY PART: pay close attention boi 👀👀
+         *  In order for this to work, query must be formatted such that it is compatible with
+         *  C#'s String.format(). 
+         *  TL;DR: Use placeholders {0} {1} .... {n}
+         *  Example: 
+         *      select * from guards where lastname='{0}' and firstname='{1}'
+         *  then, in the filters[] parameter, create a string array containing the corresponding placeholder values.
+         *  
+         *  Example usage:
+         *  String q = "select ln, fn, mn from guards where status={0} and birthyear={1}";
+         *  ryldb.sqltools.SqlTools.ExecuteQuery( q, "ln", "Regodon", "ln asc", new String ("Active", "1998");
+         * 
+         * 
+         *  OTHER VARIANTS THO
+         *  ExecuteQuery (String query)
+         *  ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword)
+         *  ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword, String orderby)
+         *  ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
+         */
+
+        #region Generic Methods
+
+
+        public static String RemoveSemicolon(String q) {
+            if (q.EndsWith(";")) {                  // Removes semicolon if it has one, so 
+                q = q.Substring(0, q.Length - 1);   // that filters can be added.
+            } q += " ";
+            return q;
+        }
+        
+        public static String AppendType(String q, String[] filters) {
+           
+            q = RemoveSemicolon(q);
+            if (filters != null) {
+                return String.Format(q, filters);
+            }
+            else return q;      // if no specified filters, return original.
+        }
+
+        // Hi! This method is semicolon-ed query friendly 💯💯💯 🔥🔥
+        public static String AppendFilters (String q, String ColumnToFilterByKeyword, String keyword, String orderby) {
+            q = RemoveSemicolon(q);
+            if (ColumnToFilterByKeyword!="" && ColumnToFilterByKeyword!=null) {
+                if (!q.ToLower().Contains("where")) {
+                    q += " where ";
+                } else q += " and ";
+                q += ColumnToFilterByKeyword + " LIKE '" + keyword + "'";
+            }
+            if (orderby!="" && orderby != null) {
+                q += " order by " + orderby;
+            }
+            return q;
+        }
+        
+        public static DataTable ExecuteQuery (String query) {
+            return ExecuteQuery(query, "", "");
+        }
+        public static DataTable ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword) {
+            return ExecuteQuery(query,ColumnToFilterByKeyword,keyword, "");
+        }
+        public static DataTable ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword, String orderby) {
+            return ExecuteQuery(query, ColumnToFilterByKeyword, keyword, orderby, null);
+        }
+        public static DataTable ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters) {
+            query = AppendType(query, filters);
+            query = AppendFilters(query, ColumnToFilterByKeyword, keyword, orderby);
             DataTable dt = new DataTable();
+            Console.WriteLine("=================================================\nSQLTools.cs: Your query was\n" + query + "\n=================================================");
             try {
                 MySqlCommand com = new MySqlCommand(query, SQLTools.conn);
                 SQLTools.conn.Open();

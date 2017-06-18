@@ -35,18 +35,32 @@ namespace MSAMISUserInterface {
         }
         #endregion
 
+
+        #region Non-Query Methods
+       // public static void AddDutyDetails()
+
+        #endregion
+
+
+
+
+
+
+
+
         #region View Client Request Methods
         public static DataTable GetRequests() {
             String query = "SELECT rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type FROM msadb.request inner join client on request.cid=client.cid;";
             return SQLTools.ExecuteQuery(query);
-
         }
+
+        //public static DataTable GetAssignedGuards
 
         public static DataTable GetRequestsFromDate(DateTime date) {
             throw new NotImplementedException();
         }
 
-        public static DataTable GetClients(DateTime date) {
+        public static DataTable GetClients() {
             return Client.GetClients();
         }
 
@@ -74,7 +88,8 @@ namespace MSAMISUserInterface {
         }
 
         public static void AddDismissalRequest(int gid) {
-
+            String madeon = DateTime.Now.ToString("yyyy-MM-dd");
+            String q1 = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('2', '1', '2017-06-18');";
         }
 
         public static DataTable GetAllAssignmentRequestDetails() {
