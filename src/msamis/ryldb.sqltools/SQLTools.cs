@@ -11,8 +11,19 @@ using System.Windows.Forms;
 /* Leryc*/
 namespace MSAMISUserInterface {
     public class SQLTools {
-        
 
+        public static String ArchiveName = "msadbarchive";
+        public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
+        public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;");
+
+
+        #region Generic Methods
+        /* GENERIC METHODS
+         * ExecuteQuery(query)      :   DataTable
+         * ExecuteReader(query)     :   MySqlDataReader
+         * ExecuteNonQuery(query)   :   void
+         * ExecuteSingleResult(query)  :   String
+         */
         public static DataTable ExecuteQuery(String query) {
             DataTable dt = new DataTable();
             try {
@@ -28,10 +39,40 @@ namespace MSAMISUserInterface {
             return dt;
         }
 
+        public static void ExecuteNonQuery(string query) {
+            try {
+                MySqlCommand com = new MySqlCommand(query, conn);
+                SQLTools.conn.Open();
+                com.ExecuteNonQuery();
+            } catch (Exception e) {
+                MessageBox.Show(e.ToString());
+            } finally {
+                SQLTools.conn.Close();
+            }
+        }
 
+        public static MySqlDataReader ExecuteReader(String query) {
+            MySqlDataReader rdr = null;
+            try {
+                MySqlCommand com = new MySqlCommand(query, conn);
+                rdr = com.ExecuteReader();
+            } catch (Exception e) {
+                MessageBox.Show(e.ToString());
+            } finally {
+                conn.Close();
+            }
+            return rdr;
+        }
 
+        public static String ExecuteSingleResult(String query) {
+            MySqlDataReader rdr = ExecuteReader(query);
+            rdr.Read();
+            return rdr.GetString(0);
+        }
 
+        #endregion
 
+        #region meta functions
 
         /* VersionChangeCheck : void
          * Checks if Leryc had edited MySQL database. Returns error 
@@ -45,22 +86,18 @@ namespace MSAMISUserInterface {
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-                if (dt.Rows[0]["version"].ToString()!=sqlversion) {
+                if (dt.Rows[0]["version"].ToString() != sqlversion) {
                     throw new Exception();
                 } else { conn.Close(); return; }
             } catch (MySql.Data.MySqlClient.MySqlException) {
                 conn.Close();
                 throw new Exception();
             }
-            
-            
+
+
         }
-        
-        public static String ArchiveName = "msadbarchive";
-        public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
-        public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;");
 
-
+        #endregion
 
         #region Guard Management
 
@@ -68,39 +105,28 @@ namespace MSAMISUserInterface {
             int x = 99;
             try {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT count(*) as c FROM guards WHERE gstatus = " + (a=="active"?"'1'":"'2'"), conn);
+                MySqlCommand comm = new MySqlCommand("SELECT count(*) as c FROM guards WHERE gstatus = " + (a == "active" ? "'1'" : "'2'"), conn);
                 MySqlDataReader rdr = comm.ExecuteReader();
                 rdr.Read();
                 x = int.Parse(rdr.GetString("c"));
-            } catch (Exception ee) { MessageBox.Show(ee.ToString()); ; } 
-            finally {
+            } catch (Exception ee) { MessageBox.Show(ee.ToString()); ; } finally {
                 conn.Close();
             }
             return x;
         }
 
-        public static  void ExecuteNonQuery(string query) {
-            try {
-                MySqlCommand com = new MySqlCommand(query,conn);
-                SQLTools.conn.Open();
-                com.ExecuteNonQuery();
-            } catch (Exception e) {
-                MessageBox.Show(e.ToString());
-            } finally {
-                SQLTools.conn.Close();
-            }
-        }
 
-        #endregion
+
+
 
         public static void MoveRecordToArchive(string table, string idname, int id) {
-            MySqlCommand com = new MySqlCommand("select * from "+table+" where "+idname+" =" + id, conn);
+            MySqlCommand com = new MySqlCommand("select * from " + table + " where " + idname + " =" + id, conn);
             conn.Open();
             MySqlDataAdapter adp = new MySqlDataAdapter(com);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             conn.Close();
-            
+
             foreach (DataRow row in dt.Rows) {
                 String InsertionQuery = "insert ignore into " + table + " (";
 
@@ -123,9 +149,9 @@ namespace MSAMISUserInterface {
                 archiveconn.Close();
             }
 
-            
+
         }
-        public static void DeleteRecord (string table, string idname, int id) {
+        public static void DeleteRecord(string table, string idname, int id) {
             conn.Open();
             MySqlCommand com = new MySqlCommand("delete from " + table + " where " + idname + "=" + id, conn);
             com.ExecuteNonQuery();
@@ -140,7 +166,7 @@ namespace MSAMISUserInterface {
 
 
 
-
+        #endregion
 
     }
 }
