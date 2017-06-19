@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backend_Tester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Backend_Tester.Designer.cs">
+      <DependentUpon>Backend_Tester.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients_Edit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     <Compile Include="Sched_ViewDutyDetails.Designer.cs">
       <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Backend_Tester.resx">
+      <DependentUpon>Backend_Tester.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clients_Edit.resx">
       <DependentUpon>Clients_Edit.cs</DependentUpon>
     </EmbeddedResource>

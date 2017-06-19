@@ -15,13 +15,12 @@ namespace MSAMISUserInterface {
         static void Main() {
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
-            
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
-            
-            //Scheduling.AddAssignmentRequest(1, "StreetNo", "SteetName", "Brgy", "city", DateTime.Now, DateTime.Now, 23);
 
+            Application.EnableVisualStyles();
+             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new LoginForm());
+
+            //Scheduling.AddAssignmentRequest(1, "StreetNo", "SteetName", "Brgy", "city", DateTime.Now, DateTime.Now, 23);
         }
     }
     class ComboBoxItem {

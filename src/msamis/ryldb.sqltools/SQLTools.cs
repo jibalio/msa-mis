@@ -11,7 +11,7 @@ using System.Windows.Forms;
 /* Leryc*/
 namespace MSAMISUserInterface {
     public class SQLTools {
-        public static string sqlversion = "3";
+        public static string sqlversion = "4";
         public static String ArchiveName = "msadbarchive";
         public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
         public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;");
@@ -139,6 +139,7 @@ namespace MSAMISUserInterface {
             MySqlDataReader rdr = null;
             try {
                 MySqlCommand com = new MySqlCommand(query, conn);
+                conn.Open();
                 rdr = com.ExecuteReader();
             } catch (Exception e) {
                 MessageBox.Show(e.ToString());
@@ -150,7 +151,8 @@ namespace MSAMISUserInterface {
 
         public static String ExecuteSingleResult(String query) {
             MySqlDataReader rdr = ExecuteReader(query);
-            rdr.Read();
+            while(rdr.Read())
+            ;
             return rdr.GetString(0);
         }
 

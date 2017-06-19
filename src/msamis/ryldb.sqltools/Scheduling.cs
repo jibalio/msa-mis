@@ -57,7 +57,8 @@ namespace MSAMISUserInterface {
         //public static DataTable GetAssignedGuards
 
         public static DataTable GetRequestsFromDate(DateTime date) {
-            throw new NotImplementedException();
+            String q = "select rid, name, dataentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid where dataentry='{0}";
+            return SQLTools.ExecuteQuery(q,"","","dataentry desc",new String[] { date.ToString("yyyy-MM-dd") });
         }
 
         public static DataTable GetClients() {

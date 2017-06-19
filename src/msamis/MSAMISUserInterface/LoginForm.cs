@@ -74,5 +74,10 @@ namespace MSAMISUserInterface {
             }
             
         }
+
+        private void bttesterxa_Click(object sender, EventArgs e) {
+            Backend_Tester bt = new Backend_Tester();
+            bt.ShowDialog();
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace ryldb.sqltools {
     class Program {
         static void Main(string[] args) {
+            
         }
     }
 }

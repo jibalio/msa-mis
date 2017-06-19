@@ -35,6 +35,7 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.GEditDetailsBTN = new System.Windows.Forms.Button();
             this.TimeLBL = new System.Windows.Forms.Label();
+            this.bttesterxa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BirthplaceCityBX
@@ -166,6 +167,17 @@
             this.TimeLBL.Text = "......................";
             this.TimeLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // bttesterxa
+            // 
+            this.bttesterxa.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttesterxa.Location = new System.Drawing.Point(12, 402);
+            this.bttesterxa.Name = "bttesterxa";
+            this.bttesterxa.Size = new System.Drawing.Size(63, 23);
+            this.bttesterxa.TabIndex = 89;
+            this.bttesterxa.Text = "Test backend.";
+            this.bttesterxa.UseVisualStyleBackColor = true;
+            this.bttesterxa.Click += new System.EventHandler(this.bttesterxa_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,6 +186,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(345, 437);
             this.ControlBox = false;
+            this.Controls.Add(this.bttesterxa);
             this.Controls.Add(this.TimeLBL);
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.GEditDetailsBTN);
@@ -208,5 +221,6 @@
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Label TimeLBL;
+        private System.Windows.Forms.Button bttesterxa;
     }
 }

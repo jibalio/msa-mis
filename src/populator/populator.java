@@ -16,7 +16,7 @@ class populator {
 		static PrintWriter out; 
 	public static void main(String e[])throws Exception {
 			init();
-			PrintGuard();
+			generateDep(1,346);
 			
 			
 		}
@@ -40,16 +40,23 @@ class populator {
 	public static void generateDep(int x, int y) {
 		for (int c=x; c<=y; c++) {
 				
-				int rel = rng(1,5);
+				int rel = 1;
+				String fna=getfname("f");
+				out.printf("INSERT INTO `msadb`.`dependents` (`DRelationship`, `FN`, `MN`, `LN` ,`GID`)  VALUES ('%d', '%s', '%s', '%s', '%d');\n", rel,fna,getmname(),getlname(),c);
+				rel = 2;
+				fna = getfname("m");
+				out.printf("INSERT INTO `msadb`.`dependents` (`DRelationship`, `FN`, `MN`, `LN` ,`GID`)  VALUES ('%d', '%s', '%s', '%s', '%d');\n", rel,fna,getmname(),getlname(),c);
 				
 				
-				for (int d=0; d<5; d++) {
-					String fna ="";
+				
+				
+				rel = rng(3,5);
+				for (int d=0; d<rng(1,4); d++) {
+				fna ="";
 				if (rel==1||rel==4) fna = getfname("f");
 				if (rel==2 || rel==3) fna = getfname("m");
 				if (rel==5) fna = getfname((rng(1,2)==m?"m":"f"));
 					out.printf("INSERT INTO `msadb`.`dependents` (`DRelationship`, `FN`, `MN`, `LN` ,`GID`)  VALUES ('%d', '%s', '%s', '%s', '%d');\n", rel,fna,getmname(),getlname(),c);
-					
 				}
 			}
 			System.exit(0);
@@ -154,18 +161,18 @@ class populator {
 	
 	public static String getfname(String gender) {
 		switch (gender) {
-			case "m": return  map.get(m).get(rng_ex(1,bytes[m]-1));
-			case "f": return map.get(f).get(rng_ex(1,bytes[f]-1));
+			case "m": return  capitalize(map.get(m).get(rng_ex(1,bytes[m]-1)));
+			case "f": return capitalize(map.get(f).get(rng_ex(1,bytes[f]-1)));
 		}
 		return "nofngenerated";
 	}
 	
 	public static String getlname() {
-		String x = map.get(ln).get(rng_ex(1,bytes[ln]-2));
+		String x = capitalize(map.get(ln).get(rng_ex(1,bytes[ln]-2)));
 		return x;
 	}
 	public static String getmname() {
-		String x =  map.get(ln).get(rng_ex(1,bytes[ln]-2));;;
+		String x = capitalize( map.get(ln).get(rng_ex(1,bytes[ln]-2)));;;
 		return x;
 	}
 	
