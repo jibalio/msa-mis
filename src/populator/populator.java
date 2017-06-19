@@ -16,9 +16,9 @@ class populator {
 		static PrintWriter out; 
 	public static void main(String e[])throws Exception {
 			init();
+			PrintGuard();
 			
-			//generateDep(3,293);
-			generateClients(200);
+			
 		}
 		
 		
@@ -27,7 +27,7 @@ class populator {
 			String compx = map.get(comp).get(rng(1,bytes[comp]-2)).replace("'","\\'");
 			out.printf("INSERT INTO `msadb`.`client` (`Name`, `ClientStreetNo`, `ClientStreet`, `ClientBrgy`, `ClientCity`, `ContactPerson`, `ContactNo`, `Manager`, `CStatus`) VALUES "+
 			"('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');\n",
-			compx,rng(1,4123)+"",getrandarr(st), getrandarr(brgy),getrandarr(city), getName("ln, fn mn"), (rng(111,999)+""+rng(1111,9999)), getName("ln, fn mn"), "1" );
+			compx,rng(1,4123)+"",getrandarr(st), getrandarr(brgy),getrandarr(city).replace("'","\\'"), getName("ln, fn mn"), (rng(111,999)+"-"+rng(1111,9999)), getName("ln, fn mn"), "1" );
 			
 		}
 		out.close();
@@ -176,10 +176,20 @@ class populator {
 		f=f.replaceAll("mn",getmname());
 		f=f.replaceAll("ln",getlname());
 		System.out.println();
-		return f;
-	}
+		return capitalize(f);
 	
+	
+	}
 
-
+	
+    public static String capitalize(String str) {
+		String fin = "";
+		String[] x = str.split(" ");
+		for (String s : x) {
+			fin+=(" "+s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase());
+		}
+		return fin.substring(1,fin.length());
+       
+    }
 	
 }
