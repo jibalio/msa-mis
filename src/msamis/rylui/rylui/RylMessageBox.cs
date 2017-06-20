@@ -49,42 +49,38 @@ namespace rylui
             form.Title.Text = title;
             form.rt.Size = Property.TextProperties.SizeNoIcon;
             form.rt.Location = Property.TextProperties.LocationNoIcon;
-            form.btn1.BackColor = Property.Colors.ButtonBlue;
+            form.btn1.BackColor = Property.Colors.ButtonRed;
             switch (mbutton)
             {
                 case MessageBoxButtons.AbortRetryIgnore:
                     form.btn1.Text = "Ignore";
                     form.btn2.Text = "Retry";
                     form.btn3.Text = "Abort";
-                    form.btn3.BackColor = Property.Colors.ButtonRed;
                     break;
                 case MessageBoxButtons.OK:
-                    form.btn1.Text = "OK";
+                    form.btn3.Text = "OK";
                     form.btn2.Visible = false;
-                    form.btn3.Visible = false;
+                    form.btn1.Visible = false;
                     break;
                 case MessageBoxButtons.OKCancel:
                     form.btn1.Text = "Cancel";
                     form.btn2.Text = "OK";
-                    form.btn3.Visible = false;
-                    form.btn1.BackColor = Property.Colors.ButtonRed;
+                    form.btn2.Visible = false;
                     break;
                 case MessageBoxButtons.RetryCancel:
                     form.btn1.Text = "Cancel";
-                    form.btn2.Text = "Retry";
-                    form.btn3.Visible = false;
-                    form.btn1.BackColor = Property.Colors.ButtonRed;
+                    form.btn3.Text = "Retry";
+                    form.btn2.Visible = false;
                     break;
                 case MessageBoxButtons.YesNo:
                     form.btn1.Text = "No";
-                    form.btn2.Text = "Yes";
-                    form.btn3.Visible = false;
+                    form.btn3.Text = "Yes";
+                    form.btn2.Visible = false;
                     break;
                 case MessageBoxButtons.YesNoCancel:
                     form.btn1.Text = "Cancel";
                     form.btn2.Text = "No";
                     form.btn3.Text = "Yes";
-                    form.btn1.BackColor = Property.Colors.ButtonRed;
                     break;
 
             }
@@ -99,7 +95,7 @@ namespace rylui
             form.rt.Text = text;
             form.Title.Text = title;
             
-            form.btn1.BackColor = Property.Colors.ButtonBlue;
+            form.btn1.BackColor = Property.Colors.ButtonRed;
             #region + MessageButtonParsers
             switch (mbutton)
             {
@@ -110,7 +106,7 @@ namespace rylui
                     form.btn3.BackColor = Property.Colors.ButtonRed;
                     break;
                 case MessageBoxButtons.OK:
-                    form.btn1.Text = "OK";
+                    form.btn3.Text = "OK";
                     form.btn2.Visible = false;
                     form.btn3.Visible = false;
                     break;
@@ -132,8 +128,8 @@ namespace rylui
                     form.btn3.Visible = false;
                     break;
                 case MessageBoxButtons.YesNoCancel:
-                    form.btn1.Text = "Cancel";
-                    form.btn2.Text = "No";
+                    form.btn2.Text = "Cancel";
+                    form.btn1.Text = "No";
                     form.btn3.Text = "Yes";
                     form.btn1.BackColor = Property.Colors.ButtonRed;
                     break;
