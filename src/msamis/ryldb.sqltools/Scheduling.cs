@@ -64,7 +64,7 @@ namespace MSAMISUserInterface {
 
         public static DataTable GetGuardsAssigned(int cid, String keyword) {
             String q = "select guards.gid, concat(ln,', ',fn,' ',mn) as Name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location,concat(timein, timeout, days) as schedule from sduty_assignment inner join request_assign on request_assign.RAID=sduty_assignment.RAID left join guards on guards.gid = sduty_assignment.gid left join dutydetails on dutydetails.aid = sduty_assignment.aid" +
-                " where cid={0}";
+                " where cid={0}"; //comment
             return SQLTools.ExecuteQuery(q, "name", keyword, "name asc", new String[] { cid.ToString() });
         }
         #endregion
