@@ -20,10 +20,13 @@ namespace MSAMISUserInterface {
 
         private void Backend_Tester_Load(object sender, EventArgs e) {
             //  dtq.Text = ;
-            dgv.DataSource = Scheduling.GetRequests(DateTime.Now);
+            String q = "select guards.gid, concat(ln,', ',fn,' ',mn) as Name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location,concat(timein, timeout, days) as schedule from sduty_assignment inner join request_assign on request_assign.RAID=sduty_assignment.RAID left join guards on guards.gid = sduty_assignment.gid left join dutydetails on dutydetails.aid = sduty_assignment.aid" +
+               " where cid={0}";
+             
+            dgv.DataSource = SQLTools.ExecuteQuery(q, "name", "", "name asc", new String[] { "1" });
             //esrq.Text = SQLTools.ExecuteSingleResult(qor);
 
-           // Scheduling.AddAssignmentRequest(2, "14-A", "Jacinto Extension", "Tibungco", "DavaoCity", DateTime.Now, DateTime.Now, 20);
+            // Scheduling.AddAssignmentRequest(2, "14-A", "Jacinto Extension", "Tibungco", "DavaoCity", DateTime.Now, DateTime.Now, 20);
         }
     }
 }

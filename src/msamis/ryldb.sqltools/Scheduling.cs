@@ -33,29 +33,26 @@ namespace MSAMISUserInterface {
         public static String GetNumberOfClientRequest() {
             throw new NotImplementedException();
         }
+
+        public static String GetNumberOfPendingClientRequests() {
+            throw new NotImplementedException();
+        }
         #endregion
 
 
         #region Non-Query Methods
        // public static void AddDutyDetails()
 
-        #endregion
+        
 
-
-
-
-
-
-
-
+           
         #region View Client Request Methods
         public static DataTable GetRequests() {
             String query = "SELECT rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type FROM msadb.request inner join client on request.cid=client.cid;";
             return SQLTools.ExecuteQuery(query);
         }
 
-        //public static DataTable GetAssignedGuards
-
+        
         public static DataTable GetRequests(DateTime date) {
             String q = "select rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid where dateentry='{0}'";
             return SQLTools.ExecuteQuery(q,"","","dateentry desc",new String[] { date.ToString("yyyy-MM-dd") });
@@ -65,9 +62,17 @@ namespace MSAMISUserInterface {
             return Client.GetClients();
         }
 
-        public static DataTable GetGuardsAssigned(DateTime date) {
-            throw new NotImplementedException();
+        public static DataTable GetGuardsAssigned(int cid, String keyword) {
+            String q = "select guards.gid, concat(ln,', ',fn,' ',mn) as Name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location,concat(timein, timeout, days) as schedule from sduty_assignment inner join request_assign on request_assign.RAID=sduty_assignment.RAID left join guards on guards.gid = sduty_assignment.gid left join dutydetails on dutydetails.aid = sduty_assignment.aid" +
+                " where cid={0}";
+            return SQLTools.ExecuteQuery(q, "name", keyword, "name asc", new String[] { cid.ToString() });
         }
+        #endregion
+
+       
+
+
+        
 
 
         //DONE
@@ -101,6 +106,12 @@ namespace MSAMISUserInterface {
             throw new NotImplementedException();
         }
 
+        
+        public static void AddAssignment(int gid,int raid) {
+            String q = String.Format("INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`) VALUES ('{0}', '{1}', '{2}');",
+                   gid, raid, Enumeration.Schedule.Active);
+            SQLTools.ExecuteNonQuery(q);
+        }
         #endregion
 
         #region View Assignments

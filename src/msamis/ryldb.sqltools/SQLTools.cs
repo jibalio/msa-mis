@@ -11,7 +11,7 @@ using System.Windows.Forms;
 /* Leryc*/
 namespace MSAMISUserInterface {
     public class SQLTools {
-        public static string sqlversion = "4";
+        public static string sqlversion = "5";
         public static String ArchiveName = "msadbarchive";
         public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
         public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;");
@@ -86,9 +86,9 @@ namespace MSAMISUserInterface {
             q = RemoveSemicolon(q);
             if (ColumnToFilterByKeyword!="" && ColumnToFilterByKeyword!=null) {
                 if (!q.ToLower().Contains("where")) {
-                    q += " where ";
+                    q += "      where ";
                 } else q += " and ";
-                q += ColumnToFilterByKeyword + " LIKE '" + keyword + "'";
+                q += "("+ColumnToFilterByKeyword + " LIKE '%" + keyword + "%')";
             }
             if (orderby!="" && orderby != null) {
                 q += " order by " + orderby;

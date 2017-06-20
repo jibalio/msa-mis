@@ -40,17 +40,20 @@ class populator {
 	public static void generateDep(int x, int y) {
 		for (int c=x; c<=y; c++) {
 				
-				int rel = 1;
-				String fna=getfname("f");
+				int rel = 4;
+				String fna=getfname("m");
 				out.printf("INSERT INTO `msadb`.`dependents` (`DRelationship`, `FN`, `MN`, `LN` ,`GID`)  VALUES ('%d', '%s', '%s', '%s', '%d');\n", rel,fna,getmname(),getlname(),c);
-				rel = 2;
+				rel = 5;
+				fna = getfname("f");
+				out.printf("INSERT INTO `msadb`.`dependents` (`DRelationship`, `FN`, `MN`, `LN` ,`GID`)  VALUES ('%d', '%s', '%s', '%s', '%d');\n", rel,fna,getmname(),getlname(),c);
+				rel = 6;
 				fna = getfname("m");
 				out.printf("INSERT INTO `msadb`.`dependents` (`DRelationship`, `FN`, `MN`, `LN` ,`GID`)  VALUES ('%d', '%s', '%s', '%s', '%d');\n", rel,fna,getmname(),getlname(),c);
 				
 				
 				
 				
-				rel = rng(3,5);
+				rel = rng(1,3);
 				for (int d=0; d<rng(1,4); d++) {
 				fna ="";
 				if (rel==1||rel==4) fna = getfname("f");
