@@ -859,6 +859,15 @@ namespace MSAMISUserInterface {
         }
         private void SCHEDRefreshRequests() {
             SViewReqGRD.DataSource = Scheduling.GetRequests();
+            SViewReqGRD.Columns["rid"].Visible = false;
+            SViewReqGRD.Columns["name"].HeaderText = "NAME";
+            SViewReqGRD.Columns["dateentry"].HeaderText = "DATE ENTRY";
+            SViewReqGRD.Columns["dateentry"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            SViewReqGRD.Columns["type"].HeaderText = "TYPE";
+
+            SViewReqGRD.Columns["name"].Width = 350;
+            SViewReqGRD.Columns["dateentry"].Width = 200;
+            SViewReqGRD.Columns["type"].Width = 100;
         }
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {
@@ -879,6 +888,7 @@ namespace MSAMISUserInterface {
             try {
                 Sched_ViewAssReq view = new Sched_ViewAssReq();
                 view.reference = this;
+                view.RAID = this.RAID;
                 view.conn = this.conn;
                 view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
                 view.ShowDialog();
@@ -936,6 +946,18 @@ namespace MSAMISUserInterface {
                 view.ShowDialog();
             }
             catch (Exception) { }
+        }
+        int RAID;
+        private void SViewReqGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            RAID = int.Parse(SViewReqGRD.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
+        private void SViewReqFilterCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+         //   Scheduling.GetRequests
+        }
+
+        private void SViewReqDTPK_ValueChanged(object sender, EventArgs e) {
+
         }
     }
 }

@@ -209,13 +209,22 @@ namespace MSAMISUserInterface {
 
         }
 
+
+
+
+
+
+
         #endregion
 
-       
+        private void label87_Click(object sender, EventArgs e)
+        {
 
+        }
 
-       
+        private void label34_Click(object sender, EventArgs e)
+        {
 
-       
+        }
     }
 }
