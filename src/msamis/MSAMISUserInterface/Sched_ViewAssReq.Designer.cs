@@ -29,14 +29,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.PermAddLBL = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.ContractStartLBL = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.ContractEndLBL = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.NoLBL = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.NeededLBL = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.label11 = new System.Windows.Forms.Label();
@@ -106,17 +106,17 @@
             this.label1.TabIndex = 125;
             this.label1.Text = "Location:";
             // 
-            // label3
+            // ContractStartLBL
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(358, 235);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 19);
-            this.label3.TabIndex = 128;
-            this.label3.Text = "---------------";
+            this.ContractStartLBL.AutoSize = true;
+            this.ContractStartLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.ContractStartLBL.ForeColor = System.Drawing.Color.White;
+            this.ContractStartLBL.Location = new System.Drawing.Point(358, 235);
+            this.ContractStartLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ContractStartLBL.Name = "ContractStartLBL";
+            this.ContractStartLBL.Size = new System.Drawing.Size(99, 19);
+            this.ContractStartLBL.TabIndex = 128;
+            this.ContractStartLBL.Text = "---------------";
             // 
             // label4
             // 
@@ -130,17 +130,17 @@
             this.label4.TabIndex = 127;
             this.label4.Text = "Contract Start:";
             // 
-            // label5
+            // ContractEndLBL
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(358, 273);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 19);
-            this.label5.TabIndex = 130;
-            this.label5.Text = "---------------";
+            this.ContractEndLBL.AutoSize = true;
+            this.ContractEndLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.ContractEndLBL.ForeColor = System.Drawing.Color.White;
+            this.ContractEndLBL.Location = new System.Drawing.Point(358, 273);
+            this.ContractEndLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ContractEndLBL.Name = "ContractEndLBL";
+            this.ContractEndLBL.Size = new System.Drawing.Size(99, 19);
+            this.ContractEndLBL.TabIndex = 130;
+            this.ContractEndLBL.Text = "---------------";
             // 
             // label6
             // 
@@ -154,17 +154,17 @@
             this.label6.TabIndex = 129;
             this.label6.Text = "Contract End:";
             // 
-            // label7
+            // NoLBL
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(358, 310);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 19);
-            this.label7.TabIndex = 132;
-            this.label7.Text = "---------------";
+            this.NoLBL.AutoSize = true;
+            this.NoLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.NoLBL.ForeColor = System.Drawing.Color.White;
+            this.NoLBL.Location = new System.Drawing.Point(358, 310);
+            this.NoLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NoLBL.Name = "NoLBL";
+            this.NoLBL.Size = new System.Drawing.Size(99, 19);
+            this.NoLBL.TabIndex = 132;
+            this.NoLBL.Text = "---------------";
             // 
             // label8
             // 
@@ -180,7 +180,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.NeededLBL);
             this.panel2.Controls.Add(this.label10);
             this.panel2.ForeColor = System.Drawing.Color.White;
             this.panel2.Location = new System.Drawing.Point(0, 365);
@@ -188,18 +188,18 @@
             this.panel2.Size = new System.Drawing.Size(718, 73);
             this.panel2.TabIndex = 125;
             // 
-            // label9
+            // NeededLBL
             // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.Color.YellowGreen;
-            this.label9.Location = new System.Drawing.Point(0, 23);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(718, 40);
-            this.label9.TabIndex = 120;
-            this.label9.Text = "150 Guards Available";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.NeededLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NeededLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.NeededLBL.ForeColor = System.Drawing.Color.YellowGreen;
+            this.NeededLBL.Location = new System.Drawing.Point(0, 23);
+            this.NeededLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NeededLBL.Name = "NeededLBL";
+            this.NeededLBL.Size = new System.Drawing.Size(718, 40);
+            this.NeededLBL.TabIndex = 120;
+            this.NeededLBL.Text = "150 Guards Available";
+            this.NeededLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label10
             // 
@@ -280,11 +280,11 @@
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.AssignBTN);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.NoLBL);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.ContractEndLBL);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.ContractStartLBL);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.PermAddLBL);
             this.Controls.Add(this.label1);
@@ -308,14 +308,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label PermAddLBL;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label ContractStartLBL;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label ContractEndLBL;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label NoLBL;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label NeededLBL;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Button AssignBTN;

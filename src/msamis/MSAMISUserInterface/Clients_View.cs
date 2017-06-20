@@ -66,10 +66,10 @@ namespace MSAMISUserInterface {
                 if (dt.Rows[0]["cstatus"].ToString().Equals("1")) StatusLBL.Text = "Active";
                 else StatusLBL.Text = "Inactive";
 
-               LocationLBL.Text = dt.Rows[0]["ClientStreetNo"].ToString() + " " + dt.Rows[0]["ClientStreet"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientCity"].ToString();
-                ManagerLBL.Text = dt.Rows[0]["Manager"].ToString();
-                ContactLBL.Text = dt.Rows[0]["ContactPerson"].ToString();
-                ContactNoLBL.Text = dt.Rows[0]["ContactNo"].ToString();
+               LocationLBL.Text = "Location: " + dt.Rows[0]["ClientStreetNo"].ToString() + " " + dt.Rows[0]["ClientStreet"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientCity"].ToString();
+                ManagerLBL.Text = "Manager: " + dt.Rows[0]["Manager"].ToString();
+                ContactLBL.Text = "Contact Person: " + dt.Rows[0]["ContactPerson"].ToString();
+                ContactNoLBL.Text = "Contact No: " + dt.Rows[0]["ContactNo"].ToString();
 
                 conn.Close();
             }

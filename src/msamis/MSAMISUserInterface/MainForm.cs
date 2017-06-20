@@ -251,7 +251,7 @@ namespace MSAMISUserInterface {
                 GAllGuardsGRD.DataSource = dt;
                 // 0 must always be ID.
                 if (GViewAllViewByCMBX.SelectedIndex == 0) {
-                    GAllGuardsGRD.Columns[0].Width = 0;
+                    GAllGuardsGRD.Columns[0].Visible = false;
                     GAllGuardsGRD.Columns["NAME"].Width = 240;
                     GAllGuardsGRD.Columns["GENDER"].Width = 80;
                     GAllGuardsGRD.Columns["GENDER"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -545,7 +545,7 @@ namespace MSAMISUserInterface {
 
                 CClientListTBL.DataSource = dt;
                 CClientListTBL.Columns["cid"].HeaderText = "ID";
-                CClientListTBL.Columns["cid"].Width = 0;
+                CClientListTBL.Columns["cid"].Visible = false;
                 CClientListTBL.Columns["name"].HeaderText = "NAME";
                 CClientListTBL.Columns["name"].Width = 310;
                 CClientListTBL.Columns["contactno"].HeaderText = "LOCATION";
@@ -851,14 +851,30 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
         #endregion
-  
+
         #region SMS - View Requests
+        int RID;
+        private void SViewReqGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            RID = int.Parse(SViewReqGRD.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+        private void SViewReqFilterCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            //   Scheduling.GetRequests
+        }
+        private void SViewReqDTPK_ValueChanged(object sender, EventArgs e) {
+            LoadViewReqTable(Scheduling.GetRequests(SViewReqDTPK.Value));
+        }
+        private void SViewReqResetDateBTN_Click(object sender, EventArgs e) {
+            LoadViewReqTable(Scheduling.GetRequests());
+        }
         private void SCHEDLoadRequestsPage() {
             SViewReqFilterCMBX.SelectedIndex = 0;
             SCHEDRefreshRequests();
         }
         private void SCHEDRefreshRequests() {
-            SViewReqGRD.DataSource = Scheduling.GetRequests();
+            LoadViewReqTable(Scheduling.GetRequests());
+        }
+        private void LoadViewReqTable(DataTable dv) {
+            SViewReqGRD.DataSource = dv;
             SViewReqGRD.Columns["rid"].Visible = false;
             SViewReqGRD.Columns["name"].HeaderText = "NAME";
             SViewReqGRD.Columns["dateentry"].HeaderText = "DATE ENTRY";
@@ -888,7 +904,7 @@ namespace MSAMISUserInterface {
             try {
                 Sched_ViewAssReq view = new Sched_ViewAssReq();
                 view.reference = this;
-                view.RAID = this.RAID;
+                view.RAID = this.RID;
                 view.conn = this.conn;
                 view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
                 view.ShowDialog();
@@ -947,17 +963,6 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
-        int RAID;
-        private void SViewReqGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            RAID = int.Parse(SViewReqGRD.Rows[e.RowIndex].Cells[0].Value.ToString());
-        }
-
-        private void SViewReqFilterCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-         //   Scheduling.GetRequests
-        }
-
-        private void SViewReqDTPK_ValueChanged(object sender, EventArgs e) {
-
-        }
+  
     }
 }

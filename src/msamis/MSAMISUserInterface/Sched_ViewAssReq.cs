@@ -32,7 +32,12 @@ namespace MSAMISUserInterface {
         }
 
         private void RefreshData() {
-          //  Scheduling.GetRe
+            DataTable dt = Scheduling.GetAssignmentRequestDetails(RAID);
+            ClientLBL.Text = dt.Rows[0]["name"].ToString();
+            PermAddLBL.Text = dt.Rows[0]["location"].ToString();
+            ContractStartLBL.Text = dt.Rows[0]["contractstart"].ToString();
+            ContractEndLBL.Text = dt.Rows[0]["contractend"].ToString();
+            NeededLBL.Text = ContractStartLBL.Text = dt.Rows[0]["noguards"].ToString();
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {
