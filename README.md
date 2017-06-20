@@ -18,7 +18,8 @@ Enter
 Get-Project -All | Uninstall-Package MySql.Data
 Get-Project -All | Install-Package MySql.Data -version 6.9.9
 ```
-
+<p style="color:RED">*Sa NuGet Package manager ta mag add ug references*
+Dili didto sa default way, para uniform atong versions </p>
 
 <br>
 ## Docs
