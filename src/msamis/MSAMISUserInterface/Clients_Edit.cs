@@ -34,8 +34,10 @@ namespace MSAMISUserInterface {
             }
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
-            DialogResult rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rs == DialogResult.Yes) this.Close();
+            if (isEmpty() == false) {
+                DialogResult rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rs == DialogResult.Yes) this.Close();
+            } else { this.Close(); }
         }
         private void Clients_Edit_Load(object sender, EventArgs e) {
             GEditDetailsBTN.Text = button;
@@ -142,6 +144,23 @@ namespace MSAMISUserInterface {
 
             return ret;
         }
+
+        private bool isEmpty()
+        {
+            bool ret = false;
+            if ((NameBX.Text.Equals("") || NameBX.Text.Equals("Name")) &&
+                (LocationStreetNoBX.Text.Equals("") || LocationStreetNoBX.Text.Equals("No.")) &&
+                (LocationStreetNameBX.Text.Equals("") || LocationStreetNameBX.Text.Equals("Street Name")) &&
+                (LocationCityBX.Text.Equals("") || LocationCityBX.Text.Equals("City")) &&
+                (LocationBrgyBX.Text.Equals("") || LocationBrgyBX.Text.Equals("Brgy"))
+                && ManagerBX.Text.Equals("")
+                && ContactBX.Text.Equals("")
+                && ContactNoBX.Text.Equals(""))
+                ret = true;
+
+            return ret;
+        }
+
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
                 if (GEditDetailsBTN.Text.Equals("ADD")) {

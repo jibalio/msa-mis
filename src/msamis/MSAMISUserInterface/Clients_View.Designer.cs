@@ -218,7 +218,7 @@
             this.ManagerLBL.AutoSize = true;
             this.ManagerLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ManagerLBL.ForeColor = System.Drawing.Color.White;
-            this.ManagerLBL.Location = new System.Drawing.Point(323, 130);
+            this.ManagerLBL.Location = new System.Drawing.Point(323, 134);
             this.ManagerLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ManagerLBL.Name = "ManagerLBL";
             this.ManagerLBL.Size = new System.Drawing.Size(63, 19);
@@ -230,7 +230,7 @@
             this.LocationLBL.AutoSize = true;
             this.LocationLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationLBL.ForeColor = System.Drawing.Color.White;
-            this.LocationLBL.Location = new System.Drawing.Point(323, 94);
+            this.LocationLBL.Location = new System.Drawing.Point(323, 99);
             this.LocationLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LocationLBL.Name = "LocationLBL";
             this.LocationLBL.Size = new System.Drawing.Size(63, 19);
