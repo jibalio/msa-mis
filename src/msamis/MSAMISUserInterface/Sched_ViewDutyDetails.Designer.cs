@@ -47,8 +47,6 @@
             this.EditDutyDetailsBTN = new System.Windows.Forms.Button();
             this.EditDaysBTN = new System.Windows.Forms.Button();
             this.ArchiveDutyDetailsBTN = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -360,30 +358,6 @@
             this.ArchiveDutyDetailsBTN.Text = "ARCHIVE";
             this.ArchiveDutyDetailsBTN.UseVisualStyleBackColor = false;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(81, 250);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(220, 21);
-            this.label17.TabIndex = 233;
-            this.label17.Text = "______________________________";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(410, 250);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(220, 21);
-            this.label18.TabIndex = 234;
-            this.label18.Text = "______________________________";
-            // 
             // FadeTMR
             // 
             this.FadeTMR.Interval = 1;
@@ -415,8 +389,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label18);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_ViewDutyDetails";
             this.ShowInTaskbar = false;
@@ -454,8 +426,6 @@
         private System.Windows.Forms.Button EditDutyDetailsBTN;
         private System.Windows.Forms.Button EditDaysBTN;
         private System.Windows.Forms.Button ArchiveDutyDetailsBTN;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Timer FadeTMR;
     }
 }
