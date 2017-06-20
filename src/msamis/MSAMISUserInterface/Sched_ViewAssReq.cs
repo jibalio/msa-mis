@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Sched_ViewAssReq : Form {
-        public int RID { get; set; }
+        public int RAID { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
 
@@ -27,8 +27,12 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_ViewAssReq_Load(object sender, EventArgs e) {
-            //RefreshData();
+            RefreshData();
             FadeTMR.Start();
+        }
+
+        private void RefreshData() {
+          //  Scheduling.GetRe
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {
