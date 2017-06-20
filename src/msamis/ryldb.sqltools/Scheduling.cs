@@ -69,6 +69,10 @@ namespace MSAMISUserInterface {
         }
         #endregion
 
+        public static DataTable GetAssignmentRequestDetails(int rid) {
+            String q = "SELECT concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, contractstart, contractend, noguards FROM request left join request_assign on request_assign.rid = request.rid; ";
+            return SQLTools.ExecuteQuery(q);
+        }
        
 
 
