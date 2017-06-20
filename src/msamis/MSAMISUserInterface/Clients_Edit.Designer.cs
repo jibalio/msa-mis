@@ -70,7 +70,7 @@
             this.EmerLBL.AutoSize = true;
             this.EmerLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.EmerLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.EmerLBL.Location = new System.Drawing.Point(289, 155);
+            this.EmerLBL.Location = new System.Drawing.Point(289, 168);
             this.EmerLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EmerLBL.Name = "EmerLBL";
             this.EmerLBL.Size = new System.Drawing.Size(125, 21);
@@ -82,7 +82,7 @@
             this.label86.AutoSize = true;
             this.label86.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label86.Location = new System.Drawing.Point(247, 197);
+            this.label86.Location = new System.Drawing.Point(247, 203);
             this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label86.Name = "label86";
             this.label86.Size = new System.Drawing.Size(103, 19);
@@ -95,7 +95,7 @@
             this.ContactBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactBX.Location = new System.Drawing.Point(356, 202);
+            this.ContactBX.Location = new System.Drawing.Point(356, 205);
             this.ContactBX.Name = "ContactBX";
             this.ContactBX.Size = new System.Drawing.Size(117, 18);
             this.ContactBX.TabIndex = 66;
@@ -108,7 +108,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(266, 44);
+            this.label3.Location = new System.Drawing.Point(266, 46);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 19);
@@ -121,7 +121,7 @@
             this.LocationStreetNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LocationStreetNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationStreetNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.LocationStreetNoBX.Location = new System.Drawing.Point(275, 65);
+            this.LocationStreetNoBX.Location = new System.Drawing.Point(275, 70);
             this.LocationStreetNoBX.Name = "LocationStreetNoBX";
             this.LocationStreetNoBX.Size = new System.Drawing.Size(38, 18);
             this.LocationStreetNoBX.TabIndex = 5;
@@ -135,7 +135,7 @@
             this.label45.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label45.AutoSize = true;
             this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label45.Location = new System.Drawing.Point(182, 14);
+            this.label45.Location = new System.Drawing.Point(182, 16);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(379, 13);
             this.label45.TabIndex = 116;
@@ -150,10 +150,10 @@
             this.panel1.Controls.Add(this.ActiveStatusRDBTN);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label45);
-            this.panel1.Location = new System.Drawing.Point(1, 89);
+            this.panel1.Location = new System.Drawing.Point(1, 85);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(719, 80);
+            this.panel1.Size = new System.Drawing.Size(719, 84);
             this.panel1.TabIndex = 227;
             // 
             // NameBX
@@ -178,7 +178,7 @@
             this.InactiveStatusRDBTN.AutoSize = true;
             this.InactiveStatusRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.InactiveStatusRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.InactiveStatusRDBTN.Location = new System.Drawing.Point(401, 41);
+            this.InactiveStatusRDBTN.Location = new System.Drawing.Point(401, 43);
             this.InactiveStatusRDBTN.Name = "InactiveStatusRDBTN";
             this.InactiveStatusRDBTN.Size = new System.Drawing.Size(72, 23);
             this.InactiveStatusRDBTN.TabIndex = 4;
@@ -192,7 +192,7 @@
             this.ActiveStatusRDBTN.AutoSize = true;
             this.ActiveStatusRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ActiveStatusRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ActiveStatusRDBTN.Location = new System.Drawing.Point(325, 42);
+            this.ActiveStatusRDBTN.Location = new System.Drawing.Point(325, 44);
             this.ActiveStatusRDBTN.Name = "ActiveStatusRDBTN";
             this.ActiveStatusRDBTN.Size = new System.Drawing.Size(63, 23);
             this.ActiveStatusRDBTN.TabIndex = 3;
@@ -205,7 +205,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(270, 230);
+            this.label23.Location = new System.Drawing.Point(270, 239);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(80, 19);
@@ -218,7 +218,7 @@
             this.ContactNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactNoBX.Location = new System.Drawing.Point(356, 229);
+            this.ContactNoBX.Location = new System.Drawing.Point(356, 239);
             this.ContactNoBX.Name = "ContactNoBX";
             this.ContactNoBX.Size = new System.Drawing.Size(116, 18);
             this.ContactNoBX.TabIndex = 67;
@@ -230,7 +230,7 @@
             this.ManagerBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ManagerBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ManagerBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ManagerBX.Location = new System.Drawing.Point(347, 102);
+            this.ManagerBX.Location = new System.Drawing.Point(347, 109);
             this.ManagerBX.Name = "ManagerBX";
             this.ManagerBX.Size = new System.Drawing.Size(77, 18);
             this.ManagerBX.TabIndex = 14;
@@ -242,7 +242,7 @@
             this.LocationCityBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LocationCityBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationCityBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.LocationCityBX.Location = new System.Drawing.Point(494, 64);
+            this.LocationCityBX.Location = new System.Drawing.Point(494, 69);
             this.LocationCityBX.Name = "LocationCityBX";
             this.LocationCityBX.Size = new System.Drawing.Size(77, 18);
             this.LocationCityBX.TabIndex = 8;
@@ -256,7 +256,7 @@
             this.LocationStreetNameBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LocationStreetNameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationStreetNameBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.LocationStreetNameBX.Location = new System.Drawing.Point(316, 65);
+            this.LocationStreetNameBX.Location = new System.Drawing.Point(316, 70);
             this.LocationStreetNameBX.Name = "LocationStreetNameBX";
             this.LocationStreetNameBX.Size = new System.Drawing.Size(90, 18);
             this.LocationStreetNameBX.TabIndex = 6;
@@ -288,9 +288,9 @@
             this.DetailsPNL.Controls.Add(this.label41);
             this.DetailsPNL.Controls.Add(this.label5);
             this.DetailsPNL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.DetailsPNL.Location = new System.Drawing.Point(1, 167);
+            this.DetailsPNL.Location = new System.Drawing.Point(1, 169);
             this.DetailsPNL.Name = "DetailsPNL";
-            this.DetailsPNL.Size = new System.Drawing.Size(721, 278);
+            this.DetailsPNL.Size = new System.Drawing.Size(721, 300);
             this.DetailsPNL.TabIndex = 228;
             // 
             // LocationBrgyBX
@@ -299,7 +299,7 @@
             this.LocationBrgyBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LocationBrgyBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationBrgyBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.LocationBrgyBX.Location = new System.Drawing.Point(418, 65);
+            this.LocationBrgyBX.Location = new System.Drawing.Point(418, 70);
             this.LocationBrgyBX.Name = "LocationBrgyBX";
             this.LocationBrgyBX.Size = new System.Drawing.Size(77, 18);
             this.LocationBrgyBX.TabIndex = 7;
@@ -313,7 +313,7 @@
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(270, 101);
+            this.label9.Location = new System.Drawing.Point(270, 109);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 19);
@@ -325,7 +325,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(200, 63);
+            this.label7.Location = new System.Drawing.Point(200, 68);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 19);
@@ -349,7 +349,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.ForeColor = System.Drawing.Color.LightGray;
-            this.label1.Location = new System.Drawing.Point(270, 67);
+            this.label1.Location = new System.Drawing.Point(270, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 19);
             this.label1.TabIndex = 76;
@@ -360,7 +360,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.ForeColor = System.Drawing.Color.LightGray;
-            this.label4.Location = new System.Drawing.Point(313, 67);
+            this.label4.Location = new System.Drawing.Point(313, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 19);
             this.label4.TabIndex = 77;
@@ -371,7 +371,7 @@
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.White;
             this.label21.ForeColor = System.Drawing.Color.LightGray;
-            this.label21.Location = new System.Drawing.Point(411, 67);
+            this.label21.Location = new System.Drawing.Point(411, 72);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(81, 19);
             this.label21.TabIndex = 79;
@@ -382,29 +382,31 @@
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.White;
             this.label34.ForeColor = System.Drawing.Color.LightGray;
-            this.label34.Location = new System.Drawing.Point(342, 105);
+            this.label34.Location = new System.Drawing.Point(342, 113);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(111, 19);
             this.label34.TabIndex = 96;
             this.label34.Text = "_________________";
+            this.label34.Click += new System.EventHandler(this.label34_Click);
             // 
             // label87
             // 
             this.label87.AutoSize = true;
             this.label87.BackColor = System.Drawing.Color.White;
             this.label87.ForeColor = System.Drawing.Color.LightGray;
-            this.label87.Location = new System.Drawing.Point(355, 204);
+            this.label87.Location = new System.Drawing.Point(355, 209);
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(117, 19);
             this.label87.TabIndex = 217;
             this.label87.Text = "__________________";
+            this.label87.Click += new System.EventHandler(this.label87_Click);
             // 
             // label41
             // 
             this.label41.AutoSize = true;
             this.label41.BackColor = System.Drawing.Color.White;
             this.label41.ForeColor = System.Drawing.Color.Silver;
-            this.label41.Location = new System.Drawing.Point(354, 234);
+            this.label41.Location = new System.Drawing.Point(354, 243);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(117, 19);
             this.label41.TabIndex = 112;
@@ -415,7 +417,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.ForeColor = System.Drawing.Color.LightGray;
-            this.label5.Location = new System.Drawing.Point(488, 67);
+            this.label5.Location = new System.Drawing.Point(488, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 19);
             this.label5.TabIndex = 78;
