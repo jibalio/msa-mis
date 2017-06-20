@@ -2547,7 +2547,7 @@
             this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.GEditDetailsBTN.Location = new System.Drawing.Point(311, 613);
+            this.GEditDetailsBTN.Location = new System.Drawing.Point(310, 613);
             this.GEditDetailsBTN.Name = "GEditDetailsBTN";
             this.GEditDetailsBTN.Size = new System.Drawing.Size(78, 32);
             this.GEditDetailsBTN.TabIndex = 69;
@@ -2566,7 +2566,7 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(394, 613);
+            this.CloseBTN.Location = new System.Drawing.Point(393, 613);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(78, 32);
             this.CloseBTN.TabIndex = 70;
@@ -2579,7 +2579,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(723, 668);
+            this.ClientSize = new System.Drawing.Size(722, 668);
             this.ControlBox = false;
             this.Controls.Add(this.GEditDetailsBTN);
             this.Controls.Add(this.panel1);
