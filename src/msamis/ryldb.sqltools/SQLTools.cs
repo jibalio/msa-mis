@@ -15,7 +15,7 @@ namespace MSAMISUserInterface {
         public static String ArchiveName = "msadbarchive";
         public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
         public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;");
-
+        public static MySqlConnection nodb = new MySqlConnection("Server=localhost;Uid=root;Pwd=root;");
         /* GENERIC METHODS
          * ExecuteQuery(query)      :   DataTable
          * ExecuteReader(query)     :   MySqlDataReader
@@ -132,6 +132,18 @@ namespace MSAMISUserInterface {
                 MessageBox.Show(e.ToString());
             } finally {
                 SQLTools.conn.Close();
+            }
+        }
+
+        public static void ExecuteNonQueryNoDB(string query) {
+            try {
+                MySqlCommand com = new MySqlCommand(query, nodb);
+                SQLTools.nodb.Open();
+                com.ExecuteNonQuery();
+            } catch (Exception e) {
+                MessageBox.Show(e.ToString());
+            } finally {
+                SQLTools.nodb.Close();
             }
         }
 
