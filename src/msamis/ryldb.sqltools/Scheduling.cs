@@ -70,8 +70,9 @@ namespace MSAMISUserInterface {
         #endregion
 
         public static DataTable GetAssignmentRequestDetails(int rid) {
-            String q = "SELECT concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, contractstart, contractend, noguards FROM request left join request_assign on request_assign.rid = request.rid; ";
-            return SQLTools.ExecuteQuery(q);
+            String q = "SELECT name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, contractstart, contractend, noguards FROM request left join request_assign on request_assign.rid = request.rid left join client on request.cid = client.cid "
+                 + " where rid={0}"; ;
+            return SQLTools.ExecuteQuery(q,null,null,null,new String[] { rid.ToString() });
         }
        
 
