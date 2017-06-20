@@ -62,18 +62,7 @@ namespace MSAMISUserInterface {
          * Returns an error if database if not updated (if ever gi edit ni Ler).
          * Opens browser, to download updated sql file.
          */
-        private void LoginForm_Load(object sender, EventArgs e) {
-            try {
-                SQLTools.VersionCheck();
-            } catch (Exception) {
-                DialogResult f = MessageBox.Show("Database has been edited by Leryc. Do not make changes to DB b4 downloading updated version. Do you want to download the sql file now?", "New Database Update!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (f == DialogResult.Yes) {
-                    System.Diagnostics.Process.Start("https://github.com/lerycibalio/msa-mis/tree/master/sql");
-                }
-                Application.Exit();
-            }
-            
-        }
+        
 
         private void bttesterxa_Click(object sender, EventArgs e) {
             Backend_Tester bt = new Backend_Tester();
