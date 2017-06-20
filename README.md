@@ -7,12 +7,23 @@ An information system for Makabayan Security Agency.
 * Payroll Module
 
 ## Requirements
-MySql. Database files can be found [here](https://github.com/lerycibalio/msa-mis/tree/master/sql).
+MySql. 
+Database files can be found [here](https://github.com/lerycibalio/msa-mis/tree/master/sql).
 
+
+## How to add MySql Reference
+Go to `Tools > NuGet Package Manager > Package Manager Console`
+Enter
+```
+Get-Project -All | Uninstall-Package MySql.Data
+Get-Project -All | Install-Package MySql.Data -version 6.9.9
+```
+
+
+<br>
 ## Docs
 
-`
-
+```
 /*GENERIC METHODS
 * ExecuteQuery(query)      :   DataTable
          * ExecuteReader(query)     :   MySqlDataReader
@@ -59,6 +70,6 @@ MySql. Database files can be found [here](https://github.com/lerycibalio/msa-mis
          *  ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
          */
 
-`
+```
 
 
