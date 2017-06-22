@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `msadb`;
--- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: msadb
 -- ------------------------------------------------------
--- Server version	5.5.48-MariaDB
+-- Server version	5.7.13-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -268,19 +266,18 @@ INSERT INTO `guards` VALUES (1,'Kendra','Snowder','Frohman',1,'7/2/1991',1,'5 11
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `guardslist`
+-- Temporary view structure for view `guardslist`
 --
 
 DROP TABLE IF EXISTS `guardslist`;
 /*!50001 DROP VIEW IF EXISTS `guardslist`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `guardslist` (
-  `gid` int(11),
-  `name` varchar(138),
-  `contactno` varchar(185),
-  `gstatus` int(11)
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `guardslist` AS SELECT 
+ 1 AS `gid`,
+ 1 AS `name`,
+ 1 AS `contactno`,
+ 1 AS `gstatus`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -339,19 +336,18 @@ INSERT INTO `meta` VALUES (1,'5');
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `new_view`
+-- Temporary view structure for view `new_view`
 --
 
 DROP TABLE IF EXISTS `new_view`;
 /*!50001 DROP VIEW IF EXISTS `new_view`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `new_view` (
-  `gid` int(11),
-  `name` varchar(138),
-  `contactno` varchar(185),
-  `gstatus` int(11)
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `new_view` AS SELECT 
+ 1 AS `gid`,
+ 1 AS `name`,
+ 1 AS `contactno`,
+ 1 AS `gstatus`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -425,7 +421,7 @@ CREATE TABLE `request` (
   `CID` int(11) DEFAULT NULL,
   `DateEntry` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`RID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -434,7 +430,6 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` VALUES (2,1,1,'2017-06-18'),(3,1,2,'2017-06-19'),(4,1,2,'2017-06-19');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,8 +475,9 @@ DROP TABLE IF EXISTS `request_dismiss`;
 CREATE TABLE `request_dismiss` (
   `RDID` int(11) NOT NULL AUTO_INCREMENT,
   `RID` int(11) DEFAULT NULL,
+  `DID` int(11) DEFAULT NULL,
   PRIMARY KEY (`RDID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -551,7 +547,6 @@ UNLOCK TABLES;
 -- Final view structure for view `guardslist`
 --
 
-/*!50001 DROP TABLE IF EXISTS `guardslist`*/;
 /*!50001 DROP VIEW IF EXISTS `guardslist`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -570,7 +565,6 @@ UNLOCK TABLES;
 -- Final view structure for view `new_view`
 --
 
-/*!50001 DROP TABLE IF EXISTS `new_view`*/;
 /*!50001 DROP VIEW IF EXISTS `new_view`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -594,4 +588,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-20 10:46:55
+-- Dump completed on 2017-06-22 17:07:58
