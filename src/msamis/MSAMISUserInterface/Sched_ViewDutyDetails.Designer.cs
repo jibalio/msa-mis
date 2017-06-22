@@ -286,11 +286,12 @@
             // CloseBTN
             // 
             this.CloseBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseBTN.BackColor = System.Drawing.Color.IndianRed;
+            this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.CloseBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
             this.CloseBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseBTN.FlatAppearance.BorderSize = 0;
-            this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
@@ -311,11 +312,11 @@
             this.EditDutyDetailsBTN.FlatAppearance.BorderSize = 0;
             this.EditDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
             this.EditDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.EditDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.EditDutyDetailsBTN.Location = new System.Drawing.Point(81, 472);
+            this.EditDutyDetailsBTN.Location = new System.Drawing.Point(100, 472);
             this.EditDutyDetailsBTN.Name = "EditDutyDetailsBTN";
-            this.EditDutyDetailsBTN.Size = new System.Drawing.Size(101, 32);
+            this.EditDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
             this.EditDutyDetailsBTN.TabIndex = 229;
             this.EditDutyDetailsBTN.Text = "EDIT";
             this.EditDutyDetailsBTN.UseVisualStyleBackColor = false;
@@ -330,11 +331,11 @@
             this.EditDaysBTN.FlatAppearance.BorderSize = 0;
             this.EditDaysBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
             this.EditDaysBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditDaysBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditDaysBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.EditDaysBTN.ForeColor = System.Drawing.Color.White;
-            this.EditDaysBTN.Location = new System.Drawing.Point(467, 472);
+            this.EditDaysBTN.Location = new System.Drawing.Point(478, 472);
             this.EditDaysBTN.Name = "EditDaysBTN";
-            this.EditDaysBTN.Size = new System.Drawing.Size(101, 32);
+            this.EditDaysBTN.Size = new System.Drawing.Size(80, 29);
             this.EditDaysBTN.TabIndex = 231;
             this.EditDaysBTN.Text = "ADD/EDIT";
             this.EditDaysBTN.UseVisualStyleBackColor = false;
@@ -343,17 +344,18 @@
             // ArchiveDutyDetailsBTN
             // 
             this.ArchiveDutyDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ArchiveDutyDetailsBTN.BackColor = System.Drawing.Color.IndianRed;
+            this.ArchiveDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.ArchiveDutyDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
             this.ArchiveDutyDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ArchiveDutyDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.ArchiveDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.ArchiveDutyDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.ArchiveDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.ArchiveDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ArchiveDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ArchiveDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.ArchiveDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
             this.ArchiveDutyDetailsBTN.Location = new System.Drawing.Point(188, 472);
             this.ArchiveDutyDetailsBTN.Name = "ArchiveDutyDetailsBTN";
-            this.ArchiveDutyDetailsBTN.Size = new System.Drawing.Size(101, 32);
+            this.ArchiveDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
             this.ArchiveDutyDetailsBTN.TabIndex = 232;
             this.ArchiveDutyDetailsBTN.Text = "ARCHIVE";
             this.ArchiveDutyDetailsBTN.UseVisualStyleBackColor = false;
