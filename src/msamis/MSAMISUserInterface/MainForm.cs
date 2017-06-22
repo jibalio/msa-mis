@@ -142,6 +142,7 @@ namespace MSAMISUserInterface {
             PayrollBTN.BackColor = accent;
             currentPage = PayrollPage;
             currentBTN = PayrollBTN;
+            PAYLoadPage();
         }
         private void DashboardTMR_Tick(object sender, EventArgs e) {
             if (DashboardToBeMinimized) {
@@ -963,6 +964,175 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
-  
+
+
+
+        #region Payroll Management System
+
+        #region PMS - Load/Side Panel
+        private void PAYLoadPage() {
+            PAYChangePanel(0);
+        }
+
+        private void PEmpListBTN_Click(object sender, EventArgs e) {
+            PAYChangePanel(1);
+        }
+        private void PAdjustBTN_Click(object sender, EventArgs e) {
+            PAYChangePanel(2);
+        }
+
+        private void PCashAdvBTN_Click(object sender, EventArgs e) {
+            PAYChangePanel(3);
+        }
+
+        private void PPayrollSummaryBTN_Click(object sender, EventArgs e) {
+            PAYChangePanel(4);
+        }
+
+        private void PSalaryReportBTN_Click(object sender, EventArgs e) {
+            PAYChangePanel(5);
+        }
+
+        private void PArchiveBTN_Click(object sender, EventArgs e) {
+            PAYChangePanel(6);
+        }
+        private void PAYChangePanel(int x) {
+            switch (x) {
+                case 0:
+                    PCashAdvBTN.Font = defaultFont;
+                    PEmpListBTN.Font = defaultFont;
+                    PArchiveBTN.Font = defaultFont;
+                    PAdjustBTN.Font = defaultFont;
+                    PPayrollSummaryBTN.Font = selectedFont;
+                    PSalaryReportBTN.Font = defaultFont;
+
+                    PAdjustBTN.Visible = false;
+                    PAddCashAdvBTN.Visible = false;
+                     
+                    PSalaryReportPage.Hide();
+                    PAdjustmentHistoryPage.Hide();
+                    PEmpListPage.Hide();
+                    PArchivePage.Hide();
+                    PCashAdvancePage.Hide();
+                    PPayrollSummaryPage.Show();
+                    break;
+                case 1:
+                    PCashAdvBTN.Font = defaultFont;
+                    PEmpListBTN.Font = selectedFont;
+                    PArchiveBTN.Font = defaultFont;
+                    PAdjustBTN.Font = defaultFont;
+                    PPayrollSummaryBTN.Font = defaultFont;
+                    PSalaryReportBTN.Font = defaultFont;
+
+                    PAdjustBTN.Visible = true;
+                    PAddCashAdvBTN.Visible = false;
+
+                    PSalaryReportPage.Hide();
+                    PEmpListPage.Show();
+                    PAdjustmentHistoryPage.Hide();
+                    PArchivePage.Hide();
+                    PCashAdvancePage.Hide();
+                    PPayrollSummaryPage.Hide();
+                    break;
+                case 2:
+                    PCashAdvBTN.Font = defaultFont;
+                    PEmpListBTN.Font = defaultFont;
+                    PArchiveBTN.Font = defaultFont;
+                    PAdjustBTN.Font = selectedFont;
+                    PPayrollSummaryBTN.Font = defaultFont;
+                    PSalaryReportBTN.Font = defaultFont;
+
+                    PAdjustBTN.Visible = true;
+                    PAddCashAdvBTN.Visible = false;
+
+                    PSalaryReportPage.Hide();
+                    PAdjustmentHistoryPage.Show();
+                    PEmpListPage.Hide();
+                    PArchivePage.Hide();
+                    PCashAdvancePage.Hide();
+                    PPayrollSummaryPage.Hide();
+                    break;
+                case 3:
+                    PCashAdvBTN.Font = selectedFont;
+                    PEmpListBTN.Font = defaultFont;
+                    PArchiveBTN.Font = defaultFont;
+                    PAdjustBTN.Font = defaultFont;
+                    PPayrollSummaryBTN.Font = defaultFont;
+                    PSalaryReportBTN.Font = defaultFont;
+
+                    PAdjustBTN.Visible = false;
+                    PAddCashAdvBTN.Visible = true;
+
+                    PSalaryReportPage.Hide();
+                    PAdjustmentHistoryPage.Hide();
+                    PEmpListPage.Hide();
+                    PArchivePage.Hide();
+                    PCashAdvancePage.Show();
+                    PPayrollSummaryPage.Hide();
+                    break;
+                case 4:
+                    PCashAdvBTN.Font = defaultFont;
+                    PEmpListBTN.Font = defaultFont;
+                    PArchiveBTN.Font = defaultFont;
+                    PAdjustBTN.Font = defaultFont;
+                    PPayrollSummaryBTN.Font = selectedFont;
+                    PSalaryReportBTN.Font = defaultFont;
+
+                    PAdjustBTN.Visible = false;
+                    PAddCashAdvBTN.Visible = false;
+
+                    PSalaryReportPage.Hide();
+                    PAdjustmentHistoryPage.Hide();
+                    PEmpListPage.Hide();
+                    PArchivePage.Hide();
+                    PCashAdvancePage.Hide();
+                    PPayrollSummaryPage.Show();
+                    break;
+                case 5:
+                    PCashAdvBTN.Font = defaultFont;
+                    PEmpListBTN.Font = defaultFont;
+                    PArchiveBTN.Font = defaultFont;
+                    PAdjustBTN.Font = defaultFont;
+                    PPayrollSummaryBTN.Font = defaultFont;
+                    PSalaryReportBTN.Font = selectedFont;
+
+                    PAdjustBTN.Visible = false;
+                    PAddCashAdvBTN.Visible = false;
+
+                    PSalaryReportPage.Show();
+                    PAdjustmentHistoryPage.Hide();
+                    PEmpListPage.Hide();
+                    PArchivePage.Hide();
+                    PCashAdvancePage.Hide();
+                    PPayrollSummaryPage.Hide();
+                    break;
+                case 6:
+                    PCashAdvBTN.Font = defaultFont;
+                    PEmpListBTN.Font = defaultFont;
+                    PArchiveBTN.Font = selectedFont;
+                    PAdjustBTN.Font = defaultFont;
+                    PPayrollSummaryBTN.Font = defaultFont;
+                    PSalaryReportBTN.Font = defaultFont;
+
+                    PAdjustBTN.Visible = false;
+                    PAddCashAdvBTN.Visible = false;
+
+                    PSalaryReportPage.Hide();
+                    PAdjustmentHistoryPage.Hide();
+                    PEmpListPage.Hide();
+                    PArchivePage.Show();
+                    PCashAdvancePage.Hide();
+                    PPayrollSummaryPage.Hide();
+                    break;
+            }
+        }
+        #endregion
+
+
+
+
+
+        #endregion
+
     }
 }

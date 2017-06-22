@@ -27,14 +27,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.PermAddLBL = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ContractStartLBL = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ContractEndLBL = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.NoLBL = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.ContractEndLBL = new System.Windows.Forms.Label();
+            this.PermAddLBL = new System.Windows.Forms.Label();
+            this.ContractStartLBL = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.NeededLBL = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -42,8 +38,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.AssignBTN = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -82,101 +80,57 @@
             this.label2.Text = "REQUEST BY";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // PermAddLBL
+            // NoLBL
             // 
-            this.PermAddLBL.AutoSize = true;
-            this.PermAddLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.PermAddLBL.ForeColor = System.Drawing.Color.White;
-            this.PermAddLBL.Location = new System.Drawing.Point(358, 196);
-            this.PermAddLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PermAddLBL.Name = "PermAddLBL";
-            this.PermAddLBL.Size = new System.Drawing.Size(99, 19);
-            this.PermAddLBL.TabIndex = 126;
-            this.PermAddLBL.Text = "---------------";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(291, 196);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 19);
-            this.label1.TabIndex = 125;
-            this.label1.Text = "Location:";
-            // 
-            // ContractStartLBL
-            // 
-            this.ContractStartLBL.AutoSize = true;
-            this.ContractStartLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.ContractStartLBL.ForeColor = System.Drawing.Color.White;
-            this.ContractStartLBL.Location = new System.Drawing.Point(358, 235);
-            this.ContractStartLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ContractStartLBL.Name = "ContractStartLBL";
-            this.ContractStartLBL.Size = new System.Drawing.Size(99, 19);
-            this.ContractStartLBL.TabIndex = 128;
-            this.ContractStartLBL.Text = "---------------";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(260, 235);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 19);
-            this.label4.TabIndex = 127;
-            this.label4.Text = "Contract Start:";
+            this.NoLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NoLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.NoLBL.ForeColor = System.Drawing.Color.White;
+            this.NoLBL.Location = new System.Drawing.Point(0, 90);
+            this.NoLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NoLBL.Name = "NoLBL";
+            this.NoLBL.Size = new System.Drawing.Size(693, 30);
+            this.NoLBL.TabIndex = 126;
+            this.NoLBL.Text = "---------------";
+            this.NoLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ContractEndLBL
             // 
-            this.ContractEndLBL.AutoSize = true;
+            this.ContractEndLBL.Dock = System.Windows.Forms.DockStyle.Top;
             this.ContractEndLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContractEndLBL.ForeColor = System.Drawing.Color.White;
-            this.ContractEndLBL.Location = new System.Drawing.Point(358, 273);
+            this.ContractEndLBL.Location = new System.Drawing.Point(0, 60);
             this.ContractEndLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ContractEndLBL.Name = "ContractEndLBL";
-            this.ContractEndLBL.Size = new System.Drawing.Size(99, 19);
-            this.ContractEndLBL.TabIndex = 130;
+            this.ContractEndLBL.Size = new System.Drawing.Size(693, 30);
+            this.ContractEndLBL.TabIndex = 128;
             this.ContractEndLBL.Text = "---------------";
+            this.ContractEndLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label6
+            // PermAddLBL
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(264, 273);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 19);
-            this.label6.TabIndex = 129;
-            this.label6.Text = "Contract End:";
+            this.PermAddLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PermAddLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.PermAddLBL.ForeColor = System.Drawing.Color.White;
+            this.PermAddLBL.Location = new System.Drawing.Point(0, 0);
+            this.PermAddLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PermAddLBL.Name = "PermAddLBL";
+            this.PermAddLBL.Size = new System.Drawing.Size(693, 30);
+            this.PermAddLBL.TabIndex = 130;
+            this.PermAddLBL.Text = "---------------";
+            this.PermAddLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // NoLBL
+            // ContractStartLBL
             // 
-            this.NoLBL.AutoSize = true;
-            this.NoLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.NoLBL.ForeColor = System.Drawing.Color.White;
-            this.NoLBL.Location = new System.Drawing.Point(358, 310);
-            this.NoLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.NoLBL.Name = "NoLBL";
-            this.NoLBL.Size = new System.Drawing.Size(99, 19);
-            this.NoLBL.TabIndex = 132;
-            this.NoLBL.Text = "---------------";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(248, 310);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 19);
-            this.label8.TabIndex = 131;
-            this.label8.Text = "Guards Needed:";
+            this.ContractStartLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ContractStartLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.ContractStartLBL.ForeColor = System.Drawing.Color.White;
+            this.ContractStartLBL.Location = new System.Drawing.Point(0, 30);
+            this.ContractStartLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ContractStartLBL.Name = "ContractStartLBL";
+            this.ContractStartLBL.Size = new System.Drawing.Size(693, 30);
+            this.ContractStartLBL.TabIndex = 132;
+            this.ContractStartLBL.Text = "---------------";
+            this.ContractStartLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel2
             // 
@@ -269,6 +223,17 @@
             this.AssignBTN.UseVisualStyleBackColor = false;
             this.AssignBTN.Click += new System.EventHandler(this.AssignBTN_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.NoLBL);
+            this.panel3.Controls.Add(this.ContractEndLBL);
+            this.panel3.Controls.Add(this.ContractStartLBL);
+            this.panel3.Controls.Add(this.PermAddLBL);
+            this.panel3.Location = new System.Drawing.Point(7, 190);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(693, 169);
+            this.panel3.TabIndex = 138;
+            // 
             // Sched_ViewAssReq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,15 +245,8 @@
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.AssignBTN);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.NoLBL);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.ContractEndLBL);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.ContractStartLBL);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.PermAddLBL);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_ViewAssReq";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -296,6 +254,7 @@
             this.Load += new System.EventHandler(this.Sched_ViewAssReq_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,14 +265,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label ClientLBL;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label PermAddLBL;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label ContractStartLBL;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label ContractEndLBL;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label NoLBL;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label ContractEndLBL;
+        private System.Windows.Forms.Label PermAddLBL;
+        private System.Windows.Forms.Label ContractStartLBL;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label NeededLBL;
         private System.Windows.Forms.Label label10;
@@ -321,5 +276,6 @@
         private System.Windows.Forms.Button AssignBTN;
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel3;
     }
 }

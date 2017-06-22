@@ -34,10 +34,10 @@ namespace MSAMISUserInterface {
         private void RefreshData() {
             DataTable dt = Scheduling.GetAssignmentRequestDetails(RAID);
             ClientLBL.Text = dt.Rows[0]["name"].ToString();
-            PermAddLBL.Text = dt.Rows[0]["location"].ToString();
-            ContractStartLBL.Text = dt.Rows[0]["contractstart"].ToString();
-            ContractEndLBL.Text = dt.Rows[0]["contractend"].ToString();
-            NoLBL.Text = dt.Rows[0]["noguards"].ToString();
+            PermAddLBL.Text = "Location: " + dt.Rows[0]["location"].ToString();
+            ContractStartLBL.Text = "Contract Start: " + dt.Rows[0]["contractstart"].ToString();
+            ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"].ToString();
+            NoLBL.Text = "Guards Needed: " + dt.Rows[0]["noguards"].ToString();
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {
