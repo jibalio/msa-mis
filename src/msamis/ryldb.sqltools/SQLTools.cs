@@ -275,7 +275,7 @@ namespace MSAMISUserInterface {
         public static String getLastInsertedId (String table, String idcolumn) {
             String q = "select max("+idcolumn+") from "+table;
             DataTable dt = ExecuteQuery(q);
-            return dt.Rows[0][idcolumn].ToString();
+            return dt.Rows[0][0].ToString();
         }
     }
 }

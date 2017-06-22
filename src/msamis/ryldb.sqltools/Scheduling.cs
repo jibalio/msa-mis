@@ -75,18 +75,14 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery(q,null,null,null,new String[] { rid.ToString() });
         }
 
-      //  public static DataTable GetDismissalRequestDetails (int rid) {
+        //  public static DataTable GetDismissalRequestDetails (int rid) {
         //    String q = ""
-       // }
-       
-
-       
-
-
+        // }
         
 
 
-        //DONE
+        #region AddRequests     -   All Functions done.
+
         public static void AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards) {
             String madeon = DateTime.Now.ToString("yyyy-MM-dd");
             String q1 = String.Format("INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('{0}', '{1}', '{2}');",
@@ -104,26 +100,25 @@ namespace MSAMISUserInterface {
 
         }
 
-
-        //WIP
-        public static void AddDismissalRequest (int cid, int[] gid) {
+        public static void AddDismissalRequest (int cid, int[] did) {
             // Add a request, specifying client.
             String q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('{0}', '{1}', '{2}')";
             q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime());
             SQLTools.ExecuteNonQuery(q);
 
             String lid = SQLTools.getLastInsertedId("request", "rid");
-            q = "INSERT INTO `msadb`.`request_dismiss` (`RID`) VALUES ('"+lid.ToString()+"');";
-            SQLTools.ExecuteNonQuery(q);
-
-            lid = SQLTools.getLastInsertedId("request_dismissal", "rdid");
-            q = "INSERT INTO `msadb`.`sduty_dismissal` (`DID`, `RDID`, `DisStatus`) VALUES ('{0}', '{1}', '{2}');";
-            q = String.Format(q, lid, lid, 1);
-
-
-             
-
+            for (int c = 0; c < did.Length; c++) {
+                q = "INSERT INTO `msadb`.`request_dismiss` (`RID`, `DID`) VALUES ('"+lid.ToString()+"', '"+did[c]+"');";
+                SQLTools.ExecuteNonQuery(q);
+            }
+            //lid = SQLTools.getLastInsertedId("request_dismiss", "rdid");
+           // for (int c=0;c<did.Length; c++) {
+               // q = "INSERT INTO `msadb`.`sduty_dismissal` (`DID`, `RDID`, `DisStatus`) VALUES ('{0}', '{1}', '{2}');";
+               // q = String.Format(q, did[c], lid, 1); 
         }
+
+        #endregion
+
 
         public static DataTable ViewGuardsFromClient(int cid) {
             String q = "select * from view_guardsbyclient;";
