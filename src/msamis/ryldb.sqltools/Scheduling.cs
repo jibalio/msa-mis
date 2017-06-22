@@ -74,6 +74,12 @@ namespace MSAMISUserInterface {
                  + " where request.rid={0}"; ;
             return SQLTools.ExecuteQuery(q,null,null,null,new String[] { rid.ToString() });
         }
+
+      //  public static DataTable GetDismissalRequestDetails (int rid) {
+        //    String q = ""
+       // }
+       
+
        
 
 
@@ -98,18 +104,33 @@ namespace MSAMISUserInterface {
 
         }
 
-        public static void AddDismissalRequest(int gid) {
-            String madeon = DateTime.Now.ToString("yyyy-MM-dd");
-            String q1 = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('2', '1', '2017-06-18');";
+
+        //WIP
+        public static void AddDismissalRequest (int cid, int[] gid) {
+            // Add a request, specifying client.
+            String q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('{0}', '{1}', '{2}')";
+            q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime());
+            SQLTools.ExecuteNonQuery(q);
+
+            String lid = SQLTools.getLastInsertedId("request", "rid");
+            q = "INSERT INTO `msadb`.`request_dismiss` (`RID`) VALUES ('"+lid.ToString()+"');";
+            SQLTools.ExecuteNonQuery(q);
+
+            lid = SQLTools.getLastInsertedId("request_dismissal", "rdid");
+            q = "INSERT INTO `msadb`.`sduty_dismissal` (`DID`, `RDID`, `DisStatus`) VALUES ('{0}', '{1}', '{2}');";
+            q = String.Format(q, lid, lid, 1);
+
+
+             
+
         }
 
-        public static DataTable GetAllAssignmentRequestDetails() {
-            throw new NotImplementedException();
+        public static DataTable ViewGuardsFromClient(int cid) {
+            String q = "select * from view_guardsbyclient;";
+            return SQLTools.ExecuteQuery(q);
         }
-
-        public static DataTable GetAllDismissalRequestDetails() {
-            throw new NotImplementedException();
-        }
+        
+        
 
         
         public static void AddAssignment(int gid,int raid) {

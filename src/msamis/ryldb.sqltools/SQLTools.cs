@@ -266,5 +266,16 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+
+
+        public static String getDateTime() {
+            return DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
+        public static String getLastInsertedId (String table, String idcolumn) {
+            String q = "select max("+idcolumn+") from "+table;
+            DataTable dt = ExecuteQuery(q);
+            return dt.Rows[0][idcolumn].ToString();
+        }
     }
 }
