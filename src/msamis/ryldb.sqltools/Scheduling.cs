@@ -169,16 +169,10 @@ namespace MSAMISUserInterface
 
         public static DataTable ViewGuardsFromClient(int cid)
         {
-            String q = "select concat(ln,', ',fn,' ',mn) as Name, 
-concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,
-concat(timein, '-', timeout, ' ', days) as Schedule
-
-from guards
-left join sduty_assignment on guards.gid = sduty_assignment.gid
-left
-join dutydetails on sduty_assignment.aid = dutydetails.AID
-left
-join request_assign on sduty_assignment.raid = request_assign.raid; ";
+            String q = @"select concat(ln,', ',fn,' ',mn) as Name, concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,concat(timein, '-', timeout, ' ', days) as Schedule from guards left join sduty_assignment on guards.gid = sduty_assignment.gid 
+                        left join dutydetails on sduty_assignment.aid = dutydetails.AID
+                        left
+                        join request_assign on sduty_assignment.raid = request_assign.raid; ";
             return SQLTools.ExecuteQuery(q);
         }
 
