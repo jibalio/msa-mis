@@ -26,6 +26,8 @@ namespace MSAMISUserInterface {
         Button currentBTN;
         SplitContainer currentPage;
         public LoginForm lf;
+        String FilterText = "Search or filter";
+        String EmptyText = "";
 
         #region Form Initiation and load
         public MainForm() {
@@ -319,8 +321,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region GMS - View All - Search
-        String FilterText = "Search or filter";
-        String EmptyText = "";
         private void GViewAllSearchTXTBX_Enter(object sender, EventArgs e) {
             if (GViewAllSearchTXTBX.Text == FilterText) {
                 GViewAllSearchTXTBX.Text = EmptyText;
@@ -382,7 +382,7 @@ namespace MSAMISUserInterface {
         }
 
         private void RefreshArchivedGuards() {
-            try {
+          /*  try {
                 SQLTools.archiveconn.Open();
                 String query = "Select gid,concat(ln,', ',fn,' ',mn) as NAME, " +
                     "" +
@@ -407,7 +407,7 @@ namespace MSAMISUserInterface {
             catch (Exception ee) {
                 conn.Close();
                 MessageBox.Show(ee.Message + " \nLine 171 of MainForm.cs");
-            }
+            } */
         }
 
         private class ArchiveKeyValuePair {
@@ -1127,10 +1127,6 @@ namespace MSAMISUserInterface {
             }
         }
         #endregion
-
-
-
-
 
         #endregion
 
