@@ -1,27 +1,75 @@
 # MSA-MIS
-An information system for Makabayan Security Agency.
+An information system for Makabayan Security Agency written in C# &#x1F499;&#x1F499;&#x1F499;
 
-## Modules
+
+
+## Installation
+### Prerequisite Packages
+MSA-MIS requires [MySql.Data 6.9.9](https://www.nuget.org/packages/MySql.Data/6.9.9) and [MySqlBackup.NET 2.0.9.2](https://www.nuget.org/packages/MySqlBackup.NET/2.0.9.2) to run. **Note: These packages should install automatically** *(Internet Connection Required)*. If automatic installation fails, these packages can be installed using the NuGet Package Manager.
+
+Go to `Tools > NuGet Package Manager > Package Manager Console`
+```
+PM > Get-Project -All | Install-Package MySql.Data -version 6.9.9
+PM > Get-Project -ryldb.sqltools | Install-Package MySqlBackup.NET -Version 2.0.9.2 
+
+```
+
+### Database 
+**The program automatically imports the database**. If this fails, download the SQL Dump [here](https://github.com/lerycibalio/msa-mis/tree/master/sql) and manually import to databases `msadb` and `msadbarchive`.
+
+### Software
+**Backend:** Export the database dump **using MySQL Workbench 6.3.8+ only**. Using older versions will cause MSA-MIS's auto-database-import component `(AutoLoader.cs)` to fail. *Ayaw gamita ang sql workbench sa F610 kay mabungkag ang AutoLoader.cs, kara-an kaayo*.
+
+## About
+### Modules
 * Guard and Client Management Module
 * Duty Scheduling Module
 * Payroll Module
 
-## Requirements
-MySql. 
-Database files can be found [here](https://github.com/lerycibalio/msa-mis/tree/master/sql).
-
-
-## How to add MySql Reference
-Go to `Tools > NuGet Package Manager > Package Manager Console`
-Enter
-```
-Get-Project -All | Uninstall-Package MySql.Data
-Get-Project -All | Install-Package MySql.Data -version 6.9.9
-```
-<p style="color:RED">*Sa NuGet Package manager ta mag add ug references*
-Dili didto sa default way, para uniform atong versions </p>
-
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+**U shouldn't be in here, go scroll back up.**
+
 ## Docs
 
 ```
