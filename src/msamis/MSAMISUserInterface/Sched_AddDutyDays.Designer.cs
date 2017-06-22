@@ -36,12 +36,8 @@
             this.CalendarPKR = new System.Windows.Forms.MonthCalendar();
             this.ContactLBL = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.TimeOutAMPMBX = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.TimeOutBX = new System.Windows.Forms.MaskedTextBox();
-            this.TimeInAMPMBX = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.TimeInBX = new System.Windows.Forms.MaskedTextBox();
             this.AddDaysBTN = new System.Windows.Forms.Button();
             this.DaysGRD = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,6 +46,14 @@
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.EditBTN = new System.Windows.Forms.Button();
             this.DeleteBTN = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TimeOutMinBX = new System.Windows.Forms.ComboBox();
+            this.TimeOutHrBX = new System.Windows.Forms.ComboBox();
+            this.TimeOutAMPMBX = new System.Windows.Forms.ComboBox();
+            this.TimeInMinBX = new System.Windows.Forms.ComboBox();
+            this.TimeInHrBX = new System.Windows.Forms.ComboBox();
+            this.TimeInAMPMBX = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DaysGRD)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +123,7 @@
             // 
             // CalendarPKR
             // 
-            this.CalendarPKR.Location = new System.Drawing.Point(99, 231);
+            this.CalendarPKR.Location = new System.Drawing.Point(102, 231);
             this.CalendarPKR.Name = "CalendarPKR";
             this.CalendarPKR.TabIndex = 124;
             // 
@@ -147,98 +151,45 @@
             this.label5.TabIndex = 127;
             this.label5.Text = "ADD DETAILS";
             // 
-            // TimeOutAMPMBX
-            // 
-            this.TimeOutAMPMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TimeOutAMPMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TimeOutAMPMBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.TimeOutAMPMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.TimeOutAMPMBX.FormattingEnabled = true;
-            this.TimeOutAMPMBX.Items.AddRange(new object[] {
-            "AM",
-            "PM"});
-            this.TimeOutAMPMBX.Location = new System.Drawing.Point(236, 490);
-            this.TimeOutAMPMBX.Name = "TimeOutAMPMBX";
-            this.TimeOutAMPMBX.Size = new System.Drawing.Size(56, 25);
-            this.TimeOutAMPMBX.Sorted = true;
-            this.TimeOutAMPMBX.TabIndex = 135;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(124, 495);
+            this.label6.Location = new System.Drawing.Point(86, 495);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 19);
             this.label6.TabIndex = 134;
             this.label6.Text = "Time-out:";
             // 
-            // TimeOutBX
-            // 
-            this.TimeOutBX.BackColor = System.Drawing.Color.White;
-            this.TimeOutBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TimeOutBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.TimeOutBX.Location = new System.Drawing.Point(197, 499);
-            this.TimeOutBX.Mask = "99:99";
-            this.TimeOutBX.Name = "TimeOutBX";
-            this.TimeOutBX.Size = new System.Drawing.Size(40, 13);
-            this.TimeOutBX.TabIndex = 133;
-            // 
-            // TimeInAMPMBX
-            // 
-            this.TimeInAMPMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TimeInAMPMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TimeInAMPMBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.TimeInAMPMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.TimeInAMPMBX.FormattingEnabled = true;
-            this.TimeInAMPMBX.Items.AddRange(new object[] {
-            "AM",
-            "PM"});
-            this.TimeInAMPMBX.Location = new System.Drawing.Point(236, 455);
-            this.TimeInAMPMBX.Name = "TimeInAMPMBX";
-            this.TimeInAMPMBX.Size = new System.Drawing.Size(56, 25);
-            this.TimeInAMPMBX.Sorted = true;
-            this.TimeInAMPMBX.TabIndex = 132;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label20.Location = new System.Drawing.Point(134, 460);
+            this.label20.Location = new System.Drawing.Point(96, 460);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(58, 19);
             this.label20.TabIndex = 131;
             this.label20.Text = "Time-in:";
             // 
-            // TimeInBX
-            // 
-            this.TimeInBX.BackColor = System.Drawing.Color.White;
-            this.TimeInBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TimeInBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.TimeInBX.Location = new System.Drawing.Point(197, 464);
-            this.TimeInBX.Mask = "99:99";
-            this.TimeInBX.Name = "TimeInBX";
-            this.TimeInBX.Size = new System.Drawing.Size(40, 13);
-            this.TimeInBX.TabIndex = 130;
-            // 
             // AddDaysBTN
             // 
             this.AddDaysBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddDaysBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AddDaysBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.AddDaysBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddDaysBTN.BackgroundImage")));
             this.AddDaysBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddDaysBTN.FlatAppearance.BorderSize = 0;
-            this.AddDaysBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AddDaysBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AddDaysBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             this.AddDaysBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddDaysBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddDaysBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.AddDaysBTN.ForeColor = System.Drawing.Color.White;
-            this.AddDaysBTN.Location = new System.Drawing.Point(161, 537);
+            this.AddDaysBTN.Location = new System.Drawing.Point(171, 537);
             this.AddDaysBTN.Name = "AddDaysBTN";
-            this.AddDaysBTN.Size = new System.Drawing.Size(96, 32);
+            this.AddDaysBTN.Size = new System.Drawing.Size(80, 29);
             this.AddDaysBTN.TabIndex = 136;
             this.AddDaysBTN.Text = "ADD";
             this.AddDaysBTN.UseVisualStyleBackColor = false;
@@ -303,11 +254,12 @@
             // ConfirmBTN
             // 
             this.ConfirmBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConfirmBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.ConfirmBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ConfirmBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConfirmBTN.BackgroundImage")));
             this.ConfirmBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ConfirmBTN.FlatAppearance.BorderSize = 0;
-            this.ConfirmBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.ConfirmBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.ConfirmBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             this.ConfirmBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConfirmBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmBTN.ForeColor = System.Drawing.Color.White;
@@ -321,11 +273,12 @@
             // CloseBTN
             // 
             this.CloseBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseBTN.BackColor = System.Drawing.Color.IndianRed;
+            this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.CloseBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseBTN.BackgroundImage")));
             this.CloseBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseBTN.FlatAppearance.BorderSize = 0;
-            this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
@@ -345,17 +298,18 @@
             // EditBTN
             // 
             this.EditBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.EditBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.EditBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditBTN.BackgroundImage")));
             this.EditBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EditBTN.FlatAppearance.BorderSize = 0;
-            this.EditBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.EditBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.EditBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             this.EditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.EditBTN.ForeColor = System.Drawing.Color.White;
-            this.EditBTN.Location = new System.Drawing.Point(430, 535);
+            this.EditBTN.Location = new System.Drawing.Point(438, 535);
             this.EditBTN.Name = "EditBTN";
-            this.EditBTN.Size = new System.Drawing.Size(96, 32);
+            this.EditBTN.Size = new System.Drawing.Size(80, 29);
             this.EditBTN.TabIndex = 142;
             this.EditBTN.Text = "EDIT";
             this.EditBTN.UseVisualStyleBackColor = false;
@@ -363,20 +317,277 @@
             // DeleteBTN
             // 
             this.DeleteBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteBTN.BackColor = System.Drawing.Color.IndianRed;
+            this.DeleteBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.DeleteBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteBTN.BackgroundImage")));
             this.DeleteBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DeleteBTN.FlatAppearance.BorderSize = 0;
-            this.DeleteBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.DeleteBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DeleteBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.DeleteBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.DeleteBTN.ForeColor = System.Drawing.Color.White;
-            this.DeleteBTN.Location = new System.Drawing.Point(531, 535);
+            this.DeleteBTN.Location = new System.Drawing.Point(523, 535);
             this.DeleteBTN.Name = "DeleteBTN";
-            this.DeleteBTN.Size = new System.Drawing.Size(96, 32);
+            this.DeleteBTN.Size = new System.Drawing.Size(80, 29);
             this.DeleteBTN.TabIndex = 143;
             this.DeleteBTN.Text = "DELETE";
             this.DeleteBTN.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(203, 496);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(12, 19);
+            this.label3.TabIndex = 151;
+            this.label3.Text = ":";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label1.Location = new System.Drawing.Point(203, 460);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(12, 19);
+            this.label1.TabIndex = 150;
+            this.label1.Text = ":";
+            // 
+            // TimeOutMinBX
+            // 
+            this.TimeOutMinBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeOutMinBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeOutMinBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TimeOutMinBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeOutMinBX.FormattingEnabled = true;
+            this.TimeOutMinBX.Items.AddRange(new object[] {
+            "00",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59"});
+            this.TimeOutMinBX.Location = new System.Drawing.Point(215, 493);
+            this.TimeOutMinBX.Name = "TimeOutMinBX";
+            this.TimeOutMinBX.Size = new System.Drawing.Size(46, 25);
+            this.TimeOutMinBX.Sorted = true;
+            this.TimeOutMinBX.TabIndex = 149;
+            // 
+            // TimeOutHrBX
+            // 
+            this.TimeOutHrBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeOutHrBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeOutHrBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TimeOutHrBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeOutHrBX.FormattingEnabled = true;
+            this.TimeOutHrBX.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.TimeOutHrBX.Location = new System.Drawing.Point(157, 493);
+            this.TimeOutHrBX.Name = "TimeOutHrBX";
+            this.TimeOutHrBX.Size = new System.Drawing.Size(46, 25);
+            this.TimeOutHrBX.Sorted = true;
+            this.TimeOutHrBX.TabIndex = 148;
+            // 
+            // TimeOutAMPMBX
+            // 
+            this.TimeOutAMPMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeOutAMPMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeOutAMPMBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TimeOutAMPMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeOutAMPMBX.FormattingEnabled = true;
+            this.TimeOutAMPMBX.Items.AddRange(new object[] {
+            "AM",
+            "PM"});
+            this.TimeOutAMPMBX.Location = new System.Drawing.Point(276, 493);
+            this.TimeOutAMPMBX.Name = "TimeOutAMPMBX";
+            this.TimeOutAMPMBX.Size = new System.Drawing.Size(56, 25);
+            this.TimeOutAMPMBX.Sorted = true;
+            this.TimeOutAMPMBX.TabIndex = 147;
+            // 
+            // TimeInMinBX
+            // 
+            this.TimeInMinBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeInMinBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeInMinBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TimeInMinBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeInMinBX.FormattingEnabled = true;
+            this.TimeInMinBX.Items.AddRange(new object[] {
+            "00",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59"});
+            this.TimeInMinBX.Location = new System.Drawing.Point(215, 457);
+            this.TimeInMinBX.Name = "TimeInMinBX";
+            this.TimeInMinBX.Size = new System.Drawing.Size(46, 25);
+            this.TimeInMinBX.Sorted = true;
+            this.TimeInMinBX.TabIndex = 146;
+            // 
+            // TimeInHrBX
+            // 
+            this.TimeInHrBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeInHrBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeInHrBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TimeInHrBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeInHrBX.FormattingEnabled = true;
+            this.TimeInHrBX.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.TimeInHrBX.Location = new System.Drawing.Point(157, 457);
+            this.TimeInHrBX.Name = "TimeInHrBX";
+            this.TimeInHrBX.Size = new System.Drawing.Size(46, 25);
+            this.TimeInHrBX.Sorted = true;
+            this.TimeInHrBX.TabIndex = 145;
+            // 
+            // TimeInAMPMBX
+            // 
+            this.TimeInAMPMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeInAMPMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeInAMPMBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TimeInAMPMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TimeInAMPMBX.FormattingEnabled = true;
+            this.TimeInAMPMBX.Items.AddRange(new object[] {
+            "AM",
+            "PM"});
+            this.TimeInAMPMBX.Location = new System.Drawing.Point(276, 457);
+            this.TimeInAMPMBX.Name = "TimeInAMPMBX";
+            this.TimeInAMPMBX.Size = new System.Drawing.Size(56, 25);
+            this.TimeInAMPMBX.Sorted = true;
+            this.TimeInAMPMBX.TabIndex = 144;
             // 
             // Sched_AddDutyDays
             // 
@@ -385,6 +596,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(721, 666);
             this.ControlBox = false;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TimeOutMinBX);
+            this.Controls.Add(this.TimeOutHrBX);
+            this.Controls.Add(this.TimeOutAMPMBX);
+            this.Controls.Add(this.TimeInMinBX);
+            this.Controls.Add(this.TimeInHrBX);
+            this.Controls.Add(this.TimeInAMPMBX);
             this.Controls.Add(this.EditBTN);
             this.Controls.Add(this.DeleteBTN);
             this.Controls.Add(this.ConfirmBTN);
@@ -392,12 +611,8 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.DaysGRD);
             this.Controls.Add(this.AddDaysBTN);
-            this.Controls.Add(this.TimeOutAMPMBX);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.TimeOutBX);
-            this.Controls.Add(this.TimeInAMPMBX);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.TimeInBX);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ContactLBL);
             this.Controls.Add(this.CalendarPKR);
@@ -425,12 +640,8 @@
         private System.Windows.Forms.MonthCalendar CalendarPKR;
         private System.Windows.Forms.Label ContactLBL;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox TimeOutAMPMBX;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox TimeOutBX;
-        private System.Windows.Forms.ComboBox TimeInAMPMBX;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.MaskedTextBox TimeInBX;
         private System.Windows.Forms.Button AddDaysBTN;
         private System.Windows.Forms.DataGridView DaysGRD;
         private System.Windows.Forms.Label label7;
@@ -439,5 +650,13 @@
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Button EditBTN;
         private System.Windows.Forms.Button DeleteBTN;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox TimeOutMinBX;
+        private System.Windows.Forms.ComboBox TimeOutHrBX;
+        private System.Windows.Forms.ComboBox TimeOutAMPMBX;
+        private System.Windows.Forms.ComboBox TimeInMinBX;
+        private System.Windows.Forms.ComboBox TimeInHrBX;
+        private System.Windows.Forms.ComboBox TimeInAMPMBX;
     }
 }

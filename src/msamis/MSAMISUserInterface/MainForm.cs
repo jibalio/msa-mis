@@ -801,6 +801,7 @@ namespace MSAMISUserInterface {
 
         #region SMS - View Assignment
         private void SCHEDLoadAssignmentPage() {
+            SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem("All", "0"));
             SViewAssSearchClientCMBX.SelectedIndex = 0;
             SViewAssCMBX.SelectedIndex = 0;
             DataTable dt = Client.GetClients();
@@ -902,15 +903,26 @@ namespace MSAMISUserInterface {
             SViewReqSearchTXTBX.Visible = false;
         }
         private void SViewReqViewBTN_Click(object sender, EventArgs e) {
-            try {
-                Sched_ViewAssReq view = new Sched_ViewAssReq();
-                view.reference = this;
-                view.RAID = this.RID;
-                view.conn = this.conn;
-                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
-                view.ShowDialog();
+            if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment")) {
+                try {
+                    Sched_ViewAssReq view = new Sched_ViewAssReq();
+                    view.reference = this;
+                    view.RAID = this.RID;
+                    view.conn = this.conn;
+                    view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                    view.ShowDialog();
+                }
+                catch (Exception) { }
+            } else if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Dismissals")) {
+                try {
+                    Sched_ViewDisReq view = new Sched_ViewDisReq();
+                    view.reference = this;
+                    view.conn = this.conn;
+                    view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                    view.ShowDialog();
+                }
+                catch (Exception) { }
             }
-            catch (Exception) { }
         }
         #endregion
 
@@ -953,19 +965,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-
-        private void SampleBTN_Click(object sender, EventArgs e) {
-            try {
-                Sched_ViewDisReq view = new Sched_ViewDisReq();
-                view.reference = this;
-                view.conn = this.conn;
-                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
-                view.ShowDialog();
-            }
-            catch (Exception) { }
-        }
-
-
 
         #region Payroll Management System
 

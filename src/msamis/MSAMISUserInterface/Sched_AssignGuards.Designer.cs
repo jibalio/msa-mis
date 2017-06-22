@@ -227,17 +227,18 @@
             // AssignBTN
             // 
             this.AssignBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AssignBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AssignBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.AssignBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AssignBTN.BackgroundImage")));
             this.AssignBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AssignBTN.FlatAppearance.BorderSize = 0;
-            this.AssignBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AssignBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AssignBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             this.AssignBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AssignBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AssignBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.AssignBTN.ForeColor = System.Drawing.Color.White;
-            this.AssignBTN.Location = new System.Drawing.Point(168, 510);
+            this.AssignBTN.Location = new System.Drawing.Point(175, 510);
             this.AssignBTN.Name = "AssignBTN";
-            this.AssignBTN.Size = new System.Drawing.Size(96, 32);
+            this.AssignBTN.Size = new System.Drawing.Size(80, 29);
             this.AssignBTN.TabIndex = 144;
             this.AssignBTN.Text = "ASSIGN";
             this.AssignBTN.UseVisualStyleBackColor = false;
@@ -245,17 +246,18 @@
             // DeleteBTN
             // 
             this.DeleteBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteBTN.BackColor = System.Drawing.Color.IndianRed;
+            this.DeleteBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.DeleteBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteBTN.BackgroundImage")));
             this.DeleteBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DeleteBTN.FlatAppearance.BorderSize = 0;
-            this.DeleteBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.DeleteBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DeleteBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.DeleteBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.DeleteBTN.ForeColor = System.Drawing.Color.White;
-            this.DeleteBTN.Location = new System.Drawing.Point(458, 510);
+            this.DeleteBTN.Location = new System.Drawing.Point(472, 510);
             this.DeleteBTN.Name = "DeleteBTN";
-            this.DeleteBTN.Size = new System.Drawing.Size(96, 32);
+            this.DeleteBTN.Size = new System.Drawing.Size(80, 29);
             this.DeleteBTN.TabIndex = 145;
             this.DeleteBTN.Text = "REMOVE";
             this.DeleteBTN.UseVisualStyleBackColor = false;
@@ -263,11 +265,12 @@
             // ConfirmBTN
             // 
             this.ConfirmBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConfirmBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.ConfirmBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ConfirmBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConfirmBTN.BackgroundImage")));
             this.ConfirmBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ConfirmBTN.FlatAppearance.BorderSize = 0;
-            this.ConfirmBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.ConfirmBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.ConfirmBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             this.ConfirmBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConfirmBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmBTN.ForeColor = System.Drawing.Color.White;
@@ -282,11 +285,12 @@
             // CloseBTN
             // 
             this.CloseBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseBTN.BackColor = System.Drawing.Color.IndianRed;
+            this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.CloseBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseBTN.BackgroundImage")));
             this.CloseBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseBTN.FlatAppearance.BorderSize = 0;
-            this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
