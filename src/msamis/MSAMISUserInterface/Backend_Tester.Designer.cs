@@ -94,7 +94,7 @@
             this.Controls.Add(this.dtreturn);
             this.Controls.Add(this.dgv);
             this.Name = "Backend_Tester";
-            this.Text = "Backend_Tester";
+            this.Text = "z";
             this.Load += new System.EventHandler(this.Backend_Tester_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
