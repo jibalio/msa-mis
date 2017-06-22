@@ -21,13 +21,13 @@ namespace MSAMISUserInterface {
             AutoLoader.AutoImportSql(true, true);
             Application.Run(new LoginForm());
 
-           // Scheduling.AddDismissalRequest(2, new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+          
             
             
             
             
             
-            //Scheduling.AddAssignmentRequest(1, "StreetNo", "SteetName", "Brgy", "city", DateTime.Now, DateTime.Now, 23);
+          
         }
     }
     class ComboBoxItem {

@@ -1,0 +1,45 @@
+
+#Add Requests
+Mga requests pa ni sya, not actual assignment / dismissal.
+
+	AddDismissalRequest
+		int cid, 					// Client ID
+		int[] did, 					// Duty detail ID (get did from select guards to be dismissed)
+		int ReportType, 			// BES, USE:  Enumeration.ReportType.x  <-- mga int ni sya,
+										 ayaw i hardcode
+		String pcompleting, 		// Incident table: Idk unsa ni na field pero naa sa incident table
+		DateTime EventDate,			// Incident Date: DateTime i-pass
+	    String location, 			// Incident Location
+	    String description			// description
+
+	AddAssignmentRequestint 
+		int CID, 					// Client ID
+		string AssStreetNo, 		// 
+		string AssStreetName,		//
+		string AssBrgy, 			//
+		string AssCity, 			//
+		DateTime ContractStart, 	//
+		DateTime ContractEnd, 		//
+		int NoGuards				// number of guards.
+
+	DeclineRequest					// Decline Assignment / Dismissal Request
+		int rid
+
+# Actual Assignments / Dismissals
+Actual dismissal na gyud, didto sa view requests.
+	
+	AddAssignment 					
+		int rid, 					// Request ID. (Didto kuhaa sa datatable nga view all requests)
+		int[] gid					// array of GIDs to be assigned. naa ang gid column sa datatable:
+									select guards to be assigned
+
+	ApproveDismissal
+		int rid						// Request ID of dismissal. Ma dismiss tanan guards na naay ingon
+										-ani na rid.
+
+
+
+
+
+
+

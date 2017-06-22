@@ -18,5 +18,47 @@ namespace MSAMISUserInterface {
             public static int Dismissal = 2;
         }
 
+        public class AddressType {
+            public static int Birthplace = 1;
+            public static int TemporaryAddress = 2;
+            public static int PermanentAddress = 3;
+        }
+
+        public class GuardStatus {
+            public static int Active = 1;
+            public static int Inactive = 2;
+        }
+        
+        public class PayrollStatus {
+            public static int Uncalculated = 1;
+            public static int Calculated = 2;
+            public static int Paid = 3;
+        }
+
+        public class ReportType {
+            public static int Injury = 1;
+            public static int Accident = 2;
+            public static int Complaint = 3;
+        }
+
+        public class RequestStatus {
+            public static int Pending = 1;
+            public static int Approved = 2;
+            public static int Declined = 3;
+        }
+        public class Involvement {
+            public static int Involved = 1;
+            public static int Witness = 2;
+        }
+        
+        public class AssignmentStatus {
+            public static int Active = 1;
+            public static int Dismissed = 2;
+            public static int Inactive = 3;
+        }
+   
+
+
+
     }
 }

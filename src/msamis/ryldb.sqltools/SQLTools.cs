@@ -162,10 +162,9 @@ namespace MSAMISUserInterface {
         }
 
         public static String ExecuteSingleResult(String query) {
-            MySqlDataReader rdr = ExecuteReader(query);
-            while(rdr.Read())
-            ;
-            return rdr.GetString(0);
+          Console.WriteLine(">>>> Your query was:  " + query);
+            DataTable dt = ExecuteQuery(query);
+            return dt.Rows[0][0].ToString();
         }
 
         #endregion
