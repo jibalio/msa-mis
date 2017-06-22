@@ -16,11 +16,17 @@ namespace MSAMISUserInterface {
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
             
-           // Application.EnableVisualStyles();
-             //Application.SetCompatibleTextRenderingDefault(false);
-            //AutoLoader.AutoImportSql(true, true);
-            //Application.Run(new LoginForm());
-            Scheduling.AddDismissalRequest(2, new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            Application.EnableVisualStyles();
+             Application.SetCompatibleTextRenderingDefault(false);
+            AutoLoader.AutoImportSql(true, true);
+            Application.Run(new LoginForm());
+
+           // Scheduling.AddDismissalRequest(2, new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            
+            
+            
+            
+            
             //Scheduling.AddAssignmentRequest(1, "StreetNo", "SteetName", "Brgy", "city", DateTime.Now, DateTime.Now, 23);
         }
     }
