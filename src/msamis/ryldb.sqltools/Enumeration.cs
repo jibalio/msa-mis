@@ -13,5 +13,10 @@ namespace MSAMISUserInterface {
             public static int Inactive = 3;
         }
 
+        public class RequestType {
+            public static int Assignment = 1;
+            public static int Dismissal = 2;
+        }
+
     }
 }
