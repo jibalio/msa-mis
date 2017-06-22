@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `msadb`;
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
--- Host: localhost    Database: msadb
+-- Host: 127.0.0.1    Database: msadb
 -- ------------------------------------------------------
 -- Server version	5.7.13-log
 
@@ -423,7 +423,7 @@ CREATE TABLE `request` (
   `CID` int(11) DEFAULT NULL,
   `DateEntry` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`RID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -432,6 +432,7 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
+INSERT INTO `request` VALUES (2,1,1,'2017-06-18'),(3,1,2,'2017-06-19'),(4,1,2,'2017-06-19'),(5,2,2,'2017-06-22'),(6,2,2,'2017-06-22');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,7 +480,7 @@ CREATE TABLE `request_dismiss` (
   `RID` int(11) DEFAULT NULL,
   `DID` int(11) DEFAULT NULL,
   PRIMARY KEY (`RDID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -488,6 +489,7 @@ CREATE TABLE `request_dismiss` (
 
 LOCK TABLES `request_dismiss` WRITE;
 /*!40000 ALTER TABLE `request_dismiss` DISABLE KEYS */;
+INSERT INTO `request_dismiss` VALUES (1,6,1),(2,6,2),(3,6,3),(4,6,4),(5,6,5),(6,6,6),(7,6,7),(8,6,8);
 /*!40000 ALTER TABLE `request_dismiss` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -590,4 +592,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-22 17:07:58
+-- Dump completed on 2017-06-22 18:46:09
