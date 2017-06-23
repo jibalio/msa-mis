@@ -57,8 +57,14 @@ namespace MSAMISUserInterface {
             public static int Inactive = 3;
         }
    
-
-
-
+        public class ScheduleStatus {
+            public static int All = 0;
+            public static int Scheduled = 1;
+            public static int Unscheduled = 2;
+        }
     }
-}
+
+
+
+ }
+
