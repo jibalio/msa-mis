@@ -246,11 +246,12 @@
             // CEditDetailsBTN
             // 
             this.CEditDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.CEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.CEditDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
             this.CEditDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CEditDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.CEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.CEditDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.CEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
             this.CEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CEditDetailsBTN.ForeColor = System.Drawing.Color.White;
