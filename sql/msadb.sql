@@ -209,7 +209,7 @@ CREATE TABLE `dutydetails` (
   PRIMARY KEY (`DID`),
   KEY `Assignment-Duty_idx` (`AID`),
   CONSTRAINT `Assignment-Duty` FOREIGN KEY (`AID`) REFERENCES `sduty_assignment` (`AID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +218,7 @@ CREATE TABLE `dutydetails` (
 
 LOCK TABLES `dutydetails` WRITE;
 /*!40000 ALTER TABLE `dutydetails` DISABLE KEYS */;
-INSERT INTO `dutydetails` VALUES (2,54,'4:30:PM','12:30:PM','1:1:1:1:',NULL),(3,54,'4:30:PM','12:30:PM','1:1:1:1:',NULL),(4,54,'4:30:PM','12:30:PM','1:1:1:1',NULL),(5,54,'4:30:PM','12:30:PM','1:1:1:1:1',NULL),(6,54,'4:30:PM','12:30:PM','1:1:0:0:1:1:1',NULL),(7,54,'4:30:PM','12:30:PM','1:1:0:0:1:1:1',NULL);
+INSERT INTO `dutydetails` VALUES (8,61,'10:30:PM','09:23:PM','1:1:1:1:1:0:0',1);
 /*!40000 ALTER TABLE `dutydetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,7 +300,7 @@ CREATE TABLE `incidentreport` (
   `Description` longtext,
   `DateEntry` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`IID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -309,7 +309,7 @@ CREATE TABLE `incidentreport` (
 
 LOCK TABLES `incidentreport` WRITE;
 /*!40000 ALTER TABLE `incidentreport` DISABLE KEYS */;
-INSERT INTO `incidentreport` VALUES (4,64,3,'pc','2017-06-22','gmall','Caught sneaking coffee to break room.','2017-06-22');
+INSERT INTO `incidentreport` VALUES (5,65,1,'','2017-06-23','gmall','awd','2017-06-23');
 /*!40000 ALTER TABLE `incidentreport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,7 +424,7 @@ CREATE TABLE `request` (
   `DateEntry` varchar(45) DEFAULT NULL,
   `RStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`RID`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -433,7 +433,7 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` VALUES (26,1,1,'2017-06-22',2),(27,2,2,'2017-06-22',2),(28,1,1,'2017-06-23',NULL);
+INSERT INTO `request` VALUES (29,1,13,'2017-06-23',2),(30,2,13,'2017-06-23',NULL);
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -456,7 +456,7 @@ CREATE TABLE `request_assign` (
   `city` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `NoGuards` int(11) DEFAULT NULL,
   PRIMARY KEY (`RAID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -465,7 +465,7 @@ CREATE TABLE `request_assign` (
 
 LOCK TABLES `request_assign` WRITE;
 /*!40000 ALTER TABLE `request_assign` DISABLE KEYS */;
-INSERT INTO `request_assign` VALUES (18,26,'2017-06-22 00:00:00','2017-06-22 00:00:00',1,'s','s','c','c',2),(19,28,'2017-06-23 00:00:00','2017-06-23 00:00:00',1,'s','s','c','c',5);
+INSERT INTO `request_assign` VALUES (20,29,'2017-06-23 00:00:00','2017-06-23 00:00:00',1,'1','1','1','1',10);
 /*!40000 ALTER TABLE `request_assign` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,9 +479,9 @@ DROP TABLE IF EXISTS `request_dismiss`;
 CREATE TABLE `request_dismiss` (
   `RDID` int(11) NOT NULL AUTO_INCREMENT,
   `RID` int(11) DEFAULT NULL,
-  `GID` int(11) DEFAULT NULL,
+  `DID` int(11) DEFAULT NULL,
   PRIMARY KEY (`RDID`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -490,7 +490,7 @@ CREATE TABLE `request_dismiss` (
 
 LOCK TABLES `request_dismiss` WRITE;
 /*!40000 ALTER TABLE `request_dismiss` DISABLE KEYS */;
-INSERT INTO `request_dismiss` VALUES (63,27,1),(64,27,2);
+INSERT INTO `request_dismiss` VALUES (65,30,8);
 /*!40000 ALTER TABLE `request_dismiss` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -510,7 +510,7 @@ CREATE TABLE `sduty_assignment` (
   KEY `Assignment-Guard_idx` (`GID`),
   KEY `Assignment-Request_idx` (`RAID`),
   CONSTRAINT `Assignment-Guard` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -519,7 +519,7 @@ CREATE TABLE `sduty_assignment` (
 
 LOCK TABLES `sduty_assignment` WRITE;
 /*!40000 ALTER TABLE `sduty_assignment` DISABLE KEYS */;
-INSERT INTO `sduty_assignment` VALUES (54,1,18,1),(55,2,18,1),(56,4,19,1),(57,5,19,1),(58,6,19,1),(59,7,19,1),(60,8,19,1);
+INSERT INTO `sduty_assignment` VALUES (61,1,20,1),(62,2,20,1),(63,3,20,1),(64,4,20,1),(65,5,20,1),(66,6,20,1),(67,7,20,1),(68,8,20,1),(69,9,20,1),(70,10,20,1);
 /*!40000 ALTER TABLE `sduty_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -568,4 +568,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-23 15:21:14
+-- Dump completed on 2017-06-23 19:58:53

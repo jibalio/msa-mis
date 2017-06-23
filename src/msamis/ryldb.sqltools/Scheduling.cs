@@ -108,7 +108,7 @@ namespace MSAMISUserInterface {
         /// <param name="NoGuards">Number of Guards</param>
         public static void AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards) {
             String madeon = DateTime.Now.ToString("yyyy-MM-dd");
-            String q1 = String.Format("INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`) VALUES ('{0}', '{1}', '{2}','{3});",
+            String q1 = String.Format("INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`) VALUES ('{0}', '{1}', '{2}','{3}');",
                         Enumeration.RequestType.Assignment, CID, madeon, Enumeration.RequestStatus.Pending);
             SQLTools.ExecuteNonQuery(q1);
             String rid = SQLTools.getLastInsertedId("request", "rid");
@@ -122,6 +122,8 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery(query);
         }
 
+
+        
         /// <summary>
         /// Adds a dismissal request
         /// </summary>
@@ -136,15 +138,15 @@ namespace MSAMISUserInterface {
         /// <param name="EventDate">Date of incident.</param>
         /// <param name="location">Location of incident</param>
         /// <param name="description">Description</param>
-        public static void AddDismissalRequest(int cid, int[] gid, int ReportType, String pcompleting, DateTime EventDate,
+        public static void AddDismissalRequest(int cid, int[] did, int ReportType, String pcompleting, DateTime EventDate,
             String location, String description) {
             // Add a request, specifying client.
             String q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('{0}', '{1}', '{2}')";
             q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime());
             SQLTools.ExecuteNonQuery(q);
             String lid = SQLTools.getLastInsertedId("request", "rid");
-            for (int c = 0; c < gid.Length; c++) {
-                q = "INSERT INTO `msadb`.`request_dismiss` (`RID`, `gid`) VALUES ('" + lid.ToString() + "', '" + gid[c] + "');";
+            for (int c = 0; c < did.Length; c++) {
+                q = "INSERT INTO `msadb`.`request_dismiss` (`RID`, `did`) VALUES ('" + lid.ToString() + "', '" + did[c] + "');";
                 SQLTools.ExecuteNonQuery(q);
             }
             String RDID = SQLTools.getLastInsertedId("request_dismiss", "rdid");
@@ -154,6 +156,16 @@ namespace MSAMISUserInterface {
                         RDID, ReportType, SQLTools.getDateTime(), pcompleting, EventDate.ToString("yyyy-MM-dd"),location, description
                         );
             SQLTools.ExecuteNonQuery(q);
+        }
+
+
+
+
+
+
+
+        public static void UnassignGuards(int[] gid) {
+          //  foreach ()
         }
 
         #endregion
@@ -181,27 +193,15 @@ namespace MSAMISUserInterface {
         /// <summary>
         /// Steps:
         /// 1.) Get Guards to be dismissed (based on RID)
-        /// 2.) Set Guard's assignment to "Dismissed"
-        /// 3.) Set Guard's status to "Inactive"
-        /// 4.) Set Request's status to "Approved"
+        /// 2.) 
         /// </summary>
         /// <param name="rid">Request ID to approve dismissal.</param>
         public static void ApproveDismissal(int rid) {
-            // Step 1;
-            DataTable GuardsToBeDismissed = SQLTools.ExecuteQuery(@"select guards.gid from guards 
-                                            left join sduty_assignment on sduty_assignment.GID = guards.gid
-                                            left join request_dismiss on request_dismiss.gid = guards.gid
-                                            where rid = 27;");
-            //Step 2:
+            DataTable GuardsToBeDismissed = SQLTools.ExecuteQuery(@"select did from request_dismiss
+                                            where rid = " + rid + ";");
             foreach (DataRow e in GuardsToBeDismissed.Rows) {
-                String q = @"UPDATE `msadb`.`sduty_assignment` SET `AStatus`='2' WHERE `gid`='"+e[0]+"';";
-                SQLTools.ExecuteNonQuery(q);
-                // Step 3;
-                q = @"UPDATE `msadb`.`guards` SET `GStatus`='2' WHERE `GID`='"+e[0]+"'";
-                SQLTools.ExecuteNonQuery(q);
+                String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`='2' WHERE `DID`='" + e["did"] +"';";
             }
-            // Step 4
-            UpdateRequestStatus(rid, Enumeration.RequestStatus.Approved);
         }
 
         /// <summary>
@@ -334,8 +334,8 @@ namespace MSAMISUserInterface {
             String ti, to;
             ti = String.Format("{0}:{1}:{2}", TI_hr, TI_min, TI_ampm);
             to = String.Format("{0}:{1}:{2}", TO_hr, TO_min, TO_ampm);
-            String q = "INSERT INTO `msadb`.`dutydetails` (`AID`, `TimeOut`, `TimeIn`, `Days`) VALUES ('{0}', '{1}', '{2}', '{3}');";
-            q = String.Format(q, aid, to, ti, days.Value);
+            String q = "INSERT INTO `msadb`.`dutydetails` (`AID`, `TimeOut`, `TimeIn`, `Days`,`DStatus`) VALUES ('{0}', '{1}', '{2}', '{3}','{4}');";
+            q = String.Format(q, aid, to, ti, days.Value, Enumeration.AssignmentStatus.Active);
             SQLTools.ExecuteNonQuery(q);
         }
         #endregion
@@ -384,10 +384,14 @@ namespace MSAMISUserInterface {
             return k;
         }
 
-
+        
         #endregion
 
 
+
+        public static DataTable GuardsToBeDismissed(int rid) {
+            throw new NotImplementedException();
+        }
 
     }
 }
