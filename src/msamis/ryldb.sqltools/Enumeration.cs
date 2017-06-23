@@ -44,7 +44,9 @@ namespace MSAMISUserInterface {
         public class RequestStatus {
             public static int Pending = 1;
             public static int Approved = 2;
-            public static int Declined = 3;
+            public static int Active = 3;
+            public static int Inactive = 4;
+            public static int Declined = 5;
         }
         public class Involvement {
             public static int Involved = 1;
