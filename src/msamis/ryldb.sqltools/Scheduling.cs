@@ -51,13 +51,13 @@ namespace MSAMISUserInterface {
         }
 
 
-        public static DataTable GetUnassignedGuards(String FilterSort,String searchkeyword, String orderbyColumnASCDESC) {
+        public static DataTable GetUnassignedGuards(String searchkeyword, String orderbyColumnASCDESC) {
             String q = @"SELECT guards.gid, concat(ln,', ',fn,' ',mn) as name,
                          concat(streetno, ', ', street, ', ', brgy, ', ', city) as Location
                          from msadb.guards
                          left join address on address.gid = guards.gid
                          where gstatus = 2 ";
-            return SQLTools.ExecuteQuery(q, FilterSort, searchkeyword, orderbyColumnASCDESC);
+            return SQLTools.ExecuteQuery(q, "concat(ln,', ',fn,' ',mn)", searchkeyword, orderbyColumnASCDESC);
         }
 
 
