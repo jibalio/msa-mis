@@ -35,7 +35,6 @@
             this.NeededLBL = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
-            this.label11 = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.AssignBTN = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -173,18 +172,6 @@
             this.FadeTMR.Interval = 1;
             this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(288, 638);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(302, 17);
-            this.label11.TabIndex = 137;
-            this.label11.Text = "^ if wala pa na approve, ang button kay \"APPROVE\"";
-            // 
             // CloseBTN
             // 
             this.CloseBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -220,7 +207,7 @@
             this.AssignBTN.Name = "AssignBTN";
             this.AssignBTN.Size = new System.Drawing.Size(105, 32);
             this.AssignBTN.TabIndex = 135;
-            this.AssignBTN.Text = "ASSIGN";
+            this.AssignBTN.Text = "APPROVE";
             this.AssignBTN.UseVisualStyleBackColor = false;
             this.AssignBTN.Click += new System.EventHandler(this.AssignBTN_Click);
             // 
@@ -242,7 +229,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(721, 666);
             this.ControlBox = false;
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.AssignBTN);
             this.Controls.Add(this.panel2);
@@ -257,7 +243,6 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -276,7 +261,6 @@
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Button AssignBTN;
         private System.Windows.Forms.Timer FadeTMR;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel3;
     }
 }
