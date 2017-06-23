@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `msadb`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: 127.0.0.1    Database: msadb
@@ -209,7 +207,7 @@ CREATE TABLE `dutydetails` (
   PRIMARY KEY (`DID`),
   KEY `Assignment-Duty_idx` (`AID`),
   CONSTRAINT `Assignment-Duty` FOREIGN KEY (`AID`) REFERENCES `sduty_assignment` (`AID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,6 +216,7 @@ CREATE TABLE `dutydetails` (
 
 LOCK TABLES `dutydetails` WRITE;
 /*!40000 ALTER TABLE `dutydetails` DISABLE KEYS */;
+INSERT INTO `dutydetails` VALUES (2,54,'4:30:PM','12:30:PM','1:1:1:1:',NULL),(3,54,'4:30:PM','12:30:PM','1:1:1:1:',NULL),(4,54,'4:30:PM','12:30:PM','1:1:1:1',NULL),(5,54,'4:30:PM','12:30:PM','1:1:1:1:1',NULL),(6,54,'4:30:PM','12:30:PM','1:1:0:0:1:1:1',NULL),(7,54,'4:30:PM','12:30:PM','1:1:0:0:1:1:1',NULL);
 /*!40000 ALTER TABLE `dutydetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,7 +422,7 @@ CREATE TABLE `request` (
   `DateEntry` varchar(45) DEFAULT NULL,
   `RStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`RID`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -432,7 +431,7 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` VALUES (26,1,1,'2017-06-22',2),(27,2,2,'2017-06-22',2);
+INSERT INTO `request` VALUES (26,1,1,'2017-06-22',2),(27,2,2,'2017-06-22',2),(28,1,1,'2017-06-23',NULL);
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,7 +454,7 @@ CREATE TABLE `request_assign` (
   `city` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `NoGuards` int(11) DEFAULT NULL,
   PRIMARY KEY (`RAID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -464,7 +463,7 @@ CREATE TABLE `request_assign` (
 
 LOCK TABLES `request_assign` WRITE;
 /*!40000 ALTER TABLE `request_assign` DISABLE KEYS */;
-INSERT INTO `request_assign` VALUES (18,26,'2017-06-22 00:00:00','2017-06-22 00:00:00',1,'s','s','c','c',2);
+INSERT INTO `request_assign` VALUES (18,26,'2017-06-22 00:00:00','2017-06-22 00:00:00',1,'s','s','c','c',2),(19,28,'2017-06-23 00:00:00','2017-06-23 00:00:00',1,'s','s','c','c',5);
 /*!40000 ALTER TABLE `request_assign` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -509,7 +508,7 @@ CREATE TABLE `sduty_assignment` (
   KEY `Assignment-Guard_idx` (`GID`),
   KEY `Assignment-Request_idx` (`RAID`),
   CONSTRAINT `Assignment-Guard` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -518,7 +517,7 @@ CREATE TABLE `sduty_assignment` (
 
 LOCK TABLES `sduty_assignment` WRITE;
 /*!40000 ALTER TABLE `sduty_assignment` DISABLE KEYS */;
-INSERT INTO `sduty_assignment` VALUES (54,1,18,2),(55,2,18,2);
+INSERT INTO `sduty_assignment` VALUES (54,1,18,1),(55,2,18,1),(56,4,19,1),(57,5,19,1),(58,6,19,1),(59,7,19,1),(60,8,19,1);
 /*!40000 ALTER TABLE `sduty_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -567,4 +566,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-22 23:22:25
+-- Dump completed on 2017-06-23 15:19:48
