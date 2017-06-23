@@ -25,7 +25,7 @@ namespace MSAMISUserInterface {
         /// <param name="date">DateTime object.</param>
         /// <returns>DT columns: rid, name, dateentry, type</returns>
         ///
-        public static DataTable GetRequests(String searchkeyword, int ClientFilter, int StatusFilter, String ColumnToSortByAscDesc, String orderby, DateTime date) {
+        public static DataTable GetRequests(String searchkeyword, int ClientFilter, int StatusFilter, String SearchColumn, String orderby, DateTime date) {
             String q = @"select rid, name, dateentry, 
                         case requesttype 
                         when 1 then 'Assignment'
@@ -36,15 +36,15 @@ namespace MSAMISUserInterface {
                         where dateentry='{0}' ";
                         
             searchkeyword = cleansearch(searchkeyword);
-            return SQLTools.ExecuteQuery(q,ColumnToSortByAscDesc, searchkeyword, "dateentry desc", new String[] { date.ToString("yyyy-MM-dd")});
+            return SQLTools.ExecuteQuery(q,SearchColumn, searchkeyword, "dateentry desc", new String[] { date.ToString("yyyy-MM-dd")});
         }
 
-        public static DataTable GetRequests(String searchkeyword, int ClientFilter, int StatusFilter, String ColumnToSortByAscDesc, String orderby) {
+        public static DataTable GetRequests(String searchkeyword, int ClientFilter, int TypeFilter, String ColumnToSortByAscDesc, String orderby) {
             String q = "select rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid ";
-            if (ClientFilter !=-1 || StatusFilter!=-1) {
+            if (ClientFilter !=-1 || TypeFilter!=-1) {
                 q += " where 1=1 ";
-                if (ClientFilter != -1) q += " and client.cid=" + ClientFilter;
-                if (StatusFilter != -1) q += " and rstatus=" + StatusFilter;
+                if (ClientFilter != 0) q += " and client.cid=" + ClientFilter;
+                if (TypeFilter != 0) q += " and requesttype=" + TypeFilter;
             }
             searchkeyword = cleansearch(searchkeyword);
             return SQLTools.ExecuteQuery(q, ColumnToSortByAscDesc, searchkeyword, "dateentry desc");
