@@ -901,13 +901,16 @@ namespace MSAMISUserInterface {
             RID = int.Parse(SViewReqGRD.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
         private void SViewReqFilterCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            //   Scheduling.GetRequests
+            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
         }
+        bool ChangeDate;
         private void SViewReqDTPK_ValueChanged(object sender, EventArgs e) {
             LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "", SViewReqDTPK.Value));
+            ChangeDate = true;
         }
         private void SViewReqResetDateBTN_Click(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests("", -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
+            LoadViewReqTable(Scheduling.GetRequests("", -1, 0, "name", ""));
+            ChangeDate = false;
         }
         private void SCHEDLoadRequestsPage() {
             SViewReqFilterCMBX.SelectedIndex = 0;
@@ -915,6 +918,10 @@ namespace MSAMISUserInterface {
         }
         public void SCHEDRefreshRequests() {
             LoadViewReqTable(Scheduling.GetRequests("", -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
+        }
+        private void SViewReqSearchTXTBX_TextChanged(object sender, EventArgs e) {
+            if (ChangeDate) LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "", SViewReqDTPK.Value));
+            else LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
         }
         private void LoadViewReqTable(DataTable dv) {
             SViewReqGRD.DataSource = dv;
@@ -941,7 +948,7 @@ namespace MSAMISUserInterface {
                 ExtraQueryParams = EmptyText;
             }
             SCHEDRefreshRequests();
-            SViewReqSearchTXTBX.Visible = false;
+            SViewReqSearchLine.Visible = false;
         }
         private void SViewReqViewBTN_Click(object sender, EventArgs e) {
             if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment")) {
@@ -1170,5 +1177,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
+
+
     }
 }

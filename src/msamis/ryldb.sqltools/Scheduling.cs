@@ -44,7 +44,7 @@ namespace MSAMISUserInterface {
             if (ClientFilter !=-1 || StatusFilter!=-1) {
                 q += " where 1=1 ";
                 if (ClientFilter != -1) q += " and client.cid=" + ClientFilter;
-                if (StatusFilter != -1) q += " and rstatus=" + StatusFilter;
+                if (StatusFilter != 0) q += " and rstatus=" + StatusFilter;
             }
             searchkeyword = cleansearch(searchkeyword);
             return SQLTools.ExecuteQuery(q, ColumnToSortByAscDesc, searchkeyword, "dateentry desc");

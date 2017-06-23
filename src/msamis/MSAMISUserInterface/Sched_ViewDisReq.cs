@@ -45,6 +45,7 @@ namespace MSAMISUserInterface {
         }
 
         private void ApproveBTN_Click(object sender, EventArgs e) {
+            Scheduling.UpdateRequestStatus(RID, Enumeration.RequestStatus.Approved);
             this.Close();
         }
     }
