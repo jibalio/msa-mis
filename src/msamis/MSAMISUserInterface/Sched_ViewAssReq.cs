@@ -15,6 +15,8 @@ namespace MSAMISUserInterface {
         public MainForm reference;
         public MySqlConnection conn;
 
+        int numGuards;
+
         public Sched_ViewAssReq() {
             InitializeComponent();
             this.Opacity = 0;
@@ -36,7 +38,9 @@ namespace MSAMISUserInterface {
             PermAddLBL.Text = "Location: " + dt.Rows[0]["location"].ToString();
             ContractStartLBL.Text = "Contract Start: " + dt.Rows[0]["contractstart"].ToString();
             ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"].ToString();
-            NoLBL.Text = "Guards Needed: " + dt.Rows[0]["noguards"].ToString();
+            numGuards = int.Parse(dt.Rows[0]["noguards"].ToString());
+            NoLBL.Text = "Guards Needed: " + numGuards.ToString();
+
             if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Pending.ToString())) {
                 AssignBTN.Text = "APPROVE";
             } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Approved.ToString())) {
@@ -44,7 +48,7 @@ namespace MSAMISUserInterface {
             } else AssignBTN.Visible = false;
 
 
-            if (int.Parse(dt.Rows[0]["noguards"].ToString()) > Scheduling.GetNumberOfUnassignedGuards()) NeededLBL.ForeColor = Color.Coral;
+            if (numGuards > Scheduling.GetNumberOfUnassignedGuards()) NeededLBL.ForeColor = Color.Coral;
             else NeededLBL.ForeColor = Color.YellowGreen;
 
             NeededLBL.Text = Scheduling.GetNumberOfUnassignedGuards().ToString() + " available guards";
@@ -64,6 +68,9 @@ namespace MSAMISUserInterface {
                 try {
                     Sched_AssignGuards view = new Sched_AssignGuards();
                     view.conn = this.conn;
+                    view.RID = this.RAID;
+                    view.NumberOfGuards = numGuards;
+                    view.ClientName = ClientLBL.Text;
                     view.Location = this.Location;
                     view.ShowDialog();
                 }
