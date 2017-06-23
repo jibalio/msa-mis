@@ -642,7 +642,7 @@ namespace MSAMISUserInterface {
         */
 
         #region SMS - Page Load
-        private void SCHEDLoadPage() {
+        public void SCHEDLoadPage() {
             SArchivePNL.Hide();
             SDutyDetailsPNL.Hide();
             SIncidentPNL.Hide();
@@ -661,9 +661,9 @@ namespace MSAMISUserInterface {
 
             SCHEDLoadRequestsPage();
 
-            SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequest() + " client requests";
+            SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests() + " pending requests";
             SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
-            SAssignedGuardsLBL.Text = Scheduling.GetNumberOfUnscheduledAssignments() + " unscheduled guards";
+            SAssignedGuardsLBL.Text = Scheduling.GetNumberOfAssignedGuards() + " assigned guards";
         }
         #endregion
 
@@ -805,6 +805,7 @@ namespace MSAMISUserInterface {
             for (int i = 0; i < dt.Rows.Count; i++) SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
         }
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
+            SViewAssCMBX.SelectedIndex = 0;
             SCHEDRefreshAssignments();
         }
         private void SCHEDRefreshAssignments() {
@@ -816,7 +817,7 @@ namespace MSAMISUserInterface {
             SViewAssGRD.Columns[4].HeaderText = "LOCATION";
             SViewAssGRD.Columns[5].HeaderText = "SCHEDULE";
 
-            SViewAssGRD.Columns[3].Width = 250;
+            SViewAssGRD.Columns[3].Width = 230;
             SViewAssGRD.Columns[4].Width = 250;
             SViewAssGRD.Columns[5].Width = 150;
 
@@ -903,17 +904,17 @@ namespace MSAMISUserInterface {
             //   Scheduling.GetRequests
         }
         private void SViewReqDTPK_ValueChanged(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests(SViewReqDTPK.Value));
+            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "", SViewReqDTPK.Value));
         }
         private void SViewReqResetDateBTN_Click(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests());
+            LoadViewReqTable(Scheduling.GetRequests("", -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
         }
         private void SCHEDLoadRequestsPage() {
             SViewReqFilterCMBX.SelectedIndex = 0;
             SCHEDRefreshRequests();
         }
-        private void SCHEDRefreshRequests() {
-            LoadViewReqTable(Scheduling.GetRequests());
+        public void SCHEDRefreshRequests() {
+            LoadViewReqTable(Scheduling.GetRequests("", -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
         }
         private void LoadViewReqTable(DataTable dv) {
             SViewReqGRD.DataSource = dv;
@@ -953,11 +954,12 @@ namespace MSAMISUserInterface {
                     view.ShowDialog();
                 }
                 catch (Exception) { }
-            } else if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Dismissals")) {
+            } else if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Dismissal")) {
                 try {
                     Sched_ViewDisReq view = new Sched_ViewDisReq();
                     view.reference = this;
                     view.conn = this.conn;
+                    view.RID = this.RID;
                     view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
                     view.ShowDialog();
                 }

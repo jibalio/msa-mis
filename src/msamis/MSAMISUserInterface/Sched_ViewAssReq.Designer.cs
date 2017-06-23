@@ -145,7 +145,7 @@
             // 
             this.NeededLBL.Dock = System.Windows.Forms.DockStyle.Top;
             this.NeededLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.NeededLBL.ForeColor = System.Drawing.Color.YellowGreen;
+            this.NeededLBL.ForeColor = System.Drawing.Color.Coral;
             this.NeededLBL.Location = new System.Drawing.Point(0, 23);
             this.NeededLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NeededLBL.Name = "NeededLBL";

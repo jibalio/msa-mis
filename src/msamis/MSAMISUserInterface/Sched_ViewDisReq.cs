@@ -21,10 +21,14 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_ViewDisReq_Load(object sender, EventArgs e) {
-            //RefreshData();
+            RefreshData();
             FadeTMR.Start();
         }
+        private void RefreshData() {
+            
 
+
+        }
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
             if (reference.Opacity == 0.6 || this.Opacity >= 1) { FadeTMR.Stop(); }

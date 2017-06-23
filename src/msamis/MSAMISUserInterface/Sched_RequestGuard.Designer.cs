@@ -52,6 +52,7 @@
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.ClientSearchBX = new System.Windows.Forms.TextBox();
             this.ClientSearchLine = new System.Windows.Forms.Label();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ClientGRD)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +73,7 @@
             this.AddBTN.TabIndex = 71;
             this.AddBTN.Text = "ADD";
             this.AddBTN.UseVisualStyleBackColor = false;
+            this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
             // 
             // CloseBTN
             // 
@@ -104,6 +106,7 @@
             this.AssBrgyBX.Size = new System.Drawing.Size(77, 18);
             this.AssBrgyBX.TabIndex = 82;
             this.AssBrgyBX.Text = "Brgy";
+            this.AssBrgyBX.Enter += new System.EventHandler(this.AssBrgyBX_Enter);
             // 
             // AssCityBX
             // 
@@ -111,11 +114,12 @@
             this.AssCityBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AssCityBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssCityBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AssCityBX.Location = new System.Drawing.Point(498, 428);
+            this.AssCityBX.Location = new System.Drawing.Point(498, 429);
             this.AssCityBX.Name = "AssCityBX";
             this.AssCityBX.Size = new System.Drawing.Size(77, 18);
             this.AssCityBX.TabIndex = 83;
             this.AssCityBX.Text = "City";
+            this.AssCityBX.Enter += new System.EventHandler(this.AssCityBX_Enter);
             // 
             // AssStreetNameBX
             // 
@@ -128,6 +132,7 @@
             this.AssStreetNameBX.Size = new System.Drawing.Size(90, 18);
             this.AssStreetNameBX.TabIndex = 81;
             this.AssStreetNameBX.Text = "Street Name";
+            this.AssStreetNameBX.Enter += new System.EventHandler(this.AssStreetNameBX_Enter);
             // 
             // AssStreetNoBX
             // 
@@ -140,6 +145,8 @@
             this.AssStreetNoBX.Size = new System.Drawing.Size(38, 18);
             this.AssStreetNoBX.TabIndex = 80;
             this.AssStreetNoBX.Text = "No.";
+            this.AssStreetNoBX.Enter += new System.EventHandler(this.AssStreetNoBX_Enter);
+            this.AssStreetNoBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AssStreetNoBX_KeyPress);
             // 
             // label7
             // 
@@ -207,6 +214,7 @@
             this.NeededBX.Name = "NeededBX";
             this.NeededBX.Size = new System.Drawing.Size(77, 18);
             this.NeededBX.TabIndex = 98;
+            this.NeededBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NeededBX_KeyPress);
             // 
             // label9
             // 
@@ -305,7 +313,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ClientGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClientGRD.EnableHeadersVisualStyles = false;
-            this.ClientGRD.Location = new System.Drawing.Point(132, 113);
+            this.ClientGRD.Location = new System.Drawing.Point(8, 113);
+            this.ClientGRD.MultiSelect = false;
             this.ClientGRD.Name = "ClientGRD";
             this.ClientGRD.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -318,8 +327,9 @@
             this.ClientGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ClientGRD.RowHeadersVisible = false;
             this.ClientGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ClientGRD.Size = new System.Drawing.Size(443, 248);
+            this.ClientGRD.Size = new System.Drawing.Size(712, 248);
             this.ClientGRD.TabIndex = 104;
+            this.ClientGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientGRD_CellEnter);
             // 
             // label6
             // 
@@ -361,6 +371,8 @@
             this.ClientSearchBX.TabIndex = 107;
             this.ClientSearchBX.Text = "Search or filter";
             this.ClientSearchBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ClientSearchBX.Enter += new System.EventHandler(this.SViewAssSearchTXTBX_Enter);
+            this.ClientSearchBX.Leave += new System.EventHandler(this.SViewAssSearchTXTBX_Leave);
             // 
             // ClientSearchLine
             // 
@@ -444,5 +456,6 @@
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.TextBox ClientSearchBX;
         private System.Windows.Forms.Label ClientSearchLine;
+        private System.Windows.Forms.ToolTip ToolTip;
     }
 }
