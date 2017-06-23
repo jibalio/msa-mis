@@ -658,7 +658,6 @@ namespace MSAMISUserInterface {
             SArchiveBTN.Font = defaultFont;
 
             SViewReqAssBTN.Visible = true;
-            SViewReqDisBTN.Visible = true;
 
             SCHEDLoadRequestsPage();
         }
@@ -681,7 +680,6 @@ namespace MSAMISUserInterface {
             SArchiveBTN.Font = defaultFont;
 
             SViewReqAssBTN.Visible = true;
-            SViewReqDisBTN.Visible = true;
 
             SCHEDLoadRequestsPage();
         }
@@ -701,7 +699,6 @@ namespace MSAMISUserInterface {
             SArchiveBTN.Font = defaultFont;
 
             SViewReqAssBTN.Visible = false;
-            SViewReqDisBTN.Visible = false;
 
             SCHEDLoadAssignmentPage();
         }
@@ -721,7 +718,6 @@ namespace MSAMISUserInterface {
             SArchiveBTN.Font = defaultFont;
 
             SViewReqAssBTN.Visible = false;
-            SViewReqDisBTN.Visible = false;
         }
         private void SDutyDetailsBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Hide();
@@ -739,7 +735,6 @@ namespace MSAMISUserInterface {
             SArchiveBTN.Font = defaultFont;
 
             SViewReqAssBTN.Visible = false;
-            SViewReqDisBTN.Visible = false;
         }
         private void SIncidentBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Hide();
@@ -757,7 +752,6 @@ namespace MSAMISUserInterface {
             SArchiveBTN.Font = defaultFont;
 
             SViewReqAssBTN.Visible = false;
-            SViewReqDisBTN.Visible = false;
         }
         private void SArchiveBTN_Click(object sender, EventArgs e) {
             SArchivePNL.Show();
@@ -775,7 +769,6 @@ namespace MSAMISUserInterface {
             SArchiveBTN.Font = selectedFont;
 
             SViewReqAssBTN.Visible = false;
-            SViewReqDisBTN.Visible = false;
         }
         private void SViewReqAssBTN_Click(object sender, EventArgs e) {
             try {
@@ -801,7 +794,7 @@ namespace MSAMISUserInterface {
 
         #region SMS - View Assignment
         private void SCHEDLoadAssignmentPage() {
-            SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem("All", "0"));
+            SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem("All", "-1"));
             SViewAssSearchClientCMBX.SelectedIndex = 0;
             SViewAssCMBX.SelectedIndex = 0;
             DataTable dt = Client.GetClients();
@@ -811,10 +804,53 @@ namespace MSAMISUserInterface {
             SCHEDRefreshAssignments();
         }
         private void SCHEDRefreshAssignments() {
-            if (SViewAssSearchClientCMBX.Text.Equals("All")) {
-                //SViewAssGRD.DataSource = Scheduling.GetAssignments();
+            SViewAssGRD.DataSource = Scheduling.GetAssignmentsByClient(int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID), SViewAssCMBX.SelectedIndex);
+            SViewAssGRD.Columns[0].Visible = false;
+            SViewAssGRD.Columns[1].Visible = false;
+            SViewAssGRD.Columns[2].Visible = false;
+            SViewAssGRD.Columns[3].HeaderText = "NAME";
+            SViewAssGRD.Columns[4].HeaderText = "LOCATION";
+            SViewAssGRD.Columns[5].HeaderText = "SCHEDULE";
+
+            SViewAssGRD.Columns[3].Width = 250;
+            SViewAssGRD.Columns[4].Width = 250;
+            SViewAssGRD.Columns[5].Width = 150;
+
+            SCHEDViewAssGRDButtonChecker();
+            SViewAssGRD.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+        private void SViewAssCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            SCHEDRefreshAssignments();
+        }
+        private void SViewAssGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            SCHEDViewAssGRDButtonChecker();
+        }
+
+        private void SCHEDViewAssGRDButtonChecker() {
+            if (SViewAssGRD.Rows.Count == 0) {
+                SViewAssAddDutyBTN.Visible = false;
+                SViewAssViewDetailsBTN.Visible = false;
+                SVIewAssDisBTN.Visible = false;
+                SViewAssUnassignBTN.Visible = false;
             } else {
-                SViewAssGRD.DataSource = Scheduling.GetAssignmentsByClient(int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID), SViewAssCMBX.Text.ToString());
+                if (SViewAssGRD.SelectedRows.Count == 0) SViewAssGRD.Rows[0].Selected = true;
+
+                if (SViewAssGRD.SelectedRows.Count > 1) {
+                    SViewAssAddDutyBTN.Visible = false;
+                    SViewAssViewDetailsBTN.Visible = false;
+                    SVIewAssDisBTN.Visible = true;
+                    SViewAssUnassignBTN.Visible = false;
+                } else if (SViewAssGRD.SelectedRows[0].Cells[5].Value.ToString().Equals("Unscheduled")) {
+                    SViewAssAddDutyBTN.Visible = true;
+                    SViewAssViewDetailsBTN.Visible = false;
+                    SVIewAssDisBTN.Visible = false;
+                    SViewAssUnassignBTN.Visible = true;
+                } else {
+                    SViewAssAddDutyBTN.Visible = false;
+                    SViewAssViewDetailsBTN.Visible = true;
+                    SVIewAssDisBTN.Visible = true;
+                    SViewAssUnassignBTN.Visible = false;
+                }
             }
         }
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
