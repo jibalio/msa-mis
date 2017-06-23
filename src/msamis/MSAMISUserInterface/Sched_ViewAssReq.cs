@@ -61,6 +61,7 @@ namespace MSAMISUserInterface {
 
         private void button1_Click(object sender, EventArgs e) {
             this.Close();
+            reference.SCHEDLoadPage();
         }
 
         private void AssignBTN_Click(object sender, EventArgs e) {
@@ -70,6 +71,7 @@ namespace MSAMISUserInterface {
                     view.conn = this.conn;
                     view.RID = this.RAID;
                     view.NumberOfGuards = numGuards;
+                    view.refer = this;
                     view.ClientName = ClientLBL.Text;
                     view.Location = this.Location;
                     view.ShowDialog();
