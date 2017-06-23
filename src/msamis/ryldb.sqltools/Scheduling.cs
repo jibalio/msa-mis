@@ -13,7 +13,7 @@ namespace MSAMISUserInterface {
 
 
 
-        #region Request Retrieval (DataTable)
+        #region Request Retrieval (DataTable)  -- General View    ✔Done
         /// <summary>
         /// Returns a DataTable containing all requests (Assignment + Dismissal)
         /// </summary>
@@ -56,7 +56,7 @@ namespace MSAMISUserInterface {
         /// <returns></returns>
         public static DataTable GetAssignmentRequestDetails(int rid) {
             String q = @"SELECT name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, 
-                        contractstart, contractend, noguards 
+                        contractstart, contractend, noguards, rstatus
                         FROM request left join request_assign on request_assign.rid = request.rid left join client on request.cid = client.cid "
                  + " where request.rid={0}"; ;
             return SQLTools.ExecuteQuery(q, null, null, null, new String[] { rid.ToString() });
@@ -182,69 +182,38 @@ namespace MSAMISUserInterface {
         }
         #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        #region Sidepanel Methods
+        #region Sidepanel Methods  ✔Done
         public static String GetNumberOfUnscheduledAssignments() {
             throw new NotImplementedException();
         }
 
-        public static String GetNumberOfUnassignedGuards() {
-            throw new NotImplementedException();
+        public static int GetNumberOfAssignedGuards() {
+            return int.Parse(SQLTools.ExecuteSingleResult("select count(*) from sduty_assignment where astatus=1;"));
         }
-
-        public static String GetNumberOfClientRequest() {
-            throw new NotImplementedException();
+        public static int GetNumberOfUnassignedGuards() {
+            int ass = int.Parse(SQLTools.ExecuteSingleResult("select count(*) from guards"));
+            return (ass - GetNumberOfAssignedGuards());
         }
-
+        public static String GetNumberOfClientRequests() {
+            return GetNumberOfClientRequests(Enumeration.RequestStatus.Pending);
+        }
+        public static String GetNumberOfClientRequests(int RequestStatusEnumeration) {
+            String q = "select count(*) from request where rstatus="+RequestStatusEnumeration;
+            return SQLTools.ExecuteSingleResult(q);
+        }
         public static String GetNumberOfPendingClientRequests() {
-            throw new NotImplementedException();
+            return GetNumberOfClientRequests(Enumeration.RequestStatus.Pending);
         }
         #endregion
 
-
-        #region Non-Query Methods
-        // public static void AddDutyDetails()
-
-
-
-
-      
-        
-
-        //  public static DataTable GetDismissalRequestDetails (int rid) {
-        //    String q = ""
-        // }
-
-
-
-        
-
-
-
+        #region Guard Retrieval Funcs  ✔Done
         public static DataTable ViewGuardsFromClient(int cid) {
             String q = @"select did, concat(ln,', ',fn,' ',mn) as Name, concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,concat(timein, '-', timeout,' ', days) as Schedule from guards left join sduty_assignment on guards.gid = sduty_assignment.gid 
                         left join dutydetails on sduty_assignment.aid = dutydetails.AID
                         left join request_assign on sduty_assignment.raid = request_assign.raid 
                         left join request on request_assign.rid=request.rid
                         where cid = 1;";
-            DataTable dt =  SQLTools.ExecuteQuery(q);
+            DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
                 String[] x = e["Schedule"].ToString().Split(' ');
                 e.SetField("Schedule", (x[0] + ParseDays(x[1])));
@@ -252,32 +221,9 @@ namespace MSAMISUserInterface {
             return dt;
         }
 
+        #endregion
 
-        public class Days {
-            public string Value = null;
-            public Days(bool Mon, bool Tue, bool Wed, bool Thu, bool Fri, bool Sat, bool Sun) {
-                Value = "";
-                bool[] d = {Mon,Tue,Wed,Thu,Fri,Sat,Sun};
-                for (int c=0; c<d.Length; c++) {
-                    if (d[c]) Value += "1:";
-                    else Value += "0:";
-                }
-                Value = Value.Substring(0, Value.Length - 1);
-            }
-        }
-        public static void AddDutyDetail (int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm ,Days days) {
-            // 1.) Save TimeIN / TimeOut Details
-            String ti, to;
-            ti = String.Format("{0}:{1}:{2}", TI_hr, TI_min, TI_ampm);
-            to = String.Format("{0}:{1}:{2}", TO_hr, TO_min, TO_ampm);
-            String q = "INSERT INTO `msadb`.`dutydetails` (`AID`, `TimeOut`, `TimeIn`, `Days`) VALUES ('{0}', '{1}', '{2}', '{3}');";
-            q = String.Format(q, aid, to, ti, days.Value);
-            SQLTools.ExecuteNonQuery(q);
-        }
-
-
-
-        #region View Assignments
+        #region View Assignments    ✔Done
 
         public static DataTable GetAssignmentsByClient(int cid, int filter) {
             String q = @"select 
@@ -293,16 +239,16 @@ namespace MSAMISUserInterface {
                         left join dutydetails on sduty_assignment.aid=dutydetails.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
-                        where cid = " + cid+"";
+                        where cid = " + cid + "";
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
-                q += " AND schedule is not null";
+                q += " AND days is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
-                q += "AND schedule is null"; 
+                q += "AND days is null";
 
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
                 String[] x = e["Schedule"].ToString().Split(' ');
-                if (x[0]!="Unscheduled") e.SetField("Schedule", (x[0] +" "+ ParseDays(x[1])));
+                if (x[0] != "Unscheduled") e.SetField("Schedule", (x[0] + " " + ParseDays(x[1])));
             }
             return dt;
         }
@@ -319,6 +265,47 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        #region DutyDetail Operations   ✔Done
+        public class Days {
+            public string Value = null;
+            public Days(bool Mon, bool Tue, bool Wed, bool Thu, bool Fri, bool Sat, bool Sun) {
+                Value = "";
+                bool[] d = { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
+                for (int c = 0; c < d.Length; c++) {
+                    if (d[c]) Value += "1:";
+                    else Value += "0:";
+                }
+                Value = Value.Substring(0, Value.Length - 1);
+            }
+        }
+        public static void AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
+            // 1.) Save TimeIN / TimeOut Details
+            String ti, to;
+            ti = String.Format("{0}:{1}:{2}", TI_hr, TI_min, TI_ampm);
+            to = String.Format("{0}:{1}:{2}", TO_hr, TO_min, TO_ampm);
+            String q = "INSERT INTO `msadb`.`dutydetails` (`AID`, `TimeOut`, `TimeIn`, `Days`) VALUES ('{0}', '{1}', '{2}', '{3}');";
+            q = String.Format(q, aid, to, ti, days.Value);
+            SQLTools.ExecuteNonQuery(q);
+        }
+        #endregion
+
+        #region Non-Query Methods
+        // public static void AddDutyDetails()
+
+        // DismissGuard;    (Change Guard to inactive, change sduty_assignment to dismissed.
+        public static void DismissDuty (int did) {
+            //String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive"' WHERE `DID`='"+did+"';";
+
+        }
+        // 
+       
+
+
+
+            
+
+
 
 
 
