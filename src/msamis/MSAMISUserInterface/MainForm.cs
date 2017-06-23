@@ -1129,5 +1129,9 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        private void SchedulesPage_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
