@@ -901,15 +901,15 @@ namespace MSAMISUserInterface {
             RID = int.Parse(SViewReqGRD.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
         private void SViewReqFilterCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
+            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc"));
         }
         bool ChangeDate;
         private void SViewReqDTPK_ValueChanged(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "", SViewReqDTPK.Value));
+            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc", SViewReqDTPK.Value));
             ChangeDate = true;
         }
         private void SViewReqResetDateBTN_Click(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests("", -1, 0, "name", ""));
+            LoadViewReqTable(Scheduling.GetRequests("", -1, 0, "name", "name asc"));
             ChangeDate = false;
         }
         private void SCHEDLoadRequestsPage() {
@@ -917,11 +917,11 @@ namespace MSAMISUserInterface {
             SCHEDRefreshRequests();
         }
         public void SCHEDRefreshRequests() {
-            LoadViewReqTable(Scheduling.GetRequests("", -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
+            LoadViewReqTable(Scheduling.GetRequests("", -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc"));
         }
         private void SViewReqSearchTXTBX_TextChanged(object sender, EventArgs e) {
-            if (ChangeDate) LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "", SViewReqDTPK.Value));
-            else LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", ""));
+            if (ChangeDate) LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc", SViewReqDTPK.Value));
+            else LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc"));
         }
         private void LoadViewReqTable(DataTable dv) {
             SViewReqGRD.DataSource = dv;
