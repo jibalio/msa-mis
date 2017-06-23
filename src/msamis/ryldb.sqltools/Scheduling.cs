@@ -279,7 +279,7 @@ namespace MSAMISUserInterface {
 
         #region View Assignments
 
-        public static DataTable GetAssignmentsByClient(int cid, string filter) {
+        public static DataTable GetAssignmentsByClient(int cid, int filter) {
             String q = @"select 
                         guards.gid, dutydetails.did, sduty_assignment.aid,
                         concat(ln,', ',fn,' ',mn) as name,
