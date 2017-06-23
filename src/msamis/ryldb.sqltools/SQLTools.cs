@@ -88,14 +88,17 @@ namespace MSAMISUserInterface {
                 if (!q.ToLower().Contains("where")) {
                     q += "      where ";
                 } else q += " and ";
-                q += "("+ColumnToFilterByKeyword + " LIKE '%" + keyword + "%')";
+                q += "("+ColumnToFilterByKeyword + " LIKE '"+ 
+                    (keyword==empty ? "%" : "%" + keyword + "%") 
+                    +"')";
             }
             if (orderby!="" && orderby != null) {
                 q += " order by " + orderby;
             }
             return q;
         }
-        
+
+        public static String empty = "";
         public static DataTable ExecuteQuery (String query) {
             return ExecuteQuery(query, "", "");
         }

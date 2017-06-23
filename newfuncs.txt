@@ -54,6 +54,13 @@ Actual dismissal na gyud, didto sa view requests.
 
 
 
+void UpdateRequestStatus (int rid, int val)
+GetAssignmentsByClient(int cid, int filter) 
+
+
+WORKING SEARCHES
+
+
 
 
 

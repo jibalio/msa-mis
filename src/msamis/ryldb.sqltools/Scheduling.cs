@@ -12,20 +12,12 @@ namespace MSAMISUserInterface {
     public class Scheduling {
 
 
+        static String empty = "Search or filter";
 
         #region Request Retrieval (DataTable)  -- General View    ✔Done
-        /// <summary>
-        /// Returns a DataTable containing all requests (Assignment + Dismissal)
-        /// </summary>
-        /// <returns>DataTable:  rid,  name,  dateentry,  type</returns>
-        public static DataTable GetRequests() {
-            String query = "SELECT rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type FROM msadb.request inner join client on request.cid=client.cid;";
-            return SQLTools.ExecuteQuery(query);
-        }
 
-       // public static DataTable GetRequests(int filter) {
-       //     return "";
-       // }
+
+        
 
         /// <summary>
         /// Gets all requests made on a specific date.
@@ -33,13 +25,35 @@ namespace MSAMISUserInterface {
         /// <param name="date">DateTime object.</param>
         /// <returns>DT columns: rid, name, dateentry, type</returns>
         ///
-        public static DataTable GetRequests(DateTime date) {
-            String q = "select rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid where dateentry='{0}'";
-            return SQLTools.ExecuteQuery(q, "", "", "dateentry desc", new String[] { date.ToString("yyyy-MM-dd") });
+        public static DataTable GetRequests(String searchkeyword, int ClientFilter, int StatusFilter, String ColumnToSortByAscDesc, String orderby, DateTime date) {
+            String q = @"select rid, name, dateentry, 
+                        case requesttype 
+                        when 1 then 'Assignment'
+                        when 2 then 'Dismissal' 
+                        end as type
+                        from msadb.request 
+                        left join client on request.cid=client.cid 
+                        where dateentry='{0}' ";
+                        
+            searchkeyword = cleansearch(searchkeyword);
+            return SQLTools.ExecuteQuery(q,ColumnToSortByAscDesc, searchkeyword, "dateentry desc", new String[] { date.ToString("yyyy-MM-dd")});
         }
 
-        
-        
+        public static DataTable GetRequests(String searchkeyword, int ClientFilter, int StatusFilter, String ColumnToSortByAscDesc, String orderby) {
+            String q = "select rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid ";
+            if (ClientFilter !=-1 || StatusFilter!=-1) {
+                q += " where 1=1 ";
+                if (ClientFilter != -1) q += " and client.cid=" + ClientFilter;
+                if (StatusFilter != -1) q += " and rstatus=" + StatusFilter;
+            }
+            searchkeyword = cleansearch(searchkeyword);
+            return SQLTools.ExecuteQuery(q, ColumnToSortByAscDesc, searchkeyword, "dateentry desc");
+        }
+
+
+
+
+
 
         /// <summary>
         /// Returns a list of the Clients.
@@ -87,8 +101,8 @@ namespace MSAMISUserInterface {
         /// <param name="NoGuards">Number of Guards</param>
         public static void AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards) {
             String madeon = DateTime.Now.ToString("yyyy-MM-dd");
-            String q1 = String.Format("INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('{0}', '{1}', '{2}');",
-                        Enumeration.RequestType.Assignment, CID, madeon);
+            String q1 = String.Format("INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`) VALUES ('{0}', '{1}', '{2}','{3});",
+                        Enumeration.RequestType.Assignment, CID, madeon, Enumeration.RequestStatus.Pending);
             SQLTools.ExecuteNonQuery(q1);
             String rid = SQLTools.getLastInsertedId("request", "rid");
             String query = String.Format("INSERT INTO `msadb`.`request_assign` " +
@@ -328,24 +342,27 @@ namespace MSAMISUserInterface {
 
         }
         // 
-       
-
-
-
-            
 
 
 
 
 
 
-            
+
+
+
+
+
+
 
 
 
         #region MISC
 
-
+        public static String cleansearch(String x) {
+            if (x == empty) return "";
+            else return x;
+        }
         public static void UpdateRequestStatus (int rid, int val) {
             String q = @"UPDATE `msadb`.`request` SET `RStatus`='"+val+"' WHERE `RID`='"+rid+"';";
             SQLTools.ExecuteNonQuery(q);
@@ -368,3 +385,5 @@ namespace MSAMISUserInterface {
     }
 }
 #endregion
+
+
