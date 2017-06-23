@@ -661,7 +661,7 @@ namespace MSAMISUserInterface {
 
             SCHEDLoadRequestsPage();
 
-            SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests() + " pending requests";
+            SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests";
             SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
             SAssignedGuardsLBL.Text = Scheduling.GetNumberOfAssignedGuards() + " assigned guards";
         }
@@ -798,10 +798,16 @@ namespace MSAMISUserInterface {
 
         #region SMS - View Assignment
         private void SCHEDLoadAssignmentPage() {
+            SViewAssSearchClientCMBX.Items.Clear();
             SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem("All", "-1"));
             SViewAssSearchClientCMBX.SelectedIndex = 0;
             SViewAssCMBX.SelectedIndex = 0;
-            DataTable dt = Client.GetClients();
+            
+
+            DataView dv = Client.GetClients().DefaultView;
+            dv.Sort = "name asc";
+            DataTable dt = dv.ToTable();
+
             for (int i = 0; i < dt.Rows.Count; i++) SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
         }
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
@@ -814,13 +820,14 @@ namespace MSAMISUserInterface {
             SViewAssGRD.Columns[1].Visible = false;
             SViewAssGRD.Columns[2].Visible = false;
             SViewAssGRD.Columns[3].HeaderText = "NAME";
-            SViewAssGRD.Columns[4].HeaderText = "LOCATION";
+            SViewAssGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
             SViewAssGRD.Columns[5].HeaderText = "SCHEDULE";
 
             SViewAssGRD.Columns[3].Width = 230;
             SViewAssGRD.Columns[4].Width = 250;
             SViewAssGRD.Columns[5].Width = 150;
 
+            SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
             SCHEDViewAssGRDButtonChecker();
             SViewAssGRD.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
@@ -871,7 +878,7 @@ namespace MSAMISUserInterface {
                 ExtraQueryParams = EmptyText;
             }
             SCHEDRefreshAssignments();
-            SViewAssSearchTXTBX.Visible = false;
+            SViewAssSearchLine.Visible = false;
         }
         private void SViewAssAddDutyBTN_Click(object sender, EventArgs e) {
             try {

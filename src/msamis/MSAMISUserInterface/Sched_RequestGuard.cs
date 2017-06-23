@@ -32,7 +32,7 @@ namespace MSAMISUserInterface {
             ClientGRD.DataSource = Scheduling.GetClients();
 
             ClientGRD.Columns[0].Visible = false;
-            ClientGRD.Columns[1].Width = 690;
+            ClientGRD.Columns[1].Width = 410;
             ClientGRD.ColumnHeadersVisible = false;
             ClientGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
