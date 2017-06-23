@@ -22,6 +22,11 @@ namespace MSAMISUserInterface {
             String query = "SELECT rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type FROM msadb.request inner join client on request.cid=client.cid;";
             return SQLTools.ExecuteQuery(query);
         }
+
+       // public static DataTable GetRequests(int filter) {
+       //     return "";
+       // }
+
         /// <summary>
         /// Gets all requests made on a specific date.
         /// </summary>
@@ -32,6 +37,8 @@ namespace MSAMISUserInterface {
             String q = "select rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid where dateentry='{0}'";
             return SQLTools.ExecuteQuery(q, "", "", "dateentry desc", new String[] { date.ToString("yyyy-MM-dd") });
         }
+
+        
         
 
         /// <summary>
@@ -210,6 +217,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Guard Retrieval Funcs  ✔Done
+
         public static DataTable ViewGuardsFromClient(int cid) {
             String q = @"select did, concat(ln,', ',fn,' ',mn) as Name, concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,concat(timein, '-', timeout,' ', days) as Schedule from guards left join sduty_assignment on guards.gid = sduty_assignment.gid 
                         left join dutydetails on sduty_assignment.aid = dutydetails.AID
@@ -223,6 +231,21 @@ namespace MSAMISUserInterface {
             }
             return dt;
         }
+        /*old
+        public static DataTable ViewGuardsFromClient(int cid) {
+            String q = @"select did, concat(ln,', ',fn,' ',mn) as Name, concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,concat(timein, '-', timeout,' ', days) as Schedule from guards left join sduty_assignment on guards.gid = sduty_assignment.gid 
+                        left join dutydetails on sduty_assignment.aid = dutydetails.AID
+                        left join request_assign on sduty_assignment.raid = request_assign.raid 
+                        left join request on request_assign.rid=request.rid
+                        where cid = 1;";
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            foreach (DataRow e in dt.Rows) {
+                String[] x = e["Schedule"].ToString().Split(' ');
+                e.SetField("Schedule", (x[0] + ParseDays(x[1])));
+            }
+            return dt;
+        }
+        */
 
         #endregion
 
@@ -235,7 +258,7 @@ namespace MSAMISUserInterface {
                         concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,
                         case 
 	                        when concat(timein,'-', timeout,' ', days) is null then 'Unscheduled'
-                            else concat(timein,'-', timeout,' ', days)
+                            when concat(timein,'-', timeout,' ', days) is not null then 'Scheduled'
                             end as schedule
                          from guards 
                         left join sduty_assignment on sduty_assignment.gid=guards.gid
@@ -247,14 +270,15 @@ namespace MSAMISUserInterface {
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND days is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
-                q += "AND days is null";
+                q += " AND days is null";
+            q += "  group by guards.gid";
             
 
             DataTable dt = SQLTools.ExecuteQuery(q);
-            foreach (DataRow e in dt.Rows) {
-                String[] x = e["Schedule"].ToString().Split(' ');
-                if (x[0] != "Unscheduled") e.SetField("Schedule", (x[0] + " " + ParseDays(x[1])));
-            }
+           // foreach (DataRow e in dt.Rows) {
+            //    String[] x = e["Schedule"].ToString().Split(' ');
+            //    if (x[0] != "Unscheduled") e.SetField("Schedule", (x[0] + " " + ParseDays(x[1])));
+           // }
             return dt;
         }
 

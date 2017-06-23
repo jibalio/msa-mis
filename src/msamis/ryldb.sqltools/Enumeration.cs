@@ -62,6 +62,10 @@ namespace MSAMISUserInterface {
             public static int Scheduled = 1;
             public static int Unscheduled = 2;
         }
+        public class DutyDetailStatus {
+            public static int Active = 1;
+            public static int Inactive = 2;
+        }
     }
 
 
