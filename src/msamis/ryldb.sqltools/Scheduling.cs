@@ -293,7 +293,12 @@ namespace MSAMISUserInterface {
                         left join dutydetails on sduty_assignment.aid=dutydetails.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
-                        where cid = " + cid+";";
+                        where cid = " + cid+"";
+            if (filter == Enumeration.ScheduleStatus.Scheduled) {
+                q += " AND schedule is not null";
+            } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
+                q += "AND schedule is null"; 
+
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
                 String[] x = e["Schedule"].ToString().Split(' ');

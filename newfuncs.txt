@@ -12,7 +12,7 @@ Mga requests pa ni sya, not actual assignment / dismissal.
 	    String location, 			// Incident Location
 	    String description			// description
 
-	AddAssignmentRequestint 
+	AddAssignmentRequest
 		int CID, 					// Client ID
 		string AssStreetNo, 		// 
 		string AssStreetName,		//
@@ -36,6 +36,21 @@ Actual dismissal na gyud, didto sa view requests.
 	ApproveDismissal
 		int rid						// Request ID of dismissal. Ma dismiss tanan guards na naay ingon
 										-ani na rid.
+
+# Duty Details
+	AddDutyDetail 
+		int aid, 
+		String TI_hr, 
+		String TI_min, 
+		String TI_ampm, 
+		String TO_hr, 
+		String TO_min, 
+		String TO_ampm,
+		Days days                    <-- Custom Class: Ingon ani pag create::
+										 new Days (bool Mon, bool Tue, bool Wed, bool Thu, bool Fri, bool Sat, bool Sun);
+										 example, sched nako kay MWF, so:
+										 new Days (true, false, true, false, true, false, false);
+
 
 
 
