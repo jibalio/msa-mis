@@ -242,3 +242,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/"# msa-mis" 
+/src/msamis/ryldb.sqltools
