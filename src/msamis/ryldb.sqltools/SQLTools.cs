@@ -166,7 +166,7 @@ namespace MSAMISUserInterface {
             DataTable dt = ExecuteQuery(query);
             return dt.Rows[0][0].ToString();
         }
-
+        
         #endregion
 
         #region meta functions

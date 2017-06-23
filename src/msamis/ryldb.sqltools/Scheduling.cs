@@ -27,10 +27,13 @@ namespace MSAMISUserInterface {
         /// </summary>
         /// <param name="date">DateTime object.</param>
         /// <returns>DT columns: rid, name, dateentry, type</returns>
+        ///
         public static DataTable GetRequests(DateTime date) {
             String q = "select rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid where dateentry='{0}'";
             return SQLTools.ExecuteQuery(q, "", "", "dateentry desc", new String[] { date.ToString("yyyy-MM-dd") });
         }
+        
+
         /// <summary>
         /// Returns a list of the Clients.
         /// </summary>
@@ -56,7 +59,7 @@ namespace MSAMISUserInterface {
         /// <returns></returns>
         public static DataTable GetAssignmentRequestDetails(int rid) {
             String q = @"SELECT name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, 
-                        contractstart, contractend, noguards, rstatus
+                        contractstart, contractend, noguards, request.rstatus
                         FROM request left join request_assign on request_assign.rid = request.rid left join client on request.cid = client.cid "
                  + " where request.rid={0}"; ;
             return SQLTools.ExecuteQuery(q, null, null, null, new String[] { rid.ToString() });
@@ -183,8 +186,8 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Sidepanel Methods  ✔Done
-        public static String GetNumberOfUnscheduledAssignments() {
-            throw new NotImplementedException();
+        public static int GetNumberOfUnscheduledAssignments() {
+            return 1;
         }
 
         public static int GetNumberOfAssignedGuards() {
@@ -238,12 +241,14 @@ namespace MSAMISUserInterface {
                         left join sduty_assignment on sduty_assignment.gid=guards.gid
                         left join dutydetails on sduty_assignment.aid=dutydetails.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
-                        left join request on request_assign.rid=request.rid
-                        where cid = " + cid + "";
+                        left join request on request_assign.rid=request.rid where 'a' ='a'" +
+                        (cid == -1 ? "" : " AND cid = " + cid + "");
+                        
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND days is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
                 q += "AND days is null";
+            
 
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
@@ -293,9 +298,9 @@ namespace MSAMISUserInterface {
         #region Non-Query Methods
         // public static void AddDutyDetails()
 
-        // DismissGuard;    (Change Guard to inactive, change sduty_assignment to dismissed.
+        // DismissGuard;    (change sduty_assignment to dismissed.
         public static void DismissDuty (int did) {
-            //String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive"' WHERE `DID`='"+did+"';";
+           // String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive"' WHERE `DID`='"+did+"';";
 
         }
         // 
@@ -310,7 +315,7 @@ namespace MSAMISUserInterface {
 
 
 
-
+            
 
 
 
