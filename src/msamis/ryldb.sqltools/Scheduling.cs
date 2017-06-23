@@ -113,10 +113,9 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery(q1);
             String rid = SQLTools.getLastInsertedId("request", "rid");
             String query = String.Format("INSERT INTO `msadb`.`request_assign` " +
-                " ( `ContractStart`, `ContractEnd`, `RStatus`, `streetno`, `streetname`, `brgy`, `city`,`noguards`,`rid`)" +
-                " VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}','{8}');",
+                " ( `ContractStart`, `ContractEnd`, `streetno`, `streetname`, `brgy`, `city`,`noguards`,`rid`)" +
+                " VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
                  ContractStart.ToString("yyyy-MM-dd"), ContractEnd.ToString("yyyy-MM-dd"),
-                Enumeration.RequestStatus.Pending,
                 AssStreetNo, AssStreetName, AssBrgy, AssCity, NoGuards, rid);
             Console.WriteLine("AddAssignmentRequest: \n" + query);
             SQLTools.ExecuteNonQuery(query);

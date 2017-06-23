@@ -112,7 +112,6 @@ namespace MSAMISUserInterface {
             query = AppendType(query, filters);
             query = AppendFilters(query, ColumnToFilterByKeyword, keyword, orderby);
             DataTable dt = new DataTable();
-            Console.WriteLine("=================================================\nSQLTools.cs: Your query was\n" + query + "\n=================================================");
             try {
                 MySqlCommand com = new MySqlCommand(query, SQLTools.conn);
                 SQLTools.conn.Open();
@@ -121,6 +120,7 @@ namespace MSAMISUserInterface {
             } catch (Exception e) {
                 MessageBox.Show(e.ToString());
             } finally {
+                message(query);
                 SQLTools.conn.Close();
             }
             return dt;
@@ -134,10 +134,16 @@ namespace MSAMISUserInterface {
             } catch (Exception e) {
                 MessageBox.Show(e.ToString());
             } finally {
+                message(query);
                 SQLTools.conn.Close();
             }
         }
 
+        public static void message (String query) {
+            Console.WriteLine("--------------------------------------------------------");
+            Console.WriteLine("SQLTools >> Your query was");
+            Console.WriteLine(query);
+        }
         public static void ExecuteNonQueryNoDB(string query) {
             try {
                 MySqlCommand com = new MySqlCommand(query, nodb);

@@ -1,0 +1,11 @@
+MyCommonStrings
+
+concat(ln,', ',fn,' ',mn) as name
+concat(streetno, ', ', street, ', ', brgy, ', ', city) as Location
+
+SQL:
+D:\Files\Desktop\msa-mis\sql\msadb.sql
+
+PLAN:
+Move IncidentReports to Unassignment
+Checkbox for [] Attached Incident Report para pwede mag unassign w/o incident.
