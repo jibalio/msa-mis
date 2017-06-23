@@ -660,6 +660,10 @@ namespace MSAMISUserInterface {
             SViewReqAssBTN.Visible = true;
 
             SCHEDLoadRequestsPage();
+
+            SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequest() + " client requests";
+            SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
+            SAssignedGuardsLBL.Text = Scheduling.GetNumberOfUnscheduledAssignments() + " unscheduled guards";
         }
         #endregion
 
@@ -1164,10 +1168,5 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-
-        private void SchedulesPage_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

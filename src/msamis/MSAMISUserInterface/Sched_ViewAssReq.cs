@@ -38,6 +38,7 @@ namespace MSAMISUserInterface {
             ContractStartLBL.Text = "Contract Start: " + dt.Rows[0]["contractstart"].ToString();
             ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"].ToString();
             NoLBL.Text = "Guards Needed: " + dt.Rows[0]["noguards"].ToString();
+            ClientLBL.Text = dt.Rows[0]["rstatus"].ToString();
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {
