@@ -43,7 +43,7 @@ namespace MSAMISUserInterface {
             String q = "select rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid ";
             if (ClientFilter !=-1 || TypeFilter!=-1) {
                 q += " where 1=1 ";
-                if (ClientFilter != 0) q += " and client.cid=" + ClientFilter;
+                if (ClientFilter != -1) q += " and client.cid=" + ClientFilter;
                 if (TypeFilter != 0) q += " and requesttype=" + TypeFilter;
             }
             searchkeyword = cleansearch(searchkeyword);
@@ -51,7 +51,14 @@ namespace MSAMISUserInterface {
         }
 
 
-
+        public static DataTable GetUnassignedGuards(String FilterSort,String searchkeyword, String orderbyColumnASCDESC) {
+            String q = @"SELECT guards.gid, concat(ln,', ',fn,' ',mn) as name,
+                         concat(streetno, ', ', street, ', ', brgy, ', ', city) as Location
+                         from msadb.guards
+                         left join address on address.gid = guards.gid
+                         where gstatus = 2 ";
+            return SQLTools.ExecuteQuery(q, FilterSort, searchkeyword, orderbyColumnASCDESC);
+        }
 
 
 
