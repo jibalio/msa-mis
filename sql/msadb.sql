@@ -209,7 +209,7 @@ CREATE TABLE `dutydetails` (
   PRIMARY KEY (`DID`),
   KEY `Assignment-Duty_idx` (`AID`),
   CONSTRAINT `Assignment-Duty` FOREIGN KEY (`AID`) REFERENCES `sduty_assignment` (`AID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,7 +291,6 @@ DROP TABLE IF EXISTS `incidentreport`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `incidentreport` (
   `IID` int(11) NOT NULL AUTO_INCREMENT,
-  `RDID` int(11) DEFAULT NULL,
   `ReportType` int(11) DEFAULT NULL,
   `PCompleting` varchar(45) DEFAULT NULL,
   `EventDate` varchar(45) DEFAULT NULL,
@@ -299,7 +298,7 @@ CREATE TABLE `incidentreport` (
   `Description` longtext,
   `DateEntry` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`IID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,7 +421,7 @@ CREATE TABLE `request` (
   `DateEntry` varchar(45) DEFAULT NULL,
   `RStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`RID`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -452,7 +451,7 @@ CREATE TABLE `request_assign` (
   `city` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `NoGuards` int(11) DEFAULT NULL,
   PRIMARY KEY (`RAID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -465,27 +464,28 @@ LOCK TABLES `request_assign` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `request_dismiss`
+-- Table structure for table `request_unassign`
 --
 
-DROP TABLE IF EXISTS `request_dismiss`;
+DROP TABLE IF EXISTS `request_unassign`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `request_dismiss` (
+CREATE TABLE `request_unassign` (
   `RDID` int(11) NOT NULL AUTO_INCREMENT,
   `RID` int(11) DEFAULT NULL,
-  `DID` int(11) DEFAULT NULL,
+  `GID` int(11) DEFAULT NULL,
+  `IID` int(11) DEFAULT NULL,
   PRIMARY KEY (`RDID`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `request_dismiss`
+-- Dumping data for table `request_unassign`
 --
 
-LOCK TABLES `request_dismiss` WRITE;
-/*!40000 ALTER TABLE `request_dismiss` DISABLE KEYS */;
-/*!40000 ALTER TABLE `request_dismiss` ENABLE KEYS */;
+LOCK TABLES `request_unassign` WRITE;
+/*!40000 ALTER TABLE `request_unassign` DISABLE KEYS */;
+/*!40000 ALTER TABLE `request_unassign` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -504,7 +504,7 @@ CREATE TABLE `sduty_assignment` (
   KEY `Assignment-Guard_idx` (`GID`),
   KEY `Assignment-Request_idx` (`RAID`),
   CONSTRAINT `Assignment-Guard` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -561,4 +561,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-24  0:02:12
+-- Dump completed on 2017-06-24 19:50:24
