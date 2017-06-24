@@ -51,17 +51,18 @@ namespace MSAMISUserInterface {
             this.Close();
         }
         Color dark = Color.FromArgb(53, 64, 82);
-        Color light = Color.FromArgb(94, 114, 146);
+        Color light = Color.White;
 
         private void changeDayStatus(int n, Button btn) {
             if (DutyDays[n] == true) {
                 DutyDays[n] = false;
-                btn.BackColor = light;
+                btn.BackColor = Color.White;
+                btn.ForeColor = dark;
             } else if (DutyDays[n] == false) {
                 DutyDays[n] = true;
                 btn.BackColor = dark;
+                btn.ForeColor = Color.White;
             }
-
         }
 
         private void SuBTN_Click(object sender, EventArgs e) {

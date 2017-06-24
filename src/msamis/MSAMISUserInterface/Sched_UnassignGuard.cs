@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
-    public partial class Sched_DismissGuard : Form {
+    public partial class Sched_UnassignGuard : Form {
         public MainForm reference;
         public MySqlConnection conn;
 
-        public Sched_DismissGuard() {
+        public Sched_UnassignGuard() {
             InitializeComponent();
             this.Opacity = 0;
         }

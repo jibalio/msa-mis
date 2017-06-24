@@ -786,7 +786,7 @@ namespace MSAMISUserInterface {
         }
         private void SViewReqDisBTN_Click(object sender, EventArgs e) {
             try {
-                Sched_DismissGuard view = new Sched_DismissGuard();
+                Sched_UnassignGuard view = new Sched_UnassignGuard();
                 view.reference = this;
                 view.conn = this.conn;
                 view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
