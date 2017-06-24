@@ -62,6 +62,29 @@ namespace MSAMISUserInterface {
         private void Form_MouseUp(object sender, MouseEventArgs e) {
             mouseDown = false;
         }
+        private void Dashboard_MouseUp(object sender, MouseEventArgs e) {
+            mouseDown = false;
+            if (DashboardPage.Location.Y <= -300) {
+                DashboardPage.Location = new Point(DashboardPage.Location.X, -328);
+                DashboardToBeMinimized = true;
+                DashboardTMR.Start();
+                GuardsPage.Show();
+                SchedulesPage.Hide();
+                PayrollPage.Hide();
+                ClientsPage.Hide();
+                currentBTN.BackColor = primary;
+                RecordsBTN.BackColor = accent;
+                currentPage = GuardsPage;
+                currentBTN = RecordsBTN;
+                GUARDSLoadPage();
+            } else {
+                if (DashboardPage.Location.Y > -148) DashboardPage.Location = new Point(DashboardPage.Location.X, -28);
+                else if (DashboardPage.Location.Y > -208) DashboardPage.Location = new Point(DashboardPage.Location.X, -148);
+                else DashboardPage.Location = new Point(DashboardPage.Location.X, -268);
+                DashboardToBeMinimized = false;
+                DashboardTMR.Start();
+            }
+        }
         private void Form_MouseDown(object sender, MouseEventArgs e) {
             mouseDown = true;
             lastLocation = e.Location;
@@ -72,6 +95,16 @@ namespace MSAMISUserInterface {
                     (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y
                     );
                 this.Update();
+            }
+        }
+        private void Dashboard_MouseMove(object sender, MouseEventArgs e) {
+            if (mouseDown) {
+                if (((DashboardPage.Location.Y - lastLocation.Y) + e.Y) < 32) { 
+                    DashboardPage.Location = new Point(
+                        (DashboardPage.Location.X), (DashboardPage.Location.Y - lastLocation.Y) + e.Y
+                        );
+                }
+                DashboardPage.Update();
             }
         }
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -157,7 +190,12 @@ namespace MSAMISUserInterface {
                 Point defaultPoint = new Point(70, 32);
                 if (DashboardPage.Location.Y != defaultPoint.Y) {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y + 60);
-                } else { DashboardTMR.Stop(); ControlBoxPanel.BackColor = dahsbard; }
+                } else { DashboardTMR.Stop(); ControlBoxPanel.BackColor = dahsbard;
+                    GuardsPage.Hide();
+                    SchedulesPage.Hide();
+                    PayrollPage.Hide();
+                    ClientsPage.Hide();
+                }
             }
 
         }
@@ -1164,10 +1202,9 @@ namespace MSAMISUserInterface {
                     break;
             }
         }
-        #endregion
 
         #endregion
 
-
+        #endregion
     }
 }
