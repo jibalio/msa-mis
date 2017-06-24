@@ -814,7 +814,7 @@ namespace MSAMISUserInterface {
             SViewAssCMBX.SelectedIndex = 0;
             SCHEDRefreshAssignments();
         }
-        private void SCHEDRefreshAssignments() {
+        public void SCHEDRefreshAssignments() {
             SViewAssGRD.DataSource = Scheduling.GetAssignmentsByClient(int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID), SViewAssCMBX.SelectedIndex);
             SViewAssGRD.Columns[0].Visible = false;
             SViewAssGRD.Columns[1].Visible = false;
@@ -848,10 +848,22 @@ namespace MSAMISUserInterface {
                 if (SViewAssGRD.SelectedRows.Count == 0) SViewAssGRD.Rows[0].Selected = true;
 
                 if (SViewAssGRD.SelectedRows.Count > 1) {
-                    SViewAssAddDutyBTN.Visible = false;
-                    SViewAssViewDetailsBTN.Visible = false;
-                    SVIewAssDisBTN.Visible = true;
-                    SViewAssUnassignBTN.Visible = false;
+                    if (isUnscheduled()) {
+                        SViewAssAddDutyBTN.Visible = false;
+                        SViewAssViewDetailsBTN.Visible = false;
+                        SVIewAssDisBTN.Visible = false;
+                        SViewAssUnassignBTN.Visible = true;
+                    } else if (isScheduled()) {
+                        SViewAssAddDutyBTN.Visible = false;
+                        SViewAssViewDetailsBTN.Visible = false;
+                        SVIewAssDisBTN.Visible = true;
+                        SViewAssUnassignBTN.Visible = false;
+                    } else {
+                        SViewAssAddDutyBTN.Visible = false;
+                        SViewAssViewDetailsBTN.Visible = false;
+                        SVIewAssDisBTN.Visible = false;
+                        SViewAssUnassignBTN.Visible = false;
+                    }
                 } else if (SViewAssGRD.SelectedRows[0].Cells[5].Value.ToString().Equals("Unscheduled")) {
                     SViewAssAddDutyBTN.Visible = true;
                     SViewAssViewDetailsBTN.Visible = false;
@@ -859,11 +871,23 @@ namespace MSAMISUserInterface {
                     SViewAssUnassignBTN.Visible = true;
                 } else {
                     SViewAssAddDutyBTN.Visible = false;
-                    SViewAssViewDetailsBTN.Visible = true;
                     SVIewAssDisBTN.Visible = true;
+                    SViewAssViewDetailsBTN.Visible = true;
                     SViewAssUnassignBTN.Visible = false;
                 }
             }
+        }
+        private bool isUnscheduled() {
+            bool ret = true;
+            foreach (DataGridViewRow row in SViewAssGRD.SelectedRows)
+                if (!row.Cells[5].Value.ToString().Equals("Unscheduled")) ret = false;
+            return ret;
+        }
+        private bool isScheduled() {
+            bool ret = true;
+            foreach (DataGridViewRow row in SViewAssGRD.SelectedRows)
+                if (row.Cells[5].Value.ToString().Equals("Unscheduled")) ret = false;
+            return ret;
         }
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewAssSearchTXTBX.Text == FilterText) {
@@ -885,7 +909,7 @@ namespace MSAMISUserInterface {
                 Sched_AddDutyDetail view = new Sched_AddDutyDetail();
                 view.reference = this;
                 view.conn = this.conn;
-                view.AID = int.Parse(this.SViewAssGRD.SelectedRows[0].Cells[0].Value.ToString());
+                view.AID = int.Parse(this.SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
                 view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
                 view.ShowDialog();
             }
