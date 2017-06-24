@@ -45,7 +45,11 @@ namespace MSAMISUserInterface {
                 AssignBTN.Text = "APPROVE";
             } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Approved.ToString())) {
                 AssignBTN.Text = "ASSIGN";
-            } else AssignBTN.Visible = false;
+            } else {
+                AssignBTN.Visible = false;
+                AvailablePNL.Visible = false;
+                CloseBTN.Location = new Point(305, 600); 
+            }
 
 
             if (numGuards > Scheduling.GetNumberOfUnassignedGuards()) NeededLBL.ForeColor = Color.Coral;

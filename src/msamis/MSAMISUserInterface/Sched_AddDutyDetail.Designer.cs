@@ -58,12 +58,12 @@
             // NameLBL
             // 
             this.NameLBL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.NameLBL.Location = new System.Drawing.Point(0, 24);
             this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NameLBL.Name = "NameLBL";
-            this.NameLBL.Size = new System.Drawing.Size(718, 61);
+            this.NameLBL.Size = new System.Drawing.Size(718, 56);
             this.NameLBL.TabIndex = 118;
             this.NameLBL.Text = "Laboriki, Dodong Lab W.";
             this.NameLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -71,7 +71,7 @@
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -84,12 +84,12 @@
             // ClientLBL
             // 
             this.ClientLBL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ClientLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.ClientLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.ClientLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ClientLBL.Location = new System.Drawing.Point(0, 111);
+            this.ClientLBL.Location = new System.Drawing.Point(0, 106);
             this.ClientLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ClientLBL.Name = "ClientLBL";
-            this.ClientLBL.Size = new System.Drawing.Size(718, 40);
+            this.ClientLBL.Size = new System.Drawing.Size(718, 35);
             this.ClientLBL.TabIndex = 120;
             this.ClientLBL.Text = "Laboriki Enterprises";
             this.ClientLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -97,9 +97,9 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(0, 85);
+            this.label2.Location = new System.Drawing.Point(0, 80);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(718, 26);
@@ -113,7 +113,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.NameLBL);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(1, 91);
+            this.panel1.Location = new System.Drawing.Point(2, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(718, 168);
             this.panel1.TabIndex = 122;
@@ -123,7 +123,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label20.Location = new System.Drawing.Point(243, 329);
+            this.label20.Location = new System.Drawing.Point(243, 293);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(58, 19);
@@ -135,7 +135,7 @@
             this.ContactLBL.AutoSize = true;
             this.ContactLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.ContactLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactLBL.Location = new System.Drawing.Point(308, 286);
+            this.ContactLBL.Location = new System.Drawing.Point(308, 250);
             this.ContactLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ContactLBL.Name = "ContactLBL";
             this.ContactLBL.Size = new System.Drawing.Size(100, 21);
@@ -152,7 +152,7 @@
             this.TimeInAMPMBX.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.TimeInAMPMBX.Location = new System.Drawing.Point(423, 325);
+            this.TimeInAMPMBX.Location = new System.Drawing.Point(423, 289);
             this.TimeInAMPMBX.Name = "TimeInAMPMBX";
             this.TimeInAMPMBX.Size = new System.Drawing.Size(56, 25);
             this.TimeInAMPMBX.Sorted = true;
@@ -163,7 +163,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(233, 364);
+            this.label5.Location = new System.Drawing.Point(233, 328);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 19);
@@ -175,7 +175,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(312, 422);
+            this.label6.Location = new System.Drawing.Point(312, 386);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 21);
@@ -247,7 +247,7 @@
             "10",
             "11",
             "12"});
-            this.TimeInHrBX.Location = new System.Drawing.Point(304, 325);
+            this.TimeInHrBX.Location = new System.Drawing.Point(304, 289);
             this.TimeInHrBX.Name = "TimeInHrBX";
             this.TimeInHrBX.Size = new System.Drawing.Size(46, 25);
             this.TimeInHrBX.Sorted = true;
@@ -321,7 +321,7 @@
             "57",
             "58",
             "59"});
-            this.TimeInMinBX.Location = new System.Drawing.Point(362, 325);
+            this.TimeInMinBX.Location = new System.Drawing.Point(362, 289);
             this.TimeInMinBX.Name = "TimeInMinBX";
             this.TimeInMinBX.Size = new System.Drawing.Size(46, 25);
             this.TimeInMinBX.Sorted = true;
@@ -395,7 +395,7 @@
             "57",
             "58",
             "59"});
-            this.TimeOutMinBX.Location = new System.Drawing.Point(362, 361);
+            this.TimeOutMinBX.Location = new System.Drawing.Point(362, 325);
             this.TimeOutMinBX.Name = "TimeOutMinBX";
             this.TimeOutMinBX.Size = new System.Drawing.Size(46, 25);
             this.TimeOutMinBX.Sorted = true;
@@ -421,7 +421,7 @@
             "10",
             "11",
             "12"});
-            this.TimeOutHrBX.Location = new System.Drawing.Point(304, 361);
+            this.TimeOutHrBX.Location = new System.Drawing.Point(304, 325);
             this.TimeOutHrBX.Name = "TimeOutHrBX";
             this.TimeOutHrBX.Size = new System.Drawing.Size(46, 25);
             this.TimeOutHrBX.Sorted = true;
@@ -437,7 +437,7 @@
             this.TimeOutAMPMBX.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.TimeOutAMPMBX.Location = new System.Drawing.Point(423, 361);
+            this.TimeOutAMPMBX.Location = new System.Drawing.Point(423, 325);
             this.TimeOutAMPMBX.Name = "TimeOutAMPMBX";
             this.TimeOutAMPMBX.Size = new System.Drawing.Size(56, 25);
             this.TimeOutAMPMBX.Sorted = true;
@@ -448,7 +448,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(350, 328);
+            this.label1.Location = new System.Drawing.Point(350, 292);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(12, 19);
@@ -460,7 +460,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(350, 364);
+            this.label3.Location = new System.Drawing.Point(350, 328);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(12, 19);
@@ -476,7 +476,7 @@
             this.SuBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SuBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.SuBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SuBTN.Location = new System.Drawing.Point(200, 466);
+            this.SuBTN.Location = new System.Drawing.Point(200, 430);
             this.SuBTN.Name = "SuBTN";
             this.SuBTN.Size = new System.Drawing.Size(40, 40);
             this.SuBTN.TabIndex = 6;
@@ -493,7 +493,7 @@
             this.MBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.MBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.MBTN.Location = new System.Drawing.Point(246, 466);
+            this.MBTN.Location = new System.Drawing.Point(246, 430);
             this.MBTN.Name = "MBTN";
             this.MBTN.Size = new System.Drawing.Size(40, 40);
             this.MBTN.TabIndex = 7;
@@ -510,7 +510,7 @@
             this.TBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.TBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.TBTN.Location = new System.Drawing.Point(292, 466);
+            this.TBTN.Location = new System.Drawing.Point(292, 430);
             this.TBTN.Name = "TBTN";
             this.TBTN.Size = new System.Drawing.Size(40, 40);
             this.TBTN.TabIndex = 8;
@@ -527,7 +527,7 @@
             this.WBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.WBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.WBTN.Location = new System.Drawing.Point(338, 466);
+            this.WBTN.Location = new System.Drawing.Point(338, 430);
             this.WBTN.Name = "WBTN";
             this.WBTN.Size = new System.Drawing.Size(40, 40);
             this.WBTN.TabIndex = 9;
@@ -544,7 +544,7 @@
             this.ThBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ThBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.ThBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ThBTN.Location = new System.Drawing.Point(384, 466);
+            this.ThBTN.Location = new System.Drawing.Point(384, 430);
             this.ThBTN.Name = "ThBTN";
             this.ThBTN.Size = new System.Drawing.Size(40, 40);
             this.ThBTN.TabIndex = 10;
@@ -561,7 +561,7 @@
             this.FBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.FBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.FBTN.Location = new System.Drawing.Point(430, 466);
+            this.FBTN.Location = new System.Drawing.Point(430, 430);
             this.FBTN.Name = "FBTN";
             this.FBTN.Size = new System.Drawing.Size(40, 40);
             this.FBTN.TabIndex = 11;
@@ -578,7 +578,7 @@
             this.SaBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.SaBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SaBTN.Location = new System.Drawing.Point(476, 466);
+            this.SaBTN.Location = new System.Drawing.Point(476, 430);
             this.SaBTN.Name = "SaBTN";
             this.SaBTN.Size = new System.Drawing.Size(40, 40);
             this.SaBTN.TabIndex = 12;

@@ -785,14 +785,19 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
         private void SViewReqDisBTN_Click(object sender, EventArgs e) {
-            try {
-                Sched_UnassignGuard view = new Sched_UnassignGuard();
-                view.reference = this;
-                view.conn = this.conn;
-                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
-                view.ShowDialog();
+            if (isUnscheduled()) {
+                try {
+                    Sched_UnassignGuard view = new Sched_UnassignGuard();
+                    view.reference = this;
+                    view.conn = this.conn;
+                    view.guards = SViewAssGRD.SelectedRows;
+                    view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                    view.ShowDialog();
+                }
+                catch (Exception) { }
+            } else {
+                rylui.RylMessageBox.ShowDialog("You can't unassign a guard with an active assignment \nPlease dismiss the guards before unassigning them", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception) { }
         }
         #endregion
 
@@ -828,54 +833,13 @@ namespace MSAMISUserInterface {
             SViewAssGRD.Columns[5].Width = 150;
 
             SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
-            SCHEDViewAssGRDButtonChecker();
             SViewAssGRD.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void SViewAssCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             SCHEDRefreshAssignments();
         }
         private void SViewAssGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            SCHEDViewAssGRDButtonChecker();
-        }
 
-        private void SCHEDViewAssGRDButtonChecker() {
-            if (SViewAssGRD.Rows.Count == 0) {
-                SViewAssAddDutyBTN.Visible = false;
-                SViewAssViewDetailsBTN.Visible = false;
-                SVIewAssDisBTN.Visible = false;
-                SViewAssUnassignBTN.Visible = false;
-            } else {
-                if (SViewAssGRD.SelectedRows.Count == 0) SViewAssGRD.Rows[0].Selected = true;
-
-                if (SViewAssGRD.SelectedRows.Count > 1) {
-                    if (isUnscheduled()) {
-                        SViewAssAddDutyBTN.Visible = false;
-                        SViewAssViewDetailsBTN.Visible = false;
-                        SVIewAssDisBTN.Visible = false;
-                        SViewAssUnassignBTN.Visible = true;
-                    } else if (isScheduled()) {
-                        SViewAssAddDutyBTN.Visible = true;
-                        SViewAssViewDetailsBTN.Visible = false;
-                        SVIewAssDisBTN.Visible = true;
-                        SViewAssUnassignBTN.Visible = false;
-                    } else {
-                        SViewAssAddDutyBTN.Visible = true;
-                        SViewAssViewDetailsBTN.Visible = false;
-                        SVIewAssDisBTN.Visible = false;
-                        SViewAssUnassignBTN.Visible = false;
-                    }
-                } else if (SViewAssGRD.SelectedRows[0].Cells[5].Value.ToString().Equals("Unscheduled")) {
-                    SViewAssAddDutyBTN.Visible = true;
-                    SViewAssViewDetailsBTN.Visible = false;
-                    SVIewAssDisBTN.Visible = false;
-                    SViewAssUnassignBTN.Visible = true;
-                } else {
-                    SViewAssAddDutyBTN.Visible = true;
-                    SVIewAssDisBTN.Visible = true;
-                    SViewAssViewDetailsBTN.Visible = true;
-                    SViewAssUnassignBTN.Visible = false;
-                }
-            }
         }
         private bool isUnscheduled() {
             bool ret = true;
@@ -904,26 +868,20 @@ namespace MSAMISUserInterface {
             SCHEDRefreshAssignments();
             SViewAssSearchLine.Visible = false;
         }
-        private void SViewAssAddDutyBTN_Click(object sender, EventArgs e) {
-            try {
-                Sched_AddDutyDetail view = new Sched_AddDutyDetail();
-                view.reference = this;
-                view.conn = this.conn;
-                view.AID = int.Parse(this.SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
-                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
-                view.ShowDialog();
-            }
-            catch (Exception) { }
-        }
         private void SViewAssViewDetailsBTN_Click(object sender, EventArgs e) {
-            try {
-                Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
-                view.reference = this;
-                view.conn = this.conn;
-                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
-                view.ShowDialog();
+            if (SViewAssGRD.SelectedRows.Count > 1) {
+                rylui.RylMessageBox.ShowDialog("More than one assignment is selected", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else {
+                try {
+                    Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
+                    view.reference = this;
+                    view.conn = this.conn;
+                    view.AID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
+                    view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                    view.ShowDialog();
+                }
+                catch (Exception) { }
             }
-            catch (Exception) { }
         }
         #endregion
 

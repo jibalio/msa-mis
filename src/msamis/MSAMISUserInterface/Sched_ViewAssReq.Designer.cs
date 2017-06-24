@@ -31,7 +31,7 @@
             this.ContractEndLBL = new System.Windows.Forms.Label();
             this.PermAddLBL = new System.Windows.Forms.Label();
             this.ContractStartLBL = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.AvailablePNL = new System.Windows.Forms.Panel();
             this.NeededLBL = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
@@ -39,7 +39,7 @@
             this.AssignBTN = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.AvailablePNL.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,15 +131,15 @@
             this.ContractStartLBL.Text = "---------------";
             this.ContractStartLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // panel2
+            // AvailablePNL
             // 
-            this.panel2.Controls.Add(this.NeededLBL);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.ForeColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(0, 365);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 73);
-            this.panel2.TabIndex = 125;
+            this.AvailablePNL.Controls.Add(this.NeededLBL);
+            this.AvailablePNL.Controls.Add(this.label10);
+            this.AvailablePNL.ForeColor = System.Drawing.Color.White;
+            this.AvailablePNL.Location = new System.Drawing.Point(0, 365);
+            this.AvailablePNL.Name = "AvailablePNL";
+            this.AvailablePNL.Size = new System.Drawing.Size(718, 73);
+            this.AvailablePNL.TabIndex = 125;
             // 
             // NeededLBL
             // 
@@ -231,7 +231,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.AssignBTN);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.AvailablePNL);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -240,7 +240,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_ViewAssReq_FormClosing);
             this.Load += new System.EventHandler(this.Sched_ViewAssReq_Load);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.AvailablePNL.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -255,7 +255,7 @@
         private System.Windows.Forms.Label ContractEndLBL;
         private System.Windows.Forms.Label PermAddLBL;
         private System.Windows.Forms.Label ContractStartLBL;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel AvailablePNL;
         private System.Windows.Forms.Label NeededLBL;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button CloseBTN;
