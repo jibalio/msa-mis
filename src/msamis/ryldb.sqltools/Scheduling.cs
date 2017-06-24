@@ -121,50 +121,66 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery(query);
         }
 
-
-        
         /// <summary>
-        /// Adds a dismissal request
+        /// Adds an unassignment request for the specified guards.
         /// </summary>
-        /// <param name="cid">ClientID of requester</param>
-        /// <param name="did">Duty Detail ID of guard. DID can be found in the DataTable 'select guards to dismiss'.</param>
-        /// <param name="ReportType">Report Type. DO NOT HARDCODE. Possible Values:
-        /// Enumeration.ReportType.Injury
-        /// Enumeration.ReportType.Complaint
-        /// Enumeration.ReportType.Accident
-        /// </param>
-        /// <param name="pcompleting">Idk what this field is. Naa ni sa IncidentReport table.</param>
-        /// <param name="EventDate">Date of incident.</param>
-        /// <param name="location">Location of incident</param>
-        /// <param name="description">Description</param>
-        public static void AddDismissalRequest(int cid, int[] did, int ReportType, String pcompleting, DateTime EventDate,
+        /// <param name="cid">Client ID</param>
+        /// <param name="gid">An array of Guard ID's to be dismissed</param>
+        /// <param name="ReportType">Enumeration.ReportType (Incident)</param>
+        /// <param name="pcompleting">Idk unsa ni na field.</param>
+        /// <param name="EventDate">Date of event.</param>
+        /// <param name="location">Brief location description</param>
+        /// <param name="description">Brief description of incident.</param>
+        public static void AddUnassignmentRequest(int cid, int[] gid, int ReportType, String pcompleting, DateTime EventDate,
             String location, String description) {
-            // Add a request, specifying client.
-            String q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`) VALUES ('{0}', '{1}', '{2}')";
-            q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime());
-            SQLTools.ExecuteNonQuery(q);
-            String lid = SQLTools.getLastInsertedId("request", "rid");
-            for (int c = 0; c < did.Length; c++) {
-                q = "INSERT INTO `msadb`.`request_dismiss` (`RID`, `did`) VALUES ('" + lid.ToString() + "', '" + did[c] + "');";
-                SQLTools.ExecuteNonQuery(q);
-            }
-            String RDID = SQLTools.getLastInsertedId("request_dismiss", "rdid");
-            q = String.Format(@"INSERT INTO `msadb`.`incidentreport` 
-                         (`RDID`, `ReportType`, `DateEntry`, `PCompleting`, `EventDate`, `EventLocation`, `Description`) 
-                         VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}');",
-                        RDID, ReportType, SQLTools.getDateTime(), pcompleting, EventDate.ToString("yyyy-MM-dd"),location, description
+
+            // 1.) Add Incident Report
+            String q = String.Format(@"INSERT INTO `msadb`.`incidentreport` 
+                         (`ReportType`, `DateEntry`, `PCompleting`, `EventDate`, `EventLocation`, `Description`) 
+                         VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
+                          ReportType, SQLTools.getDateTime(), pcompleting, EventDate.ToString("yyyy-MM-dd"), location, description
                         );
             SQLTools.ExecuteNonQuery(q);
+            // 2.) Insert a dismissal request.\
+            // 2a: Get last inserted Incident Report (link this)
+            int ernational_love = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "iid"));
+            // 2b: Insert request
+            q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`) VALUES ('{0}', '{1}', '{2}','{3}')";
+            q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime(),Enumeration.RequestStatus.Pending, ernational_love );
+            SQLTools.ExecuteNonQuery(q);
+            String lid = SQLTools.getLastInsertedId("request", "rid");
+            for (int c = 0; c < gid.Length; c++) {  
+                q = "INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `iid`) VALUES ('" + lid.ToString() + "', '" + gid[c] + "', '"+ernational_love+"');";
+                SQLTools.ExecuteNonQuery(q);
+            }
+            
         }
+        
 
 
 
 
 
 
-
-        public static void UnassignGuards(int[] gid) {
-          //  foreach ()
+        public static void ApproveUnassignment(int rid) {
+            // 1.) Get all GIDs of guards in RID
+            DataTable GuardsToBeDismissed = SQLTools.ExecuteQuery(@"select guards.gid as gid, sduty_assignment.aid as aid from guards 
+                                            left join sduty_assignment on sduty_assignment.GID = guards.gid
+                                            left join request_unassign on request_unassign.gid = guards.gid
+                                            where rid = " + rid + ";");
+            foreach (DataRow e in GuardsToBeDismissed.Rows) {
+                // 1A) Set scheds to inactive
+                String q = @"UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive+"' WHERE `AID`='"+e["aid"]+"';";
+                SQLTools.ExecuteNonQuery(q);
+                // 2.) Set assignment to dismissed (IF they have schedules active)
+                 q = @"UPDATE `msadb`.`sduty_assignment` SET `AStatus`='"+Enumeration.AssignmentStatus.Dismissed+"' WHERE `gid`='" + e["gid"] + "';";
+                SQLTools.ExecuteNonQuery(q);
+                // 3.) Set guard to Inactive (BUT NOT DISMISSED)
+                q = @"UPDATE `msadb`.`guards` SET `GStatus`='"+Enumeration.GuardStatus.Inactive+"' WHERE `GID`='" + e[0] + "'";
+                SQLTools.ExecuteNonQuery(q);
+            }
+            // Step 4
+            UpdateRequestStatus(rid, Enumeration.RequestStatus.Approved);
         }
 
         #endregion
@@ -179,10 +195,9 @@ namespace MSAMISUserInterface {
                    String q = String.Format("INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`) VALUES ('{0}', '{1}', '{2}');",
                    g, raid, Enumeration.Schedule.Active);
                     SQLTools.ExecuteNonQuery(q);
-                    // Update guard status.
-                    //q = "UPDATE `msadb`.`guards` SET `GStatus`='"+Enumeration.GuardStatus.Active+"' WHERE `GID`='"+g+"';";
-                   // SQLTools.ExecuteNonQuery(q);
+                    // Set status to active.
                 }
+                UpdateRequestStatus(rid, Enumeration.RequestStatus.Active);
             } else
                 MessageBox.Show("Request is not an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             
@@ -195,13 +210,7 @@ namespace MSAMISUserInterface {
         /// 2.) 
         /// </summary>
         /// <param name="rid">Request ID to approve dismissal.</param>
-        public static void ApproveDismissal(int rid) {
-            DataTable GuardsToBeDismissed = SQLTools.ExecuteQuery(@"select did from request_dismiss
-                                            where rid = " + rid + ";");
-            foreach (DataRow e in GuardsToBeDismissed.Rows) {
-                String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`='2' WHERE `DID`='" + e["did"] +"';";
-            }
-        }
+       
 
         /// <summary>
         /// Declines a request. Does no further processes.
@@ -286,7 +295,6 @@ namespace MSAMISUserInterface {
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid where 'a' ='a'" +
                         (cid == -1 ? "" : " AND cid = " + cid + "");
-                        
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND days is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
@@ -315,17 +323,23 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        #region DutyDetail Operations   ✔Done
+        #region DutyDetail Operations  (Add + Dismiss)  ✔Done
         public class Days {
-            public string Value = null;
+            public string deendracht = null;
+            public bool[] Value = new bool[7];
             public Days(bool Mon, bool Tue, bool Wed, bool Thu, bool Fri, bool Sat, bool Sun) {
-                Value = "";
+                deendracht = "";
                 bool[] d = { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
                 for (int c = 0; c < d.Length; c++) {
-                    if (d[c]) Value += "1:";
-                    else Value += "0:";
+                    if (d[c]) {
+                        deendracht += "1:";
+                        Value[c] = true;
+                    } else {
+                        deendracht += "0:";
+                        Value[c] = false;
+                    }
                 }
-                Value = Value.Substring(0, Value.Length - 1);
+                deendracht = deendracht.Substring(0, deendracht.Length - 1);
             }
         }
         public static void AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
@@ -334,20 +348,21 @@ namespace MSAMISUserInterface {
             ti = String.Format("{0}:{1}:{2}", TI_hr, TI_min, TI_ampm);
             to = String.Format("{0}:{1}:{2}", TO_hr, TO_min, TO_ampm);
             String q = "INSERT INTO `msadb`.`dutydetails` (`AID`, `TimeOut`, `TimeIn`, `Days`,`DStatus`) VALUES ('{0}', '{1}', '{2}', '{3}','{4}');";
-            q = String.Format(q, aid, to, ti, days.Value, Enumeration.AssignmentStatus.Active);
+            q = String.Format(q, aid, to, ti, days.deendracht, Enumeration.AssignmentStatus.Active);
             SQLTools.ExecuteNonQuery(q);
+        }
+
+        public static void DismissDuty (int did) {
+            // Set duty detail to inactive.
+            // Previous duty na ni niya.
+            String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive+"' WHERE `DID`='{0}';";
+            q = String.Format(q, did);
         }
         #endregion
 
         #region Non-Query Methods
         // public static void AddDutyDetails()
-
-        // DismissGuard;    (change sduty_assignment to dismissed.
-        public static void DismissDuty (int did) {
-           // String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive"' WHERE `DID`='"+did+"';";
-
-        }
-        // 
+        
 
 
 

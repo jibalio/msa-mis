@@ -1,3 +1,56 @@
+#####################################################
+UPDATE: NEW METHODS June 24 2017
+
+	AddUnassignmentRequest(
+			int cid,					// Client ID of Guard. 
+			int[] gid, 					// List of guards from that client, to be dismissed
+										   cge lng mag implement pd ko ug Unassignment na kanang for all, soon
+			int ReportType, 			// Enumeration.ReportType.{Type}
+			String pcompleting, 		// Ambot unsa ni na field, naa sa DB
+			DateTime EventDate,			// Event data
+	        String location, 
+	        String description)
+
+	ApproveUnassignment(int rid)		// RID ang i-pass (not RAID).
+										// Automatically sets guard status to INACTIVE	
+										// Automatically dimisses any active schedules
+										// Automatically sets request status to APPROVED,
+										// so u dont have to
+
+public void	AddDutyDetail 
+			int aid, 
+			String TI_hr, 
+			String TI_min, 
+			String TI_ampm, 
+			String TO_hr, 
+			String TO_min, 
+			String TO_ampm,
+			Days days                    <-- Custom Class: Ingon ani pag create::
+											 new Days (bool Mon, bool Tue, bool Wed, bool Thu, bool Fri, bool Sat, bool Sun);
+											 example, sched nako kay MWF, so:
+											 new Days (true, false, true, false, true, false, false)
+
+public Days GetDays (int did) 
+			Returns a Scheduling.Days object.
+			Many ways of accessing.
+
+			e.g: 
+				Days sched = GetDays (42);  <-- Duty Detail ID
+				sched.Value					<-- Returns array bool[] {bool,bool,bool,bool,bool,bool,bool}  <-- M, T, W, Th, F, S, Su
+				sched.ToString()			<-- Returns string format, e.g:   "MWF", "TTh", "MWTh"
+				or pwede sad individual nimo i access
+				sched.Mon		}
+				sched.Tue       }
+				sched.Wed		} ----- boolean ni tanan (not a method hah!)
+				....			}
+				sched.Sun       }
+
+
+#######################################################
+
+
+
+
 
 #Add Requests
 Mga requests pa ni sya, not actual assignment / dismissal.
@@ -59,6 +112,7 @@ GetAssignmentsByClient(int cid, int filter)
 
 
 WORKING SEARCHES
+GetRequests
 
 
 
