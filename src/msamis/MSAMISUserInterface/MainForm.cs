@@ -885,6 +885,7 @@ namespace MSAMISUserInterface {
                 Sched_AddDutyDetail view = new Sched_AddDutyDetail();
                 view.reference = this;
                 view.conn = this.conn;
+                view.AID = int.Parse(this.SViewAssGRD.SelectedRows[0].Cells[0].Value.ToString());
                 view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
                 view.ShowDialog();
             }
