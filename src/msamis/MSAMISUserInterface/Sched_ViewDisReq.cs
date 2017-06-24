@@ -25,8 +25,7 @@ namespace MSAMISUserInterface {
             FadeTMR.Start();
         }
         private void RefreshData() {
-            
-
+           // Scheduling.getGuards
 
         }
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -45,7 +44,8 @@ namespace MSAMISUserInterface {
         }
 
         private void ApproveBTN_Click(object sender, EventArgs e) {
-            Scheduling.UpdateRequestStatus(RID, Enumeration.RequestStatus.Approved);
+            Scheduling.ApproveUnassignment(RID);
+            reference.SCHEDLoadPage();
             this.Close();
         }
     }

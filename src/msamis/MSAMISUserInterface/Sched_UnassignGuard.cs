@@ -14,6 +14,7 @@ namespace MSAMISUserInterface {
         public MainForm reference;
         public MySqlConnection conn;
         public DataGridViewSelectedRowCollection guards { get; set; }
+        public int CID { get; set; }
         public Sched_UnassignGuard() {
             InitializeComponent();
             this.Opacity = 0;
@@ -22,8 +23,9 @@ namespace MSAMISUserInterface {
         private void Sched_DismissGuard_Load(object sender, EventArgs e) {
             LoadPage();
             FadeTMR.Start();
+            IncidentTypeCMBX.SelectedIndex = 1; 
         }
-
+        
         private void LoadPage() {
             GuardsGRD.ColumnHeadersVisible = false;
             foreach (DataGridViewRow row in guards) {
@@ -54,7 +56,12 @@ namespace MSAMISUserInterface {
         }
 
         private void DismissBTN_Click(object sender, EventArgs e) {
-           // Scheduling.A
+            int[] GIDs = new int[GuardsGRD.RowCount];
+            for (int i = 0; i < GuardsGRD.RowCount; i++) {
+                GIDs[i] = int.Parse(GuardsGRD.Rows[i].Cells[0].Value.ToString());
+            }
+            Scheduling.AddUnassignmentRequest(CID, GIDs, IncidentTypeCMBX.SelectedIndex, "Admin", DateDTPKR.Value, LocationBX.Text, DescriptionBX.Text);
+            this.Close();
         }
     }
 }

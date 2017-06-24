@@ -17,7 +17,6 @@ namespace MSAMISUserInterface {
         public int NumberOfGuards { get; set; }
         public String ClientName;
 
-
         int[] GIDs = { -1 };
 
         public Sched_AssignGuards() {

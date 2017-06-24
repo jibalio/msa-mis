@@ -44,6 +44,7 @@
             this.ArchiveDutyDetailsBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.DutyDetailsPNL = new System.Windows.Forms.Panel();
+            this.DismissBTN = new System.Windows.Forms.Button();
             this.AssignedGRD = new System.Windows.Forms.DataGridView();
             this.AddDutyDetailsBTN = new System.Windows.Forms.Button();
             this.DutyDaysPNL = new System.Windows.Forms.Panel();
@@ -64,7 +65,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.DismissBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).BeginInit();
@@ -283,7 +283,7 @@
             this.ArchiveDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ArchiveDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.ArchiveDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.ArchiveDutyDetailsBTN.Location = new System.Drawing.Point(559, 518);
+            this.ArchiveDutyDetailsBTN.Location = new System.Drawing.Point(492, 262);
             this.ArchiveDutyDetailsBTN.Name = "ArchiveDutyDetailsBTN";
             this.ArchiveDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
             this.ArchiveDutyDetailsBTN.TabIndex = 232;
@@ -299,12 +299,32 @@
             // 
             this.DutyDetailsPNL.Controls.Add(this.DismissBTN);
             this.DutyDetailsPNL.Controls.Add(this.AssignedGRD);
+            this.DutyDetailsPNL.Controls.Add(this.ArchiveDutyDetailsBTN);
             this.DutyDetailsPNL.Controls.Add(this.AddDutyDetailsBTN);
             this.DutyDetailsPNL.Controls.Add(this.EditDutyDetailsBTN);
             this.DutyDetailsPNL.Location = new System.Drawing.Point(68, 256);
             this.DutyDetailsPNL.Name = "DutyDetailsPNL";
             this.DutyDetailsPNL.Size = new System.Drawing.Size(592, 312);
             this.DutyDetailsPNL.TabIndex = 233;
+            // 
+            // DismissBTN
+            // 
+            this.DismissBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DismissBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.DismissBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
+            this.DismissBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DismissBTN.FlatAppearance.BorderSize = 0;
+            this.DismissBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DismissBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.DismissBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DismissBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.DismissBTN.ForeColor = System.Drawing.Color.White;
+            this.DismissBTN.Location = new System.Drawing.Point(136, 262);
+            this.DismissBTN.Name = "DismissBTN";
+            this.DismissBTN.Size = new System.Drawing.Size(80, 29);
+            this.DismissBTN.TabIndex = 235;
+            this.DismissBTN.Text = "DISMISS";
+            this.DismissBTN.UseVisualStyleBackColor = false;
             // 
             // AssignedGRD
             // 
@@ -603,25 +623,6 @@
             this.label3.TabIndex = 132;
             this.label3.Text = "Lates:";
             // 
-            // DismissBTN
-            // 
-            this.DismissBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DismissBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.DismissBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
-            this.DismissBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DismissBTN.FlatAppearance.BorderSize = 0;
-            this.DismissBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.DismissBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.DismissBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DismissBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.DismissBTN.ForeColor = System.Drawing.Color.White;
-            this.DismissBTN.Location = new System.Drawing.Point(136, 262);
-            this.DismissBTN.Name = "DismissBTN";
-            this.DismissBTN.Size = new System.Drawing.Size(80, 29);
-            this.DismissBTN.TabIndex = 235;
-            this.DismissBTN.Text = "DISMISS";
-            this.DismissBTN.UseVisualStyleBackColor = false;
-            // 
             // Sched_ViewDutyDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,11 +632,10 @@
             this.ControlBox = false;
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.DutyDaysLBL);
-            this.Controls.Add(this.ArchiveDutyDetailsBTN);
             this.Controls.Add(this.DutyDetailsLBL);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DutyDetailsPNL);
             this.Controls.Add(this.DutyDaysPNL);
+            this.Controls.Add(this.DutyDetailsPNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_ViewDutyDetails";
             this.ShowInTaskbar = false;

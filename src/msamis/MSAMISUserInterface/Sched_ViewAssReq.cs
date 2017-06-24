@@ -40,32 +40,33 @@ namespace MSAMISUserInterface {
             ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"].ToString();
             numGuards = int.Parse(dt.Rows[0]["noguards"].ToString());
             NoLBL.Text = "Guards Needed: " + numGuards.ToString();
-
             if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Pending.ToString())) {
                 AssignBTN.Text = "APPROVE";
+                StatusLBL.Text = "Status: Pending";
             } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Approved.ToString())) {
                 AssignBTN.Text = "ASSIGN";
+                StatusLBL.Text = "Status: Approved";
             } else {
                 AssignBTN.Visible = false;
                 AvailablePNL.Visible = false;
-                CloseBTN.Location = new Point(305, 600); 
+                CloseBTN.Location = new Point(305, 600);
+                if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Active.ToString())) StatusLBL.Text = "Status: Active";
+                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString())) StatusLBL.Text = "Status: Inctive";
+                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) StatusLBL.Text = "Status: Decline";
             }
-
-
             if (numGuards > Scheduling.GetNumberOfUnassignedGuards()) NeededLBL.ForeColor = Color.Coral;
             else NeededLBL.ForeColor = Color.YellowGreen;
-
             NeededLBL.Text = Scheduling.GetNumberOfUnassignedGuards().ToString() + " available guards";
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {
             reference.Opacity = 1;
             reference.Show();
+            reference.SCHEDLoadPage();
         }
 
         private void button1_Click(object sender, EventArgs e) {
             this.Close();
-            reference.SCHEDLoadPage();
         }
 
         private void AssignBTN_Click(object sender, EventArgs e) {
@@ -84,6 +85,7 @@ namespace MSAMISUserInterface {
             } else {
                 Scheduling.UpdateRequestStatus(RAID, Enumeration.RequestStatus.Approved);
                 AssignBTN.Text = "ASSIGN";
+                StatusLBL.Text = "Status: Approved";
             }
         }
     }

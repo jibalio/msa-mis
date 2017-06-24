@@ -35,6 +35,7 @@ namespace MSAMISUserInterface {
             initiateForm();
             conn = SQLTools.conn;
             FadeTMR.Start();
+            SamplePNL.SendToBack();
         }
         private void initiateForm() {
             DashboardPage.Visible = true;
@@ -45,6 +46,9 @@ namespace MSAMISUserInterface {
             PayrollPage.Visible = false;
             currentBTN = DashboardBTN;
             ControlBoxPanel.BackColor = dahsbard;
+            if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0"))
+                SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).ToString();
+            else SchedBTN.Text = String.Empty;
         }
         private void MainForm_Load(object sender, EventArgs e) {
             ControlBoxTimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
@@ -65,7 +69,9 @@ namespace MSAMISUserInterface {
         private void Dashboard_MouseUp(object sender, MouseEventArgs e) {
             mouseDown = false;
             if (DashboardPage.Location.Y <= -300) {
-                DashboardPage.Location = new Point(DashboardPage.Location.X, -328);
+                if (DashboardPage.Location.Y <= -568) DashboardPage.Location = new Point(DashboardPage.Location.X, -628);
+                else if (DashboardPage.Location.Y <= -448) DashboardPage.Location = new Point(DashboardPage.Location.X, -508);
+                else if (DashboardPage.Location.Y <= -300) DashboardPage.Location = new Point(DashboardPage.Location.X, -328);
                 DashboardToBeMinimized = true;
                 DashboardTMR.Start();
                 GuardsPage.Show();
@@ -109,9 +115,14 @@ namespace MSAMISUserInterface {
         }
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
-            if (this.Opacity == 1) FadeTMR.Stop();
+            if (this.Opacity == 1) {
+                FadeTMR.Stop();
+                if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) { 
+                    ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN);
+                    ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN);
+                }
+            }
         }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             lf.Opacity = 0;
             lf.Show();
@@ -198,6 +209,60 @@ namespace MSAMISUserInterface {
                 }
             }
 
+        }
+        #endregion
+
+        #region Dashboard Page Notifs
+        private void DMonthlyDutyReportPNL_MouseEnter(object sender, EventArgs e) {
+            DMonthlyDutyReportPNL.BackColor = Color.FromArgb(72, 87, 112);
+        }
+        private void DMonthlyDutyReportPNL_MouseLeave(object sender, EventArgs e) {
+            DMonthlyDutyReportPNL.BackColor = Color.FromArgb(94, 114, 146);
+        }
+        private void DClientSummaryPNL_MouseEnter(object sender, EventArgs e) {
+            DClientSummaryPNL.BackColor = Color.FromArgb(72, 87, 112);
+        }
+        private void DClientSummaryPNL_MouseLeave(object sender, EventArgs e) {
+            DClientSummaryPNL.BackColor = Color.FromArgb(94, 114, 146);
+        }
+        private void DSalaryReportPNL_MouseEnter(object sender, EventArgs e) {
+            DSalaryReportPNL.BackColor = Color.FromArgb(72, 87, 112);
+        }
+        private void DSalaryReportPNL_MouseLeave(object sender, EventArgs e) {
+            DSalaryReportPNL.BackColor = Color.FromArgb(94, 114, 146);
+        }
+        private void ArrangeNotif() {
+            bool[] pnl = { DMonthlyDutyReportPNL.Visible, DClientSummaryPNL.Visible, DSalaryReportPNL.Visible };
+            Point loc1 = new Point(308, 208);
+            Point loc2 = new Point(308, 310);
+            Point loc3 = new Point(308, 413);
+            if (pnl[0]) if (!pnl[1]) DSalaryReportPNL.Location = loc2;
+            if (pnl[1]) if (!pnl[0]) { DClientSummaryPNL.Location = loc1; DSalaryReportPNL.Location = loc2; }
+            if (pnl[2]) if (!pnl[0] && !pnl[1]) { DSalaryReportPNL.Location = loc1; }
+        }
+        private void DMonthlyX_Click(object sender, EventArgs e) {
+            DMonthlyDutyReportPNL.Visible = false;
+            ArrangeNotif();
+        }
+        private void DClientX_Click(object sender, EventArgs e) {
+            DClientSummaryPNL.Visible = false;
+            ArrangeNotif();
+        }
+        private void DSalaryX_Click(object sender, EventArgs e) {
+            DSalaryReportPNL.Visible = false;
+            ArrangeNotif();
+        }
+        private void DMonthlyDutyReportPNL_Click(object sender, EventArgs e) {
+            SchedBTN.PerformClick();
+            SMonthlyDutyBTN.PerformClick();
+        }
+        private void DClientSummaryPNL_Click(object sender, EventArgs e) {
+            ClientBTN.PerformClick();
+            CViewSummaryBTN.PerformClick();
+        }
+        private void DSalaryReportPNL_Click(object sender, EventArgs e) {
+            PayrollBTN.PerformClick();
+            PPayrollSummaryBTN.PerformClick();
         }
         #endregion
 
@@ -672,12 +737,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Schedules Management System
-        /* Available Methods:
-         * --public static DataTable Scheduling.AddAssignmentRequest(int CID, string AssStreetNo, string AssStreetName, string AssBrgy, string AssCity, DateTime ContractStart, DateTime ContractEnd, int NoGuards)
-           --public static DataTable Scheduling.GetClients(DateTime date)
-                -- or alternatively: Client.GetClient(DateTime date)
-           --public static DataTable Scheduling.GetRequests() 
-        */
 
         #region SMS - Page Load
         public void SCHEDLoadPage() {
@@ -699,6 +758,9 @@ namespace MSAMISUserInterface {
 
             SCHEDLoadRequestsPage();
 
+            if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0"))
+                SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).ToString();
+            else SchedBTN.Text = String.Empty;
             SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests";
             SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
             SAssignedGuardsLBL.Text = Scheduling.GetNumberOfAssignedGuards() + " assigned guards";
@@ -827,6 +889,7 @@ namespace MSAMISUserInterface {
                 try {
                     Sched_UnassignGuard view = new Sched_UnassignGuard();
                     view.reference = this;
+                    view.CID = int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID);
                     view.conn = this.conn;
                     view.guards = SViewAssGRD.SelectedRows;
                     view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
@@ -845,7 +908,9 @@ namespace MSAMISUserInterface {
             SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem("All", "-1"));
             SViewAssSearchClientCMBX.SelectedIndex = 0;
             SViewAssCMBX.SelectedIndex = 0;
-            
+
+            SViewAssViewDetailsBTN.Location = new Point(300, 600);
+            SViewAssUnassignBTN.Visible = false;
 
             DataView dv = Client.GetClients().DefaultView;
             dv.Sort = "name asc";
@@ -855,6 +920,14 @@ namespace MSAMISUserInterface {
         }
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
             SViewAssCMBX.SelectedIndex = 0;
+            if (int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID) != -1) {
+                SViewAssViewDetailsBTN.Location = new Point(228, 600);
+                SViewAssUnassignBTN.Location = new Point(365, 600);
+                SViewAssUnassignBTN.Visible = true;
+            } else {
+                SViewAssViewDetailsBTN.Location = new Point(300, 600);
+                SViewAssUnassignBTN.Visible = false;
+            }
             SCHEDRefreshAssignments();
         }
         public void SCHEDRefreshAssignments() {
@@ -989,7 +1062,7 @@ namespace MSAMISUserInterface {
                     view.ShowDialog();
                 }
                 catch (Exception) { }
-            } else if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Dismissal")) {
+            } else {
                 try {
                     Sched_ViewDisReq view = new Sched_ViewDisReq();
                     view.reference = this;

@@ -33,6 +33,8 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.RemoveBTN = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.Dependent5RBX = new System.Windows.Forms.ComboBox();
             this.Dependent5LastBX = new System.Windows.Forms.TextBox();
@@ -88,18 +90,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.GuardsGRD = new System.Windows.Forms.DataGridView();
-            this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RemoveBTN = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).BeginInit();
             this.SuspendLayout();
             // 
             // DismissBTN
@@ -218,6 +218,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(722, 541);
             this.panel1.TabIndex = 124;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.RemoveBTN);
+            this.panel2.Location = new System.Drawing.Point(190, 407);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(373, 45);
+            this.panel2.TabIndex = 231;
+            // 
+            // RemoveBTN
+            // 
+            this.RemoveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemoveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.RemoveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RemoveBTN.BackgroundImage")));
+            this.RemoveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RemoveBTN.FlatAppearance.BorderSize = 0;
+            this.RemoveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.RemoveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.RemoveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.RemoveBTN.ForeColor = System.Drawing.Color.White;
+            this.RemoveBTN.Location = new System.Drawing.Point(124, 5);
+            this.RemoveBTN.Name = "RemoveBTN";
+            this.RemoveBTN.Size = new System.Drawing.Size(80, 29);
+            this.RemoveBTN.TabIndex = 231;
+            this.RemoveBTN.Text = "REMOVE";
+            this.RemoveBTN.UseVisualStyleBackColor = false;
+            this.RemoveBTN.Click += new System.EventHandler(this.RemoveBTN_Click);
             // 
             // label10
             // 
@@ -799,7 +827,8 @@
             // 
             this.IncidentTypeCMBX.BackColor = System.Drawing.Color.White;
             this.IncidentTypeCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.IncidentTypeCMBX.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.IncidentTypeCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IncidentTypeCMBX.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.IncidentTypeCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.IncidentTypeCMBX.FormattingEnabled = true;
             this.IncidentTypeCMBX.Items.AddRange(new object[] {
@@ -807,9 +836,9 @@
             "Injury",
             "Accident",
             "Complaint"});
-            this.IncidentTypeCMBX.Location = new System.Drawing.Point(237, 556);
+            this.IncidentTypeCMBX.Location = new System.Drawing.Point(237, 555);
             this.IncidentTypeCMBX.Name = "IncidentTypeCMBX";
-            this.IncidentTypeCMBX.Size = new System.Drawing.Size(99, 21);
+            this.IncidentTypeCMBX.Size = new System.Drawing.Size(99, 25);
             this.IncidentTypeCMBX.TabIndex = 124;
             // 
             // CVLBL
@@ -914,11 +943,6 @@
             this.GuardsGRD.Size = new System.Drawing.Size(401, 332);
             this.GuardsGRD.TabIndex = 113;
             // 
-            // FadeTMR
-            // 
-            this.FadeTMR.Interval = 1;
-            this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "Column1";
@@ -967,33 +991,10 @@
             this.Column6.ReadOnly = true;
             this.Column6.Visible = false;
             // 
-            // RemoveBTN
+            // FadeTMR
             // 
-            this.RemoveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.RemoveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RemoveBTN.BackgroundImage")));
-            this.RemoveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.RemoveBTN.FlatAppearance.BorderSize = 0;
-            this.RemoveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.RemoveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.RemoveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.RemoveBTN.ForeColor = System.Drawing.Color.White;
-            this.RemoveBTN.Location = new System.Drawing.Point(124, 5);
-            this.RemoveBTN.Name = "RemoveBTN";
-            this.RemoveBTN.Size = new System.Drawing.Size(80, 29);
-            this.RemoveBTN.TabIndex = 231;
-            this.RemoveBTN.Text = "REMOVE";
-            this.RemoveBTN.UseVisualStyleBackColor = false;
-            this.RemoveBTN.Click += new System.EventHandler(this.RemoveBTN_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.RemoveBTN);
-            this.panel2.Location = new System.Drawing.Point(190, 407);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(373, 45);
-            this.panel2.TabIndex = 231;
+            this.FadeTMR.Interval = 1;
+            this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
             // 
             // Sched_UnassignGuard
             // 
@@ -1014,8 +1015,8 @@
             this.Load += new System.EventHandler(this.Sched_DismissGuard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).EndInit();
             this.ResumeLayout(false);
 
         }

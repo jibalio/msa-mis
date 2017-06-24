@@ -38,6 +38,7 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.AssignBTN = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.StatusLBL = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.AvailablePNL.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -213,6 +214,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.StatusLBL);
             this.panel3.Controls.Add(this.NoLBL);
             this.panel3.Controls.Add(this.ContractEndLBL);
             this.panel3.Controls.Add(this.ContractStartLBL);
@@ -221,6 +223,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(693, 169);
             this.panel3.TabIndex = 138;
+            // 
+            // StatusLBL
+            // 
+            this.StatusLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.StatusLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.StatusLBL.ForeColor = System.Drawing.Color.White;
+            this.StatusLBL.Location = new System.Drawing.Point(0, 120);
+            this.StatusLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.StatusLBL.Name = "StatusLBL";
+            this.StatusLBL.Size = new System.Drawing.Size(693, 30);
+            this.StatusLBL.TabIndex = 133;
+            this.StatusLBL.Text = "---------------";
+            this.StatusLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Sched_ViewAssReq
             // 
@@ -262,5 +277,6 @@
         private System.Windows.Forms.Button AssignBTN;
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label StatusLBL;
     }
 }
