@@ -13,7 +13,7 @@ namespace MSAMISUserInterface {
     public partial class Sched_UnassignGuard : Form {
         public MainForm reference;
         public MySqlConnection conn;
-
+        public DataGridViewSelectedRowCollection guards { get; set; }
         public Sched_UnassignGuard() {
             InitializeComponent();
             this.Opacity = 0;
@@ -25,6 +25,11 @@ namespace MSAMISUserInterface {
         }
 
         private void LoadPage() {
+            GuardsGRD.ColumnHeadersVisible = false;
+            foreach (DataGridViewRow row in guards) {
+                GuardsGRD.Rows.Add(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString());
+            }
+            GuardsGRD.Sort(GuardsGRD.Columns[3], ListSortDirection.Ascending);
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -40,6 +45,16 @@ namespace MSAMISUserInterface {
         private void Sched_DismissGuard_FormClosing(object sender, FormClosingEventArgs e) {
             reference.Opacity = 1;
             reference.Show();
+        }
+
+        private void RemoveBTN_Click(object sender, EventArgs e) {
+            foreach (DataGridViewRow row in GuardsGRD.SelectedRows) {
+                GuardsGRD.Rows.Remove(row);
+            }
+        }
+
+        private void DismissBTN_Click(object sender, EventArgs e) {
+           // Scheduling.A
         }
     }
 }

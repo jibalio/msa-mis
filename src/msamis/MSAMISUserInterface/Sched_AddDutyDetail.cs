@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Sched_AddDutyDetail : Form {
-        public MainForm reference;
         public MySqlConnection conn;
         public String button = "ADD";
         public int AID { get; set; }
@@ -35,16 +34,11 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_AddDutyDetail_FormClosing(object sender, FormClosingEventArgs e) {
-            if (button.Equals("ADD")) { 
-                reference.Opacity = 1;
-                reference.Show();
-            }
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
-            if (reference.Opacity == 0.6 || this.Opacity >= 1) { FadeTMR.Stop(); }
-            if (reference.Opacity > 0.7) { reference.Opacity -= 0.1; }
+            if (this.Opacity >= 1) { FadeTMR.Stop(); }
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -95,7 +89,6 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             Scheduling.AddDutyDetail(AID, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text, TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text, new Scheduling.Days(DutyDays[1], DutyDays[2], DutyDays[3], DutyDays[4], DutyDays[5], DutyDays[6], DutyDays[0]));
-            reference.SCHEDRefreshAssignments();
             this.Close();
         }
     }

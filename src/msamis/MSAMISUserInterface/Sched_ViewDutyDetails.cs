@@ -23,6 +23,8 @@ namespace MSAMISUserInterface {
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
             //RefreshData();
             FadeTMR.Start();
+            DutyDaysPNL.Visible = false;
+            DutyDetailsPNL.Visible = true;
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -37,6 +39,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
+            reference.SCHEDRefreshAssignments();
             this.Close();
         }
 
@@ -45,7 +48,6 @@ namespace MSAMISUserInterface {
             view.AID = this.AID;
             view.button = "UPDATE";
             view.conn = this.conn;
-            view.reference = this.reference;
             view.Location = this.Location;
             view.ShowDialog();
         }
@@ -58,6 +60,45 @@ namespace MSAMISUserInterface {
             view.reference = this.reference;
             view.Location = this.Location;
             view.ShowDialog();
+        }
+
+        private void DutyDetailsLBL_Click(object sender, EventArgs e) {
+            DutyDaysPNL.Visible = false;
+            DutyDetailsPNL.Visible = true;
+            DutyDaysLBL.ForeColor = Color.Gray;
+        }
+
+        private void DutyDetailsLBL_MouseLeave(object sender, EventArgs e) {
+            if (DutyDetailsPNL.Visible == false) DutyDetailsLBL.ForeColor = Color.Gray;
+        }
+
+        private void DutyDaysLBL_MouseLeave(object sender, EventArgs e) {
+            if (DutyDaysPNL.Visible == false) DutyDaysLBL.ForeColor = Color.Gray;
+        }
+
+        private void DutyDaysLBL_MouseEnter(object sender, EventArgs e) {
+            DutyDaysLBL.ForeColor = Color.White;
+        }
+
+        private void DutyDetailsLBL_MouseEnter(object sender, EventArgs e) {
+            DutyDetailsLBL.ForeColor = Color.White;
+        }
+
+        private void DutyDaysLBL_Click(object sender, EventArgs e) {
+            DutyDaysPNL.Visible = true;
+            DutyDetailsPNL.Visible = false;
+            DutyDetailsLBL.ForeColor = Color.Gray;
+        }
+
+        private void AddDutyDetailsBTN_Click(object sender, EventArgs e) {
+            try {
+                Sched_AddDutyDetail view = new Sched_AddDutyDetail();
+                view.conn = this.conn;
+                view.AID = this.AID;
+                view.Location = this.Location;
+                view.ShowDialog();
+            }
+            catch (Exception) { }
         }
     }
 }

@@ -85,12 +85,12 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(269, 165);
+            this.label3.Location = new System.Drawing.Point(254, 165);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(189, 21);
+            this.label3.Size = new System.Drawing.Size(201, 21);
             this.label3.TabIndex = 145;
-            this.label3.Text = "Guards to be dismissed:";
+            this.label3.Text = "Guards to be unassigned:";
             // 
             // AssignedGRD
             // 
@@ -134,7 +134,7 @@
             this.AssignedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.AssignedGRD.RowHeadersVisible = false;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AssignedGRD.Size = new System.Drawing.Size(460, 284);
+            this.AssignedGRD.Size = new System.Drawing.Size(460, 357);
             this.AssignedGRD.TabIndex = 144;
             // 
             // CloseBTN
