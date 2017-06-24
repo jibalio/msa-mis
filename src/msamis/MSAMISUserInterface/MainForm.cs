@@ -854,12 +854,12 @@ namespace MSAMISUserInterface {
                         SVIewAssDisBTN.Visible = false;
                         SViewAssUnassignBTN.Visible = true;
                     } else if (isScheduled()) {
-                        SViewAssAddDutyBTN.Visible = false;
+                        SViewAssAddDutyBTN.Visible = true;
                         SViewAssViewDetailsBTN.Visible = false;
                         SVIewAssDisBTN.Visible = true;
                         SViewAssUnassignBTN.Visible = false;
                     } else {
-                        SViewAssAddDutyBTN.Visible = false;
+                        SViewAssAddDutyBTN.Visible = true;
                         SViewAssViewDetailsBTN.Visible = false;
                         SVIewAssDisBTN.Visible = false;
                         SViewAssUnassignBTN.Visible = false;
@@ -870,7 +870,7 @@ namespace MSAMISUserInterface {
                     SVIewAssDisBTN.Visible = false;
                     SViewAssUnassignBTN.Visible = true;
                 } else {
-                    SViewAssAddDutyBTN.Visible = false;
+                    SViewAssAddDutyBTN.Visible = true;
                     SVIewAssDisBTN.Visible = true;
                     SViewAssViewDetailsBTN.Visible = true;
                     SViewAssUnassignBTN.Visible = false;
