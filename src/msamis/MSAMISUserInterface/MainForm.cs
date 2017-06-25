@@ -759,7 +759,9 @@ namespace MSAMISUserInterface {
             SViewReqAssBTN.Visible = true;
 
             SCHEDLoadRequestsPage();
-
+            SCHEDLoadSidePNL();
+        }
+        public void SCHEDLoadSidePNL() {
             if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0"))
                 SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).ToString();
             else SchedBTN.Text = String.Empty;
@@ -1127,6 +1129,7 @@ namespace MSAMISUserInterface {
 
         private void PEmpListBTN_Click(object sender, EventArgs e) {
             PAYChangePanel(1);
+            PAYLoadEmployeeList();
         }
         private void PAdjustBTN_Click(object sender, EventArgs e) {
             PAYChangePanel(2);
@@ -1160,7 +1163,7 @@ namespace MSAMISUserInterface {
                     PBasicPayBTN.Visible = false;
                      
                     PSalaryReportPage.Hide();
-                    PAdjustmentHistoryPage.Hide();
+                    PBasicPayHistoryPage.Hide();
                     PEmpListPage.Hide();
                     PArchivePage.Hide();
                     PCashAdvancePage.Hide();
@@ -1178,7 +1181,7 @@ namespace MSAMISUserInterface {
 
                     PSalaryReportPage.Hide();
                     PEmpListPage.Show();
-                    PAdjustmentHistoryPage.Hide();
+                    PBasicPayHistoryPage.Hide();
                     PArchivePage.Hide();
                     PCashAdvancePage.Hide();
                     PPayrollSummaryPage.Hide();
@@ -1194,7 +1197,7 @@ namespace MSAMISUserInterface {
                     PBasicPayBTN.Visible = true;
 
                     PSalaryReportPage.Hide();
-                    PAdjustmentHistoryPage.Show();
+                    PBasicPayHistoryPage.Show();
                     PEmpListPage.Hide();
                     PArchivePage.Hide();
                     PCashAdvancePage.Hide();
@@ -1211,7 +1214,7 @@ namespace MSAMISUserInterface {
                     PBasicPayBTN.Visible = false;
 
                     PSalaryReportPage.Hide();
-                    PAdjustmentHistoryPage.Hide();
+                    PBasicPayHistoryPage.Hide();
                     PEmpListPage.Hide();
                     PArchivePage.Hide();
                     PCashAdvancePage.Show();
@@ -1228,7 +1231,7 @@ namespace MSAMISUserInterface {
                     PBasicPayBTN.Visible = false;
 
                     PSalaryReportPage.Hide();
-                    PAdjustmentHistoryPage.Hide();
+                    PBasicPayHistoryPage.Hide();
                     PEmpListPage.Hide();
                     PArchivePage.Hide();
                     PCashAdvancePage.Hide();
@@ -1245,7 +1248,7 @@ namespace MSAMISUserInterface {
                     PBasicPayBTN.Visible = false;
 
                     PSalaryReportPage.Show();
-                    PAdjustmentHistoryPage.Hide();
+                    PBasicPayHistoryPage.Hide();
                     PEmpListPage.Hide();
                     PArchivePage.Hide();
                     PCashAdvancePage.Hide();
@@ -1262,7 +1265,7 @@ namespace MSAMISUserInterface {
                     PBasicPayBTN.Visible = false;
 
                     PSalaryReportPage.Hide();
-                    PAdjustmentHistoryPage.Hide();
+                    PBasicPayHistoryPage.Hide();
                     PEmpListPage.Hide();
                     PArchivePage.Show();
                     PCashAdvancePage.Hide();
@@ -1274,6 +1277,9 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region PMS - Employee List 
+        private void PAYLoadEmployeeList() {
+            PEmpListSortCMBX.SelectedIndex = 0;
+        }
         private void PEmpListViewBTN_Click(object sender, EventArgs e) {
             try {
                 Payroll_EmployeeView view = new Payroll_EmployeeView();
@@ -1285,8 +1291,47 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
+        private void PEmpListSearchBX_Enter(object sender, EventArgs e) {
+            if (PEmpListSearchBX.Text == FilterText) {
+                PEmpListSearchBX.Text = EmptyText;
+                ExtraQueryParams = EmptyText;
+            }
+            PEmpListSearchLine.Visible = true;
+        }
+
+        private void PEmpListSearchBX_Leave(object sender, EventArgs e) {
+            if (PEmpListSearchBX.Text == EmptyText) {
+                PEmpListSearchBX.Text = FilterText;
+                ExtraQueryParams = EmptyText;
+            }
+            PEmpListSearchLine.Visible = false;
+        }
         #endregion
 
+        #region PMS - Basic Pay 
+        private void PBasicPayAddBTN_Click(object sender, EventArgs e) {
+            try {
+                Payroll_BasicPay view = new Payroll_BasicPay();
+                view.reference = this;
+                view.conn = this.conn;
+                //view.BPID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+        private void PBasicPayEditBTN_Click(object sender, EventArgs e) {
+            try {
+                Payroll_BasicPay view = new Payroll_BasicPay();
+                view.reference = this;
+                view.conn = this.conn;
+                //view.BPID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+        #endregion
 
         #endregion
 

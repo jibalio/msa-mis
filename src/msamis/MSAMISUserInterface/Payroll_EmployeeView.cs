@@ -105,5 +105,21 @@ namespace MSAMISUserInterface {
         private void AdjLBL_MouseLeave(object sender, EventArgs e) {
             if(!AdjPNL.Visible) AdjLBL.ForeColor = Color.Gray;
         }
+
+        private void BonusAddBTN_Click(object sender, EventArgs e) {
+           Payroll_AddAdjustments view = new Payroll_AddAdjustments();
+            view.PID = this.PID;
+            view.conn = this.conn;
+            view.Location = this.Location;
+            view.ShowDialog();
+        }
+
+        private void DedAddBTN_Click(object sender, EventArgs e) {
+            Payroll_AddAdjustments view = new Payroll_AddAdjustments();
+            view.PID = this.PID;
+            view.conn = this.conn;
+            view.Location = this.Location;
+            view.ShowDialog();
+        }
     }
 }

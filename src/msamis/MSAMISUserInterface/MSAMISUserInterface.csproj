@@ -94,6 +94,18 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Payroll_AddAdjustments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll_AddAdjustments.Designer.cs">
+      <DependentUpon>Payroll_AddAdjustments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll_BasicPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll_BasicPay.Designer.cs">
+      <DependentUpon>Payroll_BasicPay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Payroll_EmployeeView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +185,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll_AddAdjustments.resx">
+      <DependentUpon>Payroll_AddAdjustments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll_BasicPay.resx">
+      <DependentUpon>Payroll_BasicPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll_EmployeeView.resx">
       <DependentUpon>Payroll_EmployeeView.cs</DependentUpon>
