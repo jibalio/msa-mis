@@ -8,4 +8,12 @@ D:\Files\Desktop\msa-mis\sql\msadb.sql
 
 PLAN:
 Move IncidentReports to Unassignment
-Checkbox for [] Attached Incident Report para pwede mag unassign w/o incident.
+Checkbox for [] Attached Incident Report para pwede mag unassign w/o incident.	
+
+
+ case rstatus
+                        when 1 then 'Pending'
+                        when 2 then 'Approved'
+                        when 3 then 'Active'
+                        when 4 then 'Declined'
+                        end as status

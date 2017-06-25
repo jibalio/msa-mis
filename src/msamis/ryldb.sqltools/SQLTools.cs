@@ -112,6 +112,7 @@ namespace MSAMISUserInterface {
             query = AppendType(query, filters);
             query = AppendFilters(query, ColumnToFilterByKeyword, keyword, orderby);
             DataTable dt = new DataTable();
+            message(query);
             try {
                 MySqlCommand com = new MySqlCommand(query, SQLTools.conn);
                 SQLTools.conn.Open();
@@ -120,7 +121,7 @@ namespace MSAMISUserInterface {
             } catch (Exception e) {
                 MessageBox.Show(e.ToString());
             } finally {
-                message(query);
+                
                 SQLTools.conn.Close();
             }
             return dt;
@@ -128,13 +129,13 @@ namespace MSAMISUserInterface {
 
         public static void ExecuteNonQuery(string query) {
             try {
+                message(query);
                 MySqlCommand com = new MySqlCommand(query, conn);
                 SQLTools.conn.Open();
                 com.ExecuteNonQuery();
             } catch (Exception e) {
                 MessageBox.Show(e.ToString());
             } finally {
-                message(query);
                 SQLTools.conn.Close();
             }
         }

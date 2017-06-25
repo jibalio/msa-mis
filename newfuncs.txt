@@ -1,3 +1,50 @@
+###################################################
+UPDATE June 26, 2017
+NEW METHODS
+
+ DataTable 		GetUnassignmentRequestDetails (int RID)
+ 						- returns DataTable
+ 							columns  ["name", "status"]
+ 										|         |
+ 										|		  |----------request status
+ 										|--------------------name of client
+
+DataTable 		GetGuardsToBeUnassigned(int RID)
+						- reutns DataTable
+							columns : ["gid", "name"]
+										 |       |
+ 										 |		 |------------Guard name 
+ 										 |--------------------GID
+
+
+DataTable GetAllAssignmentDetails(int AID)
+				columns ["gid", "cid", "guardname", "clientname", "assignmentstatus"];
+
+
+NEW: Can now access individual days in Days class
+
+e.g. myDays.Mon   <--- boolean
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #####################################################
 UPDATE: NEW METHODS June 24 2017
 

@@ -14,7 +14,7 @@ public static void ApproveDismissal(int rid) {
             }
             // Step 4
             UpdateRequestStatus(rid, Enumeration.RequestStatus.Approved);
-        }
+}
 
 
 

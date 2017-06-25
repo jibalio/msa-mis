@@ -55,8 +55,7 @@ namespace MSAMISUserInterface {
         
         public class AssignmentStatus {
             public static int Active = 1;
-            public static int Dismissed = 2;
-            public static int Inactive = 3;
+            public static int Inactive = 2;
         }
    
         public class ScheduleStatus {

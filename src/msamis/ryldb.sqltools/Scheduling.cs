@@ -25,27 +25,40 @@ namespace MSAMISUserInterface {
         /// <param name="date">DateTime object.</param>
         /// <returns>DT columns: rid, name, dateentry, type</returns>
         ///
-        public static DataTable GetRequests(String searchkeyword, int ClientFilter, int StatusFilter, String SearchColumn, String orderby, DateTime date) {
+        public static DataTable GetRequests(String searchkeyword, int ClientFilter, int TypeFilter, String SearchColumn, String orderby, DateTime date) {
             String q = @"select rid, name, dateentry, 
                         case requesttype 
                         when 1 then 'Assignment'
                         when 2 then 'Dismissal' 
-                        end as type
+                        end as type,
+                        case rstatus
+                        when 1 then 'Pending'
+                        when 2 then 'Approved'
+                        when 3 then 'Active'
+                        when 4 then 'Declined'
+                        end as status
                         from msadb.request 
                         left join client on request.cid=client.cid 
                         where dateentry='{0}' ";
-                        
+            if (ClientFilter != -1) q += " and client.cid=" + ClientFilter;
+            if (TypeFilter != 0) q += " and requesttype=" + TypeFilter;
             searchkeyword = cleansearch(searchkeyword);
             return SQLTools.ExecuteQuery(q,SearchColumn, searchkeyword, "dateentry desc", new String[] { date.ToString("yyyy-MM-dd")});
         }
 
         public static DataTable GetRequests(String searchkeyword, int ClientFilter, int TypeFilter, String ColumnToSortByAscDesc, String orderby) {
-            String q = "select rid, name, dateentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid ";
-            if (ClientFilter !=-1 || TypeFilter!=-1) {
-                q += " where 1=1 ";
-                if (ClientFilter != -1) q += " and client.cid=" + ClientFilter;
-                if (TypeFilter != 0) q += " and requesttype=" + TypeFilter;
-            }
+            String q = @"select rid, name, dateentry, 
+                        case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type,
+                        case rstatus
+                        when 1 then 'Pending'
+                        when 2 then 'Approved'
+                        when 3 then 'Active'
+                        when 4 then 'Declined'
+                        end as status from msadb.request inner join client on request.cid=client.cid ";
+            q += " where 1=1 ";
+            if (ClientFilter != -1) q += " and client.cid=" + ClientFilter;
+            if (TypeFilter != 0) q += " and requesttype=" + TypeFilter;
+            
             searchkeyword = cleansearch(searchkeyword);
             return SQLTools.ExecuteQuery(q, ColumnToSortByAscDesc, searchkeyword, "dateentry desc");
         }
@@ -173,7 +186,7 @@ namespace MSAMISUserInterface {
                 String q = @"UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive+"' WHERE `AID`='"+e["aid"]+"';";
                 SQLTools.ExecuteNonQuery(q);
                 // 2.) Set assignment to dismissed (IF they have schedules active)
-                 q = @"UPDATE `msadb`.`sduty_assignment` SET `AStatus`='"+Enumeration.AssignmentStatus.Dismissed+"' WHERE `gid`='" + e["gid"] + "';";
+                 q = @"UPDATE `msadb`.`sduty_assignment` SET `AStatus`='"+Enumeration.AssignmentStatus.Inactive+"' WHERE `gid`='" + e["gid"] + "';";
                 SQLTools.ExecuteNonQuery(q);
                 // 3.) Set guard to Inactive (BUT NOT DISMISSED)
                 q = @"UPDATE `msadb`.`guards` SET `GStatus`='"+Enumeration.GuardStatus.Inactive+"' WHERE `GID`='" + e[0] + "'";
@@ -196,6 +209,7 @@ namespace MSAMISUserInterface {
                    g, raid, Enumeration.Schedule.Active);
                     SQLTools.ExecuteNonQuery(q);
                     // Set status to active.
+                    q = @"UPDATE `msadb`.`guards` SET `GStatus`='" + Enumeration.GuardStatus.Active + "' WHERE `GID`='" + g + "'";
                 }
                 UpdateRequestStatus(rid, Enumeration.RequestStatus.Active);
             } else
@@ -288,12 +302,15 @@ namespace MSAMISUserInterface {
                         case 
 	                        when concat(timein,'-', timeout,' ', days) is null then 'Unscheduled'
                             when concat(timein,'-', timeout,' ', days) is not null then 'Scheduled'
-                            end as schedule
+                            end as schedule,
+						case astatus
+                        when 1 then 'Active' when 2 then 'Inactive' end as Status
                          from guards 
                         left join sduty_assignment on sduty_assignment.gid=guards.gid
                         left join dutydetails on sduty_assignment.aid=dutydetails.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
-                        left join request on request_assign.rid=request.rid where 'a' ='a'" +
+                        left join request on request_assign.rid=request.rid
+                        where city is not null " +
                         (cid == -1 ? "" : " AND cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND days is not null";
@@ -327,6 +344,7 @@ namespace MSAMISUserInterface {
         public class Days {
             public string deendracht = null;
             public bool[] Value = new bool[7];
+            bool Mon, Tue, Wed, Thu, Fri, Sat, Sun;
             public Days(bool Mon, bool Tue, bool Wed, bool Thu, bool Fri, bool Sat, bool Sun) {
                 deendracht = "";
                 bool[] d = { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
@@ -339,6 +357,7 @@ namespace MSAMISUserInterface {
                         Value[c] = false;
                     }
                 }
+                Mon = Value[0]; Tue = Value[1]; Wed = Value[2]; Thu = Value[3]; Fri = Value[4]; Sat = Value[5]; Sun = Value[6];
                 deendracht = deendracht.Substring(0, deendracht.Length - 1);
             }
         }
@@ -360,9 +379,66 @@ namespace MSAMISUserInterface {
         }
         #endregion
 
-        #region Non-Query Methods
-        // public static void AddDutyDetails()
-        
+
+
+
+        #region View Request Methods
+
+        /// <summary>
+        /// Returns Columns ["name", "status"]
+        /// </summary>
+        /// <param name="RID"></param>
+        /// <returns></returns>
+        public static DataTable GetUnassignmentRequestDetails (int RID) {
+            String q = @"select name,
+                         case rstatus
+                                                when 1 then 'Pending'
+                                                when 2 then 'Approved'
+                                                when 3 then 'Active'
+                                                when 4 then 'Declined'
+                                                end as status from request_unassign
+                        left join request on request_unassign.RID = request.RID
+                        left join client on request.CID=client.CID where request.RID = "+RID;
+            return SQLTools.ExecuteQuery(q);
+        }
+
+        public static DataTable GetGuardsToBeUnassigned(int RID) {
+            String q = @"select guards.gid, concat(ln,', ',fn,' ',mn) as name from request_unassign 
+                        left join guards on guards.gid = request_unassign.gid
+                        left join request on request.RID = request_unassign.RID
+                        where request.RID = " +RID;
+            return SQLTools.ExecuteQuery(q);
+        }
+
+
+
+        #endregion
+
+        #region Assignment Requests
+        public static DataTable GetAllAssignmentDetails(int AID) {
+            /*
+             * On Status:  What status? Assignment status?
+             * NTS: Is status supposed to be active when guard has duty? Or when guard has assignment?
+             */
+            //return Gid, Name sa Guard, CID, name sa client, status
+            String q = @"/* return Gid, Name sa Guard, CID, name sa client, status */
+                            select 
+                            guards.gid as gid,
+                            client.cid as cid,
+                            concat(ln,', ',fn,' ',mn) as guardname,
+                            client.name as clientname,
+                            case astatus when 1 then 'Active' when 2 then 'Inactive' end as assignmentstatus
+                             from sduty_assignment
+                            left join request_assign on sduty_assignment.RAID=request_assign.RAID
+                            left join request on request.RID = request_assign.RID
+                            left join client on request.cid = client.cid
+                            left join guards on guards.gid = sduty_assignment.GID
+                            where sduty_assignment.AID = " + AID;
+            return SQLTools.ExecuteQuery(q);
+        }
+
+
+        #endregion
 
 
 
@@ -397,18 +473,13 @@ namespace MSAMISUserInterface {
             }
             return k;
         }
-
-        
-        #endregion
-
-
-
         public static DataTable GuardsToBeDismissed(int rid) {
             throw new NotImplementedException();
         }
+        #endregion
 
     }
 }
-#endregion
+
 
 
