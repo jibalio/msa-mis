@@ -16,7 +16,7 @@ class populator {
 		static PrintWriter out; 
 	public static void main(String e[])throws Exception {
 			init();
-			generateDep(1,346);
+			generateDep(1,500);
 			
 			
 		}
@@ -66,7 +66,7 @@ class populator {
 	}
 		
 	public static void init() throws Exception{
-		out = new PrintWriter("output.sql");
+		out = new PrintWriter("outputs.sqlx");
 		for (int c=0; c<files.length; c++) {
 			Scanner scan = new Scanner (new FileReader(files[c]));
 			ArrayList<String> arr = new ArrayList<String>();
