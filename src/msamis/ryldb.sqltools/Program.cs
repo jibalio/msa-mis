@@ -16,7 +16,7 @@ namespace ryldb.sqltools {
             //Scheduling.AddDismissalRequest(13, new int[] { 8 }, 1,"",DateTime.Now,"gmall","awd");
             //Scheduling.ApproveDismissal(30);
             //Scheduling.AddDutyDetail(71, "10", "30", "PM", "11", "30", "PM", new Scheduling.Days(true, true, true, false, true, true, true));
-
+            Scheduling.AddUnassignmentRequest(2,new int[] { 146}, Enumeration.ReportType.Complaint, "pc", DateTime.Now, "gmall", "Caught sneaking coffee to break room.");
         }
     }
 }
