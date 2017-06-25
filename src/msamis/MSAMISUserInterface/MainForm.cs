@@ -28,6 +28,7 @@ namespace MSAMISUserInterface {
         public LoginForm lf;
         String FilterText = "Search or filter";
         String EmptyText = "";
+        public String user;
 
         #region Form Initiation and load
         public MainForm() {
@@ -40,6 +41,7 @@ namespace MSAMISUserInterface {
         private void initiateForm() {
             DashboardPage.Visible = true;
             DashboardPage.BringToFront();
+            ControlBoxPanel.BringToFront();
             GuardsPage.Visible = false;
             ClientsPage.Visible = false;
             SchedulesPage.Visible = false;
@@ -51,7 +53,7 @@ namespace MSAMISUserInterface {
             else SchedBTN.Text = String.Empty;
         }
         private void MainForm_Load(object sender, EventArgs e) {
-            ControlBoxTimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            ControlBoxTimeLBL.Text = "Logged in as, " + user;
             TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy").ToUpper();
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -262,7 +264,7 @@ namespace MSAMISUserInterface {
         }
         private void DSalaryReportPNL_Click(object sender, EventArgs e) {
             PayrollBTN.PerformClick();
-            PPayrollSummaryBTN.PerformClick();
+            PSalaryReportBTN.PerformClick();
         }
         #endregion
 
@@ -1151,12 +1153,11 @@ namespace MSAMISUserInterface {
                     PCashAdvBTN.Font = defaultFont;
                     PEmpListBTN.Font = defaultFont;
                     PArchiveBTN.Font = defaultFont;
-                    PAdjustBTN.Font = defaultFont;
+                    PBasicPayBTN.Font = defaultFont;
                     PPayrollSummaryBTN.Font = selectedFont;
                     PSalaryReportBTN.Font = defaultFont;
 
-                    PAdjustBTN.Visible = false;
-                    PAddCashAdvBTN.Visible = false;
+                    PBasicPayBTN.Visible = false;
                      
                     PSalaryReportPage.Hide();
                     PAdjustmentHistoryPage.Hide();
@@ -1169,12 +1170,11 @@ namespace MSAMISUserInterface {
                     PCashAdvBTN.Font = defaultFont;
                     PEmpListBTN.Font = selectedFont;
                     PArchiveBTN.Font = defaultFont;
-                    PAdjustBTN.Font = defaultFont;
+                    PBasicPayBTN.Font = defaultFont;
                     PPayrollSummaryBTN.Font = defaultFont;
                     PSalaryReportBTN.Font = defaultFont;
 
-                    PAdjustBTN.Visible = true;
-                    PAddCashAdvBTN.Visible = false;
+                    PBasicPayBTN.Visible = true;
 
                     PSalaryReportPage.Hide();
                     PEmpListPage.Show();
@@ -1187,12 +1187,11 @@ namespace MSAMISUserInterface {
                     PCashAdvBTN.Font = defaultFont;
                     PEmpListBTN.Font = defaultFont;
                     PArchiveBTN.Font = defaultFont;
-                    PAdjustBTN.Font = selectedFont;
+                    PBasicPayBTN.Font = selectedFont;
                     PPayrollSummaryBTN.Font = defaultFont;
                     PSalaryReportBTN.Font = defaultFont;
 
-                    PAdjustBTN.Visible = true;
-                    PAddCashAdvBTN.Visible = false;
+                    PBasicPayBTN.Visible = true;
 
                     PSalaryReportPage.Hide();
                     PAdjustmentHistoryPage.Show();
@@ -1205,12 +1204,11 @@ namespace MSAMISUserInterface {
                     PCashAdvBTN.Font = selectedFont;
                     PEmpListBTN.Font = defaultFont;
                     PArchiveBTN.Font = defaultFont;
-                    PAdjustBTN.Font = defaultFont;
+                    PBasicPayBTN.Font = defaultFont;
                     PPayrollSummaryBTN.Font = defaultFont;
                     PSalaryReportBTN.Font = defaultFont;
 
-                    PAdjustBTN.Visible = false;
-                    PAddCashAdvBTN.Visible = true;
+                    PBasicPayBTN.Visible = false;
 
                     PSalaryReportPage.Hide();
                     PAdjustmentHistoryPage.Hide();
@@ -1223,12 +1221,11 @@ namespace MSAMISUserInterface {
                     PCashAdvBTN.Font = defaultFont;
                     PEmpListBTN.Font = defaultFont;
                     PArchiveBTN.Font = defaultFont;
-                    PAdjustBTN.Font = defaultFont;
+                    PBasicPayBTN.Font = defaultFont;
                     PPayrollSummaryBTN.Font = selectedFont;
                     PSalaryReportBTN.Font = defaultFont;
 
-                    PAdjustBTN.Visible = false;
-                    PAddCashAdvBTN.Visible = false;
+                    PBasicPayBTN.Visible = false;
 
                     PSalaryReportPage.Hide();
                     PAdjustmentHistoryPage.Hide();
@@ -1241,12 +1238,11 @@ namespace MSAMISUserInterface {
                     PCashAdvBTN.Font = defaultFont;
                     PEmpListBTN.Font = defaultFont;
                     PArchiveBTN.Font = defaultFont;
-                    PAdjustBTN.Font = defaultFont;
+                    PBasicPayBTN.Font = defaultFont;
                     PPayrollSummaryBTN.Font = defaultFont;
                     PSalaryReportBTN.Font = selectedFont;
 
-                    PAdjustBTN.Visible = false;
-                    PAddCashAdvBTN.Visible = false;
+                    PBasicPayBTN.Visible = false;
 
                     PSalaryReportPage.Show();
                     PAdjustmentHistoryPage.Hide();
@@ -1259,12 +1255,11 @@ namespace MSAMISUserInterface {
                     PCashAdvBTN.Font = defaultFont;
                     PEmpListBTN.Font = defaultFont;
                     PArchiveBTN.Font = selectedFont;
-                    PAdjustBTN.Font = defaultFont;
+                    PBasicPayBTN.Font = defaultFont;
                     PPayrollSummaryBTN.Font = defaultFont;
                     PSalaryReportBTN.Font = defaultFont;
 
-                    PAdjustBTN.Visible = false;
-                    PAddCashAdvBTN.Visible = false;
+                    PBasicPayBTN.Visible = false;
 
                     PSalaryReportPage.Hide();
                     PAdjustmentHistoryPage.Hide();
@@ -1278,6 +1273,23 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        #region PMS - Employee List 
+        private void PEmpListViewBTN_Click(object sender, EventArgs e) {
+            try {
+                Payroll_EmployeeView view = new Payroll_EmployeeView();
+                view.reference = this;
+                view.conn = this.conn;
+                //view.PID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
         #endregion
+
+
+        #endregion
+
+
     }
 }

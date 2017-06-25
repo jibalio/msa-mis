@@ -196,11 +196,12 @@
             // AssignBTN
             // 
             this.AssignBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AssignBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AssignBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.AssignBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
             this.AssignBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AssignBTN.FlatAppearance.BorderSize = 0;
-            this.AssignBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AssignBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.AssignBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
             this.AssignBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AssignBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AssignBTN.ForeColor = System.Drawing.Color.White;
@@ -251,6 +252,7 @@
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_ViewAssReq";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_ViewAssReq_FormClosing);
             this.Load += new System.EventHandler(this.Sched_ViewAssReq_Load);

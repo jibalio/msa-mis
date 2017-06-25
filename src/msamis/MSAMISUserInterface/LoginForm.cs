@@ -21,15 +21,14 @@ namespace MSAMISUserInterface {
             MainForm mf = new MainForm();
             mf.Opacity = 0;
             mf.lf = this;
+            mf.user = UsernameBX.Text;
             mf.Show();
-
             this.Hide();
            
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
-            TimeLBL.Text = DateTime.Now.ToString();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {

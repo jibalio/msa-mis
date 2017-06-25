@@ -236,11 +236,12 @@
             // EditDutyDetailsBTN
             // 
             this.EditDutyDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.EditDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.EditDutyDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
             this.EditDutyDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EditDutyDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.EditDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.EditDutyDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.EditDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
             this.EditDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.EditDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
@@ -255,11 +256,12 @@
             // EditDaysBTN
             // 
             this.EditDaysBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditDaysBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.EditDaysBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.EditDaysBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
             this.EditDaysBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EditDaysBTN.FlatAppearance.BorderSize = 0;
-            this.EditDaysBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.EditDaysBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.EditDaysBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
             this.EditDaysBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditDaysBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.EditDaysBTN.ForeColor = System.Drawing.Color.White;
@@ -374,11 +376,12 @@
             // AddDutyDetailsBTN
             // 
             this.AddDutyDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AddDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.AddDutyDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
             this.AddDutyDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddDutyDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.AddDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AddDutyDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.AddDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
             this.AddDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.AddDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
