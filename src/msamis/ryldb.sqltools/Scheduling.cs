@@ -380,8 +380,9 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         public static void DismissDuty (int did) {
             // Set duty detail to inactive.
             // Previous duty na ni niya.
-            String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive+"' WHERE `DID`='{0}';";
+            String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`="+Enumeration.DutyDetailStatus.Inactive+" WHERE `DID`={0}";
             q = String.Format(q, did);
+            SQLTools.ExecuteNonQuery(q);
         }
         #endregion
 
