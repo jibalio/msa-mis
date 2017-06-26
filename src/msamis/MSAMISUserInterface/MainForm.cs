@@ -656,13 +656,13 @@ namespace MSAMISUserInterface {
                 CClientListTBL.Columns["name"].Width = 310;
                 CClientListTBL.Columns["contactno"].HeaderText = "LOCATION";
                 CClientListTBL.Columns["contactno"].Width = 310;
-
                 conn.Close();
             }
             catch (Exception ee) {
                 conn.Close();
                 MessageBox.Show(ee.Message + " \nLine 171 of MainForm.cs");
             }
+            CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
         }
         private void CViewAllClientsTBL_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e) {
             // For any other operation except, StateChanged, do nothing
@@ -742,6 +742,8 @@ namespace MSAMISUserInterface {
 
         #region SMS - Page Load
         public void SCHEDLoadPage() {
+            ClientRequestsTLTP.Hide(SchedBTN);
+
             SArchivePNL.Hide();
             SDutyDetailsPNL.Hide();
             SIncidentPNL.Hide();
@@ -942,13 +944,14 @@ namespace MSAMISUserInterface {
             SViewAssGRD.Columns[3].HeaderText = "NAME";
             SViewAssGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
             SViewAssGRD.Columns[5].HeaderText = "SCHEDULE";
+            SViewAssGRD.Columns[6].HeaderText = "STATUS";
 
-            SViewAssGRD.Columns[3].Width = 230;
+            SViewAssGRD.Columns[3].Width = 200;
             SViewAssGRD.Columns[4].Width = 250;
-            SViewAssGRD.Columns[5].Width = 150;
+            SViewAssGRD.Columns[5].Width = 100;
+            SViewAssGRD.Columns[5].Width = 100;
 
             SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
-            SViewAssGRD.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void SViewAssCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             SCHEDRefreshAssignments();
@@ -1035,10 +1038,12 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns["dateentry"].HeaderText = "DATE ENTRY";
             SViewReqGRD.Columns["dateentry"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             SViewReqGRD.Columns["type"].HeaderText = "TYPE";
+            SViewReqGRD.Columns["status"].HeaderText = "STATUS";
 
-            SViewReqGRD.Columns["name"].Width = 350;
+            SViewReqGRD.Columns["name"].Width = 250;
             SViewReqGRD.Columns["dateentry"].Width = 200;
             SViewReqGRD.Columns["type"].Width = 100;
+            SViewReqGRD.Columns["status"].Width = 100;
         }
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {

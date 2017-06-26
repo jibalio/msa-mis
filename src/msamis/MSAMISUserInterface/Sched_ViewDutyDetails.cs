@@ -14,6 +14,8 @@ namespace MSAMISUserInterface {
         public int AID { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
+        String GName;
+        String Client;
 
         public Sched_ViewDutyDetails() {
             InitializeComponent();
@@ -21,10 +23,16 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
-            //RefreshData();
+            RefreshData();
             FadeTMR.Start();
             DutyDaysPNL.Visible = false;
             DutyDetailsPNL.Visible = true;
+        }
+
+        public void RefreshData() {
+            DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
+            GName = NameLBL.Text = dt.Rows[0][2].ToString();
+            Client = ClientLBL.Text = dt.Rows[0][3].ToString();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -48,6 +56,8 @@ namespace MSAMISUserInterface {
             view.AID = this.AID;
             view.button = "UPDATE";
             view.conn = this.conn;
+            view.Name = this.GName;
+            view.Client = this.Client;
             view.Location = this.Location;
             view.ShowDialog();
         }
@@ -57,6 +67,8 @@ namespace MSAMISUserInterface {
             view.AID = this.AID;
             view.conn = this.conn;
             view.button = "UPDATE";
+            view.Name = this.GName;
+            view.Client = this.Client;
             view.reference = this.reference;
             view.Location = this.Location;
             view.ShowDialog();
@@ -95,6 +107,8 @@ namespace MSAMISUserInterface {
                 Sched_AddDutyDetail view = new Sched_AddDutyDetail();
                 view.conn = this.conn;
                 view.AID = this.AID;
+                view.Name = this.GName;
+                view.Client = this.Client;
                 view.Location = this.Location;
                 view.ShowDialog();
             }

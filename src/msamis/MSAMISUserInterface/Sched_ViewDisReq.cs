@@ -25,7 +25,20 @@ namespace MSAMISUserInterface {
             FadeTMR.Start();
         }
         private void RefreshData() {
-           // Scheduling.getGuards
+            DataTable dt = Scheduling.GetUnassignmentRequestDetails(RID);
+            ClientLBL.Text = dt.Rows[0][0].ToString();
+
+            if (dt.Rows[0][1].ToString().Equals("Approved")) {
+                CloseBTN.Location = new Point(305, 600);
+                ApproveBTN.Visible = false;
+                NameLBL.Text = "Guards Unassigned";
+            }
+
+            AssignedGRD.DataSource = Scheduling.GetGuardsToBeUnassigned(RID);
+            AssignedGRD.Columns[0].Visible = false;
+            AssignedGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            AssignedGRD.Columns[1].Width = 400;
+            AssignedGRD.ColumnHeadersVisible = false;
 
         }
         private void FadeTMR_Tick(object sender, EventArgs e) {

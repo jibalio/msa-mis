@@ -63,7 +63,7 @@
             this.NameLBL.Location = new System.Drawing.Point(0, 24);
             this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NameLBL.Name = "NameLBL";
-            this.NameLBL.Size = new System.Drawing.Size(718, 56);
+            this.NameLBL.Size = new System.Drawing.Size(718, 54);
             this.NameLBL.TabIndex = 118;
             this.NameLBL.Text = "Laboriki, Dodong Lab W.";
             this.NameLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -86,7 +86,7 @@
             this.ClientLBL.Dock = System.Windows.Forms.DockStyle.Top;
             this.ClientLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.ClientLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ClientLBL.Location = new System.Drawing.Point(0, 106);
+            this.ClientLBL.Location = new System.Drawing.Point(0, 104);
             this.ClientLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ClientLBL.Name = "ClientLBL";
             this.ClientLBL.Size = new System.Drawing.Size(718, 35);
@@ -99,7 +99,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(0, 80);
+            this.label2.Location = new System.Drawing.Point(0, 78);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(718, 26);

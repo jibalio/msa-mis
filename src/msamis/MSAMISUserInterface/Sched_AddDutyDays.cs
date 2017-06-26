@@ -15,6 +15,8 @@ namespace MSAMISUserInterface {
         public MySqlConnection conn;
         public String button = "ADD";
         public int AID { get; set; }
+        public String GName;
+        public String Client;
 
         public Sched_AddDutyDays() {
             InitializeComponent();
@@ -22,8 +24,14 @@ namespace MSAMISUserInterface {
         }
 
         private void SAddDutyDays_Load(object sender, EventArgs e) {
-            //LoadPage();
+            LoadPage();
             FadeTMR.Start();
+        }
+
+        private void LoadPage() {
+            NameLBL.Text = Name;
+            ClientLBL.Text = Client;
+
         }
 
         private void SAddDutyDays_FormClosing(object sender, FormClosingEventArgs e) {

@@ -15,6 +15,9 @@ namespace MSAMISUserInterface {
         public String button = "ADD";
         public int AID { get; set; }
 
+        public String Name;
+        public String Client;
+
         private bool[] DutyDays = new bool[7];
 
         public Sched_AddDutyDetail() {
@@ -31,6 +34,8 @@ namespace MSAMISUserInterface {
             TimeOutAMPMBX.SelectedIndex = 0;
             TimeOutHrBX.SelectedIndex = 0;
             TimeOutMinBX.SelectedIndex = 0;
+            NameLBL.Text = Name;
+            ClientLBL.Text = Client;
         }
 
         private void Sched_AddDutyDetail_FormClosing(object sender, FormClosingEventArgs e) {
