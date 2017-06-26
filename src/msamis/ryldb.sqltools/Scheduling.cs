@@ -304,7 +304,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
         public static DataTable GetAssignmentsByClient(int cid, int filter) {
             String q = @"select 
-                        guards.gid, dutydetails.did, sduty_assignment.aid,
+                        guards.gid, d.did, sduty_assignment.aid,
                         concat(ln,', ',fn,' ',mn) as name,
                         concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,
                         case 
@@ -315,10 +315,10 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         when 1 then 'Active' when 2 then 'Inactive' end as Status
                          from guards 
                         left join sduty_assignment on sduty_assignment.gid=guards.gid
-                        left join dutydetails on sduty_assignment.aid=dutydetails.aid
+                        left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
-                        where city is not null " +
+                        and  city is not null " +
                         (cid == -1 ? "" : " AND cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND days is not null";
