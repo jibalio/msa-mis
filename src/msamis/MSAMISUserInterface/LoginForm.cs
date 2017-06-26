@@ -18,13 +18,22 @@ namespace MSAMISUserInterface {
         }
 
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
-            MainForm mf = new MainForm();
-            mf.Opacity = 0;
-            mf.lf = this;
-            mf.user = UsernameBX.Text;
-            mf.Show();
-            this.Hide();
-           
+            Login();
+        }
+
+        private void Login() {
+            if (PasswordBX.Text.Equals("")) {
+                rylui.RylMessageBox.ShowDialog("Please enter your password");
+            } else if (UsernameBX.Text.Equals("")) {
+                rylui.RylMessageBox.ShowDialog("Please enter your username");
+            } else {
+                MainForm mf = new MainForm();
+                mf.Opacity = 0;
+                mf.lf = this;
+                mf.user = UsernameBX.Text;
+                mf.Show();
+                this.Hide();
+            }
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -53,7 +62,25 @@ namespace MSAMISUserInterface {
                 this.Update();
             }
         }
+        private void PassPic_MouseDown(object sender, MouseEventArgs e) {
+            PasswordBX.PasswordChar = '\0';
+        }
 
+        private void PassPic_MouseUp(object sender, MouseEventArgs e) {
+            PasswordBX.PasswordChar = '●';
+        }
+
+        private void UsernameBX_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyValue.ToString().Equals("13")) {
+                Login();
+            }
+        }
+
+        private void PasswordBX_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyValue.ToString().Equals("13")) {
+                Login();
+            }
+        }
 
 
         /*
@@ -61,11 +88,13 @@ namespace MSAMISUserInterface {
          * Returns an error if database if not updated (if ever gi edit ni Ler).
          * Opens browser, to download updated sql file.
          */
-        
+
 
         private void bttesterxa_Click(object sender, EventArgs e) {
             Backend_Tester bt = new Backend_Tester();
             bt.ShowDialog();
         }
+
+ 
     }
 }

@@ -32,25 +32,28 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
-            this.CloseBTN = new System.Windows.Forms.Button();
-            this.GEditDetailsBTN = new System.Windows.Forms.Button();
             this.bttesterxa = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PassPic = new System.Windows.Forms.PictureBox();
+            this.CloseBTN = new System.Windows.Forms.Button();
+            this.LoginBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PassPic)).BeginInit();
             this.SuspendLayout();
             // 
             // UsernameBX
             // 
             this.UsernameBX.BackColor = System.Drawing.Color.White;
             this.UsernameBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UsernameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsernameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 13F);
             this.UsernameBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.UsernameBX.Location = new System.Drawing.Point(109, 154);
+            this.UsernameBX.Location = new System.Drawing.Point(109, 157);
             this.UsernameBX.Name = "UsernameBX";
-            this.UsernameBX.Size = new System.Drawing.Size(135, 28);
+            this.UsernameBX.Size = new System.Drawing.Size(135, 24);
             this.UsernameBX.TabIndex = 1;
             this.UsernameBX.Text = "username";
             this.UsernameBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UsernameBX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UsernameBX_KeyDown);
             // 
             // label5
             // 
@@ -67,15 +70,16 @@
             // 
             this.PasswordBX.BackColor = System.Drawing.Color.White;
             this.PasswordBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PasswordBX.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordBX.Font = new System.Drawing.Font("Segoe UI Semilight", 13F);
             this.PasswordBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PasswordBX.Location = new System.Drawing.Point(109, 201);
+            this.PasswordBX.Location = new System.Drawing.Point(109, 203);
             this.PasswordBX.Name = "PasswordBX";
             this.PasswordBX.PasswordChar = '•';
-            this.PasswordBX.Size = new System.Drawing.Size(135, 28);
+            this.PasswordBX.Size = new System.Drawing.Size(132, 24);
             this.PasswordBX.TabIndex = 2;
             this.PasswordBX.Text = "pass";
             this.PasswordBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PasswordBX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordBX_KeyDown);
             // 
             // label1
             // 
@@ -119,46 +123,6 @@
             this.FadeTMR.Interval = 1;
             this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
             // 
-            // CloseBTN
-            // 
-            this.CloseBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.CloseBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseBTN.BackgroundImage")));
-            this.CloseBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CloseBTN.FlatAppearance.BorderSize = 0;
-            this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(138, 333);
-            this.CloseBTN.Name = "CloseBTN";
-            this.CloseBTN.Size = new System.Drawing.Size(78, 32);
-            this.CloseBTN.TabIndex = 4;
-            this.CloseBTN.Text = "EXIT";
-            this.CloseBTN.UseVisualStyleBackColor = false;
-            this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
-            // 
-            // GEditDetailsBTN
-            // 
-            this.GEditDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GEditDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GEditDetailsBTN.BackgroundImage")));
-            this.GEditDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GEditDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.GEditDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.GEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.GEditDetailsBTN.Location = new System.Drawing.Point(138, 298);
-            this.GEditDetailsBTN.Name = "GEditDetailsBTN";
-            this.GEditDetailsBTN.Size = new System.Drawing.Size(78, 32);
-            this.GEditDetailsBTN.TabIndex = 3;
-            this.GEditDetailsBTN.Text = "LOGIN";
-            this.GEditDetailsBTN.UseVisualStyleBackColor = false;
-            this.GEditDetailsBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
-            // 
             // bttesterxa
             // 
             this.bttesterxa.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,6 +143,58 @@
             this.panel1.Size = new System.Drawing.Size(346, 79);
             this.panel1.TabIndex = 90;
             // 
+            // PassPic
+            // 
+            this.PassPic.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.eYE;
+            this.PassPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PassPic.Location = new System.Drawing.Point(216, 206);
+            this.PassPic.Name = "PassPic";
+            this.PassPic.Size = new System.Drawing.Size(23, 20);
+            this.PassPic.TabIndex = 91;
+            this.PassPic.TabStop = false;
+            this.PassPic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PassPic_MouseDown);
+            this.PassPic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PassPic_MouseUp);
+            // 
+            // CloseBTN
+            // 
+            this.CloseBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.CloseBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseBTN.BackgroundImage")));
+            this.CloseBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CloseBTN.FlatAppearance.BorderSize = 0;
+            this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBTN.ForeColor = System.Drawing.Color.White;
+            this.CloseBTN.Location = new System.Drawing.Point(138, 333);
+            this.CloseBTN.Name = "CloseBTN";
+            this.CloseBTN.Size = new System.Drawing.Size(78, 32);
+            this.CloseBTN.TabIndex = 4;
+            this.CloseBTN.Text = "EXIT";
+            this.CloseBTN.UseVisualStyleBackColor = false;
+            this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
+            // 
+            // LoginBTN
+            // 
+            this.LoginBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoginBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.LoginBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LoginBTN.BackgroundImage")));
+            this.LoginBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LoginBTN.FlatAppearance.BorderSize = 0;
+            this.LoginBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.LoginBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.LoginBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoginBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginBTN.ForeColor = System.Drawing.Color.White;
+            this.LoginBTN.Location = new System.Drawing.Point(138, 295);
+            this.LoginBTN.Name = "LoginBTN";
+            this.LoginBTN.Size = new System.Drawing.Size(78, 32);
+            this.LoginBTN.TabIndex = 3;
+            this.LoginBTN.Text = "LOGIN";
+            this.LoginBTN.UseVisualStyleBackColor = false;
+            this.LoginBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,9 +203,10 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(345, 437);
             this.ControlBox = false;
+            this.Controls.Add(this.PassPic);
             this.Controls.Add(this.bttesterxa);
             this.Controls.Add(this.CloseBTN);
-            this.Controls.Add(this.GEditDetailsBTN);
+            this.Controls.Add(this.LoginBTN);
             this.Controls.Add(this.PasswordBX);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UsernameBX);
@@ -204,6 +221,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PassPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,10 +235,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button GEditDetailsBTN;
+        private System.Windows.Forms.Button LoginBTN;
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Button bttesterxa;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox PassPic;
     }
 }

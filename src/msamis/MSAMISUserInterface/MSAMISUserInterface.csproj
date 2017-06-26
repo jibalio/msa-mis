@@ -319,6 +319,7 @@
     <None Include="Resources\Settings.png" />
     <None Include="Resources\notif.png" />
     <None Include="Resources\CloseBTN.png" />
+    <None Include="Resources\eYE.png" />
     <Content Include="Untitled-1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -208,10 +208,11 @@ namespace MSAMISUserInterface {
             if (DashboardToBeMinimized) {
                 Point defaultPoint = new Point(100, -865);
                 if (DashboardPage.Location.Y > defaultPoint.Y) DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y - 60);
-                else { DashboardTMR.Stop(); ControlBoxLBL.Visible = true; ControlBoxTimeLBL.Visible = true; ControlBoxPanel.BackColor = primary; }
+                else { DashboardTMR.Stop(); ControlBoxLBL.Visible = true; ControlBoxTimeLBL.Visible = true; ControlBoxPanel.BackColor = primary; SettingsBTN.Visible = true; }
             } else if (!DashboardToBeMinimized) {
                 ControlBoxLBL.Visible = false;
                 ControlBoxTimeLBL.Visible = false;
+                SettingsBTN.Visible = false;
                 Point defaultPoint = new Point(70, 32);
                 if (DashboardPage.Location.Y != defaultPoint.Y) {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y + 60);
@@ -969,7 +970,8 @@ namespace MSAMISUserInterface {
             SCHEDRefreshAssignments();
         }
         private void SViewAssGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-
+            if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Inactive")) { SViewAssViewDetailsBTN.Visible = false; SViewAssUnassignBTN.Visible = false;  } 
+            else {SViewAssViewDetailsBTN.Visible = true; if (SViewAssSearchClientCMBX.SelectedIndex != 0)SViewAssUnassignBTN.Visible = true; }
         }
         private bool isUnscheduled() {
             bool ret = true;
@@ -1352,7 +1354,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-
 
     }
 }

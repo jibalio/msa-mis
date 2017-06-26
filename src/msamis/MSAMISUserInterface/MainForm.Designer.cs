@@ -225,10 +225,10 @@
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.SamplePNL = new System.Windows.Forms.SplitContainer();
             this.label44 = new System.Windows.Forms.Label();
-            this.ClientRequestsTLTP = new System.Windows.Forms.ToolTip(this.components);
-            this.label38 = new System.Windows.Forms.Label();
-            this.QuoteMainBX = new System.Windows.Forms.TextBox();
             this.QuoteFromBX = new System.Windows.Forms.TextBox();
+            this.QuoteMainBX = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.ClientRequestsTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.ClientBTN = new System.Windows.Forms.Button();
             this.RecordsBTN = new System.Windows.Forms.Button();
             this.PayrollBTN = new System.Windows.Forms.Button();
@@ -236,6 +236,18 @@
             this.SettingsBTN = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
+            this.SViewReqResetDateBTN = new System.Windows.Forms.Button();
+            this.SViewReqViewBTN = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.SArchiveViewDetailsBTN = new System.Windows.Forms.Button();
+            this.SViewAssViewDetailsBTN = new System.Windows.Forms.Button();
+            this.SViewAssUnassignBTN = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.GArchiveBTN = new System.Windows.Forms.Button();
+            this.GEditDetailsBTN = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
             this.CViewDetailsBTN = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.PBasicPayAddBTN = new System.Windows.Forms.Button();
@@ -253,18 +265,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.SViewReqResetDateBTN = new System.Windows.Forms.Button();
-            this.SViewReqViewBTN = new System.Windows.Forms.Button();
-            this.button36 = new System.Windows.Forms.Button();
-            this.button35 = new System.Windows.Forms.Button();
-            this.button33 = new System.Windows.Forms.Button();
-            this.SArchiveViewDetailsBTN = new System.Windows.Forms.Button();
-            this.SViewAssViewDetailsBTN = new System.Windows.Forms.Button();
-            this.SViewAssUnassignBTN = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.GArchiveBTN = new System.Windows.Forms.Button();
-            this.GEditDetailsBTN = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
             this.ControlBoxPanel.SuspendLayout();
             this.DashboardPage.SuspendLayout();
             this.DSalaryReportPNL.SuspendLayout();
@@ -323,8 +323,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SamplePNL)).BeginInit();
             this.SamplePNL.Panel2.SuspendLayout();
             this.SamplePNL.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // ControlBoxPanel
@@ -3073,27 +3073,18 @@
             this.label44.TabIndex = 9;
             this.label44.Text = "Hi Bes! Advance Happy Birthday! XD";
             // 
-            // ClientRequestsTLTP
+            // QuoteFromBX
             // 
-            this.ClientRequestsTLTP.AutoPopDelay = 3000;
-            this.ClientRequestsTLTP.InitialDelay = 500;
-            this.ClientRequestsTLTP.IsBalloon = true;
-            this.ClientRequestsTLTP.ReshowDelay = 100;
-            this.ClientRequestsTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.ClientRequestsTLTP.ToolTipTitle = "Client Requests";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.BackColor = System.Drawing.Color.Transparent;
-            this.label38.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label38.Location = new System.Drawing.Point(241, 147);
-            this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(233, 37);
-            this.label38.TabIndex = 10;
-            this.label38.Text = "Quote of the day";
+            this.QuoteFromBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.QuoteFromBX.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.QuoteFromBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.QuoteFromBX.Location = new System.Drawing.Point(127, 187);
+            this.QuoteFromBX.Multiline = true;
+            this.QuoteFromBX.Name = "QuoteFromBX";
+            this.QuoteFromBX.Size = new System.Drawing.Size(458, 32);
+            this.QuoteFromBX.TabIndex = 13;
+            this.QuoteFromBX.Text = "from Anonymous";
+            this.QuoteFromBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // QuoteMainBX
             // 
@@ -3108,18 +3099,27 @@
             this.QuoteMainBX.Text = "\"Do not take life too seriously. You will never get out of it alive.\"";
             this.QuoteMainBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // QuoteFromBX
+            // label38
             // 
-            this.QuoteFromBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.QuoteFromBX.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.QuoteFromBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.QuoteFromBX.Location = new System.Drawing.Point(127, 187);
-            this.QuoteFromBX.Multiline = true;
-            this.QuoteFromBX.Name = "QuoteFromBX";
-            this.QuoteFromBX.Size = new System.Drawing.Size(458, 32);
-            this.QuoteFromBX.TabIndex = 13;
-            this.QuoteFromBX.Text = "from Anonymous";
-            this.QuoteFromBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label38.Location = new System.Drawing.Point(241, 147);
+            this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(233, 37);
+            this.label38.TabIndex = 10;
+            this.label38.Text = "Quote of the day";
+            // 
+            // ClientRequestsTLTP
+            // 
+            this.ClientRequestsTLTP.AutoPopDelay = 3000;
+            this.ClientRequestsTLTP.InitialDelay = 500;
+            this.ClientRequestsTLTP.IsBalloon = true;
+            this.ClientRequestsTLTP.ReshowDelay = 100;
+            this.ClientRequestsTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ClientRequestsTLTP.ToolTipTitle = "Client Requests";
             // 
             // ClientBTN
             // 
@@ -3213,6 +3213,7 @@
             this.SettingsBTN.TabIndex = 5;
             this.SettingsBTN.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.SettingsBTN.UseVisualStyleBackColor = true;
+            this.SettingsBTN.Visible = false;
             this.SettingsBTN.Click += new System.EventHandler(this.SettingsBTN_Click);
             // 
             // button5
@@ -3249,6 +3250,224 @@
             this.CloseBTN.TabIndex = 0;
             this.CloseBTN.UseVisualStyleBackColor = false;
             this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
+            // 
+            // SViewReqResetDateBTN
+            // 
+            this.SViewReqResetDateBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SViewReqResetDateBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.SViewReqResetDateBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SViewReqResetDateBTN.FlatAppearance.BorderSize = 0;
+            this.SViewReqResetDateBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.SViewReqResetDateBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SViewReqResetDateBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SViewReqResetDateBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.SViewReqResetDateBTN.ForeColor = System.Drawing.Color.White;
+            this.SViewReqResetDateBTN.Location = new System.Drawing.Point(613, 22);
+            this.SViewReqResetDateBTN.Name = "SViewReqResetDateBTN";
+            this.SViewReqResetDateBTN.Size = new System.Drawing.Size(53, 25);
+            this.SViewReqResetDateBTN.TabIndex = 19;
+            this.SViewReqResetDateBTN.Text = "RESET";
+            this.SViewReqResetDateBTN.UseVisualStyleBackColor = false;
+            this.SViewReqResetDateBTN.Click += new System.EventHandler(this.SViewReqResetDateBTN_Click);
+            // 
+            // SViewReqViewBTN
+            // 
+            this.SViewReqViewBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SViewReqViewBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.SViewReqViewBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SViewReqViewBTN.FlatAppearance.BorderSize = 0;
+            this.SViewReqViewBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.SViewReqViewBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SViewReqViewBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SViewReqViewBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SViewReqViewBTN.ForeColor = System.Drawing.Color.White;
+            this.SViewReqViewBTN.Location = new System.Drawing.Point(284, 600);
+            this.SViewReqViewBTN.Name = "SViewReqViewBTN";
+            this.SViewReqViewBTN.Size = new System.Drawing.Size(130, 32);
+            this.SViewReqViewBTN.TabIndex = 6;
+            this.SViewReqViewBTN.Text = "VIEW DETAILS";
+            this.SViewReqViewBTN.UseVisualStyleBackColor = false;
+            this.SViewReqViewBTN.Click += new System.EventHandler(this.SViewReqViewBTN_Click);
+            // 
+            // button36
+            // 
+            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.button36.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.button36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button36.FlatAppearance.BorderSize = 0;
+            this.button36.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button36.ForeColor = System.Drawing.Color.White;
+            this.button36.Location = new System.Drawing.Point(282, 322);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(112, 32);
+            this.button36.TabIndex = 6;
+            this.button36.Text = "PRINT";
+            this.button36.UseVisualStyleBackColor = false;
+            // 
+            // button35
+            // 
+            this.button35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.button35.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.button35.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button35.FlatAppearance.BorderSize = 0;
+            this.button35.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button35.ForeColor = System.Drawing.Color.White;
+            this.button35.Location = new System.Drawing.Point(282, 322);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(112, 32);
+            this.button35.TabIndex = 6;
+            this.button35.Text = "PRINT";
+            this.button35.UseVisualStyleBackColor = false;
+            // 
+            // button33
+            // 
+            this.button33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.button33.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.button33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button33.FlatAppearance.BorderSize = 0;
+            this.button33.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button33.ForeColor = System.Drawing.Color.White;
+            this.button33.Location = new System.Drawing.Point(282, 322);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(112, 32);
+            this.button33.TabIndex = 6;
+            this.button33.Text = "PRINT";
+            this.button33.UseVisualStyleBackColor = false;
+            // 
+            // SArchiveViewDetailsBTN
+            // 
+            this.SArchiveViewDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SArchiveViewDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.SArchiveViewDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SArchiveViewDetailsBTN.FlatAppearance.BorderSize = 0;
+            this.SArchiveViewDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.SArchiveViewDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SArchiveViewDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SArchiveViewDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SArchiveViewDetailsBTN.ForeColor = System.Drawing.Color.White;
+            this.SArchiveViewDetailsBTN.Location = new System.Drawing.Point(282, 600);
+            this.SArchiveViewDetailsBTN.Name = "SArchiveViewDetailsBTN";
+            this.SArchiveViewDetailsBTN.Size = new System.Drawing.Size(130, 32);
+            this.SArchiveViewDetailsBTN.TabIndex = 6;
+            this.SArchiveViewDetailsBTN.Text = "VIEW DETAILS";
+            this.SArchiveViewDetailsBTN.UseVisualStyleBackColor = false;
+            this.SArchiveViewDetailsBTN.Click += new System.EventHandler(this.SArchiveViewDetailsBTN_Click);
+            // 
+            // SViewAssViewDetailsBTN
+            // 
+            this.SViewAssViewDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SViewAssViewDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.SViewAssViewDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SViewAssViewDetailsBTN.FlatAppearance.BorderSize = 0;
+            this.SViewAssViewDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.SViewAssViewDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SViewAssViewDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SViewAssViewDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SViewAssViewDetailsBTN.ForeColor = System.Drawing.Color.White;
+            this.SViewAssViewDetailsBTN.Location = new System.Drawing.Point(228, 600);
+            this.SViewAssViewDetailsBTN.Name = "SViewAssViewDetailsBTN";
+            this.SViewAssViewDetailsBTN.Size = new System.Drawing.Size(131, 32);
+            this.SViewAssViewDetailsBTN.TabIndex = 18;
+            this.SViewAssViewDetailsBTN.Text = "VIEW DETAILS";
+            this.SViewAssViewDetailsBTN.UseVisualStyleBackColor = false;
+            this.SViewAssViewDetailsBTN.Click += new System.EventHandler(this.SViewAssViewDetailsBTN_Click);
+            // 
+            // SViewAssUnassignBTN
+            // 
+            this.SViewAssUnassignBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.SViewAssUnassignBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.SViewAssUnassignBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SViewAssUnassignBTN.FlatAppearance.BorderSize = 0;
+            this.SViewAssUnassignBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.SViewAssUnassignBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.SViewAssUnassignBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SViewAssUnassignBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SViewAssUnassignBTN.ForeColor = System.Drawing.Color.White;
+            this.SViewAssUnassignBTN.Location = new System.Drawing.Point(365, 600);
+            this.SViewAssUnassignBTN.Name = "SViewAssUnassignBTN";
+            this.SViewAssUnassignBTN.Size = new System.Drawing.Size(109, 32);
+            this.SViewAssUnassignBTN.TabIndex = 20;
+            this.SViewAssUnassignBTN.Text = "UNASSIGN";
+            this.SViewAssUnassignBTN.UseVisualStyleBackColor = false;
+            this.SViewAssUnassignBTN.Visible = false;
+            this.SViewAssUnassignBTN.Click += new System.EventHandler(this.SViewReqDisBTN_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.HomeBG;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(935, 601);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dashboard_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Dashboard_MouseUp);
+            // 
+            // GArchiveBTN
+            // 
+            this.GArchiveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.GArchiveBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.GArchiveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GArchiveBTN.FlatAppearance.BorderSize = 0;
+            this.GArchiveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.GArchiveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.GArchiveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GArchiveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GArchiveBTN.ForeColor = System.Drawing.Color.White;
+            this.GArchiveBTN.Location = new System.Drawing.Point(346, 601);
+            this.GArchiveBTN.Name = "GArchiveBTN";
+            this.GArchiveBTN.Size = new System.Drawing.Size(126, 32);
+            this.GArchiveBTN.TabIndex = 7;
+            this.GArchiveBTN.Text = "ARCHIVE";
+            this.GArchiveBTN.UseVisualStyleBackColor = false;
+            this.GArchiveBTN.Click += new System.EventHandler(this.ArchiveButton_Event);
+            // 
+            // GEditDetailsBTN
+            // 
+            this.GEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GEditDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.GEditDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GEditDetailsBTN.FlatAppearance.BorderSize = 0;
+            this.GEditDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.GEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
+            this.GEditDetailsBTN.Location = new System.Drawing.Point(214, 601);
+            this.GEditDetailsBTN.Name = "GEditDetailsBTN";
+            this.GEditDetailsBTN.Size = new System.Drawing.Size(126, 32);
+            this.GEditDetailsBTN.TabIndex = 6;
+            this.GEditDetailsBTN.Text = "VIEW DETAILS";
+            this.GEditDetailsBTN.UseVisualStyleBackColor = false;
+            this.GEditDetailsBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
+            // 
+            // button37
+            // 
+            this.button37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.button37.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.button37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button37.FlatAppearance.BorderSize = 0;
+            this.button37.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.button37.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button37.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button37.ForeColor = System.Drawing.Color.White;
+            this.button37.Location = new System.Drawing.Point(294, 600);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(126, 32);
+            this.button37.TabIndex = 6;
+            this.button37.Text = "VIEW DETAILS";
+            this.button37.UseVisualStyleBackColor = false;
             // 
             // CViewDetailsBTN
             // 
@@ -3535,224 +3754,6 @@
             this.button3.Text = "VIEW DETAILS";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // SViewReqResetDateBTN
-            // 
-            this.SViewReqResetDateBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SViewReqResetDateBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.SViewReqResetDateBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SViewReqResetDateBTN.FlatAppearance.BorderSize = 0;
-            this.SViewReqResetDateBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.SViewReqResetDateBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.SViewReqResetDateBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SViewReqResetDateBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.SViewReqResetDateBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewReqResetDateBTN.Location = new System.Drawing.Point(613, 22);
-            this.SViewReqResetDateBTN.Name = "SViewReqResetDateBTN";
-            this.SViewReqResetDateBTN.Size = new System.Drawing.Size(53, 25);
-            this.SViewReqResetDateBTN.TabIndex = 19;
-            this.SViewReqResetDateBTN.Text = "RESET";
-            this.SViewReqResetDateBTN.UseVisualStyleBackColor = false;
-            this.SViewReqResetDateBTN.Click += new System.EventHandler(this.SViewReqResetDateBTN_Click);
-            // 
-            // SViewReqViewBTN
-            // 
-            this.SViewReqViewBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SViewReqViewBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.SViewReqViewBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SViewReqViewBTN.FlatAppearance.BorderSize = 0;
-            this.SViewReqViewBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.SViewReqViewBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.SViewReqViewBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SViewReqViewBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SViewReqViewBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewReqViewBTN.Location = new System.Drawing.Point(284, 600);
-            this.SViewReqViewBTN.Name = "SViewReqViewBTN";
-            this.SViewReqViewBTN.Size = new System.Drawing.Size(130, 32);
-            this.SViewReqViewBTN.TabIndex = 6;
-            this.SViewReqViewBTN.Text = "VIEW DETAILS";
-            this.SViewReqViewBTN.UseVisualStyleBackColor = false;
-            this.SViewReqViewBTN.Click += new System.EventHandler(this.SViewReqViewBTN_Click);
-            // 
-            // button36
-            // 
-            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button36.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.button36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button36.FlatAppearance.BorderSize = 0;
-            this.button36.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button36.ForeColor = System.Drawing.Color.White;
-            this.button36.Location = new System.Drawing.Point(282, 322);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(112, 32);
-            this.button36.TabIndex = 6;
-            this.button36.Text = "PRINT";
-            this.button36.UseVisualStyleBackColor = false;
-            // 
-            // button35
-            // 
-            this.button35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button35.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.button35.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button35.FlatAppearance.BorderSize = 0;
-            this.button35.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button35.ForeColor = System.Drawing.Color.White;
-            this.button35.Location = new System.Drawing.Point(282, 322);
-            this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(112, 32);
-            this.button35.TabIndex = 6;
-            this.button35.Text = "PRINT";
-            this.button35.UseVisualStyleBackColor = false;
-            // 
-            // button33
-            // 
-            this.button33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button33.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.button33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button33.FlatAppearance.BorderSize = 0;
-            this.button33.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button33.ForeColor = System.Drawing.Color.White;
-            this.button33.Location = new System.Drawing.Point(282, 322);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(112, 32);
-            this.button33.TabIndex = 6;
-            this.button33.Text = "PRINT";
-            this.button33.UseVisualStyleBackColor = false;
-            // 
-            // SArchiveViewDetailsBTN
-            // 
-            this.SArchiveViewDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SArchiveViewDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.SArchiveViewDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SArchiveViewDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.SArchiveViewDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.SArchiveViewDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.SArchiveViewDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SArchiveViewDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SArchiveViewDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.SArchiveViewDetailsBTN.Location = new System.Drawing.Point(282, 600);
-            this.SArchiveViewDetailsBTN.Name = "SArchiveViewDetailsBTN";
-            this.SArchiveViewDetailsBTN.Size = new System.Drawing.Size(130, 32);
-            this.SArchiveViewDetailsBTN.TabIndex = 6;
-            this.SArchiveViewDetailsBTN.Text = "VIEW DETAILS";
-            this.SArchiveViewDetailsBTN.UseVisualStyleBackColor = false;
-            this.SArchiveViewDetailsBTN.Click += new System.EventHandler(this.SArchiveViewDetailsBTN_Click);
-            // 
-            // SViewAssViewDetailsBTN
-            // 
-            this.SViewAssViewDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SViewAssViewDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.SViewAssViewDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SViewAssViewDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.SViewAssViewDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.SViewAssViewDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.SViewAssViewDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SViewAssViewDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SViewAssViewDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewAssViewDetailsBTN.Location = new System.Drawing.Point(228, 600);
-            this.SViewAssViewDetailsBTN.Name = "SViewAssViewDetailsBTN";
-            this.SViewAssViewDetailsBTN.Size = new System.Drawing.Size(131, 32);
-            this.SViewAssViewDetailsBTN.TabIndex = 18;
-            this.SViewAssViewDetailsBTN.Text = "VIEW DETAILS";
-            this.SViewAssViewDetailsBTN.UseVisualStyleBackColor = false;
-            this.SViewAssViewDetailsBTN.Click += new System.EventHandler(this.SViewAssViewDetailsBTN_Click);
-            // 
-            // SViewAssUnassignBTN
-            // 
-            this.SViewAssUnassignBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.SViewAssUnassignBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.SViewAssUnassignBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SViewAssUnassignBTN.FlatAppearance.BorderSize = 0;
-            this.SViewAssUnassignBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.SViewAssUnassignBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.SViewAssUnassignBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SViewAssUnassignBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SViewAssUnassignBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewAssUnassignBTN.Location = new System.Drawing.Point(365, 600);
-            this.SViewAssUnassignBTN.Name = "SViewAssUnassignBTN";
-            this.SViewAssUnassignBTN.Size = new System.Drawing.Size(109, 32);
-            this.SViewAssUnassignBTN.TabIndex = 20;
-            this.SViewAssUnassignBTN.Text = "UNASSIGN";
-            this.SViewAssUnassignBTN.UseVisualStyleBackColor = false;
-            this.SViewAssUnassignBTN.Visible = false;
-            this.SViewAssUnassignBTN.Click += new System.EventHandler(this.SViewReqDisBTN_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.HomeBG;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(935, 601);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dashboard_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Dashboard_MouseUp);
-            // 
-            // GArchiveBTN
-            // 
-            this.GArchiveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.GArchiveBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.GArchiveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GArchiveBTN.FlatAppearance.BorderSize = 0;
-            this.GArchiveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.GArchiveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.GArchiveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GArchiveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GArchiveBTN.ForeColor = System.Drawing.Color.White;
-            this.GArchiveBTN.Location = new System.Drawing.Point(346, 601);
-            this.GArchiveBTN.Name = "GArchiveBTN";
-            this.GArchiveBTN.Size = new System.Drawing.Size(126, 32);
-            this.GArchiveBTN.TabIndex = 7;
-            this.GArchiveBTN.Text = "ARCHIVE";
-            this.GArchiveBTN.UseVisualStyleBackColor = false;
-            this.GArchiveBTN.Click += new System.EventHandler(this.ArchiveButton_Event);
-            // 
-            // GEditDetailsBTN
-            // 
-            this.GEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GEditDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.GEditDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GEditDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.GEditDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.GEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.GEditDetailsBTN.Location = new System.Drawing.Point(214, 601);
-            this.GEditDetailsBTN.Name = "GEditDetailsBTN";
-            this.GEditDetailsBTN.Size = new System.Drawing.Size(126, 32);
-            this.GEditDetailsBTN.TabIndex = 6;
-            this.GEditDetailsBTN.Text = "VIEW DETAILS";
-            this.GEditDetailsBTN.UseVisualStyleBackColor = false;
-            this.GEditDetailsBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
-            // 
-            // button37
-            // 
-            this.button37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button37.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.button37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button37.FlatAppearance.BorderSize = 0;
-            this.button37.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.button37.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button37.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button37.ForeColor = System.Drawing.Color.White;
-            this.button37.Location = new System.Drawing.Point(294, 600);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(126, 32);
-            this.button37.TabIndex = 6;
-            this.button37.Text = "VIEW DETAILS";
-            this.button37.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3862,9 +3863,9 @@
             this.SamplePNL.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SamplePNL)).EndInit();
             this.SamplePNL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
