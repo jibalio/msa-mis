@@ -456,7 +456,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_hh,':',to_mm,' ',to_period) as TimeOut,
                     'days_columnMTWThFSSu' as days from 
-                    dutydetails where AID=" + AID);
+                    dutydetails where DStatus=1 and AID=" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
             }
@@ -471,7 +471,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         public static DataTable GetDutyDetailsDetails(int DID) {
             String q = @"select ti_hh, ti_mm, ti_period,
 		                to_hh, to_mm, to_period
-                        from dutydetails where did=" +DID;
+                        from dutydetails  where DStatus=1 and did=" + DID;
             return SQLTools.ExecuteQuery(q);
         }
         /// <summary>
