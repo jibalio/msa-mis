@@ -33,6 +33,21 @@ namespace MSAMISUserInterface {
             DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
             GName = NameLBL.Text = dt.Rows[0][2].ToString();
             Client = ClientLBL.Text = dt.Rows[0][3].ToString();
+            RefreshDutyDetails();
+        }
+
+        public void RefreshDutyDetails() {
+            DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(AID);
+            DutyDetailsGRD.Columns[0].Visible = false;
+            DutyDetailsGRD.Columns[1].HeaderText = "TIME-IN";
+            DutyDetailsGRD.Columns[2].HeaderText = "TIME-OUT";
+            DutyDetailsGRD.Columns[3].HeaderText = "DAYS";
+
+            DutyDetailsGRD.Columns[1].Width = 150;
+            DutyDetailsGRD.Columns[2].Width = 150;
+            DutyDetailsGRD.Columns[3].Width = 150;
+
+            DutyDetailsGRD.Select();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -50,12 +65,14 @@ namespace MSAMISUserInterface {
             reference.SCHEDRefreshAssignments();
             this.Close();
         }
-
+        private int DID;
         private void EditDutyDetailsBTN_Click(object sender, EventArgs e) {
             Sched_AddDutyDetail view = new Sched_AddDutyDetail();
             view.AID = this.AID;
             view.button = "UPDATE";
+            view.refer = this;
             view.conn = this.conn;
+            view.DID = this.DID;
             view.Name = this.GName;
             view.Client = this.Client;
             view.Location = this.Location;
@@ -108,11 +125,24 @@ namespace MSAMISUserInterface {
                 view.conn = this.conn;
                 view.AID = this.AID;
                 view.Name = this.GName;
+                view.refer = this;
                 view.Client = this.Client;
                 view.Location = this.Location;
                 view.ShowDialog();
             }
             catch (Exception) { }
+        }
+
+        private void DutyDetailsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            if (DutyDetailsGRD.SelectedRows.Count > 0) {
+                DID = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
+            }
+        }
+
+        private void DismissBTN_Click(object sender, EventArgs e) {
+            Scheduling.DismissDuty(DID);
+            RefreshDutyDetails();
+
         }
     }
 }

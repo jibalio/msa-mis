@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ryldb.sqltools;
+using System.IO;
 
 namespace MSAMISUserInterface {
     public partial class MainForm : Form {
@@ -48,9 +49,19 @@ namespace MSAMISUserInterface {
             PayrollPage.Visible = false;
             currentBTN = DashboardBTN;
             ControlBoxPanel.BackColor = dahsbard;
+            DailyQuote();
             if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0"))
                 SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).ToString();
             else SchedBTN.Text = String.Empty;
+        }
+        private void DailyQuote() {
+            var lines = File.ReadAllLines("../../Resources/Quotes.txt");
+            var r = new Random();
+            var randomLineNumber = r.Next(0, lines.Length - 1);
+            if (randomLineNumber % 2 != 0) randomLineNumber = randomLineNumber - 1;
+            QuoteMainBX.Text = '"'+lines[randomLineNumber]+'"';
+            QuoteFromBX.Text = "from " + lines[randomLineNumber+1];
+
         }
         private void MainForm_Load(object sender, EventArgs e) {
             ControlBoxTimeLBL.Text = "Logged in as, " + user;
@@ -74,17 +85,7 @@ namespace MSAMISUserInterface {
                 if (DashboardPage.Location.Y <= -568) DashboardPage.Location = new Point(DashboardPage.Location.X, -628);
                 else if (DashboardPage.Location.Y <= -448) DashboardPage.Location = new Point(DashboardPage.Location.X, -508);
                 else if (DashboardPage.Location.Y <= -300) DashboardPage.Location = new Point(DashboardPage.Location.X, -328);
-                DashboardToBeMinimized = true;
-                DashboardTMR.Start();
-                GuardsPage.Show();
-                SchedulesPage.Hide();
-                PayrollPage.Hide();
-                ClientsPage.Hide();
-                currentBTN.BackColor = primary;
-                RecordsBTN.BackColor = accent;
-                currentPage = GuardsPage;
-                currentBTN = RecordsBTN;
-                GUARDSLoadPage();
+                RecordsBTN.PerformClick();
             } else {
                 if (DashboardPage.Location.Y > -148) DashboardPage.Location = new Point(DashboardPage.Location.X, -28);
                 else if (DashboardPage.Location.Y > -208) DashboardPage.Location = new Point(DashboardPage.Location.X, -148);
@@ -139,6 +140,17 @@ namespace MSAMISUserInterface {
             DashboardBTN.BackColor = accent;
             currentBTN.BackColor = primary;
             currentBTN = DashboardBTN;
+        }
+        private void SettingsBTN_Click(object sender, EventArgs e) {
+            try {
+                About view = new About();
+                view.reference = this;
+                view.conn = this.conn;
+                view.UN = user;
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
         }
         private void RecordsBTN_Click(object sender, EventArgs e) {
             DashboardToBeMinimized = true;
@@ -1336,6 +1348,7 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
+
         #endregion
 
         #endregion
