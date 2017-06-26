@@ -89,9 +89,15 @@ namespace MSAMISUserInterface {
         /// <param name="keyword">Keyword for search</param>
         /// <returns></returns>
         public static DataTable GetGuardsAssigned(int cid, String keyword) {
-            String q = "select guards.gid, concat(ln,', ',fn,' ',mn) as Name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location,concat(timein, timeout, days) as schedule from sduty_assignment inner join request_assign on request_assign.RAID=sduty_assignment.RAID left join guards on guards.gid = sduty_assignment.gid left join dutydetails on dutydetails.aid = sduty_assignment.aid" +
+            String q = @"select guards.gid, concat(ln,', ',fn,' ',mn) as Name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location,concat (ti_hh,':',ti_mm,' ',ti_period, '-',
+                   to_hh,':',to_mm,' ',to_period, ' ') as schedule, 'null' as days
+                from sduty_assignment inner join request_assign on request_assign.RAID=sduty_assignment.RAID left join guards on guards.gid = sduty_assignment.gid left join dutydetails on dutydetails.aid = sduty_assignment.aid" +
                 " where cid={0}"; //comment
-            return SQLTools.ExecuteQuery(q, "name", keyword, "name asc", new String[] { cid.ToString() });
+            DataTable dt = SQLTools.ExecuteQuery(q, "name", keyword, "name asc", new String[] { cid.ToString() });
+            foreach (DataRow e in dt.Rows) {
+                e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
+            }
+            return dt;
         }
         /// <summary>
         /// Gets the details of a specific ASSIGNMENT Request
@@ -262,15 +268,17 @@ namespace MSAMISUserInterface {
         #region Guard Retrieval Funcs  ✔Done
 
         public static DataTable ViewGuardsFromClient(int cid) {
-            String q = @"select did, concat(ln,', ',fn,' ',mn) as Name, concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,concat(timein, '-', timeout,' ', days) as Schedule from guards left join sduty_assignment on guards.gid = sduty_assignment.gid 
+            String q = @"select did, concat(ln,', ',fn,' ',mn) as Name, concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,concat (ti_hh,':',ti_mm,' ',ti_period, '-',
+		to_hh,':',to_mm,' ',to_period, ' ') as Schedule,
+        'null' as days
+from guards left join sduty_assignment on guards.gid = sduty_assignment.gid 
                         left join dutydetails on sduty_assignment.aid = dutydetails.AID
                         left join request_assign on sduty_assignment.raid = request_assign.raid 
                         left join request on request_assign.rid=request.rid
                         where cid = 1;";
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
-                String[] x = e["Schedule"].ToString().Split(' ');
-                e.SetField("Schedule", (x[0] + ParseDays(x[1])));
+                e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
             }
             return dt;
         }
@@ -300,8 +308,8 @@ namespace MSAMISUserInterface {
                         concat(ln,', ',fn,' ',mn) as name,
                         concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,
                         case 
-	                        when concat(timein,'-', timeout,' ', days) is null then 'Unscheduled'
-                            when concat(timein,'-', timeout,' ', days) is not null then 'Scheduled'
+	                        when ti_hh is null then 'Unscheduled'
+                            when ti_hh is not null then 'Scheduled'
                             end as schedule,
 						case astatus
                         when 1 then 'Active' when 2 then 'Inactive' end as Status
@@ -341,33 +349,31 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region DutyDetail Operations  (Add + Dismiss)  ✔Done
-        public class Days {
-            public string deendracht = null;
-            public bool[] Value = new bool[7];
-            bool Mon, Tue, Wed, Thu, Fri, Sat, Sun;
-            public Days(bool Mon, bool Tue, bool Wed, bool Thu, bool Fri, bool Sat, bool Sun) {
-                deendracht = "";
-                bool[] d = { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
-                for (int c = 0; c < d.Length; c++) {
-                    if (d[c]) {
-                        deendracht += "1:";
-                        Value[c] = true;
-                    } else {
-                        deendracht += "0:";
-                        Value[c] = false;
-                    }
-                }
-                Mon = Value[0]; Tue = Value[1]; Wed = Value[2]; Thu = Value[3]; Fri = Value[4]; Sat = Value[5]; Sun = Value[6];
-                deendracht = deendracht.Substring(0, deendracht.Length - 1);
-            }
-        }
+       
         public static void AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
-            // 1.) Save TimeIN / TimeOut Details
-            String ti, to;
-            ti = String.Format("{0}:{1}:{2}", TI_hr, TI_min, TI_ampm);
-            to = String.Format("{0}:{1}:{2}", TO_hr, TO_min, TO_ampm);
-            String q = "INSERT INTO `msadb`.`dutydetails` (`AID`, `TimeOut`, `TimeIn`, `Days`,`DStatus`) VALUES ('{0}', '{1}', '{2}', '{3}','{4}');";
-            q = String.Format(q, aid, to, ti, days.deendracht, Enumeration.AssignmentStatus.Active);
+            String q = @"
+                        INSERT INTO `msadb`.`dutydetails` 
+                        (`AID`, 
+                        `TI_hh`, `TI_mm`, `TI_period`, 
+                        `TO_hh`, `TO_mm`, `TO_period`,
+                        `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`, 
+                        `DStatus`) 
+                        VALUES 
+                        ('{0}',
+                        '{1}','{2}','{3}',
+                        '{4}','{5}','{6}',
+                        '{7}','{8}','{9}','{10}','{11}','{12}','{13}',
+                        '{14}');
+                        ";
+            q = String.Format(q, aid,
+                        TI_hr, TI_min, TI_ampm,
+                        TO_hr, TO_min, TO_ampm,
+                        Convert.ToInt32(days.Mon), Convert.ToInt32(days.Tue), 
+                        Convert.ToInt32(days.Wed), Convert.ToInt32(days.Thu), 
+                        Convert.ToInt32(days.Fri), Convert.ToInt32(days.Sat), 
+                        Convert.ToInt32(days.Sun),
+                        Enumeration.DutyDetailStatus.Active
+                );
             SQLTools.ExecuteNonQuery(q);
         }
 
@@ -440,6 +446,78 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        /// <summary>
+        /// Returns a DataTable listing the Summary of Duty Details of a specific assignment.
+        /// </summary>
+        /// <param name="AID">Assignment ID</param>
+        /// <returns>Columns: ["did", "TimeIn", "TimeOut", "Days"]</returns>
+        public static DataTable GetDutyDetailsSummary (int AID) {
+            DataTable dt = SQLTools.ExecuteQuery(@"
+                    select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
+                    concat (to_hh,':',to_mm,' ',to_period) as TimeOut,
+                    'days_columnMTWThFSSu' as days from 
+                    dutydetails where AID=" + AID);
+            foreach (DataRow e in dt.Rows) {
+                e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
+            }
+            return dt;
+        }
+
+        /// <summary>
+        /// Returns Individual Time elements of DutyDetail.
+        /// </summary>
+        /// <param name="DID">Duty Detail ID</param>
+        /// <returns>Columns: ["ti_hh" , "ti_mm" , "ti_period" , "to_hh" , "to_mm" , "to_period"]</returns>
+        public static DataTable GetDutyDetailsDetails(int DID) {
+            String q = @"select ti_hh, ti_mm, ti_period,
+		                to_hh, to_mm, to_period
+                        from dutydetails where did=" +DID;
+            return SQLTools.ExecuteQuery(q);
+        }
+        /// <summary>
+        /// Gets the Duty Days of specific duty detail
+        /// </summary>
+        /// <param name="DID">Duty detail ID</param>
+        /// <returns>Returns Scheduling.Days object</returns>
+        public static Days GetDays(int DID) {
+            String q = "select mon, tue, wed, thu, fri, sat, sun from dutydetails where DID=" + DID;
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            return new Days(
+                dt.Rows[0]["mon"].ToString() == "1",
+                dt.Rows[0]["tue"].ToString() == "1",
+                dt.Rows[0]["wed"].ToString() == "1",
+                dt.Rows[0]["thu"].ToString() == "1",
+                dt.Rows[0]["fri"].ToString() == "1",
+                dt.Rows[0]["sat"].ToString() == "1",
+                dt.Rows[0]["sun"].ToString() == "1"
+                );
+        }
+
+        public static void UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
+            String q = @"
+                        UPDATE `msadb`.`dutydetails` SET 
+                        `TI_hh`='{0}', `TI_mm`='{1}', `TI_period`='{3}', 
+                        `TO_hh`='{4}', `TO_mm`='{5}', `TO_period`='{6}',
+                        `Mon`='{7}', `Tue`='{8}', 
+                        `Wed`='{9}', `Thu`='{10}', 
+                        `Fri`='{11}', `Sat`='{12}', 
+                        `Sun`='{13}', 
+                        WHERE `DID`='{14}';
+                         ";
+            q = String.Format(q,
+                 TI_hr, TI_min, TI_ampm,
+                        TO_hr, TO_min, TO_ampm,
+                        Convert.ToInt32(days.Mon), Convert.ToInt32(days.Tue),
+                        Convert.ToInt32(days.Wed), Convert.ToInt32(days.Thu),
+                        Convert.ToInt32(days.Fri), Convert.ToInt32(days.Sat),
+                        Convert.ToInt32(days.Sun), did);
+            SQLTools.ExecuteNonQuery(q);
+        }
+
+
+
+
+
 
 
 
@@ -456,6 +534,30 @@ namespace MSAMISUserInterface {
 
         #region MISC
 
+        public class Days {
+            public string deendracht = null;
+            public bool[] Value = new bool[7];
+            public bool Mon, Tue, Wed, Thu, Fri, Sat, Sun;
+            public Days(bool Mon, bool Tue, bool Wed, bool Thu, bool Fri, bool Sat, bool Sun) {
+                deendracht = "";
+                bool[] d = { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
+                string[] f = { "M", "T", "W", "Th", "F", "S", "Su" };
+                for (int c = 0; c < d.Length; c++) {
+                    if (d[c]) {
+                        deendracht += f[c];
+                        Value[c] = true;
+                    } else {
+                        Value[c] = false;
+                    }
+                }
+                this.Mon = Value[0]; this.Tue = Value[1]; this.Wed = Value[2]; this.Thu = Value[3]; this.Fri = Value[4]; this.Sat = Value[5]; this.Sun = Value[6];
+            }
+            public override string ToString() {
+                return deendracht;
+            }
+        }
+
+
         public static String cleansearch(String x) {
             if (x == empty) return "";
             else return x;
@@ -464,12 +566,18 @@ namespace MSAMISUserInterface {
             String q = @"UPDATE `msadb`.`request` SET `RStatus`='"+val+"' WHERE `RID`='"+rid+"';";
             SQLTools.ExecuteNonQuery(q);
         }
+
+        /// <summary>
+        /// (Backend) Gets a Scheduling.Days object and returns a string format: MTWThFSSu
+        /// </summary>
+        /// <param name="q"></param>
+        /// <returns></returns>
         public static String ParseDays (String q) {
             String[] u = { "M", "T", "W", "Th", "F", "S", "Su" };
             String k = "";
             String[] w = q.Split(':');
             for (int c=0; c<w.Length; c++) {
-                k += u[c];
+                if (w[c] == "1" ) k += u[c];
             }
             return k;
         }
@@ -478,6 +586,7 @@ namespace MSAMISUserInterface {
         }
         #endregion
 
+       
     }
 }
 

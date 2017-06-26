@@ -202,14 +202,24 @@ DROP TABLE IF EXISTS `dutydetails`;
 CREATE TABLE `dutydetails` (
   `DID` int(11) NOT NULL AUTO_INCREMENT,
   `AID` int(11) DEFAULT NULL,
-  `TimeOut` varchar(45) DEFAULT NULL,
-  `TimeIn` varchar(45) DEFAULT NULL,
-  `Days` varchar(45) DEFAULT NULL,
-  `DStatus` int(11) DEFAULT NULL,
+  `TI_hh` int(2) unsigned zerofill DEFAULT NULL,
+  `TI_mm` int(2) unsigned zerofill DEFAULT NULL,
+  `TI_period` varchar(3) DEFAULT NULL,
+  `TO_hh` int(2) unsigned zerofill DEFAULT NULL,
+  `TO_mm` int(2) unsigned zerofill DEFAULT NULL,
+  `TO_period` varchar(3) DEFAULT NULL,
+  `Mon` int(1) unsigned DEFAULT NULL,
+  `Tue` int(1) unsigned DEFAULT NULL,
+  `Wed` int(1) unsigned DEFAULT NULL,
+  `Thu` int(1) unsigned DEFAULT NULL,
+  `Fri` int(1) unsigned DEFAULT NULL,
+  `Sat` int(1) unsigned DEFAULT NULL,
+  `Sun` int(1) unsigned DEFAULT NULL,
+  `DStatus` int(1) unsigned DEFAULT NULL,
   PRIMARY KEY (`DID`),
   KEY `Assignment-Duty_idx` (`AID`),
   CONSTRAINT `Assignment-Duty` FOREIGN KEY (`AID`) REFERENCES `sduty_assignment` (`AID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,7 +317,6 @@ CREATE TABLE `incidentreport` (
 
 LOCK TABLES `incidentreport` WRITE;
 /*!40000 ALTER TABLE `incidentreport` DISABLE KEYS */;
-INSERT INTO `incidentreport` VALUES (12,3,'pc','2017-06-26','gmall','Caught sneaking coffee to break room.','2017-06-26'),(13,3,'pc','2017-06-26','gmall','Caught sneaking coffee to break room.','2017-06-26'),(14,3,'pc','2017-06-26','gmall','Caught sneaking coffee to break room.','2017-06-26');
 /*!40000 ALTER TABLE `incidentreport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +431,7 @@ CREATE TABLE `request` (
   `DateEntry` varchar(45) DEFAULT NULL,
   `RStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`RID`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -431,7 +440,6 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` VALUES (46,1,0,'2017-06-26',1),(47,1,2,'2017-06-26',3),(49,2,2,'2017-06-26',1),(50,2,2,'2017-06-26',1);
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -453,7 +461,7 @@ CREATE TABLE `request_assign` (
   `city` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `NoGuards` int(11) DEFAULT NULL,
   PRIMARY KEY (`RAID`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -462,7 +470,6 @@ CREATE TABLE `request_assign` (
 
 LOCK TABLES `request_assign` WRITE;
 /*!40000 ALTER TABLE `request_assign` DISABLE KEYS */;
-INSERT INTO `request_assign` VALUES (32,46,'2017-06-26 00:00:00','2017-06-26 00:00:00','1','1','1','11',1),(33,47,'2017-06-26 00:00:00','2017-06-26 00:00:00','1','1','1','1',1);
 /*!40000 ALTER TABLE `request_assign` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -488,7 +495,6 @@ CREATE TABLE `request_unassign` (
 
 LOCK TABLES `request_unassign` WRITE;
 /*!40000 ALTER TABLE `request_unassign` DISABLE KEYS */;
-INSERT INTO `request_unassign` VALUES (88,49,146,13),(89,50,146,14);
 /*!40000 ALTER TABLE `request_unassign` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -508,7 +514,7 @@ CREATE TABLE `sduty_assignment` (
   KEY `Assignment-Guard_idx` (`GID`),
   KEY `Assignment-Request_idx` (`RAID`),
   CONSTRAINT `Assignment-Guard` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -517,7 +523,6 @@ CREATE TABLE `sduty_assignment` (
 
 LOCK TABLES `sduty_assignment` WRITE;
 /*!40000 ALTER TABLE `sduty_assignment` DISABLE KEYS */;
-INSERT INTO `sduty_assignment` VALUES (107,146,33,1);
 /*!40000 ALTER TABLE `sduty_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -566,4 +571,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-26  2:44:57
+-- Dump completed on 2017-06-26 16:17:31

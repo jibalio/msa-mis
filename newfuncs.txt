@@ -1,4 +1,51 @@
+##################################################
+UPDATE Sunday
+
+4 new METHODS:
+GetDutyDetailsSummary(AID)
+GetDutyDetailsDetails(DID)	
+GetDutyDays(DID)
+UpdateDutyDetail (int DID, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm,Days days)
+--------------------------------------------------------------
+*1* GetDutyDetailsSummary(AID)
+return Columns: ["did", "TimeIn", "TimeOut", "Days"]
+---------------------------------------------------------------
+** Pair ni sila duha:
+      ┌──────────────────────────────────────────────────────────────────────────────────────┐
+	  │ *2* GetDutyDetailsDetails(DID)														 │
+	  │	 returns column: ["ti_hh" , "ti_mm" , "ti_period" , "to_hh" , "to_mm" , "to_period"] │
+	  │											--> period is "AM" / "PM"                    │
+	  ├──────────────────────────────────────────────────────────────────────────────────────┤
+	  │ *3* GetDutyDays(DID)																	 │
+	  │	returns Days Object. Manipulate using                                                │
+	  │		- day.Value  <--- bool[7]  <-- mon, tue, wed, thu, fri, sat, sun  (Not a method) │
+	  │		- Individual days:  															 │
+	  │				- day.Mon   -|															 │
+	  │				- ....       |  Boolean ni sila.										 │
+	  │				- day.Sun   -|															 │
+	  │		- or day.toString()  <--  returns "MWF" format.									 │
+      └──────────────────────────────────────────────────────────────────────────────────────┘
+        (^ kapuya ani idrawing uy xD)
+-------------------------------------------------------------------
+*4* UpdateDutyDetail (
+				int DID, 
+				String TI_hr, 
+				String TI_min, 
+				String TI_ampm, 
+				String TO_hr, 
+				String TO_min, 
+				String TO_ampm,
+				Days days)
+
+				Updates Duty Detail.
+				NOTE: If walay gi edit sa days, ang ipass lng sa day kay:
+				Scheduling.GetDays(DID) <-- para ang iyang original Days ang ipass.
+
+
 ###################################################
+
+
+
 UPDATE June 26, 2017
 NEW METHODS
 
@@ -26,6 +73,7 @@ NEW: Can now access individual days in Days class
 e.g. myDays.Mon   <--- boolean
 
 
+#######################################################
 
 
 

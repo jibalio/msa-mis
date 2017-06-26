@@ -3,7 +3,7 @@ MyCommonStrings
 concat(ln,', ',fn,' ',mn) as name
 concat(streetno, ', ', street, ', ', brgy, ', ', city) as Location
 
-SQL:
+SQL
 D:\Files\Desktop\msa-mis\sql\msadb.sql
 
 PLAN:
@@ -17,3 +17,14 @@ Checkbox for [] Attached Incident Report para pwede mag unassign w/o incident.
                         when 3 then 'Active'
                         when 4 then 'Declined'
                         end as status
+                        
+
+DataTable dt = SQLTools.ExecuteQuery(@"
+                    select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
+                    concat (to_hh,':',to_mm,' ',to_period) as TimeOut,
+                    'days_columnMTWThFSSu' as days from 
+                    dutydetails where AID=" + AID);
+
+Full Time
+concat (ti_hh,':',ti_mm,' ',ti_period, '-',
+		to_hh,':',to_mm,' ',to_period,)

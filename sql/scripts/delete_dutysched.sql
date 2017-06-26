@@ -1,4 +1,4 @@
-
+use msadb;
 delete from request_assign;
 delete from request_unassign;
 delete from request;

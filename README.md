@@ -20,6 +20,8 @@ PM > Get-Project -ryldb.sqltools | Install-Package MySqlBackup.NET -Version 2.0.
 ### Software
 **Backend:** Export the database dump **using MySQL Workbench 6.3.8+ only**. Using older versions will cause MSA-MIS's auto-database-import component `(AutoLoader.cs)` to fail. *Ayaw gamita ang sql workbench sa F610 kay mabungkag ang AutoLoader.cs, kara-an kaayo*.
 
+**Important**: Turn on  'Include Create Schema' in export settings. 
+
 ## About
 ### Modules
 * Guard and Client Management Module
