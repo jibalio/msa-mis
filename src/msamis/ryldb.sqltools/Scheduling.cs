@@ -496,13 +496,13 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         public static void UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
             String q = @"
                         UPDATE `msadb`.`dutydetails` SET 
-                        `TI_hh`='{0}', `TI_mm`='{1}', `TI_period`='{3}', 
-                        `TO_hh`='{4}', `TO_mm`='{5}', `TO_period`='{6}',
-                        `Mon`='{7}', `Tue`='{8}', 
-                        `Wed`='{9}', `Thu`='{10}', 
-                        `Fri`='{11}', `Sat`='{12}', 
-                        `Sun`='{13}', 
-                        WHERE `DID`='{14}';
+                        `TI_hh`='{0}', `TI_mm`='{1}', `TI_period`='{2}', 
+                        `TO_hh`='{3}', `TO_mm`='{4}', `TO_period`='{5}',
+                        `Mon`='{6}', `Tue`='{7}', 
+                        `Wed`='{8}', `Thu`='{9}', 
+                        `Fri`='{10}', `Sat`='{11}', 
+                        `Sun`='{12}'
+                        WHERE `DID`='{13}';
                          ";
             q = String.Format(q,
                  TI_hr, TI_min, TI_ampm,
