@@ -62,6 +62,16 @@ namespace MSAMISUserInterface {
             QuoteMainBX.Text = '"'+lines[randomLineNumber]+'"';
             QuoteFromBX.Text = "from " + lines[randomLineNumber+1];
 
+            if (DateTime.Now.Month == 7) {
+                DevBX.Visible = true;
+                HBDLBL.Visible = true;
+                if (DateTime.Now.Day == 1) DevBX.Text = "Jan Leryc V. Ibalio - MSAMIS Dev";
+                else if (DateTime.Now.Day == 18) DevBX.Text = "Anton John B. Pasigado - MSAMIS Dev";
+            } else if (DateTime.Now.Month == 5 && DateTime.Now.Day == 5) {
+                DevBX.Text = "Rhyle Abram P. Regodon - MSAMIS Dev";
+                HBDLBL.Visible = true;
+                DevBX.Visible = true;
+            }
         }
         private void MainForm_Load(object sender, EventArgs e) {
             ControlBoxTimeLBL.Text = "Logged in as, " + user;
@@ -1075,26 +1085,28 @@ namespace MSAMISUserInterface {
             SViewReqSearchLine.Visible = false;
         }
         private void SViewReqViewBTN_Click(object sender, EventArgs e) {
-            if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment")) {
-                try {
-                    Sched_ViewAssReq view = new Sched_ViewAssReq();
-                    view.reference = this;
-                    view.RAID = this.RID;
-                    view.conn = this.conn;
-                    view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
-                    view.ShowDialog();
+            if(SViewAssGRD.SelectedRows.Count > 0) { 
+                if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment")) {
+                    try {
+                        Sched_ViewAssReq view = new Sched_ViewAssReq();
+                        view.reference = this;
+                        view.RAID = this.RID;
+                        view.conn = this.conn;
+                        view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                        view.ShowDialog();
+                    }
+                    catch (Exception) { }
+                } else {
+                    try {
+                        Sched_ViewDisReq view = new Sched_ViewDisReq();
+                        view.reference = this;
+                        view.conn = this.conn;
+                        view.RID = this.RID;
+                        view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                        view.ShowDialog();
+                    }
+                    catch (Exception) { }
                 }
-                catch (Exception) { }
-            } else {
-                try {
-                    Sched_ViewDisReq view = new Sched_ViewDisReq();
-                    view.reference = this;
-                    view.conn = this.conn;
-                    view.RID = this.RID;
-                    view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
-                    view.ShowDialog();
-                }
-                catch (Exception) { }
             }
         }
         #endregion

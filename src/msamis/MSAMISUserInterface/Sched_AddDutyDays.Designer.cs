@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.NameLBL = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.CalendarPKR = new System.Windows.Forms.MonthCalendar();
             this.ContactLBL = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@
             this.TimeInMinBX = new System.Windows.Forms.ComboBox();
             this.TimeInHrBX = new System.Windows.Forms.ComboBox();
             this.TimeInAMPMBX = new System.Windows.Forms.ComboBox();
+            this.CalendarPKR = new System.Windows.Forms.MonthCalendar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DaysGRD)).BeginInit();
             this.SuspendLayout();
@@ -120,12 +120,6 @@
             this.label4.TabIndex = 119;
             this.label4.Text = "DUTY DAYS FOR";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // CalendarPKR
-            // 
-            this.CalendarPKR.Location = new System.Drawing.Point(102, 231);
-            this.CalendarPKR.Name = "CalendarPKR";
-            this.CalendarPKR.TabIndex = 124;
             // 
             // ContactLBL
             // 
@@ -589,6 +583,12 @@
             this.TimeInAMPMBX.Sorted = true;
             this.TimeInAMPMBX.TabIndex = 144;
             // 
+            // CalendarPKR
+            // 
+            this.CalendarPKR.Location = new System.Drawing.Point(102, 231);
+            this.CalendarPKR.Name = "CalendarPKR";
+            this.CalendarPKR.TabIndex = 124;
+            // 
             // Sched_AddDutyDays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -637,7 +637,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label NameLBL;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MonthCalendar CalendarPKR;
         private System.Windows.Forms.Label ContactLBL;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -658,5 +657,6 @@
         private System.Windows.Forms.ComboBox TimeInMinBX;
         private System.Windows.Forms.ComboBox TimeInHrBX;
         private System.Windows.Forms.ComboBox TimeInAMPMBX;
+        private System.Windows.Forms.MonthCalendar CalendarPKR;
     }
 }

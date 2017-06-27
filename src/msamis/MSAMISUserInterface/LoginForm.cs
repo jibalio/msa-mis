@@ -91,10 +91,17 @@ namespace MSAMISUserInterface {
 
 
         private void bttesterxa_Click(object sender, EventArgs e) {
-            Backend_Tester bt = new Backend_Tester();
-            bt.ShowDialog();
+            
         }
 
- 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+            if (keyData == (Keys.Control | Keys.B)) {
+                Backend_Tester bt = new Backend_Tester();
+                bt.ShowDialog();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
     }
 }
