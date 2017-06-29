@@ -29,11 +29,7 @@ UPDATE June 29, 2006
 		so pwede mag backtrack each period.
 		Idk combobox cguro kung unsa na month + period ang iview (?)
 
-		---------------------------------------------------------------------
-		Kani i-call for Add/Update.
-		If attendance does not exist, sya na mag create.
-		If exists, i update lng niya.
-
+        #################### START METHODS ######################################
 		static void SaveAttendanceDetails (
 			int aid, 				--ASSIGNMENT ID of guard.
 			int month, 				--Month covered for this record. Range: 1 to 12. 
@@ -49,6 +45,9 @@ UPDATE June 29, 2006
 			string certby			--Client representative na nag verify (tao ni sya.)
 			);
 
+		Kani i-call for Add/Update.
+		If attendance does not exist, sya na mag create.
+		If exists, i update lng niya.
 		---------------------------------------------------------------------
 		static string GetPayPeriodRange (int mo, int yyyy, int period)
 		Returns: string: days covered in attendance / pay.
