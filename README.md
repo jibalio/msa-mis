@@ -28,8 +28,6 @@ PM > Get-Project -ryldb.sqltools | Install-Package MySqlBackup.NET -Version 2.0.
 * Duty Scheduling Module
 * Payroll Module
 
-
-
 <br>
 <br>
 <br>
@@ -38,16 +36,6 @@ PM > Get-Project -ryldb.sqltools | Install-Package MySqlBackup.NET -Version 2.0.
 <br>
 <br>
 <br>
-Other info....
-
-* Semi-monthyl pay
-* Mandatory deductions kay end of month, always,
-* Semi-monhtly ghapon ang non mandatory deductions
-* 100 100 Philhealth pag-ibig
-
-
-![](https://dl.dropboxusercontent.com/s/e5l5rigqtqivwx0/sss-contribution-table-2017.png?dl=0)
-
 <br>
 <br>
 <br>
