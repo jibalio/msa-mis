@@ -25,14 +25,14 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sched_UnassignGuard));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DismissBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.MainPNL = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.RemoveBTN = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -97,7 +97,14 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
-            this.panel1.SuspendLayout();
+            this.LocationTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.DescriptionTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.Dep1Warn = new System.Windows.Forms.ToolTip(this.components);
+            this.Dep2Warn = new System.Windows.Forms.ToolTip(this.components);
+            this.Dep3Warn = new System.Windows.Forms.ToolTip(this.components);
+            this.Dep4Warn = new System.Windows.Forms.ToolTip(this.components);
+            this.Dep5Warn = new System.Windows.Forms.ToolTip(this.components);
+            this.MainPNL.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).BeginInit();
             this.SuspendLayout();
@@ -154,70 +161,70 @@
             this.label7.TabIndex = 122;
             this.label7.Text = "ADD AN INCIDENT REPORT";
             // 
-            // panel1
+            // MainPNL
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.Dependent5RBX);
-            this.panel1.Controls.Add(this.Dependent5LastBX);
-            this.panel1.Controls.Add(this.Dependent5MiddleBX);
-            this.panel1.Controls.Add(this.Dependent5FirstBX);
-            this.panel1.Controls.Add(this.label65);
-            this.panel1.Controls.Add(this.label66);
-            this.panel1.Controls.Add(this.label67);
-            this.panel1.Controls.Add(this.label68);
-            this.panel1.Controls.Add(this.Dependent4RBX);
-            this.panel1.Controls.Add(this.Dependent4LastBX);
-            this.panel1.Controls.Add(this.Dependent4MiddleBX);
-            this.panel1.Controls.Add(this.Dependent4FirstBX);
-            this.panel1.Controls.Add(this.label61);
-            this.panel1.Controls.Add(this.label62);
-            this.panel1.Controls.Add(this.label63);
-            this.panel1.Controls.Add(this.label64);
-            this.panel1.Controls.Add(this.Dependent3RBX);
-            this.panel1.Controls.Add(this.Dependent3LastBX);
-            this.panel1.Controls.Add(this.Dependent3MiddleBX);
-            this.panel1.Controls.Add(this.Dependent3FirstBX);
-            this.panel1.Controls.Add(this.label57);
-            this.panel1.Controls.Add(this.label58);
-            this.panel1.Controls.Add(this.label59);
-            this.panel1.Controls.Add(this.label60);
-            this.panel1.Controls.Add(this.Dependent2RBX);
-            this.panel1.Controls.Add(this.Dependent2LastBX);
-            this.panel1.Controls.Add(this.Dependent2MiddleBX);
-            this.panel1.Controls.Add(this.Dependent2FirstBX);
-            this.panel1.Controls.Add(this.label48);
-            this.panel1.Controls.Add(this.label49);
-            this.panel1.Controls.Add(this.label50);
-            this.panel1.Controls.Add(this.label51);
-            this.panel1.Controls.Add(this.Dependent1RBX);
-            this.panel1.Controls.Add(this.Dependent1LastBX);
-            this.panel1.Controls.Add(this.Dependent1MiddleBX);
-            this.panel1.Controls.Add(this.Dependent1FirstBX);
-            this.panel1.Controls.Add(this.label52);
-            this.panel1.Controls.Add(this.label53);
-            this.panel1.Controls.Add(this.label54);
-            this.panel1.Controls.Add(this.label55);
-            this.panel1.Controls.Add(this.label56);
-            this.panel1.Controls.Add(this.DescriptionBX);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.LocationBX);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label34);
-            this.panel1.Controls.Add(this.DateDTPKR);
-            this.panel1.Controls.Add(this.BdayLBL);
-            this.panel1.Controls.Add(this.IncidentTypeCMBX);
-            this.panel1.Controls.Add(this.CVLBL);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.GuardsGRD);
-            this.panel1.Location = new System.Drawing.Point(-1, 33);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(722, 541);
-            this.panel1.TabIndex = 124;
+            this.MainPNL.AutoScroll = true;
+            this.MainPNL.Controls.Add(this.panel2);
+            this.MainPNL.Controls.Add(this.label10);
+            this.MainPNL.Controls.Add(this.Dependent5RBX);
+            this.MainPNL.Controls.Add(this.Dependent5LastBX);
+            this.MainPNL.Controls.Add(this.Dependent5MiddleBX);
+            this.MainPNL.Controls.Add(this.Dependent5FirstBX);
+            this.MainPNL.Controls.Add(this.label65);
+            this.MainPNL.Controls.Add(this.label66);
+            this.MainPNL.Controls.Add(this.label67);
+            this.MainPNL.Controls.Add(this.label68);
+            this.MainPNL.Controls.Add(this.Dependent4RBX);
+            this.MainPNL.Controls.Add(this.Dependent4LastBX);
+            this.MainPNL.Controls.Add(this.Dependent4MiddleBX);
+            this.MainPNL.Controls.Add(this.Dependent4FirstBX);
+            this.MainPNL.Controls.Add(this.label61);
+            this.MainPNL.Controls.Add(this.label62);
+            this.MainPNL.Controls.Add(this.label63);
+            this.MainPNL.Controls.Add(this.label64);
+            this.MainPNL.Controls.Add(this.Dependent3RBX);
+            this.MainPNL.Controls.Add(this.Dependent3LastBX);
+            this.MainPNL.Controls.Add(this.Dependent3MiddleBX);
+            this.MainPNL.Controls.Add(this.Dependent3FirstBX);
+            this.MainPNL.Controls.Add(this.label57);
+            this.MainPNL.Controls.Add(this.label58);
+            this.MainPNL.Controls.Add(this.label59);
+            this.MainPNL.Controls.Add(this.label60);
+            this.MainPNL.Controls.Add(this.Dependent2RBX);
+            this.MainPNL.Controls.Add(this.Dependent2LastBX);
+            this.MainPNL.Controls.Add(this.Dependent2MiddleBX);
+            this.MainPNL.Controls.Add(this.Dependent2FirstBX);
+            this.MainPNL.Controls.Add(this.label48);
+            this.MainPNL.Controls.Add(this.label49);
+            this.MainPNL.Controls.Add(this.label50);
+            this.MainPNL.Controls.Add(this.label51);
+            this.MainPNL.Controls.Add(this.Dependent1RBX);
+            this.MainPNL.Controls.Add(this.Dependent1LastBX);
+            this.MainPNL.Controls.Add(this.Dependent1MiddleBX);
+            this.MainPNL.Controls.Add(this.Dependent1FirstBX);
+            this.MainPNL.Controls.Add(this.label52);
+            this.MainPNL.Controls.Add(this.label53);
+            this.MainPNL.Controls.Add(this.label54);
+            this.MainPNL.Controls.Add(this.label55);
+            this.MainPNL.Controls.Add(this.label56);
+            this.MainPNL.Controls.Add(this.DescriptionBX);
+            this.MainPNL.Controls.Add(this.label8);
+            this.MainPNL.Controls.Add(this.LocationBX);
+            this.MainPNL.Controls.Add(this.label9);
+            this.MainPNL.Controls.Add(this.label34);
+            this.MainPNL.Controls.Add(this.DateDTPKR);
+            this.MainPNL.Controls.Add(this.BdayLBL);
+            this.MainPNL.Controls.Add(this.IncidentTypeCMBX);
+            this.MainPNL.Controls.Add(this.CVLBL);
+            this.MainPNL.Controls.Add(this.label6);
+            this.MainPNL.Controls.Add(this.label2);
+            this.MainPNL.Controls.Add(this.label7);
+            this.MainPNL.Controls.Add(this.label5);
+            this.MainPNL.Controls.Add(this.GuardsGRD);
+            this.MainPNL.Location = new System.Drawing.Point(-1, 33);
+            this.MainPNL.Name = "MainPNL";
+            this.MainPNL.Size = new System.Drawing.Size(722, 541);
+            this.MainPNL.TabIndex = 124;
             // 
             // panel2
             // 
@@ -900,15 +907,15 @@
             this.GuardsGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GuardsGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.GuardsGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GuardsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle5.NullValue = "-";
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GuardsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.GuardsGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GuardsGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -917,26 +924,26 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GuardsGRD.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GuardsGRD.DefaultCellStyle = dataGridViewCellStyle7;
             this.GuardsGRD.EnableHeadersVisualStyles = false;
             this.GuardsGRD.Location = new System.Drawing.Point(157, 74);
             this.GuardsGRD.Name = "GuardsGRD";
             this.GuardsGRD.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GuardsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GuardsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.GuardsGRD.RowHeadersVisible = false;
             this.GuardsGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.GuardsGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -966,12 +973,12 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column4.HeaderText = "NAME";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -996,6 +1003,55 @@
             this.FadeTMR.Interval = 1;
             this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
             // 
+            // LocationTLTP
+            // 
+            this.LocationTLTP.AutoPopDelay = 3000;
+            this.LocationTLTP.InitialDelay = 500;
+            this.LocationTLTP.ReshowDelay = 100;
+            this.LocationTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // DescriptionTLTP
+            // 
+            this.DescriptionTLTP.AutoPopDelay = 3000;
+            this.DescriptionTLTP.InitialDelay = 500;
+            this.DescriptionTLTP.ReshowDelay = 100;
+            this.DescriptionTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // Dep1Warn
+            // 
+            this.Dep1Warn.AutoPopDelay = 3000;
+            this.Dep1Warn.InitialDelay = 500;
+            this.Dep1Warn.ReshowDelay = 100;
+            this.Dep1Warn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // Dep2Warn
+            // 
+            this.Dep2Warn.AutoPopDelay = 3000;
+            this.Dep2Warn.InitialDelay = 500;
+            this.Dep2Warn.ReshowDelay = 100;
+            this.Dep2Warn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // Dep3Warn
+            // 
+            this.Dep3Warn.AutoPopDelay = 3000;
+            this.Dep3Warn.InitialDelay = 500;
+            this.Dep3Warn.ReshowDelay = 100;
+            this.Dep3Warn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // Dep4Warn
+            // 
+            this.Dep4Warn.AutoPopDelay = 3000;
+            this.Dep4Warn.InitialDelay = 500;
+            this.Dep4Warn.ReshowDelay = 100;
+            this.Dep4Warn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // Dep5Warn
+            // 
+            this.Dep5Warn.AutoPopDelay = 3000;
+            this.Dep5Warn.InitialDelay = 500;
+            this.Dep5Warn.ReshowDelay = 100;
+            this.Dep5Warn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
             // Sched_UnassignGuard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1003,7 +1059,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(721, 666);
             this.ControlBox = false;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.MainPNL);
             this.Controls.Add(this.DismissBTN);
             this.Controls.Add(this.CloseBTN);
             this.ForeColor = System.Drawing.Color.White;
@@ -1013,8 +1069,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_DismissGuard_FormClosing);
             this.Load += new System.EventHandler(this.Sched_DismissGuard_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.MainPNL.ResumeLayout(false);
+            this.MainPNL.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).EndInit();
             this.ResumeLayout(false);
@@ -1025,7 +1081,7 @@
         private System.Windows.Forms.Button DismissBTN;
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel MainPNL;
         private System.Windows.Forms.ComboBox IncidentTypeCMBX;
         private System.Windows.Forms.Label CVLBL;
         private System.Windows.Forms.DateTimePicker DateDTPKR;
@@ -1090,5 +1146,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Button RemoveBTN;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolTip LocationTLTP;
+        private System.Windows.Forms.ToolTip DescriptionTLTP;
+        private System.Windows.Forms.ToolTip Dep1Warn;
+        private System.Windows.Forms.ToolTip Dep2Warn;
+        private System.Windows.Forms.ToolTip Dep3Warn;
+        private System.Windows.Forms.ToolTip Dep4Warn;
+        private System.Windows.Forms.ToolTip Dep5Warn;
     }
 }

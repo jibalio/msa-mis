@@ -141,6 +141,7 @@ namespace MSAMISUserInterface {
             lf.Show();
             this.Hide();
         }
+
         #endregion
 
         #region Form Global Buttons and Events
@@ -1068,6 +1069,8 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns["dateentry"].Width = 200;
             SViewReqGRD.Columns["type"].Width = 100;
             SViewReqGRD.Columns["status"].Width = 100;
+
+            SViewReqGRD.Sort(SViewReqGRD.Columns["dateentry"], ListSortDirection.Descending);
         }
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {
@@ -1365,7 +1368,24 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        #region Cash Advance Request
+        private void SCashAdvViewBTN_Click(object sender, EventArgs e) {
+            try {
+                Payroll_ViewCashAdv view = new Payroll_ViewCashAdv();
+                view.reference = this;
+                view.conn = this.conn;
+                //view.PID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
+                view.Location = new Point(this.Location.X + 277, this.Location.Y + 33);
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+
+
         #endregion
+
+        #endregion
+
 
     }
 }
