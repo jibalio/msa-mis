@@ -61,6 +61,9 @@ UPDATE June 29, 2006
 		columns: tid, normal_day, normal_night,holiday_day, holiday_night, certifiedby
 		// pwede i view ang old records.
 
+
+	Other notes: 340 per hour ang basic pay.
+
 ##################################################################################
 
 
