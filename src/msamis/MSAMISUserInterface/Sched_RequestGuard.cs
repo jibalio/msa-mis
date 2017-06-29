@@ -26,6 +26,7 @@ namespace MSAMISUserInterface {
         private void Sched_RequestGuard_Load(object sender, EventArgs e) {
             LoadClients();
             FadeTMR.Start();
+            ContractStartDTPKR.MinDate = DateTime.Now;
         }
 
         private void LoadClients() {
@@ -68,12 +69,11 @@ namespace MSAMISUserInterface {
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
-            try {
+            if (DataValidation()) {
                 Scheduling.AddAssignmentRequest(int.Parse(CID), AssStreetNoBX.Text, AssStreetNameBX.Text, AssBrgyBX.Text, AssCityBX.Text, ContractStartDTPKR.Value, ContractEndDTPKR.Value, int.Parse(NeededBX.Text));
                 reference.SCHEDLoadPage();
                 this.Close();
             }
-            catch { }
         }
 
         private void ClientGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
@@ -117,6 +117,29 @@ namespace MSAMISUserInterface {
                 ToolTip.ToolTipTitle = "Guards Needed";
                 ToolTip.Show("Can only accept numbers", NeededBX);
             }
+        }
+
+        private void ContractStartDTPKR_ValueChanged(object sender, EventArgs e) {
+            ContractEndDTPKR.MinDate = ContractStartDTPKR.Value;
+        }
+
+        private bool DataValidation() {
+            bool ret = true;
+            if (NeededBX.Text.ToString().Equals("")) {
+                NeededTLTP.ToolTipTitle = "Guards Needed";
+                NeededTLTP.Show("Please specify how many guards the client needs", NeededBX);
+                ret = false;
+            } 
+            if (CheckAdd(AssBrgyBX, AssCityBX, AssStreetNameBX, AssStreetNoBX)) {
+                LocationTLTP.ToolTipTitle = "Location";
+                LocationTLTP.Show( "Please specify or complete the fields", AssStreetNoBX);
+                ret = false;
+            }
+            return ret;
+        }
+        private bool CheckAdd(TextBox BrgyBX, TextBox CityBX, TextBox StreetNameBX, TextBox StreetNoBX) {
+            return (BrgyBX.Text.Equals("Brgy") || CityBX.Text.Equals("City") || StreetNameBX.Text.Equals("Street Name") || StreetNoBX.Text.Equals("No.") ||
+                BrgyBX.Text.Equals("") || CityBX.Text.Equals("") || StreetNameBX.Text.Equals("") || StreetNoBX.Text.Equals(""));
         }
     }
 }

@@ -36,6 +36,8 @@
             this.PassPic = new System.Windows.Forms.PictureBox();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.LoginBTN = new System.Windows.Forms.Button();
+            this.UsernameTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.PasswordTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassPic)).BeginInit();
             this.SuspendLayout();
@@ -183,6 +185,20 @@
             this.LoginBTN.UseVisualStyleBackColor = false;
             this.LoginBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
             // 
+            // UsernameTLTP
+            // 
+            this.UsernameTLTP.AutoPopDelay = 3000;
+            this.UsernameTLTP.InitialDelay = 500;
+            this.UsernameTLTP.ReshowDelay = 100;
+            this.UsernameTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // PasswordTLTP
+            // 
+            this.PasswordTLTP.AutoPopDelay = 3000;
+            this.PasswordTLTP.InitialDelay = 500;
+            this.PasswordTLTP.ReshowDelay = 100;
+            this.PasswordTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,5 +243,7 @@
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox PassPic;
+        private System.Windows.Forms.ToolTip UsernameTLTP;
+        private System.Windows.Forms.ToolTip PasswordTLTP;
     }
 }

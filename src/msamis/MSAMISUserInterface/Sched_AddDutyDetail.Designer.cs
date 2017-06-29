@@ -31,7 +31,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
-            this.ContactLBL = new System.Windows.Forms.Label();
+            this.HoursLBL = new System.Windows.Forms.Label();
             this.TimeInAMPMBX = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,6 +52,8 @@
             this.ThBTN = new System.Windows.Forms.Button();
             this.FBTN = new System.Windows.Forms.Button();
             this.SaBTN = new System.Windows.Forms.Button();
+            this.DaysTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.HoursTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,17 +132,17 @@
             this.label20.TabIndex = 124;
             this.label20.Text = "Time-in:";
             // 
-            // ContactLBL
+            // HoursLBL
             // 
-            this.ContactLBL.AutoSize = true;
-            this.ContactLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.ContactLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactLBL.Location = new System.Drawing.Point(308, 232);
-            this.ContactLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ContactLBL.Name = "ContactLBL";
-            this.ContactLBL.Size = new System.Drawing.Size(100, 21);
-            this.ContactLBL.TabIndex = 125;
-            this.ContactLBL.Text = "Duty Hours:";
+            this.HoursLBL.AutoSize = true;
+            this.HoursLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.HoursLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.HoursLBL.Location = new System.Drawing.Point(308, 232);
+            this.HoursLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.HoursLBL.Name = "HoursLBL";
+            this.HoursLBL.Size = new System.Drawing.Size(100, 21);
+            this.HoursLBL.TabIndex = 125;
+            this.HoursLBL.Text = "Duty Hours:";
             // 
             // TimeInAMPMBX
             // 
@@ -586,6 +588,20 @@
             this.SaBTN.UseVisualStyleBackColor = false;
             this.SaBTN.Click += new System.EventHandler(this.SaBTN_Click);
             // 
+            // DaysTLTP
+            // 
+            this.DaysTLTP.AutoPopDelay = 3000;
+            this.DaysTLTP.InitialDelay = 500;
+            this.DaysTLTP.ReshowDelay = 100;
+            this.DaysTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // HoursTLTP
+            // 
+            this.HoursTLTP.AutoPopDelay = 3000;
+            this.HoursTLTP.InitialDelay = 500;
+            this.HoursTLTP.ReshowDelay = 100;
+            this.HoursTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
             // Sched_AddDutyDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -612,14 +628,13 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TimeInAMPMBX);
-            this.Controls.Add(this.ContactLBL);
+            this.Controls.Add(this.HoursLBL);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_AddDutyDetail";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_AddDutyDetail_FormClosing);
             this.Load += new System.EventHandler(this.Sched_AddDutyDetail_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -635,7 +650,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label ContactLBL;
+        private System.Windows.Forms.Label HoursLBL;
         private System.Windows.Forms.ComboBox TimeInAMPMBX;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -656,5 +671,7 @@
         private System.Windows.Forms.Button ThBTN;
         private System.Windows.Forms.Button FBTN;
         private System.Windows.Forms.Button SaBTN;
+        private System.Windows.Forms.ToolTip DaysTLTP;
+        private System.Windows.Forms.ToolTip HoursTLTP;
     }
 }

@@ -29,22 +29,23 @@
             this.NameLBL = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.DAdjBTN = new System.Windows.Forms.RadioButton();
+            this.DCashBondBTN = new System.Windows.Forms.RadioButton();
+            this.DSocialBenefitBTN = new System.Windows.Forms.RadioButton();
+            this.DStoreCreditBTN = new System.Windows.Forms.RadioButton();
+            this.DCashAdvBTN = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.BAdjBTN = new System.Windows.Forms.RadioButton();
+            this.BColaBTN = new System.Windows.Forms.RadioButton();
+            this.B13MonthBTN = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.ValueMBX = new System.Windows.Forms.MaskedTextBox();
             this.CloseBTN = new System.Windows.Forms.Button();
-            this.GEditDetailsBTN = new System.Windows.Forms.Button();
+            this.AddBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ValueTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -88,85 +89,85 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.radioButton8);
-            this.panel2.Controls.Add(this.radioButton7);
-            this.panel2.Controls.Add(this.radioButton4);
-            this.panel2.Controls.Add(this.radioButton5);
-            this.panel2.Controls.Add(this.radioButton6);
+            this.panel2.Controls.Add(this.DAdjBTN);
+            this.panel2.Controls.Add(this.DCashBondBTN);
+            this.panel2.Controls.Add(this.DSocialBenefitBTN);
+            this.panel2.Controls.Add(this.DStoreCreditBTN);
+            this.panel2.Controls.Add(this.DCashAdvBTN);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.radioButton3);
-            this.panel2.Controls.Add(this.radioButton2);
-            this.panel2.Controls.Add(this.radioButton1);
+            this.panel2.Controls.Add(this.BAdjBTN);
+            this.panel2.Controls.Add(this.BColaBTN);
+            this.panel2.Controls.Add(this.B13MonthBTN);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(70, 138);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(607, 212);
             this.panel2.TabIndex = 126;
             // 
-            // radioButton8
+            // DAdjBTN
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.radioButton8.Location = new System.Drawing.Point(347, 169);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(103, 24);
-            this.radioButton8.TabIndex = 129;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Adjustment";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.DAdjBTN.AutoSize = true;
+            this.DAdjBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DAdjBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DAdjBTN.Location = new System.Drawing.Point(347, 169);
+            this.DAdjBTN.Name = "DAdjBTN";
+            this.DAdjBTN.Size = new System.Drawing.Size(103, 24);
+            this.DAdjBTN.TabIndex = 129;
+            this.DAdjBTN.TabStop = true;
+            this.DAdjBTN.Text = "Adjustment";
+            this.DAdjBTN.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // DCashBondBTN
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.radioButton7.Location = new System.Drawing.Point(348, 139);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(103, 24);
-            this.radioButton7.TabIndex = 128;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Cash Bonds";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.DCashBondBTN.AutoSize = true;
+            this.DCashBondBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DCashBondBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DCashBondBTN.Location = new System.Drawing.Point(348, 139);
+            this.DCashBondBTN.Name = "DCashBondBTN";
+            this.DCashBondBTN.Size = new System.Drawing.Size(103, 24);
+            this.DCashBondBTN.TabIndex = 128;
+            this.DCashBondBTN.TabStop = true;
+            this.DCashBondBTN.Text = "Cash Bonds";
+            this.DCashBondBTN.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // DSocialBenefitBTN
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.radioButton4.Location = new System.Drawing.Point(348, 109);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(118, 24);
-            this.radioButton4.TabIndex = 127;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Social Benefit";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.DSocialBenefitBTN.AutoSize = true;
+            this.DSocialBenefitBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DSocialBenefitBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DSocialBenefitBTN.Location = new System.Drawing.Point(348, 109);
+            this.DSocialBenefitBTN.Name = "DSocialBenefitBTN";
+            this.DSocialBenefitBTN.Size = new System.Drawing.Size(118, 24);
+            this.DSocialBenefitBTN.TabIndex = 127;
+            this.DSocialBenefitBTN.TabStop = true;
+            this.DSocialBenefitBTN.Text = "Social Benefit";
+            this.DSocialBenefitBTN.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // DStoreCreditBTN
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.radioButton5.Location = new System.Drawing.Point(348, 79);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(106, 24);
-            this.radioButton5.TabIndex = 126;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Store Credit";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.DStoreCreditBTN.AutoSize = true;
+            this.DStoreCreditBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DStoreCreditBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DStoreCreditBTN.Location = new System.Drawing.Point(348, 79);
+            this.DStoreCreditBTN.Name = "DStoreCreditBTN";
+            this.DStoreCreditBTN.Size = new System.Drawing.Size(106, 24);
+            this.DStoreCreditBTN.TabIndex = 126;
+            this.DStoreCreditBTN.TabStop = true;
+            this.DStoreCreditBTN.Text = "Store Credit";
+            this.DStoreCreditBTN.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // DCashAdvBTN
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.radioButton6.Location = new System.Drawing.Point(348, 49);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(119, 24);
-            this.radioButton6.TabIndex = 125;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Cash Advance";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.DCashAdvBTN.AutoSize = true;
+            this.DCashAdvBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DCashAdvBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DCashAdvBTN.Location = new System.Drawing.Point(348, 49);
+            this.DCashAdvBTN.Name = "DCashAdvBTN";
+            this.DCashAdvBTN.Size = new System.Drawing.Size(119, 24);
+            this.DCashAdvBTN.TabIndex = 125;
+            this.DCashAdvBTN.TabStop = true;
+            this.DCashAdvBTN.Text = "Cash Advance";
+            this.DCashAdvBTN.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -181,44 +182,44 @@
             this.label2.Text = "Deduction Type:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // radioButton3
+            // BAdjBTN
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.radioButton3.Location = new System.Drawing.Point(144, 109);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(103, 24);
-            this.radioButton3.TabIndex = 123;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Adjustment";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.BAdjBTN.AutoSize = true;
+            this.BAdjBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BAdjBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.BAdjBTN.Location = new System.Drawing.Point(144, 109);
+            this.BAdjBTN.Name = "BAdjBTN";
+            this.BAdjBTN.Size = new System.Drawing.Size(103, 24);
+            this.BAdjBTN.TabIndex = 123;
+            this.BAdjBTN.TabStop = true;
+            this.BAdjBTN.Text = "Adjustment";
+            this.BAdjBTN.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // BColaBTN
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.radioButton2.Location = new System.Drawing.Point(144, 79);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(57, 24);
-            this.radioButton2.TabIndex = 122;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Cola";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.BColaBTN.AutoSize = true;
+            this.BColaBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BColaBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.BColaBTN.Location = new System.Drawing.Point(144, 79);
+            this.BColaBTN.Name = "BColaBTN";
+            this.BColaBTN.Size = new System.Drawing.Size(57, 24);
+            this.BColaBTN.TabIndex = 122;
+            this.BColaBTN.TabStop = true;
+            this.BColaBTN.Text = "Cola";
+            this.BColaBTN.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // B13MonthBTN
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.radioButton1.Location = new System.Drawing.Point(144, 49);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(103, 24);
-            this.radioButton1.TabIndex = 121;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "13th Month";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.B13MonthBTN.AutoSize = true;
+            this.B13MonthBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.B13MonthBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.B13MonthBTN.Location = new System.Drawing.Point(144, 49);
+            this.B13MonthBTN.Name = "B13MonthBTN";
+            this.B13MonthBTN.Size = new System.Drawing.Size(103, 24);
+            this.B13MonthBTN.TabIndex = 121;
+            this.B13MonthBTN.TabStop = true;
+            this.B13MonthBTN.Text = "13th Month";
+            this.B13MonthBTN.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -246,18 +247,18 @@
             this.label3.Text = "Value:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // maskedTextBox1
+            // ValueMBX
             // 
-            this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 24F);
-            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.maskedTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.maskedTextBox1.Mask = "P 999 999.99";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(718, 43);
-            this.maskedTextBox1.TabIndex = 131;
-            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ValueMBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ValueMBX.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ValueMBX.Font = new System.Drawing.Font("Segoe UI", 24F);
+            this.ValueMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ValueMBX.Location = new System.Drawing.Point(0, 0);
+            this.ValueMBX.Mask = "P 999 999.99";
+            this.ValueMBX.Name = "ValueMBX";
+            this.ValueMBX.Size = new System.Drawing.Size(718, 43);
+            this.ValueMBX.TabIndex = 131;
+            this.ValueMBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CloseBTN
             // 
@@ -279,24 +280,25 @@
             this.CloseBTN.UseVisualStyleBackColor = false;
             this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
             // 
-            // GEditDetailsBTN
+            // AddBTN
             // 
-            this.GEditDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GEditDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GEditDetailsBTN.BackgroundImage")));
-            this.GEditDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GEditDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.GEditDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.GEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.GEditDetailsBTN.Location = new System.Drawing.Point(279, 600);
-            this.GEditDetailsBTN.Name = "GEditDetailsBTN";
-            this.GEditDetailsBTN.Size = new System.Drawing.Size(78, 32);
-            this.GEditDetailsBTN.TabIndex = 231;
-            this.GEditDetailsBTN.Text = "ADD";
-            this.GEditDetailsBTN.UseVisualStyleBackColor = false;
+            this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
+            this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddBTN.FlatAppearance.BorderSize = 0;
+            this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddBTN.ForeColor = System.Drawing.Color.White;
+            this.AddBTN.Location = new System.Drawing.Point(279, 600);
+            this.AddBTN.Name = "AddBTN";
+            this.AddBTN.Size = new System.Drawing.Size(78, 32);
+            this.AddBTN.TabIndex = 231;
+            this.AddBTN.Text = "ADD";
+            this.AddBTN.UseVisualStyleBackColor = false;
+            this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
             // 
             // FadeTMR
             // 
@@ -305,11 +307,18 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.maskedTextBox1);
+            this.panel3.Controls.Add(this.ValueMBX);
             this.panel3.Location = new System.Drawing.Point(1, 418);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(718, 57);
             this.panel3.TabIndex = 233;
+            // 
+            // ValueTLTP
+            // 
+            this.ValueTLTP.AutoPopDelay = 3000;
+            this.ValueTLTP.InitialDelay = 500;
+            this.ValueTLTP.ReshowDelay = 100;
+            this.ValueTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
             // Payroll_AddAdjustments
             // 
@@ -320,7 +329,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.CloseBTN);
-            this.Controls.Add(this.GEditDetailsBTN);
+            this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -346,21 +355,22 @@
         private System.Windows.Forms.Label NameLBL;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton DAdjBTN;
+        private System.Windows.Forms.RadioButton DCashBondBTN;
+        private System.Windows.Forms.RadioButton DSocialBenefitBTN;
+        private System.Windows.Forms.RadioButton DStoreCreditBTN;
+        private System.Windows.Forms.RadioButton DCashAdvBTN;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton BAdjBTN;
+        private System.Windows.Forms.RadioButton BColaBTN;
+        private System.Windows.Forms.RadioButton B13MonthBTN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox ValueMBX;
         private System.Windows.Forms.Button CloseBTN;
-        private System.Windows.Forms.Button GEditDetailsBTN;
+        private System.Windows.Forms.Button AddBTN;
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolTip ValueTLTP;
     }
 }

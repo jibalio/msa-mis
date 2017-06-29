@@ -26,23 +26,23 @@
             this.components = new System.ComponentModel.Container();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.NameLBL = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.NameLBL = new System.Windows.Forms.Label();
             this.UsersLBL = new System.Windows.Forms.Label();
             this.AboutLBL = new System.Windows.Forms.Label();
             this.SettingsLBL = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.AboutPNL = new System.Windows.Forms.Panel();
-            this.UsersPNL = new System.Windows.Forms.Panel();
-            this.SettingsPNL = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.UsersPNL = new System.Windows.Forms.Panel();
+            this.SettingsPNL = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.AboutPNL.SuspendLayout();
             this.SuspendLayout();
@@ -61,19 +61,6 @@
             this.panel1.Size = new System.Drawing.Size(722, 79);
             this.panel1.TabIndex = 0;
             // 
-            // NameLBL
-            // 
-            this.NameLBL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NameLBL.Location = new System.Drawing.Point(0, 0);
-            this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.NameLBL.Name = "NameLBL";
-            this.NameLBL.Size = new System.Drawing.Size(722, 43);
-            this.NameLBL.TabIndex = 120;
-            this.NameLBL.Text = "Makabayan Security Agency";
-            this.NameLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -86,6 +73,19 @@
             this.label4.TabIndex = 121;
             this.label4.Text = "Management Information System";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // NameLBL
+            // 
+            this.NameLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NameLBL.Location = new System.Drawing.Point(0, 0);
+            this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NameLBL.Name = "NameLBL";
+            this.NameLBL.Size = new System.Drawing.Size(722, 43);
+            this.NameLBL.TabIndex = 120;
+            this.NameLBL.Text = "Makabayan Security Agency";
+            this.NameLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // UsersLBL
             // 
@@ -169,95 +169,18 @@
             this.AboutPNL.Size = new System.Drawing.Size(474, 379);
             this.AboutPNL.TabIndex = 237;
             // 
-            // UsersPNL
+            // label10
             // 
-            this.UsersPNL.Location = new System.Drawing.Point(122, 189);
-            this.UsersPNL.Name = "UsersPNL";
-            this.UsersPNL.Size = new System.Drawing.Size(474, 379);
-            this.UsersPNL.TabIndex = 238;
-            // 
-            // SettingsPNL
-            // 
-            this.SettingsPNL.Location = new System.Drawing.Point(122, 189);
-            this.SettingsPNL.Name = "SettingsPNL";
-            this.SettingsPNL.Size = new System.Drawing.Size(474, 379);
-            this.SettingsPNL.TabIndex = 239;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(99, 39);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(280, 19);
-            this.label2.TabIndex = 240;
-            this.label2.Text = "This Software is Managed and Developed by";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(196, 69);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 21);
-            this.label3.TabIndex = 241;
-            this.label3.Text = "RylDB Inc.";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(140, 162);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(208, 21);
-            this.label5.TabIndex = 243;
-            this.label5.Text = "SADMakaSys ver 1.0.2.3b1";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(195, 135);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 19);
-            this.label6.TabIndex = 242;
-            this.label6.Text = "App Version:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(30, 269);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(415, 19);
-            this.label7.TabIndex = 244;
-            this.label7.Text = "PLEASE NOTE:  Your use of the subscription service and software is";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(35, 288);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(409, 19);
-            this.label8.TabIndex = 245;
-            this.label8.Text = "subject to the terms and conditions of the agreement you agreed";
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label10.Location = new System.Drawing.Point(124, 326);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(224, 19);
+            this.label10.TabIndex = 247;
+            this.label10.Text = " acquired a license for the software.";
             // 
             // label9
             // 
@@ -272,18 +195,95 @@
             this.label9.TabIndex = 246;
             this.label9.Text = "to when you signed up for the subscription and by which you";
             // 
-            // label10
+            // label8
             // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(124, 326);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(224, 19);
-            this.label10.TabIndex = 247;
-            this.label10.Text = " acquired a license for the software.";
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label8.Location = new System.Drawing.Point(35, 288);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(409, 19);
+            this.label8.TabIndex = 245;
+            this.label8.Text = "subject to the terms and conditions of the agreement you agreed";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label7.Location = new System.Drawing.Point(30, 269);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(415, 19);
+            this.label7.TabIndex = 244;
+            this.label7.Text = "PLEASE NOTE:  Your use of the subscription service and software is";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label5.Location = new System.Drawing.Point(140, 162);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(213, 21);
+            this.label5.TabIndex = 243;
+            this.label5.Text = "SADMakaSys ver 0.4.187b1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(195, 135);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 19);
+            this.label6.TabIndex = 242;
+            this.label6.Text = "App Version:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(196, 69);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 21);
+            this.label3.TabIndex = 241;
+            this.label3.Text = "RylDB Inc.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label2.Location = new System.Drawing.Point(99, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(280, 19);
+            this.label2.TabIndex = 240;
+            this.label2.Text = "This Software is Managed and Developed by";
+            // 
+            // UsersPNL
+            // 
+            this.UsersPNL.Location = new System.Drawing.Point(122, 189);
+            this.UsersPNL.Name = "UsersPNL";
+            this.UsersPNL.Size = new System.Drawing.Size(474, 379);
+            this.UsersPNL.TabIndex = 238;
+            // 
+            // SettingsPNL
+            // 
+            this.SettingsPNL.Location = new System.Drawing.Point(122, 189);
+            this.SettingsPNL.Name = "SettingsPNL";
+            this.SettingsPNL.Size = new System.Drawing.Size(474, 379);
+            this.SettingsPNL.TabIndex = 239;
             // 
             // About
             // 

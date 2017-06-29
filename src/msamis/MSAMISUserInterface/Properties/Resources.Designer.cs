@@ -103,16 +103,6 @@ namespace MSAMISUserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CloseBTN {
-            get {
-                object obj = ResourceManager.GetObject("CloseBTN", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap EmployeesLogo {
             get {
                 object obj = ResourceManager.GetObject("EmployeesLogo", resourceCulture);
@@ -156,6 +146,16 @@ namespace MSAMISUserInterface.Properties {
         internal static System.Drawing.Bitmap HomeLogo {
             get {
                 object obj = ResourceManager.GetObject("HomeLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logout {
+            get {
+                object obj = ResourceManager.GetObject("Logout", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

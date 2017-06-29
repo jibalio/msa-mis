@@ -11,42 +11,23 @@ using ryldb.sqltools;
 
 namespace MSAMISUserInterface {
     public partial class LoginForm : Form {
+
         public LoginForm() {
             InitializeComponent();
             this.Opacity = 0;
             FadeTMR.Start();
         }
 
-        private void GEditDetailsBTN_Click(object sender, EventArgs e) {
-            Login();
-        }
-
-        private void Login() {
-            if (PasswordBX.Text.Equals("")) {
-                rylui.RylMessageBox.ShowDialog("Please enter your password");
-            } else if (UsernameBX.Text.Equals("")) {
-                rylui.RylMessageBox.ShowDialog("Please enter your username");
-            } else {
-                MainForm mf = new MainForm();
-                mf.Opacity = 0;
-                mf.lf = this;
-                mf.user = UsernameBX.Text;
-                mf.Show();
-                this.Hide();
-            }
-        }
-
+        #region Form Properties
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
         }
-
         private void CloseBTN_Click(object sender, EventArgs e) {
             Application.Exit();
         }
 
         bool mouseDown;
         Point lastLocation;
-
         private void Form_MouseUp(object sender, MouseEventArgs e) {
             mouseDown = false;
         }
@@ -65,34 +46,27 @@ namespace MSAMISUserInterface {
         private void PassPic_MouseDown(object sender, MouseEventArgs e) {
             PasswordBX.PasswordChar = '\0';
         }
-
         private void PassPic_MouseUp(object sender, MouseEventArgs e) {
             PasswordBX.PasswordChar = '●';
         }
-
         private void UsernameBX_KeyDown(object sender, KeyEventArgs e) {
+            PasswordTLTP.Hide(PasswordBX);
+            UsernameTLTP.Hide(UsernameBX);
             if (e.KeyValue.ToString().Equals("13")) {
                 Login();
             }
         }
-
         private void PasswordBX_KeyDown(object sender, KeyEventArgs e) {
+            PasswordTLTP.Hide(PasswordBX);
+            UsernameTLTP.Hide(UsernameBX);
             if (e.KeyValue.ToString().Equals("13")) {
                 Login();
             }
+
         }
+        #endregion
 
-
-        /*
-         * Important: Para mag coordinate atong db's.
-         * Returns an error if database if not updated (if ever gi edit ni Ler).
-         * Opens browser, to download updated sql file.
-         */
-
-
-        private void bttesterxa_Click(object sender, EventArgs e) {
-            
-        }
+        #region Backend Tester
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
             if (keyData == (Keys.Control | Keys.B)) {
@@ -102,6 +76,30 @@ namespace MSAMISUserInterface {
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        #endregion
+
+
+        private void GEditDetailsBTN_Click(object sender, EventArgs e) {
+            Login();
+        }
+        private void Login() {
+            if (PasswordBX.Text.Equals("")) {
+                PasswordTLTP.ToolTipTitle = "Password";
+                PasswordTLTP.Show("Please enter your password", PasswordBX);
+            } else if (UsernameBX.Text.Equals("")) {
+                UsernameTLTP.ToolTipTitle = "Username";
+                UsernameTLTP.Show("Please enter your username", UsernameBX);
+            } else {
+                MainForm mf = new MainForm();
+                mf.Opacity = 0;
+                mf.lf = this;
+                mf.user = UsernameBX.Text;
+                mf.Show();
+                this.Hide();
+            }
+        }
+
 
     }
 }
