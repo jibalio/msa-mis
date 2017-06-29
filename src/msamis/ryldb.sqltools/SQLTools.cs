@@ -189,6 +189,10 @@ namespace MSAMISUserInterface {
             return dt.Rows[0][0].ToString();
         }
         
+        public static int GetInt (String query) {
+            return int.Parse(SQLTools.ExecuteSingleResult(query));
+        }
+
         #endregion
 
         #region meta functions

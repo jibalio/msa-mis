@@ -1,3 +1,102 @@
+#####################################################################
+UPDATE June 29, 2006
+
+		INTRO
+		Naay  terminologies na involved sa attendance / payrolls.
+		* Period:	Ang period kay isa ka half-month.
+					So, naay recurring variable diri, na period.
+					Ang period kay either 1 or 2.
+					Ang 1 kay ang first half sa month.
+					Ang 2 kay 2nd half sa month.
+					So,
+					if gusto ko mag save ug attendance for July 15-31 2017
+					ang values:   
+						month = 7
+						year = 2017
+						period = 2
+
+		Also, gina calculate ang payroll after na sa period.
+		So kung ang period sa attendance kay 1 (e.g June 1-15),
+		during sa next 4 days pa i calculate ang payroll,
+		kay didto pa gina submit ang daily time records.
+		Then after 4 days, finally sweldo na.
+		Payday time:
+		      For the dates 1-15 (period 1):   on the 20th ang actual payday.
+		      For dates 16-31 (period 2):	  on the 5th of next month  ang actual payday.
+
+
+		Also, dapat pwede ma view sa attendance view ang old duty hours,
+		so pwede mag backtrack each period.
+		Idk combobox cguro kung unsa na month + period ang iview (?)
+
+		---------------------------------------------------------------------
+		Kani i-call for Add/Update.
+		If attendance does not exist, sya na mag create.
+		If exists, i update lng niya.
+
+		static void SaveAttendanceDetails (
+			int aid, 				--ASSIGNMENT ID of guard.
+			int month, 				--Month covered for this record. Range: 1 to 12. 
+			int period, 			--Period covered for this record.
+									  Biweekly sila naga record, so naay two possible values
+									  for this period variable: 1 or 2.
+									      1:   Dates 1 to 15
+									      2:   Dates 16 to endofmonth
+			int normal_day, 		--Number of hours worked
+			int normal_night, 
+			int holiday_day, 
+			int holiday_night, 
+			string certby			--Client representative na nag verify (tao ni sya.)
+			);
+
+		---------------------------------------------------------------------
+		static string GetPayPeriodRange (int mo, int yyyy, int period)
+		Returns: string: days covered in attendance / pay.
+
+					example input:		GetPayPeriodRange (7,2017,2);
+					output: 			"July 15 2017 to July 31 2017" 
+
+		---------------------------------------------------------------------
+		static DataTable GetHours (int aid, int mo, int yyyy, int period) 
+		returns:
+		columns: tid, normal_day, normal_night,holiday_day, holiday_night, certifiedby
+		// pwede i view ang old records.
+
+##################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##################################################
 UPDATE Sunday
 

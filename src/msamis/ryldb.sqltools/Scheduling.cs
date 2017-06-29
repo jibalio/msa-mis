@@ -220,7 +220,6 @@ namespace MSAMISUserInterface {
                 UpdateRequestStatus(rid, Enumeration.RequestStatus.Active);
             } else
                 MessageBox.Show("Request is not an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
         }
 
 

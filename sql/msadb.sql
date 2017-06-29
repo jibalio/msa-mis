@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `msadb`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: 127.0.0.1    Database: msadb
@@ -542,13 +540,14 @@ CREATE TABLE `time` (
   `AID` int(11) DEFAULT NULL,
   `month` int(11) DEFAULT NULL,
   `period` int(11) DEFAULT NULL,
+  `year` int(5) DEFAULT NULL,
   `normal_day` int(11) DEFAULT NULL,
   `normal_night` int(11) DEFAULT NULL,
   `holiday_day` int(11) DEFAULT NULL,
   `holiday_night` int(11) DEFAULT NULL,
   `certifiedby` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`TID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -557,6 +556,7 @@ CREATE TABLE `time` (
 
 LOCK TABLES `time` WRITE;
 /*!40000 ALTER TABLE `time` DISABLE KEYS */;
+INSERT INTO `time` VALUES (1,1,1,11,2017,1,1,1,1,'1'),(2,115,7,2,2017,199,12,12,12,'Holly'),(3,115,2,2,2017,123,999,123,123,'Holly');
 /*!40000 ALTER TABLE `time` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -605,4 +605,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-29  0:49:23
+-- Dump completed on 2017-06-29 19:06:38
