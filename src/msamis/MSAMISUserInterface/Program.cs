@@ -16,14 +16,14 @@ namespace MSAMISUserInterface {
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
 
-             Application.EnableVisualStyles();
-               Application.SetCompatibleTextRenderingDefault(false);
-             AutoLoader.AutoImportSql(true, true);
+            Application.EnableVisualStyles();
+              Application.SetCompatibleTextRenderingDefault(false);
+            AutoLoader.AutoImportSql(true, true);
               Application.Run(new LoginForm());
             //Scheduling.AddUnassignmentRequest(1, new int[] { 342, 182, 33 }, Enumeration.ReportType.Accident, "k", DateTime.Now, "asd", "asd");
             //Scheduling.ApproveUnassignment(42);
 
-
+           // Attendance.SaveAttendanceDetails(115,2,2,2017,123,999,123,123,"Holly");
 
 
 
