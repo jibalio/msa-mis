@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attendance.cs" />
     <Compile Include="AutoLoader.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Enumeration.cs" />

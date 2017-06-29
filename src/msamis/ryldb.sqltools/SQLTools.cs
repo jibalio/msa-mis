@@ -128,16 +128,28 @@ namespace MSAMISUserInterface {
         }
 
         public static void ExecuteNonQuery(string query) {
-            try {
+            ExecuteNonQuery(query, true);
+        }
+
+        public static void ExecuteNonQuery (string query, bool enablecheck) { 
+            if (enablecheck) {
+                try {
+                    message(query);
+                    MySqlCommand com = new MySqlCommand(query, conn);
+                    SQLTools.conn.Open();
+                    com.ExecuteNonQuery();
+                } catch (Exception e) {
+                    MessageBox.Show(e.ToString());
+                } finally {
+                    SQLTools.conn.Close();
+                }
+            } else {
                 message(query);
                 MySqlCommand com = new MySqlCommand(query, conn);
                 SQLTools.conn.Open();
                 com.ExecuteNonQuery();
-            } catch (Exception e) {
-                MessageBox.Show(e.ToString());
-            } finally {
-                SQLTools.conn.Close();
             }
+           
         }
 
         public static void message (String query) {
