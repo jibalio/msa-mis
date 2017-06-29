@@ -219,7 +219,7 @@ CREATE TABLE `dutydetails` (
   PRIMARY KEY (`DID`),
   KEY `Assignment-Duty_idx` (`AID`),
   CONSTRAINT `Assignment-Duty` FOREIGN KEY (`AID`) REFERENCES `sduty_assignment` (`AID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,6 +228,7 @@ CREATE TABLE `dutydetails` (
 
 LOCK TABLES `dutydetails` WRITE;
 /*!40000 ALTER TABLE `dutydetails` DISABLE KEYS */;
+INSERT INTO `dutydetails` VALUES (26,125,03,05,'AM',05,08,'AM',1,0,1,0,1,0,0,1);
 /*!40000 ALTER TABLE `dutydetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -431,7 +432,7 @@ CREATE TABLE `request` (
   `DateEntry` varchar(45) DEFAULT NULL,
   `RStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`RID`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -440,6 +441,7 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
+INSERT INTO `request` VALUES (57,1,7,'2017-06-28',3);
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -461,7 +463,7 @@ CREATE TABLE `request_assign` (
   `city` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `NoGuards` int(11) DEFAULT NULL,
   PRIMARY KEY (`RAID`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -470,6 +472,7 @@ CREATE TABLE `request_assign` (
 
 LOCK TABLES `request_assign` WRITE;
 /*!40000 ALTER TABLE `request_assign` DISABLE KEYS */;
+INSERT INTO `request_assign` VALUES (40,57,'2017-06-07 00:00:00','2017-06-16 00:00:00','1','Kalamansi St.','Buhangin','Davao City',12);
 /*!40000 ALTER TABLE `request_assign` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -514,7 +517,7 @@ CREATE TABLE `sduty_assignment` (
   KEY `Assignment-Guard_idx` (`GID`),
   KEY `Assignment-Request_idx` (`RAID`),
   CONSTRAINT `Assignment-Guard` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -523,7 +526,38 @@ CREATE TABLE `sduty_assignment` (
 
 LOCK TABLES `sduty_assignment` WRITE;
 /*!40000 ALTER TABLE `sduty_assignment` DISABLE KEYS */;
+INSERT INTO `sduty_assignment` VALUES (115,1,40,1),(116,2,40,1),(117,3,40,1),(118,4,40,1),(119,5,40,1),(120,6,40,1),(121,7,40,1),(122,8,40,1),(123,9,40,1),(124,10,40,1),(125,11,40,1),(126,12,40,1);
 /*!40000 ALTER TABLE `sduty_assignment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `time`
+--
+
+DROP TABLE IF EXISTS `time`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `time` (
+  `TID` int(11) NOT NULL AUTO_INCREMENT,
+  `AID` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `period` int(11) DEFAULT NULL,
+  `normal_day` int(11) DEFAULT NULL,
+  `normal_night` int(11) DEFAULT NULL,
+  `holiday_day` int(11) DEFAULT NULL,
+  `holiday_night` int(11) DEFAULT NULL,
+  `certifiedby` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`TID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `time`
+--
+
+LOCK TABLES `time` WRITE;
+/*!40000 ALTER TABLE `time` DISABLE KEYS */;
+/*!40000 ALTER TABLE `time` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -571,4 +605,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-26 16:17:31
+-- Dump completed on 2017-06-29  0:49:23
