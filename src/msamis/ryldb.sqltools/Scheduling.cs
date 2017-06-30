@@ -216,6 +216,7 @@ namespace MSAMISUserInterface {
                     SQLTools.ExecuteNonQuery(q);
                     // Set status to active.
                     q = @"UPDATE `msadb`.`guards` SET `GStatus`='" + Enumeration.GuardStatus.Active + "' WHERE `GID`='" + g + "'";
+                    SQLTools.ExecuteNonQuery(q);
                 }
                 UpdateRequestStatus(rid, Enumeration.RequestStatus.Active);
             } else
