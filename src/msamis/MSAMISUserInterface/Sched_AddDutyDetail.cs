@@ -129,8 +129,7 @@ namespace MSAMISUserInterface {
             float TimeIn = float.Parse(TimeInHrBX.Text.ToString()) + (float.Parse(TimeInMinBX.Text.ToString()) / 100);
             float TimeOut = float.Parse(TimeOutHrBX.Text.ToString()) + (float.Parse(TimeOutMinBX.Text.ToString()) / 100);
             if (TimeInAMPMBX.SelectedIndex == 1) TimeIn = TimeIn + 12;
-            if (TimeOutAMPMBX.SelectedIndex == 1) TimeIn = TimeOut + 12;
-
+            if (TimeOutAMPMBX.SelectedIndex == 1) TimeOut = TimeOut + 12;
             if ((TimeOut - TimeIn) < 8) {
                 HoursTLTP.ToolTipTitle = "Duty Hours";
                 HoursTLTP.Show("The specified time is less than 8hrs", HoursLBL);
