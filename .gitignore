@@ -248,3 +248,8 @@ ModelManifest.xml
 /src/msamis/ryldb.sqltools/customdoxygen.css
 /src/msamis/ryldb.sqltools/doxygen.exe
 /src/msamis/ryldb.sqltools/libclang.dll
+/src/msamis/ryldb.sqltools/html
+/src/msamis/ryldb.sqltools/latex
+/src/msamis/ryldb.sqltools/doxy-boot.js
+/src/msamis/ryldb.sqltools/header.html
+/src/msamis/ryldb.sqltools/footer.html
