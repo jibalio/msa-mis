@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{060358EC-39AC-4A79-88BA-431B33510D13}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MSAMISUserInterface</RootNamespace>
+    <AssemblyName>MSAMISUserInterface</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Untitled-1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Backend_Tester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Backend_Tester.Designer.cs">
+      <DependentUpon>Backend_Tester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients_Edit.Designer.cs">
+      <DependentUpon>Clients_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients_View.Designer.cs">
+      <DependentUpon>Clients_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guards_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guards_Edit.Designer.cs">
+      <DependentUpon>Guards_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll_AddAdjustments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll_AddAdjustments.Designer.cs">
+      <DependentUpon>Payroll_AddAdjustments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll_BasicPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll_BasicPay.Designer.cs">
+      <DependentUpon>Payroll_BasicPay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll_EmployeeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll_EmployeeView.Designer.cs">
+      <DependentUpon>Payroll_EmployeeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll_ViewCashAdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll_ViewCashAdv.Designer.cs">
+      <DependentUpon>Payroll_ViewCashAdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Guards_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guards_View.Designer.cs">
+      <DependentUpon>Guards_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_AddDutyDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_AddDutyDays.Designer.cs">
+      <DependentUpon>Sched_AddDutyDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_AddDutyDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_AddDutyDetail.Designer.cs">
+      <DependentUpon>Sched_AddDutyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_AssignGuards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_AssignGuards.Designer.cs">
+      <DependentUpon>Sched_AssignGuards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_UnassignGuard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_UnassignGuard.Designer.cs">
+      <DependentUpon>Sched_UnassignGuard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_RequestGuard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_RequestGuard.Designer.cs">
+      <DependentUpon>Sched_RequestGuard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_ViewAssReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_ViewAssReq.Designer.cs">
+      <DependentUpon>Sched_ViewAssReq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_ViewDisReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_ViewDisReq.Designer.cs">
+      <DependentUpon>Sched_ViewDisReq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sched_ViewDutyDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sched_ViewDutyDetails.Designer.cs">
+      <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Backend_Tester.resx">
+      <DependentUpon>Backend_Tester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients_Edit.resx">
+      <DependentUpon>Clients_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients_View.resx">
+      <DependentUpon>Clients_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guards_Edit.resx">
+      <DependentUpon>Guards_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll_AddAdjustments.resx">
+      <DependentUpon>Payroll_AddAdjustments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll_BasicPay.resx">
+      <DependentUpon>Payroll_BasicPay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll_EmployeeView.resx">
+      <DependentUpon>Payroll_EmployeeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll_ViewCashAdv.resx">
+      <DependentUpon>Payroll_ViewCashAdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Guards_View.resx">
+      <DependentUpon>Guards_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_AddDutyDays.resx">
+      <DependentUpon>Sched_AddDutyDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_AddDutyDetail.resx">
+      <DependentUpon>Sched_AddDutyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_AssignGuards.resx">
+      <DependentUpon>Sched_AssignGuards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_UnassignGuard.resx">
+      <DependentUpon>Sched_UnassignGuard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_RequestGuard.resx">
+      <DependentUpon>Sched_RequestGuard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_ViewAssReq.resx">
+      <DependentUpon>Sched_ViewAssReq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_ViewDisReq.resx">
+      <DependentUpon>Sched_ViewDisReq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sched_ViewDutyDetails.resx">
+      <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClientLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DashboardLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EmployeesLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PayrollLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SchedLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\In.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClientsLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BTNV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GuardsView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HomeBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ryldb.sqltools\ryldb.sqltools.csproj">
+      <Project>{c3a9be5d-2dd9-41ab-87aa-f3754bb23187}</Project>
+      <Name>ryldb.sqltools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rylui\rylui\rylui.csproj">
+      <Project>{efe3ffb8-a983-4766-93ce-1fc03e22f64f}</Project>
+      <Name>rylui</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AgencyLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HomeLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GuardsLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AgencyLogo.ico" />
+    <None Include="Resources\Payroll.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\notif.png" />
+    <None Include="Resources\eYE.png" />
+    <None Include="Resources\Logout.png" />
+    <Content Include="Untitled-1.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
