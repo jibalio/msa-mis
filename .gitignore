@@ -242,5 +242,9 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/"# msa-mis" 
-/src/msamis/ryldb.sqltools
+
 /load.bat
+/src/msamis/ryldb.sqltools/load.bat
+/src/msamis/ryldb.sqltools/customdoxygen.css
+/src/msamis/ryldb.sqltools/doxygen.exe
+/src/msamis/ryldb.sqltools/libclang.dll

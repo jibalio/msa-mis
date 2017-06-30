@@ -1,0 +1,267 @@
+\hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling}{}\section{M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling Class Reference}
+\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling}\index{M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_1_1_days}{Days}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Data\+Table \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a510f2fb4c4bab2c0060b47f329c1a05c}{Get\+Requests} (String searchkeyword, int Client\+Filter, int Type\+Filter, String Search\+Column, String orderby, Date\+Time date)
+\begin{DoxyCompactList}\small\item\em Gets all requests made on a specific date. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_ad957b4cd57182fcb572765be14d7bacb}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_ad957b4cd57182fcb572765be14d7bacb}} 
+static Data\+Table {\bfseries Get\+Requests} (String searchkeyword, int Client\+Filter, int Type\+Filter, String Column\+To\+Sort\+By\+Asc\+Desc, String orderby)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a1875cfb45a8a64b06eaa3740237d8dc4}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a1875cfb45a8a64b06eaa3740237d8dc4}} 
+static Data\+Table {\bfseries Get\+Unassigned\+Guards} (String searchkeyword, String orderby\+Column\+A\+S\+C\+D\+E\+SC)
+\item 
+static Data\+Table \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a94ddd9fb2b7b2f51815318f364c65f49}{Get\+Clients} ()
+\begin{DoxyCompactList}\small\item\em Returns a list of the Clients. \end{DoxyCompactList}\item 
+static Data\+Table \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a18ab1d6c1e4cf5df9bbffc04cb138648}{Get\+Guards\+Assigned} (int cid, String keyword)
+\begin{DoxyCompactList}\small\item\em Returns a list of guards assigned to a client. \end{DoxyCompactList}\item 
+static Data\+Table \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aa43df3f46aa587e9d2ffb7013fe8ab14}{Get\+Assignment\+Request\+Details} (int rid)
+\begin{DoxyCompactList}\small\item\em Gets the details of a specific A\+S\+S\+I\+G\+N\+M\+E\+NT Request \end{DoxyCompactList}\item 
+static void \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a4f78423c6f2046dde0c077c0843360cd}{Add\+Assignment\+Request} (int C\+ID, string Ass\+Street\+No, string Ass\+Street\+Name, string Ass\+Brgy, string Ass\+City, Date\+Time Contract\+Start, Date\+Time Contract\+End, int No\+Guards)
+\begin{DoxyCompactList}\small\item\em Adds an assignment request. Note\+: This isn\textquotesingle{}t an actual assignment yet. \end{DoxyCompactList}\item 
+static void \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_acab89a83f555666ce41f8929015c8824}{Add\+Unassignment\+Request} (int cid, int\mbox{[}$\,$\mbox{]} gid, int Report\+Type, String pcompleting, Date\+Time Event\+Date, String location, String description)
+\begin{DoxyCompactList}\small\item\em Adds an unassignment request for the specified guards. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a0312ba8be026668596098b838d8b4cc5}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a0312ba8be026668596098b838d8b4cc5}} 
+static void {\bfseries Approve\+Unassignment} (int rid)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a89cdd002d12efd9cd518f16dbbbe4f29}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a89cdd002d12efd9cd518f16dbbbe4f29}} 
+static void {\bfseries Add\+Assignment} (int rid, int\mbox{[}$\,$\mbox{]} gid)
+\item 
+static void \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aad6e74ada99922ffa29580f209f429ad}{Decline\+Request} (int rid)
+\begin{DoxyCompactList}\small\item\em Steps\+: 1.) Get Guards to be dismissed (based on R\+ID) 2.) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a1d41feb2317fcbb036b7f0390a3ad90e}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a1d41feb2317fcbb036b7f0390a3ad90e}} 
+static int {\bfseries Get\+Number\+Of\+Unscheduled\+Assignments} ()
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a07daa5e20275fec0364c60546d3008cc}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a07daa5e20275fec0364c60546d3008cc}} 
+static int {\bfseries Get\+Number\+Of\+Assigned\+Guards} ()
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a40fb4274a0c0d8361a0af0bf5653175e}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a40fb4274a0c0d8361a0af0bf5653175e}} 
+static int {\bfseries Get\+Number\+Of\+Unassigned\+Guards} ()
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a41f09621900a2ffd2901a493a3a7fed6}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a41f09621900a2ffd2901a493a3a7fed6}} 
+static String {\bfseries Get\+Number\+Of\+Client\+Requests} ()
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a6343cf90f6fe9d885560bc7b083bc0a5}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a6343cf90f6fe9d885560bc7b083bc0a5}} 
+static String {\bfseries Get\+Number\+Of\+Client\+Requests} (int Request\+Status\+Enumeration)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a70744c37691d6dc259c4df672e3a21dc}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a70744c37691d6dc259c4df672e3a21dc}} 
+static String {\bfseries Get\+Number\+Of\+Pending\+Client\+Requests} ()
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a5b9e436b037a6619cadf175bb43b90b2}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a5b9e436b037a6619cadf175bb43b90b2}} 
+static Data\+Table {\bfseries View\+Guards\+From\+Client} (int cid)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a065ce30f148c6eae68c77bf1d9b385d8}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a065ce30f148c6eae68c77bf1d9b385d8}} 
+static Data\+Table {\bfseries Get\+Assignments\+By\+Client} (int cid, int filter)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_abe50b9da4c1f84ebf1fb2d7de3a4ac16}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_abe50b9da4c1f84ebf1fb2d7de3a4ac16}} 
+static Data\+Table {\bfseries Get\+Duty\+Days} (int did)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a5c6859d668bf4e2b25d7e32e8dec1dae}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a5c6859d668bf4e2b25d7e32e8dec1dae}} 
+static Data\+Table {\bfseries Get\+All\+Duty\+Details} ()
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a8882732bec705c01f9f84b7688198739}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a8882732bec705c01f9f84b7688198739}} 
+static void {\bfseries Add\+Duty\+Detail} (int aid, String T\+I\+\_\+hr, String T\+I\+\_\+min, String T\+I\+\_\+ampm, String T\+O\+\_\+hr, String T\+O\+\_\+min, String T\+O\+\_\+ampm, \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_1_1_days}{Days} days)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_ae091aa5205d3dcb266e9c75a822e31c5}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_ae091aa5205d3dcb266e9c75a822e31c5}} 
+static void {\bfseries Dismiss\+Duty} (int did)
+\item 
+static Data\+Table \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a764ffe5264eec3f9128d114ccceb83fb}{Get\+Unassignment\+Request\+Details} (int R\+ID)
+\begin{DoxyCompactList}\small\item\em Returns Columns \mbox{[}\char`\"{}name\char`\"{}, \char`\"{}status\char`\"{}\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_ad24d656fd16f6c550bfb2f2121e04b8a}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_ad24d656fd16f6c550bfb2f2121e04b8a}} 
+static Data\+Table {\bfseries Get\+Guards\+To\+Be\+Unassigned} (int R\+ID)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aa4965f6bd4ae4af6c1e0c18b9705fbcb}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aa4965f6bd4ae4af6c1e0c18b9705fbcb}} 
+static Data\+Table {\bfseries Get\+All\+Assignment\+Details} (int A\+ID)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a234f828a8c5c2cdb7bc7b6e64d23aacf}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a234f828a8c5c2cdb7bc7b6e64d23aacf}} 
+static String {\bfseries cleansearch} (String x)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aa4079855bd6fd8cf73a0aefa93c82e1c}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aa4079855bd6fd8cf73a0aefa93c82e1c}} 
+static void {\bfseries Update\+Request\+Status} (int rid, int val)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a9d40d73b2a87b8589508a3240e7de480}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a9d40d73b2a87b8589508a3240e7de480}} 
+static String {\bfseries Parse\+Days} (String q)
+\item 
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_ad559eaf75f2eef8614998cc1e5a2c209}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_ad559eaf75f2eef8614998cc1e5a2c209}} 
+static Data\+Table {\bfseries Guards\+To\+Be\+Dismissed} (int rid)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a4f78423c6f2046dde0c077c0843360cd}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a4f78423c6f2046dde0c077c0843360cd}} 
+\index{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}!Add\+Assignment\+Request@{Add\+Assignment\+Request}}
+\index{Add\+Assignment\+Request@{Add\+Assignment\+Request}!M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}}
+\subsubsection{\texorpdfstring{Add\+Assignment\+Request()}{AddAssignmentRequest()}}
+{\footnotesize\ttfamily static void M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling.\+Add\+Assignment\+Request (\begin{DoxyParamCaption}\item[{int}]{C\+ID,  }\item[{string}]{Ass\+Street\+No,  }\item[{string}]{Ass\+Street\+Name,  }\item[{string}]{Ass\+Brgy,  }\item[{string}]{Ass\+City,  }\item[{Date\+Time}]{Contract\+Start,  }\item[{Date\+Time}]{Contract\+End,  }\item[{int}]{No\+Guards }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Adds an assignment request. Note\+: This isn\textquotesingle{}t an actual assignment yet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C\+ID} & \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_client}{Client} ID (the requester)\\
+\hline
+{\em Ass\+Street\+No} & \\
+\hline
+{\em Ass\+Street\+Name} & \\
+\hline
+{\em Ass\+Brgy} & \\
+\hline
+{\em Ass\+City} & \\
+\hline
+{\em Contract\+Start} & \\
+\hline
+{\em Contract\+End} & Date\+Time ang ipass diri\\
+\hline
+{\em No\+Guards} & Number of Guards\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_acab89a83f555666ce41f8929015c8824}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_acab89a83f555666ce41f8929015c8824}} 
+\index{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}!Add\+Unassignment\+Request@{Add\+Unassignment\+Request}}
+\index{Add\+Unassignment\+Request@{Add\+Unassignment\+Request}!M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}}
+\subsubsection{\texorpdfstring{Add\+Unassignment\+Request()}{AddUnassignmentRequest()}}
+{\footnotesize\ttfamily static void M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling.\+Add\+Unassignment\+Request (\begin{DoxyParamCaption}\item[{int}]{cid,  }\item[{int \mbox{[}$\,$\mbox{]}}]{gid,  }\item[{int}]{Report\+Type,  }\item[{String}]{pcompleting,  }\item[{Date\+Time}]{Event\+Date,  }\item[{String}]{location,  }\item[{String}]{description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Adds an unassignment request for the specified guards. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cid} & \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_client}{Client} ID\\
+\hline
+{\em gid} & An array of Guard ID\textquotesingle{}s to be dismissed\\
+\hline
+{\em Report\+Type} & \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_enumeration_1_1_report_type}{Enumeration.\+Report\+Type} (Incident)\\
+\hline
+{\em pcompleting} & Idk unsa ni na field.\\
+\hline
+{\em Event\+Date} & Date of event.\\
+\hline
+{\em location} & Brief location description\\
+\hline
+{\em description} & Brief description of incident.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aad6e74ada99922ffa29580f209f429ad}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aad6e74ada99922ffa29580f209f429ad}} 
+\index{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}!Decline\+Request@{Decline\+Request}}
+\index{Decline\+Request@{Decline\+Request}!M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}}
+\subsubsection{\texorpdfstring{Decline\+Request()}{DeclineRequest()}}
+{\footnotesize\ttfamily static void M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling.\+Decline\+Request (\begin{DoxyParamCaption}\item[{int}]{rid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Steps\+: 1.) Get Guards to be dismissed (based on R\+ID) 2.) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rid} & Request ID to approve dismissal.\\
+\hline
+\end{DoxyParams}
+
+
+Declines a request. Does no further processes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rid} & Request ID to decline\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aa43df3f46aa587e9d2ffb7013fe8ab14}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_aa43df3f46aa587e9d2ffb7013fe8ab14}} 
+\index{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}!Get\+Assignment\+Request\+Details@{Get\+Assignment\+Request\+Details}}
+\index{Get\+Assignment\+Request\+Details@{Get\+Assignment\+Request\+Details}!M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}}
+\subsubsection{\texorpdfstring{Get\+Assignment\+Request\+Details()}{GetAssignmentRequestDetails()}}
+{\footnotesize\ttfamily static Data\+Table M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling.\+Get\+Assignment\+Request\+Details (\begin{DoxyParamCaption}\item[{int}]{rid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the details of a specific A\+S\+S\+I\+G\+N\+M\+E\+NT Request 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rid} & Request ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a94ddd9fb2b7b2f51815318f364c65f49}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a94ddd9fb2b7b2f51815318f364c65f49}} 
+\index{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}!Get\+Clients@{Get\+Clients}}
+\index{Get\+Clients@{Get\+Clients}!M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}}
+\subsubsection{\texorpdfstring{Get\+Clients()}{GetClients()}}
+{\footnotesize\ttfamily static Data\+Table M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling.\+Get\+Clients (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns a list of the Clients. 
+
+\begin{DoxyReturn}{Returns}
+DT Columns\+: cid, name
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a18ab1d6c1e4cf5df9bbffc04cb138648}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a18ab1d6c1e4cf5df9bbffc04cb138648}} 
+\index{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}!Get\+Guards\+Assigned@{Get\+Guards\+Assigned}}
+\index{Get\+Guards\+Assigned@{Get\+Guards\+Assigned}!M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}}
+\subsubsection{\texorpdfstring{Get\+Guards\+Assigned()}{GetGuardsAssigned()}}
+{\footnotesize\ttfamily static Data\+Table M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling.\+Get\+Guards\+Assigned (\begin{DoxyParamCaption}\item[{int}]{cid,  }\item[{String}]{keyword }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns a list of guards assigned to a client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cid} & \hyperlink{class_m_s_a_m_i_s_user_interface_1_1_client}{Client} ID\\
+\hline
+{\em keyword} & Keyword for search\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a510f2fb4c4bab2c0060b47f329c1a05c}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a510f2fb4c4bab2c0060b47f329c1a05c}} 
+\index{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}!Get\+Requests@{Get\+Requests}}
+\index{Get\+Requests@{Get\+Requests}!M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}}
+\subsubsection{\texorpdfstring{Get\+Requests()}{GetRequests()}}
+{\footnotesize\ttfamily static Data\+Table M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling.\+Get\+Requests (\begin{DoxyParamCaption}\item[{String}]{searchkeyword,  }\item[{int}]{Client\+Filter,  }\item[{int}]{Type\+Filter,  }\item[{String}]{Search\+Column,  }\item[{String}]{orderby,  }\item[{Date\+Time}]{date }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets all requests made on a specific date. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & Date\+Time object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+DT columns\+: rid, name, dateentry, type
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a764ffe5264eec3f9128d114ccceb83fb}\label{class_m_s_a_m_i_s_user_interface_1_1_scheduling_a764ffe5264eec3f9128d114ccceb83fb}} 
+\index{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}!Get\+Unassignment\+Request\+Details@{Get\+Unassignment\+Request\+Details}}
+\index{Get\+Unassignment\+Request\+Details@{Get\+Unassignment\+Request\+Details}!M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling@{M\+S\+A\+M\+I\+S\+User\+Interface\+::\+Scheduling}}
+\subsubsection{\texorpdfstring{Get\+Unassignment\+Request\+Details()}{GetUnassignmentRequestDetails()}}
+{\footnotesize\ttfamily static Data\+Table M\+S\+A\+M\+I\+S\+User\+Interface.\+Scheduling.\+Get\+Unassignment\+Request\+Details (\begin{DoxyParamCaption}\item[{int}]{R\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns Columns \mbox{[}\char`\"{}name\char`\"{}, \char`\"{}status\char`\"{}\mbox{]} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em R\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Scheduling.\+cs\end{DoxyCompactItemize}
