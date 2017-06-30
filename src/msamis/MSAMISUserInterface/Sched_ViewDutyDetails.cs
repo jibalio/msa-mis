@@ -144,5 +144,9 @@ namespace MSAMISUserInterface {
             RefreshDutyDetails();
 
         }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
     }
 }

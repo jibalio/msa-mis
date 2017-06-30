@@ -89,6 +89,34 @@ namespace MSAMISUserInterface {
             HideTooltips();
         }
 
+        private void StreetNoBX_Leave(object sender, EventArgs e) {
+            TextBox streetnobx = sender as TextBox;
+            if (streetnobx.Text == "") {
+                streetnobx.Text = "No.";
+            }
+        }
+        private void StreetNameBX_Leave(object sender, EventArgs e) {
+            TextBox streetnamebx = sender as TextBox;
+            if (streetnamebx.Text == "") {
+                streetnamebx.Text = "Street Name";
+            }
+        }
+
+        private void BrgyBX_Leave(object sender, EventArgs e) {
+            TextBox brgybx = sender as TextBox;
+            if (brgybx.Text == "") {
+                brgybx.Text = "Brgy";
+            }
+        }
+
+        private void CityBX_Leave(object sender, EventArgs e) {
+            TextBox citybx = sender as TextBox;
+            if (citybx.Text == "") {
+                citybx.Text = "City";
+            }
+        }
+
+
         private void HideTooltips() {
             NameTLTP.Hide(NameBX);
             LocationTLTP.Hide(LocationStreetNoBX);
@@ -104,6 +132,19 @@ namespace MSAMISUserInterface {
                 ToolTip.Show("Can only accept numbers", LocationStreetNoBX);
             }
         }
+
+        private void Clients_Edit_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Escape) {
+                    if (isEmpty() == false) {
+                        DialogResult rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (rs == DialogResult.Yes) this.Close();
+                    } else { this.Close(); }
+
+                }
+            }
+
+
+
         #endregion
 
         #region Adding and Editign
@@ -161,7 +202,10 @@ namespace MSAMISUserInterface {
             return ret;
         }
 
-        private void GEditDetailsBTN_Click(object sender, EventArgs e) {
+        
+
+
+    private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
                 if (GEditDetailsBTN.Text.Equals("ADD")) {
                     try {

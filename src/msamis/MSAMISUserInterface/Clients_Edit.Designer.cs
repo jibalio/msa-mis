@@ -129,6 +129,7 @@
             this.LocationStreetNoBX.TextChanged += new System.EventHandler(this.NameBX_TextChanged);
             this.LocationStreetNoBX.Enter += new System.EventHandler(this.LocationStreetNoBX_MouseEnter);
             this.LocationStreetNoBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LocationStreetNoBX_KeyPress);
+            this.LocationStreetNoBX.Leave += new System.EventHandler(this.StreetNoBX_Leave);
             // 
             // label45
             // 
@@ -249,6 +250,7 @@
             this.LocationCityBX.Text = "City";
             this.LocationCityBX.TextChanged += new System.EventHandler(this.NameBX_TextChanged);
             this.LocationCityBX.Enter += new System.EventHandler(this.LocationCityBX_MouseEnter);
+            this.LocationCityBX.Leave += new System.EventHandler(this.CityBX_Leave);
             // 
             // LocationStreetNameBX
             // 
@@ -263,6 +265,7 @@
             this.LocationStreetNameBX.Text = "Street Name";
             this.LocationStreetNameBX.TextChanged += new System.EventHandler(this.NameBX_TextChanged);
             this.LocationStreetNameBX.Enter += new System.EventHandler(this.LocationStreetNameBX_MouseEnter);
+            this.LocationStreetNameBX.Leave += new System.EventHandler(this.StreetNameBX_Leave);
             // 
             // DetailsPNL
             // 
@@ -306,6 +309,7 @@
             this.LocationBrgyBX.Text = "Brgy";
             this.LocationBrgyBX.TextChanged += new System.EventHandler(this.NameBX_TextChanged);
             this.LocationBrgyBX.Enter += new System.EventHandler(this.LocationBrgyBX_MouseEnter);
+            this.LocationBrgyBX.Leave += new System.EventHandler(this.BrgyBX_Leave);
             // 
             // label9
             // 
@@ -427,6 +431,7 @@
             this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.CloseBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseBTN.BackgroundImage")));
             this.CloseBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CloseBTN.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CloseBTN.FlatAppearance.BorderSize = 0;
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
@@ -516,6 +521,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.CloseBTN;
             this.ClientSize = new System.Drawing.Size(723, 668);
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.panel1);
@@ -528,6 +534,7 @@
             this.Text = "Clients_Add";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clients_Edit_FormClosing);
             this.Load += new System.EventHandler(this.Clients_Edit_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Clients_Edit_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.DetailsPNL.ResumeLayout(false);
