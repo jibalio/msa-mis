@@ -259,20 +259,51 @@ namespace MSAMISUserInterface {
         }
 
         private void LastNameBX_Leave(object sender, EventArgs e) {
-            if (LastNameBX.Text == "") {
-                LastNameBX.Text = "Last";
+            TextBox lastbx = sender as TextBox;
+            if (lastbx.Text == "") {
+                lastbx.Text = "Last";
             }
         }
         private void FirstNameBX_Leave(object sender, EventArgs e) {
-            if (FirstNameBX.Text == "") {
-                FirstNameBX.Text = "First";
+            TextBox firstbx = sender as TextBox;
+            if (firstbx.Text == "") {
+                firstbx.Text = "First";
             }
         }
         private void MiddleNameBX_Leave(object sender, EventArgs e) {
-            if (MiddleNameBX.Text == "") {
-                MiddleNameBX.Text = "Middle";
+            TextBox middlebx = sender as TextBox;
+            if (middlebx.Text == "") {
+                middlebx.Text = "Middle";
             }
         }
+
+        private void StreetNoBX_Leave(object sender, EventArgs e) {
+            TextBox streetnobx = sender as TextBox;
+            if (streetnobx.Text == "") {
+                streetnobx.Text = "No.";
+            }
+        }
+        private void StreetNameBX_Leave(object sender, EventArgs e) {
+            TextBox streetnamebx = sender as TextBox;
+            if (streetnamebx.Text == "") {
+                streetnamebx.Text = "Street Name";
+            }
+        }
+
+        private void BrgyBX_Leave(object sender, EventArgs e) {
+            TextBox brgybx = sender as TextBox;
+            if (brgybx.Text == "") {
+                brgybx.Text = "Brgy";
+            }
+        }
+
+        private void CityBX_Leave(object sender, EventArgs e) {
+            TextBox citybx = sender as TextBox;
+            if (citybx.Text == "") {
+                citybx.Text = "City";
+            }
+        }
+
 
         //Realtime Tooltips
         private void BirthplaceStreetNoBX_KeyPress(object sender, KeyPressEventArgs e) {

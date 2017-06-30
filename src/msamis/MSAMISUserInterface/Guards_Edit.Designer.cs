@@ -506,6 +506,7 @@
             this.SpouseLastBX.Text = "Last";
             this.SpouseLastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.SpouseLastBX.Enter += new System.EventHandler(this.SpouseLastBX_Enter);
+            this.SpouseLastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // label86
             // 
@@ -532,6 +533,7 @@
             this.SpouseMiddleBX.Text = "Middle";
             this.SpouseMiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.SpouseMiddleBX.Enter += new System.EventHandler(this.SpouseMiddleBX_Enter);
+            this.SpouseMiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // SpouseFirstBX
             // 
@@ -546,6 +548,7 @@
             this.SpouseFirstBX.Text = "First";
             this.SpouseFirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.SpouseFirstBX.Enter += new System.EventHandler(this.SpouseFirstBX_Enter);
+            this.SpouseFirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // EmergBX
             // 
@@ -667,6 +670,7 @@
             this.Dependent5LastBX.Text = "Last";
             this.Dependent5LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent5LastBX.Enter += new System.EventHandler(this.Dependent5LastBX_Enter);
+            this.Dependent5LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // EdAttBX
             // 
@@ -698,6 +702,7 @@
             this.Dependent5MiddleBX.Text = "Middle";
             this.Dependent5MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent5MiddleBX.Enter += new System.EventHandler(this.Dependent5MiddleBX_Enter);
+            this.Dependent5MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // Dependent5FirstBX
             // 
@@ -712,6 +717,7 @@
             this.Dependent5FirstBX.Text = "First";
             this.Dependent5FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent5FirstBX.Enter += new System.EventHandler(this.Dependent5FirstBX_Enter);
+            this.Dependent5FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label65
             // 
@@ -833,6 +839,7 @@
             this.Dependent4LastBX.Text = "Last";
             this.Dependent4LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent4LastBX.Enter += new System.EventHandler(this.Dependent4LastBX_Enter);
+            this.Dependent4LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // PrevAssBX
             // 
@@ -859,6 +866,7 @@
             this.Dependent4MiddleBX.Text = "Middle";
             this.Dependent4MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent4MiddleBX.Enter += new System.EventHandler(this.Dependent4MiddleBX_Enter);
+            this.Dependent4MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // LicenseNoBX
             // 
@@ -886,6 +894,7 @@
             this.Dependent4FirstBX.Text = "First";
             this.Dependent4FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent4FirstBX.Enter += new System.EventHandler(this.Dependent4FirstBX_Enter);
+            this.Dependent4FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label16
             // 
@@ -1019,6 +1028,7 @@
             this.Dependent3LastBX.Text = "Last";
             this.Dependent3LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent3LastBX.Enter += new System.EventHandler(this.Dependent3LastBX_Enter);
+            this.Dependent3LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // label19
             // 
@@ -1045,6 +1055,7 @@
             this.Dependent3MiddleBX.Text = "Middle";
             this.Dependent3MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent3MiddleBX.Enter += new System.EventHandler(this.Dependent3MiddleBX_Enter);
+            this.Dependent3MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // PrevAgencyBX
             // 
@@ -1071,6 +1082,7 @@
             this.Dependent3FirstBX.Text = "First";
             this.Dependent3FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent3FirstBX.Enter += new System.EventHandler(this.Dependent3FirstBX_Enter);
+            this.Dependent3FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label23
             // 
@@ -1208,6 +1220,7 @@
             this.Dependent2LastBX.Text = "Last";
             this.Dependent2LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent2LastBX.Enter += new System.EventHandler(this.Dependent2LastBX_Enter);
+            this.Dependent2LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // ContactLBL
             // 
@@ -1246,6 +1259,7 @@
             this.Dependent2MiddleBX.Text = "Middle";
             this.Dependent2MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent2MiddleBX.Enter += new System.EventHandler(this.Dependent2MiddleBX_Enter);
+            this.Dependent2MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // Dependent2FirstBX
             // 
@@ -1283,6 +1297,7 @@
             this.label49.Size = new System.Drawing.Size(75, 19);
             this.label49.TabIndex = 162;
             this.label49.Text = "___________";
+            this.label49.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label50
             // 
@@ -1333,6 +1348,7 @@
             this.Dependent1LastBX.Text = "Last";
             this.Dependent1LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent1LastBX.Enter += new System.EventHandler(this.Dependent1LastBX_Enter);
+            this.Dependent1LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // Dependent1MiddleBX
             // 
@@ -1347,6 +1363,7 @@
             this.Dependent1MiddleBX.Text = "Middle";
             this.Dependent1MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent1MiddleBX.Enter += new System.EventHandler(this.Dependent1MiddleBX_Enter);
+            this.Dependent1MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // Dependent1FirstBX
             // 
@@ -1361,6 +1378,7 @@
             this.Dependent1FirstBX.Text = "First";
             this.Dependent1FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.Dependent1FirstBX.Enter += new System.EventHandler(this.Dependent1FirstBX_Enter);
+            this.Dependent1FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label52
             // 
@@ -1461,6 +1479,7 @@
             this.MotherLastBX.Text = "Last";
             this.MotherLastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.MotherLastBX.Enter += new System.EventHandler(this.MotherLastBX_Enter);
+            this.MotherLastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // MotherMiddleBX
             // 
@@ -1475,6 +1494,7 @@
             this.MotherMiddleBX.Text = "Middle";
             this.MotherMiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.MotherMiddleBX.Enter += new System.EventHandler(this.MotherMiddleBX_Enter);
+            this.MotherMiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // MotherFirstBX
             // 
@@ -1489,6 +1509,7 @@
             this.MotherFirstBX.Text = "First";
             this.MotherFirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.MotherFirstBX.Enter += new System.EventHandler(this.MotherFirstBX_Enter);
+            this.MotherFirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label38
             // 
@@ -1536,6 +1557,7 @@
             this.TempBrgyBX.Text = "Brgy";
             this.TempBrgyBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.TempBrgyBX.Enter += new System.EventHandler(this.TempBrgyBX_Enter);
+            this.TempBrgyBX.Leave += new System.EventHandler(this.BrgyBX_Leave);
             // 
             // TempCityBX
             // 
@@ -1550,6 +1572,7 @@
             this.TempCityBX.Text = "City";
             this.TempCityBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.TempCityBX.Enter += new System.EventHandler(this.TempCityBX_Enter);
+            this.TempCityBX.Leave += new System.EventHandler(this.CityBX_Leave);
             // 
             // TempStreetNameBX
             // 
@@ -1564,6 +1587,7 @@
             this.TempStreetNameBX.Text = "Street Name";
             this.TempStreetNameBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.TempStreetNameBX.Enter += new System.EventHandler(this.TempStreetNameBX_Enter);
+            this.TempStreetNameBX.Leave += new System.EventHandler(this.StreetNameBX_Leave);
             // 
             // TempStreetNoBX
             // 
@@ -1579,6 +1603,7 @@
             this.TempStreetNoBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.TempStreetNoBX.Enter += new System.EventHandler(this.TempStreetNoBX_Enter);
             this.TempStreetNoBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TempStreetNoBX_KeyPress);
+            this.TempStreetNoBX.Leave += new System.EventHandler(this.StreetNoBX_Leave);
             // 
             // label30
             // 
@@ -1623,6 +1648,7 @@
             this.label33.Size = new System.Drawing.Size(81, 19);
             this.label33.TabIndex = 95;
             this.label33.Text = "____________";
+            this.label33.Leave += new System.EventHandler(this.BrgyBX_Leave);
             // 
             // PermBrgyBX
             // 
@@ -1637,6 +1663,7 @@
             this.PermBrgyBX.Text = "Brgy";
             this.PermBrgyBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.PermBrgyBX.Enter += new System.EventHandler(this.PermBrgyBX_Enter);
+            this.PermBrgyBX.Leave += new System.EventHandler(this.BrgyBX_Leave);
             // 
             // PermCityBX
             // 
@@ -1651,6 +1678,7 @@
             this.PermCityBX.Text = "City";
             this.PermCityBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.PermCityBX.Enter += new System.EventHandler(this.PermCityBX_Enter);
+            this.PermCityBX.Leave += new System.EventHandler(this.CityBX_Leave);
             // 
             // PermStreetNameBX
             // 
@@ -1665,6 +1693,7 @@
             this.PermStreetNameBX.Text = "Street Name";
             this.PermStreetNameBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.PermStreetNameBX.Enter += new System.EventHandler(this.PermStreetNameBX_Enter);
+            this.PermStreetNameBX.Leave += new System.EventHandler(this.StreetNameBX_Leave);
             // 
             // PermStreetNoBX
             // 
@@ -1680,6 +1709,7 @@
             this.PermStreetNoBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.PermStreetNoBX.Enter += new System.EventHandler(this.PermStreetNoBX_Enter);
             this.PermStreetNoBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermStreetNoBX_KeyPress);
+            this.PermStreetNoBX.Leave += new System.EventHandler(this.StreetNoBX_Leave);
             // 
             // label22
             // 
@@ -1738,6 +1768,7 @@
             this.FatherLastBX.Text = "Last";
             this.FatherLastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.FatherLastBX.Enter += new System.EventHandler(this.FatherLastBX_Enter);
+            this.FatherLastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // FatherMiddleBX
             // 
@@ -1752,6 +1783,7 @@
             this.FatherMiddleBX.Text = "Middle";
             this.FatherMiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.FatherMiddleBX.Enter += new System.EventHandler(this.FatherMiddleBX_Enter);
+            this.FatherMiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // FatherFirstBX
             // 
@@ -1766,6 +1798,7 @@
             this.FatherFirstBX.Text = "First";
             this.FatherFirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.FatherFirstBX.Enter += new System.EventHandler(this.FatherFirstBX_Enter);
+            this.FatherFirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label14
             // 
@@ -1905,6 +1938,7 @@
             this.BirthplaceBrgyBX.Text = "Brgy";
             this.BirthplaceBrgyBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.BirthplaceBrgyBX.Enter += new System.EventHandler(this.BirthplaceBrgyBX_Enter);
+            this.BirthplaceBrgyBX.Leave += new System.EventHandler(this.BrgyBX_Leave);
             // 
             // BirthplaceCityBX
             // 
@@ -1919,6 +1953,7 @@
             this.BirthplaceCityBX.Text = "City";
             this.BirthplaceCityBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.BirthplaceCityBX.Enter += new System.EventHandler(this.BirthplaceCityBX_Enter);
+            this.BirthplaceCityBX.Leave += new System.EventHandler(this.CityBX_Leave);
             // 
             // BirthplaceStreetNameBX
             // 
@@ -1933,6 +1968,7 @@
             this.BirthplaceStreetNameBX.Text = "Street Name";
             this.BirthplaceStreetNameBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.BirthplaceStreetNameBX.Enter += new System.EventHandler(this.BirthplaceStreetNameBX_Enter);
+            this.BirthplaceStreetNameBX.Leave += new System.EventHandler(this.StreetNameBX_Leave);
             // 
             // BirthplaceStreetNoBX
             // 
@@ -1949,6 +1985,7 @@
             this.BirthplaceStreetNoBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.BirthplaceStreetNoBX.Enter += new System.EventHandler(this.BirthplaceStreetNoBX_Enter);
             this.BirthplaceStreetNoBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BirthplaceStreetNoBX_KeyPress);
+            this.BirthplaceStreetNoBX.Leave += new System.EventHandler(this.StreetNoBX_Leave);
             // 
             // label6
             // 
@@ -2562,6 +2599,7 @@
             this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.CloseBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseBTN.BackgroundImage")));
             this.CloseBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CloseBTN.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CloseBTN.FlatAppearance.BorderSize = 0;
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
@@ -2581,6 +2619,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.CloseBTN;
             this.ClientSize = new System.Drawing.Size(722, 668);
             this.ControlBox = false;
             this.Controls.Add(this.GEditDetailsBTN);
