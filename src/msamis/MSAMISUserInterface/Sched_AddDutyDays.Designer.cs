@@ -25,30 +25,28 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sched_AddDutyDays));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NameLBL = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ContactLBL = new System.Windows.Forms.Label();
             this.ConfirmBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.RNShiftBX = new System.Windows.Forms.MaskedTextBox();
-            this.RNightShiftBX = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.HNightShiftBX = new System.Windows.Forms.MaskedTextBox();
-            this.HNShiftBX = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.CertifiedBX = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.CertifiedTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.ShiftTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.SViewReqGRD = new System.Windows.Forms.DataGridView();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SViewReqGRD)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -114,18 +112,6 @@
             this.label4.Text = "DUTY DAYS FOR";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // ContactLBL
-            // 
-            this.ContactLBL.AutoSize = true;
-            this.ContactLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.ContactLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactLBL.Location = new System.Drawing.Point(256, 238);
-            this.ContactLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ContactLBL.Name = "ContactLBL";
-            this.ContactLBL.Size = new System.Drawing.Size(206, 21);
-            this.ContactLBL.TabIndex = 126;
-            this.ContactLBL.Text = "On Regular Working Days";
-            // 
             // ConfirmBTN
             // 
             this.ConfirmBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -171,116 +157,12 @@
             this.FadeTMR.Interval = 1;
             this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(309, 351);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 21);
-            this.label1.TabIndex = 142;
-            this.label1.Text = "On Holidays";
-            // 
-            // RNShiftBX
-            // 
-            this.RNShiftBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RNShiftBX.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.RNShiftBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RNShiftBX.Location = new System.Drawing.Point(278, 288);
-            this.RNShiftBX.Mask = "999 hrs";
-            this.RNShiftBX.Name = "RNShiftBX";
-            this.RNShiftBX.Size = new System.Drawing.Size(81, 29);
-            this.RNShiftBX.TabIndex = 143;
-            // 
-            // RNightShiftBX
-            // 
-            this.RNightShiftBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RNightShiftBX.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.RNightShiftBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RNightShiftBX.Location = new System.Drawing.Point(477, 286);
-            this.RNightShiftBX.Mask = "999 hrs";
-            this.RNightShiftBX.Name = "RNightShiftBX";
-            this.RNightShiftBX.Size = new System.Drawing.Size(84, 29);
-            this.RNightShiftBX.TabIndex = 144;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(160, 291);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 25);
-            this.label3.TabIndex = 145;
-            this.label3.Text = "Normal Shift:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(375, 289);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 25);
-            this.label5.TabIndex = 146;
-            this.label5.Text = "Night Shift:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(375, 397);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 25);
-            this.label6.TabIndex = 150;
-            this.label6.Text = "Night Shift:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(160, 399);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 25);
-            this.label7.TabIndex = 149;
-            this.label7.Text = "Normal Shift:";
-            // 
-            // HNightShiftBX
-            // 
-            this.HNightShiftBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.HNightShiftBX.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.HNightShiftBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.HNightShiftBX.Location = new System.Drawing.Point(477, 394);
-            this.HNightShiftBX.Mask = "999 hrs";
-            this.HNightShiftBX.Name = "HNightShiftBX";
-            this.HNightShiftBX.Size = new System.Drawing.Size(84, 29);
-            this.HNightShiftBX.TabIndex = 148;
-            // 
-            // HNShiftBX
-            // 
-            this.HNShiftBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.HNShiftBX.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.HNShiftBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.HNShiftBX.Location = new System.Drawing.Point(278, 396);
-            this.HNShiftBX.Mask = "999 hrs";
-            this.HNShiftBX.Name = "HNShiftBX";
-            this.HNShiftBX.Size = new System.Drawing.Size(81, 29);
-            this.HNShiftBX.TabIndex = 147;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(312, 467);
+            this.label8.Location = new System.Drawing.Point(312, 512);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 21);
@@ -293,7 +175,7 @@
             this.CertifiedBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CertifiedBX.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.CertifiedBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CertifiedBX.Location = new System.Drawing.Point(278, 500);
+            this.CertifiedBX.Location = new System.Drawing.Point(278, 540);
             this.CertifiedBX.Name = "CertifiedBX";
             this.CertifiedBX.Size = new System.Drawing.Size(170, 22);
             this.CertifiedBX.TabIndex = 152;
@@ -303,7 +185,7 @@
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.White;
             this.label34.ForeColor = System.Drawing.Color.LightGray;
-            this.label34.Location = new System.Drawing.Point(273, 514);
+            this.label34.Location = new System.Drawing.Point(273, 554);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(175, 13);
             this.label34.TabIndex = 153;
@@ -323,6 +205,80 @@
             this.ShiftTLTP.ReshowDelay = 100;
             this.ShiftTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
+            // SViewReqGRD
+            // 
+            this.SViewReqGRD.AllowUserToAddRows = false;
+            this.SViewReqGRD.AllowUserToDeleteRows = false;
+            this.SViewReqGRD.AllowUserToResizeColumns = false;
+            this.SViewReqGRD.AllowUserToResizeRows = false;
+            this.SViewReqGRD.BackgroundColor = System.Drawing.Color.White;
+            this.SViewReqGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SViewReqGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.SViewReqGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SViewReqGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.SViewReqGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.SViewReqGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Date,
+            this.TimeIn,
+            this.TimeOut});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SViewReqGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SViewReqGRD.EnableHeadersVisualStyles = false;
+            this.SViewReqGRD.Location = new System.Drawing.Point(116, 206);
+            this.SViewReqGRD.MultiSelect = false;
+            this.SViewReqGRD.Name = "SViewReqGRD";
+            this.SViewReqGRD.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SViewReqGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.SViewReqGRD.RowHeadersVisible = false;
+            this.SViewReqGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.SViewReqGRD.Size = new System.Drawing.Size(504, 276);
+            this.SViewReqGRD.TabIndex = 154;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "DATE";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            this.Date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Date.Width = 200;
+            // 
+            // TimeIn
+            // 
+            this.TimeIn.HeaderText = "TIME-IN";
+            this.TimeIn.Name = "TimeIn";
+            this.TimeIn.ReadOnly = true;
+            this.TimeIn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TimeIn.Width = 150;
+            // 
+            // TimeOut
+            // 
+            this.TimeOut.HeaderText = "TIME-OUT";
+            this.TimeOut.Name = "TimeOut";
+            this.TimeOut.ReadOnly = true;
+            this.TimeOut.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TimeOut.Width = 150;
+            // 
             // Sched_AddDutyDays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,21 +286,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(721, 666);
             this.ControlBox = false;
+            this.Controls.Add(this.SViewReqGRD);
             this.Controls.Add(this.CertifiedBX);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.HNightShiftBX);
-            this.Controls.Add(this.HNShiftBX);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.RNightShiftBX);
-            this.Controls.Add(this.RNShiftBX);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.ConfirmBTN);
             this.Controls.Add(this.CloseBTN);
-            this.Controls.Add(this.ContactLBL);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_AddDutyDays";
@@ -352,6 +299,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.SAddDutyDays_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SViewReqGRD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,23 +312,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label NameLBL;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label ContactLBL;
         private System.Windows.Forms.Button ConfirmBTN;
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Timer FadeTMR;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox RNShiftBX;
-        private System.Windows.Forms.MaskedTextBox RNightShiftBX;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.MaskedTextBox HNightShiftBX;
-        private System.Windows.Forms.MaskedTextBox HNShiftBX;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox CertifiedBX;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.ToolTip CertifiedTLTP;
         private System.Windows.Forms.ToolTip ShiftTLTP;
+        private System.Windows.Forms.DataGridView SViewReqGRD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeOut;
     }
 }

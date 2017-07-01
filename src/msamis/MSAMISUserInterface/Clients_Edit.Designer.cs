@@ -438,7 +438,7 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(395, 610);
+            this.CloseBTN.Location = new System.Drawing.Point(361, 610);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(78, 32);
             this.CloseBTN.TabIndex = 230;
@@ -458,7 +458,7 @@
             this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.GEditDetailsBTN.Location = new System.Drawing.Point(312, 610);
+            this.GEditDetailsBTN.Location = new System.Drawing.Point(278, 610);
             this.GEditDetailsBTN.Name = "GEditDetailsBTN";
             this.GEditDetailsBTN.Size = new System.Drawing.Size(78, 32);
             this.GEditDetailsBTN.TabIndex = 229;

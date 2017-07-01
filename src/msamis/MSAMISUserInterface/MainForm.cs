@@ -767,25 +767,8 @@ namespace MSAMISUserInterface {
         #region SMS - Page Load
         public void SCHEDLoadPage() {
             ClientRequestsTLTP.Hide(SchedBTN);
-
-            SArchivePNL.Hide();
-            SDutyDetailsPNL.Hide();
-            SIncidentPNL.Hide();
-            SMonthlyDutyPNL.Hide();
-            SViewAssPNL.Hide();
-            SViewReqPNL.Show();
-
-            SDutyDetailsBTN.Font = defaultFont;
-            SIncidentBTN.Font = defaultFont;
-            SMonthlyDutyBTN.Font = defaultFont;
-            SViewAssBTN.Font = defaultFont;
-            SViewReqBTN.Font = selectedFont;
-            SArchiveBTN.Font = defaultFont;
-
-            SViewReqAssBTN.Visible = true;
-
-            SCHEDLoadRequestsPage();
             SCHEDLoadSidePNL();
+            SViewReqBTN.PerformClick();
         }
         public void SCHEDLoadSidePNL() {
             if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0"))
@@ -1070,6 +1053,7 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns["type"].Width = 100;
             SViewReqGRD.Columns["status"].Width = 100;
 
+            
             SViewReqGRD.Sort(SViewReqGRD.Columns["dateentry"], ListSortDirection.Descending);
         }
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
@@ -1088,7 +1072,7 @@ namespace MSAMISUserInterface {
             SViewReqSearchLine.Visible = false;
         }
         private void SViewReqViewBTN_Click(object sender, EventArgs e) {
-            if(SViewAssGRD.SelectedRows.Count > 0) { 
+            try { 
                 if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment")) {
                     try {
                         Sched_ViewAssReq view = new Sched_ViewAssReq();
@@ -1111,7 +1095,9 @@ namespace MSAMISUserInterface {
                     catch (Exception) { }
                 }
             }
-        }
+            catch { }
+        } 
+    
         #endregion
 
         #region SMS - Archive
