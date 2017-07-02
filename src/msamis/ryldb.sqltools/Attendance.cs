@@ -84,14 +84,14 @@ namespace MSAMISUserInterface {
         #endregion
 
 
-
+        
 
 
         // =============================================================================================
         //          INSTANCE METHODS / VARIABLES (nonstatic)
         // =============================================================================================
         #region Non-Statics
-
+        
         public Period period;
         public int AID;
         public Attendance (int AID) {
@@ -143,6 +143,22 @@ namespace MSAMISUserInterface {
                             from attendance order by date asc;
                             ";
             return SQLTools.ExecuteQuery(q);
+        }
+
+
+        public int GetTimeElapsed(int ti, int to) {
+            return (to - ti > 0 ? (to-ti) : 24+(to-ti));
+        }
+
+        public void SetAttendance(int AtID, int ti_hh, String ti_ampm, int to_hh, String to_ampm) {
+           
+            DateTime ti = new DateTime(); 
+            DateTime to = new DateTime();
+            int TimeElapsed = GetTimeElapsed(ti_hh, to_hh);
+            // Call GetAttendanceDetails() to refresh list after saving.
+            String q = @"UPDATE `msadb`.`attendance` SET `TimeIn`='"+ti.ToString("yyyy-MM-dd HH:mm:ss")+ @"',
+                `TimeOut`='" + ti.ToString("yyyy-MM-dd HH:mm:ss") + @"' WHERE `AtID`='"+AtID+@"';
+            ";
         }
 
 
