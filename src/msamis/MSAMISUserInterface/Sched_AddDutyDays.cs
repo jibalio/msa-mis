@@ -49,11 +49,6 @@ namespace MSAMISUserInterface {
                 CertifiedTLTP.Show("Who certified this attendanca?", CertifiedBX);
                 ret = false;
             }
-            if (RNShiftBX.Text.Equals("    hrs")) {
-                ShiftTLTP.ToolTipTitle = "Normal Shift";
-                ShiftTLTP.Show("This field is required", RNShiftBX);
-                ret = false;
-            }
             return ret;
         }
         private void ConfirmBTN_Click(object sender, EventArgs e) {

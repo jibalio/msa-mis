@@ -234,7 +234,7 @@ namespace MSAMISUserInterface {
                     }
                     viewref.RefreshData();
                 }
-                reference.CLIENTSLoadPage();
+                reference.CLIENTSRefreshClientsList();
                 this.Close();
             }
         }

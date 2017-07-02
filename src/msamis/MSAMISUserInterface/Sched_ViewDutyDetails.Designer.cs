@@ -37,13 +37,15 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.EditDutyDetailsBTN = new System.Windows.Forms.Button();
             this.EditDaysBTN = new System.Windows.Forms.Button();
-            this.ArchiveDutyDetailsBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.DutyDetailsPNL = new System.Windows.Forms.Panel();
             this.DismissBTN = new System.Windows.Forms.Button();
             this.DutyDetailsGRD = new System.Windows.Forms.DataGridView();
             this.AddDutyDetailsBTN = new System.Windows.Forms.Button();
             this.DutyDaysPNL = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CertifiedLBL = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,9 +56,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.RShiftLBL = new System.Windows.Forms.Label();
             this.RNightLBL = new System.Windows.Forms.Label();
-            this.CertifiedLBL = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
@@ -218,25 +217,6 @@
             this.EditDaysBTN.UseVisualStyleBackColor = false;
             this.EditDaysBTN.Click += new System.EventHandler(this.EditDaysBTN_Click);
             // 
-            // ArchiveDutyDetailsBTN
-            // 
-            this.ArchiveDutyDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ArchiveDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.ArchiveDutyDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
-            this.ArchiveDutyDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ArchiveDutyDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.ArchiveDutyDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.ArchiveDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.ArchiveDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ArchiveDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.ArchiveDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.ArchiveDutyDetailsBTN.Location = new System.Drawing.Point(253, 3);
-            this.ArchiveDutyDetailsBTN.Name = "ArchiveDutyDetailsBTN";
-            this.ArchiveDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
-            this.ArchiveDutyDetailsBTN.TabIndex = 232;
-            this.ArchiveDutyDetailsBTN.Text = "ARCHIVE";
-            this.ArchiveDutyDetailsBTN.UseVisualStyleBackColor = false;
-            // 
             // FadeTMR
             // 
             this.FadeTMR.Interval = 1;
@@ -246,7 +226,6 @@
             // 
             this.DutyDetailsPNL.Controls.Add(this.DismissBTN);
             this.DutyDetailsPNL.Controls.Add(this.DutyDetailsGRD);
-            this.DutyDetailsPNL.Controls.Add(this.ArchiveDutyDetailsBTN);
             this.DutyDetailsPNL.Controls.Add(this.AddDutyDetailsBTN);
             this.DutyDetailsPNL.Controls.Add(this.EditDutyDetailsBTN);
             this.DutyDetailsPNL.Location = new System.Drawing.Point(68, 256);
@@ -303,7 +282,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DutyDetailsGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.DutyDetailsGRD.EnableHeadersVisualStyles = false;
-            this.DutyDetailsGRD.Location = new System.Drawing.Point(73, 49);
+            this.DutyDetailsGRD.Location = new System.Drawing.Point(73, 14);
             this.DutyDetailsGRD.MultiSelect = false;
             this.DutyDetailsGRD.Name = "DutyDetailsGRD";
             this.DutyDetailsGRD.ReadOnly = true;
@@ -317,7 +296,7 @@
             this.DutyDetailsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DutyDetailsGRD.RowHeadersVisible = false;
             this.DutyDetailsGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DutyDetailsGRD.Size = new System.Drawing.Size(454, 201);
+            this.DutyDetailsGRD.Size = new System.Drawing.Size(454, 236);
             this.DutyDetailsGRD.TabIndex = 234;
             this.DutyDetailsGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DutyDetailsGRD_CellEnter);
             // 
@@ -362,6 +341,43 @@
             this.DutyDaysPNL.Name = "DutyDaysPNL";
             this.DutyDaysPNL.Size = new System.Drawing.Size(592, 312);
             this.DutyDaysPNL.TabIndex = 234;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.comboBox1.ForeColor = System.Drawing.Color.White;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(206, 14);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(321, 29);
+            this.comboBox1.TabIndex = 262;
+            this.comboBox1.Text = "June 16, 2017 - June 31, 2017";
+            // 
+            // CertifiedLBL
+            // 
+            this.CertifiedLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.CertifiedLBL.ForeColor = System.Drawing.Color.White;
+            this.CertifiedLBL.Location = new System.Drawing.Point(0, 196);
+            this.CertifiedLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CertifiedLBL.Name = "CertifiedLBL";
+            this.CertifiedLBL.Size = new System.Drawing.Size(592, 25);
+            this.CertifiedLBL.TabIndex = 261;
+            this.CertifiedLBL.Text = "Laboriki, Dodong Lab X.";
+            this.CertifiedLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(0, 171);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(592, 25);
+            this.label15.TabIndex = 260;
+            this.label15.Text = "Certified by";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
             // 
@@ -483,43 +499,6 @@
             this.RNightLBL.TabIndex = 251;
             this.RNightLBL.Text = "102 hrs";
             // 
-            // CertifiedLBL
-            // 
-            this.CertifiedLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.CertifiedLBL.ForeColor = System.Drawing.Color.White;
-            this.CertifiedLBL.Location = new System.Drawing.Point(0, 196);
-            this.CertifiedLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.CertifiedLBL.Name = "CertifiedLBL";
-            this.CertifiedLBL.Size = new System.Drawing.Size(592, 25);
-            this.CertifiedLBL.TabIndex = 261;
-            this.CertifiedLBL.Text = "Laboriki, Dodong Lab X.";
-            this.CertifiedLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(0, 171);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(592, 25);
-            this.label15.TabIndex = 260;
-            this.label15.Text = "Certified by";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(206, 14);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(321, 29);
-            this.comboBox1.TabIndex = 262;
-            this.comboBox1.Text = "June 16, 2017 - June 31, 2017";
-            // 
             // label19
             // 
             this.label19.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -543,8 +522,8 @@
             this.Controls.Add(this.DutyDaysLBL);
             this.Controls.Add(this.DutyDetailsLBL);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DutyDaysPNL);
             this.Controls.Add(this.DutyDetailsPNL);
+            this.Controls.Add(this.DutyDaysPNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_ViewDutyDetails";
             this.ShowInTaskbar = false;
@@ -573,7 +552,6 @@
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Button EditDutyDetailsBTN;
         private System.Windows.Forms.Button EditDaysBTN;
-        private System.Windows.Forms.Button ArchiveDutyDetailsBTN;
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Panel DutyDetailsPNL;
         private System.Windows.Forms.Button AddDutyDetailsBTN;
