@@ -22,6 +22,7 @@ namespace MSAMISUserInterface {
               Application.Run(new LoginForm());
             //Scheduling.AddUnassignmentRequest(1, new int[] { 342, 182, 33 }, Enumeration.ReportType.Accident, "k", DateTime.Now, "asd", "asd");
             //Scheduling.ApproveUnassignment(42);
+           // Scheduling.AddAssignment(1, new int[] { 1 });
 
 
 
