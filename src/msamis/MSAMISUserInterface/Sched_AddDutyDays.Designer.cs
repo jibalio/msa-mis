@@ -43,8 +43,10 @@
             this.ShiftTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.SViewReqGRD = new System.Windows.Forms.DataGridView();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeInHr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeInMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeOutHr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeOutMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SViewReqGRD)).BeginInit();
             this.SuspendLayout();
@@ -162,7 +164,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(312, 512);
+            this.label8.Location = new System.Drawing.Point(312, 501);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 21);
@@ -175,7 +177,7 @@
             this.CertifiedBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CertifiedBX.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.CertifiedBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CertifiedBX.Location = new System.Drawing.Point(278, 540);
+            this.CertifiedBX.Location = new System.Drawing.Point(278, 529);
             this.CertifiedBX.Name = "CertifiedBX";
             this.CertifiedBX.Size = new System.Drawing.Size(170, 22);
             this.CertifiedBX.TabIndex = 152;
@@ -185,7 +187,7 @@
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.White;
             this.label34.ForeColor = System.Drawing.Color.LightGray;
-            this.label34.Location = new System.Drawing.Point(273, 554);
+            this.label34.Location = new System.Drawing.Point(273, 543);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(175, 13);
             this.label34.TabIndex = 153;
@@ -207,7 +209,6 @@
             // 
             // SViewReqGRD
             // 
-            this.SViewReqGRD.AllowUserToAddRows = false;
             this.SViewReqGRD.AllowUserToDeleteRows = false;
             this.SViewReqGRD.AllowUserToResizeColumns = false;
             this.SViewReqGRD.AllowUserToResizeRows = false;
@@ -227,8 +228,10 @@
             this.SViewReqGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.SViewReqGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Date,
-            this.TimeIn,
-            this.TimeOut});
+            this.TimeInHr,
+            this.TimeInMin,
+            this.TimeOutHr,
+            this.TimeOutMin});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
@@ -263,21 +266,35 @@
             this.Date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Date.Width = 200;
             // 
-            // TimeIn
+            // TimeInHr
             // 
-            this.TimeIn.HeaderText = "TIME-IN";
-            this.TimeIn.Name = "TimeIn";
-            this.TimeIn.ReadOnly = true;
-            this.TimeIn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TimeIn.Width = 150;
+            this.TimeInHr.HeaderText = "HR";
+            this.TimeInHr.Name = "TimeInHr";
+            this.TimeInHr.ReadOnly = true;
+            this.TimeInHr.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TimeInHr.Width = 75;
             // 
-            // TimeOut
+            // TimeInMin
             // 
-            this.TimeOut.HeaderText = "TIME-OUT";
-            this.TimeOut.Name = "TimeOut";
-            this.TimeOut.ReadOnly = true;
-            this.TimeOut.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TimeOut.Width = 150;
+            this.TimeInMin.HeaderText = "MIN";
+            this.TimeInMin.Name = "TimeInMin";
+            this.TimeInMin.ReadOnly = true;
+            this.TimeInMin.Width = 75;
+            // 
+            // TimeOutHr
+            // 
+            this.TimeOutHr.HeaderText = "HR";
+            this.TimeOutHr.Name = "TimeOutHr";
+            this.TimeOutHr.ReadOnly = true;
+            this.TimeOutHr.Width = 75;
+            // 
+            // TimeOutMin
+            // 
+            this.TimeOutMin.HeaderText = "MIN";
+            this.TimeOutMin.Name = "TimeOutMin";
+            this.TimeOutMin.ReadOnly = true;
+            this.TimeOutMin.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TimeOutMin.Width = 75;
             // 
             // Sched_AddDutyDays
             // 
@@ -322,7 +339,9 @@
         private System.Windows.Forms.ToolTip ShiftTLTP;
         private System.Windows.Forms.DataGridView SViewReqGRD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeIn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeOut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeInHr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeInMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeOutHr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeOutMin;
     }
 }

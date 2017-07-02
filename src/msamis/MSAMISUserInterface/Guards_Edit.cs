@@ -669,7 +669,7 @@ namespace MSAMISUserInterface {
                     } 
                 }
                 #endregion
-                reference.GUARDSLoadPage();
+                reference.GUARDSRefreshGuardsList();
                 this.Close();
             }
         }

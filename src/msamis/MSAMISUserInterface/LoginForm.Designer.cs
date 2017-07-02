@@ -48,7 +48,7 @@
             this.UsernameBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UsernameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 13F);
             this.UsernameBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.UsernameBX.Location = new System.Drawing.Point(109, 157);
+            this.UsernameBX.Location = new System.Drawing.Point(130, 193);
             this.UsernameBX.Name = "UsernameBX";
             this.UsernameBX.Size = new System.Drawing.Size(135, 24);
             this.UsernameBX.TabIndex = 1;
@@ -61,7 +61,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(105, 175);
+            this.label5.Location = new System.Drawing.Point(126, 211);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(139, 13);
             this.label5.TabIndex = 80;
@@ -73,7 +73,7 @@
             this.PasswordBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PasswordBX.Font = new System.Drawing.Font("Segoe UI Semilight", 13F);
             this.PasswordBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PasswordBX.Location = new System.Drawing.Point(109, 203);
+            this.PasswordBX.Location = new System.Drawing.Point(130, 239);
             this.PasswordBX.Name = "PasswordBX";
             this.PasswordBX.PasswordChar = '•';
             this.PasswordBX.Size = new System.Drawing.Size(132, 24);
@@ -87,7 +87,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(106, 222);
+            this.label1.Location = new System.Drawing.Point(127, 258);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(139, 13);
             this.label1.TabIndex = 82;
@@ -95,29 +95,35 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(346, 37);
+            this.label2.Size = new System.Drawing.Size(400, 48);
             this.label2.TabIndex = 83;
             this.label2.Text = "Welcome!";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.label2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(0, 37);
+            this.label3.Location = new System.Drawing.Point(0, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(346, 21);
+            this.label3.Size = new System.Drawing.Size(400, 21);
             this.label3.TabIndex = 84;
             this.label3.Text = "Please enter your credentials.";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.label3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.label3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // FadeTMR
             // 
@@ -126,18 +132,22 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(-1, 54);
+            this.panel1.Location = new System.Drawing.Point(-1, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(346, 79);
+            this.panel1.Size = new System.Drawing.Size(400, 78);
             this.panel1.TabIndex = 90;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // PassPic
             // 
             this.PassPic.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.eYE;
             this.PassPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PassPic.Location = new System.Drawing.Point(216, 206);
+            this.PassPic.Location = new System.Drawing.Point(237, 242);
             this.PassPic.Name = "PassPic";
             this.PassPic.Size = new System.Drawing.Size(23, 20);
             this.PassPic.TabIndex = 91;
@@ -157,9 +167,9 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(138, 333);
+            this.CloseBTN.Location = new System.Drawing.Point(138, 394);
             this.CloseBTN.Name = "CloseBTN";
-            this.CloseBTN.Size = new System.Drawing.Size(78, 32);
+            this.CloseBTN.Size = new System.Drawing.Size(130, 32);
             this.CloseBTN.TabIndex = 4;
             this.CloseBTN.Text = "EXIT";
             this.CloseBTN.UseVisualStyleBackColor = false;
@@ -177,9 +187,9 @@
             this.LoginBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginBTN.ForeColor = System.Drawing.Color.White;
-            this.LoginBTN.Location = new System.Drawing.Point(138, 295);
+            this.LoginBTN.Location = new System.Drawing.Point(138, 355);
             this.LoginBTN.Name = "LoginBTN";
-            this.LoginBTN.Size = new System.Drawing.Size(78, 32);
+            this.LoginBTN.Size = new System.Drawing.Size(130, 32);
             this.LoginBTN.TabIndex = 3;
             this.LoginBTN.Text = "LOGIN";
             this.LoginBTN.UseVisualStyleBackColor = false;
@@ -205,7 +215,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(345, 437);
+            this.ClientSize = new System.Drawing.Size(398, 498);
             this.ControlBox = false;
             this.Controls.Add(this.PassPic);
             this.Controls.Add(this.CloseBTN);
