@@ -147,7 +147,12 @@ namespace MSAMISUserInterface {
                 message(query);
                 MySqlCommand com = new MySqlCommand(query, conn);
                 SQLTools.conn.Open();
-                com.ExecuteNonQuery();
+                try { com.ExecuteNonQuery(); } catch (Exception e) {
+                    throw;
+                } finally {
+                    SQLTools.conn.Close();
+                }
+                
             }
            
         }

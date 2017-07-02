@@ -26,6 +26,9 @@ namespace MSAMISUserInterface {
                       Sat = new List<int>(),
                       Sun = new List<int>();
             public Period (int period, int month, int year) {
+                this.month = month;
+                this.year = year;
+                this.period = period;
                 int s = (period==1 ? 1 : 16), 
                     e = (period==1 ? 15 : DateTime.DaysInMonth(year,month));
                 for (int c = s; c <= e; c++) {
@@ -89,12 +92,12 @@ namespace MSAMISUserInterface {
         // =============================================================================================
         #region Non-Statics
 
-        public static Period period = GetCurrentPayPeriod();
-        
-        
+        public Period period;
+        public int AID;
         public Attendance (int AID) {
-
-
+            this.AID = AID;
+            period = GetCurrentPayPeriod();
+            Console.Write(period.period);
             DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun from dutydetails where AID =" + AID);
             foreach (DataRow duties in x.Rows) {
                 int did = int.Parse(duties["did"].ToString());
@@ -109,27 +112,39 @@ namespace MSAMISUserInterface {
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 foreach (int date in dutydates) {
-
+                    DateTime d = new DateTime(period.year, period.month, date);
                     String q = @"INSERT INTO `msadb`.`attendance` (
                             `DID`, `month`, `period`, `year`, `date`, `hours`, `holiday`, `night`
                             ) VALUES (
                            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'
                             );";
-                    q = String.Format(q, did, period.month, period.period, period.year, date, 0, isHoliday(), isNight());
-                    SQLTools.ExecuteNonQuery(q);
+                    q = String.Format(q, did, period.month, period.period, period.year, d.ToString("yyyy-MM-dd HH:mm:ss"), 0, isHoliday(), isNight());
+
+                    try {
+                        SQLTools.ExecuteNonQuery(q, false);
+                    } catch { Console.WriteLine("SQLTools.cs >>> Warning: this record was already inserted. Ignored error."); }
+                    
                 }
                 sw.Stop();
                 TimeSpan ts = sw.Elapsed;
                 Console.WriteLine("Finished inserting in " + ts.ToString("ss\\.ff") + " seconds");
                 Console.WriteLine("Yes!");
             }
-            
-            
         }
 
-        public void AddAttendance() {
 
+        public DataTable GetAttendanceDetails() {
+            String q = @"
+                            select atid, did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, hours, 
+                            case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday,
+                            night as NightHours,
+                            case when timein is null then 'Not set' when timein is not null then timein end as TimeIn,
+                            case when timeout is null then 'Not set' when timeout is not null then timeout end as TimeOut
+                            from attendance order by date asc;
+                            ";
+            return SQLTools.ExecuteQuery(q);
         }
+
 
 
 
