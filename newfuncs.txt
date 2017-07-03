@@ -1,3 +1,109 @@
+###################################################################
+UPDATE July 03, 2017
+
+Attendance class == object oriented.
+
+Pag-initialize sa attendance form, use:
+	Attendance x = new Attendance (AID)			<---------------------method here
+
+Then populate form using
+	datagrid.datasource = x.GetAttendance();	<---------------------method here
+	Columns that u need: AtID, DID, 
+
+	and et cetera etc etc mga data like Number of Hours, 
+	Number of night hours, actual schedule etc etc.
+
+	Also, na realize nako na dili ta pwede mag pasa lng ug datatable ang 
+	front end sa backend (for update attendance), kay ang uban fields sa
+	datatable kay computed from timein, time out, like 
+	# of hours, # of night hours.
+	
+	Naga update sya dapat pag mag butang ug new timein, time out.
+
+	So, akong maisip lng ani kay kanang pina ingon-ani,
+		http://bit.ly/2tEcS5x
+		http://bit.ly/2tElrgp
+	kanang naka separate ang table and data input fields.
+	Or unless naa ka maisip lmao.
+
+	So, update.
+
+	public void SetAttendance(
+	int AtID,
+	 int ti_hh, 
+	 int ti_mm, 
+	 String ti_ampm, 
+	 int to_hh, 
+	 int to_mm, 
+	 String to_ampm
+	 )
+	 // if ever textbox imong i create for inputs, int lng akong kailangan.
+	 Ang backend na ang naga compute sa Holiday hours, TotalHours, etc.
+	 Ang input fields lng kay
+	 ___ : ____ AM / PM     ___:____AM/PM
+
+
+	 Then naa pd mga properties ang Attendance.
+	 Attendance a = new Attendance(AID);
+	 a.AID  
+	 a.period  // period class, properties below.
+	 	a.period.month  // month of payroll being loaded
+	 	a.period.year	// year of payroll period being loaded
+	 	a.period.period // 1 or 2
+
+
+	 Then some static methods (dili part of an instance of attendance)
+	 public static TimeSpan GetTimeDiff(int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm)
+	 		// gets time difference
+	  public static DateTime GetDateTime (int hh, int mm, string tt)
+	  		// gets DateTime version of time.
+
+	  public static Period GetCurrentPayPeriod()  <-- returns period object.
+	  tan-awa lng sa autofill kung unsa fields lmao
+
+	  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #####################################################################
 UPDATE June 29, 2006
 

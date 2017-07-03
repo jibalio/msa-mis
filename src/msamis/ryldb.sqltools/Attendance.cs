@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +14,18 @@ namespace MSAMISUserInterface {
         //          STATIC METHODS / VARIABLES
         // =============================================================================================
         #region Statics
-        
+        public static List<int> Mon = new List<int>(),
+                     Tue = new List<int>(),
+                     Wed = new List<int>(),
+                     Thu = new List<int>(),
+                     Fri = new List<int>(),
+                     Sat = new List<int>(),
+                     Sun = new List<int>();
         public class Period {
             public int month = 0;
             public int period = 0;
             public int year = 0;
-            public List<int> Mon = new List<int>(),
-                      Tue = new List<int>(),
-                      Wed = new List<int>(),
-                      Thu = new List<int>(),
-                      Fri = new List<int>(),
-                      Sat = new List<int>(),
-                      Sun = new List<int>();
+           
             public Period (int period, int month, int year) {
                 this.month = month;
                 this.year = year;
@@ -133,14 +134,18 @@ namespace MSAMISUserInterface {
         }
 
 
-        public DataTable GetAttendanceDetails() {
+        public DataTable GetAttendance() {
             String q = @"
-                            select atid, did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, hours, 
-                            case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday,
-                            night as NightHours,
+                            select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
+							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
                             case when timein is null then 'Not set' when timein is not null then timein end as TimeIn,
-                            case when timeout is null then 'Not set' when timeout is not null then timeout end as TimeOut
-                            from attendance order by date asc;
+                            case when timeout is null then 'Not set' when timeout is not null then timeout end as TimeOut, hours, 
+                            night as NightHours,
+                            case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday
+                            from attendance
+                            left join dutydetails 
+                            on dutydetails.did=attendance.did
+                            order by date asc;
                             ";
             return SQLTools.ExecuteQuery(q);
         }
@@ -150,15 +155,35 @@ namespace MSAMISUserInterface {
             return (to - ti > 0 ? (to-ti) : 24+(to-ti));
         }
 
-        public void SetAttendance(int AtID, int ti_hh, String ti_ampm, int to_hh, String to_ampm) {
-           
-            DateTime ti = new DateTime(); 
-            DateTime to = new DateTime();
-            int TimeElapsed = GetTimeElapsed(ti_hh, to_hh);
-            // Call GetAttendanceDetails() to refresh list after saving.
-            String q = @"UPDATE `msadb`.`attendance` SET `TimeIn`='"+ti.ToString("yyyy-MM-dd HH:mm:ss")+ @"',
-                `TimeOut`='" + ti.ToString("yyyy-MM-dd HH:mm:ss") + @"' WHERE `AtID`='"+AtID+@"';
-            ";
+        public void SetAttendance(int AtID, int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
+            TimeSpan ts = GetTimeDiff(ti_hh, ti_mm, ti_ampm, to_hh, to_mm, to_ampm);
+            DateTime ti = GetDateTime(ti_hh, ti_mm, ti_ampm);
+            DateTime to = GetDateTime(to_hh, to_mm, to_ampm);
+            String q = @"
+                        UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}', `hours`='{3}' WHERE `AtID`='{0}';
+                        ";
+            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"));
+            SQLTools.ExecuteNonQuery(q);
+        }
+
+
+        public static TimeSpan GetTimeDiff(int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
+            var t1 = "01/01/0001 " + ti_hh.ToString("00") + ":" + ti_mm.ToString("00") + ":00 " + ti_ampm;
+            var t2 = "01/01/0001 " + to_hh.ToString("00") + ":" + to_mm.ToString("00") + ":00 " + to_ampm;
+            var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            var time2 = DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            if (time2 < time1) {
+                Console.WriteLine("Date is on Next Day!");
+                time2 = time2.AddDays(1);
+            } else {
+                Console.WriteLine("same day");
+            }
+            return time2 - time1;
+        }
+
+        public static DateTime GetDateTime (int hh, int mm, string tt) {
+            var t2 = "01/01/0001 " + hh.ToString("00") + ":" + mm.ToString("00") + ":00 " + tt;
+            return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
         }
 
 
