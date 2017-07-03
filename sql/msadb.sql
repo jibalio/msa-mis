@@ -115,17 +115,18 @@ CREATE TABLE `attendance` (
   `Date` varchar(45) DEFAULT NULL,
   `TimeIn` varchar(45) DEFAULT NULL,
   `TimeOut` varchar(45) DEFAULT NULL,
-  `night` int(11) DEFAULT NULL,
+  `night` varchar(45) DEFAULT NULL,
   `holiday` int(11) DEFAULT NULL,
   `month` int(11) DEFAULT NULL,
   `period` int(11) DEFAULT NULL,
   `year` int(11) DEFAULT NULL,
   `hours` varchar(45) DEFAULT NULL,
+  `overtime` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`AtID`),
   UNIQUE KEY `unique_index` (`month`,`period`,`year`,`Date`),
   KEY `Attendance-DutyDetails_idx` (`DID`),
   CONSTRAINT `Attendance-DutyDetails` FOREIGN KEY (`DID`) REFERENCES `dutydetails` (`DID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +135,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (1,27,'2017-07-17 00:00:00','02:12 PM','09:24 PM',0,0,7,2,2017,'07:12'),(2,27,'2017-07-24 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(3,27,'2017-07-31 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(4,27,'2017-07-18 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(5,27,'2017-07-25 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(6,27,'2017-07-19 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(7,27,'2017-07-26 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(8,27,'2017-07-20 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(9,27,'2017-07-27 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(10,27,'2017-07-21 00:00:00',NULL,NULL,0,0,7,2,2017,'0'),(11,27,'2017-07-28 00:00:00',NULL,NULL,0,0,7,2,2017,'0');
+INSERT INTO `attendance` VALUES (1,27,'2017-07-17 00:00:00','02:12 PM','09:24 PM','08:00',0,7,2,2017,'07:12','00:24'),(2,27,'2017-07-24 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(3,27,'2017-07-31 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(4,27,'2017-07-18 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(5,27,'2017-07-25 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(6,27,'2017-07-19 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(7,27,'2017-07-26 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(8,27,'2017-07-20 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(9,27,'2017-07-27 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(10,27,'2017-07-21 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL),(11,27,'2017-07-28 00:00:00',NULL,NULL,'0',0,7,2,2017,'0',NULL);
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -587,6 +588,38 @@ INSERT INTO `sduty_assignment` VALUES (1,1,1,1),(2,111,2,1),(3,146,2,1),(4,122,2
 UNLOCK TABLES;
 
 --
+-- Table structure for table `time`
+--
+
+DROP TABLE IF EXISTS `time`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `time` (
+  `TID` int(11) NOT NULL AUTO_INCREMENT,
+  `AID` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `period` int(11) DEFAULT NULL,
+  `year` int(5) DEFAULT NULL,
+  `normal_day` int(11) DEFAULT NULL,
+  `normal_night` int(11) DEFAULT NULL,
+  `holiday_day` int(11) DEFAULT NULL,
+  `holiday_night` int(11) DEFAULT NULL,
+  `certifiedby` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`TID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `time`
+--
+
+LOCK TABLES `time` WRITE;
+/*!40000 ALTER TABLE `time` DISABLE KEYS */;
+INSERT INTO `time` VALUES (1,1,1,11,2017,1,1,1,1,'1'),(2,115,7,2,2017,199,12,12,12,'Holly'),(3,115,2,2,2017,123,999,123,123,'Holly');
+/*!40000 ALTER TABLE `time` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Final view structure for view `guardslist`
 --
 
@@ -631,4 +664,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-03 22:06:50
+-- Dump completed on 2017-07-03 23:30:27

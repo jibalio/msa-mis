@@ -14,14 +14,15 @@ namespace MSAMISUserInterface {
         //          STATIC METHODS / VARIABLES
         // =============================================================================================
         #region Statics
-        public static List<int> Mon = new List<int>(),
+        
+        public class Period {
+            public List<int> Mon = new List<int>(),
                      Tue = new List<int>(),
                      Wed = new List<int>(),
                      Thu = new List<int>(),
                      Fri = new List<int>(),
                      Sat = new List<int>(),
                      Sun = new List<int>();
-        public class Period {
             public int month = 0;
             public int period = 0;
             public int year = 0;
@@ -102,7 +103,7 @@ namespace MSAMISUserInterface {
             DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun from dutydetails where AID =" + AID);
             foreach (DataRow duties in x.Rows) {
                 int did = int.Parse(duties["did"].ToString());
-                 List<int> dutydates = new List<int>();
+                List<int> dutydates = new List<int>();
                 if (duties["mon"].ToString() == "1") dutydates.AddRange(period.Mon);
                 if (duties["tue"].ToString() == "1") dutydates.AddRange(period.Tue);
                 if (duties["wed"].ToString() == "1") dutydates.AddRange(period.Wed);
@@ -140,7 +141,7 @@ namespace MSAMISUserInterface {
 							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
                             case when timein is null then 'Not set' when timein is not null then timein end as TimeIn,
                             case when timeout is null then 'Not set' when timeout is not null then timeout end as TimeOut, hours, 
-                            night as NightHours,
+                            night as NightHours, overtime,
                             case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday
                             from attendance
                             left join dutydetails 
@@ -156,20 +157,38 @@ namespace MSAMISUserInterface {
         }
 
         public void SetAttendance(int AtID, int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
+            int did = SQLTools.GetInt("select did from attendance where AtID=" + AtID);
             TimeSpan ts = GetTimeDiff(ti_hh, ti_mm, ti_ampm, to_hh, to_mm, to_ampm);
             DateTime ti = GetDateTime(ti_hh, ti_mm, ti_ampm);
             DateTime to = GetDateTime(to_hh, to_mm, to_ampm);
+
+            //compare with tama na sched for overtime
+            DataRow dt = SQLTools.ExecuteQuery("select * from dutydetails where DID=" + did).Rows[0];
+            TimeSpan overtime = GetTimeDiff(int.Parse(dt["to_hh"].ToString()), int.Parse(dt["to_mm"].ToString()), dt["to_period"].ToString(), to_hh, to_mm, to_ampm);
+            DateTime start_night = GetDateTime(10, 00, "PM");
+            DateTime end_night = GetDateTime(6, 0, "AM");
+            /*  9
+                7
+
+                x = to-nightstart = 9
+                x = x - (to-nightend)
+                9hours night onwards
+             */
+            TimeSpan x1 = GetTimeDiff(10, 0, "PM", to_hh, to_mm, to_ampm);
+            TimeSpan x2 = GetTimeDiff(6, 0, "AM", to_hh, to_mm, to_ampm);
+            TimeSpan nh = x1 - x2;
+            
             String q = @"
-                        UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}', `hours`='{3}' WHERE `AtID`='{0}';
+                        UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}', `hours`='{3}', `overtime`='{4}', `night`='{5}' WHERE `AtID`='{0}';
                         ";
-            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"));
+            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"), overtime.ToString(@"hh\:mm"), nh.ToString(@"hh\:mm"));
             SQLTools.ExecuteNonQuery(q);
         }
 
 
-        public static TimeSpan GetTimeDiff(int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
-            var t1 = "01/01/0001 " + ti_hh.ToString("00") + ":" + ti_mm.ToString("00") + ":00 " + ti_ampm;
-            var t2 = "01/01/0001 " + to_hh.ToString("00") + ":" + to_mm.ToString("00") + ":00 " + to_ampm;
+        public static TimeSpan GetTimeDiff(int t1hour, int t1min, String t1ampm, int t2hour, int t2min, String t2ampm) {
+            var t1 = "01/01/0001 " + t1hour.ToString("00") + ":" + t1min.ToString("00") + ":00 " + t1ampm;
+            var t2 = "01/01/0001 " + t2hour.ToString("00") + ":" + t2min.ToString("00") + ":00 " + t2ampm;
             var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
             var time2 = DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
             if (time2 < time1) {
