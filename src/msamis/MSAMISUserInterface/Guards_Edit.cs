@@ -48,8 +48,8 @@ namespace MSAMISUserInterface {
         private void Guards_EditEmployees_Load(object sender, EventArgs e) {
             GEditDetailsBTN.Text = button;
             if (button.Equals("UPDATE")) {
-                ActiveStatusRDBTN.Enabled = true;
-                InactiveStatusRDBTN.Enabled = true;
+                ActiveStatusRDBTN.Enabled = false;
+                InactiveStatusRDBTN.Enabled = false;
                 ActiveStatusRDBTN.Checked = false;
                 InactiveStatusRDBTN.Checked = false;
                 PopulateEdit(); }
