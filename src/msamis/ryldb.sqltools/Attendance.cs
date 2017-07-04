@@ -94,9 +94,44 @@ namespace MSAMISUserInterface {
                                         group by month,period,year;");
         }
 
-        public static DataTable GetPeriodDetails (int AID) {
-
-            throw new NotImplementedException();
+        public class Hours {
+            public String total;
+            public String holiday_day;
+            public String holiday_night;
+            public String normal_day;
+            public String normal_night;
+        }
+        public static Hours GetDutySummary (int AID, int month, int period, int year) {
+            String q = @"SELECT 
+                            hours, night, holiday
+                             FROM msadb.attendance 
+                            where month = {0} 
+                            and period = {1} 
+                            and year={2} ;";
+            q = String.Format(q, month, period, year);
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            TimeSpan holiday = new TimeSpan(0,0,0);
+            TimeSpan holiday_n = new TimeSpan(0, 0, 0);
+            TimeSpan normal = new TimeSpan(0, 0, 0);
+            TimeSpan normal_n = new TimeSpan(0, 0, 0);
+            
+            foreach (DataRow r in dt.Rows) {
+                if (r["holiday"].ToString() == "1") {
+                    holiday += new TimeSpan(int.Parse(r["hours"].ToString().Split(':')[0]), int.Parse(r["hours"].ToString().Split(':')[1]), 0);
+                    holiday_n += new TimeSpan(int.Parse(r["night"].ToString().Split(':')[0]), int.Parse(r["night"].ToString().Split(':')[1]), 0);
+                } else {
+                    normal += new TimeSpan(int.Parse(r["hours"].ToString().Split(':')[0]), int.Parse(r["hours"].ToString().Split(':')[1]), 0);
+                    normal += new TimeSpan(int.Parse(r["night"].ToString().Split(':')[0]), int.Parse(r["night"].ToString().Split(':')[1]), 0);
+                }
+            }
+            Hours h = new Hours();
+            h.total = normal.ToString(@"hh\:mm");
+            h.normal_day = normal.ToString(@"hh\:mm");
+            h.normal_night = normal_n.ToString(@"hh\:mm");
+            h.holiday_day = holiday.ToString(@"hh\:mm");
+            h.holiday_night = h.holiday_night = normal_n.ToString(@"hh\:mm");
+            Console.WriteLine("Total"+h.total);
+            return h;
         }
         
 
