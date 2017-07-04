@@ -167,9 +167,9 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(138, 394);
+            this.CloseBTN.Location = new System.Drawing.Point(150, 394);
             this.CloseBTN.Name = "CloseBTN";
-            this.CloseBTN.Size = new System.Drawing.Size(130, 32);
+            this.CloseBTN.Size = new System.Drawing.Size(99, 32);
             this.CloseBTN.TabIndex = 4;
             this.CloseBTN.Text = "EXIT";
             this.CloseBTN.UseVisualStyleBackColor = false;
@@ -187,9 +187,9 @@
             this.LoginBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginBTN.ForeColor = System.Drawing.Color.White;
-            this.LoginBTN.Location = new System.Drawing.Point(138, 355);
+            this.LoginBTN.Location = new System.Drawing.Point(150, 355);
             this.LoginBTN.Name = "LoginBTN";
-            this.LoginBTN.Size = new System.Drawing.Size(130, 32);
+            this.LoginBTN.Size = new System.Drawing.Size(99, 32);
             this.LoginBTN.TabIndex = 3;
             this.LoginBTN.Text = "LOGIN";
             this.LoginBTN.UseVisualStyleBackColor = false;

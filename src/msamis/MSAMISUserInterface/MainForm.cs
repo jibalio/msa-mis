@@ -64,6 +64,8 @@ namespace MSAMISUserInterface {
             conn = SQLTools.conn;
             ControlBoxTimeLBL.Text = "Logged in as, " + user;
             TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy").ToUpper();
+            ScurrentPanel = GViewAllPNL;
+            ScurrentBTN = GViewAllPageBTN;
 
             //Initial Methods
             DailyQuote();
@@ -215,6 +217,9 @@ namespace MSAMISUserInterface {
             currentPage.Hide();
             currentPage = newP;
             currentBTN = newBTN;
+
+            ScurrentPanel.Hide();
+            ScurrentBTN.Font = defaultFont;
 
             ClientRequestsTLTP.Hide(SchedBTN);
         }

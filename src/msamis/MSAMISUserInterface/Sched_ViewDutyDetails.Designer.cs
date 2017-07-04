@@ -522,8 +522,8 @@
             this.Controls.Add(this.DutyDaysLBL);
             this.Controls.Add(this.DutyDetailsLBL);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DutyDetailsPNL);
             this.Controls.Add(this.DutyDaysPNL);
+            this.Controls.Add(this.DutyDetailsPNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_ViewDutyDetails";
             this.ShowInTaskbar = false;

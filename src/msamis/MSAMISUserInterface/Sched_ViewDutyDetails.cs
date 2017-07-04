@@ -16,6 +16,7 @@ namespace MSAMISUserInterface {
         public MySqlConnection conn;
         String GName;
         String Client;
+        Attendance A;
 
         public Sched_ViewDutyDetails() {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace MSAMISUserInterface {
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
             RefreshData();
             FadeTMR.Start();
+            A = new Attendance(AID);
             DutyDaysPNL.Visible = false;
             DutyDetailsPNL.Visible = true;
         }
@@ -48,6 +50,10 @@ namespace MSAMISUserInterface {
             DutyDetailsGRD.Columns[3].Width = 150;
 
             DutyDetailsGRD.Select();
+
+         //   foreach (DataRow row in A.GetAttendance().Rows) {
+           //     .Items.Add(new ComboBoxItem("All", "-1"));
+            //}
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
