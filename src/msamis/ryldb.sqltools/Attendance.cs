@@ -93,6 +93,11 @@ namespace MSAMISUserInterface {
                                         where AID = 1
                                         group by month,period,year;");
         }
+
+        public static DataTable GetPeriodDetails (int AID) {
+
+            throw new NotImplementedException();
+        }
         
 
 
@@ -120,14 +125,15 @@ namespace MSAMISUserInterface {
                 if (duties["sun"].ToString() == "1") dutydates.AddRange(period.Sun);
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
+                DateTime zero = new DateTime(1, 1, 1, 0, 0, 0);
                 foreach (int date in dutydates) {
                     DateTime d = new DateTime(period.year, period.month, date);
                     String q = @"INSERT INTO `msadb`.`attendance` (
-                            `DID`, `month`, `period`, `year`, `date`, `hours`, `holiday`, `night`
+                            `DID`, `month`, `period`, `year`, `date`, `hours`, `holiday`, `night`,`overtime`
                             ) VALUES (
-                           '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'
+                           '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}'
                             );";
-                    q = String.Format(q, did, period.month, period.period, period.year, d.ToString("yyyy-MM-dd HH:mm:ss"), 0, isHoliday(), isNight());
+                    q = String.Format(q, did, period.month, period.period, period.year, d.ToString("yyyy-MM-dd HH:mm:ss"), "00:00", isHoliday(), "00:00", "00:00");
 
                     try {
                         SQLTools.ExecuteNonQuery(q, false);
@@ -163,8 +169,8 @@ namespace MSAMISUserInterface {
             return (to - ti > 0 ? (to-ti) : 24+(to-ti));
         }
 
-        public void SetCertifiedBy (int AID, String cert) {
-
+        public void SetCertifiedBy (int DID, String cert) {
+            String q = @"UPDATE `msadb`.`attendance` SET `certby`='"+cert+"' WHERE `DID`='"+DID+"';";
         }
 
         public void SetAttendance(int AtID, int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
