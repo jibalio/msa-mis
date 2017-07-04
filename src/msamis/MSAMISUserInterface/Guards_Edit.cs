@@ -59,6 +59,7 @@ namespace MSAMISUserInterface {
                 InactiveStatusRDBTN.Checked = true;
             }
             FadeTMR.Start();
+            BirthdateBX.MaxDate = new DateTime(DateTime.Now.Year - 18, DateTime.Now.Month, DateTime.Now.Day);
         }
         private void Guards_EditEmployees_FormClosing(object sender, FormClosingEventArgs e) {
             if (button.Equals("ADD")) {

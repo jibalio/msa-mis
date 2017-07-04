@@ -111,8 +111,8 @@ namespace MSAMISUserInterface {
             //Scheduling Tooltip Page Notification
 
             if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) {
-                ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN);
-                ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN);
+                ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN, 2000);
+                ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN, 2000);
                 SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).ToString();
             } else SchedBTN.Text = String.Empty;
         }
@@ -214,14 +214,12 @@ namespace MSAMISUserInterface {
             currentBTN.BackColor = primary;
             newBTN.BackColor = accent;
 
-            currentPage.Hide();
+            if (newP != currentPage) currentPage.Hide();
             currentPage = newP;
             currentBTN = newBTN;
 
             ScurrentPanel.Hide();
             ScurrentBTN.Font = defaultFont;
-
-            ClientRequestsTLTP.Hide(SchedBTN);
         }
         private void RecordsBTN_Click(object sender, EventArgs e) {
             ChangePage(GuardsPage, RecordsBTN);

@@ -43,7 +43,7 @@
             this.DutyDetailsGRD = new System.Windows.Forms.DataGridView();
             this.AddDutyDetailsBTN = new System.Windows.Forms.Button();
             this.DutyDaysPNL = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.PeriodCMBX = new System.Windows.Forms.ComboBox();
             this.CertifiedLBL = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -268,8 +268,8 @@
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DutyDetailsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DutyDetailsGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -277,8 +277,8 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DutyDetailsGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.DutyDetailsGRD.EnableHeadersVisualStyles = false;
@@ -322,7 +322,7 @@
             // 
             // DutyDaysPNL
             // 
-            this.DutyDaysPNL.Controls.Add(this.comboBox1);
+            this.DutyDaysPNL.Controls.Add(this.PeriodCMBX);
             this.DutyDaysPNL.Controls.Add(this.CertifiedLBL);
             this.DutyDaysPNL.Controls.Add(this.label15);
             this.DutyDaysPNL.Controls.Add(this.label13);
@@ -342,18 +342,18 @@
             this.DutyDaysPNL.Size = new System.Drawing.Size(592, 312);
             this.DutyDaysPNL.TabIndex = 234;
             // 
-            // comboBox1
+            // PeriodCMBX
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(206, 14);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(321, 29);
-            this.comboBox1.TabIndex = 262;
-            this.comboBox1.Text = "June 16, 2017 - June 31, 2017";
+            this.PeriodCMBX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PeriodCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PeriodCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PeriodCMBX.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.PeriodCMBX.ForeColor = System.Drawing.Color.White;
+            this.PeriodCMBX.FormattingEnabled = true;
+            this.PeriodCMBX.Location = new System.Drawing.Point(206, 14);
+            this.PeriodCMBX.Name = "PeriodCMBX";
+            this.PeriodCMBX.Size = new System.Drawing.Size(321, 29);
+            this.PeriodCMBX.TabIndex = 262;
             // 
             // CertifiedLBL
             // 
@@ -522,8 +522,8 @@
             this.Controls.Add(this.DutyDaysLBL);
             this.Controls.Add(this.DutyDetailsLBL);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DutyDaysPNL);
             this.Controls.Add(this.DutyDetailsPNL);
+            this.Controls.Add(this.DutyDaysPNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_ViewDutyDetails";
             this.ShowInTaskbar = false;
@@ -570,7 +570,7 @@
         private System.Windows.Forms.Label HNightLBL;
         private System.Windows.Forms.Label CertifiedLBL;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox PeriodCMBX;
         private System.Windows.Forms.Label label19;
     }
 }

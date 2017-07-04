@@ -51,9 +51,10 @@ namespace MSAMISUserInterface {
 
             DutyDetailsGRD.Select();
 
-         //   foreach (DataRow row in A.GetAttendance().Rows) {
-           //     .Items.Add(new ComboBoxItem("All", "-1"));
-            //}
+            foreach (DataRow row in Attendance.GetPeriods(AID).Rows) {
+                PeriodCMBX.Items.Add(new ComboBoxDays(AID, int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+            }
+            if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {

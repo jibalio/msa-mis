@@ -53,4 +53,54 @@ namespace MSAMISUserInterface {
             return displayValue;
         }
     }
+
+    class ComboBoxDays {
+        String displayValue;
+        int month;
+        int period;
+        int year;
+        int aid;
+
+        //Constructor
+        public ComboBoxDays(int AID, int m, int p, int y) {
+            month = m;
+            period = p;
+            year = y;
+            
+            DateTime d = new DateTime(y, m, 1);
+            displayValue = d.ToString("MMMM yyyy") + ", ";
+            if (p == 1) displayValue += "First Period";
+            else if (p == 2) displayValue += "Second Period";
+        }
+
+        //Accessor
+        public int Month {
+            get {
+                return month;
+            }
+        }
+
+        public int AID {
+            get {
+                return aid;
+            }
+        }
+
+        public int Period {
+            get {
+                return period;
+            }
+        }
+
+        public int Year {
+            get {
+                return year;
+            }
+        }
+
+        //Override ToString method
+        public override string ToString() {
+            return displayValue;
+        }
+    }
 }
