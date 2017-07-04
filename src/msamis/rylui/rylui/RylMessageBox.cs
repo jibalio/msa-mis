@@ -14,10 +14,10 @@ namespace rylui
         {
             Base form = new Base();
             form.iconbox.Visible = false;
-            form.btn1.Text = Property.ButtonText.OK;
+            form.btn3.Text = Property.ButtonText.OK;
             form.rt.Text = text;
             form.btn2.Visible = false;
-            form.btn3.Visible = false;
+            form.btn1.Visible = false;
             form.rt.Size = Property.TextProperties.SizeNoIcon;
             form.rt.Location = Property.TextProperties.LocationNoIcon;
             form.btn1.BackColor = Property.Colors.ButtonBlue;
@@ -26,11 +26,11 @@ namespace rylui
         public static DialogResult ShowDialog(String text, String title)
         {
             Base form = new Base();
-            form.btn1.Text = Property.ButtonText.OK;
+            form.btn3.Text = Property.ButtonText.OK;
             form.rt.Text = text;
             form.iconbox.Visible = false;
             form.btn2.Visible = false;
-            form.btn3.Visible = false;
+            form.btn1.Visible = false;
             form.Title.Text = title;
             form.iconbox.Visible = false;
             form.rt.Size = Property.TextProperties.SizeNoIcon;
@@ -49,7 +49,6 @@ namespace rylui
             form.Title.Text = title;
             form.rt.Size = Property.TextProperties.SizeNoIcon;
             form.rt.Location = Property.TextProperties.LocationNoIcon;
-            form.btn1.BackColor = Property.Colors.ButtonRed;
             switch (mbutton)
             {
                 case MessageBoxButtons.AbortRetryIgnore:
@@ -65,7 +64,7 @@ namespace rylui
                 case MessageBoxButtons.OKCancel:
                     form.btn1.Text = "Cancel";
                     form.btn2.Text = "OK";
-                    form.btn2.Visible = false;
+                    form.btn3.Visible = false;
                     break;
                 case MessageBoxButtons.RetryCancel:
                     form.btn1.Text = "Cancel";
