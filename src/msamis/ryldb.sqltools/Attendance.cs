@@ -85,7 +85,14 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-
+        public static DataTable GetPeriods (int AID) {
+            return SQLTools.ExecuteQuery(@"SELECT month, period, year
+                                        FROM msadb.attendance 
+                                        left join dutydetails
+                                        on attendance.did=dutydetails.did 
+                                        where AID = 1
+                                        group by month,period,year;");
+        }
         
 
 
@@ -156,6 +163,10 @@ namespace MSAMISUserInterface {
             return (to - ti > 0 ? (to-ti) : 24+(to-ti));
         }
 
+        public void SetCertifiedBy (int AID, String cert) {
+
+        }
+
         public void SetAttendance(int AtID, int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
             int did = SQLTools.GetInt("select did from attendance where AtID=" + AtID);
             TimeSpan ts = GetTimeDiff(ti_hh, ti_mm, ti_ampm, to_hh, to_mm, to_ampm);
@@ -175,7 +186,9 @@ namespace MSAMISUserInterface {
                 9hours night onwards
              */
             TimeSpan x1 = GetTimeDiff(10, 0, "PM", to_hh, to_mm, to_ampm);
+            Console.WriteLine("X1: "+x1.ToString());
             TimeSpan x2 = GetTimeDiff(6, 0, "AM", to_hh, to_mm, to_ampm);
+            Console.WriteLine("X2: " + x2.ToString());
             TimeSpan nh = x1 - x2;
             
             String q = @"
