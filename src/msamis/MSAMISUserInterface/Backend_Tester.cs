@@ -21,7 +21,7 @@ namespace MSAMISUserInterface {
         private void Backend_Tester_Load(object sender, EventArgs e) {
             //  dtq.Text = ;
             Attendance a = new Attendance(1);
-            dgv.DataSource = a.GetAttendanceDetails();
+            dgv.DataSource = a.GetAttendance();
             //esrq.Text = SQLTools.ExecuteSingleResult(qor);
 
             // Scheduling.AddAssignmentRequest(2, "14-A", "Jacinto Extension", "Tibungco", "DavaoCity", DateTime.Now, DateTime.Now, 20);
