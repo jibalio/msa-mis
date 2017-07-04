@@ -28,6 +28,7 @@ namespace MSAMISUserInterface {
             A = new Attendance(AID);
             DutyDaysPNL.Visible = false;
             DutyDetailsPNL.Visible = true;
+            RefreshData();
         }
 
         public void RefreshData() {
