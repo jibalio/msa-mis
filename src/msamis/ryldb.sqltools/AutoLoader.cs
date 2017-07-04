@@ -27,7 +27,7 @@ namespace MSAMISUserInterface {
 
 
 
-    static String[] checksum = new String[2];
+        static String[] checksum = new String[2];
         static bool[] hasNewVersion = new bool[2];
 
 
@@ -72,48 +72,37 @@ namespace MSAMISUserInterface {
                 LoaderGUI e = new LoaderGUI();
                 e.Show();
 
-                Thread t = new Thread(() => LoadIt());
-                t.Start();
+                if (hasNewVersion[0]) {
 
-                //e.Close();
-
-            }
-
-        }
-        public static void LoadIt() {
-            if (hasNewVersion[0]) {
-
-                using (MySqlConnection conn = SQLTools.nodb) {
-                    using (MySqlCommand cmd = new MySqlCommand()) {
-                        using (MySqlBackup mb = new MySqlBackup(cmd)) {
-                            cmd.Connection = conn;
-                            conn.Open();
-                            mb.ImportFromFile(msadb);
-                            conn.Close();
+                    using (MySqlConnection conn = SQLTools.nodb) {
+                        using (MySqlCommand cmd = new MySqlCommand()) {
+                            using (MySqlBackup mb = new MySqlBackup(cmd)) {
+                                cmd.Connection = conn;
+                                conn.Open();
+                                mb.ImportFromFile(msadb);
+                                conn.Close();
+                            }
                         }
                     }
                 }
-            }
 
-            if (hasNewVersion[1]) {
-                using (MySqlConnection conn = SQLTools.nodb) {
-                    using (MySqlCommand cmd = new MySqlCommand()) {
-                        using (MySqlBackup mb = new MySqlBackup(cmd)) {
-                            cmd.Connection = conn;
-                            conn.Open();
-                            mb.ImportFromFile(msadbarchive);
-                            conn.Close();
+                if (hasNewVersion[1]) {
+                    using (MySqlConnection conn = SQLTools.nodb) {
+                        using (MySqlCommand cmd = new MySqlCommand()) {
+                            using (MySqlBackup mb = new MySqlBackup(cmd)) {
+                                cmd.Connection = conn;
+                                conn.Open();
+                                mb.ImportFromFile(msadbarchive);
+                                conn.Close();
+                            }
                         }
                     }
                 }
+                e.Close();
             }
-           
         }
-        
-
-
     }
-}
+} 
    
 
 

@@ -31,8 +31,9 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = global::ryldb.sqltools.Properties.Resources.loader;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::ryldb.sqltools.Properties.Resources.loader;
+            this.pictureBox1.Enabled = false;
             this.pictureBox1.Location = new System.Drawing.Point(12, 26);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 38);
