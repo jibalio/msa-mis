@@ -450,6 +450,35 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
+
+        private void GAllGuardsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            if (GAllGuardsGRD.SelectedRows.Count == 1) {
+                if (GAllGuardsGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Active")) {
+                    GEditDetailsBTN.Location = new Point(294, 600);
+                    GArchiveBTN.Location = new Point(214, 601);
+                    GEditDetailsBTN.Visible = true;
+                    GArchiveBTN.Visible = false;
+                } else {
+                    GEditDetailsBTN.Location = new Point(214, 601);
+                    GArchiveBTN.Location = new Point(346, 600);
+                    GEditDetailsBTN.Visible = true;
+                    GArchiveBTN.Visible = true;
+                }
+            } else if (GAllGuardsGRD.SelectedRows.Count > 1) {
+                bool ret = true;
+                foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows) {
+                    if (row.Cells[2].Value.ToString().Equals("Active")) ret = false;
+                }
+                if (ret) {
+                    GArchiveBTN.Location = new Point(294, 600);
+                    GEditDetailsBTN.Visible = false;
+                    GArchiveBTN.Visible = true;
+                } else {
+                    GEditDetailsBTN.Visible = false;
+                    GArchiveBTN.Visible = false;
+                }
+            }
+        }
         #endregion
 
         #region GMS - View All - Search
