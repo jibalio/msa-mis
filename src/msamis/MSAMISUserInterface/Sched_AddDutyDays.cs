@@ -59,18 +59,18 @@ namespace MSAMISUserInterface {
                 foreach (DataGridViewRow row in DaysGRD.Rows) {
                     A.SetAttendance(int.Parse(row.Cells[0].Value.ToString()), int.Parse(row.Cells[2].Value.ToString()), int.Parse(row.Cells[4].Value.ToString()), row.Cells[5].Value.ToString(), int.Parse(row.Cells[6].Value.ToString()), int.Parse(row.Cells[8].Value.ToString()), row.Cells[9].Value.ToString());
                 }
-                // A.SetCertifiedBy(AID, CertifiedBX.Text);
+                A.SetCertifiedBy(AID, CertifiedBX.Text);
                 this.Close();
-                
             }
         }
 
         private void RefreshData() {
-            foreach (DataRow row in A.GetAttendance().Rows) {
-                DaysGRD.Rows.Add(row[0] , row[2], row[5].ToString().Split(':')[0], ":", row[5].ToString().Split(':')[1].Split(' ')[0], row[5].ToString().Split(':')[1].Split(' ')[1], row[6].ToString().Split(':')[0], ":", row[6].ToString().Split(':')[1].Split(' ')[0], row[6].ToString().Split(':')[1].Split(' ')[1], "0");
+            if (A.GetAttendance().Rows.Count > 0) { 
+                foreach (DataRow row in A.GetAttendance().Rows) {
+                    DaysGRD.Rows.Add(row[0] , row[2], row[5].ToString().Split(':')[0], ":", row[5].ToString().Split(':')[1].Split(' ')[0], row[5].ToString().Split(':')[1].Split(' ')[1], row[6].ToString().Split(':')[0], ":", row[6].ToString().Split(':')[1].Split(' ')[0], row[6].ToString().Split(':')[1].Split(' ')[1], "0");
+                }
+                DaysGRD.CurrentCell = DaysGRD.Rows[0].Cells[1];
             }
-            
-            DaysGRD.CurrentCell = DaysGRD.Rows[0].Cells[1];
         }
 
         private void DaysGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {

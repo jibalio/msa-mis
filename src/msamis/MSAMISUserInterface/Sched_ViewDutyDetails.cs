@@ -24,7 +24,6 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
-            RefreshData();
             FadeTMR.Start();
             A = new Attendance(AID);
             DutyDaysPNL.Visible = false;

@@ -82,11 +82,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.GuardsPage = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.BoldBTN = new System.Windows.Forms.Button();
             this.GViewAllPageBTN = new System.Windows.Forms.Button();
             this.GAddGuardBTN = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.GSummaryPageBTN = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.GArchivePageBTN = new System.Windows.Forms.Button();
@@ -117,12 +115,10 @@
             this.SchedBTN = new System.Windows.Forms.Button();
             this.SchedulesPage = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.SViewReqBTN = new System.Windows.Forms.Button();
             this.SViewReqAssBTN = new System.Windows.Forms.Button();
             this.SViewAssBTN = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
             this.SMonthlyDutyBTN = new System.Windows.Forms.Button();
             this.SDutyDetailsBTN = new System.Windows.Forms.Button();
             this.SIncidentBTN = new System.Windows.Forms.Button();
@@ -170,13 +166,11 @@
             this.SViewAssSearchLine = new System.Windows.Forms.Label();
             this.PayrollPage = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button10 = new System.Windows.Forms.Button();
             this.PPayrollSummaryBTN = new System.Windows.Forms.Button();
             this.PEmpListBTN = new System.Windows.Forms.Button();
             this.PBasicPayBTN = new System.Windows.Forms.Button();
             this.PCashAdvBTN = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
             this.PSalaryReportBTN = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.PArchiveBTN = new System.Windows.Forms.Button();
@@ -239,24 +233,22 @@
             this.label51 = new System.Windows.Forms.Label();
             this.ClientsPage = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button25 = new System.Windows.Forms.Button();
             this.CViewAllClientBTN = new System.Windows.Forms.Button();
             this.CAddClientBTN = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
             this.CViewSummaryBTN = new System.Windows.Forms.Button();
             this.CTotalClientLBL = new System.Windows.Forms.Label();
             this.CActiveClientLBL = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.CSummaryPNL = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.button28 = new System.Windows.Forms.Button();
-            this.label26 = new System.Windows.Forms.Label();
             this.CViewAllPNL = new System.Windows.Forms.Panel();
             this.CViewAllSearchBX = new System.Windows.Forms.TextBox();
             this.CViewDetailsBTN = new System.Windows.Forms.Button();
             this.CClientListTBL = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
+            this.CSummaryPNL = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button28 = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.SamplePNL = new System.Windows.Forms.SplitContainer();
             this.DevBX = new System.Windows.Forms.TextBox();
@@ -265,6 +257,14 @@
             this.QuoteMainBX = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.ClientRequestsTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.label34 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
             this.ControlBoxPanel.SuspendLayout();
             this.DashboardPage.SuspendLayout();
             this.DSalaryReportPNL.SuspendLayout();
@@ -319,9 +319,9 @@
             this.ClientsPage.Panel2.SuspendLayout();
             this.ClientsPage.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
-            this.CSummaryPNL.SuspendLayout();
             this.CViewAllPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CClientListTBL)).BeginInit();
+            this.CSummaryPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SamplePNL)).BeginInit();
             this.SamplePNL.Panel2.SuspendLayout();
             this.SamplePNL.SuspendLayout();
@@ -774,11 +774,11 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.BoldBTN);
+            this.flowLayoutPanel1.Controls.Add(this.label52);
             this.flowLayoutPanel1.Controls.Add(this.GViewAllPageBTN);
             this.flowLayoutPanel1.Controls.Add(this.GAddGuardBTN);
             this.flowLayoutPanel1.Controls.Add(this.button15);
-            this.flowLayoutPanel1.Controls.Add(this.button6);
+            this.flowLayoutPanel1.Controls.Add(this.label54);
             this.flowLayoutPanel1.Controls.Add(this.GSummaryPageBTN);
             this.flowLayoutPanel1.Controls.Add(this.button12);
             this.flowLayoutPanel1.Controls.Add(this.GArchivePageBTN);
@@ -789,29 +789,13 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(174, 418);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
-            // BoldBTN
-            // 
-            this.BoldBTN.FlatAppearance.BorderSize = 0;
-            this.BoldBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BoldBTN.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoldBTN.ForeColor = System.Drawing.Color.White;
-            this.BoldBTN.Location = new System.Drawing.Point(2, 2);
-            this.BoldBTN.Margin = new System.Windows.Forms.Padding(2);
-            this.BoldBTN.Name = "BoldBTN";
-            this.BoldBTN.Size = new System.Drawing.Size(172, 26);
-            this.BoldBTN.TabIndex = 10;
-            this.BoldBTN.Text = "actions";
-            this.BoldBTN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BoldBTN.UseVisualStyleBackColor = true;
-            this.BoldBTN.Click += new System.EventHandler(this.GViewAllPageBTN_Click);
-            // 
             // GViewAllPageBTN
             // 
             this.GViewAllPageBTN.FlatAppearance.BorderSize = 0;
             this.GViewAllPageBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GViewAllPageBTN.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.GViewAllPageBTN.ForeColor = System.Drawing.Color.White;
-            this.GViewAllPageBTN.Location = new System.Drawing.Point(2, 32);
+            this.GViewAllPageBTN.Location = new System.Drawing.Point(2, 30);
             this.GViewAllPageBTN.Margin = new System.Windows.Forms.Padding(2);
             this.GViewAllPageBTN.Name = "GViewAllPageBTN";
             this.GViewAllPageBTN.Size = new System.Drawing.Size(172, 26);
@@ -827,7 +811,7 @@
             this.GAddGuardBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GAddGuardBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.GAddGuardBTN.ForeColor = System.Drawing.Color.White;
-            this.GAddGuardBTN.Location = new System.Drawing.Point(2, 62);
+            this.GAddGuardBTN.Location = new System.Drawing.Point(2, 60);
             this.GAddGuardBTN.Margin = new System.Windows.Forms.Padding(2);
             this.GAddGuardBTN.Name = "GAddGuardBTN";
             this.GAddGuardBTN.Size = new System.Drawing.Size(172, 26);
@@ -844,7 +828,7 @@
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button15.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button15.Location = new System.Drawing.Point(2, 92);
+            this.button15.Location = new System.Drawing.Point(2, 90);
             this.button15.Margin = new System.Windows.Forms.Padding(2);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(172, 26);
@@ -852,29 +836,13 @@
             this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button15.UseVisualStyleBackColor = true;
             // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(2, 122);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(172, 26);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "reports";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.GSummaryPageBTN_Click);
-            // 
             // GSummaryPageBTN
             // 
             this.GSummaryPageBTN.FlatAppearance.BorderSize = 0;
             this.GSummaryPageBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GSummaryPageBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.GSummaryPageBTN.ForeColor = System.Drawing.Color.White;
-            this.GSummaryPageBTN.Location = new System.Drawing.Point(2, 152);
+            this.GSummaryPageBTN.Location = new System.Drawing.Point(2, 148);
             this.GSummaryPageBTN.Margin = new System.Windows.Forms.Padding(2);
             this.GSummaryPageBTN.Name = "GSummaryPageBTN";
             this.GSummaryPageBTN.Size = new System.Drawing.Size(172, 26);
@@ -891,7 +859,7 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button12.Location = new System.Drawing.Point(2, 182);
+            this.button12.Location = new System.Drawing.Point(2, 178);
             this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(172, 26);
@@ -905,7 +873,7 @@
             this.GArchivePageBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GArchivePageBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.GArchivePageBTN.ForeColor = System.Drawing.Color.White;
-            this.GArchivePageBTN.Location = new System.Drawing.Point(2, 212);
+            this.GArchivePageBTN.Location = new System.Drawing.Point(2, 208);
             this.GArchivePageBTN.Margin = new System.Windows.Forms.Padding(2);
             this.GArchivePageBTN.Name = "GArchivePageBTN";
             this.GArchivePageBTN.Size = new System.Drawing.Size(172, 26);
@@ -1369,12 +1337,12 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.button1);
+            this.flowLayoutPanel2.Controls.Add(this.label49);
             this.flowLayoutPanel2.Controls.Add(this.SViewReqBTN);
             this.flowLayoutPanel2.Controls.Add(this.SViewReqAssBTN);
             this.flowLayoutPanel2.Controls.Add(this.SViewAssBTN);
             this.flowLayoutPanel2.Controls.Add(this.button11);
-            this.flowLayoutPanel2.Controls.Add(this.button13);
+            this.flowLayoutPanel2.Controls.Add(this.label50);
             this.flowLayoutPanel2.Controls.Add(this.SMonthlyDutyBTN);
             this.flowLayoutPanel2.Controls.Add(this.SDutyDetailsBTN);
             this.flowLayoutPanel2.Controls.Add(this.SIncidentBTN);
@@ -1387,29 +1355,13 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(174, 418);
             this.flowLayoutPanel2.TabIndex = 4;
             // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(2, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 26);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "actions";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.SViewReqBTN_Click);
-            // 
             // SViewReqBTN
             // 
             this.SViewReqBTN.FlatAppearance.BorderSize = 0;
             this.SViewReqBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SViewReqBTN.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.SViewReqBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewReqBTN.Location = new System.Drawing.Point(2, 32);
+            this.SViewReqBTN.Location = new System.Drawing.Point(2, 30);
             this.SViewReqBTN.Margin = new System.Windows.Forms.Padding(2);
             this.SViewReqBTN.Name = "SViewReqBTN";
             this.SViewReqBTN.Size = new System.Drawing.Size(172, 26);
@@ -1425,7 +1377,7 @@
             this.SViewReqAssBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SViewReqAssBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewReqAssBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewReqAssBTN.Location = new System.Drawing.Point(2, 62);
+            this.SViewReqAssBTN.Location = new System.Drawing.Point(2, 60);
             this.SViewReqAssBTN.Margin = new System.Windows.Forms.Padding(2);
             this.SViewReqAssBTN.Name = "SViewReqAssBTN";
             this.SViewReqAssBTN.Size = new System.Drawing.Size(172, 26);
@@ -1441,7 +1393,7 @@
             this.SViewAssBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SViewAssBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewAssBTN.Location = new System.Drawing.Point(2, 92);
+            this.SViewAssBTN.Location = new System.Drawing.Point(2, 90);
             this.SViewAssBTN.Margin = new System.Windows.Forms.Padding(2);
             this.SViewAssBTN.Name = "SViewAssBTN";
             this.SViewAssBTN.Size = new System.Drawing.Size(172, 26);
@@ -1458,7 +1410,7 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button11.Location = new System.Drawing.Point(2, 122);
+            this.button11.Location = new System.Drawing.Point(2, 120);
             this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(172, 26);
@@ -1466,29 +1418,13 @@
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.UseVisualStyleBackColor = true;
             // 
-            // button13
-            // 
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(2, 152);
-            this.button13.Margin = new System.Windows.Forms.Padding(2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(172, 26);
-            this.button13.TabIndex = 11;
-            this.button13.Text = "reports";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.SMonthlyDutyBTN_Click);
-            // 
             // SMonthlyDutyBTN
             // 
             this.SMonthlyDutyBTN.FlatAppearance.BorderSize = 0;
             this.SMonthlyDutyBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SMonthlyDutyBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SMonthlyDutyBTN.ForeColor = System.Drawing.Color.White;
-            this.SMonthlyDutyBTN.Location = new System.Drawing.Point(2, 182);
+            this.SMonthlyDutyBTN.Location = new System.Drawing.Point(2, 178);
             this.SMonthlyDutyBTN.Margin = new System.Windows.Forms.Padding(2);
             this.SMonthlyDutyBTN.Name = "SMonthlyDutyBTN";
             this.SMonthlyDutyBTN.Size = new System.Drawing.Size(172, 26);
@@ -1504,7 +1440,7 @@
             this.SDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.SDutyDetailsBTN.Location = new System.Drawing.Point(2, 212);
+            this.SDutyDetailsBTN.Location = new System.Drawing.Point(2, 208);
             this.SDutyDetailsBTN.Margin = new System.Windows.Forms.Padding(2);
             this.SDutyDetailsBTN.Name = "SDutyDetailsBTN";
             this.SDutyDetailsBTN.Size = new System.Drawing.Size(172, 26);
@@ -1520,7 +1456,7 @@
             this.SIncidentBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SIncidentBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SIncidentBTN.ForeColor = System.Drawing.Color.White;
-            this.SIncidentBTN.Location = new System.Drawing.Point(2, 242);
+            this.SIncidentBTN.Location = new System.Drawing.Point(2, 238);
             this.SIncidentBTN.Margin = new System.Windows.Forms.Padding(2);
             this.SIncidentBTN.Name = "SIncidentBTN";
             this.SIncidentBTN.Size = new System.Drawing.Size(172, 26);
@@ -1537,7 +1473,7 @@
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button17.Location = new System.Drawing.Point(2, 272);
+            this.button17.Location = new System.Drawing.Point(2, 268);
             this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(172, 26);
@@ -1551,7 +1487,7 @@
             this.SArchiveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SArchiveBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SArchiveBTN.ForeColor = System.Drawing.Color.White;
-            this.SArchiveBTN.Location = new System.Drawing.Point(2, 302);
+            this.SArchiveBTN.Location = new System.Drawing.Point(2, 298);
             this.SArchiveBTN.Margin = new System.Windows.Forms.Padding(2);
             this.SArchiveBTN.Name = "SArchiveBTN";
             this.SArchiveBTN.Size = new System.Drawing.Size(172, 26);
@@ -2253,13 +2189,13 @@
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.button10);
+            this.flowLayoutPanel3.Controls.Add(this.label44);
             this.flowLayoutPanel3.Controls.Add(this.PPayrollSummaryBTN);
             this.flowLayoutPanel3.Controls.Add(this.PEmpListBTN);
             this.flowLayoutPanel3.Controls.Add(this.PBasicPayBTN);
             this.flowLayoutPanel3.Controls.Add(this.PCashAdvBTN);
             this.flowLayoutPanel3.Controls.Add(this.button22);
-            this.flowLayoutPanel3.Controls.Add(this.button23);
+            this.flowLayoutPanel3.Controls.Add(this.label46);
             this.flowLayoutPanel3.Controls.Add(this.PSalaryReportBTN);
             this.flowLayoutPanel3.Controls.Add(this.button26);
             this.flowLayoutPanel3.Controls.Add(this.PArchiveBTN);
@@ -2270,29 +2206,13 @@
             this.flowLayoutPanel3.Size = new System.Drawing.Size(174, 418);
             this.flowLayoutPanel3.TabIndex = 4;
             // 
-            // button10
-            // 
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(2, 2);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(172, 26);
-            this.button10.TabIndex = 10;
-            this.button10.Text = "actions";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.PPayrollSummaryBTN_Click);
-            // 
             // PPayrollSummaryBTN
             // 
             this.PPayrollSummaryBTN.FlatAppearance.BorderSize = 0;
             this.PPayrollSummaryBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PPayrollSummaryBTN.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.PPayrollSummaryBTN.ForeColor = System.Drawing.Color.White;
-            this.PPayrollSummaryBTN.Location = new System.Drawing.Point(2, 32);
+            this.PPayrollSummaryBTN.Location = new System.Drawing.Point(2, 30);
             this.PPayrollSummaryBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PPayrollSummaryBTN.Name = "PPayrollSummaryBTN";
             this.PPayrollSummaryBTN.Size = new System.Drawing.Size(172, 26);
@@ -2308,7 +2228,7 @@
             this.PEmpListBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PEmpListBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PEmpListBTN.ForeColor = System.Drawing.Color.White;
-            this.PEmpListBTN.Location = new System.Drawing.Point(2, 62);
+            this.PEmpListBTN.Location = new System.Drawing.Point(2, 60);
             this.PEmpListBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PEmpListBTN.Name = "PEmpListBTN";
             this.PEmpListBTN.Size = new System.Drawing.Size(172, 26);
@@ -2324,7 +2244,7 @@
             this.PBasicPayBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PBasicPayBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PBasicPayBTN.ForeColor = System.Drawing.Color.White;
-            this.PBasicPayBTN.Location = new System.Drawing.Point(2, 92);
+            this.PBasicPayBTN.Location = new System.Drawing.Point(2, 90);
             this.PBasicPayBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PBasicPayBTN.Name = "PBasicPayBTN";
             this.PBasicPayBTN.Size = new System.Drawing.Size(172, 26);
@@ -2340,7 +2260,7 @@
             this.PCashAdvBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PCashAdvBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PCashAdvBTN.ForeColor = System.Drawing.Color.White;
-            this.PCashAdvBTN.Location = new System.Drawing.Point(2, 122);
+            this.PCashAdvBTN.Location = new System.Drawing.Point(2, 120);
             this.PCashAdvBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PCashAdvBTN.Name = "PCashAdvBTN";
             this.PCashAdvBTN.Size = new System.Drawing.Size(172, 26);
@@ -2357,7 +2277,7 @@
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button22.Location = new System.Drawing.Point(2, 152);
+            this.button22.Location = new System.Drawing.Point(2, 150);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(172, 26);
@@ -2365,29 +2285,13 @@
             this.button22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button22.UseVisualStyleBackColor = true;
             // 
-            // button23
-            // 
-            this.button23.FlatAppearance.BorderSize = 0;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.ForeColor = System.Drawing.Color.White;
-            this.button23.Location = new System.Drawing.Point(2, 182);
-            this.button23.Margin = new System.Windows.Forms.Padding(2);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(172, 26);
-            this.button23.TabIndex = 11;
-            this.button23.Text = "reports";
-            this.button23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.PSalaryReportBTN_Click);
-            // 
             // PSalaryReportBTN
             // 
             this.PSalaryReportBTN.FlatAppearance.BorderSize = 0;
             this.PSalaryReportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PSalaryReportBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PSalaryReportBTN.ForeColor = System.Drawing.Color.White;
-            this.PSalaryReportBTN.Location = new System.Drawing.Point(2, 212);
+            this.PSalaryReportBTN.Location = new System.Drawing.Point(2, 208);
             this.PSalaryReportBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PSalaryReportBTN.Name = "PSalaryReportBTN";
             this.PSalaryReportBTN.Size = new System.Drawing.Size(172, 26);
@@ -2404,7 +2308,7 @@
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button26.Location = new System.Drawing.Point(2, 242);
+            this.button26.Location = new System.Drawing.Point(2, 238);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(172, 26);
@@ -2418,7 +2322,7 @@
             this.PArchiveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PArchiveBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PArchiveBTN.ForeColor = System.Drawing.Color.White;
-            this.PArchiveBTN.Location = new System.Drawing.Point(2, 272);
+            this.PArchiveBTN.Location = new System.Drawing.Point(2, 268);
             this.PArchiveBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PArchiveBTN.Name = "PArchiveBTN";
             this.PArchiveBTN.Size = new System.Drawing.Size(172, 26);
@@ -3374,11 +3278,11 @@
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.Controls.Add(this.button25);
+            this.flowLayoutPanel4.Controls.Add(this.label34);
             this.flowLayoutPanel4.Controls.Add(this.CViewAllClientBTN);
             this.flowLayoutPanel4.Controls.Add(this.CAddClientBTN);
             this.flowLayoutPanel4.Controls.Add(this.button31);
-            this.flowLayoutPanel4.Controls.Add(this.button32);
+            this.flowLayoutPanel4.Controls.Add(this.label39);
             this.flowLayoutPanel4.Controls.Add(this.CViewSummaryBTN);
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(15, 174);
@@ -3387,29 +3291,13 @@
             this.flowLayoutPanel4.Size = new System.Drawing.Size(174, 418);
             this.flowLayoutPanel4.TabIndex = 4;
             // 
-            // button25
-            // 
-            this.button25.FlatAppearance.BorderSize = 0;
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.ForeColor = System.Drawing.Color.White;
-            this.button25.Location = new System.Drawing.Point(2, 2);
-            this.button25.Margin = new System.Windows.Forms.Padding(2);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(172, 26);
-            this.button25.TabIndex = 10;
-            this.button25.Text = "actions";
-            this.button25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button25.UseVisualStyleBackColor = true;
-            this.button25.Click += new System.EventHandler(this.CViewAllClientBTN_Click);
-            // 
             // CViewAllClientBTN
             // 
             this.CViewAllClientBTN.FlatAppearance.BorderSize = 0;
             this.CViewAllClientBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CViewAllClientBTN.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.CViewAllClientBTN.ForeColor = System.Drawing.Color.White;
-            this.CViewAllClientBTN.Location = new System.Drawing.Point(2, 32);
+            this.CViewAllClientBTN.Location = new System.Drawing.Point(2, 30);
             this.CViewAllClientBTN.Margin = new System.Windows.Forms.Padding(2);
             this.CViewAllClientBTN.Name = "CViewAllClientBTN";
             this.CViewAllClientBTN.Size = new System.Drawing.Size(172, 26);
@@ -3425,7 +3313,7 @@
             this.CAddClientBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CAddClientBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.CAddClientBTN.ForeColor = System.Drawing.Color.White;
-            this.CAddClientBTN.Location = new System.Drawing.Point(2, 62);
+            this.CAddClientBTN.Location = new System.Drawing.Point(2, 60);
             this.CAddClientBTN.Margin = new System.Windows.Forms.Padding(2);
             this.CAddClientBTN.Name = "CAddClientBTN";
             this.CAddClientBTN.Size = new System.Drawing.Size(172, 26);
@@ -3442,7 +3330,7 @@
             this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button31.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button31.Location = new System.Drawing.Point(2, 92);
+            this.button31.Location = new System.Drawing.Point(2, 90);
             this.button31.Margin = new System.Windows.Forms.Padding(2);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(172, 26);
@@ -3450,29 +3338,13 @@
             this.button31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button31.UseVisualStyleBackColor = true;
             // 
-            // button32
-            // 
-            this.button32.FlatAppearance.BorderSize = 0;
-            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button32.ForeColor = System.Drawing.Color.White;
-            this.button32.Location = new System.Drawing.Point(2, 122);
-            this.button32.Margin = new System.Windows.Forms.Padding(2);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(172, 26);
-            this.button32.TabIndex = 11;
-            this.button32.Text = "reports";
-            this.button32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button32.UseVisualStyleBackColor = true;
-            this.button32.Click += new System.EventHandler(this.CViewSummaryBTN_Click);
-            // 
             // CViewSummaryBTN
             // 
             this.CViewSummaryBTN.FlatAppearance.BorderSize = 0;
             this.CViewSummaryBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CViewSummaryBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.CViewSummaryBTN.ForeColor = System.Drawing.Color.White;
-            this.CViewSummaryBTN.Location = new System.Drawing.Point(2, 152);
+            this.CViewSummaryBTN.Location = new System.Drawing.Point(2, 148);
             this.CViewSummaryBTN.Margin = new System.Windows.Forms.Padding(2);
             this.CViewSummaryBTN.Name = "CViewSummaryBTN";
             this.CViewSummaryBTN.Size = new System.Drawing.Size(172, 26);
@@ -3517,58 +3389,6 @@
             this.label31.Size = new System.Drawing.Size(120, 51);
             this.label31.TabIndex = 0;
             this.label31.Text = "clients";
-            // 
-            // CSummaryPNL
-            // 
-            this.CSummaryPNL.Controls.Add(this.label12);
-            this.CSummaryPNL.Controls.Add(this.button28);
-            this.CSummaryPNL.Controls.Add(this.label26);
-            this.CSummaryPNL.Location = new System.Drawing.Point(17, 10);
-            this.CSummaryPNL.Name = "CSummaryPNL";
-            this.CSummaryPNL.Size = new System.Drawing.Size(690, 640);
-            this.CSummaryPNL.TabIndex = 14;
-            this.CSummaryPNL.Visible = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label12.Location = new System.Drawing.Point(227, 279);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(225, 19);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Summary of Clients as of 01/01/2017";
-            // 
-            // button28
-            // 
-            this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button28.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.button28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button28.FlatAppearance.BorderSize = 0;
-            this.button28.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button28.ForeColor = System.Drawing.Color.White;
-            this.button28.Location = new System.Drawing.Point(282, 322);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(112, 32);
-            this.button28.TabIndex = 6;
-            this.button28.Text = "PRINT";
-            this.button28.UseVisualStyleBackColor = false;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Light", 28F);
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label26.Location = new System.Drawing.Point(246, 224);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(174, 51);
-            this.label26.TabIndex = 4;
-            this.label26.Text = "Summary";
             // 
             // CViewAllPNL
             // 
@@ -3673,6 +3493,58 @@
             this.label13.TabIndex = 13;
             this.label13.Text = "_________________________________";
             // 
+            // CSummaryPNL
+            // 
+            this.CSummaryPNL.Controls.Add(this.label12);
+            this.CSummaryPNL.Controls.Add(this.button28);
+            this.CSummaryPNL.Controls.Add(this.label26);
+            this.CSummaryPNL.Location = new System.Drawing.Point(17, 10);
+            this.CSummaryPNL.Name = "CSummaryPNL";
+            this.CSummaryPNL.Size = new System.Drawing.Size(690, 640);
+            this.CSummaryPNL.TabIndex = 14;
+            this.CSummaryPNL.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label12.Location = new System.Drawing.Point(227, 279);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(225, 19);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "Summary of Clients as of 01/01/2017";
+            // 
+            // button28
+            // 
+            this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.button28.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.button28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button28.FlatAppearance.BorderSize = 0;
+            this.button28.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button28.ForeColor = System.Drawing.Color.White;
+            this.button28.Location = new System.Drawing.Point(282, 322);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(112, 32);
+            this.button28.TabIndex = 6;
+            this.button28.Text = "PRINT";
+            this.button28.UseVisualStyleBackColor = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Light", 28F);
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label26.Location = new System.Drawing.Point(246, 224);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(174, 51);
+            this.label26.TabIndex = 4;
+            this.label26.Text = "Summary";
+            // 
             // FadeTMR
             // 
             this.FadeTMR.Interval = 1;
@@ -3776,6 +3648,102 @@
             this.ClientRequestsTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ClientRequestsTLTP.ToolTipTitle = "Client Requests";
             // 
+            // label34
+            // 
+            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label34.ForeColor = System.Drawing.Color.White;
+            this.label34.Location = new System.Drawing.Point(2, 0);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(172, 28);
+            this.label34.TabIndex = 5;
+            this.label34.Text = " actions";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label39
+            // 
+            this.label39.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label39.ForeColor = System.Drawing.Color.White;
+            this.label39.Location = new System.Drawing.Point(2, 118);
+            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(172, 28);
+            this.label39.TabIndex = 20;
+            this.label39.Text = " reports";
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label44
+            // 
+            this.label44.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label44.ForeColor = System.Drawing.Color.White;
+            this.label44.Location = new System.Drawing.Point(2, 0);
+            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(172, 28);
+            this.label44.TabIndex = 23;
+            this.label44.Text = " actions";
+            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label46
+            // 
+            this.label46.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label46.ForeColor = System.Drawing.Color.White;
+            this.label46.Location = new System.Drawing.Point(2, 178);
+            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(172, 28);
+            this.label46.TabIndex = 24;
+            this.label46.Text = " reports";
+            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label49
+            // 
+            this.label49.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label49.ForeColor = System.Drawing.Color.White;
+            this.label49.Location = new System.Drawing.Point(2, 0);
+            this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(172, 28);
+            this.label49.TabIndex = 21;
+            this.label49.Text = " actions";
+            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label50
+            // 
+            this.label50.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label50.ForeColor = System.Drawing.Color.White;
+            this.label50.Location = new System.Drawing.Point(2, 148);
+            this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(172, 28);
+            this.label50.TabIndex = 22;
+            this.label50.Text = " reports";
+            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label52
+            // 
+            this.label52.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label52.ForeColor = System.Drawing.Color.White;
+            this.label52.Location = new System.Drawing.Point(2, 0);
+            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(172, 28);
+            this.label52.TabIndex = 21;
+            this.label52.Text = " actions";
+            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label54
+            // 
+            this.label54.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label54.ForeColor = System.Drawing.Color.White;
+            this.label54.Location = new System.Drawing.Point(2, 118);
+            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(172, 28);
+            this.label54.TabIndex = 22;
+            this.label54.Text = " reports";
+            this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3785,12 +3753,12 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ControlBoxPanel);
+            this.Controls.Add(this.GuardsPage);
             this.Controls.Add(this.ClientsPage);
             this.Controls.Add(this.SamplePNL);
             this.Controls.Add(this.PayrollPage);
             this.Controls.Add(this.SchedulesPage);
             this.Controls.Add(this.DashboardPage);
-            this.Controls.Add(this.GuardsPage);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -3880,11 +3848,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.ClientsPage)).EndInit();
             this.ClientsPage.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
-            this.CSummaryPNL.ResumeLayout(false);
-            this.CSummaryPNL.PerformLayout();
             this.CViewAllPNL.ResumeLayout(false);
             this.CViewAllPNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CClientListTBL)).EndInit();
+            this.CSummaryPNL.ResumeLayout(false);
+            this.CSummaryPNL.PerformLayout();
             this.SamplePNL.Panel2.ResumeLayout(false);
             this.SamplePNL.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SamplePNL)).EndInit();
@@ -3908,10 +3876,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel DMonthlyDutyReportPNL;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button BoldBTN;
         private System.Windows.Forms.Button GViewAllPageBTN;
         private System.Windows.Forms.Button GAddGuardBTN;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button RecordsBTN;
         private System.Windows.Forms.Button SchedBTN;
         private System.Windows.Forms.Button PayrollBTN;
@@ -3933,10 +3899,8 @@
         private System.Windows.Forms.Button GArchivePageBTN;
         private System.Windows.Forms.SplitContainer SchedulesPage;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button SViewAssBTN;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button SMonthlyDutyBTN;
         private System.Windows.Forms.Button SDutyDetailsBTN;
         private System.Windows.Forms.Button button17;
@@ -3947,11 +3911,9 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.SplitContainer PayrollPage;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button PEmpListBTN;
         private System.Windows.Forms.Button PCashAdvBTN;
         private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button PArchiveBTN;
         private System.Windows.Forms.Label label27;
@@ -3960,10 +3922,8 @@
         private System.Windows.Forms.Button ClientBTN;
         private System.Windows.Forms.SplitContainer ClientsPage;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button CViewAllClientBTN;
         private System.Windows.Forms.Button button31;
-        private System.Windows.Forms.Button button32;
         private System.Windows.Forms.Button CViewSummaryBTN;
         private System.Windows.Forms.Label CTotalClientLBL;
         private System.Windows.Forms.Label CActiveClientLBL;
@@ -4106,6 +4066,14 @@
         private System.Windows.Forms.Button SettingsBTN;
         private System.Windows.Forms.TextBox DevBX;
         private System.Windows.Forms.Label HBDLBL;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label39;
     }
 }
 
