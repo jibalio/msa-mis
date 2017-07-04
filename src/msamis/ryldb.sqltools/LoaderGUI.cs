@@ -16,6 +16,5 @@ namespace ryldb.sqltools {
         public LoaderGUI() {
             InitializeComponent();
         }
-       
     }
 }
