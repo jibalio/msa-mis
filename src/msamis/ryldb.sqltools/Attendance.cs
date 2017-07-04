@@ -218,25 +218,29 @@ namespace MSAMISUserInterface {
             DataRow dt = SQLTools.ExecuteQuery("select * from dutydetails where DID=" + did).Rows[0];
             TimeSpan overtime = GetTimeDiff(int.Parse(dt["to_hh"].ToString()), int.Parse(dt["to_mm"].ToString()), dt["to_period"].ToString(), to_hh, to_mm, to_ampm);
             DateTime start_night = GetDateTime(10, 00, "PM");
-            DateTime end_night = GetDateTime(6, 0, "AM");
-            /*  9
-                7
-
-                x = to-nightstart = 9
-                x = x - (to-nightend)
-                9hours night onwards
-             */
-            TimeSpan x1 = GetTimeDiff(10, 0, "PM", to_hh, to_mm, to_ampm);
-            Console.WriteLine("X1: "+x1.ToString());
-            TimeSpan x2 = GetTimeDiff(6, 0, "AM", to_hh, to_mm, to_ampm);
-            Console.WriteLine("X2: " + x2.ToString());
-            TimeSpan nh = x1 - x2;
-            
+            DateTime end_night = GetDateTime(6, 0, "AM").AddDays(1);
+            double nh = GetNightHours(ti, to, start_night, end_night);
             String q = @"
                         UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}', `hours`='{3}', `overtime`='{4}', `night`='{5}' WHERE `AtID`='{0}';
                         ";
-            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"), overtime.ToString(@"hh\:mm"), nh.ToString(@"hh\:mm"));
+            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"), overtime.ToString(@"hh\:mm"), nh);
             SQLTools.ExecuteNonQuery(q);
+        }
+
+        public static double GetNightHours(DateTime actuals, DateTime actuale, DateTime ns, DateTime ne)
+        {
+            Console.WriteLine("actuals > actuale " + (actuals >= actuale));
+            if (actuals >= actuale)
+            {
+                actuale = actuale.AddDays(1);
+                Console.WriteLine(actuale.ToString());
+            }
+            // Assume that datetime is already *next-dayed*
+            DateTime maxStart = actuals > ns ? actuals : ns;
+            DateTime minEnd = actuale < ne ? actuale : ne;
+            TimeSpan interval = minEnd - maxStart;
+            double returnValue = interval > TimeSpan.FromSeconds(0) ? interval.TotalHours : 0;
+            return returnValue;
         }
 
 
