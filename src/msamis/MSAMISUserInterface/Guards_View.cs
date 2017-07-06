@@ -269,6 +269,14 @@ namespace MSAMISUserInterface {
         private void label8_Click(object sender, EventArgs e) {
 
         }
+
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = dark;
+        }
     }
 
 

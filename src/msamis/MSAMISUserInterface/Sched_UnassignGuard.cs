@@ -23,8 +23,13 @@ namespace MSAMISUserInterface {
         #region Form Properties
         private void Sched_DismissGuard_Load(object sender, EventArgs e) {
             LoadPage();
+            this.Location = new Point(this.Location.X + 175, this.Location.Y);
             FadeTMR.Start();
-            IncidentTypeCMBX.SelectedIndex = 1; 
+            IncidentTypeCMBX.SelectedIndex = 1;
+            GuardsPNL.Show();
+            ReportPNL.Hide();
+            GuardsLBL.ForeColor = dark;
+            ReportLBL.ForeColor = light;
         }
         
         private void LoadPage() {
@@ -64,40 +69,45 @@ namespace MSAMISUserInterface {
             if (GuardsGRD.RowCount == 0) {
                 rylui.RylMessageBox.ShowDialog("There are no guards to be dismissed \nThis request will be canceled", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
+                GuardsPNL.Show();
+                ReportPNL.Hide();
+                GuardsLBL.ForeColor = dark;
+                ReportLBL.ForeColor = light;
                 ret = false;
             }
+
             if (LocationBX.Text.Equals("")) {
-                MainPNL.AutoScrollPosition = new Point(MainPNL.Location.X, 600);
+                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(LocationTLTP, "Event Location", "Where did this incident happen?", LocationBX);
                 ret = false;
             }
             if (DescriptionBX.Text.Equals("")) {
-                MainPNL.AutoScrollPosition = new Point(MainPNL.Location.X, 600);
+                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(DescriptionTLTP, "Event Description", "What happened in this incident?", DescriptionBX);
                 ret = false;
             }
             if (CheckNameNotRequired(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX, Dependent1RBX)) {
-                MainPNL.AutoScrollPosition = new Point(MainPNL.Location.X, 600);
+                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep1Warn, "Dependent's Name", "Please complete the fields", Dependent1FirstBX);
                 ret = false;
             }
             if (CheckNameNotRequired(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX, Dependent2RBX)) {
-                MainPNL.AutoScrollPosition = new Point(MainPNL.Location.X, 600);
+                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep2Warn, "Dependent's Name", "Please complete the fields", Dependent2FirstBX);
                ret = false;
             }
             if (CheckNameNotRequired(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX, Dependent3RBX)) {
-                MainPNL.AutoScrollPosition = new Point(MainPNL.Location.X, 600);
+                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep3Warn, "Dependent's Name", "Please complete the fields", Dependent3FirstBX);
                 ret = false;
             }
             if (CheckNameNotRequired(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX, Dependent4RBX)) {
-                MainPNL.AutoScrollPosition = new Point(MainPNL.Location.X, 600);
+                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep4Warn, "Dependent's Name", "Please complete the fields", Dependent4FirstBX);
                 ret = false;
             }
             if (CheckNameNotRequired(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX, Dependent5RBX)) {
-                MainPNL.AutoScrollPosition = new Point(MainPNL.Location.X, 600);
+                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep5Warn, "Dependent's Name", "Please complete the fields", Dependent5FirstBX);
                 ret = false;
             }
@@ -142,6 +152,39 @@ namespace MSAMISUserInterface {
                 reference.SCHEDLoadSidePNL();
                 this.Close();
             }
+        }
+        private Color dark = Color.FromArgb(53, 64, 82);
+        private Color light = Color.DarkGray;
+
+
+        private void ReportLBL_Click(object sender, EventArgs e) {
+            GuardsPNL.Hide();
+            ReportPNL.Show();
+            GuardsLBL.ForeColor = light;
+            ReportLBL.ForeColor = dark;
+        }
+
+        private void GuardsLBL_Click(object sender, EventArgs e) {
+            GuardsPNL.Show();
+            ReportPNL.Hide();
+            GuardsLBL.ForeColor = dark;
+            ReportLBL.ForeColor = light;
+        }
+
+        private void ReportLBL_MouseEnter(object sender, EventArgs e) {
+            ReportLBL.ForeColor = dark;
+        }
+
+        private void GuardsLBL_MouseEnter(object sender, EventArgs e) {
+            GuardsLBL.ForeColor = dark;
+        }
+
+        private void ReportLBL_MouseLeave(object sender, EventArgs e) {
+            if(!ReportPNL.Visible) ReportLBL.ForeColor = light;
+        }
+
+        private void GuardsLBL_MouseLeave(object sender, EventArgs e) {
+            if (!GuardsPNL.Visible) GuardsLBL.ForeColor = light;
         }
     }
 }

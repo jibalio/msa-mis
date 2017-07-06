@@ -70,6 +70,11 @@ namespace MSAMISUserInterface {
         }
 
         private void DaysGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+           
+
+        }
+
+        private void DaysGRD_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
             if (DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[DaysGRD.CurrentCell.ColumnIndex].ReadOnly == true) SendKeys.Send("{Tab}");
 
             float TimeIn = float.Parse(DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[2].Value.ToString()) + (float.Parse(DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[4].Value.ToString()) / 100);
@@ -86,7 +91,6 @@ namespace MSAMISUserInterface {
 
             if (TimeOut - TimeIn < 0) DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[10].Value = "Invalid";
             else DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[10].Value = TimeOut - TimeIn;
-
         }
     }
 }

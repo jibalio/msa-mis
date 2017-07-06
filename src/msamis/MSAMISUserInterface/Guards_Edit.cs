@@ -748,27 +748,38 @@ namespace MSAMISUserInterface {
                 ShowToolTipOnBX(PermAdWarn, "Permanent Address", "Please specify or complete the fields", PermStreetNoBX);
                 check = false;
             }
-            if (CheckName(MotherFirstBX, MotherMiddleBX, MotherLastBX)) {
-                ScrollDetailsPanelTo(0);
-                ShowToolTipOnBX(MotherWarn, "Mother's Name", "Please specify or complete the fields", MotherFirstBX);
-                check = false;
-            }
-            if (CheckName(FatherFirstBX, FatherMiddleBX, FatherLastBX)) {
-                ScrollDetailsPanelTo(0);
-                ShowToolTipOnBX(FatherWarn, "Father's Name", "Please specify or complete the fields", FatherFirstBX);
-                check = false;
-            }
-            if (CheckNameNotRequired(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX) && CVStatusBX.SelectedIndex > 0) {
-                ScrollDetailsPanelTo(0);
-                ShowToolTipOnBX(SpouseWarn, "Spouse's Name", "Please specify or complete the fields", SpouseFirstBX);
-                check = false;
-            }
             if (ReligionBX.Text.Equals("")) {
                 ScrollDetailsPanelTo(0);
                 ShowToolTipOnBX(ReligionWarn,"Religion", "Please specify religion", ReligionBX);
                 check = false;
             }
+            if (CellNoBX.Text.Equals("+63             .") && TellNoBX.Text.Equals("   -    .")) {
+                ScrollDetailsPanelTo(580);
+                ShowToolTipOnLBL(ContactWarn, "Contact Details", "Please specify at least one contact information", ContactLBL);
+                check = false;
+            }
+            if (EmergBX.Text.Equals("") || EmergencyNoBX.Text.Equals("")) {
+                ScrollDetailsPanelTo(800);
+                ShowToolTipOnLBL(EmergencyWarn, "Emergency Contact Information", "Please complete the fields", EmerLBL);
+                check = false;
+            }
             if (check) {
+                ChangePage(FamilyPNL, FamilyLBL);
+                if (CheckName(MotherFirstBX, MotherMiddleBX, MotherLastBX)) {
+                    ScrollDetailsPanelTo(0);
+                    ShowToolTipOnBX(MotherWarn, "Mother's Name", "Please specify or complete the fields", MotherFirstBX);
+                    check = false;
+                }
+                if (CheckName(FatherFirstBX, FatherMiddleBX, FatherLastBX)) {
+                    ScrollDetailsPanelTo(0);
+                    ShowToolTipOnBX(FatherWarn, "Father's Name", "Please specify or complete the fields", FatherFirstBX);
+                    check = false;
+                }
+                if (CheckNameNotRequired(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX) && CVStatusBX.SelectedIndex > 0) {
+                    ScrollDetailsPanelTo(0);
+                    ShowToolTipOnBX(SpouseWarn, "Spouse's Name", "Please specify or complete the fields", SpouseFirstBX);
+                    check = false;
+                }
                 if (CheckNameNotRequired(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX, Dependent1RBX)) {
                     ScrollDetailsPanelTo(350);
                     ShowToolTipOnBX(Dep1Warn, "Dependent's Name", "Please complete the fields", Dependent1FirstBX);
@@ -795,12 +806,8 @@ namespace MSAMISUserInterface {
                     check = false;
                 }
                 if (check) {
-                    if (CellNoBX.Text.Equals("+63             .") && TellNoBX.Text.Equals("   -    .")) {
-                        ScrollDetailsPanelTo(580);
-                        ShowToolTipOnLBL(ContactWarn, "Contact Details", "Please specify at least one contact information", ContactLBL);
-                        check = false;
-                    }
                     if (check) {
+                        ChangePage(WorkPNL, WorkLBL);
                         if (LicenseNoBX.Text.Equals("           .")) {
                             ScrollDetailsPanelTo(800);
                             ShowToolTipOnMBX(LicenseWarn, "License Details", "Please specify license number", LicenseNoBX);
@@ -829,11 +836,6 @@ namespace MSAMISUserInterface {
                         if (CourseBX.Text.Equals("") && EdAttBX.SelectedIndex == 4) {
                             ScrollDetailsPanelTo(800);
                             ShowToolTipOnBX(CourseWarn, "Course Details", "Please specify the course in college", CourseBX);
-                            check = false;
-                        }
-                        if (EmergBX.Text.Equals("") || EmergencyNoBX.Text.Equals("")) {
-                            ScrollDetailsPanelTo(800);
-                            ShowToolTipOnLBL(EmergencyWarn, "Emergency Contact Information", "Please complete the fields", EmerLBL);
                             check = false;
                         }
                     }
@@ -940,6 +942,14 @@ namespace MSAMISUserInterface {
 
         private void WorkLBL_Click(object sender, EventArgs e) {
             ChangePage(WorkPNL, WorkLBL);
+        }
+
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = dark;
         }
     }
 }
