@@ -14,8 +14,6 @@ namespace MSAMISUserInterface {
         public int AID { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
-        String GName;
-        String Client;
         Attendance A;
 
         public Sched_ViewDutyDetails() {

@@ -182,7 +182,7 @@ namespace MSAMISUserInterface {
         }
 
         private void MainForm_LocationChanged(object sender, EventArgs e) {
-            newFormLocation = new Point(this.Location.X + 277, this.Location.Y + 33);
+            newFormLocation = new Point(this.Location.X + 50, this.Location.Y + 66);
         }
         #endregion
 
@@ -207,7 +207,7 @@ namespace MSAMISUserInterface {
         }
         private void ChangePage(SplitContainer newP, Button newBTN) {
             //Generic Function to switch the panels that are shown and hidden
-
+            ExtraQueryParams = "";
             DashboardToBeMinimized = true;
             DashboardTMR.Start();
             newP.Show();
