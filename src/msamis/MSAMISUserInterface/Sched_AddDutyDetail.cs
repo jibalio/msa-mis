@@ -16,8 +16,6 @@ namespace MSAMISUserInterface {
         public int AID { get; set; }
         public int DID { get; set; }
         public Sched_ViewDutyDetails refer { get; set; }
-        public String Name;
-        public String Client;
 
         private bool[] DutyDays = new bool[7];
 
@@ -108,9 +106,6 @@ namespace MSAMISUserInterface {
                 if (temp[5]) SaBTN.PerformClick();
                 if (temp[6]) SuBTN.PerformClick();
             }
-            
-            NameLBL.Text = Name;
-            ClientLBL.Text = Client;
         }
 
 

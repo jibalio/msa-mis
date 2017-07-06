@@ -15,8 +15,6 @@ namespace MSAMISUserInterface {
         public MySqlConnection conn;
         public String button = "ADD";
         public int AID { get; set; }
-        public String GName;
-        public String Client;
         Attendance A;
 
         #region Form Properties
@@ -41,8 +39,6 @@ namespace MSAMISUserInterface {
 
         private void LoadPage() {
             A  = new Attendance(AID);
-            NameLBL.Text = Name;
-            ClientLBL.Text = Client;
             RefreshData();
         }
         private bool DataValidation() {

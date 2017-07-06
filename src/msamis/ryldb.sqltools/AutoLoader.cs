@@ -17,6 +17,7 @@ namespace MSAMISUserInterface {
         static String msadb = "../../../../../sql/msadb.sql";
         static String msadbarchive = "../../../../../sql/msadbarchive.sql";
         static String checksumfile = "../../../../../sql/checksum.txt";
+
         public static string checkMD5(string filename) {
             using (var md5 = MD5.Create()) {
                 using (var stream = File.OpenRead(filename)) {

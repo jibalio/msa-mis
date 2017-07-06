@@ -40,7 +40,7 @@ namespace MSAMISUserInterface {
 
         private void MainForm_Load(object sender, EventArgs e) {
             //Get the relative position after loading
-            newFormLocation = new Point(this.Location.X + 277, this.Location.Y + 33);
+            newFormLocation = new Point(this.Location.X+50, this.Location.Y + 66);
 
             //Initiate the methods that updates the app
             initiateForm();
@@ -1165,13 +1165,8 @@ namespace MSAMISUserInterface {
             return dt.Rows.Count;
         }
         private DataTable GetClientList() {
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand("SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno FROM client" + ExtraQueryParams, conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            conn.Close();
-            return dt;
+            String q = "SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno FROM client" + ExtraQueryParams;
+            return SQLTools.ExecuteQuery(q);
         }
     }
 }

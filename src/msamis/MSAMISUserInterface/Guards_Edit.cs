@@ -21,9 +21,14 @@ namespace MSAMISUserInterface {
         MySqlCommand comm;
         MySqlDataAdapter adp = new MySqlDataAdapter();
         DataTable dt = new DataTable();
-
-        private int status;
+        
         private int gender;
+
+        private Color dark = Color.FromArgb(53, 64, 82);
+        private Color light = Color.DarkGray;
+
+        private Panel PNL;
+        private Label LBL;
 
         public Guards_Edit() {
             InitializeComponent();
@@ -48,17 +53,13 @@ namespace MSAMISUserInterface {
         private void Guards_EditEmployees_Load(object sender, EventArgs e) {
             GEditDetailsBTN.Text = button;
             if (button.Equals("UPDATE")) {
-                ActiveStatusRDBTN.Enabled = false;
-                InactiveStatusRDBTN.Enabled = false;
-                ActiveStatusRDBTN.Checked = false;
-                InactiveStatusRDBTN.Checked = false;
-                PopulateEdit(); }
-            else {
-                ActiveStatusRDBTN.Enabled = false;
-                InactiveStatusRDBTN.Enabled = false;
-                InactiveStatusRDBTN.Checked = true;
+                PopulateEdit();
+                AddLBL.Text = "Edit details";
             }
             FadeTMR.Start();
+            PNL = PersonalPNL;
+            LBL = PersonalLBL;
+            PersonalPNL.Visible = true;
             BirthdateBX.MaxDate = new DateTime(DateTime.Now.Year - 18, DateTime.Now.Month, DateTime.Now.Day);
         }
         private void Guards_EditEmployees_FormClosing(object sender, FormClosingEventArgs e) {
@@ -246,12 +247,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Other Textbox Props While Editing
-        private void ActiveStatusRDBTN_CheckedChanged(object sender, EventArgs e) {
-            if (ActiveStatusRDBTN.Checked) status = 1;
-        }
-        private void InactiveStatusRDBTN_CheckedChanged(object sender, EventArgs e) {
-            if (InactiveStatusRDBTN.Checked) status = 2;
-        }
         private void MaleRDBTN_CheckedChanged(object sender, EventArgs e) {
             if (MaleRDBTN.Checked) gender = 1;
         }
@@ -430,8 +425,8 @@ namespace MSAMISUserInterface {
                 LastNameBX.Text = dt.Rows[0]["ln"].ToString();
                 FirstNameBX.Text = dt.Rows[0]["fn"].ToString();
                 MiddleNameBX.Text = dt.Rows[0]["mn"].ToString();
-                if (dt.Rows[0]["gstatus"].ToString().Equals("1")) ActiveStatusRDBTN.Checked = true;
-                else InactiveStatusRDBTN.Checked = true;
+                if (dt.Rows[0]["gstatus"].ToString().Equals("1")) StatusLBL.Text = "Status: Active";
+                else StatusLBL.Text = "Status: Inactive";
                 String[] date = dt.Rows[0]["Bdate"].ToString().Split('/');
                 BirthdateBX.Value = new DateTime(int.Parse(date[2]), int.Parse(date[0]), int.Parse(date[1]));
                 if (dt.Rows[0]["gender"].ToString().Equals("1")) MaleRDBTN.Checked = true;
@@ -455,8 +450,6 @@ namespace MSAMISUserInterface {
                 EmergencyNoBX.Text = dt.Rows[0]["EmergencyNo"].ToString();
             }
             catch (Exception ee) {
-                MessageBox.Show(ee.Message);
-                conn.Close();
             }
             try {
                 GetResultQuery("SELECT * FROM address WHERE GID=" + GID + " ORDER BY Atype ASC");
@@ -478,8 +471,6 @@ namespace MSAMISUserInterface {
                 conn.Close();
             }
             catch (Exception ee) {
-                conn.Close();
-                MessageBox.Show(ee.Message);
             }
             try {
                 GetResultQuery("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
@@ -554,7 +545,7 @@ namespace MSAMISUserInterface {
                 if (GEditDetailsBTN.Text.Equals("ADD")) {
                     try {
                         conn.Open();
-                        comm = new MySqlCommand("INSERT INTO Guards(FN, MN, LN, GStatus, BDate, Gender, Height, Weight, Religion, CivilStatus, CellNo, TelNo, LicenseNo, SSS, TIN, PhilHealth, PrevAgency, PrevAss, EdAtt, Course, MilitaryTrainings, EmergencyContact, EmergencyNo) VALUES ('" + FirstNameBX.Text + "','" + MiddleNameBX.Text + "','" + LastNameBX.Text + "','" + status + "','" + BirthdateBX.Value.Month + "/" + BirthdateBX.Value.Day + "/" + BirthdateBX.Value.Year + "','" + gender + "','" + HeightBX.Text + "','" + WeightBX.Text + "','" + ReligionBX.Text + "','" + CVStatusBX.SelectedIndex + "','" + CellNoBX.Text + "','" + TellNoBX.Text + "','" + LicenseNoBX.Text + "','" + SSSNoBX.Text + "','" + TINNoBX.Text + "','" + PhilHealthBX.Text + "','" + PrevAgencyBX.Text + "','" + PrevAssBX.Text + "','" + EdAttBX.SelectedIndex + "','" + CourseBX.Text + "','" + MilTrainBX.Text + "','" + EmergBX.Text + "','" + EmergencyNoBX.Text + "')", conn);
+                        comm = new MySqlCommand("INSERT INTO Guards(FN, MN, LN, GStatus, BDate, Gender, Height, Weight, Religion, CivilStatus, CellNo, TelNo, LicenseNo, SSS, TIN, PhilHealth, PrevAgency, PrevAss, EdAtt, Course, MilitaryTrainings, EmergencyContact, EmergencyNo) VALUES ('" + FirstNameBX.Text + "','" + MiddleNameBX.Text + "','" + LastNameBX.Text + "','" + 0 + "','" + BirthdateBX.Value.Month + "/" + BirthdateBX.Value.Day + "/" + BirthdateBX.Value.Year + "','" + gender + "','" + HeightBX.Text + "','" + WeightBX.Text + "','" + ReligionBX.Text + "','" + CVStatusBX.SelectedIndex + "','" + CellNoBX.Text + "','" + TellNoBX.Text + "','" + LicenseNoBX.Text + "','" + SSSNoBX.Text + "','" + TINNoBX.Text + "','" + PhilHealthBX.Text + "','" + PrevAgencyBX.Text + "','" + PrevAssBX.Text + "','" + EdAttBX.SelectedIndex + "','" + CourseBX.Text + "','" + MilTrainBX.Text + "','" + EmergBX.Text + "','" + EmergencyNoBX.Text + "')", conn);
                         comm.ExecuteNonQuery();
                         conn.Close();
                     }
@@ -617,7 +608,7 @@ namespace MSAMISUserInterface {
                 else if (GEditDetailsBTN.Text.Equals("UPDATE")) {
                     try {
                         conn.Open();
-                        MySqlCommand comm = new MySqlCommand("UPDATE Guards SET FN = '" + FirstNameBX.Text + "', MN = '" + MiddleNameBX.Text + "', LN = '" + LastNameBX.Text + "',  GStatus = '" + status + "', BDate = '" + BirthdateBX.Value.Month + "/" + BirthdateBX.Value.Day + "/" + BirthdateBX.Value.Year + "', Gender =  '" + gender + "', Height = '" + HeightBX.Text + "', Weight = '" + WeightBX.Text + "', Religion = '" + ReligionBX.Text + "', CivilStatus = '" + CVStatusBX.SelectedIndex + "', CellNo = '" + CellNoBX.Text + "', TelNo = '" + TellNoBX.Text + "', LicenseNo = '" + LicenseNoBX.Text + "', SSS = '" + SSSNoBX.Text + "', TIN = '" + TINNoBX.Text + "', PhilHealth = '" + PhilHealthBX.Text + "', PrevAgency = '" + PrevAgencyBX.Text + "', PrevAss = '" + PrevAssBX.Text + "', EdAtt = '" + EdAttBX.SelectedIndex + "', Course = '" + CourseBX.Text + "', MilitaryTrainings = '" + MilTrainBX.Text + "', EmergencyContact = '" + EmergBX.Text + "', EmergencyNo = '" + EmergencyNoBX.Text + "' WHERE GID=" + GID, conn);
+                        MySqlCommand comm = new MySqlCommand("UPDATE Guards SET FN = '" + FirstNameBX.Text + "', MN = '" + MiddleNameBX.Text + "', LN = '" + LastNameBX.Text + "', BDate = '" + BirthdateBX.Value.Month + "/" + BirthdateBX.Value.Day + "/" + BirthdateBX.Value.Year + "', Gender =  '" + gender + "', Height = '" + HeightBX.Text + "', Weight = '" + WeightBX.Text + "', Religion = '" + ReligionBX.Text + "', CivilStatus = '" + CVStatusBX.SelectedIndex + "', CellNo = '" + CellNoBX.Text + "', TelNo = '" + TellNoBX.Text + "', LicenseNo = '" + LicenseNoBX.Text + "', SSS = '" + SSSNoBX.Text + "', TIN = '" + TINNoBX.Text + "', PhilHealth = '" + PhilHealthBX.Text + "', PrevAgency = '" + PrevAgencyBX.Text + "', PrevAss = '" + PrevAssBX.Text + "', EdAtt = '" + EdAttBX.SelectedIndex + "', Course = '" + CourseBX.Text + "', MilitaryTrainings = '" + MilTrainBX.Text + "', EmergencyContact = '" + EmergBX.Text + "', EmergencyNo = '" + EmergencyNoBX.Text + "' WHERE GID=" + GID, conn);
                         comm.ExecuteNonQuery();
                         conn.Close();
                     }
@@ -852,7 +843,7 @@ namespace MSAMISUserInterface {
         }
 
         private void ScrollDetailsPanelTo(int y) {
-            DetailsPNL.AutoScrollPosition = new Point(DetailsPNL.AutoScrollPosition.X, y);
+            PersonalPNL.AutoScrollPosition = new Point(PersonalPNL.AutoScrollPosition.X, y);
         }
 
         private void ShowToolTipOnLBL(ToolTip ttp, String title, String message, Label lb) {
@@ -902,6 +893,53 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+        private void ChangePage(Panel NewP, Label newB) {
+            PNL.Visible = false;
+            LBL.ForeColor = light;
 
+            NewP.Visible = true;
+            newB.ForeColor = dark;
+
+            PNL = NewP;
+            LBL = newB;
+        }
+
+
+        private void FamilyLBL_MouseEnter(object sender, EventArgs e) {
+            FamilyLBL.ForeColor = dark;
+        }
+
+        private void WorkLBL_MouseEnter(object sender, EventArgs e) {
+            WorkLBL.ForeColor = dark;
+        }
+
+        private void PersonalLBL_MouseEnter(object sender, EventArgs e) {
+            PersonalLBL.ForeColor = dark;
+        }
+
+        private void FamilyLBL_MouseLeave(object sender, EventArgs e) {
+            if (LBL != FamilyLBL) FamilyLBL.ForeColor = light;
+        }
+
+        private void WorkLBL_MouseLeave(object sender, EventArgs e) {
+            if (LBL != WorkLBL) WorkLBL.ForeColor = light;
+        }
+
+
+        private void PersonalLBL_MouseLeave(object sender, EventArgs e) {
+            if (LBL != PersonalLBL) PersonalLBL.ForeColor = light;
+        }
+        
+        private void PersonalLBL_Click(object sender, EventArgs e) {
+            ChangePage(PersonalPNL, PersonalLBL);
+        }
+
+        private void FamilyLBL_Click(object sender, EventArgs e) {
+            ChangePage(FamilyPNL, FamilyLBL);
+        }
+
+        private void WorkLBL_Click(object sender, EventArgs e) {
+            ChangePage(WorkPNL, WorkLBL);
+        }
     }
 }

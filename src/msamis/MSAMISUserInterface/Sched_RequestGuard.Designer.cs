@@ -39,29 +39,36 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.NeededBX = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.ContractStartDTPKR = new System.Windows.Forms.DateTimePicker();
             this.BdayLBL = new System.Windows.Forms.Label();
             this.ContractEndDTPKR = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.ClientGRD = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.RequestLBL = new System.Windows.Forms.Label();
+            this.PickLBL = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.ClientSearchBX = new System.Windows.Forms.TextBox();
             this.ClientSearchLine = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.NeededTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.LocationTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.NeededBX = new System.Windows.Forms.NumericUpDown();
+            this.RequestPNL = new System.Windows.Forms.Panel();
+            this.PickPNL = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ClientGRD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NeededBX)).BeginInit();
+            this.RequestPNL.SuspendLayout();
+            this.PickPNL.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // AddBTN
             // 
             this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
             this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddBTN.FlatAppearance.BorderSize = 0;
@@ -69,7 +76,7 @@
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(283, 600);
+            this.AddBTN.Location = new System.Drawing.Point(222, 531);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(78, 32);
             this.AddBTN.TabIndex = 71;
@@ -80,8 +87,7 @@
             // CloseBTN
             // 
             this.CloseBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.CloseBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseBTN.BackgroundImage")));
+            this.CloseBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.CloseBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseBTN.FlatAppearance.BorderSize = 0;
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
@@ -89,11 +95,11 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(366, 600);
+            this.CloseBTN.Location = new System.Drawing.Point(514, 0);
             this.CloseBTN.Name = "CloseBTN";
-            this.CloseBTN.Size = new System.Drawing.Size(78, 32);
+            this.CloseBTN.Size = new System.Drawing.Size(34, 32);
             this.CloseBTN.TabIndex = 72;
-            this.CloseBTN.Text = "CANCEL";
+            this.CloseBTN.Text = "X";
             this.CloseBTN.UseVisualStyleBackColor = false;
             this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
             // 
@@ -103,7 +109,7 @@
             this.AssBrgyBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AssBrgyBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssBrgyBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AssBrgyBX.Location = new System.Drawing.Point(422, 429);
+            this.AssBrgyBX.Location = new System.Drawing.Point(343, 36);
             this.AssBrgyBX.Name = "AssBrgyBX";
             this.AssBrgyBX.Size = new System.Drawing.Size(77, 18);
             this.AssBrgyBX.TabIndex = 82;
@@ -116,7 +122,7 @@
             this.AssCityBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AssCityBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssCityBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AssCityBX.Location = new System.Drawing.Point(498, 429);
+            this.AssCityBX.Location = new System.Drawing.Point(419, 36);
             this.AssCityBX.Name = "AssCityBX";
             this.AssCityBX.Size = new System.Drawing.Size(77, 18);
             this.AssCityBX.TabIndex = 83;
@@ -129,7 +135,7 @@
             this.AssStreetNameBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AssStreetNameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssStreetNameBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AssStreetNameBX.Location = new System.Drawing.Point(320, 429);
+            this.AssStreetNameBX.Location = new System.Drawing.Point(241, 36);
             this.AssStreetNameBX.Name = "AssStreetNameBX";
             this.AssStreetNameBX.Size = new System.Drawing.Size(90, 18);
             this.AssStreetNameBX.TabIndex = 81;
@@ -142,7 +148,7 @@
             this.AssStreetNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AssStreetNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssStreetNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AssStreetNoBX.Location = new System.Drawing.Point(279, 429);
+            this.AssStreetNoBX.Location = new System.Drawing.Point(200, 36);
             this.AssStreetNoBX.Name = "AssStreetNoBX";
             this.AssStreetNoBX.Size = new System.Drawing.Size(38, 18);
             this.AssStreetNoBX.TabIndex = 80;
@@ -155,7 +161,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(128, 428);
+            this.label7.Location = new System.Drawing.Point(41, 35);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(138, 19);
@@ -167,7 +173,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.ForeColor = System.Drawing.Color.LightGray;
-            this.label1.Location = new System.Drawing.Point(274, 438);
+            this.label1.Location = new System.Drawing.Point(195, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 85;
@@ -178,7 +184,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.ForeColor = System.Drawing.Color.LightGray;
-            this.label4.Location = new System.Drawing.Point(317, 438);
+            this.label4.Location = new System.Drawing.Point(238, 45);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 13);
             this.label4.TabIndex = 86;
@@ -189,7 +195,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.ForeColor = System.Drawing.Color.LightGray;
-            this.label5.Location = new System.Drawing.Point(492, 438);
+            this.label5.Location = new System.Drawing.Point(413, 45);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 87;
@@ -200,23 +206,11 @@
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.White;
             this.label21.ForeColor = System.Drawing.Color.LightGray;
-            this.label21.Location = new System.Drawing.Point(415, 438);
+            this.label21.Location = new System.Drawing.Point(336, 45);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(79, 13);
             this.label21.TabIndex = 88;
             this.label21.Text = "____________";
-            // 
-            // NeededBX
-            // 
-            this.NeededBX.BackColor = System.Drawing.Color.White;
-            this.NeededBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NeededBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.NeededBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NeededBX.Location = new System.Drawing.Point(405, 503);
-            this.NeededBX.Name = "NeededBX";
-            this.NeededBX.Size = new System.Drawing.Size(77, 18);
-            this.NeededBX.TabIndex = 98;
-            this.NeededBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NeededBX_KeyPress);
             // 
             // label9
             // 
@@ -224,30 +218,19 @@
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(220, 503);
+            this.label9.Location = new System.Drawing.Point(41, 169);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(176, 19);
+            this.label9.Size = new System.Drawing.Size(106, 19);
             this.label9.TabIndex = 97;
-            this.label9.Text = "Number of Guards Needed:";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.White;
-            this.label34.ForeColor = System.Drawing.Color.LightGray;
-            this.label34.Location = new System.Drawing.Point(403, 512);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(79, 13);
-            this.label34.TabIndex = 99;
-            this.label34.Text = "____________";
+            this.label9.Text = "Guards Needed:";
             // 
             // ContractStartDTPKR
             // 
             this.ContractStartDTPKR.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ContractStartDTPKR.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContractStartDTPKR.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ContractStartDTPKR.Location = new System.Drawing.Point(242, 462);
+            this.ContractStartDTPKR.Location = new System.Drawing.Point(198, 77);
             this.ContractStartDTPKR.Name = "ContractStartDTPKR";
             this.ContractStartDTPKR.Size = new System.Drawing.Size(101, 25);
             this.ContractStartDTPKR.TabIndex = 100;
@@ -258,7 +241,7 @@
             this.BdayLBL.AutoSize = true;
             this.BdayLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.BdayLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.BdayLBL.Location = new System.Drawing.Point(138, 465);
+            this.BdayLBL.Location = new System.Drawing.Point(41, 80);
             this.BdayLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BdayLBL.Name = "BdayLBL";
             this.BdayLBL.Size = new System.Drawing.Size(94, 19);
@@ -270,7 +253,7 @@
             this.ContractEndDTPKR.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ContractEndDTPKR.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContractEndDTPKR.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ContractEndDTPKR.Location = new System.Drawing.Point(459, 462);
+            this.ContractEndDTPKR.Location = new System.Drawing.Point(198, 122);
             this.ContractEndDTPKR.Name = "ContractEndDTPKR";
             this.ContractEndDTPKR.Size = new System.Drawing.Size(101, 25);
             this.ContractEndDTPKR.TabIndex = 102;
@@ -280,7 +263,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(361, 465);
+            this.label2.Location = new System.Drawing.Point(41, 126);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 19);
@@ -316,7 +299,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ClientGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClientGRD.EnableHeadersVisualStyles = false;
-            this.ClientGRD.Location = new System.Drawing.Point(153, 113);
+            this.ClientGRD.Location = new System.Drawing.Point(89, 40);
             this.ClientGRD.MultiSelect = false;
             this.ClientGRD.Name = "ClientGRD";
             this.ClientGRD.ReadOnly = true;
@@ -330,33 +313,39 @@
             this.ClientGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ClientGRD.RowHeadersVisible = false;
             this.ClientGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ClientGRD.Size = new System.Drawing.Size(567, 248);
+            this.ClientGRD.Size = new System.Drawing.Size(437, 303);
             this.ClientGRD.TabIndex = 104;
             this.ClientGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientGRD_CellEnter);
             // 
-            // label6
+            // RequestLBL
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(290, 380);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 21);
-            this.label6.TabIndex = 105;
-            this.label6.Text = "REQUEST DETAILS";
+            this.RequestLBL.AutoSize = true;
+            this.RequestLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.RequestLBL.ForeColor = System.Drawing.Color.DarkGray;
+            this.RequestLBL.Location = new System.Drawing.Point(288, 131);
+            this.RequestLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RequestLBL.Name = "RequestLBL";
+            this.RequestLBL.Size = new System.Drawing.Size(144, 25);
+            this.RequestLBL.TabIndex = 105;
+            this.RequestLBL.Text = "Request Details";
+            this.RequestLBL.Click += new System.EventHandler(this.RequestLBL_Click);
+            this.RequestLBL.MouseEnter += new System.EventHandler(this.RequestLBL_MouseEnter);
+            this.RequestLBL.MouseLeave += new System.EventHandler(this.RequestLBL_MouseLeave);
             // 
-            // label3
+            // PickLBL
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(302, 46);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 21);
-            this.label3.TabIndex = 106;
-            this.label3.Text = "PICK A CLIENT";
+            this.PickLBL.AutoSize = true;
+            this.PickLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.PickLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PickLBL.Location = new System.Drawing.Point(135, 131);
+            this.PickLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PickLBL.Name = "PickLBL";
+            this.PickLBL.Size = new System.Drawing.Size(114, 25);
+            this.PickLBL.TabIndex = 106;
+            this.PickLBL.Text = "Pick a client";
+            this.PickLBL.Click += new System.EventHandler(this.PickLBL_Click);
+            this.PickLBL.MouseEnter += new System.EventHandler(this.PickLBL_MouseEnter);
+            this.PickLBL.MouseLeave += new System.EventHandler(this.PickLBL_MouseLeave);
             // 
             // FadeTMR
             // 
@@ -368,7 +357,7 @@
             this.ClientSearchBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ClientSearchBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSearchBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ClientSearchBX.Location = new System.Drawing.Point(258, 79);
+            this.ClientSearchBX.Location = new System.Drawing.Point(142, 4);
             this.ClientSearchBX.Name = "ClientSearchBX";
             this.ClientSearchBX.Size = new System.Drawing.Size(199, 18);
             this.ClientSearchBX.TabIndex = 107;
@@ -382,7 +371,7 @@
             this.ClientSearchLine.AutoSize = true;
             this.ClientSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ClientSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.ClientSearchLine.Location = new System.Drawing.Point(259, 84);
+            this.ClientSearchLine.Location = new System.Drawing.Point(143, 9);
             this.ClientSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ClientSearchLine.Name = "ClientSearchLine";
             this.ClientSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -404,36 +393,83 @@
             this.LocationTLTP.ReshowDelay = 100;
             this.LocationTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(129, 37);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(305, 45);
+            this.label8.TabIndex = 109;
+            this.label8.Text = "Request for guards";
+            // 
+            // NeededBX
+            // 
+            this.NeededBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NeededBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.NeededBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NeededBX.Location = new System.Drawing.Point(199, 169);
+            this.NeededBX.Name = "NeededBX";
+            this.NeededBX.Size = new System.Drawing.Size(102, 21);
+            this.NeededBX.TabIndex = 110;
+            // 
+            // RequestPNL
+            // 
+            this.RequestPNL.Controls.Add(this.label7);
+            this.RequestPNL.Controls.Add(this.NeededBX);
+            this.RequestPNL.Controls.Add(this.AssStreetNoBX);
+            this.RequestPNL.Controls.Add(this.AssStreetNameBX);
+            this.RequestPNL.Controls.Add(this.AssCityBX);
+            this.RequestPNL.Controls.Add(this.AssBrgyBX);
+            this.RequestPNL.Controls.Add(this.label9);
+            this.RequestPNL.Controls.Add(this.ContractEndDTPKR);
+            this.RequestPNL.Controls.Add(this.BdayLBL);
+            this.RequestPNL.Controls.Add(this.label2);
+            this.RequestPNL.Controls.Add(this.ContractStartDTPKR);
+            this.RequestPNL.Controls.Add(this.label21);
+            this.RequestPNL.Controls.Add(this.label5);
+            this.RequestPNL.Controls.Add(this.label4);
+            this.RequestPNL.Controls.Add(this.label1);
+            this.RequestPNL.Location = new System.Drawing.Point(22, 170);
+            this.RequestPNL.Name = "RequestPNL";
+            this.RequestPNL.Size = new System.Drawing.Size(526, 343);
+            this.RequestPNL.TabIndex = 113;
+            // 
+            // PickPNL
+            // 
+            this.PickPNL.Controls.Add(this.ClientGRD);
+            this.PickPNL.Controls.Add(this.ClientSearchBX);
+            this.PickPNL.Controls.Add(this.ClientSearchLine);
+            this.PickPNL.Location = new System.Drawing.Point(22, 170);
+            this.PickPNL.Name = "PickPNL";
+            this.PickPNL.Size = new System.Drawing.Size(526, 343);
+            this.PickPNL.TabIndex = 114;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.CloseBTN);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(554, 116);
+            this.panel3.TabIndex = 115;
+            // 
             // Sched_RequestGuard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(721, 666);
+            this.ClientSize = new System.Drawing.Size(548, 598);
             this.ControlBox = false;
-            this.Controls.Add(this.ClientSearchBX);
-            this.Controls.Add(this.ClientSearchLine);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.ClientGRD);
-            this.Controls.Add(this.ContractEndDTPKR);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.ContractStartDTPKR);
-            this.Controls.Add(this.BdayLBL);
-            this.Controls.Add(this.NeededBX);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label34);
-            this.Controls.Add(this.AssBrgyBX);
-            this.Controls.Add(this.AssCityBX);
-            this.Controls.Add(this.AssStreetNameBX);
-            this.Controls.Add(this.AssStreetNoBX);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label21);
+            this.Controls.Add(this.PickLBL);
+            this.Controls.Add(this.RequestLBL);
             this.Controls.Add(this.AddBTN);
-            this.Controls.Add(this.CloseBTN);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.RequestPNL);
+            this.Controls.Add(this.PickPNL);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_RequestGuard";
@@ -442,6 +478,13 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_RequestGuard_FormClosing);
             this.Load += new System.EventHandler(this.Sched_RequestGuard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ClientGRD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NeededBX)).EndInit();
+            this.RequestPNL.ResumeLayout(false);
+            this.RequestPNL.PerformLayout();
+            this.PickPNL.ResumeLayout(false);
+            this.PickPNL.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,21 +503,24 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox NeededBX;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.DateTimePicker ContractStartDTPKR;
         private System.Windows.Forms.Label BdayLBL;
         private System.Windows.Forms.DateTimePicker ContractEndDTPKR;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView ClientGRD;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label RequestLBL;
+        private System.Windows.Forms.Label PickLBL;
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.TextBox ClientSearchBX;
         private System.Windows.Forms.Label ClientSearchLine;
         private System.Windows.Forms.ToolTip ToolTip;
         private System.Windows.Forms.ToolTip NeededTLTP;
         private System.Windows.Forms.ToolTip LocationTLTP;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown NeededBX;
+        private System.Windows.Forms.Panel RequestPNL;
+        private System.Windows.Forms.Panel PickPNL;
+        private System.Windows.Forms.Panel panel3;
     }
 }

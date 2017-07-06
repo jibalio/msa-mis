@@ -26,15 +26,14 @@ namespace MSAMISUserInterface {
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
             FadeTMR.Start();
             A = new Attendance(AID);
-            DutyDaysPNL.Visible = false;
-            DutyDetailsPNL.Visible = true;
             RefreshData();
         }
 
         public void RefreshData() {
             DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
-            GName = NameLBL.Text = dt.Rows[0][2].ToString();
-            Client = ClientLBL.Text = dt.Rows[0][3].ToString();
+            NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0];
+            FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
+            ClientLBL.Text = dt.Rows[0][3].ToString();
             RefreshDutyDetails();
         }
 
@@ -80,9 +79,7 @@ namespace MSAMISUserInterface {
             view.refer = this;
             view.conn = this.conn;
             view.DID = this.DID;
-            view.Name = this.GName;
-            view.Client = this.Client;
-            view.Location = this.Location;
+            view.Location = new Point(this.Location.X + 330, this.Location.Y);
             view.ShowDialog();
         }
 
@@ -91,39 +88,9 @@ namespace MSAMISUserInterface {
             view.AID = this.AID;
             view.conn = this.conn;
             view.button = "UPDATE";
-            view.Name = this.GName;
-            view.Client = this.Client;
             view.reference = this.reference;
-            view.Location = this.Location;
+            view.Location = new Point(this.Location.X + 330, this.Location.Y);
             view.ShowDialog();
-        }
-
-        private void DutyDetailsLBL_Click(object sender, EventArgs e) {
-            DutyDaysPNL.Visible = false;
-            DutyDetailsPNL.Visible = true;
-            DutyDaysLBL.ForeColor = Color.Gray;
-        }
-
-        private void DutyDetailsLBL_MouseLeave(object sender, EventArgs e) {
-            if (DutyDetailsPNL.Visible == false) DutyDetailsLBL.ForeColor = Color.Gray;
-        }
-
-        private void DutyDaysLBL_MouseLeave(object sender, EventArgs e) {
-            if (DutyDaysPNL.Visible == false) DutyDaysLBL.ForeColor = Color.Gray;
-        }
-
-        private void DutyDaysLBL_MouseEnter(object sender, EventArgs e) {
-            DutyDaysLBL.ForeColor = Color.White;
-        }
-
-        private void DutyDetailsLBL_MouseEnter(object sender, EventArgs e) {
-            DutyDetailsLBL.ForeColor = Color.White;
-        }
-
-        private void DutyDaysLBL_Click(object sender, EventArgs e) {
-            DutyDaysPNL.Visible = true;
-            DutyDetailsPNL.Visible = false;
-            DutyDetailsLBL.ForeColor = Color.Gray;
         }
 
         private void AddDutyDetailsBTN_Click(object sender, EventArgs e) {
@@ -131,10 +98,8 @@ namespace MSAMISUserInterface {
                 Sched_AddDutyDetail view = new Sched_AddDutyDetail();
                 view.conn = this.conn;
                 view.AID = this.AID;
-                view.Name = this.GName;
                 view.refer = this;
-                view.Client = this.Client;
-                view.Location = this.Location;
+                view.Location = new Point (this.Location.X + 330, this.Location.Y);
                 view.ShowDialog();
             }
             catch (Exception) { }
@@ -152,8 +117,12 @@ namespace MSAMISUserInterface {
 
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
 
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = this.BackColor;
         }
     }
 }

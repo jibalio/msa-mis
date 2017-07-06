@@ -42,16 +42,9 @@ namespace MSAMISUserInterface {
         private void Clients_Edit_Load(object sender, EventArgs e) {
             GEditDetailsBTN.Text = button;
             if (button.Equals("UPDATE")) {
-                ActiveStatusRDBTN.Enabled = true;
-                InactiveStatusRDBTN.Enabled = true;
-                ActiveStatusRDBTN.Checked = false;
-                InactiveStatusRDBTN.Checked = false;
+                AddLBL.Text = "Edit details";
                 PopulateEdit();
-            } else {
-                ActiveStatusRDBTN.Enabled = false;
-                InactiveStatusRDBTN.Enabled = false;
-                InactiveStatusRDBTN.Checked = true;
-            }
+            } else this.Location = new Point(this.Location.X + 150, this.Location.Y);
             FadeTMR.Start();
         }
         private void Clients_Edit_FormClosing(object sender, FormClosingEventArgs e) {
@@ -220,8 +213,7 @@ namespace MSAMISUserInterface {
                     }
                 } else {
                     try {
-                        int status;
-                        if (ActiveStatusRDBTN.Checked) status = 1; else status = 0;
+                        int status = 0;
 
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand("UPDATE Client SET Name = '" + NameBX.Text + "', ClientStreetNo = '" + LocationStreetNoBX.Text + "', ClientStreet = '" + LocationStreetNameBX.Text + "', ClientBrgy = '" + LocationBrgyBX.Text + "', ClientCity = '" + LocationCityBX.Text + "', ContactPerson = '" + ContactBX.Text + "', ContactNo = '" + ContactNoBX.Text + "', Manager = '" + ManagerBX.Text + "', CStatus = '" + status + "' WHERE CID =" + CID, conn);
@@ -250,9 +242,6 @@ namespace MSAMISUserInterface {
                 adp.Fill(dt);
 
                 NameBX.Text = dt.Rows[0]["name"].ToString();
-
-                if (dt.Rows[0]["cstatus"].ToString().Equals("1")) ActiveStatusRDBTN.Checked = true;
-                else InactiveStatusRDBTN.Checked = true;
 
                 LocationStreetNoBX.Text = dt.Rows[0]["ClientStreetNo"].ToString();
                 LocationBrgyBX.Text = dt.Rows[0]["ClientBrgy"].ToString();

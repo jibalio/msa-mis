@@ -25,6 +25,9 @@ namespace MSAMISUserInterface {
 
         private void Sched_RequestGuard_Load(object sender, EventArgs e) {
             LoadClients();
+            this.Location = new Point(this.Location.X + 175, this.Location.Y);
+            RequestPNL.Hide();
+            PickPNL.Show();
             FadeTMR.Start();
             ContractStartDTPKR.MinDate = DateTime.Now;
         }
@@ -33,7 +36,7 @@ namespace MSAMISUserInterface {
             ClientGRD.DataSource = Scheduling.GetClients();
 
             ClientGRD.Columns[0].Visible = false;
-            ClientGRD.Columns[1].Width = 410;
+            ClientGRD.Columns[1].Width = 300;
             ClientGRD.ColumnHeadersVisible = false;
             ClientGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
@@ -70,7 +73,7 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
-                Scheduling.AddAssignmentRequest(int.Parse(CID), AssStreetNoBX.Text, AssStreetNameBX.Text, AssBrgyBX.Text, AssCityBX.Text, ContractStartDTPKR.Value, ContractEndDTPKR.Value, int.Parse(NeededBX.Text));
+                Scheduling.AddAssignmentRequest(int.Parse(CID), AssStreetNoBX.Text, AssStreetNameBX.Text, AssBrgyBX.Text, AssCityBX.Text, ContractStartDTPKR.Value, ContractEndDTPKR.Value, (int)(NeededBX.Value));
                 reference.SCHEDLoadPage();
                 this.Close();
             }
@@ -125,7 +128,7 @@ namespace MSAMISUserInterface {
 
         private bool DataValidation() {
             bool ret = true;
-            if (NeededBX.Text.ToString().Equals("")) {
+            if (NeededBX.Value == 0) {;
                 NeededTLTP.ToolTipTitle = "Guards Needed";
                 NeededTLTP.Show("Please specify how many guards the client needs", NeededBX);
                 ret = false;
@@ -135,11 +138,50 @@ namespace MSAMISUserInterface {
                 LocationTLTP.Show( "Please specify or complete the fields", AssStreetNoBX);
                 ret = false;
             }
+            if (!ret) {
+                RequestPNL.Show();
+                PickPNL.Hide();
+                PickLBL.ForeColor = light;
+                RequestLBL.ForeColor = dark;
+            }
             return ret;
         }
         private bool CheckAdd(TextBox BrgyBX, TextBox CityBX, TextBox StreetNameBX, TextBox StreetNoBX) {
             return (BrgyBX.Text.Equals("Brgy") || CityBX.Text.Equals("City") || StreetNameBX.Text.Equals("Street Name") || StreetNoBX.Text.Equals("No.") ||
                 BrgyBX.Text.Equals("") || CityBX.Text.Equals("") || StreetNameBX.Text.Equals("") || StreetNoBX.Text.Equals(""));
+        }
+
+        private Color dark = Color.FromArgb(53, 64, 82);
+        private Color light = Color.DarkGray;
+
+        private void PickLBL_Click(object sender, EventArgs e) {
+            RequestPNL.Hide();
+            PickPNL.Show();
+            PickLBL.ForeColor = dark;
+            RequestLBL.ForeColor = light;
+        }
+
+        private void RequestLBL_Click(object sender, EventArgs e) {
+            RequestPNL.Show();
+            PickPNL.Hide();
+            PickLBL.ForeColor = light;
+            RequestLBL.ForeColor = dark;
+        }
+
+        private void PickLBL_MouseEnter(object sender, EventArgs e) {
+            PickLBL.ForeColor = dark;
+        }
+
+        private void RequestLBL_MouseEnter(object sender, EventArgs e) {
+            RequestLBL.ForeColor = dark;
+        }
+
+        private void RequestLBL_MouseLeave(object sender, EventArgs e) {
+            if(!RequestPNL.Visible) RequestLBL.ForeColor = light;
+        }
+
+        private void PickLBL_MouseLeave(object sender, EventArgs e) {
+            if (!PickPNL.Visible) PickLBL.ForeColor = light;
         }
     }
 }
