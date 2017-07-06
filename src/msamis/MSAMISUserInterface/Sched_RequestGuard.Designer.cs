@@ -58,6 +58,7 @@
             this.RequestPNL = new System.Windows.Forms.Panel();
             this.PickPNL = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.NextBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientGRD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NeededBX)).BeginInit();
             this.RequestPNL.SuspendLayout();
@@ -76,7 +77,7 @@
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(222, 531);
+            this.AddBTN.Location = new System.Drawing.Point(279, 540);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(78, 32);
             this.AddBTN.TabIndex = 71;
@@ -299,7 +300,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ClientGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClientGRD.EnableHeadersVisualStyles = false;
-            this.ClientGRD.Location = new System.Drawing.Point(89, 40);
+            this.ClientGRD.Location = new System.Drawing.Point(91, 41);
             this.ClientGRD.MultiSelect = false;
             this.ClientGRD.Name = "ClientGRD";
             this.ClientGRD.ReadOnly = true;
@@ -312,8 +313,9 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ClientGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ClientGRD.RowHeadersVisible = false;
+            this.ClientGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ClientGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ClientGRD.Size = new System.Drawing.Size(437, 303);
+            this.ClientGRD.Size = new System.Drawing.Size(434, 303);
             this.ClientGRD.TabIndex = 104;
             this.ClientGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientGRD_CellEnter);
             // 
@@ -357,7 +359,7 @@
             this.ClientSearchBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ClientSearchBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSearchBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ClientSearchBX.Location = new System.Drawing.Point(142, 4);
+            this.ClientSearchBX.Location = new System.Drawing.Point(151, 4);
             this.ClientSearchBX.Name = "ClientSearchBX";
             this.ClientSearchBX.Size = new System.Drawing.Size(199, 18);
             this.ClientSearchBX.TabIndex = 107;
@@ -371,7 +373,7 @@
             this.ClientSearchLine.AutoSize = true;
             this.ClientSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ClientSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.ClientSearchLine.Location = new System.Drawing.Point(143, 9);
+            this.ClientSearchLine.Location = new System.Drawing.Point(147, 9);
             this.ClientSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ClientSearchLine.Name = "ClientSearchLine";
             this.ClientSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -457,6 +459,25 @@
             this.panel3.Size = new System.Drawing.Size(554, 116);
             this.panel3.TabIndex = 115;
             // 
+            // NextBTN
+            // 
+            this.NextBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.NextBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NextBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NextBTN.BackgroundImage")));
+            this.NextBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.NextBTN.FlatAppearance.BorderSize = 0;
+            this.NextBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.NextBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NextBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NextBTN.ForeColor = System.Drawing.Color.White;
+            this.NextBTN.Location = new System.Drawing.Point(195, 540);
+            this.NextBTN.Name = "NextBTN";
+            this.NextBTN.Size = new System.Drawing.Size(78, 32);
+            this.NextBTN.TabIndex = 116;
+            this.NextBTN.Text = "NEXT";
+            this.NextBTN.UseVisualStyleBackColor = false;
+            this.NextBTN.Click += new System.EventHandler(this.NextBTN_Click);
+            // 
             // Sched_RequestGuard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,6 +485,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(548, 598);
             this.ControlBox = false;
+            this.Controls.Add(this.NextBTN);
             this.Controls.Add(this.PickLBL);
             this.Controls.Add(this.RequestLBL);
             this.Controls.Add(this.AddBTN);
@@ -522,5 +544,6 @@
         private System.Windows.Forms.Panel RequestPNL;
         private System.Windows.Forms.Panel PickPNL;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button NextBTN;
     }
 }

@@ -25,6 +25,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_ViewCashAdv_Load(object sender, EventArgs e) {
+            this.Location = new Point(this.Location.X + 175, this.Location.Y);
             FadeTMR.Start();
         }
 

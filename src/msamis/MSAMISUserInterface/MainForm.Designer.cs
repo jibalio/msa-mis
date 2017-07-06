@@ -198,7 +198,6 @@
             this.SCashAdvViewBTN = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.PBasicPayHistoryPage = new System.Windows.Forms.Panel();
-            this.PBasicPayAddBTN = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.PBasicPayEditBTN = new System.Windows.Forms.Button();
@@ -2310,7 +2309,7 @@
             this.PBasicPayBTN.Name = "PBasicPayBTN";
             this.PBasicPayBTN.Size = new System.Drawing.Size(172, 26);
             this.PBasicPayBTN.TabIndex = 20;
-            this.PBasicPayBTN.Text = "     basic pay history";
+            this.PBasicPayBTN.Text = "     basic pay";
             this.PBasicPayBTN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.PBasicPayBTN.UseVisualStyleBackColor = true;
             this.PBasicPayBTN.Click += new System.EventHandler(this.PAdjustBTN_Click);
@@ -2706,7 +2705,6 @@
             // 
             // PBasicPayHistoryPage
             // 
-            this.PBasicPayHistoryPage.Controls.Add(this.PBasicPayAddBTN);
             this.PBasicPayHistoryPage.Controls.Add(this.label30);
             this.PBasicPayHistoryPage.Controls.Add(this.comboBox1);
             this.PBasicPayHistoryPage.Controls.Add(this.PBasicPayEditBTN);
@@ -2716,25 +2714,6 @@
             this.PBasicPayHistoryPage.Size = new System.Drawing.Size(690, 640);
             this.PBasicPayHistoryPage.TabIndex = 15;
             this.PBasicPayHistoryPage.Visible = false;
-            // 
-            // PBasicPayAddBTN
-            // 
-            this.PBasicPayAddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PBasicPayAddBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.PBasicPayAddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PBasicPayAddBTN.FlatAppearance.BorderSize = 0;
-            this.PBasicPayAddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.PBasicPayAddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.PBasicPayAddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PBasicPayAddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PBasicPayAddBTN.ForeColor = System.Drawing.Color.White;
-            this.PBasicPayAddBTN.Location = new System.Drawing.Point(214, 600);
-            this.PBasicPayAddBTN.Name = "PBasicPayAddBTN";
-            this.PBasicPayAddBTN.Size = new System.Drawing.Size(126, 32);
-            this.PBasicPayAddBTN.TabIndex = 15;
-            this.PBasicPayAddBTN.Text = "ADD";
-            this.PBasicPayAddBTN.UseVisualStyleBackColor = false;
-            this.PBasicPayAddBTN.Click += new System.EventHandler(this.PBasicPayAddBTN_Click);
             // 
             // label30
             // 
@@ -2774,7 +2753,7 @@
             this.PBasicPayEditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PBasicPayEditBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PBasicPayEditBTN.ForeColor = System.Drawing.Color.White;
-            this.PBasicPayEditBTN.Location = new System.Drawing.Point(346, 600);
+            this.PBasicPayEditBTN.Location = new System.Drawing.Point(279, 600);
             this.PBasicPayEditBTN.Name = "PBasicPayEditBTN";
             this.PBasicPayEditBTN.Size = new System.Drawing.Size(126, 32);
             this.PBasicPayEditBTN.TabIndex = 6;
@@ -2892,7 +2871,7 @@
             this.PEmpListViewBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PEmpListViewBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PEmpListViewBTN.ForeColor = System.Drawing.Color.White;
-            this.PEmpListViewBTN.Location = new System.Drawing.Point(277, 601);
+            this.PEmpListViewBTN.Location = new System.Drawing.Point(279, 601);
             this.PEmpListViewBTN.Name = "PEmpListViewBTN";
             this.PEmpListViewBTN.Size = new System.Drawing.Size(126, 32);
             this.PEmpListViewBTN.TabIndex = 6;
@@ -4053,7 +4032,6 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button PBasicPayAddBTN;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.TextBox textBox3;
