@@ -468,8 +468,8 @@
             this.Controls.Add(this.RequestLBL);
             this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.RequestPNL);
             this.Controls.Add(this.PickPNL);
+            this.Controls.Add(this.RequestPNL);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_RequestGuard";

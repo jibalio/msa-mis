@@ -16,7 +16,7 @@ namespace MSAMISUserInterface {
         String FilterText = "Search or filter";
         String EmptyText = "";
         String ExtraQueryParams = "";
-        String CID = "0";
+        String CID = "-1";
 
         public Sched_RequestGuard() {
             InitializeComponent();
@@ -39,6 +39,7 @@ namespace MSAMISUserInterface {
             ClientGRD.Columns[1].Width = 300;
             ClientGRD.ColumnHeadersVisible = false;
             ClientGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ClientGRD.ClearSelection();
         }
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
             if (ClientSearchBX.Text == FilterText) {
@@ -73,9 +74,14 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
+
+                if (CID.Equals("-1")) {
+                    rylui.RylMessageBox.ShowDialog("Please select a client", "Request a guard", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else { 
                 Scheduling.AddAssignmentRequest(int.Parse(CID), AssStreetNoBX.Text, AssStreetNameBX.Text, AssBrgyBX.Text, AssCityBX.Text, ContractStartDTPKR.Value, ContractEndDTPKR.Value, (int)(NeededBX.Value));
                 reference.SCHEDLoadPage();
                 this.Close();
+                }
             }
         }
 
