@@ -35,9 +35,9 @@ namespace MSAMISUserInterface {
             RefreshAvailable();
             AssignedGRD.Columns[0].Visible = false;
             AssignedGRD.Columns[1].HeaderText = "NAME";
-            AssignedGRD.Columns[1].Width = 200;
+            AssignedGRD.Columns[1].Width = 210;
             AssignedGRD.Columns[2].HeaderText = "LOCATION";
-            AssignedGRD.Columns[2].Width = 300;
+            AssignedGRD.Columns[2].Width = 210;
             UpdateNeeded();
         }
         private void RefreshAvailable() {
@@ -48,9 +48,9 @@ namespace MSAMISUserInterface {
             }
             AvailableGRD.Columns[0].Visible = false;
             AvailableGRD.Columns[1].HeaderText = "NAME";
-            AvailableGRD.Columns[1].Width = 200;
+            AvailableGRD.Columns[1].Width = 210;
             AvailableGRD.Columns[2].HeaderText = "LOCATION";
-            AvailableGRD.Columns[2].Width = 300;
+            AvailableGRD.Columns[2].Width = 210;
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
             this.Close();

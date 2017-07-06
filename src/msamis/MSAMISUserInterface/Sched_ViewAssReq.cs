@@ -30,7 +30,7 @@ namespace MSAMISUserInterface {
 
         private void Sched_ViewAssReq_Load(object sender, EventArgs e) {
             RefreshData();
-            this.Location = new Point(this.Location.X + 250, this.Location.Y);
+            this.Location = new Point(this.Location.X + 175, this.Location.Y);
             FadeTMR.Start();
         }
         private void RefreshData() {
@@ -54,7 +54,7 @@ namespace MSAMISUserInterface {
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString())) StatusLBL.Text = "Status: Inctive";
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) StatusLBL.Text = "Status: Decline";
             }
-            if (numGuards > Scheduling.GetNumberOfUnassignedGuards()) NeededLBL.ForeColor = Color.Brown;
+            if (numGuards > Scheduling.GetNumberOfUnassignedGuards()) NeededLBL.ForeColor = Color.Salmon;
             else NeededLBL.ForeColor = Color.OliveDrab;
             NeededLBL.Text = Scheduling.GetNumberOfUnassignedGuards().ToString() + " available guards";
         }

@@ -26,9 +26,9 @@ namespace MSAMISUserInterface {
 
         private void Payroll_EmployeeView_Load(object sender, EventArgs e) {
             FadeTMR.Start();
-            currentLBL = SummaryLBL;
-            currentPNL = SummaryPNL;
-            SummaryPNL.Visible = true;
+            currentLBL = AdjLBL;
+            currentPNL = AdjPNL;
+            AdjPNL.Visible = true;
             BonusPNL.Visible = false;
             DeductionsPNL.Visible = false;
             AdjPNL.Visible = false;
@@ -37,7 +37,7 @@ namespace MSAMISUserInterface {
         private void ChangePanel(Label newL, Panel newP) {
             currentLBL.ForeColor = Color.Gray;
             currentPNL.Visible = false;
-            newL.ForeColor = Color.White;
+            newL.ForeColor = Color.FromArgb(53, 64, 82);
             newP.Visible = true;
             currentLBL = newL;
             currentPNL = newP;
@@ -70,28 +70,16 @@ namespace MSAMISUserInterface {
             ChangePanel(AdjLBL, AdjPNL);
         }
 
-        private void SummaryLBL_Click(object sender, EventArgs e) {
-            ChangePanel(SummaryLBL, SummaryPNL);
-        }
-
-        private void SummaryLBL_MouseEnter(object sender, EventArgs e) {
-            SummaryLBL.ForeColor = Color.White;
-        }
-
         private void BonusesLBL_MouseEnter(object sender, EventArgs e) {
-            BonusesLBL.ForeColor = Color.White;
+            BonusesLBL.ForeColor = Color.FromArgb(53, 64, 82);
         }
 
         private void DeductionsLBL_MouseEnter(object sender, EventArgs e) {
-            DeductionsLBL.ForeColor = Color.White;
+            DeductionsLBL.ForeColor = Color.FromArgb(53, 64, 82);
         }
 
         private void AdjLBL_MouseEnter(object sender, EventArgs e) {
-            AdjLBL.ForeColor = Color.White;
-        }
-
-        private void SummaryLBL_MouseLeave(object sender, EventArgs e) {
-            if(!SummaryPNL.Visible) SummaryLBL.ForeColor = Color.Gray;
+            AdjLBL.ForeColor = Color.FromArgb(53, 64, 82);
         }
 
         private void BonusesLBL_MouseLeave(object sender, EventArgs e) {
@@ -110,7 +98,7 @@ namespace MSAMISUserInterface {
            Payroll_AddAdjustments view = new Payroll_AddAdjustments();
             view.PID = this.PID;
             view.conn = this.conn;
-            view.Location = this.Location;
+            view.Location = new Point(this.Location.X + 350, this.Location.Y);
             view.ShowDialog();
         }
 
@@ -118,8 +106,16 @@ namespace MSAMISUserInterface {
             Payroll_AddAdjustments view = new Payroll_AddAdjustments();
             view.PID = this.PID;
             view.conn = this.conn;
-            view.Location = this.Location;
+            view.Location = new Point(this.Location.X + 350, this.Location.Y);
             view.ShowDialog();
+        }
+
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.FromArgb(53, 64, 82);
         }
     }
 }

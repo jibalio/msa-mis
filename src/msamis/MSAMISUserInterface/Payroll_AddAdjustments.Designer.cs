@@ -25,9 +25,6 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payroll_AddAdjustments));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.NameLBL = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DAdjBTN = new System.Windows.Forms.RadioButton();
             this.DCashBondBTN = new System.Windows.Forms.RadioButton();
@@ -46,46 +43,10 @@
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.ValueTLTP = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1.SuspendLayout();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.NameLBL);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.ForeColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(1, 43);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(718, 69);
-            this.panel1.TabIndex = 125;
-            // 
-            // NameLBL
-            // 
-            this.NameLBL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NameLBL.Location = new System.Drawing.Point(0, 24);
-            this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.NameLBL.Name = "NameLBL";
-            this.NameLBL.Size = new System.Drawing.Size(718, 33);
-            this.NameLBL.TabIndex = 118;
-            this.NameLBL.Text = "Laboriki, Dodong Lab W.";
-            this.NameLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(718, 24);
-            this.label4.TabIndex = 119;
-            this.label4.Text = "ADJUSTMENTS DETAILS FOR";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel2
             // 
@@ -99,9 +60,9 @@
             this.panel2.Controls.Add(this.BColaBTN);
             this.panel2.Controls.Add(this.B13MonthBTN);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(70, 138);
+            this.panel2.Location = new System.Drawing.Point(1, 131);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(607, 212);
+            this.panel2.Size = new System.Drawing.Size(550, 200);
             this.panel2.TabIndex = 126;
             // 
             // DAdjBTN
@@ -109,7 +70,7 @@
             this.DAdjBTN.AutoSize = true;
             this.DAdjBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DAdjBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DAdjBTN.Location = new System.Drawing.Point(347, 169);
+            this.DAdjBTN.Location = new System.Drawing.Point(311, 167);
             this.DAdjBTN.Name = "DAdjBTN";
             this.DAdjBTN.Size = new System.Drawing.Size(103, 24);
             this.DAdjBTN.TabIndex = 129;
@@ -122,7 +83,7 @@
             this.DCashBondBTN.AutoSize = true;
             this.DCashBondBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DCashBondBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DCashBondBTN.Location = new System.Drawing.Point(348, 139);
+            this.DCashBondBTN.Location = new System.Drawing.Point(312, 137);
             this.DCashBondBTN.Name = "DCashBondBTN";
             this.DCashBondBTN.Size = new System.Drawing.Size(103, 24);
             this.DCashBondBTN.TabIndex = 128;
@@ -135,7 +96,7 @@
             this.DSocialBenefitBTN.AutoSize = true;
             this.DSocialBenefitBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DSocialBenefitBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DSocialBenefitBTN.Location = new System.Drawing.Point(348, 109);
+            this.DSocialBenefitBTN.Location = new System.Drawing.Point(312, 107);
             this.DSocialBenefitBTN.Name = "DSocialBenefitBTN";
             this.DSocialBenefitBTN.Size = new System.Drawing.Size(118, 24);
             this.DSocialBenefitBTN.TabIndex = 127;
@@ -148,7 +109,7 @@
             this.DStoreCreditBTN.AutoSize = true;
             this.DStoreCreditBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DStoreCreditBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DStoreCreditBTN.Location = new System.Drawing.Point(348, 79);
+            this.DStoreCreditBTN.Location = new System.Drawing.Point(312, 77);
             this.DStoreCreditBTN.Name = "DStoreCreditBTN";
             this.DStoreCreditBTN.Size = new System.Drawing.Size(106, 24);
             this.DStoreCreditBTN.TabIndex = 126;
@@ -161,7 +122,7 @@
             this.DCashAdvBTN.AutoSize = true;
             this.DCashAdvBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DCashAdvBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DCashAdvBTN.Location = new System.Drawing.Point(348, 49);
+            this.DCashAdvBTN.Location = new System.Drawing.Point(312, 47);
             this.DCashAdvBTN.Name = "DCashAdvBTN";
             this.DCashAdvBTN.Size = new System.Drawing.Size(119, 24);
             this.DCashAdvBTN.TabIndex = 125;
@@ -174,7 +135,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(316, 17);
+            this.label2.Location = new System.Drawing.Point(280, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 21);
@@ -187,7 +148,7 @@
             this.BAdjBTN.AutoSize = true;
             this.BAdjBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BAdjBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.BAdjBTN.Location = new System.Drawing.Point(144, 109);
+            this.BAdjBTN.Location = new System.Drawing.Point(108, 107);
             this.BAdjBTN.Name = "BAdjBTN";
             this.BAdjBTN.Size = new System.Drawing.Size(103, 24);
             this.BAdjBTN.TabIndex = 123;
@@ -200,7 +161,7 @@
             this.BColaBTN.AutoSize = true;
             this.BColaBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BColaBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.BColaBTN.Location = new System.Drawing.Point(144, 79);
+            this.BColaBTN.Location = new System.Drawing.Point(108, 77);
             this.BColaBTN.Name = "BColaBTN";
             this.BColaBTN.Size = new System.Drawing.Size(57, 24);
             this.BColaBTN.TabIndex = 122;
@@ -213,7 +174,7 @@
             this.B13MonthBTN.AutoSize = true;
             this.B13MonthBTN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B13MonthBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.B13MonthBTN.Location = new System.Drawing.Point(144, 49);
+            this.B13MonthBTN.Location = new System.Drawing.Point(108, 47);
             this.B13MonthBTN.Name = "B13MonthBTN";
             this.B13MonthBTN.Size = new System.Drawing.Size(103, 24);
             this.B13MonthBTN.TabIndex = 121;
@@ -226,7 +187,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(112, 17);
+            this.label1.Location = new System.Drawing.Point(76, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 21);
@@ -239,7 +200,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(326, 386);
+            this.label3.Location = new System.Drawing.Point(248, 355);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 21);
@@ -256,7 +217,7 @@
             this.ValueMBX.Location = new System.Drawing.Point(0, 0);
             this.ValueMBX.Mask = "P 999 999.99";
             this.ValueMBX.Name = "ValueMBX";
-            this.ValueMBX.Size = new System.Drawing.Size(718, 43);
+            this.ValueMBX.Size = new System.Drawing.Size(550, 43);
             this.ValueMBX.TabIndex = 131;
             this.ValueMBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -270,11 +231,11 @@
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(362, 600);
+            this.CloseBTN.Location = new System.Drawing.Point(276, 536);
             this.CloseBTN.Name = "CloseBTN";
-            this.CloseBTN.Size = new System.Drawing.Size(78, 32);
+            this.CloseBTN.Size = new System.Drawing.Size(80, 29);
             this.CloseBTN.TabIndex = 232;
             this.CloseBTN.Text = "CANCEL";
             this.CloseBTN.UseVisualStyleBackColor = false;
@@ -290,11 +251,11 @@
             this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
             this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(279, 600);
+            this.AddBTN.Location = new System.Drawing.Point(193, 536);
             this.AddBTN.Name = "AddBTN";
-            this.AddBTN.Size = new System.Drawing.Size(78, 32);
+            this.AddBTN.Size = new System.Drawing.Size(80, 29);
             this.AddBTN.TabIndex = 231;
             this.AddBTN.Text = "ADD";
             this.AddBTN.UseVisualStyleBackColor = false;
@@ -308,9 +269,9 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.ValueMBX);
-            this.panel3.Location = new System.Drawing.Point(1, 418);
+            this.panel3.Location = new System.Drawing.Point(1, 387);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(718, 57);
+            this.panel3.Size = new System.Drawing.Size(550, 57);
             this.panel3.TabIndex = 233;
             // 
             // ValueTLTP
@@ -320,26 +281,37 @@
             this.ValueTLTP.ReshowDelay = 100;
             this.ValueTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label4.Location = new System.Drawing.Point(1, 64);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(550, 37);
+            this.label4.TabIndex = 142;
+            this.label4.Text = "Add Adjustment";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Payroll_AddAdjustments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(721, 666);
+            this.ClientSize = new System.Drawing.Size(548, 598);
             this.ControlBox = false;
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Payroll_AddAdjustments";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payroll_AddAdjustments_FormClosing);
             this.Load += new System.EventHandler(this.Payroll_AddAdjustments_Load);
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -350,10 +322,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label NameLBL;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton DAdjBTN;
         private System.Windows.Forms.RadioButton DCashBondBTN;
@@ -372,5 +340,6 @@
         private System.Windows.Forms.Timer FadeTMR;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolTip ValueTLTP;
+        private System.Windows.Forms.Label label4;
     }
 }

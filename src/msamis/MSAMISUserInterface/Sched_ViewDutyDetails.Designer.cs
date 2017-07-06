@@ -30,6 +30,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientLBL = new System.Windows.Forms.Label();
+            this.FirstNameLBL = new System.Windows.Forms.Label();
             this.NameLBL = new System.Windows.Forms.Label();
             this.DutyDetailsLBL = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
@@ -54,7 +55,6 @@
             this.RShiftLBL = new System.Windows.Forms.Label();
             this.RNightLBL = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.FirstNameLBL = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
@@ -83,6 +83,18 @@
             this.ClientLBL.Size = new System.Drawing.Size(245, 56);
             this.ClientLBL.TabIndex = 120;
             this.ClientLBL.Text = "@ Laboriki Enterprises";
+            // 
+            // FirstNameLBL
+            // 
+            this.FirstNameLBL.AutoSize = true;
+            this.FirstNameLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.FirstNameLBL.ForeColor = System.Drawing.Color.White;
+            this.FirstNameLBL.Location = new System.Drawing.Point(2, 46);
+            this.FirstNameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FirstNameLBL.Name = "FirstNameLBL";
+            this.FirstNameLBL.Size = new System.Drawing.Size(143, 25);
+            this.FirstNameLBL.TabIndex = 122;
+            this.FirstNameLBL.Text = "Dodong Lab W.";
             // 
             // NameLBL
             // 
@@ -147,6 +159,7 @@
             this.EditDutyDetailsBTN.TabIndex = 229;
             this.EditDutyDetailsBTN.Text = "EDIT";
             this.EditDutyDetailsBTN.UseVisualStyleBackColor = false;
+            this.EditDutyDetailsBTN.Visible = false;
             this.EditDutyDetailsBTN.Click += new System.EventHandler(this.EditDutyDetailsBTN_Click);
             // 
             // EditDaysBTN
@@ -203,6 +216,7 @@
             this.DismissBTN.TabIndex = 235;
             this.DismissBTN.Text = "DISMISS";
             this.DismissBTN.UseVisualStyleBackColor = false;
+            this.DismissBTN.Visible = false;
             this.DismissBTN.Click += new System.EventHandler(this.DismissBTN_Click);
             // 
             // DutyDetailsGRD
@@ -439,18 +453,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(570, 600);
             this.panel3.TabIndex = 241;
-            // 
-            // FirstNameLBL
-            // 
-            this.FirstNameLBL.AutoSize = true;
-            this.FirstNameLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.FirstNameLBL.ForeColor = System.Drawing.Color.White;
-            this.FirstNameLBL.Location = new System.Drawing.Point(2, 46);
-            this.FirstNameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.FirstNameLBL.Name = "FirstNameLBL";
-            this.FirstNameLBL.Size = new System.Drawing.Size(143, 25);
-            this.FirstNameLBL.TabIndex = 122;
-            this.FirstNameLBL.Text = "Dodong Lab W.";
             // 
             // label1
             // 

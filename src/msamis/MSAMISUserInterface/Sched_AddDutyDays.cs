@@ -88,5 +88,9 @@ namespace MSAMISUserInterface {
             else DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[10].Value = TimeOut - TimeIn;
 
         }
+
+        private void DaysGRD_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
+           
+        }
     }
 }

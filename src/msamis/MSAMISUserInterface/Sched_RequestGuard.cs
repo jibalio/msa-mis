@@ -161,15 +161,15 @@ namespace MSAMISUserInterface {
         private Color light = Color.DarkGray;
 
         private void PickLBL_Click(object sender, EventArgs e) {
-            RequestPNL.Hide();
-            PickPNL.Show();
+            RequestPNL.Visible = false;
+            PickPNL.Visible = true;
             PickLBL.ForeColor = dark;
             RequestLBL.ForeColor = light;
         }
 
         private void RequestLBL_Click(object sender, EventArgs e) {
-            RequestPNL.Show();
-            PickPNL.Hide();
+            RequestPNL.Visible = true;
+            PickPNL.Visible = false;
             PickLBL.ForeColor = light;
             RequestLBL.ForeColor = dark;
         }

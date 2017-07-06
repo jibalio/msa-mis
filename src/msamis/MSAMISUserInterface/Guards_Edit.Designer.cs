@@ -2420,6 +2420,8 @@
             this.CloseBTN.Text = "X";
             this.CloseBTN.UseVisualStyleBackColor = false;
             this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
+            this.CloseBTN.MouseEnter += new System.EventHandler(this.CloseBTN_MouseEnter);
+            this.CloseBTN.MouseLeave += new System.EventHandler(this.CloseBTN_MouseLeave);
             // 
             // PersonalLBL
             // 

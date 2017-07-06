@@ -106,13 +106,18 @@ namespace MSAMISUserInterface {
         private void DutyDetailsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (DutyDetailsGRD.SelectedRows.Count > 0) {
                 DID = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
+                AddDutyDetailsBTN.Show();
+                EditDutyDetailsBTN.Show();
+                DismissBTN.Show();
             }
         }
 
         private void DismissBTN_Click(object sender, EventArgs e) {
-            Scheduling.DismissDuty(DID);
-            RefreshDutyDetails();
-
+            DialogResult x = rylui.RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected assignments?", "Dismiss Assignments", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (x == DialogResult.Yes) {
+                Scheduling.DismissDuty(DID);
+                RefreshDutyDetails();
+            }
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {

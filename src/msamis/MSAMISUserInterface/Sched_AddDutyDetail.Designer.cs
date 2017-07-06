@@ -131,11 +131,11 @@
             this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
             this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.AddBTN.ForeColor = System.Drawing.Color.White;
             this.AddBTN.Location = new System.Drawing.Point(188, 534);
             this.AddBTN.Name = "AddBTN";
-            this.AddBTN.Size = new System.Drawing.Size(78, 32);
+            this.AddBTN.Size = new System.Drawing.Size(80, 29);
             this.AddBTN.TabIndex = 13;
             this.AddBTN.Text = "ADD";
             this.AddBTN.UseVisualStyleBackColor = false;
@@ -151,11 +151,11 @@
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
             this.CloseBTN.Location = new System.Drawing.Point(271, 534);
             this.CloseBTN.Name = "CloseBTN";
-            this.CloseBTN.Size = new System.Drawing.Size(78, 32);
+            this.CloseBTN.Size = new System.Drawing.Size(80, 29);
             this.CloseBTN.TabIndex = 14;
             this.CloseBTN.Text = "CANCEL";
             this.CloseBTN.UseVisualStyleBackColor = false;
