@@ -14,8 +14,9 @@ namespace MSAMISUserInterface {
         //          STATIC METHODS / VARIABLES
         // =============================================================================================
         #region Statics
-        
+
         public class Period {
+            Hours dutyhours;
             public List<int> Mon = new List<int>(),
                      Tue = new List<int>(),
                      Wed = new List<int>(),
@@ -26,13 +27,14 @@ namespace MSAMISUserInterface {
             public int month = 0;
             public int period = 0;
             public int year = 0;
-           
-            public Period (int period, int month, int year) {
+
+            public Period(int AID, int period, int month, int year) {
                 this.month = month;
                 this.year = year;
-                this.period = period;
-                int s = (period==1 ? 1 : 16), 
-                    e = (period==1 ? 15 : DateTime.DaysInMonth(year,month));
+
+                GetDutySummary(AID, month, period, year);
+                int s = (period == 1 ? 1 : 16),
+                    e = (period == 1 ? 15 : DateTime.DaysInMonth(year, month));
                 for (int c = s; c <= e; c++) {
                     switch (new DateTime(year, month, c).DayOfWeek) {
                         case DayOfWeek.Monday: Mon.Add(c); break;
@@ -48,14 +50,14 @@ namespace MSAMISUserInterface {
         }
 
         // This method gets the current pay period.
-        public static Period GetCurrentPayPeriod() {
+        public static Period GetCurrentPayPeriod(int AID) {
             int m = 0, y = 0, p = 0;
             #region + Dates Setting
             int date = int.Parse(DateTime.Now.ToString("dd"));
             if (date >= 5 && date <= 19) {
                 p = 1;
                 m = GetMonth();
-               y = GetYear();
+                y = GetYear();
             } else if ((date >= 1 && date <= 4)) {
                 p = 2;
                 m = (GetMonth() == 1 ? 12 : GetMonth());  // if January, prev month December
@@ -66,7 +68,7 @@ namespace MSAMISUserInterface {
                 y = GetYear();
             }
             #endregion
-            return new Period(p,m,y); ;
+            return new Period(AID, p, m, y); ;
         }
         public static int GetMonth() {
             return int.Parse(DateTime.Now.ToString("MM"));
@@ -85,7 +87,7 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        public static DataTable GetPeriods (int AID) {
+        public static DataTable GetPeriods(int AID) {
             return SQLTools.ExecuteQuery(@"SELECT month, period, year
                                         FROM msadb.attendance 
                                         left join dutydetails
@@ -95,13 +97,13 @@ namespace MSAMISUserInterface {
         }
 
         public class Hours {
-            public String total;
-            public String holiday_day;
-            public String holiday_night;
-            public String normal_day;
-            public String normal_night;
+            public TimeSpan total;
+            public TimeSpan holiday_day;
+            public TimeSpan holiday_night;
+            public TimeSpan normal_day;
+            public TimeSpan normal_night;
         }
-        public static Hours GetDutySummary (int AID, int month, int period, int year) {
+        public static Hours GetDutySummary(int AID, int month, int period, int year) {
             String q = @"SELECT 
                             hours, night, holiday
                              FROM msadb.attendance 
@@ -110,11 +112,11 @@ namespace MSAMISUserInterface {
                             and year={2} ;";
             q = String.Format(q, month, period, year);
             DataTable dt = SQLTools.ExecuteQuery(q);
-            TimeSpan holiday = new TimeSpan(0,0,0);
+            TimeSpan holiday = new TimeSpan(0, 0, 0);
             TimeSpan holiday_n = new TimeSpan(0, 0, 0);
             TimeSpan normal = new TimeSpan(0, 0, 0);
             TimeSpan normal_n = new TimeSpan(0, 0, 0);
-            
+
             foreach (DataRow r in dt.Rows) {
                 if (r["holiday"].ToString() == "1") {
                     holiday += new TimeSpan(int.Parse(r["hours"].ToString().Split(':')[0]), int.Parse(r["hours"].ToString().Split(':')[1]), 0);
@@ -125,27 +127,28 @@ namespace MSAMISUserInterface {
                 }
             }
             Hours h = new Hours();
-            h.total = normal.ToString(@"hh\:mm");
-            h.normal_day = normal.ToString(@"hh\:mm");
-            h.normal_night = normal_n.ToString(@"hh\:mm");
-            h.holiday_day = holiday.ToString(@"hh\:mm");
-            h.holiday_night = h.holiday_night = normal_n.ToString(@"hh\:mm");
-            Console.WriteLine("Total"+h.total);
+
+            h.total = normal + normal_n + holiday + holiday_n;
+            h.normal_day = normal;
+            h.normal_night = normal_n;
+            h.holiday_day = holiday;
+            h.holiday_night = holiday_n;
+            Console.WriteLine("Total" + h.total);
             return h;
         }
-        
+
 
 
         // =============================================================================================
         //          INSTANCE METHODS / VARIABLES (nonstatic)
         // =============================================================================================
         #region Non-Statics
-        
+
         public Period period;
         public int AID;
-        public Attendance (int AID) {
+        public Attendance(int AID) {
             this.AID = AID;
-            period = GetCurrentPayPeriod();
+            period = GetCurrentPayPeriod(AID);
             Console.Write(period.period);
             DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun from dutydetails where AID =" + AID);
             foreach (DataRow duties in x.Rows) {
@@ -163,7 +166,7 @@ namespace MSAMISUserInterface {
                 DateTime zero = new DateTime(1, 1, 1, 0, 0, 0);
                 foreach (int date in dutydates) {
                     DateTime d = new DateTime(period.year, period.month, date);
-                    String q = @"INSERT INTO `msadb`.`attendance` (
+                    String q = @"INSERT IGNORE INTO `msadb`.`attendance` (
                             `DID`, `month`, `period`, `year`, `date`, `hours`, `holiday`, `night`,`overtime`
                             ) VALUES (
                            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}'
@@ -173,7 +176,7 @@ namespace MSAMISUserInterface {
                     try {
                         SQLTools.ExecuteNonQuery(q, false);
                     } catch { Console.WriteLine("SQLTools.cs >>> Warning: this record was already inserted. Ignored error."); }
-                    
+
                 }
                 sw.Stop();
                 TimeSpan ts = sw.Elapsed;
@@ -217,11 +220,11 @@ namespace MSAMISUserInterface {
 
 
         public int GetTimeElapsed(int ti, int to) {
-            return (to - ti > 0 ? (to-ti) : 24+(to-ti));
+            return (to - ti > 0 ? (to - ti) : 24 + (to - ti));
         }
 
-        public void SetCertifiedBy (int DID, String cert) {
-            String q = @"UPDATE `msadb`.`attendance` SET `certby`='"+cert+"' WHERE `DID`='"+DID+"';";
+        public void SetCertifiedBy(int DID, String cert) {
+            String q = @"UPDATE `msadb`.`attendance` SET `certby`='" + cert + "' WHERE `DID`='" + DID + "';";
         }
 
         public void SetAttendance(int AtID, int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
@@ -232,35 +235,64 @@ namespace MSAMISUserInterface {
 
             //compare with tama na sched for overtime
             DataRow dt = SQLTools.ExecuteQuery("select * from dutydetails where DID=" + did).Rows[0];
-            TimeSpan overtime = GetTimeDiff(int.Parse(dt["to_hh"].ToString()), int.Parse(dt["to_mm"].ToString()), dt["to_period"].ToString(), to_hh, to_mm, to_ampm);
+            TimeSpan overtime = GetOvertime(int.Parse(dt["to_hh"].ToString()), int.Parse(dt["to_mm"].ToString()), dt["to_period"].ToString(), to_hh, to_mm, to_ampm);
             DateTime start_night = GetDateTime(10, 00, "PM");
             DateTime end_night = GetDateTime(6, 0, "AM").AddDays(1);
-            double nh = GetNightHours(ti, to, start_night, end_night);
+            double nh = GetNightHours(ti, to);
+            String nhs = ((int)nh / 60).ToString("00") + ":" + ((int)nh % 60).ToString("00");
+
             String q = @"
                         UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}', `hours`='{3}', `overtime`='{4}', `night`='{5}' WHERE `AtID`='{0}';
                         ";
-            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"), overtime.ToString(@"hh\:mm"), nh);
+            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"), overtime.ToString(@"hh\:mm"), nhs);
             SQLTools.ExecuteNonQuery(q);
         }
 
-        public static double GetNightHours(DateTime actuals, DateTime actuale, DateTime ns, DateTime ne)
-        {
-            Console.WriteLine("actuals > actuale " + (actuals >= actuale));
-            if (actuals >= actuale)
-            {
+        public static double GetNightHours(DateTime actuals, DateTime actuale) {
+            DateTime NightStart = new DateTime(1, 1, 1, 22, 00, 00);
+            DateTime NightEnd = new DateTime(1, 2, 1, 6, 00, 00);
+            DateTime Midnight = new DateTime(1, 2, 1, 00, 00, 00);
+            if (actuals > actuale) {
                 actuale = actuale.AddDays(1);
-                Console.WriteLine(actuale.ToString());
+                NightEnd = NightEnd.AddDays(1);
+                DateTime maxStart = actuals < NightStart ? NightStart : actuals;
+                DateTime minEnd = actuale < NightEnd ? actuale : NightEnd;
+                TimeSpan interval = minEnd - maxStart;
+                double returnValue = interval > TimeSpan.FromSeconds(0) ? interval.TotalMinutes : 0;
+                return returnValue;
+            } else {
+                DateTime maxStart = actuals < NightStart ? actuals : NightStart;
+                DateTime minEnd = actuale < NightEnd ? actuale : NightEnd;
+                TimeSpan interval = minEnd - maxStart;
+                double returnValue = interval > TimeSpan.FromSeconds(0) ? interval.TotalMinutes : 0;
+                return returnValue;
             }
             // Assume that datetime is already *next-dayed*
-            DateTime maxStart = actuals > ns ? actuals : ns;
-            DateTime minEnd = actuale < ne ? actuale : ne;
-            TimeSpan interval = minEnd - maxStart;
-            double returnValue = interval > TimeSpan.FromSeconds(0) ? interval.TotalHours : 0;
-            return returnValue;
+
         }
 
 
+        public static TimeSpan GetOvertime(int dbhour, int dbmin, String dbampm, int actualo, int actualomin, String actualoampm) {
+            // TO DO: if early, no overtime.
+            var t1 = "01/01/0001 " + dbhour.ToString("00") + ":" + dbmin.ToString("00") + ":00 " + dbampm;
+            var t2 = "01/01/0001 " + actualo.ToString("00") + ":" + actualomin.ToString("00") + ":00 " + actualoampm;
+            var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            var time2 = DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            if (time2 < time1) {
+                Console.WriteLine("Date is on Next Day!");
+                time2 = time2.AddDays(1);
+            } else {
+                Console.WriteLine("same day");
+            }
+            TimeSpan ts = time2 - time1;
+            if (ts.TotalHours > 8) {
+                return new TimeSpan(0, 0, 0);
+            } else {
+                return ts;
+            }
+        }
         public static TimeSpan GetTimeDiff(int t1hour, int t1min, String t1ampm, int t2hour, int t2min, String t2ampm) {
+
             var t1 = "01/01/0001 " + t1hour.ToString("00") + ":" + t1min.ToString("00") + ":00 " + t1ampm;
             var t2 = "01/01/0001 " + t2hour.ToString("00") + ":" + t2min.ToString("00") + ":00 " + t2ampm;
             var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
@@ -274,7 +306,7 @@ namespace MSAMISUserInterface {
             return time2 - time1;
         }
 
-        public static DateTime GetDateTime (int hh, int mm, string tt) {
+        public static DateTime GetDateTime(int hh, int mm, string tt) {
             var t2 = "01/01/0001 " + hh.ToString("00") + ":" + mm.ToString("00") + ":00 " + tt;
             return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
         }
@@ -316,7 +348,7 @@ namespace MSAMISUserInterface {
 
             foreach (DataRow dutyrow in dutydetails.Rows) {
 
-                
+
 
 
 
@@ -324,11 +356,11 @@ namespace MSAMISUserInterface {
         }
 
 
-     
 
-        public static void GetDaysInPeriod() {
+
+        public static void GetDaysInPeriod(int AID) {
             int month = GetMonth();
-            Period p = GetCurrentPayPeriod();
+            Period p = GetCurrentPayPeriod(AID);
             #region helpinfo - Days
             /*
              * Why, yes, I use lists for the days.
@@ -345,7 +377,7 @@ namespace MSAMISUserInterface {
                 See more: https://www.dotnetperls.com/array-memory
              */
             #endregion
-            
+
 
         }
 
@@ -389,8 +421,8 @@ namespace MSAMISUserInterface {
 
 
 
-        
-        
+
+
 
         /*
          * For testing only, input custom date.
