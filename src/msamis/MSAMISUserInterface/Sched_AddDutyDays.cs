@@ -71,22 +71,6 @@ namespace MSAMISUserInterface {
 
         private void DaysGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[DaysGRD.CurrentCell.ColumnIndex].ReadOnly == true) SendKeys.Send("{Tab}");
-
-            float TimeIn = float.Parse(DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[2].Value.ToString()) + (float.Parse(DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[4].Value.ToString()) / 100);
-            float TimeOut = float.Parse(DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[6].Value.ToString()) + (float.Parse(DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[8].Value.ToString()) / 100);
-            if (DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[5].Value.ToString().Equals("PM")) TimeIn = TimeIn + 12;
-
-            if (DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[5].Value.ToString().Equals("PM") && DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[8].Value.ToString().Equals("AM")) TimeOut = TimeOut + 24;
-            else if (DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[9].Value.ToString().Equals("PM")) TimeOut = TimeOut + 12;
-            float ans = TimeOut - TimeIn;
-            if (ans - (int)(ans) >= .60) {
-                ans = ans + 1;
-                ans = (float)(ans - .60);
-            }
-
-            if (TimeOut - TimeIn < 0) DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[10].Value = "Invalid";
-            else DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[10].Value = TimeOut - TimeIn;
-
         }
 
         private void DaysGRD_CellValueChanged(object sender, DataGridViewCellEventArgs e) {

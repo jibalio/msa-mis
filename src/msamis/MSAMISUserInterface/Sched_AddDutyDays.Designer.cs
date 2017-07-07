@@ -26,8 +26,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sched_AddDutyDays));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConfirmBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
@@ -45,6 +44,10 @@
             this.CertifiedTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.ShiftTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.DaysGRD = new System.Windows.Forms.DataGridView();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.AtID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeInHr = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -54,12 +57,6 @@
             this.TimeOutHr = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Colon2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeOutMin = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Space2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DaysGRD)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,36 +182,79 @@
             this.Space,
             this.TimeOutHr,
             this.Colon2,
-            this.TimeOutMin,
-            this.Space2,
-            this.Total});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DaysGRD.DefaultCellStyle = dataGridViewCellStyle10;
+            this.TimeOutMin});
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DaysGRD.DefaultCellStyle = dataGridViewCellStyle9;
             this.DaysGRD.EnableHeadersVisualStyles = false;
-            this.DaysGRD.Location = new System.Drawing.Point(18, 136);
+            this.DaysGRD.Location = new System.Drawing.Point(54, 136);
             this.DaysGRD.MultiSelect = false;
             this.DaysGRD.Name = "DaysGRD";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DaysGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DaysGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.DaysGRD.RowHeadersVisible = false;
             this.DaysGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DaysGRD.ShowCellToolTips = false;
-            this.DaysGRD.Size = new System.Drawing.Size(532, 295);
+            this.DaysGRD.Size = new System.Drawing.Size(457, 295);
             this.DaysGRD.TabIndex = 2;
             this.DaysGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DaysGRD_CellEnter);
-            this.DaysGRD.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DaysGRD_CellValueChanged);
+            // 
+            // ToolTip
+            // 
+            this.ToolTip.AutoPopDelay = 1500;
+            this.ToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(161)))), ((int)(((byte)(206)))));
+            this.ToolTip.ForeColor = System.Drawing.Color.White;
+            this.ToolTip.InitialDelay = 500;
+            this.ToolTip.ReshowDelay = 100;
+            this.ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ToolTip.ToolTipTitle = "Info";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label1.Location = new System.Drawing.Point(237, 116);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.TabIndex = 154;
+            this.label1.Text = "TIME IN";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(399, 116);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.TabIndex = 155;
+            this.label3.Text = "TIME OUT";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label2.Location = new System.Drawing.Point(0, 45);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(569, 37);
+            this.label2.TabIndex = 156;
+            this.label2.Text = "Add Attendance Details";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // AtID
             // 
@@ -231,6 +271,7 @@
             this.Date.Name = "Date";
             this.Date.ReadOnly = true;
             this.Date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Date.Width = 150;
             // 
             // TimeInHr
             // 
@@ -459,75 +500,6 @@
             this.TimeOutMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.TimeOutMin.Width = 50;
             // 
-            // Space2
-            // 
-            this.Space2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.Space2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Space2.HeaderText = "";
-            this.Space2.Items.AddRange(new object[] {
-            "AM",
-            "PM"});
-            this.Space2.Name = "Space2";
-            this.Space2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Space2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Space2.Width = 50;
-            // 
-            // Total
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.Total.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Total.HeaderText = "TOTAL";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.Width = 60;
-            // 
-            // ToolTip
-            // 
-            this.ToolTip.AutoPopDelay = 1500;
-            this.ToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(161)))), ((int)(((byte)(206)))));
-            this.ToolTip.ForeColor = System.Drawing.Color.White;
-            this.ToolTip.InitialDelay = 500;
-            this.ToolTip.ReshowDelay = 100;
-            this.ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.ToolTip.ToolTipTitle = "Info";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(146, 117);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 17);
-            this.label1.TabIndex = 154;
-            this.label1.Text = "TIME IN";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(307, 117);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 17);
-            this.label3.TabIndex = 155;
-            this.label3.Text = "TIME OUT";
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(0, 45);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(569, 37);
-            this.label2.TabIndex = 156;
-            this.label2.Text = "Add Attendance Details";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // Sched_AddDutyDays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,7 +550,5 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn TimeOutHr;
         private System.Windows.Forms.DataGridViewTextBoxColumn Colon2;
         private System.Windows.Forms.DataGridViewComboBoxColumn TimeOutMin;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Space2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
     }
 }

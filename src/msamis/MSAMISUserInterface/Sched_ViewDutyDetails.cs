@@ -127,5 +127,43 @@ namespace MSAMISUserInterface {
         private void CloseBTN_MouseLeave(object sender, EventArgs e) {
             CloseBTN.ForeColor = this.BackColor;
         }
+
+        Color dark = Color.FromArgb(53, 64, 82);
+        Color light = Color.DarkGray;
+
+        private void AttendanceLBL_Click(object sender, EventArgs e) {
+            AttendanceLBL.ForeColor = dark;
+            DutyDetailsLBL.ForeColor = light;
+            DutyDetailsPNL.Visible = false;
+            AttendancePNL.Visible = true;
+        }
+
+        private void DutyDetailsLBL_Click(object sender, EventArgs e) {
+            DutyDetailsLBL.ForeColor = dark;
+            AttendanceLBL.ForeColor = light;
+            DutyDetailsPNL.Visible = true;
+            AttendancePNL.Visible = false;
+        }
+
+        private void AttendanceLBL_MouseEnter(object sender, EventArgs e) {
+            AttendanceLBL.ForeColor = dark;
+        }
+
+        private void DutyDetailsLBL_MouseEnter(object sender, EventArgs e) {
+            DutyDetailsLBL.ForeColor = dark;
+        }
+
+        private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            AttendanceGRD.DataSource = A.GetAttendance(((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+
+            if (PeriodCMBX.SelectedIndex == 0) {
+                EditDaysBTN.Visible = true;
+                PeriodCMBX.Size = new System.Drawing.Size(257, 25);
+            } 
+            else if (PeriodCMBX.SelectedIndex > 0) {
+                EditDaysBTN.Visible = false;
+                PeriodCMBX.Size = new System.Drawing.Size(352, 25);
+            }
+        }
     }
 }
