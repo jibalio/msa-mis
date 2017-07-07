@@ -95,7 +95,6 @@ namespace MSAMISUserInterface {
                                         on attendance.did=dutydetails.did 
                                         where AID = "+AID+@"
                                         group by month,period,year;");
-
         }
 
         public class Hours {
@@ -173,7 +172,7 @@ namespace MSAMISUserInterface {
                             ) VALUES (
                            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}'
                             );";
-                    q = String.Format(q, did, period.month, period.period, period.year, d.ToString("yyyy-MM-dd HH:mm:ss"), "00:00", isHoliday(), "00:00", "00:00");
+                    q = String.Format(q, did, period.month, period.period, period.year, d.ToString("yyyy-MM-dd HH:mm:ss"), "00:00", "00:00", "00:00", "00:00");
 
                     try {
                         SQLTools.ExecuteNonQuery(q, false);
@@ -190,10 +189,9 @@ namespace MSAMISUserInterface {
 
         public DataTable GetAttendance() {
             String q = @"
-                            select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
-							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
-                            timein,
-                           TimeOut, hours, 
+                            select atid, dutydetails.did, DATE_FORMAT(date, '%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
+							concat (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_hh,':',to_mm,SUBSTRING(to_period,1,1)) as Schedule,
+                            concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as timein,  hours, 
                             night as NightHours, overtime,
                             case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday
                             from attendance
@@ -206,10 +204,9 @@ namespace MSAMISUserInterface {
 
         public DataTable GetAttendance(int month, int period, int year) {
             String q = @"
-                             select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
-							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
-                            timein,
-                           TimeOut, hours, 
+                             select atid, dutydetails.did, DATE_FORMAT(date, '%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
+							concat (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_hh,':',to_mm,SUBSTRING(to_period,1,1)) as Schedule,
+                            concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as timein,  hours, 
                             night as NightHours, overtime,
                             case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday
                             from attendance
