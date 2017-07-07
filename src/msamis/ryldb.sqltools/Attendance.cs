@@ -32,7 +32,7 @@ namespace MSAMISUserInterface {
                 this.period = period;
                 this.month = month;
                 this.year = year;
-                GetDutySummary(AID, month, period, year);
+                GetAttendanceSummary(AID, month, period, year);
                 int s = (period == 1 ? 1 : 16),
                     e = (period == 1 ? 15 : DateTime.DaysInMonth(year, month));
                 for (int c = s; c <= e; c++) {
@@ -103,7 +103,7 @@ namespace MSAMISUserInterface {
             public TimeSpan normal_day;
             public TimeSpan normal_night;
         }
-        public static Hours GetDutySummary(int AID, int month, int period, int year) {
+        public static Hours GetAttendanceSummary(int AID, int month, int period, int year) {
             String q = @"SELECT 
                             hours, night, holiday
                              FROM msadb.attendance 
