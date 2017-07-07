@@ -93,8 +93,9 @@ namespace MSAMISUserInterface {
                                         FROM msadb.attendance 
                                         left join dutydetails
                                         on attendance.did=dutydetails.did 
-                                        where AID = 1
+                                        where AID = "+AID+@"
                                         group by month,period,year;");
+
         }
 
         public class Hours {
