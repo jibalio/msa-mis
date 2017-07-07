@@ -230,6 +230,7 @@ namespace MSAMISUserInterface {
 
         public void SetCertifiedBy(int DID, String cert) {
             String q = @"UPDATE `msadb`.`attendance` SET `certby`='" + cert + "' WHERE `DID`='" + DID + "';";
+            SQLTools.ExecuteNonQuery(q);
         }
 
         public void SetAttendance(int AtID, int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {

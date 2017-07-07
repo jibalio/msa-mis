@@ -1,6 +1,8 @@
 use msadb;
 delete from request_assign;
 delete from request_unassign;
+delete from attendance;
+alter table attendance auto_increment=1;
 delete from request;
 delete from dutydetails;
 delete from sduty_assignment;
