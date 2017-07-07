@@ -16,7 +16,7 @@ namespace MSAMISUserInterface {
         String FilterText = "Search or filter";
         String EmptyText = "";
         String ExtraQueryParams = "";
-        String CID = "0";
+        String CID = "-1";
 
         public Sched_RequestGuard() {
             InitializeComponent();
@@ -36,9 +36,10 @@ namespace MSAMISUserInterface {
             ClientGRD.DataSource = Scheduling.GetClients();
 
             ClientGRD.Columns[0].Visible = false;
-            ClientGRD.Columns[1].Width = 300;
+            ClientGRD.Columns[1].Width = 330;
             ClientGRD.ColumnHeadersVisible = false;
             ClientGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ClientGRD.ClearSelection();
         }
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
             if (ClientSearchBX.Text == FilterText) {
@@ -73,9 +74,14 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
+
+                if (CID.Equals("-1")) {
+                    rylui.RylMessageBox.ShowDialog("Please select a client", "Request a guard", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else { 
                 Scheduling.AddAssignmentRequest(int.Parse(CID), AssStreetNoBX.Text, AssStreetNameBX.Text, AssBrgyBX.Text, AssCityBX.Text, ContractStartDTPKR.Value, ContractEndDTPKR.Value, (int)(NeededBX.Value));
                 reference.SCHEDLoadPage();
                 this.Close();
+                }
             }
         }
 
@@ -155,17 +161,11 @@ namespace MSAMISUserInterface {
         private Color light = Color.DarkGray;
 
         private void PickLBL_Click(object sender, EventArgs e) {
-            RequestPNL.Visible = false;
-            PickPNL.Visible = true;
-            PickLBL.ForeColor = dark;
-            RequestLBL.ForeColor = light;
+            NextBTN.PerformClick();
         }
 
         private void RequestLBL_Click(object sender, EventArgs e) {
-            RequestPNL.Visible = true;
-            PickPNL.Visible = false;
-            PickLBL.ForeColor = light;
-            RequestLBL.ForeColor = dark;
+            NextBTN.PerformClick();
         }
 
         private void PickLBL_MouseEnter(object sender, EventArgs e) {
@@ -182,6 +182,22 @@ namespace MSAMISUserInterface {
 
         private void PickLBL_MouseLeave(object sender, EventArgs e) {
             if (!PickPNL.Visible) PickLBL.ForeColor = light;
+        }
+
+        private void NextBTN_Click(object sender, EventArgs e) {
+            if (NextBTN.Text.Equals("BACK")) {
+                RequestPNL.Visible = false;
+                PickPNL.Visible = true;
+                PickLBL.ForeColor = dark;
+                RequestLBL.ForeColor = light;
+                NextBTN.Text = "NEXT";
+            } else {
+                RequestPNL.Visible = true;
+                PickPNL.Visible = false;
+                PickLBL.ForeColor = light;
+                RequestLBL.ForeColor = dark;
+                NextBTN.Text = "BACK";
+            }
         }
     }
 }

@@ -62,7 +62,7 @@
             this.NameLBL.AutoSize = true;
             this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NameLBL.Location = new System.Drawing.Point(174, 20);
+            this.NameLBL.Location = new System.Drawing.Point(172, 20);
             this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NameLBL.Name = "NameLBL";
             this.NameLBL.Size = new System.Drawing.Size(201, 21);
@@ -173,7 +173,7 @@
             this.ApproveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ApproveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ApproveBTN.ForeColor = System.Drawing.Color.White;
-            this.ApproveBTN.Location = new System.Drawing.Point(234, 382);
+            this.ApproveBTN.Location = new System.Drawing.Point(220, 382);
             this.ApproveBTN.Name = "ApproveBTN";
             this.ApproveBTN.Size = new System.Drawing.Size(105, 32);
             this.ApproveBTN.TabIndex = 146;

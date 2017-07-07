@@ -28,6 +28,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_BasicPay_Load(object sender, EventArgs e) {
+            this.Location = new Point(this.Location.X + 175, this.Location.Y + 100);
             FadeTMR.Start();
         }
 
