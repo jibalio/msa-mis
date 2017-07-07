@@ -155,14 +155,21 @@ namespace MSAMISUserInterface {
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             AttendanceGRD.DataSource = A.GetAttendance(((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            AttendanceGRD.Columns[0].Visible = false;
+            AttendanceGRD.Columns[1].Visible = false;
+            AttendanceGRD.Columns[2].Width = 150;
+            AttendanceGRD.Columns[2].HeaderText = "DAY / SCHEDULE";
+            AttendanceGRD.Columns[2].Width = 150;
+            AttendanceGRD.Columns[2].HeaderText = "ARRIVAL-DEPARTURE";
+
 
             if (PeriodCMBX.SelectedIndex == 0) {
                 EditDaysBTN.Visible = true;
-                PeriodCMBX.Size = new System.Drawing.Size(257, 25);
+                PeriodCMBX.Size = new System.Drawing.Size(285, 25);
             } 
             else if (PeriodCMBX.SelectedIndex > 0) {
                 EditDaysBTN.Visible = false;
-                PeriodCMBX.Size = new System.Drawing.Size(352, 25);
+                PeriodCMBX.Size = new System.Drawing.Size(380, 25);
             }
         }
     }

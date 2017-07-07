@@ -63,7 +63,7 @@ namespace MSAMISUserInterface {
         private void RefreshData() {
             if (A.GetAttendance().Rows.Count > 0) { 
                 foreach (DataRow row in A.GetAttendance().Rows) {
-                    DaysGRD.Rows.Add(row[0] , row[2], row[5].ToString().Split(':')[0], ":", row[5].ToString().Split(':')[1].Split(' ')[0], row[5].ToString().Split(':')[1].Split(' ')[1], row[6].ToString().Split(':')[0], ":", row[6].ToString().Split(':')[1].Split(' ')[0], row[6].ToString().Split(':')[1].Split(' ')[1], "0");
+                    DaysGRD.Rows.Add(row[0], row[2], row[5].ToString().Split(':')[0], ":", row[5].ToString().Split(':')[1].Split(' ')[0], row[5].ToString().Split(':')[1].Split(' ')[1], row[6].ToString().Split(':')[0], ":", row[6].ToString().Split(':')[1].Split(' ')[0], row[6].ToString().Split(':')[1].Split(' ')[1], "0");
                 }
                 DaysGRD.CurrentCell = DaysGRD.Rows[0].Cells[1];
             }

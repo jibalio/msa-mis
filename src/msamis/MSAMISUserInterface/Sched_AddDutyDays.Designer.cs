@@ -57,6 +57,7 @@
             this.TimeOutHr = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Colon2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeOutMin = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.AMPM2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DaysGRD)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,7 +183,8 @@
             this.Space,
             this.TimeOutHr,
             this.Colon2,
-            this.TimeOutMin});
+            this.TimeOutMin,
+            this.AMPM2});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
@@ -192,7 +194,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DaysGRD.DefaultCellStyle = dataGridViewCellStyle9;
             this.DaysGRD.EnableHeadersVisualStyles = false;
-            this.DaysGRD.Location = new System.Drawing.Point(54, 136);
+            this.DaysGRD.Location = new System.Drawing.Point(23, 136);
             this.DaysGRD.MultiSelect = false;
             this.DaysGRD.Name = "DaysGRD";
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -206,7 +208,7 @@
             this.DaysGRD.RowHeadersVisible = false;
             this.DaysGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DaysGRD.ShowCellToolTips = false;
-            this.DaysGRD.Size = new System.Drawing.Size(457, 295);
+            this.DaysGRD.Size = new System.Drawing.Size(491, 295);
             this.DaysGRD.TabIndex = 2;
             this.DaysGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DaysGRD_CellEnter);
             // 
@@ -225,7 +227,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(237, 116);
+            this.label1.Location = new System.Drawing.Point(200, 116);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 17);
@@ -237,7 +239,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(399, 116);
+            this.label3.Location = new System.Drawing.Point(362, 116);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
@@ -500,6 +502,19 @@
             this.TimeOutMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.TimeOutMin.Width = 50;
             // 
+            // AMPM2
+            // 
+            this.AMPM2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.AMPM2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AMPM2.HeaderText = "";
+            this.AMPM2.Items.AddRange(new object[] {
+            "AM",
+            "PM"});
+            this.AMPM2.Name = "AMPM2";
+            this.AMPM2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AMPM2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AMPM2.Width = 50;
+            // 
             // Sched_AddDutyDays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,5 +565,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn TimeOutHr;
         private System.Windows.Forms.DataGridViewTextBoxColumn Colon2;
         private System.Windows.Forms.DataGridViewComboBoxColumn TimeOutMin;
+        private System.Windows.Forms.DataGridViewComboBoxColumn AMPM2;
     }
 }
