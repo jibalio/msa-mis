@@ -29,6 +29,7 @@ namespace MSAMISUserInterface {
             public int year = 0;
 
             public Period(int AID, int period, int month, int year) {
+                this.period = period;
                 this.month = month;
                 this.year = year;
 
@@ -204,7 +205,7 @@ namespace MSAMISUserInterface {
 
         public DataTable GetAttendance(int month, int period, int year) {
             String q = @"
-                            select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
+                             select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
 							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
                             timein,
                            TimeOut, hours, 
@@ -213,8 +214,12 @@ namespace MSAMISUserInterface {
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
+                            
+                            where month='{0}' and period = '{1}' and year = '{2}'
+                            
                             order by date asc;
                             ";
+            q = String.Format(q, month, period, year);
             return SQLTools.ExecuteQuery(q);
         }
 
