@@ -268,43 +268,29 @@ namespace MSAMISUserInterface {
             }
         }
         private void FirstNameBX_Leave(object sender, EventArgs e) {
-            TextBox firstbx = sender as TextBox;
-            if (firstbx.Text.Trim(' ').Length == 0) {
-                firstbx.Text = "First";
-            }
+            if (FirstNameBX.Text.Trim(' ').Length == 0) FirstNameBX.Text = "First";
         }
         private void MiddleNameBX_Leave(object sender, EventArgs e) {
-            TextBox middlebx = sender as TextBox;
-            if (middlebx.Text.Trim(' ').Length == 0) {
-                middlebx.Text = "Middle";
-            }
+            if (MiddleNameBX.Text.Trim(' ').Length == 0) MiddleNameBX.Text = "Middle";
         }
 
         private void StreetNoBX_Leave(object sender, EventArgs e) {
             TextBox streetnobx = sender as TextBox;
-            if (streetnobx.Text.Trim(' ').Length == 0) {
-                streetnobx.Text = "No.";
-            }
+            if (streetnobx.Text.Trim(' ').Length == 0) streetnobx.Text = "No.";
         }
         private void StreetNameBX_Leave(object sender, EventArgs e) {
             TextBox streetnamebx = sender as TextBox;
-            if (streetnamebx.Text.Trim(' ').Length == 0) {
-                streetnamebx.Text = "Street Name";
-            }
+            if (streetnamebx.Text.Trim(' ').Length == 0) streetnamebx.Text = "Street Name";
         }
 
         private void BrgyBX_Leave(object sender, EventArgs e) {
             TextBox brgybx = sender as TextBox;
-            if (brgybx.Text.Trim(' ').Length == 0) {
-                brgybx.Text = "Brgy";
-            }
+            if (brgybx.Text.Trim(' ').Length == 0) brgybx.Text = "Brgy";
         }
 
         private void CityBX_Leave(object sender, EventArgs e) {
             TextBox citybx = sender as TextBox;
-            if (citybx.Text.Trim(' ').Length == 0) {
-                citybx.Text = "City";
-            }
+            if (citybx.Text.Trim(' ').Length == 0) citybx.Text = "City";
         }
 
 
