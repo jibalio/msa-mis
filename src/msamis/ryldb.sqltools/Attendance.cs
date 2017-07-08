@@ -93,7 +93,7 @@ namespace MSAMISUserInterface {
                                         left join dutydetails
                                         on attendance.did=dutydetails.did 
                                         where AID = "+AID+@"
-                                        group by month,period,year;");
+                                        group by month,period,year order by year desc, month desc, period desc;");
         }
 
         public class Hours {
@@ -268,6 +268,38 @@ namespace MSAMISUserInterface {
                 DateTime maxStart = actuals < NightStart ? actuals : NightStart;
 
               
+
+                DateTime minEnd = actuale < NightEnd ? actuale : NightEnd;
+                TimeSpan interval = minEnd - maxStart;
+                double returnValue = interval > TimeSpan.FromSeconds(0) ? interval.TotalMinutes : 0;
+                return returnValue;
+            }
+            // Assume that datetime is already *next-dayed*
+
+        }
+        /*
+         * Blueprint:
+         * Create Time class
+         * 
+         * 
+         */
+        public static double GetHoliday(DateTime actuals, DateTime actuale) {
+            DateTime NightStart = new DateTime(1, 1, 1, 22, 00, 00);
+            DateTime NightEnd = new DateTime(1, 2, 1, 6, 00, 00);
+            if (actuals > actuale) {
+                actuale = actuale.AddDays(1);
+                NightEnd = NightEnd.AddDays(1);
+                DateTime maxStart = actuals < NightStart ? NightStart : actuals;
+                DateTime minEnd = actuale < NightEnd ? actuale : NightEnd;
+                TimeSpan interval = minEnd - maxStart;
+                double returnValue = interval > TimeSpan.FromSeconds(0) ? interval.TotalMinutes : 0;
+                return returnValue;
+            } else {
+
+                NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
+                DateTime maxStart = actuals < NightStart ? actuals : NightStart;
+
+
 
                 DateTime minEnd = actuale < NightEnd ? actuale : NightEnd;
                 TimeSpan interval = minEnd - maxStart;
