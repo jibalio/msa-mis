@@ -71,6 +71,13 @@ namespace MSAMISUserInterface {
                 Console.WriteLine("[Guard_Edit] Setting reference.Enable to true");
             }
         }
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = dark;
+        }
         #endregion
 
         #region Clearing of TextBoxes While Editing
@@ -256,46 +263,46 @@ namespace MSAMISUserInterface {
 
         private void LastNameBX_Leave(object sender, EventArgs e) {
             TextBox lastbx = sender as TextBox;
-            if (lastbx.Text == "") {
+            if (lastbx.Text.Trim(' ').Length == 0) {
                 lastbx.Text = "Last";
             }
         }
         private void FirstNameBX_Leave(object sender, EventArgs e) {
             TextBox firstbx = sender as TextBox;
-            if (firstbx.Text == "") {
+            if (firstbx.Text.Trim(' ').Length == 0) {
                 firstbx.Text = "First";
             }
         }
         private void MiddleNameBX_Leave(object sender, EventArgs e) {
             TextBox middlebx = sender as TextBox;
-            if (middlebx.Text == "") {
+            if (middlebx.Text.Trim(' ').Length == 0) {
                 middlebx.Text = "Middle";
             }
         }
 
         private void StreetNoBX_Leave(object sender, EventArgs e) {
             TextBox streetnobx = sender as TextBox;
-            if (streetnobx.Text == "") {
+            if (streetnobx.Text.Trim(' ').Length == 0) {
                 streetnobx.Text = "No.";
             }
         }
         private void StreetNameBX_Leave(object sender, EventArgs e) {
             TextBox streetnamebx = sender as TextBox;
-            if (streetnamebx.Text == "") {
+            if (streetnamebx.Text.Trim(' ').Length == 0) {
                 streetnamebx.Text = "Street Name";
             }
         }
 
         private void BrgyBX_Leave(object sender, EventArgs e) {
             TextBox brgybx = sender as TextBox;
-            if (brgybx.Text == "") {
+            if (brgybx.Text.Trim(' ').Length == 0) {
                 brgybx.Text = "Brgy";
             }
         }
 
         private void CityBX_Leave(object sender, EventArgs e) {
             TextBox citybx = sender as TextBox;
-            if (citybx.Text == "") {
+            if (citybx.Text.Trim(' ').Length == 0) {
                 citybx.Text = "City";
             }
         }
@@ -449,7 +456,7 @@ namespace MSAMISUserInterface {
                 EmergBX.Text = dt.Rows[0]["EmergencyContact"].ToString();
                 EmergencyNoBX.Text = dt.Rows[0]["EmergencyNo"].ToString();
             }
-            catch (Exception ee) {
+            catch {
             }
             try {
                 GetResultQuery("SELECT * FROM address WHERE GID=" + GID + " ORDER BY Atype ASC");
@@ -470,7 +477,7 @@ namespace MSAMISUserInterface {
 
                 conn.Close();
             }
-            catch (Exception ee) {
+            catch {
             }
             try {
                 GetResultQuery("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
@@ -488,9 +495,8 @@ namespace MSAMISUserInterface {
                 catch { }
                 conn.Close();
             }
-            catch (Exception ee) {
+            catch {
                 conn.Close();
-                MessageBox.Show(ee.Message);
             }
             try {
                 GetResultQuery("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
@@ -523,9 +529,8 @@ namespace MSAMISUserInterface {
                 catch { }
                 conn.Close();
             }
-            catch (Exception ee) {
+            catch {
                 conn.Close();
-                MessageBox.Show(ee.Message);
             }
         }
         private void GetResultQuery(String query) {
@@ -694,114 +699,92 @@ namespace MSAMISUserInterface {
             bool check = true;
 
             if (CheckName(LastNameBX, "Last")) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnBX(LastNameWarn, "Last Name", "Please enter last name", LastNameBX);
                 check = false;
             }
             if (CheckName(MiddleNameBX, "Middle")) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnBX(MiddleNameWarn, "Middle Name", "Please enter middle name", MiddleNameBX);
                 check = false;
             }
             if (CheckName(FirstNameBX, "First")) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnBX(FirstNameWarn, "First Name", "Please enter first name", FirstNameBX);
                 check = false;
             }
             if (DateTime.Now.Year - BirthdateBX.Value.Year < 18) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnLBL(BirthWarn, "Birthdate", "Must be more than 18", BdayLBL);
                 check = false;
             }
             if (!MaleRDBTN.Checked && !FemaleRDBTN.Checked) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnLBL(GenderWarn, "Gender", "Please specify gender", GenderLBL);
                 check = false;
             }
             if (HeightBX.Text.Equals("    .")) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnMBX(HeightWarn, "Height", "Please specify height", HeightBX);
                 check = false;
             }
             if (WeightBX.Text.Equals("    kg.")) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnMBX(WeightWarn, "Weight", "Please specify weight", WeightBX);
                 check = false;
             }
             if (CVStatusBX.SelectedIndex == 0 || CVStatusBX.Text.Equals("")) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnLBL(CVWarn, "Civil Status", "Please specify civil status", CVLBL);
                 check = false;
             }
             if (CheckAdd(BirthplaceBrgyBX, BirthplaceCityBX, BirthplaceStreetNameBX, BirthplaceStreetNoBX)) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnBX(BirthPlaceWarn, "Birthplace", "Please specify or complete the fields", BirthplaceStreetNoBX);
                 check = false;
             }
             if (CheckAdd(TempBrgyBX, TempCityBX, TempStreetNameBX, TempStreetNoBX)) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnBX(TempAddWarn, "Temporary Address", "Please specify or complete the fields", TempStreetNoBX);
                 check = false;
             }
             if (CheckAdd(PermBrgyBX, PermCityBX, PermStreetNameBX, PermStreetNoBX)) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnBX(PermAdWarn, "Permanent Address", "Please specify or complete the fields", PermStreetNoBX);
                 check = false;
             }
             if (ReligionBX.Text.Equals("")) {
-                ScrollDetailsPanelTo(0);
                 ShowToolTipOnBX(ReligionWarn,"Religion", "Please specify religion", ReligionBX);
                 check = false;
             }
             if (CellNoBX.Text.Equals("+63             .") && TellNoBX.Text.Equals("   -    .")) {
-                ScrollDetailsPanelTo(580);
                 ShowToolTipOnLBL(ContactWarn, "Contact Details", "Please specify at least one contact information", ContactLBL);
                 check = false;
             }
             if (EmergBX.Text.Equals("") || EmergencyNoBX.Text.Equals("")) {
-                ScrollDetailsPanelTo(800);
                 ShowToolTipOnLBL(EmergencyWarn, "Emergency Contact Information", "Please complete the fields", EmerLBL);
                 check = false;
             }
             if (check) {
                 ChangePage(FamilyPNL, FamilyLBL);
                 if (CheckName(MotherFirstBX, MotherMiddleBX, MotherLastBX)) {
-                    ScrollDetailsPanelTo(0);
                     ShowToolTipOnBX(MotherWarn, "Mother's Name", "Please specify or complete the fields", MotherFirstBX);
                     check = false;
                 }
                 if (CheckName(FatherFirstBX, FatherMiddleBX, FatherLastBX)) {
-                    ScrollDetailsPanelTo(0);
                     ShowToolTipOnBX(FatherWarn, "Father's Name", "Please specify or complete the fields", FatherFirstBX);
                     check = false;
                 }
                 if (CheckNameNotRequired(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX) && CVStatusBX.SelectedIndex > 0) {
-                    ScrollDetailsPanelTo(0);
                     ShowToolTipOnBX(SpouseWarn, "Spouse's Name", "Please specify or complete the fields", SpouseFirstBX);
                     check = false;
                 }
                 if (CheckNameNotRequired(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX, Dependent1RBX)) {
-                    ScrollDetailsPanelTo(350);
                     ShowToolTipOnBX(Dep1Warn, "Dependent's Name", "Please complete the fields", Dependent1FirstBX);
                     check = false;
                 }
                 if (CheckNameNotRequired(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX, Dependent2RBX)) {
-                    ScrollDetailsPanelTo(350);
                     ShowToolTipOnBX(Dep2Warn, "Dependent's Name", "Please complete the fields", Dependent2FirstBX);
                     check = false;
                 }
                 if (CheckNameNotRequired(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX, Dependent3RBX)) {
-                    ScrollDetailsPanelTo(350);
                     ShowToolTipOnBX(Dep3Warn, "Dependent's Name", "Please complete the fields", Dependent3FirstBX);
                     check = false;
                 }
                 if (CheckNameNotRequired(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX, Dependent4RBX)) {
-                    ScrollDetailsPanelTo(350);
                     ShowToolTipOnBX(Dep4Warn, "Dependent's Name", "Please complete the fields", Dependent4FirstBX);
                     check = false;
                 }
                 if (CheckNameNotRequired(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX, Dependent5RBX)) {
-                    ScrollDetailsPanelTo(350);
                     ShowToolTipOnBX(Dep5Warn, "Dependent's Name", "Please complete the fields", Dependent5FirstBX);
                     check = false;
                 }
@@ -809,32 +792,26 @@ namespace MSAMISUserInterface {
                     if (check) {
                         ChangePage(WorkPNL, WorkLBL);
                         if (LicenseNoBX.Text.Equals("           .")) {
-                            ScrollDetailsPanelTo(800);
                             ShowToolTipOnMBX(LicenseWarn, "License Details", "Please specify license number", LicenseNoBX);
                             check = false;
                         }
                         if (SSSNoBX.Text.Equals("           .")) {
-                            ScrollDetailsPanelTo(800);
                             ShowToolTipOnMBX(SSSWarn, "SSS Details", "Please specify SSS number", SSSNoBX);
                             check = false;
                         }
                         if (TINNoBX.Text.Equals("           .")) {
-                            ScrollDetailsPanelTo(800);
                             ShowToolTipOnMBX(TINWarn, "TIN Details", "Please specify TIN number", TINNoBX);
                             check = false;
                         }
                         if (PhilHealthBX.Text.Equals("  -         - .")) {
-                            ScrollDetailsPanelTo(800);
                             ShowToolTipOnMBX(PhilHealthWarn, "Insurance Details", "Please specify PhilHealth number", PhilHealthBX);
                             check = false;
                         }
                         if (EdAttBX.Text.Equals("")) {
-                            ScrollDetailsPanelTo(800);
                             ShowToolTipOnLBL(EdAtWarn, "Highest Educational Attainment", "Please specify highest educational attainment", EdAtLBL);
                             check = false;
                         }
                         if (CourseBX.Text.Equals("") && EdAttBX.SelectedIndex == 4) {
-                            ScrollDetailsPanelTo(800);
                             ShowToolTipOnBX(CourseWarn, "Course Details", "Please specify the course in college", CourseBX);
                             check = false;
                         }
@@ -842,10 +819,6 @@ namespace MSAMISUserInterface {
                 }
             }
             return check;
-        }
-
-        private void ScrollDetailsPanelTo(int y) {
-            PersonalPNL.AutoScrollPosition = new Point(PersonalPNL.AutoScrollPosition.X, y);
         }
 
         private void ShowToolTipOnLBL(ToolTip ttp, String title, String message, Label lb) {
@@ -864,7 +837,7 @@ namespace MSAMISUserInterface {
         }
 
         private bool CheckName(TextBox tb, String arg1) {
-            return (tb.Text.Equals(arg1) || LastNameBX.Text.Equals(""));
+            return (tb.Text.Equals(arg1) || LastNameBX.Text.Trim(' ').Length == 0);
         }
         private bool CheckAdd(TextBox BrgyBX, TextBox CityBX, TextBox StreetNameBX, TextBox StreetNoBX) {
             return (BrgyBX.Text.Equals("Brgy") || CityBX.Text.Equals("City") || StreetNameBX.Text.Equals("Street Name") || StreetNoBX.Text.Equals("No.") ||
@@ -895,6 +868,8 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        #region Tab Navigation Properties
         private void ChangePage(Panel NewP, Label newB) {
             PNL.Visible = false;
             LBL.ForeColor = light;
@@ -944,12 +919,6 @@ namespace MSAMISUserInterface {
             ChangePage(WorkPNL, WorkLBL);
         }
 
-        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
-            CloseBTN.ForeColor = Color.White;
-        }
-
-        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
-            CloseBTN.ForeColor = dark;
-        }
+        #endregion
     }
 }

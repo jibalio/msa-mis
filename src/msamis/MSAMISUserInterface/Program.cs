@@ -59,10 +59,9 @@ namespace MSAMISUserInterface {
         int month;
         int period;
         int year;
-        int aid;
 
         //Constructor
-        public ComboBoxDays(int AID, int m, int p, int y) {
+        public ComboBoxDays(int m, int p, int y) {
             month = m;
             period = p;
             year = y;
@@ -77,12 +76,6 @@ namespace MSAMISUserInterface {
         public int Month {
             get {
                 return month;
-            }
-        }
-
-        public int AID {
-            get {
-                return aid;
             }
         }
 

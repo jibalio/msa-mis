@@ -575,7 +575,7 @@
             this.TelNoLBL.AutoSize = true;
             this.TelNoLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.TelNoLBL.ForeColor = System.Drawing.Color.White;
-            this.TelNoLBL.Location = new System.Drawing.Point(182, 399);
+            this.TelNoLBL.Location = new System.Drawing.Point(162, 399);
             this.TelNoLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TelNoLBL.Name = "TelNoLBL";
             this.TelNoLBL.Size = new System.Drawing.Size(99, 19);
@@ -755,7 +755,7 @@
             this.ContactNoLBL.AutoSize = true;
             this.ContactNoLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoLBL.ForeColor = System.Drawing.Color.White;
-            this.ContactNoLBL.Location = new System.Drawing.Point(184, 367);
+            this.ContactNoLBL.Location = new System.Drawing.Point(164, 367);
             this.ContactNoLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ContactNoLBL.Name = "ContactNoLBL";
             this.ContactNoLBL.Size = new System.Drawing.Size(99, 19);
@@ -842,9 +842,9 @@
             this.label24.Location = new System.Drawing.Point(52, 365);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(77, 17);
+            this.label24.Size = new System.Drawing.Size(91, 17);
             this.label24.TabIndex = 72;
-            this.label24.Text = "Contact No:";
+            this.label24.Text = "Cellphone No:";
             // 
             // label25
             // 
@@ -854,9 +854,9 @@
             this.label25.Location = new System.Drawing.Point(52, 329);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(83, 21);
+            this.label25.Size = new System.Drawing.Size(125, 21);
             this.label25.TabIndex = 71;
-            this.label25.Text = "CONTACT";
+            this.label25.Text = "CONTACT INFO";
             // 
             // label19
             // 

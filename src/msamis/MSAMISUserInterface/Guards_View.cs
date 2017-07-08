@@ -102,7 +102,7 @@ namespace MSAMISUserInterface {
             } catch (System.IndexOutOfRangeException) {
                 conn.Close();
             }
-            catch (Exception ee) {
+            catch {
             }
             
             try {
@@ -111,7 +111,7 @@ namespace MSAMISUserInterface {
                 PermAddLBL.Text = BuildStreet(dt, 1);
                 TempAddLBL.Text = BuildStreet(dt, 2);
             }
-            catch (Exception ee) {
+            catch {
             }
             try {
                 GetQueryReult("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
@@ -119,7 +119,7 @@ namespace MSAMISUserInterface {
                 FatherLBL.Text = BuildName(dt, 0);
                 try { SpouseLBL.Text = BuildName(dt, 2); } catch { }
             }
-            catch (Exception ee) {
+            catch {
             }
             try {
                 GetQueryReult("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
@@ -139,9 +139,8 @@ namespace MSAMISUserInterface {
                 catch { }
                 conn.Close();
             }
-            catch (Exception ee) {
+            catch {
                 conn.Close();
-                MessageBox.Show(ee.Message);
             }
         }
 

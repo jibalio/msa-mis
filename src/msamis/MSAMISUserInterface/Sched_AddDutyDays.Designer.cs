@@ -194,7 +194,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DaysGRD.DefaultCellStyle = dataGridViewCellStyle9;
             this.DaysGRD.EnableHeadersVisualStyles = false;
-            this.DaysGRD.Location = new System.Drawing.Point(23, 136);
+            this.DaysGRD.Location = new System.Drawing.Point(44, 136);
             this.DaysGRD.MultiSelect = false;
             this.DaysGRD.Name = "DaysGRD";
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -273,7 +273,7 @@
             this.Date.Name = "Date";
             this.Date.ReadOnly = true;
             this.Date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Date.Width = 150;
+            this.Date.Width = 130;
             // 
             // TimeInHr
             // 

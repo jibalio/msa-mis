@@ -83,32 +83,23 @@ namespace MSAMISUserInterface {
         }
 
         private void StreetNoBX_Leave(object sender, EventArgs e) {
-            TextBox streetnobx = sender as TextBox;
-            if (streetnobx.Text == "") {
-                streetnobx.Text = "No.";
-            }
+            if (LocationStreetNoBX.Text.Trim(' ').Length == 0) LocationStreetNoBX.Text = "No.";
         }
         private void StreetNameBX_Leave(object sender, EventArgs e) {
-            TextBox streetnamebx = sender as TextBox;
-            if (streetnamebx.Text == "") {
-                streetnamebx.Text = "Street Name";
-            }
+            if (LocationStreetNameBX.Text.Trim(' ').Length == 0) LocationStreetNameBX.Text = "Street Name";
         }
 
         private void BrgyBX_Leave(object sender, EventArgs e) {
-            TextBox brgybx = sender as TextBox;
-            if (brgybx.Text == "") {
-                brgybx.Text = "Brgy";
-            }
+            if (LocationBrgyBX.Text.Trim(' ').Length == 0)  LocationBrgyBX.Text = "Brgy";
         }
 
         private void CityBX_Leave(object sender, EventArgs e) {
-            TextBox citybx = sender as TextBox;
-            if (citybx.Text == "") {
-                citybx.Text = "City";
-            }
+            if (LocationCityBX.Text.Trim(' ').Length == 0) LocationCityBX.Text = "City";
         }
 
+        private void NameBX_Leave(object sender, EventArgs e) {
+            if (NameBX.Text.Trim(' ').Length == 0) NameBX.Text = "Name";
+        }
 
         private void HideTooltips() {
             NameTLTP.Hide(NameBX);
@@ -135,9 +126,6 @@ namespace MSAMISUserInterface {
 
                 }
             }
-
-
-
         #endregion
 
         #region Adding and Editign
@@ -268,5 +256,6 @@ namespace MSAMISUserInterface {
 
 
         #endregion
+
     }
 }

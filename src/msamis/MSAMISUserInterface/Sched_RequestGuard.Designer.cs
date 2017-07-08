@@ -116,6 +116,7 @@
             this.AssBrgyBX.TabIndex = 82;
             this.AssBrgyBX.Text = "Brgy";
             this.AssBrgyBX.Enter += new System.EventHandler(this.AssBrgyBX_Enter);
+            this.AssBrgyBX.Leave += new System.EventHandler(this.AssBrgyBX_Leave);
             // 
             // AssCityBX
             // 
@@ -129,6 +130,7 @@
             this.AssCityBX.TabIndex = 83;
             this.AssCityBX.Text = "City";
             this.AssCityBX.Enter += new System.EventHandler(this.AssCityBX_Enter);
+            this.AssCityBX.Leave += new System.EventHandler(this.AssCityBX_Leave);
             // 
             // AssStreetNameBX
             // 
@@ -142,6 +144,7 @@
             this.AssStreetNameBX.TabIndex = 81;
             this.AssStreetNameBX.Text = "Street Name";
             this.AssStreetNameBX.Enter += new System.EventHandler(this.AssStreetNameBX_Enter);
+            this.AssStreetNameBX.Leave += new System.EventHandler(this.AssStreetNameBX_Leave);
             // 
             // AssStreetNoBX
             // 
@@ -156,6 +159,7 @@
             this.AssStreetNoBX.Text = "No.";
             this.AssStreetNoBX.Enter += new System.EventHandler(this.AssStreetNoBX_Enter);
             this.AssStreetNoBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AssStreetNoBX_KeyPress);
+            this.AssStreetNoBX.Leave += new System.EventHandler(this.AssStreetNoBX_Leave);
             // 
             // label7
             // 
@@ -315,7 +319,7 @@
             this.ClientGRD.RowHeadersVisible = false;
             this.ClientGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ClientGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ClientGRD.Size = new System.Drawing.Size(434, 303);
+            this.ClientGRD.Size = new System.Drawing.Size(434, 284);
             this.ClientGRD.TabIndex = 104;
             this.ClientGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientGRD_CellEnter);
             // 
@@ -324,7 +328,7 @@
             this.RequestLBL.AutoSize = true;
             this.RequestLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.RequestLBL.ForeColor = System.Drawing.Color.DarkGray;
-            this.RequestLBL.Location = new System.Drawing.Point(288, 131);
+            this.RequestLBL.Location = new System.Drawing.Point(294, 131);
             this.RequestLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RequestLBL.Name = "RequestLBL";
             this.RequestLBL.Size = new System.Drawing.Size(144, 25);
@@ -339,7 +343,7 @@
             this.PickLBL.AutoSize = true;
             this.PickLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.PickLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PickLBL.Location = new System.Drawing.Point(135, 131);
+            this.PickLBL.Location = new System.Drawing.Point(141, 131);
             this.PickLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PickLBL.Name = "PickLBL";
             this.PickLBL.Size = new System.Drawing.Size(114, 25);
@@ -359,7 +363,7 @@
             this.ClientSearchBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ClientSearchBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSearchBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ClientSearchBX.Location = new System.Drawing.Point(151, 4);
+            this.ClientSearchBX.Location = new System.Drawing.Point(155, 4);
             this.ClientSearchBX.Name = "ClientSearchBX";
             this.ClientSearchBX.Size = new System.Drawing.Size(199, 18);
             this.ClientSearchBX.TabIndex = 107;
@@ -373,7 +377,7 @@
             this.ClientSearchLine.AutoSize = true;
             this.ClientSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ClientSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.ClientSearchLine.Location = new System.Drawing.Point(147, 9);
+            this.ClientSearchLine.Location = new System.Drawing.Point(151, 9);
             this.ClientSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ClientSearchLine.Name = "ClientSearchLine";
             this.ClientSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -490,8 +494,8 @@
             this.Controls.Add(this.RequestLBL);
             this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.PickPNL);
             this.Controls.Add(this.RequestPNL);
+            this.Controls.Add(this.PickPNL);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_RequestGuard";

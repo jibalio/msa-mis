@@ -137,6 +137,7 @@
             this.NameBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NameBX.TextChanged += new System.EventHandler(this.NameBX_TextChanged);
             this.NameBX.Enter += new System.EventHandler(this.NameBX_MouseEnter);
+            this.NameBX.Leave += new System.EventHandler(this.NameBX_Leave);
             // 
             // label23
             // 
@@ -244,9 +245,9 @@
             this.label34.ForeColor = System.Drawing.Color.LightGray;
             this.label34.Location = new System.Drawing.Point(245, 113);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(111, 19);
+            this.label34.Size = new System.Drawing.Size(141, 19);
             this.label34.TabIndex = 96;
-            this.label34.Text = "_________________";
+            this.label34.Text = "______________________";
             // 
             // label87
             // 
@@ -255,9 +256,9 @@
             this.label87.ForeColor = System.Drawing.Color.LightGray;
             this.label87.Location = new System.Drawing.Point(242, 154);
             this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(117, 19);
+            this.label87.Size = new System.Drawing.Size(147, 19);
             this.label87.TabIndex = 217;
-            this.label87.Text = "__________________";
+            this.label87.Text = "_______________________";
             // 
             // label41
             // 
@@ -266,9 +267,9 @@
             this.label41.ForeColor = System.Drawing.Color.Silver;
             this.label41.Location = new System.Drawing.Point(241, 193);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(117, 19);
+            this.label41.Size = new System.Drawing.Size(147, 19);
             this.label41.TabIndex = 112;
-            this.label41.Text = "__________________";
+            this.label41.Text = "_______________________";
             // 
             // LocationBrgyBX
             // 

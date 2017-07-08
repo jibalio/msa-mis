@@ -208,6 +208,7 @@
             this.WorkLBL = new System.Windows.Forms.Label();
             this.FamilyPNL = new System.Windows.Forms.Panel();
             this.WorkPNL = new System.Windows.Forms.Panel();
+            this.bunifuMaterialTextbox1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.AddLBL = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.PersonalPNL.SuspendLayout();
@@ -841,7 +842,7 @@
             this.TellNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TellNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.TellNoBX.ForeColor = System.Drawing.Color.White;
-            this.TellNoBX.Location = new System.Drawing.Point(182, 399);
+            this.TellNoBX.Location = new System.Drawing.Point(162, 399);
             this.TellNoBX.Mask = "999-9999.";
             this.TellNoBX.Name = "TellNoBX";
             this.TellNoBX.Size = new System.Drawing.Size(73, 18);
@@ -855,7 +856,7 @@
             this.CellNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CellNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.CellNoBX.ForeColor = System.Drawing.Color.White;
-            this.CellNoBX.Location = new System.Drawing.Point(184, 367);
+            this.CellNoBX.Location = new System.Drawing.Point(164, 367);
             this.CellNoBX.Mask = "+63 999 999 9999.";
             this.CellNoBX.Name = "CellNoBX";
             this.CellNoBX.Size = new System.Drawing.Size(150, 18);
@@ -2540,6 +2541,7 @@
             // 
             // WorkPNL
             // 
+            this.WorkPNL.Controls.Add(this.bunifuMaterialTextbox1);
             this.WorkPNL.Controls.Add(this.label80);
             this.WorkPNL.Controls.Add(this.EdAttBX);
             this.WorkPNL.Controls.Add(this.label79);
@@ -2567,6 +2569,25 @@
             this.WorkPNL.Size = new System.Drawing.Size(437, 393);
             this.WorkPNL.TabIndex = 232;
             this.WorkPNL.Visible = false;
+            // 
+            // bunifuMaterialTextbox1
+            // 
+            this.bunifuMaterialTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMaterialTextbox1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.bunifuMaterialTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuMaterialTextbox1.HintForeColor = System.Drawing.Color.DarkGray;
+            this.bunifuMaterialTextbox1.HintText = "No.";
+            this.bunifuMaterialTextbox1.isPassword = false;
+            this.bunifuMaterialTextbox1.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.bunifuMaterialTextbox1.LineIdleColor = System.Drawing.Color.Gainsboro;
+            this.bunifuMaterialTextbox1.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.bunifuMaterialTextbox1.LineThickness = 3;
+            this.bunifuMaterialTextbox1.Location = new System.Drawing.Point(344, 91);
+            this.bunifuMaterialTextbox1.Margin = new System.Windows.Forms.Padding(0);
+            this.bunifuMaterialTextbox1.Name = "bunifuMaterialTextbox1";
+            this.bunifuMaterialTextbox1.Size = new System.Drawing.Size(35, 28);
+            this.bunifuMaterialTextbox1.TabIndex = 241;
+            this.bunifuMaterialTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // AddLBL
             // 
@@ -2832,5 +2853,6 @@
         private System.Windows.Forms.Panel WorkPNL;
         private System.Windows.Forms.Label AddLBL;
         private System.Windows.Forms.Panel panel3;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox1;
     }
 }

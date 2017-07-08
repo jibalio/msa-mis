@@ -14,19 +14,20 @@ namespace MSAMISUserInterface {
         public int AID { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
-        Attendance A;
 
+        private Attendance A;
+        private int DID;
+
+        #region Form Initialization and Load
         public Sched_ViewDutyDetails() {
             InitializeComponent();
             this.Opacity = 0;
         }
-
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
             FadeTMR.Start();
             A = new Attendance(AID);
             RefreshData();
         }
-
         public void RefreshData() {
             DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
             NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0];
@@ -34,7 +35,6 @@ namespace MSAMISUserInterface {
             ClientLBL.Text = dt.Rows[0][3].ToString();
             RefreshDutyDetails();
         }
-
         public void RefreshDutyDetails() {
             DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(AID);
             DutyDetailsGRD.Columns[0].Visible = false;
@@ -49,27 +49,51 @@ namespace MSAMISUserInterface {
             DutyDetailsGRD.Select();
 
             foreach (DataRow row in Attendance.GetPeriods(AID).Rows) {
-                PeriodCMBX.Items.Add(new ComboBoxDays(AID, int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+                PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
             }
             if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
         }
+        public void RefreshAttendance() {
+            AttendanceGRD.DataSource = A.GetAttendance(((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            AttendanceGRD.Columns[0].Visible = false;
+            AttendanceGRD.Columns[1].Visible = false;
+            AttendanceGRD.Columns[2].Width = 140;
+            AttendanceGRD.Sort(AttendanceGRD.Columns[2], ListSortDirection.Ascending);
+            AttendanceGRD.Columns[2].HeaderText = "DAY / SCHEDULE";
+            AttendanceGRD.Columns[3].Width = 120;
+            AttendanceGRD.Columns[3].HeaderText = "IN-OUT";
+            AttendanceGRD.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[4].Width = 50;
+            AttendanceGRD.Columns[4].HeaderText = "REG";
+            AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[5].Width = 50;
+            AttendanceGRD.Columns[5].HeaderText = "NIGHT";
+            AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[6].Width = 50;
+            AttendanceGRD.Columns[6].HeaderText = "OT";
+            AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[7].Width = 60;
+            AttendanceGRD.Columns[7].HeaderText = "HOLIDAY";
+            AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+        }
+        #endregion
+
+        #region Form Props
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
             if (reference.Opacity == 0.6 || this.Opacity >= 1) { FadeTMR.Stop(); }
             if (reference.Opacity > 0.7) { reference.Opacity -= 0.1; }
         }
-
-        private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
-            reference.Opacity = 1;
-            reference.Show();
-        }
-
         private void CloseBTN_Click(object sender, EventArgs e) {
             reference.SCHEDRefreshAssignments();
             this.Close();
         }
-        private int DID;
+        private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
+            reference.Opacity = 1;
+            reference.Show();
+        }
         private void EditDutyDetailsBTN_Click(object sender, EventArgs e) {
             Sched_AddDutyDetail view = new Sched_AddDutyDetail();
             view.AID = this.AID;
@@ -86,7 +110,7 @@ namespace MSAMISUserInterface {
             view.AID = this.AID;
             view.conn = this.conn;
             view.button = "UPDATE";
-            view.reference = this.reference;
+            view.reference = this;
             view.Location = new Point(this.Location.X + 330, this.Location.Y);
             view.ShowDialog();
         }
@@ -97,7 +121,7 @@ namespace MSAMISUserInterface {
                 view.conn = this.conn;
                 view.AID = this.AID;
                 view.refer = this;
-                view.Location = new Point (this.Location.X + 330, this.Location.Y);
+                view.Location = new Point(this.Location.X + 330, this.Location.Y);
                 view.ShowDialog();
             }
             catch (Exception) { }
@@ -128,6 +152,19 @@ namespace MSAMISUserInterface {
             CloseBTN.ForeColor = this.BackColor;
         }
 
+        private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            RefreshAttendance();
+            if (PeriodCMBX.SelectedIndex == 0) {
+                EditDaysBTN.Visible = true;
+                PeriodCMBX.Size = new System.Drawing.Size(257, 25);
+            } else if (PeriodCMBX.SelectedIndex > 0) {
+                EditDaysBTN.Visible = false;
+                PeriodCMBX.Size = new System.Drawing.Size(352, 25);
+            }
+        }
+        #endregion
+
+        #region Form Navigation
         Color dark = Color.FromArgb(53, 64, 82);
         Color light = Color.DarkGray;
 
@@ -153,24 +190,13 @@ namespace MSAMISUserInterface {
             DutyDetailsLBL.ForeColor = dark;
         }
 
-        private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            AttendanceGRD.DataSource = A.GetAttendance(((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-            AttendanceGRD.Columns[0].Visible = false;
-            AttendanceGRD.Columns[1].Visible = false;
-            AttendanceGRD.Columns[2].Width = 150;
-            AttendanceGRD.Columns[2].HeaderText = "DAY / SCHEDULE";
-            AttendanceGRD.Columns[2].Width = 150;
-            AttendanceGRD.Columns[2].HeaderText = "ARRIVAL-DEPARTURE";
-
-
-            if (PeriodCMBX.SelectedIndex == 0) {
-                EditDaysBTN.Visible = true;
-                PeriodCMBX.Size = new System.Drawing.Size(285, 25);
-            } 
-            else if (PeriodCMBX.SelectedIndex > 0) {
-                EditDaysBTN.Visible = false;
-                PeriodCMBX.Size = new System.Drawing.Size(380, 25);
-            }
+        private void AttendanceLBL_MouseLeave(object sender, EventArgs e) {
+            if (!AttendancePNL.Visible) AttendanceLBL.ForeColor = light;
         }
+
+        private void DutyDetailsLBL_MouseLeave(object sender, EventArgs e) {
+            if (!DutyDetailsPNL.Visible) DutyDetailsLBL.ForeColor = light;
+        }
+        #endregion
     }
 }

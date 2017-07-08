@@ -644,6 +644,7 @@ namespace MSAMISUserInterface {
             if (CViewAllSearchBX.Text.Equals("Search or filter")) {
                 CViewAllSearchBX.Text = "";
             }
+            CViewAllSearchLine.Visible = true;
         }
 
         private void CViewAllSearchBX_Leave(object sender, EventArgs e) {
@@ -651,6 +652,7 @@ namespace MSAMISUserInterface {
                 CViewAllSearchBX.Text = "Search or filter";
             }
             ExtraQueryParams = "";
+            CViewAllSearchLine.Visible = false;
             CLIENTSRefreshClientsList();
         }
         private void CViewAllSearchBX_TextChanged(object sender, EventArgs e) {
@@ -888,6 +890,8 @@ namespace MSAMISUserInterface {
 
         public void SCHEDRefreshAssignments() {
             SViewAssGRD.DataSource = Scheduling.GetAssignmentsByClient(int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID), SViewAssCMBX.SelectedIndex);
+
+            if ( SViewAssGRD.Rows.Count > 0) { 
             SViewAssGRD.Columns[0].Visible = false;
             SViewAssGRD.Columns[1].Visible = false;
             SViewAssGRD.Columns[2].Visible = false;
@@ -902,6 +906,7 @@ namespace MSAMISUserInterface {
             SViewAssGRD.Columns[5].Width = 100;
 
             SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
+            }
         }
 
         private void SViewAssCMBX_SelectedIndexChanged(object sender, EventArgs e) {
