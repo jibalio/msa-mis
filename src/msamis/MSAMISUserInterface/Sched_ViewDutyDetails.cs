@@ -156,9 +156,11 @@ namespace MSAMISUserInterface {
             RefreshAttendance();
             if (PeriodCMBX.SelectedIndex == 0) {
                 EditDaysBTN.Visible = true;
+                ConfigureLBL.Visible = true;
                 PeriodCMBX.Size = new System.Drawing.Size(257, 25);
             } else if (PeriodCMBX.SelectedIndex > 0) {
                 EditDaysBTN.Visible = false;
+                ConfigureLBL.Visible = false;
                 PeriodCMBX.Size = new System.Drawing.Size(352, 25);
             }
         }
@@ -198,5 +200,13 @@ namespace MSAMISUserInterface {
             if (!DutyDetailsPNL.Visible) DutyDetailsLBL.ForeColor = light;
         }
         #endregion
+
+        private void ConfigureLBL_MouseEnter(object sender, EventArgs e) {
+            ConfigureLBL.ForeColor = Color.FromArgb(72, 87, 112);
+        }
+
+        private void ConfigureLBL_MouseLeave(object sender, EventArgs e) {
+            ConfigureLBL.ForeColor = Color.FromArgb(53, 64, 82);
+        }
     }
 }
