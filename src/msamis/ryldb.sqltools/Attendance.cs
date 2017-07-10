@@ -14,7 +14,6 @@ namespace MSAMISUserInterface {
         public static List<Holiday> holly = new List<Holiday>();
         private void init() {
             holly.Add(new Holiday(7, 11));
-
         }
 
 
@@ -249,48 +248,81 @@ namespace MSAMISUserInterface {
             TimeSpan overtime = GetOvertime(int.Parse(dt["to_hh"].ToString()), int.Parse(dt["to_mm"].ToString()), dt["to_period"].ToString(), to_hh, to_mm, to_ampm);
             DateTime start_night = GetDateTime(10, 00, "PM");
             DateTime end_night = GetDateTime(6, 0, "AM").AddDays(1);
-            double nh = GetNightHours(ti, to);
+            Hours nhe = GetNightHours(ti, to);
+            double nh = nhe.normal_night.TotalMinutes;
             String nhs = ((int)nh / 60).ToString("00") + ":" + ((int)nh % 60).ToString("00");
-
             String q = @"
-                        UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}', `hours`='{3}', `overtime`='{4}', `night`='{5}' WHERE `AtID`='{0}';
-                        ";
+                        UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}', `hours`='{3}', `overtime`='{4}', `night`='{5}' WHERE `AtID`='{0}';";
             q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"), overtime.ToString(@"hh\:mm"), nhs);
             SQLTools.ExecuteNonQuery(q);
         }
 
-        public static double GetNightHours(DateTime actuals, DateTime actuale) {
+        public static bool IsHolidayToday(DateTime e) {
+            if (holly.Contains(new Holiday(e.Month, e.Day))) {
+                return true;
+            } else return false;
+        }
+        public static bool IsHolidayTomorrow(DateTime e) {
+            if (holly.Contains(new Holiday(e.Month, e.Day))) {
+                return true;
+            } else return false;
+        }
+
+        public static Hours GetNightHours(DateTime actuals, DateTime actuale) {
+            Hours h = new Hours();
             DateTime NightStart = new DateTime(1, 1, 1, 22, 00, 00);
             DateTime NightEnd = new DateTime(1, 2, 1, 6, 00, 00);
+            DateTime Midnight = new DateTime(1, 2, 1, 0, 0, 0);
+            // if not same
             if (actuals > actuale) {
-                actuale = actuale.AddDays(1);
+                #region + OLD
+                /*actuale = actuale.AddDays(1);
                 NightEnd = NightEnd.AddDays(1);
                 DateTime maxStart = actuals < NightStart ? NightStart : actuals;
                 DateTime minEnd = actuale < NightEnd ? actuale : NightEnd;
                 TimeSpan interval = minEnd - maxStart;
-                double returnValue = interval > TimeSpan.FromSeconds(0) ? interval.TotalMinutes : 0;
-                return returnValue;
-            } else {
+                double nh = interval > TimeSpan.FromSeconds(0) ? interval.TotalMinutes : 0;
+                // return nh;*/
+                #endregion
 
+                // 1st half
+                actuale = actuale.AddDays(1);
+                NightEnd = NightEnd.AddDays(1);
+                DateTime maxStart = actuals < NightStart ? NightStart : actuals;
+                DateTime minEnd = Midnight < NightEnd ? Midnight : NightEnd;
+                TimeSpan interval = minEnd - maxStart;
+                if (IsHolidayToday(actuals)) {
+                    h.holiday_night += (interval > TimeSpan.FromSeconds(0) ? interval : new TimeSpan(0, 0, 0));
+                } else {
+                    h.normal_night += (interval > TimeSpan.FromSeconds(0) ? interval : new TimeSpan(0, 0, 0));
+                }
+
+                //2nd half
+                TimeSpan ndn = NightEnd - Midnight;
+                if (IsHolidayTomorrow(actuals)) {
+                    h.holiday_night += ndn;
+                } else {
+                    h.normal_night += ndn;
+                }
+            } else {
+                // if same
                 NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
                 DateTime maxStart = actuals < NightStart ? actuals : NightStart;
-
-              
-
                 DateTime minEnd = actuale < NightEnd ? actuale : NightEnd;
                 TimeSpan interval = minEnd - maxStart;
-                double returnValue = interval > TimeSpan.FromSeconds(0) ? interval.TotalMinutes : 0;
-                return returnValue;
-            }
-            // Assume that datetime is already *next-dayed*
+                if (IsHolidayToday(actuals)) {
+                    h.holiday_night = interval > TimeSpan.FromSeconds(0) ? interval : new TimeSpan(0, 0, 0);
+                } else {
+                    h.normal_night = interval > TimeSpan.FromSeconds(0) ? interval : new TimeSpan(0, 0, 0);
+                }
 
-        }
-        /*
-         * Blueprint:
-         * Create Time class
-         * 
-         * 
-         */
+
+            }
+                throw new NotImplementedException();
+            }
+
+        
+    
         public static double GetHoliday(DateTime actuals, DateTime actuale) {
             DateTime NightStart = new DateTime(1, 1, 1, 22, 00, 00);
             DateTime NightEnd = new DateTime(1, 2, 1, 6, 00, 00);
