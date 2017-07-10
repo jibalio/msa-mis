@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ryldb.sqltools;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -9,6 +10,13 @@ using System.Threading.Tasks;
 
 namespace MSAMISUserInterface {
     public class Attendance {
+
+        public static List<Holiday> holly = new List<Holiday>();
+        private void init() {
+            holly.Add(new Holiday(7, 11));
+
+        }
+
 
         // =============================================================================================
         //          STATIC METHODS / VARIABLES

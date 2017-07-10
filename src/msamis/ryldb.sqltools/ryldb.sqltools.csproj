@@ -61,6 +61,7 @@
     <Compile Include="AutoLoader.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Enumeration.cs" />
+    <Compile Include="Holiday.cs" />
     <Compile Include="LoaderGUI.cs">
       <SubType>Form</SubType>
     </Compile>
