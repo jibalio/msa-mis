@@ -101,6 +101,8 @@ namespace MSAMISUserInterface {
             }
         }
 
+        private void LLBL_Click(object sender, EventArgs e) {
 
+        }
     }
 }
