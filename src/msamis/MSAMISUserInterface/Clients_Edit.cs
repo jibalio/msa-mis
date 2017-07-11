@@ -49,9 +49,10 @@ namespace MSAMISUserInterface {
                 reference.Opacity = 1;
                 Console.WriteLine("[Guard_Edit] Setting Opacity to 100");
                 reference.Enabled = true;
+
+                refer.Hide();
                 Console.WriteLine("[Guard_Edit] Setting reference.Enable to true");
             }
-            refer.Hide();
         }
         #endregion
 
