@@ -124,6 +124,24 @@ namespace MSAMISUserInterface {
             }
         }
         public Hours GetAttendanceSummary() {
+            String q = @"
+                        select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
+							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
+                            timein,
+                           TimeOut, hours, 
+                            night as NightHours, overtime,
+                            case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday
+                            from attendance
+                            left join dutydetails 
+                            on dutydetails.did=attendance.did
+                            order by date asc;
+                            ";
+            DataTable d = SQLTools.ExecuteQuery(q);
+            foreach (DataRow f in d.Rows) {
+                DateTime ti = GetDateTime_(f["TimeIn"].ToString());
+                DateTime to = GetDateTime_(f["TimeOut"].ToString());
+                hourlist.Add(GetHours(ti, to));
+            }
             Hours h = new Hours();
             foreach (Hours x in hourlist) {
                 h.holiday_day += x.holiday_day;
@@ -133,8 +151,6 @@ namespace MSAMISUserInterface {
                 h.total += x.total;
             }
             return h;
-
-            
         }
 
 
@@ -185,6 +201,7 @@ namespace MSAMISUserInterface {
             }
         }
 
+        
 
         public DataTable GetAttendance() {
             String q = @"
@@ -200,9 +217,6 @@ namespace MSAMISUserInterface {
                             order by date asc;
                             ";
             DataTable d =  SQLTools.ExecuteQuery(q);
-            foreach  (DataRow f in d.Rows) {
-                hourlist.Add(GetHours(DateTime.Parse(f["TimeIn"].ToString()), DateTime.Parse(f["TimeOut"].ToString())));
-            }
             return d;
         }
 
@@ -387,6 +401,11 @@ namespace MSAMISUserInterface {
         public static DateTime GetDateTime(String hhmmss_tt) {
             var t2 = "01/01/0001 " + hhmmss_tt;
             return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+        }
+
+        public static DateTime GetDateTime_ (String hhmmss_tt) {
+            var t2 = "01/01/0001 " + hhmmss_tt;
+            return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm tt", CultureInfo.InvariantCulture);
         }
 
 
