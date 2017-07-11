@@ -297,13 +297,11 @@ namespace MSAMISUserInterface {
         public static bool htod = false;
         public static bool htom = false;
         public static bool IsHolidayToday(DateTime e) {
-            return htod;
             if (holly.Contains(new Holiday(e.Month, e.Day))) {
                 return true;
             } else return false;
         }
         public static bool IsHolidayTomorrow(DateTime e) {
-            return htom;
             if (holly.Contains(new Holiday(e.Month, e.Day))) {
                 return true;
             } else return false;

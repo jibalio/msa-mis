@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MSAMISUserInterface;
+using System.Globalization;
 
 namespace ryldb.sqltools {
     public class Holiday : IEquatable<Holiday> {
@@ -14,7 +15,7 @@ namespace ryldb.sqltools {
         public int day;
         public bool recurring;
         public int type;
-        public static List<DateTime> holidaylist = new List<DateTime>();
+        public static List<Holiday> holidaylist = new List<Holiday>();
         public static int Default = 0;
 
         public Holiday(int month, int day) {
@@ -30,27 +31,27 @@ namespace ryldb.sqltools {
         public static void AddHoliday(SelectionRange r, string desc) {
                 string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`) VALUES ('{0}', '{1}', '{2}');";
                 q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc);
-                MSAMISUserInterface.SQLTools.ExecuteNonQuery(q);
+                SQLTools.ExecuteNonQuery(q);
             
         }
         
-        public static void EditHoliday (SelectionRange r, string name, string desc) {
+        public static void EditHoliday (SelectionRange r, string desc) {
                 string q = @"UPDATE `msadb`.`holiday` SET `datestart`='{0}', `dateend`='{1}', `desc`='{2}';";
                 q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc);
-                MSAMISUserInterface.SQLTools.ExecuteNonQuery(q);
+                SQLTools.ExecuteNonQuery(q);
         }
 
-        public static void RemoveHoliday(SelectionRange r, string name, string desc) {
+        public static void RemoveHoliday(SelectionRange r, string desc) {
             for (DateTime date = r.Start; date <= r.End; date = date.AddDays(1)) {
                 string q = @"delete from holiday where `datestart`='{0}' and `dateend`='{1}' and `desc`='{2}';";
                 q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc);
-                MSAMISUserInterface.SQLTools.ExecuteNonQuery(q);
+                SQLTools.ExecuteNonQuery(q);
             }
         }
 
         public static DataTable GetHolidays() {
             string q = "select * from holiday";
-            return MSAMISUserInterface.SQLTools.ExecuteQuery(q);
+            return SQLTools.ExecuteQuery(q);
         }
 
         public static void InitHolidays() {
@@ -58,12 +59,13 @@ namespace ryldb.sqltools {
             string q = "select * from holiday";
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
-                DateTime start = DateTime.Parse(e["datestart"].ToString());
-                DateTime end = DateTime.Parse(e["dateend"].ToString());
-                for (DateTime c = start; c < end; c.AddDays(1)) {
-                    holidaylist.Add(c);
+                DateTime start = DateTime.ParseExact(e["datestart"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                DateTime end = DateTime.ParseExact(e["dateend"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                for (DateTime c = start; c <= end; c=c.AddDays(1)) {
+                    holidaylist.Add(new Holiday(c.Month,c.Day));
                 }
             }
         }
+        
     }
 }
