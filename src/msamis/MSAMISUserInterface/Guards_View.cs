@@ -21,6 +21,12 @@ namespace MSAMISUserInterface {
         MySqlDataAdapter adp = new MySqlDataAdapter();
         DataTable dt = new DataTable();
 
+        private Color dark = Color.FromArgb(53, 64, 82);
+        private Color light = Color.DarkGray;
+
+        private Panel PNL;
+        private Label LBL;
+
         public Guards_View() {
             InitializeComponent();
             this.Opacity = 0;
@@ -31,6 +37,9 @@ namespace MSAMISUserInterface {
         private void RViewEmployees_Load(object sender, EventArgs e) {
             RefreshData();
             FadeTMR.Start();
+            PNL = PersonalPNL;
+            LBL = PersonalLBL;
+            PersonalPNL.Visible = true;
         }
 
         private void RViewEmployees_FormClosing(object sender, FormClosingEventArgs e) {
@@ -68,7 +77,8 @@ namespace MSAMISUserInterface {
             try {
                 GetQueryReult("SELECT * FROM guards WHERE GID = " + GID);
                 GIDLBL.Text = GID.ToString();
-                LNLBL.Text = BuildName(dt, 0);
+                LNLBL.Text = dt.Rows[0]["fn"].ToString() + " " + dt.Rows[0]["mn"].ToString();
+                LLBL.Text = dt.Rows[0]["ln"].ToString() + ", ";
                 StatusLBL.Text = GetStatus(dt);
                 BdateLBL.Text = dt.Rows[0]["Bdate"].ToString();
                 GenderLBL.Text = GetGender(dt);
@@ -92,9 +102,7 @@ namespace MSAMISUserInterface {
             } catch (System.IndexOutOfRangeException) {
                 conn.Close();
             }
-            catch (Exception ee) {
-                conn.Close();
-                MessageBox.Show(ee.Message);
+            catch {
             }
             
             try {
@@ -103,9 +111,7 @@ namespace MSAMISUserInterface {
                 PermAddLBL.Text = BuildStreet(dt, 1);
                 TempAddLBL.Text = BuildStreet(dt, 2);
             }
-            catch (Exception ee) {
-                conn.Close();
-                MessageBox.Show(ee.Message);
+            catch {
             }
             try {
                 GetQueryReult("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
@@ -113,9 +119,7 @@ namespace MSAMISUserInterface {
                 FatherLBL.Text = BuildName(dt, 0);
                 try { SpouseLBL.Text = BuildName(dt, 2); } catch { }
             }
-            catch (Exception ee) {
-                conn.Close();
-                MessageBox.Show(ee.Message);
+            catch {
             }
             try {
                 GetQueryReult("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
@@ -135,9 +139,8 @@ namespace MSAMISUserInterface {
                 catch { }
                 conn.Close();
             }
-            catch (Exception ee) {
+            catch {
                 conn.Close();
-                MessageBox.Show(ee.Message);
             }
         }
 
@@ -213,6 +216,65 @@ namespace MSAMISUserInterface {
             // AJ HI
 
             // HI BES XD
+        }
+
+        private void ChangePage(Panel NewP, Label newB) {
+            PNL.Visible = false;
+            LBL.ForeColor = light;
+
+            NewP.Visible = true;
+            newB.ForeColor = dark;
+
+            PNL = NewP;
+            LBL = newB;
+        }
+
+        private void FamilyLBL_MouseEnter(object sender, EventArgs e) {
+            FamilyLBL.ForeColor = dark;
+        }
+
+        private void WorkLBL_MouseEnter(object sender, EventArgs e) {
+            WorkLBL.ForeColor = dark;
+        }
+
+        private void PersonalLBL_MouseEnter(object sender, EventArgs e) {
+            PersonalLBL.ForeColor = dark;
+        }
+
+        private void PersonalLBL_MouseLeave(object sender, EventArgs e) {
+            if(PersonalLBL != LBL) PersonalLBL.ForeColor = light;
+        }
+
+        private void FamilyLBL_MouseLeave(object sender, EventArgs e) {
+            if (FamilyLBL != LBL) FamilyLBL.ForeColor = light;
+        }
+
+        private void WorkLBL_MouseLeave(object sender, EventArgs e) {
+            if (WorkLBL != LBL) WorkLBL.ForeColor = light;
+        }
+
+        private void PersonalLBL_Click(object sender, EventArgs e) {
+            ChangePage(PersonalPNL, PersonalLBL);
+        }
+
+        private void FamilyLBL_Click(object sender, EventArgs e) {
+            ChangePage(FamilyPNL, FamilyLBL);
+        }
+
+        private void WorkLBL_MouseClick(object sender, MouseEventArgs e) {
+            ChangePage(WorkPNL, WorkLBL);
+        }
+
+        private void label8_Click(object sender, EventArgs e) {
+
+        }
+
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = dark;
         }
     }
 

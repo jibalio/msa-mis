@@ -22,6 +22,7 @@ namespace MSAMISUserInterface {
 
         private void Sched_ViewDisReq_Load(object sender, EventArgs e) {
             RefreshData();
+            this.Location = new Point(this.Location.X + 175, this.Location.Y);
             FadeTMR.Start();
         }
         private void RefreshData() {
@@ -29,7 +30,6 @@ namespace MSAMISUserInterface {
             ClientLBL.Text = dt.Rows[0][0].ToString();
 
             if (dt.Rows[0][1].ToString().Equals("Approved")) {
-                CloseBTN.Location = new Point(305, 600);
                 ApproveBTN.Visible = false;
                 NameLBL.Text = "Guards Unassigned";
             }

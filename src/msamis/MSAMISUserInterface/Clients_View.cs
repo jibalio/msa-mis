@@ -22,6 +22,7 @@ namespace MSAMISUserInterface {
 
         private void Clients_View_Load(object sender, EventArgs e) {
             RefreshData();
+            this.Location = new Point(this.Location.X + 150, this.Location.Y);
             FadeTMR.Start();
         }
 
@@ -63,10 +64,7 @@ namespace MSAMISUserInterface {
                 NameLBL.Text = dt.Rows[0]["name"].ToString();
                 CIDLBL.Text = dt.Rows[0]["CID"].ToString();
 
-                if (dt.Rows[0]["cstatus"].ToString().Equals("1")) StatusLBL.Text = "Active";
-                else StatusLBL.Text = "Inactive";
-
-               LocationLBL.Text = "Location: " + dt.Rows[0]["ClientStreetNo"].ToString() + " " + dt.Rows[0]["ClientStreet"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientCity"].ToString();
+               LocationLBL.Text = dt.Rows[0]["ClientStreetNo"].ToString() + " " + dt.Rows[0]["ClientStreet"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientCity"].ToString();
                 ManagerLBL.Text = "Manager: " + dt.Rows[0]["Manager"].ToString();
                 ContactLBL.Text = "Contact Person: " + dt.Rows[0]["ContactPerson"].ToString();
                 ContactNoLBL.Text = "Contact No: " + dt.Rows[0]["ContactNo"].ToString();

@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using ryldb.sqltools;
+using System.ComponentModel;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
 
@@ -14,6 +17,7 @@ namespace MSAMISUserInterface {
         static String msadb = "../../../../../sql/msadb.sql";
         static String msadbarchive = "../../../../../sql/msadbarchive.sql";
         static String checksumfile = "../../../../../sql/checksum.txt";
+
         public static string checkMD5(string filename) {
             using (var md5 = MD5.Create()) {
                 using (var stream = File.OpenRead(filename)) {
@@ -22,10 +26,12 @@ namespace MSAMISUserInterface {
             }
         }
 
-        
+
 
         static String[] checksum = new String[2];
         static bool[] hasNewVersion = new bool[2];
+
+
         public static void AutoImportSql(bool db, bool dbarchive) {
             if (!File.Exists(checksumfile)) {
                 using (var writer = new StreamWriter(@checksumfile)) {
@@ -93,15 +99,11 @@ namespace MSAMISUserInterface {
                         }
                     }
                 }
-                //e.Close();
                 e.Close();
-
             }
-
         }
-
     }
-}
+} 
    
 
 

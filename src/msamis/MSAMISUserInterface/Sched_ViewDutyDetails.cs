@@ -14,28 +14,37 @@ namespace MSAMISUserInterface {
         public int AID { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
-        String GName;
-        String Client;
 
+        private Attendance A;
+        private int DID;
+
+        #region Form Initialization and Load
         public Sched_ViewDutyDetails() {
             InitializeComponent();
             this.Opacity = 0;
         }
-
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
-            RefreshData();
             FadeTMR.Start();
-            DutyDaysPNL.Visible = false;
-            DutyDetailsPNL.Visible = true;
+            Attendance.Period p = Attendance.GetCurrentPayPeriod(0);
+            A = new Attendance(AID, p.month, p.period, p.year);
+            RefreshData();
+            
         }
-
         public void RefreshData() {
             DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
-            GName = NameLBL.Text = dt.Rows[0][2].ToString();
-            Client = ClientLBL.Text = dt.Rows[0][3].ToString();
+            NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0];
+            FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
+            ClientLBL.Text = dt.Rows[0][3].ToString();
+
+            Attendance.Hours hrs = A.GetAttendanceSummary();
+            RShiftLBL.Text = hrs.GetNormalDay() + " hrs";
+            RNightLBL.Text = hrs.GetNormalNight() + " hrs";
+            HShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
+            HNightLBL.Text = hrs.GetHolidayNight() + " hrs";
+            //CertifiedLBL.Text = hrs.GetCertidied();
+
             RefreshDutyDetails();
         }
-
         public void RefreshDutyDetails() {
             DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(AID);
             DutyDetailsGRD.Columns[0].Visible = false;
@@ -48,24 +57,53 @@ namespace MSAMISUserInterface {
             DutyDetailsGRD.Columns[3].Width = 150;
 
             DutyDetailsGRD.Select();
-        }
 
+            foreach (DataRow row in Attendance.GetPeriods(AID).Rows) {
+                PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+            }
+            if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
+        }
+        public void RefreshAttendance() {
+            AttendanceGRD.DataSource = A.GetAttendance(((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            AttendanceGRD.Columns[0].Visible = false;
+            AttendanceGRD.Columns[1].Visible = false;
+            AttendanceGRD.Columns[2].Width = 140;
+            AttendanceGRD.Sort(AttendanceGRD.Columns[2], ListSortDirection.Ascending);
+            AttendanceGRD.Columns[2].HeaderText = "DAY / SCHEDULE";
+            AttendanceGRD.Columns[3].Width = 120;
+            AttendanceGRD.Columns[3].HeaderText = "IN-OUT";
+            AttendanceGRD.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[4].Width = 50;
+            AttendanceGRD.Columns[4].HeaderText = "REG";
+            AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[5].Width = 50;
+            AttendanceGRD.Columns[5].HeaderText = "NIGHT";
+            AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[6].Width = 50;
+            AttendanceGRD.Columns[6].HeaderText = "OT";
+            AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[7].Width = 60;
+            AttendanceGRD.Columns[7].HeaderText = "HOLIDAY";
+            AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+        }
+        #endregion
+
+        #region Form Props
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
             if (reference.Opacity == 0.6 || this.Opacity >= 1) { FadeTMR.Stop(); }
             if (reference.Opacity > 0.7) { reference.Opacity -= 0.1; }
         }
-
-        private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
-            reference.Opacity = 1;
-            reference.Show();
-        }
-
         private void CloseBTN_Click(object sender, EventArgs e) {
             reference.SCHEDRefreshAssignments();
             this.Close();
         }
-        private int DID;
+        private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
+            reference.Opacity = 1;
+            reference.Show();
+        }
         private void EditDutyDetailsBTN_Click(object sender, EventArgs e) {
             Sched_AddDutyDetail view = new Sched_AddDutyDetail();
             view.AID = this.AID;
@@ -73,9 +111,7 @@ namespace MSAMISUserInterface {
             view.refer = this;
             view.conn = this.conn;
             view.DID = this.DID;
-            view.Name = this.GName;
-            view.Client = this.Client;
-            view.Location = this.Location;
+            view.Location = new Point(this.Location.X + 330, this.Location.Y);
             view.ShowDialog();
         }
 
@@ -84,39 +120,9 @@ namespace MSAMISUserInterface {
             view.AID = this.AID;
             view.conn = this.conn;
             view.button = "UPDATE";
-            view.Name = this.GName;
-            view.Client = this.Client;
-            view.reference = this.reference;
-            view.Location = this.Location;
+            view.reference = this;
+            view.Location = new Point(this.Location.X + 330, this.Location.Y);
             view.ShowDialog();
-        }
-
-        private void DutyDetailsLBL_Click(object sender, EventArgs e) {
-            DutyDaysPNL.Visible = false;
-            DutyDetailsPNL.Visible = true;
-            DutyDaysLBL.ForeColor = Color.Gray;
-        }
-
-        private void DutyDetailsLBL_MouseLeave(object sender, EventArgs e) {
-            if (DutyDetailsPNL.Visible == false) DutyDetailsLBL.ForeColor = Color.Gray;
-        }
-
-        private void DutyDaysLBL_MouseLeave(object sender, EventArgs e) {
-            if (DutyDaysPNL.Visible == false) DutyDaysLBL.ForeColor = Color.Gray;
-        }
-
-        private void DutyDaysLBL_MouseEnter(object sender, EventArgs e) {
-            DutyDaysLBL.ForeColor = Color.White;
-        }
-
-        private void DutyDetailsLBL_MouseEnter(object sender, EventArgs e) {
-            DutyDetailsLBL.ForeColor = Color.White;
-        }
-
-        private void DutyDaysLBL_Click(object sender, EventArgs e) {
-            DutyDaysPNL.Visible = true;
-            DutyDetailsPNL.Visible = false;
-            DutyDetailsLBL.ForeColor = Color.Gray;
         }
 
         private void AddDutyDetailsBTN_Click(object sender, EventArgs e) {
@@ -124,29 +130,103 @@ namespace MSAMISUserInterface {
                 Sched_AddDutyDetail view = new Sched_AddDutyDetail();
                 view.conn = this.conn;
                 view.AID = this.AID;
-                view.Name = this.GName;
                 view.refer = this;
-                view.Client = this.Client;
-                view.Location = this.Location;
+                view.Location = new Point(this.Location.X + 330, this.Location.Y);
                 view.ShowDialog();
             }
             catch (Exception) { }
         }
 
+        private void ConfigureLBL_Click(object sender, EventArgs e) {
+            Sched_ConfHolidays view = new Sched_ConfHolidays();
+            view.conn = this.conn;
+            view.reference = this;
+            view.Location = new Point(this.Location.X + 330, this.Location.Y);
+            view.ShowDialog();
+        }
+
         private void DutyDetailsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (DutyDetailsGRD.SelectedRows.Count > 0) {
                 DID = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
+                AddDutyDetailsBTN.Show();
+                EditDutyDetailsBTN.Show();
+                DismissBTN.Show();
             }
         }
 
         private void DismissBTN_Click(object sender, EventArgs e) {
-            Scheduling.DismissDuty(DID);
-            RefreshDutyDetails();
-
+            DialogResult x = rylui.RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected assignments?", "Dismiss Assignments", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (x == DialogResult.Yes) {
+                Scheduling.DismissDuty(DID);
+                RefreshDutyDetails();
+            }
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
-
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
         }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = this.BackColor;
+        }
+
+        private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            RefreshAttendance();
+            if (PeriodCMBX.SelectedIndex == 0) {
+                EditDaysBTN.Visible = true;
+                ConfigureLBL.Visible = true;
+                PeriodCMBX.Size = new System.Drawing.Size(257, 25);
+            } else if (PeriodCMBX.SelectedIndex > 0) {
+                EditDaysBTN.Visible = false;
+                ConfigureLBL.Visible = false;
+                PeriodCMBX.Size = new System.Drawing.Size(352, 25);
+            }
+        }
+        private void ConfigureLBL_MouseEnter(object sender, EventArgs e) {
+            ConfigureLBL.ForeColor = Color.FromArgb(72, 87, 112);
+        }
+
+        private void ConfigureLBL_MouseLeave(object sender, EventArgs e) {
+            ConfigureLBL.ForeColor = Color.FromArgb(53, 64, 82);
+        }
+        #endregion
+
+        #region Form Navigation
+        Color dark = Color.FromArgb(53, 64, 82);
+        Color light = Color.DarkGray;
+
+        private void AttendanceLBL_Click(object sender, EventArgs e) {
+            AttendanceLBL.ForeColor = dark;
+            DutyDetailsLBL.ForeColor = light;
+            DutyDetailsPNL.Visible = false;
+            AttendancePNL.Visible = true;
+        }
+
+        private void DutyDetailsLBL_Click(object sender, EventArgs e) {
+            DutyDetailsLBL.ForeColor = dark;
+            AttendanceLBL.ForeColor = light;
+            DutyDetailsPNL.Visible = true;
+            AttendancePNL.Visible = false;
+        }
+
+        private void AttendanceLBL_MouseEnter(object sender, EventArgs e) {
+            AttendanceLBL.ForeColor = dark;
+        }
+
+        private void DutyDetailsLBL_MouseEnter(object sender, EventArgs e) {
+            DutyDetailsLBL.ForeColor = dark;
+        }
+
+        private void AttendanceLBL_MouseLeave(object sender, EventArgs e) {
+            if (!AttendancePNL.Visible) AttendanceLBL.ForeColor = light;
+        }
+
+        private void DutyDetailsLBL_MouseLeave(object sender, EventArgs e) {
+            if (!DutyDetailsPNL.Visible) DutyDetailsLBL.ForeColor = light;
+        }
+        #endregion
+
+
+
     }
 }

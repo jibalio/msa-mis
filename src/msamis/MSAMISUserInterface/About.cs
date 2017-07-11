@@ -28,8 +28,7 @@ namespace MSAMISUserInterface {
             FadeTMR.Start();
             currentLBL = AboutLBL;
             currentPNL = AboutPNL;
-
-            SettingsPNL.Visible = false;
+            
             UsersPNL.Visible = false;
         }
 
@@ -65,16 +64,8 @@ namespace MSAMISUserInterface {
             ChangePanel(UsersLBL, UsersPNL);
         }
 
-        private void SettingsLBL_Click(object sender, EventArgs e) {
-            ChangePanel(SettingsLBL, SettingsPNL);
-        }
-
         private void UsersLBL_MouseEnter(object sender, EventArgs e) {
             UsersLBL.ForeColor = chose;
-        }
-
-        private void SettingsLBL_MouseEnter(object sender, EventArgs e) {
-            SettingsLBL.ForeColor = chose;
         }
 
         private void AboutLBL_MouseEnter(object sender, EventArgs e) {
@@ -87,10 +78,6 @@ namespace MSAMISUserInterface {
 
         private void UsersLBL_MouseLeave(object sender, EventArgs e) {
             if (!UsersPNL.Visible) UsersLBL.ForeColor = def;
-        }
-
-        private void SettingsLBL_MouseLeave(object sender, EventArgs e) {
-            if (!SettingsPNL.Visible) SettingsLBL.ForeColor = def;
         }
     }
 }

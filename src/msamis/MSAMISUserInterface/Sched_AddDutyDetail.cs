@@ -16,8 +16,6 @@ namespace MSAMISUserInterface {
         public int AID { get; set; }
         public int DID { get; set; }
         public Sched_ViewDutyDetails refer { get; set; }
-        public String Name;
-        public String Client;
 
         private bool[] DutyDays = new bool[7];
 
@@ -108,14 +106,12 @@ namespace MSAMISUserInterface {
                 if (temp[5]) SaBTN.PerformClick();
                 if (temp[6]) SuBTN.PerformClick();
             }
-            
-            NameLBL.Text = Name;
-            ClientLBL.Text = Client;
         }
 
 
         #endregion
 
+        #region DataValidation and Adding
         private bool DataValidation() {
             DaysTLTP.Hide(MBTN);
             HoursTLTP.Hide(HoursLBL);
@@ -144,16 +140,18 @@ namespace MSAMISUserInterface {
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
-            if (DataValidation()) { 
-                if (button.Equals("ADD")) { 
+            if (DataValidation()) {
+                if (button.Equals("ADD")) {
                     Scheduling.AddDutyDetail(AID, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text, TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text, new Scheduling.Days(DutyDays[1], DutyDays[2], DutyDays[3], DutyDays[4], DutyDays[5], DutyDays[6], DutyDays[0]));
-                } else if (button.Equals("UPDATE")) { 
+                } else if (button.Equals("UPDATE")) {
                     Scheduling.UpdateDutyDetail(DID, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text, TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text, new Scheduling.Days(DutyDays[1], DutyDays[2], DutyDays[3], DutyDays[4], DutyDays[5], DutyDays[6], DutyDays[0]));
                 }
                 this.Close();
                 refer.RefreshDutyDetails();
             }
         }
+        #endregion
+
     }
 }
 

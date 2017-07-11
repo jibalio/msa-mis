@@ -94,13 +94,15 @@ namespace MSAMISUserInterface {
                 MainForm mf = new MainForm();
                 mf.Opacity = 0;
                 mf.lf = this;
-                mf.Location = new Point (this.Location.X-300, this.Location.Y-100);
+                mf.Location = new Point (this.Location.X-50, this.Location.Y-66);
                 mf.user = UsernameBX.Text;
                 mf.Show();
                 this.Hide();
             }
         }
 
+        private void LLBL_Click(object sender, EventArgs e) {
 
+        }
     }
 }

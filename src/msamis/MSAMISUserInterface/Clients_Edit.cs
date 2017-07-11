@@ -42,16 +42,9 @@ namespace MSAMISUserInterface {
         private void Clients_Edit_Load(object sender, EventArgs e) {
             GEditDetailsBTN.Text = button;
             if (button.Equals("UPDATE")) {
-                ActiveStatusRDBTN.Enabled = true;
-                InactiveStatusRDBTN.Enabled = true;
-                ActiveStatusRDBTN.Checked = false;
-                InactiveStatusRDBTN.Checked = false;
+                AddLBL.Text = "Edit details";
                 PopulateEdit();
-            } else {
-                ActiveStatusRDBTN.Enabled = false;
-                InactiveStatusRDBTN.Enabled = false;
-                InactiveStatusRDBTN.Checked = true;
-            }
+            } else this.Location = new Point(this.Location.X + 150, this.Location.Y);
             FadeTMR.Start();
         }
         private void Clients_Edit_FormClosing(object sender, FormClosingEventArgs e) {
@@ -90,32 +83,23 @@ namespace MSAMISUserInterface {
         }
 
         private void StreetNoBX_Leave(object sender, EventArgs e) {
-            TextBox streetnobx = sender as TextBox;
-            if (streetnobx.Text == "") {
-                streetnobx.Text = "No.";
-            }
+            if (LocationStreetNoBX.Text.Trim(' ').Length == 0) LocationStreetNoBX.Text = "No.";
         }
         private void StreetNameBX_Leave(object sender, EventArgs e) {
-            TextBox streetnamebx = sender as TextBox;
-            if (streetnamebx.Text == "") {
-                streetnamebx.Text = "Street Name";
-            }
+            if (LocationStreetNameBX.Text.Trim(' ').Length == 0) LocationStreetNameBX.Text = "Street Name";
         }
 
         private void BrgyBX_Leave(object sender, EventArgs e) {
-            TextBox brgybx = sender as TextBox;
-            if (brgybx.Text == "") {
-                brgybx.Text = "Brgy";
-            }
+            if (LocationBrgyBX.Text.Trim(' ').Length == 0)  LocationBrgyBX.Text = "Brgy";
         }
 
         private void CityBX_Leave(object sender, EventArgs e) {
-            TextBox citybx = sender as TextBox;
-            if (citybx.Text == "") {
-                citybx.Text = "City";
-            }
+            if (LocationCityBX.Text.Trim(' ').Length == 0) LocationCityBX.Text = "City";
         }
 
+        private void NameBX_Leave(object sender, EventArgs e) {
+            if (NameBX.Text.Trim(' ').Length == 0) NameBX.Text = "Name";
+        }
 
         private void HideTooltips() {
             NameTLTP.Hide(NameBX);
@@ -142,9 +126,6 @@ namespace MSAMISUserInterface {
 
                 }
             }
-
-
-
         #endregion
 
         #region Adding and Editign
@@ -220,8 +201,7 @@ namespace MSAMISUserInterface {
                     }
                 } else {
                     try {
-                        int status;
-                        if (ActiveStatusRDBTN.Checked) status = 1; else status = 0;
+                        int status = 0;
 
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand("UPDATE Client SET Name = '" + NameBX.Text + "', ClientStreetNo = '" + LocationStreetNoBX.Text + "', ClientStreet = '" + LocationStreetNameBX.Text + "', ClientBrgy = '" + LocationBrgyBX.Text + "', ClientCity = '" + LocationCityBX.Text + "', ContactPerson = '" + ContactBX.Text + "', ContactNo = '" + ContactNoBX.Text + "', Manager = '" + ManagerBX.Text + "', CStatus = '" + status + "' WHERE CID =" + CID, conn);
@@ -251,9 +231,6 @@ namespace MSAMISUserInterface {
 
                 NameBX.Text = dt.Rows[0]["name"].ToString();
 
-                if (dt.Rows[0]["cstatus"].ToString().Equals("1")) ActiveStatusRDBTN.Checked = true;
-                else InactiveStatusRDBTN.Checked = true;
-
                 LocationStreetNoBX.Text = dt.Rows[0]["ClientStreetNo"].ToString();
                 LocationBrgyBX.Text = dt.Rows[0]["ClientBrgy"].ToString();
                 LocationStreetNameBX.Text = dt.Rows[0]["ClientStreet"].ToString();
@@ -279,5 +256,6 @@ namespace MSAMISUserInterface {
 
 
         #endregion
+
     }
 }
