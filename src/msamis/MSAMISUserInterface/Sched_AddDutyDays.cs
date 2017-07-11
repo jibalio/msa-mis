@@ -34,7 +34,8 @@ namespace MSAMISUserInterface {
             this.Close();
         }
         private void LoadPage() {
-            A = new Attendance(AID);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod(0);
+            A = new Attendance(AID, p.month, p.period, p.year);
             RefreshData();
         }
         #endregion
@@ -73,6 +74,7 @@ namespace MSAMISUserInterface {
                 }
                 DaysGRD.CurrentCell = DaysGRD.Rows[0].Cells[1];
             }
+            CertifiedBX.Text = A.GetCertifiedBy();
         }
         #endregion
 

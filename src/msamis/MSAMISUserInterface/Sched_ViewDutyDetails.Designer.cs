@@ -25,25 +25,24 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sched_ViewDutyDetails));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientLBL = new System.Windows.Forms.Label();
             this.FirstNameLBL = new System.Windows.Forms.Label();
             this.NameLBL = new System.Windows.Forms.Label();
             this.DutyDetailsLBL = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
-            this.EditDutyDetailsBTN = new System.Windows.Forms.Button();
-            this.EditDaysBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.DutyDetailsPNL = new System.Windows.Forms.Panel();
             this.DismissBTN = new System.Windows.Forms.Button();
             this.DutyDetailsGRD = new System.Windows.Forms.DataGridView();
             this.AddDutyDetailsBTN = new System.Windows.Forms.Button();
+            this.EditDutyDetailsBTN = new System.Windows.Forms.Button();
             this.CertifiedLBL = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -59,11 +58,13 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.AttendanceLBL = new System.Windows.Forms.Label();
             this.AttendancePNL = new System.Windows.Forms.Panel();
+            this.ConfigureLBL = new System.Windows.Forms.Label();
             this.ACertifiedLBL = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.EditDaysBTN = new System.Windows.Forms.Button();
             this.AttendanceGRD = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.PeriodCMBX = new System.Windows.Forms.ComboBox();
@@ -75,7 +76,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.AShiftLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ConfigureLBL = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).BeginInit();
@@ -166,47 +166,6 @@
             this.CloseBTN.MouseEnter += new System.EventHandler(this.CloseBTN_MouseEnter);
             this.CloseBTN.MouseLeave += new System.EventHandler(this.CloseBTN_MouseLeave);
             // 
-            // EditDutyDetailsBTN
-            // 
-            this.EditDutyDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.EditDutyDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditDutyDetailsBTN.BackgroundImage")));
-            this.EditDutyDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.EditDutyDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.EditDutyDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
-            this.EditDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
-            this.EditDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.EditDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.EditDutyDetailsBTN.Location = new System.Drawing.Point(223, 431);
-            this.EditDutyDetailsBTN.Name = "EditDutyDetailsBTN";
-            this.EditDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
-            this.EditDutyDetailsBTN.TabIndex = 3;
-            this.EditDutyDetailsBTN.Text = "EDIT";
-            this.EditDutyDetailsBTN.UseVisualStyleBackColor = false;
-            this.EditDutyDetailsBTN.Visible = false;
-            this.EditDutyDetailsBTN.Click += new System.EventHandler(this.EditDutyDetailsBTN_Click);
-            // 
-            // EditDaysBTN
-            // 
-            this.EditDaysBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditDaysBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.EditDaysBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.EditDaysBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.EditDaysBTN.FlatAppearance.BorderSize = 0;
-            this.EditDaysBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
-            this.EditDaysBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
-            this.EditDaysBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditDaysBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.EditDaysBTN.ForeColor = System.Drawing.Color.White;
-            this.EditDaysBTN.Location = new System.Drawing.Point(427, 19);
-            this.EditDaysBTN.Name = "EditDaysBTN";
-            this.EditDaysBTN.Size = new System.Drawing.Size(64, 29);
-            this.EditDaysBTN.TabIndex = 8;
-            this.EditDaysBTN.Text = "EDIT";
-            this.EditDaysBTN.UseVisualStyleBackColor = false;
-            this.EditDaysBTN.Click += new System.EventHandler(this.EditDaysBTN_Click);
-            // 
             // FadeTMR
             // 
             this.FadeTMR.Interval = 1;
@@ -254,37 +213,37 @@
             this.DutyDetailsGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DutyDetailsGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.DutyDetailsGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle7.NullValue = "-";
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DutyDetailsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle13.NullValue = "-";
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DutyDetailsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.DutyDetailsGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DutyDetailsGRD.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DutyDetailsGRD.DefaultCellStyle = dataGridViewCellStyle14;
             this.DutyDetailsGRD.EnableHeadersVisualStyles = false;
             this.DutyDetailsGRD.Location = new System.Drawing.Point(31, 14);
             this.DutyDetailsGRD.MultiSelect = false;
             this.DutyDetailsGRD.Name = "DutyDetailsGRD";
             this.DutyDetailsGRD.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DutyDetailsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DutyDetailsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.DutyDetailsGRD.RowHeadersVisible = false;
             this.DutyDetailsGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DutyDetailsGRD.Size = new System.Drawing.Size(489, 356);
@@ -310,6 +269,27 @@
             this.AddDutyDetailsBTN.Text = "ADD";
             this.AddDutyDetailsBTN.UseVisualStyleBackColor = false;
             this.AddDutyDetailsBTN.Click += new System.EventHandler(this.AddDutyDetailsBTN_Click);
+            // 
+            // EditDutyDetailsBTN
+            // 
+            this.EditDutyDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.EditDutyDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditDutyDetailsBTN.BackgroundImage")));
+            this.EditDutyDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditDutyDetailsBTN.FlatAppearance.BorderSize = 0;
+            this.EditDutyDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.EditDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.EditDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.EditDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
+            this.EditDutyDetailsBTN.Location = new System.Drawing.Point(223, 431);
+            this.EditDutyDetailsBTN.Name = "EditDutyDetailsBTN";
+            this.EditDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
+            this.EditDutyDetailsBTN.TabIndex = 3;
+            this.EditDutyDetailsBTN.Text = "EDIT";
+            this.EditDutyDetailsBTN.UseVisualStyleBackColor = false;
+            this.EditDutyDetailsBTN.Visible = false;
+            this.EditDutyDetailsBTN.Click += new System.EventHandler(this.EditDutyDetailsBTN_Click);
             // 
             // CertifiedLBL
             // 
@@ -379,9 +359,9 @@
             this.label5.Location = new System.Drawing.Point(53, 409);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 19);
+            this.label5.Size = new System.Drawing.Size(67, 19);
             this.label5.TabIndex = 254;
-            this.label5.Text = "Normal Shift:";
+            this.label5.Text = "Day Shift:";
             // 
             // HShiftLBL
             // 
@@ -427,9 +407,9 @@
             this.label7.Location = new System.Drawing.Point(53, 309);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 19);
+            this.label7.Size = new System.Drawing.Size(67, 19);
             this.label7.TabIndex = 247;
-            this.label7.Text = "Normal Shift:";
+            this.label7.Text = "Day Shift:";
             // 
             // RShiftLBL
             // 
@@ -508,6 +488,22 @@
             this.AttendancePNL.TabIndex = 236;
             this.AttendancePNL.Visible = false;
             // 
+            // ConfigureLBL
+            // 
+            this.ConfigureLBL.AutoSize = true;
+            this.ConfigureLBL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConfigureLBL.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline);
+            this.ConfigureLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ConfigureLBL.Location = new System.Drawing.Point(315, 362);
+            this.ConfigureLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ConfigureLBL.Name = "ConfigureLBL";
+            this.ConfigureLBL.Size = new System.Drawing.Size(123, 19);
+            this.ConfigureLBL.TabIndex = 272;
+            this.ConfigureLBL.Text = "Configure holidays";
+            this.ConfigureLBL.Click += new System.EventHandler(this.ConfigureLBL_Click);
+            this.ConfigureLBL.MouseEnter += new System.EventHandler(this.ConfigureLBL_MouseEnter);
+            this.ConfigureLBL.MouseLeave += new System.EventHandler(this.ConfigureLBL_MouseLeave);
+            // 
             // ACertifiedLBL
             // 
             this.ACertifiedLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
@@ -568,6 +564,26 @@
             this.label8.TabIndex = 267;
             this.label8.Text = "Night Shift:";
             // 
+            // EditDaysBTN
+            // 
+            this.EditDaysBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditDaysBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.EditDaysBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.EditDaysBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditDaysBTN.FlatAppearance.BorderSize = 0;
+            this.EditDaysBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.EditDaysBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.EditDaysBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditDaysBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.EditDaysBTN.ForeColor = System.Drawing.Color.White;
+            this.EditDaysBTN.Location = new System.Drawing.Point(427, 19);
+            this.EditDaysBTN.Name = "EditDaysBTN";
+            this.EditDaysBTN.Size = new System.Drawing.Size(64, 29);
+            this.EditDaysBTN.TabIndex = 8;
+            this.EditDaysBTN.Text = "EDIT";
+            this.EditDaysBTN.UseVisualStyleBackColor = false;
+            this.EditDaysBTN.Click += new System.EventHandler(this.EditDaysBTN_Click);
+            // 
             // AttendanceGRD
             // 
             this.AttendanceGRD.AllowUserToAddRows = false;
@@ -578,37 +594,37 @@
             this.AttendanceGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AttendanceGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.AttendanceGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle10.NullValue = "-";
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AttendanceGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle16.NullValue = "-";
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AttendanceGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.AttendanceGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AttendanceGRD.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AttendanceGRD.DefaultCellStyle = dataGridViewCellStyle17;
             this.AttendanceGRD.EnableHeadersVisualStyles = false;
             this.AttendanceGRD.Location = new System.Drawing.Point(18, 68);
             this.AttendanceGRD.MultiSelect = false;
             this.AttendanceGRD.Name = "AttendanceGRD";
             this.AttendanceGRD.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AttendanceGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AttendanceGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.AttendanceGRD.RowHeadersVisible = false;
             this.AttendanceGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AttendanceGRD.Size = new System.Drawing.Size(489, 191);
@@ -622,9 +638,9 @@
             this.label9.Location = new System.Drawing.Point(292, 310);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 19);
+            this.label9.Size = new System.Drawing.Size(67, 19);
             this.label9.TabIndex = 266;
-            this.label9.Text = "Normal Shift:";
+            this.label9.Text = "Day Shift:";
             // 
             // PeriodCMBX
             // 
@@ -708,9 +724,9 @@
             this.label18.Location = new System.Drawing.Point(44, 310);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 19);
+            this.label18.Size = new System.Drawing.Size(67, 19);
             this.label18.TabIndex = 262;
-            this.label18.Text = "Normal Shift:";
+            this.label18.Text = "Day Shift:";
             // 
             // AShiftLBL
             // 
@@ -736,21 +752,6 @@
             this.label2.TabIndex = 272;
             this.label2.Text = "For the current payroll period:";
             // 
-            // ConfigureLBL
-            // 
-            this.ConfigureLBL.AutoSize = true;
-            this.ConfigureLBL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConfigureLBL.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline);
-            this.ConfigureLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ConfigureLBL.Location = new System.Drawing.Point(315, 362);
-            this.ConfigureLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ConfigureLBL.Name = "ConfigureLBL";
-            this.ConfigureLBL.Size = new System.Drawing.Size(123, 19);
-            this.ConfigureLBL.TabIndex = 272;
-            this.ConfigureLBL.Text = "Configure holidays";
-            this.ConfigureLBL.MouseEnter += new System.EventHandler(this.ConfigureLBL_MouseEnter);
-            this.ConfigureLBL.MouseLeave += new System.EventHandler(this.ConfigureLBL_MouseLeave);
-            // 
             // Sched_ViewDutyDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -764,7 +765,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.HShiftLBL);
@@ -773,6 +773,7 @@
             this.Controls.Add(this.RShiftLBL);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Sched_ViewDutyDetails";
             this.ShowInTaskbar = false;
