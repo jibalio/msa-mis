@@ -61,8 +61,8 @@ namespace MSAMISUserInterface {
                 this.period = period;
                 this.month = month;
                 this.year = year;
-                
-                
+
+
                 int s = (period == 1 ? 1 : 16),
                     e = (period == 1 ? 15 : DateTime.DaysInMonth(year, month));
                 for (int c = s; c <= e; c++) {
@@ -107,7 +107,7 @@ namespace MSAMISUserInterface {
             return int.Parse(DateTime.Now.ToString("yyyy"));
         }
 
-        
+
 
         public static int isNight() {
             return 0;
@@ -120,7 +120,7 @@ namespace MSAMISUserInterface {
                                         FROM msadb.attendance 
                                         left join dutydetails
                                         on attendance.did=dutydetails.did 
-                                        where AID = "+AID+@"
+                                        where AID = " + AID + @"
                                         group by month,period,year order by year desc, month desc, period desc;");
         }
 
@@ -134,7 +134,7 @@ namespace MSAMISUserInterface {
 
         public Period period;
         public int AID;
-        
+
         public Hours GetAttendanceSummary() {
             String q = @"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
@@ -169,7 +169,7 @@ namespace MSAMISUserInterface {
             return h;
         }
 
-        public Attendance (int AID, int month, int periodx, int year) {
+        public Attendance(int AID, int month, int periodx, int year) {
             this.AID = AID;
             period = new Period(AID, periodx, month, year);
             Console.Write(period.period);
@@ -207,9 +207,11 @@ namespace MSAMISUserInterface {
                 Console.WriteLine("Yes!");
             }
         }
-        
+
 
         public DataTable GetAttendance() {
+            Period p = GetCurrentPayPeriod(0);
+
             String q = @"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
 							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
@@ -225,7 +227,7 @@ namespace MSAMISUserInterface {
                             and year = '{2}'
                             order by date asc;
                             ";
-            DataTable d =  SQLTools.ExecuteQuery(q);
+            DataTable d = SQLTools.ExecuteQuery(String.Format(q, p.period, p.month, p.year));
             return d;
         }
 
@@ -283,7 +285,7 @@ namespace MSAMISUserInterface {
         }
         #endregion
 
-        
+
 
         //==================================================================================
         //          DATA TESTING
@@ -308,7 +310,7 @@ namespace MSAMISUserInterface {
             Hours h = new Hours();
             DateTime NightStart = new DateTime(1, 1, 1, 22, 00, 00);
             DateTime NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
-            DateTime Midnight = new DateTime(1,1,2,0,0,0); DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
+            DateTime Midnight = new DateTime(1, 1, 2, 0, 0, 0); DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
             // if not same
             if (actuals > actuale) {
                 #region + OLD
@@ -324,15 +326,15 @@ namespace MSAMISUserInterface {
                 NightEnd = NightEnd.AddDays(1);
                 // First Half
                 // 1: Max Selection, either nighstart or actuals
-                    maxStart = actuals < NightStart ? NightStart : actuals;
-                    minStart = actuals < NightStart ? actuals : NightStart;
-                    TimeSpan d1_night = Midnight - maxStart;
-                    TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart-minStart : new TimeSpan(0,0,0);
+                maxStart = actuals < NightStart ? NightStart : actuals;
+                minStart = actuals < NightStart ? actuals : NightStart;
+                TimeSpan d1_night = Midnight - maxStart;
+                TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart - minStart : new TimeSpan(0, 0, 0);
                 // Second Half
-                    minEnd = actuale < NightEnd ? actuale : NightEnd;
-                    maxEnd = actuale > NightEnd ? actuale : NightEnd;
-                    TimeSpan d2_night = minEnd - Midnight;
-                    TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
+                minEnd = actuale < NightEnd ? actuale : NightEnd;
+                maxEnd = actuale > NightEnd ? actuale : NightEnd;
+                TimeSpan d2_night = minEnd - Midnight;
+                TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
                 // Check if today is holiday.
                 if (IsHolidayToday(actuals)) {
                     h.holiday_night += d1_night;
@@ -369,7 +371,7 @@ namespace MSAMISUserInterface {
             return h;
         }
 
-        
+
 
 
         public static TimeSpan GetOvertime(int dbhour, int dbmin, String dbampm, int actualo, int actualomin, String actualoampm) {
@@ -415,7 +417,7 @@ namespace MSAMISUserInterface {
             return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
         }
 
-        public static DateTime GetDateTime_ (String hhmmss_tt) {
+        public static DateTime GetDateTime_(String hhmmss_tt) {
             var t2 = "01/01/0001 " + hhmmss_tt;
             return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm tt", CultureInfo.InvariantCulture);
         }
