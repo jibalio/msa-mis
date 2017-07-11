@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MSAMISUserInterface;
 
 namespace ryldb.sqltools {
     public class Holiday : IEquatable<Holiday> {
@@ -13,7 +14,7 @@ namespace ryldb.sqltools {
         public int day;
         public bool recurring;
         public int type;
-        public static List<Holiday> holidaylist;
+        public static List<DateTime> holidaylist = new List<DateTime>();
         public static int Default = 0;
 
         public Holiday(int month, int day) {
@@ -55,9 +56,14 @@ namespace ryldb.sqltools {
         public static void InitHolidays() {
             // datestart, dateend, desc
             string q = "select * from holiday";
-            
-            
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            foreach (DataRow e in dt.Rows) {
+                DateTime start = DateTime.Parse(e["datestart"].ToString());
+                DateTime end = DateTime.Parse(e["dateend"].ToString());
+                for (DateTime c = start; c < end; c.AddDays(1)) {
+                    holidaylist.Add(c);
+                }
+            }
         }
-
     }
 }

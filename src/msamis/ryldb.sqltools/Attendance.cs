@@ -121,9 +121,7 @@ namespace MSAMISUserInterface {
                                         group by month,period,year order by year desc, month desc, period desc;");
         }
 
-
-
-
+        
         // =============================================================================================
         //          INSTANCE METHODS / VARIABLES (nonstatic)
         // =============================================================================================
