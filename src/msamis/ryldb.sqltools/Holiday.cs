@@ -52,5 +52,12 @@ namespace ryldb.sqltools {
             return MSAMISUserInterface.SQLTools.ExecuteQuery(q);
         }
 
+        public static void InitHolidays() {
+            // datestart, dateend, desc
+            string q = "select * from holiday";
+            
+            
+        }
+
     }
 }
