@@ -25,14 +25,24 @@ namespace MSAMISUserInterface {
         }
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
             FadeTMR.Start();
-            A = new Attendance(AID);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod(0);
+            A = new Attendance(AID, p.month, p.period, p.year);
             RefreshData();
+            
         }
         public void RefreshData() {
             DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
             NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0];
             FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
             ClientLBL.Text = dt.Rows[0][3].ToString();
+
+            Attendance.Hours hrs = A.GetAttendanceSummary();
+            RShiftLBL.Text = hrs.GetNormalDay() + " hrs";
+            RNightLBL.Text = hrs.GetNormalNight() + " hrs";
+            HShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
+            HNightLBL.Text = hrs.GetHolidayNight() + " hrs";
+            //CertifiedLBL.Text = hrs.GetCertidied();
+
             RefreshDutyDetails();
         }
         public void RefreshDutyDetails() {
@@ -127,6 +137,14 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
 
+        private void ConfigureLBL_Click(object sender, EventArgs e) {
+            Sched_ConfHolidays view = new Sched_ConfHolidays();
+            view.conn = this.conn;
+            view.reference = this;
+            view.Location = new Point(this.Location.X + 330, this.Location.Y);
+            view.ShowDialog();
+        }
+
         private void DutyDetailsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (DutyDetailsGRD.SelectedRows.Count > 0) {
                 DID = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
@@ -163,6 +181,13 @@ namespace MSAMISUserInterface {
                 ConfigureLBL.Visible = false;
                 PeriodCMBX.Size = new System.Drawing.Size(352, 25);
             }
+        }
+        private void ConfigureLBL_MouseEnter(object sender, EventArgs e) {
+            ConfigureLBL.ForeColor = Color.FromArgb(72, 87, 112);
+        }
+
+        private void ConfigureLBL_MouseLeave(object sender, EventArgs e) {
+            ConfigureLBL.ForeColor = Color.FromArgb(53, 64, 82);
         }
         #endregion
 
@@ -201,12 +226,7 @@ namespace MSAMISUserInterface {
         }
         #endregion
 
-        private void ConfigureLBL_MouseEnter(object sender, EventArgs e) {
-            ConfigureLBL.ForeColor = Color.FromArgb(72, 87, 112);
-        }
 
-        private void ConfigureLBL_MouseLeave(object sender, EventArgs e) {
-            ConfigureLBL.ForeColor = Color.FromArgb(53, 64, 82);
-        }
+
     }
 }
