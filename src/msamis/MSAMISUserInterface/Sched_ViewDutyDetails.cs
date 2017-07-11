@@ -15,6 +15,8 @@ namespace MSAMISUserInterface {
         public MainForm reference;
         public MySqlConnection conn;
 
+        public Shadow refer;
+
         private Attendance A;
         private int DID;
 
@@ -93,16 +95,14 @@ namespace MSAMISUserInterface {
         #region Form Props
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
-            if (reference.Opacity == 0.6 || this.Opacity >= 1) { FadeTMR.Stop(); }
-            if (reference.Opacity > 0.7) { reference.Opacity -= 0.1; }
+            if (this.Opacity >= 1) { FadeTMR.Stop(); }
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
             reference.SCHEDRefreshAssignments();
             this.Close();
         }
         private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
-            reference.Opacity = 1;
-            reference.Show();
+            refer.Hide();
         }
         private void EditDutyDetailsBTN_Click(object sender, EventArgs e) {
             Sched_AddDutyDetail view = new Sched_AddDutyDetail();

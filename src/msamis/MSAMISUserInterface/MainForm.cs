@@ -242,9 +242,9 @@ namespace MSAMISUserInterface {
             PAYLoadPage();
         }
         private void SettingsBTN_Click(object sender, EventArgs e) {
-            shadow.Transparent();
-            shadow.Show();
             try {
+                shadow.Transparent();
+                shadow.Show();
                 About view = new About();
                 view.reference = this;
                 view.conn = this.conn;
@@ -592,7 +592,7 @@ namespace MSAMISUserInterface {
                 Clients_Edit view = new Clients_Edit();
                 view.reference = this;
                 view.conn = this.conn;
-                view.reference = this.shadow;
+                view.refer = this.shadow;
                 view.Location = newFormLocation;
                 view.ShowDialog();
             }

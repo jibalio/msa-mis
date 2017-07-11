@@ -22,7 +22,6 @@ namespace MSAMISUserInterface {
         private void Shadow_Load(object sender, EventArgs e) {
             
         }
-
         public void Transparent() {
             this.Opacity = 0;
             FadeTMR.Start();

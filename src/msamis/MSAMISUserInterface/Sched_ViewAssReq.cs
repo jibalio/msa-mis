@@ -14,7 +14,7 @@ namespace MSAMISUserInterface {
         public int RAID { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
-
+        public Shadow refer;
         int numGuards;
 
         public Sched_ViewAssReq() {
@@ -24,8 +24,7 @@ namespace MSAMISUserInterface {
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
-            if (reference.Opacity == 0.6 || this.Opacity >= 1) { FadeTMR.Stop(); }
-            if (reference.Opacity > 0.7) { reference.Opacity -= 0.1; }
+            if (this.Opacity >= 1) { FadeTMR.Stop(); }
         }
 
         private void Sched_ViewAssReq_Load(object sender, EventArgs e) {
@@ -60,8 +59,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {
-            reference.Opacity = 1;
-            reference.Show();
+            refer.Hide();
             reference.SCHEDLoadPage();
         }
 
