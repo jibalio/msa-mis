@@ -53,19 +53,11 @@ namespace MSAMISUserInterface {
                 if (row.Cells[1].Value.ToString().Equals(row.Cells[2].Value.ToString())) {
                     dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]), int.Parse(row.Cells[1].Value.ToString().Split('/')[0]), int.Parse(row.Cells[1].Value.ToString().Split('/')[1])));
                 } else {
-                    
-
-
+                    int count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) - int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
+                    for (int i = 0; i < count; i++) dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]), int.Parse(row.Cells[1].Value.ToString().Split('/')[0]), int.Parse(row.Cells[1].Value.ToString().Split('/')[1])+i));
                 }
-
-
-
             }
-
-
-
-
-          //  HoldaysCLNDR.BoldedDates = dts;
+           HoldaysCLNDR.BoldedDates = dts.ToArray();
 
         }
         #endregion
@@ -76,7 +68,7 @@ namespace MSAMISUserInterface {
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
-            Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, "", DescBX.Text);
+            Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text);
         }
     }
 }
