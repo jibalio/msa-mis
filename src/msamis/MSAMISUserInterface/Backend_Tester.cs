@@ -20,9 +20,11 @@ namespace MSAMISUserInterface {
 
         private void Backend_Tester_Load(object sender, EventArgs e) {
             //  dtq.Text = ;
-            Attendance a = new Attendance(1);
-            dgv.DataSource = a.GetAttendance();
-            //esrq.Text = SQLTools.ExecuteSingleResult(qor);
+           // Attendance a = new Attendance(1);
+           // dgv.DataSource = a.GetAttendance();
+           // Attendance.Hours asd = a.GetAttendanceSummary();
+          //  asd = asd;
+            //esrq.Text = SQLTools.ExecuteSingleResult
 
             // Scheduling.AddAssignmentRequest(2, "14-A", "Jacinto Extension", "Tibungco", "DavaoCity", DateTime.Now, DateTime.Now, 20);
         }
