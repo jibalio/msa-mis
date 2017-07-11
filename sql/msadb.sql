@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `msadb`;
--- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: msadb
+-- Host: localhost    Database: msadb
 -- ------------------------------------------------------
 -- Server version	5.7.13-log
 
@@ -326,6 +326,31 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Table structure for table `holiday`
+--
+
+DROP TABLE IF EXISTS `holiday`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `holiday` (
+  `hid` int(11) NOT NULL AUTO_INCREMENT,
+  `date` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `desc` varchar(120) DEFAULT NULL,
+  PRIMARY KEY (`hid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `holiday`
+--
+
+LOCK TABLES `holiday` WRITE;
+/*!40000 ALTER TABLE `holiday` DISABLE KEYS */;
+/*!40000 ALTER TABLE `holiday` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `incidentreport`
 --
 
@@ -636,4 +661,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-11 14:33:03
+-- Dump completed on 2017-07-11 16:28:00
