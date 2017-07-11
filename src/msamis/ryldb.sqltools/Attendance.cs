@@ -23,7 +23,6 @@ namespace MSAMISUserInterface {
         #region Statics
 
         public class Period {
-            Hours dutyhours;
             public List<int> Mon = new List<int>(),
                      Tue = new List<int>(),
                      Wed = new List<int>(),
@@ -39,7 +38,8 @@ namespace MSAMISUserInterface {
                 this.period = period;
                 this.month = month;
                 this.year = year;
-                GetAttendanceSummary(AID, month, period, year);
+                
+                
                 int s = (period == 1 ? 1 : 16),
                     e = (period == 1 ? 15 : DateTime.DaysInMonth(year, month));
                 for (int c = s; c <= e; c++) {
@@ -102,43 +102,21 @@ namespace MSAMISUserInterface {
         }
 
         public class Hours {
-            public TimeSpan total;
-            public TimeSpan holiday_day;
-            public TimeSpan holiday_night;
-            public TimeSpan normal_day;
-            public TimeSpan normal_night;
+            public TimeSpan total = new TimeSpan(0,0,0);
+            public TimeSpan holiday_day = new TimeSpan(0, 0, 0);
+            public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
+            public TimeSpan normal_day = new TimeSpan(0, 0, 0);
+            public TimeSpan normal_night = new TimeSpan(0, 0, 0);
         }
-        public static Hours GetAttendanceSummary(int AID, int month, int period, int year) {
-            String q = @"SELECT 
-                            hours, night, holiday
-                             FROM msadb.attendance 
-                            where month = {0} 
-                            and period = {1} 
-                            and year={2} ;";
-            q = String.Format(q, month, period, year);
-            DataTable dt = SQLTools.ExecuteQuery(q);
-            TimeSpan holiday = new TimeSpan(0, 0, 0);
-            TimeSpan holiday_n = new TimeSpan(0, 0, 0);
-            TimeSpan normal = new TimeSpan(0, 0, 0);
-            TimeSpan normal_n = new TimeSpan(0, 0, 0);
-
-            foreach (DataRow r in dt.Rows) {
-                if (r["holiday"].ToString() == "1") {
-                    holiday += new TimeSpan(int.Parse(r["hours"].ToString().Split(':')[0]), int.Parse(r["hours"].ToString().Split(':')[1]), 0);
-                    holiday_n += new TimeSpan(int.Parse(r["night"].ToString().Split(':')[0]), int.Parse(r["night"].ToString().Split(':')[1]), 0);
-                } else {
-                    normal += new TimeSpan(int.Parse(r["hours"].ToString().Split(':')[0]), int.Parse(r["hours"].ToString().Split(':')[1]), 0);
-                    normal += new TimeSpan(int.Parse(r["night"].ToString().Split(':')[0]), int.Parse(r["night"].ToString().Split(':')[1]), 0);
-                }
-            }
+        public Hours GetAttendanceSummary() {
             Hours h = new Hours();
-
-            h.total = normal + normal_n + holiday + holiday_n;
-            h.normal_day = normal;
-            h.normal_night = normal_n;
-            h.holiday_day = holiday;
-            h.holiday_night = holiday_n;
-            Console.WriteLine("Total" + h.total);
+            foreach (Hours x in hourlist) {
+                h.holiday_day += x.holiday_day;
+                h.holiday_night += x.holiday_night;
+                h.normal_day += x.normal_day;
+                h.normal_night += x.normal_night;
+                h.total += x.total;
+            }
             return h;
         }
 
@@ -204,7 +182,11 @@ namespace MSAMISUserInterface {
                             on dutydetails.did=attendance.did
                             order by date asc;
                             ";
-            return SQLTools.ExecuteQuery(q);
+            DataTable d =  SQLTools.ExecuteQuery(q);
+            foreach  (DataRow f in d.Rows) {
+                hourlist.Add(GetHours(DateTime.Parse(f["TimeIn"].ToString()), DateTime.Parse(f["TimeOut"].ToString())));
+            }
+            return d;
         }
 
         public DataTable GetAttendance(int month, int period, int year) {
@@ -247,6 +229,7 @@ namespace MSAMISUserInterface {
             DateTime start_night = GetDateTime(10, 00, "PM");
             DateTime end_night = GetDateTime(6, 0, "AM").AddDays(1);
             Hours nhe = GetHours(ti, to);
+            hourlist.Add(nhe);
             double nh = nhe.normal_night.TotalMinutes;
             String nhs = ((int)nh / 60).ToString("00") + ":" + ((int)nh % 60).ToString("00");
             String q = @"
@@ -255,7 +238,9 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery(q);
         }
 
+        public List<Hours> hourlist = new List<Hours>();
 
+        
 
         //==================================================================================
         //          DATA TESTING
