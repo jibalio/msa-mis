@@ -91,7 +91,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.HolidaysGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.HolidaysGRD.EnableHeadersVisualStyles = false;
-            this.HolidaysGRD.Location = new System.Drawing.Point(54, 293);
+            this.HolidaysGRD.Location = new System.Drawing.Point(54, 310);
             this.HolidaysGRD.MultiSelect = false;
             this.HolidaysGRD.Name = "HolidaysGRD";
             this.HolidaysGRD.ReadOnly = true;
@@ -106,7 +106,7 @@
             this.HolidaysGRD.RowHeadersVisible = false;
             this.HolidaysGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HolidaysGRD.ShowCellToolTips = false;
-            this.HolidaysGRD.Size = new System.Drawing.Size(466, 224);
+            this.HolidaysGRD.Size = new System.Drawing.Size(466, 207);
             this.HolidaysGRD.TabIndex = 157;
             // 
             // label1
@@ -114,7 +114,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(298, 127);
+            this.label1.Location = new System.Drawing.Point(305, 127);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 19);
@@ -127,7 +127,7 @@
             this.DescBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DescBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DescBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DescBX.Location = new System.Drawing.Point(301, 211);
+            this.DescBX.Location = new System.Drawing.Point(308, 211);
             this.DescBX.Name = "DescBX";
             this.DescBX.Size = new System.Drawing.Size(170, 18);
             this.DescBX.TabIndex = 160;
@@ -137,7 +137,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.ForeColor = System.Drawing.Color.LightGray;
-            this.label4.Location = new System.Drawing.Point(299, 222);
+            this.label4.Location = new System.Drawing.Point(306, 222);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(175, 13);
             this.label4.TabIndex = 162;
@@ -148,7 +148,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(298, 188);
+            this.label5.Location = new System.Drawing.Point(305, 188);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 19);
@@ -160,7 +160,7 @@
             this.DateLBL.AutoSize = true;
             this.DateLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DateLBL.Location = new System.Drawing.Point(297, 148);
+            this.DateLBL.Location = new System.Drawing.Point(304, 148);
             this.DateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DateLBL.Name = "DateLBL";
             this.DateLBL.Size = new System.Drawing.Size(196, 21);
@@ -179,7 +179,7 @@
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(301, 249);
+            this.AddBTN.Location = new System.Drawing.Point(308, 249);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(58, 22);
             this.AddBTN.TabIndex = 164;

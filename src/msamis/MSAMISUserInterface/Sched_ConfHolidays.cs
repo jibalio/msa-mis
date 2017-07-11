@@ -24,9 +24,6 @@ namespace MSAMISUserInterface {
         private void Sched_ConfHolidays_Load(object sender, EventArgs e) {
             LoadPage();
             FadeTMR.Start();
-
-
-
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -41,11 +38,11 @@ namespace MSAMISUserInterface {
             HolidaysGRD.DataSource = Holiday.GetHolidays();
             HolidaysGRD.Columns[0].Visible = false;
             HolidaysGRD.Columns[1].HeaderText = "START DATE";
-            HolidaysGRD.Columns[1].Width = 70;
+            HolidaysGRD.Columns[1].Width = 100;
             HolidaysGRD.Columns[2].HeaderText = "START END";
-            HolidaysGRD.Columns[2].Width = 70;
+            HolidaysGRD.Columns[2].Width = 100;
             HolidaysGRD.Columns[3].HeaderText = "DESCRIPTION";
-            HolidaysGRD.Columns[3].Width = 300;
+            HolidaysGRD.Columns[3].Width = 200;
 
             List<DateTime> dts = new List<DateTime>();
 
@@ -54,7 +51,7 @@ namespace MSAMISUserInterface {
                     dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]), int.Parse(row.Cells[1].Value.ToString().Split('/')[0]), int.Parse(row.Cells[1].Value.ToString().Split('/')[1])));
                 } else {
                     int count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) - int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
-                    for (int i = 0; i < count; i++) dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]), int.Parse(row.Cells[1].Value.ToString().Split('/')[0]), int.Parse(row.Cells[1].Value.ToString().Split('/')[1])+i));
+                    for (int i = 0; i < count+1; i++) dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]), int.Parse(row.Cells[1].Value.ToString().Split('/')[0]), int.Parse(row.Cells[1].Value.ToString().Split('/')[1])+i));
                 }
             }
            HoldaysCLNDR.BoldedDates = dts.ToArray();
@@ -65,10 +62,12 @@ namespace MSAMISUserInterface {
         private void HoldaysCLNDR_DateSelected(object sender, DateRangeEventArgs e) {
             if (HoldaysCLNDR.SelectionRange.Start.Day - HoldaysCLNDR.SelectionRange.End.Day != 0) DateLBL.Text = HoldaysCLNDR.SelectionRange.Start.ToShortDateString() + " - " + HoldaysCLNDR.SelectionRange.End.ToShortDateString();
             else DateLBL.Text = HoldaysCLNDR.SelectionRange.Start.ToShortDateString();
+         //   if (HoldaysCLNDR.BoldedDates)
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
             Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text);
+            LoadPage();
         }
     }
 }
