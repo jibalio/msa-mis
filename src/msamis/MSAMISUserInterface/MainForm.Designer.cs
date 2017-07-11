@@ -264,6 +264,7 @@
             this.QuoteMainBX = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.ClientRequestsTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.PConfHoliday = new System.Windows.Forms.Button();
             this.ControlBoxPanel.SuspendLayout();
             this.DashboardPage.SuspendLayout();
             this.DSalaryReportPNL.SuspendLayout();
@@ -2242,6 +2243,7 @@
             this.flowLayoutPanel3.Controls.Add(this.PEmpListBTN);
             this.flowLayoutPanel3.Controls.Add(this.PBasicPayBTN);
             this.flowLayoutPanel3.Controls.Add(this.PCashAdvBTN);
+            this.flowLayoutPanel3.Controls.Add(this.PConfHoliday);
             this.flowLayoutPanel3.Controls.Add(this.button22);
             this.flowLayoutPanel3.Controls.Add(this.label46);
             this.flowLayoutPanel3.Controls.Add(this.PSalaryReportBTN);
@@ -2337,7 +2339,7 @@
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button22.Location = new System.Drawing.Point(2, 150);
+            this.button22.Location = new System.Drawing.Point(2, 180);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(172, 26);
@@ -2349,7 +2351,7 @@
             // 
             this.label46.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.label46.ForeColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(2, 178);
+            this.label46.Location = new System.Drawing.Point(2, 208);
             this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(172, 28);
@@ -2363,7 +2365,7 @@
             this.PSalaryReportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PSalaryReportBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PSalaryReportBTN.ForeColor = System.Drawing.Color.White;
-            this.PSalaryReportBTN.Location = new System.Drawing.Point(2, 208);
+            this.PSalaryReportBTN.Location = new System.Drawing.Point(2, 238);
             this.PSalaryReportBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PSalaryReportBTN.Name = "PSalaryReportBTN";
             this.PSalaryReportBTN.Size = new System.Drawing.Size(172, 26);
@@ -2380,7 +2382,7 @@
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button26.Location = new System.Drawing.Point(2, 238);
+            this.button26.Location = new System.Drawing.Point(2, 268);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(172, 26);
@@ -2394,7 +2396,7 @@
             this.PArchiveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PArchiveBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PArchiveBTN.ForeColor = System.Drawing.Color.White;
-            this.PArchiveBTN.Location = new System.Drawing.Point(2, 268);
+            this.PArchiveBTN.Location = new System.Drawing.Point(2, 298);
             this.PArchiveBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PArchiveBTN.Name = "PArchiveBTN";
             this.PArchiveBTN.Size = new System.Drawing.Size(172, 26);
@@ -3725,6 +3727,22 @@
             this.ClientRequestsTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ClientRequestsTLTP.ToolTipTitle = "Client Requests";
             // 
+            // PConfHoliday
+            // 
+            this.PConfHoliday.FlatAppearance.BorderSize = 0;
+            this.PConfHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PConfHoliday.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.PConfHoliday.ForeColor = System.Drawing.Color.White;
+            this.PConfHoliday.Location = new System.Drawing.Point(2, 150);
+            this.PConfHoliday.Margin = new System.Windows.Forms.Padding(2);
+            this.PConfHoliday.Name = "PConfHoliday";
+            this.PConfHoliday.Size = new System.Drawing.Size(172, 26);
+            this.PConfHoliday.TabIndex = 25;
+            this.PConfHoliday.Text = "configure holidays";
+            this.PConfHoliday.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PConfHoliday.UseVisualStyleBackColor = true;
+            this.PConfHoliday.Click += new System.EventHandler(this.PConfHoliday_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3734,12 +3752,12 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ControlBoxPanel);
-            this.Controls.Add(this.GuardsPage);
-            this.Controls.Add(this.ClientsPage);
-            this.Controls.Add(this.SamplePNL);
             this.Controls.Add(this.PayrollPage);
             this.Controls.Add(this.SchedulesPage);
             this.Controls.Add(this.DashboardPage);
+            this.Controls.Add(this.GuardsPage);
+            this.Controls.Add(this.ClientsPage);
+            this.Controls.Add(this.SamplePNL);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -4054,6 +4072,7 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Button PConfHoliday;
     }
 }
 

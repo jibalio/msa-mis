@@ -178,6 +178,7 @@ namespace MSAMISUserInterface {
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
+            shadow.Hide();
             lf.Opacity = 0;
             lf.Show();
             lf.Location = newFormLocation;
@@ -1084,6 +1085,18 @@ namespace MSAMISUserInterface {
             PEmpListSortCMBX.SelectedIndex = 0;
         }
 
+        private void PConfHoliday_Click(object sender, EventArgs e) {
+            try {
+                shadow.Transparent();
+                shadow.Show();
+                Payroll_ConfHolidays view = new Payroll_ConfHolidays();
+                view.conn = this.conn;
+                view.refer = this.shadow;
+                view.Location = newFormLocation;
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
         private void PEmpListViewBTN_Click(object sender, EventArgs e) {
             try {
                 shadow.Transparent();

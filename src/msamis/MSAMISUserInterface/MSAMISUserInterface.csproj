@@ -155,11 +155,11 @@
     <Compile Include="Sched_AssignGuards.Designer.cs">
       <DependentUpon>Sched_AssignGuards.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_ConfHolidays.cs">
+    <Compile Include="Payroll_ConfHolidays.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_ConfHolidays.Designer.cs">
-      <DependentUpon>Sched_ConfHolidays.cs</DependentUpon>
+    <Compile Include="Payroll_ConfHolidays.Designer.cs">
+      <DependentUpon>Payroll_ConfHolidays.cs</DependentUpon>
     </Compile>
     <Compile Include="Sched_UnassignGuard.cs">
       <SubType>Form</SubType>
@@ -252,8 +252,8 @@
     <EmbeddedResource Include="Sched_AssignGuards.resx">
       <DependentUpon>Sched_AssignGuards.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_ConfHolidays.resx">
-      <DependentUpon>Sched_ConfHolidays.cs</DependentUpon>
+    <EmbeddedResource Include="Payroll_ConfHolidays.resx">
+      <DependentUpon>Payroll_ConfHolidays.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sched_UnassignGuard.resx">
       <DependentUpon>Sched_UnassignGuard.cs</DependentUpon>
