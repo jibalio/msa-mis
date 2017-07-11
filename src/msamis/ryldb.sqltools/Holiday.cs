@@ -42,7 +42,7 @@ namespace ryldb.sqltools {
         }
 
         public static void RemoveHoliday(int hid) {
-            SQLTools.ExecuteNonQuery("delete from hid where hid=" + hid);
+            SQLTools.ExecuteNonQuery("delete from holiday where hid=" + hid);
         }
 
         public static DataTable GetHolidays() {
