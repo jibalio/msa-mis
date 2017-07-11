@@ -66,7 +66,7 @@ namespace MSAMISUserInterface {
             if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
         }
         public void RefreshAttendance() {
-            AttendanceGRD.DataSource = A.GetAttendance(((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            AttendanceGRD.DataSource = A.GetAttendance_View(((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
             AttendanceGRD.Columns[0].Visible = false;
             AttendanceGRD.Columns[1].Visible = false;
             AttendanceGRD.Columns[2].Width = 140;

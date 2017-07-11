@@ -1,4 +1,5 @@
-﻿using ryldb.sqltools;
+﻿
+using ryldb.sqltools;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +14,7 @@ namespace MSAMISUserInterface {
 
         public static List<Holiday> holly = new List<Holiday>();
         private void init() {
-            holly.Add(new Holiday(7, 11));
+            
         }
 
         public List<Hours> hourlist = new List<Hours>();
@@ -30,7 +31,7 @@ namespace MSAMISUserInterface {
                 return ((int)holiday_night.TotalMinutes / 60).ToString("00") + ":" + (holiday_night.TotalMinutes % 60).ToString("00");
             }
             public string GetNormalDay() {
-                return ((int)normal_night.TotalMinutes / 60).ToString("00") + ":" + (normal_night.TotalMinutes % 60).ToString("00");
+                return ((int)normal_day.TotalMinutes / 60).ToString("00") + ":" + (normal_day.TotalMinutes % 60).ToString("00");
             }
             public string GetNormalNight() {
                 return ((int)normal_night.TotalMinutes / 60).ToString("00") + ":" + (normal_night.TotalMinutes % 60).ToString("00");
@@ -121,7 +122,7 @@ namespace MSAMISUserInterface {
                                         group by month,period,year order by year desc, month desc, period desc;");
         }
 
-        
+
         // =============================================================================================
         //          INSTANCE METHODS / VARIABLES (nonstatic)
         // =============================================================================================
@@ -129,15 +130,14 @@ namespace MSAMISUserInterface {
 
         public Period period;
         public int AID;
-
+        DataTable attendance_cached;
         public Hours GetAttendanceSummary() {
             String q = @"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
 							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
                             timein,
-                           TimeOut, hours, 
-                            night as NightHours, overtime,
-                            case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday
+                           TimeOut, 
+                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
@@ -153,8 +153,15 @@ namespace MSAMISUserInterface {
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
                 DateTime to = GetDateTime_(f["TimeOut"].ToString());
-                hourlist.Add(GetHours(ti, to));
+                Hours asx = GetHours(ti, to);
+                hourlist.Add(asx);
+                f["normal_day"] = asx.GetNormalDay();
+                f["normal_night"] = asx.GetNormalNight();
+                f["holiday_day"] = asx.GetHolidayDay();
+                f["holiday_night"] = asx.GetHolidayNight();
+                f["total"] = asx.GetTotal();
             }
+            attendance_cached = d;
             Hours h = new Hours();
             foreach (Hours x in hourlist) {
                 h.holiday_day += x.holiday_day;
@@ -193,11 +200,11 @@ namespace MSAMISUserInterface {
 
                     DateTime d = new DateTime(period.year, period.month, date);
                     String q = @"INSERT IGNORE INTO `msadb`.`attendance` (
-                            `DID`, `date`, `hours`, `holiday`, `night`,`overtime`, `PID`
+                            `DID`, `date`, `PID`
                             ) VALUES (
-                           '{0}','{1}','{2}','{3}','{4}','{5}', '{6}'
+                           '{0}','{1}','{2}'
                             );";
-                    q = String.Format(q, did, d.ToString("yyyy-MM-dd HH:mm:ss"), "00:00", "00:00", "00:00", "00:00", ifn);
+                    q = String.Format(q, did, d.ToString("yyyy-MM-dd HH:mm:ss"), ifn);
                     SQLTools.ExecuteNonQuery(q);
                 }
                 sw.Stop();
@@ -207,48 +214,76 @@ namespace MSAMISUserInterface {
             }
         }
 
-
         public DataTable GetAttendance() {
-            Period p = GetCurrentPayPeriod(0);
-
+            return GetAttendance(period.month, period.period, period.year);
+        }
+        public DataTable GetAttendance(int month, int period, int year) {
             String q = @"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
 							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
                             timein,
-                           TimeOut, hours, 
-                            night as NightHours, overtime,
-                            case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday
-                            from attendance
-                            left join dutydetails 
-                            on dutydetails.did=attendance.did
-                            left join period on period.pid = attendance.pid
-                             where period = '{0}'
-                            and month = '{1}'
-                            and year = '{2}'
-                            order by date asc;
-                            ";
-            DataTable d = SQLTools.ExecuteQuery(String.Format(q, p.period, p.month, p.year));
-            return d;
-        }
-
-        public DataTable GetAttendance(int month, int period, int year) {
-            String q = @"
-                           select atid, dutydetails.did, 
-							CONCAT((DATE_FORMAT(date, '%d')), ' / ' ,
-							(CONCAT (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_hh,':',to_mm,SUBSTRING(to_period,1,1)))) as Schedule,
-                            concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as timein,  hours, 
-                            night as NightHours, overtime,
-                            case holiday when 1 then 'Yes' when 0 then 'No' end as Holiday
+                           TimeOut, 
+                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
                             left join period 
                             on period.pid=attendance.pid
-                            where month='{0}' and period = '{1}' and year = '{2}'
-                            order by date asc;
+                            where period = '{0}'
+                            and month = '{1}'
+                            and year = '{2}'
+                            order by date asc
+                            ";
+            q = String.Format(q, period, month, year);
+            DataTable d = SQLTools.ExecuteQuery(q);
+            return d;
+        }
+
+        public DataTable GetAttendance_View() {
+            return GetAttendance_View(period.month, period.period, period.year);
+        }
+
+        public DataTable GetAttendance_View(int month, int period, int year) {
+            String q = @"
+                        select atid, dutydetails.did, 
+							CONCAT((DATE_FORMAT(date, '%d')), ' / ' ,
+							(CONCAT (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_hh,':',to_mm,SUBSTRING(to_period,1,1)))) as Schedule,
+                            concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as ti_to,
+                            
+                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, timein, timeout
+                            from attendance
+                            left join dutydetails 
+                            on dutydetails.did=attendance.did
+                            left join period 
+                            on period.pid=attendance.pid
+                            where period = '{1}'
+                            and month = '{0}'
+                            and year = '{2}'
+                            order by date asc
                             ";
             q = String.Format(q, month, period, year);
-            return SQLTools.ExecuteQuery(q);
+            DataTable d = SQLTools.ExecuteQuery(q);
+            foreach (DataRow f in d.Rows) {
+                DateTime ti = GetDateTime_(f["TimeIn"].ToString());
+                DateTime to = GetDateTime_(f["TimeOut"].ToString());
+                Hours asx = GetHours(ti, to);
+                hourlist.Add(asx);
+                f["normal_day"] = asx.GetNormalDay();
+                f["normal_night"] = asx.GetNormalNight();
+                f["holiday_day"] = asx.GetHolidayDay();
+                f["holiday_night"] = asx.GetHolidayNight();
+                f["total"] = asx.GetTotal();
+            }
+            attendance_cached = d;
+            Hours h = new Hours();
+            foreach (Hours x in hourlist) {
+                h.holiday_day += x.holiday_day;
+                h.holiday_night += x.holiday_night;
+                h.normal_day += x.normal_day;
+                h.normal_night += x.normal_night;
+                h.total += x.total;
+            }
+            return d;
         }
 
         public int GetTimeElapsed(int ti, int to) {
@@ -258,7 +293,7 @@ namespace MSAMISUserInterface {
         #region CertBys
         public void SetCertifiedBy(int AID, String cert) {
             Period p = GetCurrentPayPeriod(0);
-            String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `AID`='" + AID + "' AND month='"+p.month+"' AND period='"+p.period+"' AND year='"+p.year+"';";
+            String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `AID`='" + AID + "' AND month='" + p.month + "' AND period='" + p.period + "' AND year='" + p.year + "';";
             SQLTools.ExecuteNonQuery(q);
         }
         public string GetCertifiedBy() {
@@ -274,16 +309,10 @@ namespace MSAMISUserInterface {
             DateTime to = GetDateTime(to_hh, to_mm, to_ampm);
             //compare with tama na sched for overtime
             DataRow dt = SQLTools.ExecuteQuery("select * from dutydetails where DID=" + did).Rows[0];
-            TimeSpan overtime = GetOvertime(int.Parse(dt["to_hh"].ToString()), int.Parse(dt["to_mm"].ToString()), dt["to_period"].ToString(), to_hh, to_mm, to_ampm);
             DateTime start_night = GetDateTime(10, 00, "PM");
             DateTime end_night = GetDateTime(6, 0, "AM").AddDays(1);
-            Hours nhe = GetHours(ti, to);
-            hourlist.Add(nhe);
-            double nh = nhe.normal_night.TotalMinutes;
-            String nhs = ((int)nh / 60).ToString("00") + ":" + ((int)nh % 60).ToString("00");
-            String q = @"
-                        UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}', `hours`='{3}', `overtime`='{4}', `night`='{5}' WHERE `AtID`='{0}';";
-            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"), overtime.ToString(@"hh\:mm"), nhs);
+            String q = @"UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}'  WHERE `AtID`='{0}';";
+            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"));
             SQLTools.ExecuteNonQuery(q);
         }
         #endregion
@@ -360,13 +389,13 @@ namespace MSAMISUserInterface {
                 minEnd = actuale < NightEnd ? actuale : NightEnd;
                 maxEnd = actuale > NightEnd ? actuale : NightEnd;
                 if (IsHolidayToday(actuals)) {
-                    h.holiday_night = (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
-                    h.holiday_day = (maxEnd - actuals) > TimeSpan.FromSeconds(0) ? maxEnd - actuals : new TimeSpan(0, 0, 0);
-                    h.holiday_day = (NightStart - minStart) > TimeSpan.FromSeconds(0) ? maxEnd - actuals : new TimeSpan(0, 0, 0);
+                    h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
+                    h.holiday_day += (actuale - NightEnd) > TimeSpan.FromSeconds(0) ? actuale - NightEnd : new TimeSpan(0, 0, 0);
+                    h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
                 } else {
-                    h.normal_night = (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
-                    h.normal_day = (maxEnd - actuals) > TimeSpan.FromSeconds(0) ? maxEnd - actuals : new TimeSpan(0, 0, 0);
-                    h.normal_day = (NightStart - minStart) > TimeSpan.FromSeconds(0) ? maxEnd - actuals : new TimeSpan(0, 0, 0);
+                    h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
+                    h.normal_day += (actuale - NightEnd) > TimeSpan.FromSeconds(0) ? actuale - NightEnd : new TimeSpan(0, 0, 0);
+                    h.normal_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
                 }
             }
             return h;
@@ -558,7 +587,7 @@ namespace MSAMISUserInterface {
             return p;
         }*/
 
-       
+
 
 
 
