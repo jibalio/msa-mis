@@ -134,8 +134,12 @@ namespace MSAMISUserInterface {
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
-                            order by date asc;
+                            where period = '{0}'
+                            and month = '{1}'
+                            and year = '{2}'
+                            order by date asc
                             ";
+            q = String.Format(q, period.period, period.month, period.year);
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
