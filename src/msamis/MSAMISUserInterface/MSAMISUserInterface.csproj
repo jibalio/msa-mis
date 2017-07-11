@@ -191,6 +191,12 @@
     <Compile Include="Sched_ViewDutyDetails.Designer.cs">
       <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Shadow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shadow.Designer.cs">
+      <DependentUpon>Shadow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sched_ViewDutyDetails.resx">
       <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shadow.resx">
+      <DependentUpon>Shadow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

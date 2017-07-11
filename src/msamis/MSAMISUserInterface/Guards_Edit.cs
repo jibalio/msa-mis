@@ -18,6 +18,8 @@ namespace MSAMISUserInterface {
         public MySqlConnection conn;
         public int[] dependents;
 
+        public Shadow refer;
+
         MySqlCommand comm;
         MySqlDataAdapter adp = new MySqlDataAdapter();
         DataTable dt = new DataTable();
@@ -37,14 +39,8 @@ namespace MSAMISUserInterface {
 
         #region Form Props
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            if (button.Equals("ADD")) {
-                if (reference.Opacity > 0.7) reference.Opacity -= 0.1;
-                this.Opacity += 0.2;
-                if (reference.Opacity <= 0.7 && this.Opacity == 1) FadeTMR.Stop();
-            } else {
-                this.Opacity += 0.2;
-                if (this.Opacity == 1) FadeTMR.Stop();
-            }
+            this.Opacity += 0.2;
+            if (this.Opacity == 1) FadeTMR.Stop();
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
             DialogResult rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -69,6 +65,7 @@ namespace MSAMISUserInterface {
                 Console.WriteLine("[Guard_Edit] Setting Opacity to 100");
                 reference.Enabled = true;
                 Console.WriteLine("[Guard_Edit] Setting reference.Enable to true");
+                refer.Hide();
             }
         }
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
