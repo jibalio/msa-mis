@@ -94,6 +94,7 @@
             this.HolidaysGRD.Location = new System.Drawing.Point(54, 293);
             this.HolidaysGRD.MultiSelect = false;
             this.HolidaysGRD.Name = "HolidaysGRD";
+            this.HolidaysGRD.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,7 +104,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.HolidaysGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.HolidaysGRD.RowHeadersVisible = false;
-            this.HolidaysGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.HolidaysGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HolidaysGRD.ShowCellToolTips = false;
             this.HolidaysGRD.Size = new System.Drawing.Size(466, 224);
             this.HolidaysGRD.TabIndex = 157;
@@ -184,6 +185,7 @@
             this.AddBTN.TabIndex = 164;
             this.AddBTN.Text = "ADD";
             this.AddBTN.UseVisualStyleBackColor = false;
+            this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
             // 
             // CloseBTN
             // 
