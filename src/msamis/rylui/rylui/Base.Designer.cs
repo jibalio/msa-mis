@@ -31,12 +31,14 @@
             this.TitleBar = new System.Windows.Forms.Panel();
             this.Title = new System.Windows.Forms.Label();
             this.btn1 = new System.Windows.Forms.Button();
+            this.iconbox = new System.Windows.Forms.PictureBox();
             this.btn2 = new System.Windows.Forms.Button();
             this.btn3 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.rt = new ReadOnlyRichTextBox();
-            this.iconbox = new System.Windows.Forms.PictureBox();
             this.TitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconbox)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitleBar
@@ -72,13 +74,23 @@
             this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn1.ForeColor = System.Drawing.Color.White;
-            this.btn1.Location = new System.Drawing.Point(370, 182);
+            this.btn1.Location = new System.Drawing.Point(293, 3);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(127, 32);
             this.btn1.TabIndex = 11;
             this.btn1.Text = "CLOSE";
             this.btn1.UseVisualStyleBackColor = false;
             this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            // 
+            // iconbox
+            // 
+            this.iconbox.BackgroundImage = global::rylui.Properties.Resources.Question;
+            this.iconbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.iconbox.Location = new System.Drawing.Point(18, 38);
+            this.iconbox.Name = "iconbox";
+            this.iconbox.Size = new System.Drawing.Size(70, 70);
+            this.iconbox.TabIndex = 14;
+            this.iconbox.TabStop = false;
             // 
             // btn2
             // 
@@ -91,7 +103,7 @@
             this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn2.ForeColor = System.Drawing.Color.White;
-            this.btn2.Location = new System.Drawing.Point(237, 181);
+            this.btn2.Location = new System.Drawing.Point(160, 3);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(127, 32);
             this.btn2.TabIndex = 12;
@@ -110,13 +122,24 @@
             this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3.ForeColor = System.Drawing.Color.White;
-            this.btn3.Location = new System.Drawing.Point(104, 181);
+            this.btn3.Location = new System.Drawing.Point(27, 3);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(127, 32);
             this.btn3.TabIndex = 13;
             this.btn3.Text = "CLOSE";
             this.btn3.UseVisualStyleBackColor = false;
             this.btn3.Click += new System.EventHandler(this.btn3_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btn1);
+            this.flowLayoutPanel1.Controls.Add(this.btn2);
+            this.flowLayoutPanel1.Controls.Add(this.btn3);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(72, 175);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(423, 40);
+            this.flowLayoutPanel1.TabIndex = 15;
             // 
             // rt
             // 
@@ -130,16 +153,6 @@
             this.rt.TabIndex = 1;
             this.rt.Text = "";
             // 
-            // iconbox
-            // 
-            this.iconbox.BackgroundImage = global::rylui.Properties.Resources.Question;
-            this.iconbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.iconbox.Location = new System.Drawing.Point(18, 38);
-            this.iconbox.Name = "iconbox";
-            this.iconbox.Size = new System.Drawing.Size(70, 70);
-            this.iconbox.TabIndex = 14;
-            this.iconbox.TabStop = false;
-            // 
             // Base
             // 
             this.AcceptButton = this.btn2;
@@ -149,10 +162,8 @@
             this.CancelButton = this.btn1;
             this.ClientSize = new System.Drawing.Size(508, 225);
             this.ControlBox = false;
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.iconbox);
-            this.Controls.Add(this.btn3);
-            this.Controls.Add(this.btn2);
-            this.Controls.Add(this.btn1);
             this.Controls.Add(this.rt);
             this.Controls.Add(this.TitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -163,6 +174,7 @@
             this.TitleBar.ResumeLayout(false);
             this.TitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconbox)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -172,10 +184,11 @@
         public System.Windows.Forms.Panel TitleBar;
         public ReadOnlyRichTextBox rt;
         public System.Windows.Forms.Button btn1;
-        public System.Windows.Forms.Button btn2;
-        public System.Windows.Forms.Button btn3;
         public System.Windows.Forms.Label Title;
         public System.Windows.Forms.PictureBox iconbox;
+        public System.Windows.Forms.Button btn2;
+        public System.Windows.Forms.Button btn3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
