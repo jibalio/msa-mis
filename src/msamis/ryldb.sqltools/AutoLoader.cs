@@ -21,6 +21,9 @@ namespace MSAMISUserInterface {
                 }
             }
         }
+
+
+
         static String[] checksum = new String[2];
         static bool[] hasNewVersion = new bool[2];
         public static void AutoImportSql(bool db, bool dbarchive) {
