@@ -16,7 +16,30 @@ namespace MSAMISUserInterface {
             holly.Add(new Holiday(7, 11));
         }
 
+        public List<Hours> hourlist = new List<Hours>();
+        public class Hours {
+            public TimeSpan total = new TimeSpan(0, 0, 0);
+            public TimeSpan holiday_day = new TimeSpan(0, 0, 0);
+            public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
+            public TimeSpan normal_day = new TimeSpan(0, 0, 0);
+            public TimeSpan normal_night = new TimeSpan(0, 0, 0);
 
+            public string GetHolidayDay() {
+                return holiday_day.ToString(@"hh\:mm");
+            }
+            public string GetHolidayNight() {
+                return holiday_night.ToString(@"hh\:mm");
+            }
+            public string GetNormalDay() {
+                return normal_day.ToString(@"hh\:mm");
+            }
+            public string GetNormalNight() {
+                return normal_night.ToString(@"hh\:mm");
+            }
+            public string GetTotal() {
+                return total.ToString(@"hh\:mm");
+            }
+        }
         // =============================================================================================
         //          STATIC METHODS / VARIABLES
         // =============================================================================================
@@ -101,28 +124,17 @@ namespace MSAMISUserInterface {
                                         group by month,period,year order by year desc, month desc, period desc;");
         }
 
-        public class Hours {
-            public TimeSpan total = new TimeSpan(0,0,0);
-            public TimeSpan holiday_day = new TimeSpan(0, 0, 0);
-            public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
-            public TimeSpan normal_day = new TimeSpan(0, 0, 0);
-            public TimeSpan normal_night = new TimeSpan(0, 0, 0);
-            public string GetHolidayDay() {
-                return holiday_day.ToString(@"hh\:mm");
-            }
-            public string GetHolidayNight() {
-                return holiday_night.ToString(@"hh\:mm");
-            }
-            public string GetNormalDay() {
-                return normal_day.ToString(@"hh\:mm");
-            }
-            public string GetNormalNight() {
-                return normal_night.ToString(@"hh\:mm");
-            }
-            public string GetTotal() {
-                return total.ToString(@"hh\:mm");
-            }
-        }
+
+
+
+        // =============================================================================================
+        //          INSTANCE METHODS / VARIABLES (nonstatic)
+        // =============================================================================================
+        #region Non-Statics
+
+        public Period period;
+        public int AID;
+        
         public Hours GetAttendanceSummary() {
             String q = @"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
@@ -157,18 +169,9 @@ namespace MSAMISUserInterface {
             return h;
         }
 
-
-
-        // =============================================================================================
-        //          INSTANCE METHODS / VARIABLES (nonstatic)
-        // =============================================================================================
-        #region Non-Statics
-
-        public Period period;
-        public int AID;
-        public Attendance(int AID) {
+        public Attendance (int AID, int month, int periodx, int year) {
             this.AID = AID;
-            period = GetCurrentPayPeriod(AID);
+            period = new Period(AID, periodx, month, year);
             Console.Write(period.period);
             DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun from dutydetails where AID =" + AID);
             foreach (DataRow duties in x.Rows) {
@@ -204,7 +207,6 @@ namespace MSAMISUserInterface {
                 Console.WriteLine("Yes!");
             }
         }
-
         
 
         public DataTable GetAttendance() {
@@ -218,6 +220,9 @@ namespace MSAMISUserInterface {
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
+                             where period = '{0}'
+                            and month = '{1}'
+                            and year = '{2}'
                             order by date asc;
                             ";
             DataTable d =  SQLTools.ExecuteQuery(q);
@@ -242,22 +247,26 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery(q);
         }
 
-
         public int GetTimeElapsed(int ti, int to) {
             return (to - ti > 0 ? (to - ti) : 24 + (to - ti));
         }
 
+        #region CertBys
         public void SetCertifiedBy(int DID, String cert) {
             String q = @"UPDATE `msadb`.`attendance` SET `certby`='" + cert + "' WHERE `DID`='" + DID + "';";
             SQLTools.ExecuteNonQuery(q);
         }
+        public string GetCertifiedBy() {
+            return SQLTools.ExecuteSingleResult(String.Format("select certby from attendance where month='{0}' and period = '{1}' and year='{2}' limit 1", period.month, period.period, period.year));
+        }
+        #endregion
 
+        #region SetAttendacen
         public void SetAttendance(int AtID, int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
             int did = SQLTools.GetInt("select did from attendance where AtID=" + AtID);
             TimeSpan ts = GetTimeDiff(ti_hh, ti_mm, ti_ampm, to_hh, to_mm, to_ampm);
             DateTime ti = GetDateTime(ti_hh, ti_mm, ti_ampm);
             DateTime to = GetDateTime(to_hh, to_mm, to_ampm);
-
             //compare with tama na sched for overtime
             DataRow dt = SQLTools.ExecuteQuery("select * from dutydetails where DID=" + did).Rows[0];
             TimeSpan overtime = GetOvertime(int.Parse(dt["to_hh"].ToString()), int.Parse(dt["to_mm"].ToString()), dt["to_period"].ToString(), to_hh, to_mm, to_ampm);
@@ -272,15 +281,14 @@ namespace MSAMISUserInterface {
             q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"), ts.ToString(@"hh\:mm"), overtime.ToString(@"hh\:mm"), nhs);
             SQLTools.ExecuteNonQuery(q);
         }
-
-        public List<Hours> hourlist = new List<Hours>();
+        #endregion
 
         
 
         //==================================================================================
         //          DATA TESTING
         //==================================================================================
-
+        // Dont forget to change 
         public static bool htod = false;
         public static bool htom = false;
         public static bool IsHolidayToday(DateTime e) {
