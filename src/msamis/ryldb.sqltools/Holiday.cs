@@ -41,12 +41,8 @@ namespace ryldb.sqltools {
                 SQLTools.ExecuteNonQuery(q);
         }
 
-        public static void RemoveHoliday(SelectionRange r, string desc) {
-            for (DateTime date = r.Start; date <= r.End; date = date.AddDays(1)) {
-                string q = @"delete from holiday where `datestart`='{0}' and `dateend`='{1}' and `desc`='{2}';";
-                q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc);
-                SQLTools.ExecuteNonQuery(q);
-            }
+        public static void RemoveHoliday(int hid) {
+            SQLTools.ExecuteNonQuery("delete from hid where hid=" + hid);
         }
 
         public static DataTable GetHolidays() {
