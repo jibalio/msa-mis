@@ -26,5 +26,8 @@ namespace MSAMISUserInterface {
             this.Opacity = 0;
             FadeTMR.Start();
         }
+
+        private void Shadow_FormClosing(object sender, FormClosingEventArgs e) {
+        }
     }
 }
