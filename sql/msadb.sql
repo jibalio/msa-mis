@@ -334,8 +334,8 @@ DROP TABLE IF EXISTS `holiday`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `holiday` (
   `hid` int(11) NOT NULL AUTO_INCREMENT,
-  `date` varchar(45) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
+  `datestart` varchar(45) DEFAULT NULL,
+  `dateend` varchar(45) DEFAULT NULL,
   `desc` varchar(120) DEFAULT NULL,
   PRIMARY KEY (`hid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -661,4 +661,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-11 16:28:00
+-- Dump completed on 2017-07-11 16:54:59
