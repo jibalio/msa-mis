@@ -107,6 +107,21 @@ namespace MSAMISUserInterface {
             public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
             public TimeSpan normal_day = new TimeSpan(0, 0, 0);
             public TimeSpan normal_night = new TimeSpan(0, 0, 0);
+            public string GetHolidayDay() {
+                return holiday_day.ToString(@"hh\:mm");
+            }
+            public string GetHolidayNight() {
+                return holiday_night.ToString(@"hh\:mm");
+            }
+            public string GetNormalDay() {
+                return normal_day.ToString(@"hh\:mm");
+            }
+            public string GetNormalNight() {
+                return normal_night.ToString(@"hh\:mm");
+            }
+            public string GetTotal() {
+                return total.ToString(@"hh\:mm");
+            }
         }
         public Hours GetAttendanceSummary() {
             Hours h = new Hours();
@@ -118,6 +133,8 @@ namespace MSAMISUserInterface {
                 h.total += x.total;
             }
             return h;
+
+            
         }
 
 
