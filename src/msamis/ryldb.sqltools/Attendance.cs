@@ -23,21 +23,20 @@ namespace MSAMISUserInterface {
             public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
             public TimeSpan normal_day = new TimeSpan(0, 0, 0);
             public TimeSpan normal_night = new TimeSpan(0, 0, 0);
-
             public string GetHolidayDay() {
-                return holiday_day.ToString(@"hh\:mm");
+                return ((int)holiday_day.TotalMinutes / 60).ToString("00") + ":" + (holiday_day.TotalMinutes % 60).ToString("00");
             }
             public string GetHolidayNight() {
-                return holiday_night.ToString(@"hh\:mm");
+                return ((int)holiday_night.TotalMinutes / 60).ToString("00") + ":" + (holiday_night.TotalMinutes % 60).ToString("00");
             }
             public string GetNormalDay() {
-                return normal_day.ToString(@"hh\:mm");
+                return ((int)normal_night.TotalMinutes / 60).ToString("00") + ":" + (normal_night.TotalMinutes % 60).ToString("00");
             }
             public string GetNormalNight() {
-                return normal_night.ToString(@"hh\:mm");
+                return ((int)normal_night.TotalMinutes / 60).ToString("00") + ":" + (normal_night.TotalMinutes % 60).ToString("00");
             }
             public string GetTotal() {
-                return total.ToString(@"hh\:mm");
+                return ((int)total.TotalMinutes / 60).ToString("00") + ":" + (total.TotalMinutes % 60).ToString("00");
             }
         }
         // =============================================================================================
@@ -117,9 +116,7 @@ namespace MSAMISUserInterface {
 
         public static DataTable GetPeriods(int AID) {
             return SQLTools.ExecuteQuery(@"SELECT month, period, year
-                                        FROM msadb.attendance 
-                                        left join dutydetails
-                                        on attendance.did=dutydetails.did 
+                                        FROM msadb.period 
                                         where AID = " + AID + @"
                                         group by month,period,year order by year desc, month desc, period desc;");
         }
@@ -146,6 +143,8 @@ namespace MSAMISUserInterface {
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
+                            left join period 
+                            on period.pid=attendance.pid
                             where period = '{0}'
                             and month = '{1}'
                             and year = '{2}'
@@ -187,19 +186,21 @@ namespace MSAMISUserInterface {
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 DateTime zero = new DateTime(1, 1, 1, 0, 0, 0);
+                String ax = "INSERT IGNORE INTO `msadb`.`period` (`AID`, `month`, `period`, `year`) VALUES ('{0}', '{1}', '{2}', '{3}');";
+                ax = String.Format(ax, AID, month, periodx, year);
+                SQLTools.ExecuteNonQuery(ax);
+
+                string ifn = SQLTools.getLastInsertedId("period", "pid");
                 foreach (int date in dutydates) {
+
                     DateTime d = new DateTime(period.year, period.month, date);
                     String q = @"INSERT IGNORE INTO `msadb`.`attendance` (
-                            `DID`, `month`, `period`, `year`, `date`, `hours`, `holiday`, `night`,`overtime`
+                            `DID`, `date`, `hours`, `holiday`, `night`,`overtime`, `PID`
                             ) VALUES (
-                           '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}'
+                           '{0}','{1}','{2}','{3}','{4}','{5}', '{6}'
                             );";
-                    q = String.Format(q, did, period.month, period.period, period.year, d.ToString("yyyy-MM-dd HH:mm:ss"), "00:00", "00:00", "00:00", "00:00");
-
-                    try {
-                        SQLTools.ExecuteNonQuery(q, false);
-                    } catch { Console.WriteLine("SQLTools.cs >>> Warning: this record was already inserted. Ignored error."); }
-
+                    q = String.Format(q, did, d.ToString("yyyy-MM-dd HH:mm:ss"), "00:00", "00:00", "00:00", "00:00", ifn);
+                    SQLTools.ExecuteNonQuery(q);
                 }
                 sw.Stop();
                 TimeSpan ts = sw.Elapsed;
@@ -222,6 +223,7 @@ namespace MSAMISUserInterface {
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
+                            left join period on period.pid = attendance.pid
                              where period = '{0}'
                             and month = '{1}'
                             and year = '{2}'
@@ -242,6 +244,8 @@ namespace MSAMISUserInterface {
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
+                            left join period 
+                            on period.pid=attendance.pid
                             where month='{0}' and period = '{1}' and year = '{2}'
                             order by date asc;
                             ";
@@ -254,12 +258,13 @@ namespace MSAMISUserInterface {
         }
 
         #region CertBys
-        public void SetCertifiedBy(int DID, String cert) {
-            String q = @"UPDATE `msadb`.`attendance` SET `certby`='" + cert + "' WHERE `DID`='" + DID + "';";
+        public void SetCertifiedBy(int AID, String cert) {
+            Period p = GetCurrentPayPeriod(0);
+            String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `AID`='" + AID + "' AND month='"+p.month+"' AND period='"+p.period+"' AND year='"+p.year+"';";
             SQLTools.ExecuteNonQuery(q);
         }
         public string GetCertifiedBy() {
-            return SQLTools.ExecuteSingleResult(String.Format("select certby from attendance where month='{0}' and period = '{1}' and year='{2}' limit 1", period.month, period.period, period.year));
+            return SQLTools.ExecuteSingleResult(String.Format("select certby from period where month='{0}' and period = '{1}' and year='{2}'", period.month, period.period, period.year));
         }
         #endregion
 
@@ -557,65 +562,8 @@ namespace MSAMISUserInterface {
             return p;
         }*/
 
-        /// <summary>
-        /// Saves attendance details (hours worked) of a specific guard assignment. 
-        /// If attendance details already exists, the record will be overwritten.
-        /// </summary>
-        /// <param name="aid">Assignment ID of Guard</param>
-        /// <param name="normal_day">Hours worked (no occassion)</param>
-        /// <param name="normal_night">Night hours worked (no occassion)</param>
-        /// <param name="holiday_day">Hours worked (on holidays)</param>
-        /// <param name="holiday_night">Hours worked night (on holidays)</param>
-        /// <param name="certby">Client representative verification</param>
-        public static void SaveAttendanceDetails(int aid, int month, int period, int year, int normal_day, int normal_night, int holiday_day, int holiday_night, string certby) {
-            int numduties = int.Parse(SQLTools.ExecuteSingleResult("select count(*) from sduty_assignment where astatus=" + Enumeration.DutyDetailStatus.Active + " and AID=" + aid));
-            if (numduties == 0) {
-                throw new NotAssignedToClientException("Attempted to add attendance to a guard without any active assignment details.");
-            }
+       
 
-            bool hasRecord = (int.Parse(SQLTools.ExecuteSingleResult("select count(*) from time where aid=" + aid + " and month=" + month + " and period = " + period)) == 0);
-            String q = "";
-            if (hasRecord) {
-                q = @"
-                        INSERT INTO `msadb`.`time` (
-                        `AID`, `month`, `period`, `normal_day`, `normal_night`, `holiday_day`, `holiday_night`, `certifiedby`, `year`
-                        ) VALUES (
-                        '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}', '{8}'
-                        );
-                ";
-                q = String.Format(q, aid, month, period, normal_day, normal_night, holiday_day, holiday_night, certby, year);
-            } else {
-                int tid = SQLTools.GetInt(String.Format(@"
-                            select tid from time where AID = {0} AND month = {1} AND year = {2}  AND period = {3}",
-                            aid, month, year, period));
-                q = @"
-                        UPDATE `msadb`.`time` SET 
-                        `AID`='{0}', 
-                        `month`='{1}', 
-                        `period`='{2}', 
-                        `normal_day`='{3}', 
-                        `normal_night`='{4}', 
-                        `holiday_day`='{5}', 
-                        `holiday_night`='{6}', 
-                        `certifiedby`='{7}' 
-                        WHERE `TID`='{8}';
-                        ";
-                q = String.Format(q, aid, month, period, normal_day, normal_night, holiday_day, holiday_night, certby, tid);
-            }
-
-
-            SQLTools.ExecuteNonQuery(q);
-        }
-
-
-        public static DataTable GetHours(int aid, int month, int year, int period) {
-            String q = @"select tid, normal_day, normal_night,holiday_day, holiday_night, certifiedby from time where 
-                            AID = {0} 
-                            AND month = {1} 
-                            AND year = {2} 
-                            AND period = {3}";
-            return SQLTools.ExecuteQuery(String.Format(q, aid, month, year, period));
-        }
 
 
 
