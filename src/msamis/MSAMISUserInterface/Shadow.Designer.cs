@@ -46,6 +46,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Shadow_FormClosing);
             this.Load += new System.EventHandler(this.Shadow_Load);
             this.ResumeLayout(false);
 
