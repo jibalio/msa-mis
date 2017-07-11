@@ -16,6 +16,7 @@ namespace MSAMISUserInterface {
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
 
+            Holiday.InitHolidays();
              Application.EnableVisualStyles();
                Application.SetCompatibleTextRenderingDefault(false);
              AutoLoader.AutoImportSql(true, true);

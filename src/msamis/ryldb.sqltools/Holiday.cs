@@ -34,7 +34,7 @@ namespace ryldb.sqltools {
                 SQLTools.ExecuteNonQuery(q);
             
         }
-        
+            
         public static void EditHoliday (SelectionRange r, string desc) {
                 string q = @"UPDATE `msadb`.`holiday` SET `datestart`='{0}', `dateend`='{1}', `desc`='{2}';";
                 q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc);
