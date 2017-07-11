@@ -41,7 +41,7 @@ namespace MSAMISUserInterface {
             RNightLBL.Text = hrs.GetNormalNight() + " hrs";
             HShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
             HNightLBL.Text = hrs.GetHolidayNight() + " hrs";
-            //CertifiedLBL.Text = hrs.GetCertidied();
+            CertifiedLBL.Text = A.GetCertifiedBy();
 
             RefreshDutyDetails();
         }
@@ -181,6 +181,15 @@ namespace MSAMISUserInterface {
                 ConfigureLBL.Visible = false;
                 PeriodCMBX.Size = new System.Drawing.Size(352, 25);
             }
+
+            Attendance B = new Attendance(AID, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            Attendance.Hours hrs = B.GetAttendanceSummary();
+            AShiftLBL.Text = hrs.GetNormalDay();
+            ANightLBL.Text = hrs.GetNormalNight();
+            AHShiftLBL.Text = hrs.GetHolidayDay();
+            AHNightLBL.Text = hrs.GetHolidayNight();
+            ACertifiedLBL.Text = B.GetCertifiedBy();
+
         }
         private void ConfigureLBL_MouseEnter(object sender, EventArgs e) {
             ConfigureLBL.ForeColor = Color.FromArgb(72, 87, 112);
