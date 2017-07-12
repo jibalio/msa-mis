@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `msadb`;
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
--- Host: localhost    Database: msadb
+-- Host: 127.0.0.1    Database: msadb
 -- ------------------------------------------------------
 -- Server version	5.7.13-log
 
@@ -112,19 +112,15 @@ DROP TABLE IF EXISTS `attendance`;
 CREATE TABLE `attendance` (
   `AtID` int(11) NOT NULL AUTO_INCREMENT,
   `DID` int(11) DEFAULT NULL,
+  `PID` int(11) DEFAULT NULL,
   `Date` varchar(45) DEFAULT NULL,
   `TimeIn` varchar(45) DEFAULT '12:00 AM',
   `TimeOut` varchar(45) DEFAULT '12:00 AM',
-  `night` varchar(45) DEFAULT NULL,
-  `holiday` int(11) DEFAULT NULL,
-  `hours` varchar(45) DEFAULT NULL,
-  `overtime` varchar(45) DEFAULT NULL,
-  `PID` int(11) DEFAULT NULL,
   PRIMARY KEY (`AtID`),
   UNIQUE KEY `unique_index` (`Date`),
   KEY `Attendance-DutyDetails_idx` (`DID`),
   CONSTRAINT `Attendance-DutyDetails` FOREIGN KEY (`DID`) REFERENCES `dutydetails` (`DID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=539 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1991 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +129,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (1,32,'2017-07-03 00:00:00','01:00 AM','09:00 AM','05:00',0,'08:00','00:00',7),(2,32,'2017-07-10 00:00:00','01:36 AM','09:00 AM','04:24',0,'07:24','00:00',7),(3,32,'2017-07-05 00:00:00','01:00 AM','08:37 AM','05:00',0,'07:37','00:00',7),(4,32,'2017-07-12 00:00:00','01:21 AM','09:00 AM','04:39',0,'07:39','00:00',7),(5,32,'2017-07-07 00:00:00','01:00 AM','09:00 AM','05:00',0,'08:00','00:00',7),(6,32,'2017-07-14 00:00:00','01:15 AM','09:00 AM','04:45',0,'07:45','00:00',7),(181,32,'2017-06-19 00:00:00','12:00 AM','12:00 AM','00:00',0,'00:00','00:00',35),(182,32,'2017-06-26 00:00:00','12:00 AM','12:00 AM','00:00',0,'00:00','00:00',35),(183,32,'2017-06-21 00:00:00','12:00 AM','12:00 AM','00:00',0,'00:00','00:00',35),(184,32,'2017-06-28 00:00:00','12:00 AM','12:00 AM','00:00',0,'00:00','00:00',35),(185,32,'2017-06-16 00:00:00','12:00 AM','12:00 AM','00:00',0,'00:00','00:00',35),(186,32,'2017-06-23 00:00:00','12:00 AM','12:00 AM','00:00',0,'00:00','00:00',35),(187,32,'2017-06-30 00:00:00','12:00 AM','12:00 AM','00:00',0,'00:00','00:00',35);
+INSERT INTO `attendance` VALUES (1,32,7,'2017-07-03 00:00:00','02:00 AM','07:30 AM'),(2,32,7,'2017-07-10 00:00:00','01:36 AM','09:00 AM'),(3,32,7,'2017-07-05 00:00:00','01:00 AM','08:37 AM'),(4,32,7,'2017-07-12 00:00:00','01:21 AM','09:00 AM'),(5,32,7,'2017-07-07 00:00:00','01:00 AM','09:00 AM'),(6,32,7,'2017-07-14 00:00:00','01:15 AM','09:00 AM'),(181,32,35,'2017-06-19 00:00:00','12:00 AM','12:00 AM'),(182,32,35,'2017-06-26 00:00:00','12:00 AM','12:00 AM'),(183,32,35,'2017-06-21 00:00:00','12:00 AM','12:00 AM'),(184,32,35,'2017-06-28 00:00:00','12:00 AM','12:00 AM'),(185,32,35,'2017-06-16 00:00:00','12:00 AM','12:00 AM'),(186,32,35,'2017-06-23 00:00:00','12:00 AM','12:00 AM'),(187,32,35,'2017-06-30 00:00:00','12:00 AM','12:00 AM');
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,7 +334,7 @@ CREATE TABLE `holiday` (
   `dateend` varchar(45) DEFAULT NULL,
   `desc` varchar(120) DEFAULT NULL,
   PRIMARY KEY (`hid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,6 +343,7 @@ CREATE TABLE `holiday` (
 
 LOCK TABLES `holiday` WRITE;
 /*!40000 ALTER TABLE `holiday` DISABLE KEYS */;
+INSERT INTO `holiday` VALUES (1,'07/18/2017','07/22/2017','Kadayawan');
 /*!40000 ALTER TABLE `holiday` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,7 +459,7 @@ CREATE TABLE `period` (
   `certby` varchar(120) DEFAULT '',
   PRIMARY KEY (`PID`),
   UNIQUE KEY `unq` (`month`,`AID`,`period`,`year`)
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=340 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -471,7 +468,7 @@ CREATE TABLE `period` (
 
 LOCK TABLES `period` WRITE;
 /*!40000 ALTER TABLE `period` DISABLE KEYS */;
-INSERT INTO `period` VALUES (7,2,07,1,2017,'cvbnm'),(35,2,06,2,2017,'Hello');
+INSERT INTO `period` VALUES (7,2,07,1,2017,'cvbnmxx'),(35,2,06,2,2017,'Hello');
 /*!40000 ALTER TABLE `period` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -661,4 +658,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-11 16:54:59
+-- Dump completed on 2017-07-12  8:01:46
