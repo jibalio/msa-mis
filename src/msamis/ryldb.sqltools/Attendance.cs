@@ -32,240 +32,7 @@ namespace MSAMISUserInterface {
 
 
     public class Attendance {
-
-        public static List<Holiday> holly = new List<Holiday>();
-        public List<Hours> hourlist = new List<Hours>();
-
-        public static DataTable GetPeriods(int AID) {
-            return SQLTools.ExecuteQuery(@"SELECT month, period, year
-                                        FROM msadb.period 
-                                        where AID = " + AID + @"
-                                        group by month,period,year order by year desc, month desc, period desc;");
-        }
-
-        
-        public class Hours {
-            public TimeSpan holiday_day = new TimeSpan(0, 0, 0);
-            public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
-            public TimeSpan normal_day = new TimeSpan(0, 0, 0);
-            public TimeSpan normal_night = new TimeSpan(0, 0, 0);
-            public TimeSpan total = new TimeSpan(0, 0, 0);
-            public string GetHolidayDay() {
-                return ((int)holiday_day.TotalMinutes / 60).ToString("00") + ":" + (holiday_day.TotalMinutes % 60).ToString("00");
-            }
-            public string GetHolidayNight() {
-                return ((int)holiday_night.TotalMinutes / 60).ToString("00") + ":" + (holiday_night.TotalMinutes % 60).ToString("00");
-            }
-            public string GetNormalDay() {
-                return ((int)normal_day.TotalMinutes / 60).ToString("00") + ":" + (normal_day.TotalMinutes % 60).ToString("00");
-            }
-            public string GetNormalNight() {
-                return ((int)normal_night.TotalMinutes / 60).ToString("00") + ":" + (normal_night.TotalMinutes % 60).ToString("00");
-            }
-            public string GetTotal() {
-                return ((int)total.TotalMinutes / 60).ToString("00") + ":" + (total.TotalMinutes % 60).ToString("00");
-            }
-        }
-        #region Statics
-        public static bool IsHolidayToday(DateTime e) {
-            if (holly.Contains(new Holiday(e.Month, e.Day))) {
-                return true;
-            } else return false;
-        }
-
-        public static bool IsHolidayTomorrow(DateTime e) {
-            if (holly.Contains(new Holiday(e.Month, e.Day))) {
-                return true;
-            } else return false;
-        }
-
-        public static DateTime GetDateTime_(String hhmmss_tt) {
-            var t2 = "01/01/0001 " + hhmmss_tt;
-            return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm tt", CultureInfo.InvariantCulture);
-        }
-
-        public static DateTime GetDateTime(int hh, int mm, string tt) {
-            var t2 = "01/01/0001 " + hh.ToString("00") + ":" + mm.ToString("00") + ":00 " + tt;
-            return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-        }
-
-        public static TimeSpan GetTimeDiff(int t1hour, int t1min, String t1ampm, int t2hour, int t2min, String t2ampm) {
-
-            var t1 = "01/01/0001 " + t1hour.ToString("00") + ":" + t1min.ToString("00") + ":00 " + t1ampm;
-            var t2 = "01/01/0001 " + t2hour.ToString("00") + ":" + t2min.ToString("00") + ":00 " + t2ampm;
-            var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-            var time2 = DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-            if (time2 < time1) {
-                Console.WriteLine("Date is on Next Day!");
-                time2 = time2.AddDays(1);
-            } else {
-                Console.WriteLine("same day");
-            }
-            return time2 - time1;
-        }
-
-        // =============================================================================================
-        //          STATIC METHODS / VARIABLES
-        // =============================================================================================
-        public static Hours GetHours(DateTime actuals, DateTime actuale) {
-            Hours h = new Hours();
-            DateTime NightStart = new DateTime(1, 1, 1, 22, 00, 00);
-            DateTime NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
-            DateTime Midnight = new DateTime(1, 1, 2, 0, 0, 0); DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
-            // if not same
-            if (actuals > actuale) {
-                actuale = actuale.AddDays(1);
-                NightEnd = NightEnd.AddDays(1);
-                // First Half
-                // 1: Max Selection, either nighstart or actuals
-                maxStart = actuals < NightStart ? NightStart : actuals;
-                minStart = actuals < NightStart ? actuals : NightStart;
-                TimeSpan d1_night = Midnight - maxStart;
-                TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart - minStart : new TimeSpan(0, 0, 0);
-                // Second Half
-                minEnd = actuale < NightEnd ? actuale : NightEnd;
-                maxEnd = actuale > NightEnd ? actuale : NightEnd;
-                TimeSpan d2_night = minEnd - Midnight;
-                TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
-                // Check if today is holiday.
-                if (IsHolidayToday(actuals)) {
-                    h.holiday_night += d1_night;
-                    h.holiday_day += d1_day;
-                } else {
-                    h.normal_night += d1_night;
-                    h.normal_day += d1_day;
-                }
-                //Check if tomorrow is holiday.
-                if (IsHolidayTomorrow(actuals)) {
-                    h.holiday_night += d2_night;
-                    h.holiday_day += d2_day;
-                } else {
-                    h.normal_night += d2_night;
-                    h.normal_day += d2_day;
-                }
-            } else {
-                // if same day
-                NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
-                maxStart = actuals < NightStart ? actuals : NightStart;
-                minStart = actuals > NightStart ? actuals : NightStart;
-                minEnd = actuale < NightEnd ? actuale : NightEnd;
-                maxEnd = actuale > NightEnd ? actuale : NightEnd;
-                if (IsHolidayToday(actuals)) {
-                    h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
-                    h.holiday_day += (actuale - NightEnd) > TimeSpan.FromSeconds(0) ? actuale - NightEnd : new TimeSpan(0, 0, 0);
-                    h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
-                } else {
-                    h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
-                    h.normal_day += (actuale - NightEnd) > TimeSpan.FromSeconds(0) ? actuale - NightEnd : new TimeSpan(0, 0, 0);
-                    h.normal_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
-                }
-            }
-            return h;
-        }
-
-        public static TimeSpan GetOvertime(int dbhour, int dbmin, String dbampm, int actualo, int actualomin, String actualoampm) {
-            // TO DO: if early, no overtime.
-            var t1 = "01/01/0001 " + dbhour.ToString("00") + ":" + dbmin.ToString("00") + ":00 " + dbampm;
-            var t2 = "01/01/0001 " + actualo.ToString("00") + ":" + actualomin.ToString("00") + ":00 " + actualoampm;
-            var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-            var time2 = DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-            if (time2 < time1) {
-                Console.WriteLine("Date is on Next Day!");
-                time2 = time2.AddDays(1);
-            } else {
-                Console.WriteLine("same day");
-            }
-            TimeSpan ts = time2 - time1;
-            if (ts.TotalHours > 8) {
-                return new TimeSpan(0, 0, 0);
-            } else {
-                return ts;
-            }
-        }
-
-        public static bool htom = false;
-        //==================================================================================
-        //          DATA TESTING
-        //==================================================================================
-        // Dont forget to change 
-        public static bool htod = false;
-
-
-        // This method gets the current pay period.
-        public static Period GetCurrentPayPeriod() {
-            int m = 0, y = 0, p = 0;
-            #region + Dates Setting
-            int date = int.Parse(DateTime.Now.ToString("dd"));
-            if (date >= 5 && date <= 19) {
-                p = 1;
-                m = GetMonth();
-                y = GetYear();
-            } else if ((date >= 1 && date <= 4)) {
-                p = 2;
-                m = (GetMonth() == 1 ? 12 : GetMonth());  // if January, prev month December
-                y = (GetMonth() == 1 ? GetYear() - 1 : GetYear());
-            } else if (date >= 20 && date <= 31) {
-                p = 2;
-                m = GetMonth();
-                y = GetYear();
-            }
-            #endregion
-            return new Period(p, m, y); ;
-        }
-
-        public static int GetMonth() {
-            return int.Parse(DateTime.Now.ToString("MM"));
-        }
-
-        public static int GetYear() {
-            return int.Parse(DateTime.Now.ToString("yyyy"));
-        }
-
-        public static int isNight() {
-            return 0;
-        }
-
-        public class Period {
-            public List<int> Mon = new List<int>(),
-                     Tue = new List<int>(),
-                     Wed = new List<int>(),
-                     Thu = new List<int>(),
-                     Fri = new List<int>(),
-                     Sat = new List<int>(),
-                     Sun = new List<int>();
-            public int month = 0;
-            public int period = 0;
-            public int year = 0;
-
-            public Period(int period, int month, int year) {
-                this.period = period;
-                this.month = month;
-                this.year = year;
-
-
-                int s = (period == 1 ? 1 : 16),
-                    e = (period == 1 ? 15 : DateTime.DaysInMonth(year, month));
-                for (int c = s; c <= e; c++) {
-                    switch (new DateTime(year, month, c).DayOfWeek) {
-                        case DayOfWeek.Monday: Mon.Add(c); break;
-                        case DayOfWeek.Tuesday: Tue.Add(c); break;
-                        case DayOfWeek.Wednesday: Wed.Add(c); break;
-                        case DayOfWeek.Thursday: Thu.Add(c); break;
-                        case DayOfWeek.Friday: Fri.Add(c); break;
-                        case DayOfWeek.Saturday: Sat.Add(c); break;
-                        case DayOfWeek.Sunday: Sun.Add(c); break;
-                    }
-                }
-            }
-        }
-        #endregion
-        // =============================================================================================
-        //          INSTANCE METHODS / VARIABLES (nonstatic)
-        // =============================================================================================
-        #region Non-Statics
-        public int AID;
-        public Period period;
-        DataTable attendance_cached;
+        #region Constructors
         public Attendance(int AID, int month, int periodx, int year) {
             this.AID = AID;
             period = new Period(periodx, month, year);
@@ -306,7 +73,21 @@ namespace MSAMISUserInterface {
                 Console.WriteLine("Yes!");
             }
         }
-        
+        #endregion
+
+        #region Instance Fields
+
+        public List<Hours> hourlist = new List<Hours>();
+        public int AID;
+        public Period period;
+        private DataTable attendance_cached;
+
+        #endregion New Region
+
+        #region Instance Methods
+
+        #region MethodFamily: GetAttendance
+
         public DataTable GetAttendance() {
             return GetAttendance(period.month, period.period, period.year);
         }
@@ -422,19 +203,12 @@ namespace MSAMISUserInterface {
             return h;
         }
 
-        #region CertBys
         public string GetCertifiedBy() {
             return SQLTools.ExecuteSingleResult(String.Format("select certby from period where month='{0}' and period = '{1}' and year='{2}'", period.month, period.period, period.year));
         }
+        #endregion New Region
 
-        public void SetCertifiedBy(int AID, String cert) {
-            Period p = GetCurrentPayPeriod();
-            String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `AID`='" + AID + "' AND month='" + p.month + "' AND period='" + p.period + "' AND year='" + p.year + "';";
-            SQLTools.ExecuteNonQuery(q);
-        }
-        #endregion
-
-        #region SetAttendacen
+        #region MethodFamily: SetAttendance
         public void SetAttendance(int AtID, int ti_hh, int ti_mm, String ti_ampm, int to_hh, int to_mm, String to_ampm) {
             int did = SQLTools.GetInt("select did from attendance where AtID=" + AtID);
             TimeSpan ts = GetTimeDiff(ti_hh, ti_mm, ti_ampm, to_hh, to_mm, to_ampm);
@@ -448,20 +222,250 @@ namespace MSAMISUserInterface {
             q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"));
             SQLTools.ExecuteNonQuery(q);
         }
+
+        public void SetCertifiedBy(int AID, String cert) {
+            Period p = GetCurrentPayPeriod();
+            String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `AID`='" + AID + "' AND month='" + p.month + "' AND period='" + p.period + "' AND year='" + p.year + "';";
+            SQLTools.ExecuteNonQuery(q);
+        }
         #endregion
-        //public static DataTable GetNecessaryAttendance(int AID) {
+
+        #endregion
 
 
+        #region Statics
+        #region MethodFamily: Period Operations
+        public static int GetMonth() {
+            return int.Parse(DateTime.Now.ToString("MM"));
+        }
+
+        public static int GetYear() {
+            return int.Parse(DateTime.Now.ToString("yyyy"));
+        }
+
+        // This method gets the current pay period.
+        public static Period GetCurrentPayPeriod() {
+            int m = 0, y = 0, p = 0;
+            #region + Dates Setting
+            int date = int.Parse(DateTime.Now.ToString("dd"));
+            if (date >= 5 && date <= 19) {
+                p = 1;
+                m = GetMonth();
+                y = GetYear();
+            } else if ((date >= 1 && date <= 4)) {
+                p = 2;
+                m = (GetMonth() == 1 ? 12 : GetMonth());  // if January, prev month December
+                y = (GetMonth() == 1 ? GetYear() - 1 : GetYear());
+            } else if (date >= 20 && date <= 31) {
+                p = 2;
+                m = GetMonth();
+                y = GetYear();
+            }
+            #endregion
+            return new Period(p, m, y); ;
+        }
+
+        public static DataTable GetPeriods(int AID) {
+            return SQLTools.ExecuteQuery(@"SELECT month, period, year
+                                        FROM msadb.period 
+                                        where AID = " + AID + @"
+                                        group by month,period,year order by year desc, month desc, period desc;");
+        }
+        #endregion
+
+        #region MethodFamily: Holiday Operations
+
+        public static bool IsHolidayToday(DateTime e) {
+            if (Holiday.holidaylist.Contains(new Holiday(e.Month, e.Day))) {
+                return true;
+            } else return false;
+        }
+
+        public static bool IsHolidayTomorrow(DateTime e) {
+            if (Holiday.holidaylist.Contains(new Holiday(e.Month, e.Day))) {
+                return true;
+            } else return false;
+        }
+
+        #endregion MethodFamily: Holiday Operations
+
+        #region MethodFamily: GetDateTime (static)
+
+        public static DateTime GetDateTime_(String hhmmss_tt) {
+            var t2 = "01/01/0001 " + hhmmss_tt;
+            return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm tt", CultureInfo.InvariantCulture);
+        }
+
+        public static DateTime GetDateTime(int hh, int mm, string tt) {
+            var t2 = "01/01/0001 " + hh.ToString("00") + ":" + mm.ToString("00") + ":00 " + tt;
+            return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+        }
+
+        #endregion New Region
+
+        #region MethodFamily: TimeSpan Operations
+
+        public static TimeSpan GetTimeDiff(int t1hour, int t1min, String t1ampm, int t2hour, int t2min, String t2ampm) {
+
+            var t1 = "01/01/0001 " + t1hour.ToString("00") + ":" + t1min.ToString("00") + ":00 " + t1ampm;
+            var t2 = "01/01/0001 " + t2hour.ToString("00") + ":" + t2min.ToString("00") + ":00 " + t2ampm;
+            var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            var time2 = DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            if (time2 < time1) {
+                Console.WriteLine("Date is on Next Day!");
+                time2 = time2.AddDays(1);
+            } else {
+                Console.WriteLine("same day");
+            }
+            return time2 - time1;
+        }
+
+        // =============================================================================================
+        //          STATIC METHODS / VARIABLES
+        // =============================================================================================
+        public static Hours GetHours(DateTime actuals, DateTime actuale) {
+            Hours h = new Hours();
+            DateTime NightStart = new DateTime(1, 1, 1, 22, 00, 00);
+            DateTime NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
+            DateTime Midnight = new DateTime(1, 1, 2, 0, 0, 0); DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
+            // if not same
+            if (actuals > actuale) {
+                actuale = actuale.AddDays(1);
+                NightEnd = NightEnd.AddDays(1);
+                // First Half
+                // 1: Max Selection, either nighstart or actuals
+                maxStart = actuals < NightStart ? NightStart : actuals;
+                minStart = actuals < NightStart ? actuals : NightStart;
+                TimeSpan d1_night = Midnight - maxStart;
+                TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                // Second Half
+                minEnd = actuale < NightEnd ? actuale : NightEnd;
+                maxEnd = actuale > NightEnd ? actuale : NightEnd;
+                TimeSpan d2_night = minEnd - Midnight;
+                TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
+                // Check if today is holiday.
+                if (IsHolidayToday(actuals)) {
+                    h.holiday_night += d1_night;
+                    h.holiday_day += d1_day;
+                } else {
+                    h.normal_night += d1_night;
+                    h.normal_day += d1_day;
+                }
+                //Check if tomorrow is holiday.
+                if (IsHolidayTomorrow(actuals)) {
+                    h.holiday_night += d2_night;
+                    h.holiday_day += d2_day;
+                } else {
+                    h.normal_night += d2_night;
+                    h.normal_day += d2_day;
+                }
+            } else {
+                // if same day
+                NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
+                maxStart = actuals < NightStart ? actuals : NightStart;
+                minStart = actuals > NightStart ? actuals : NightStart;
+                minEnd = actuale < NightEnd ? actuale : NightEnd;
+                maxEnd = actuale > NightEnd ? actuale : NightEnd;
+                if (IsHolidayToday(actuals)) {
+                    h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
+                    h.holiday_day += (actuale - NightEnd) > TimeSpan.FromSeconds(0) ? actuale - NightEnd : new TimeSpan(0, 0, 0);
+                    h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                } else {
+                    h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
+                    h.normal_day += (actuale - NightEnd) > TimeSpan.FromSeconds(0) ? actuale - NightEnd : new TimeSpan(0, 0, 0);
+                    h.normal_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                }
+            }
+            return h;
+        }
+
+        public static TimeSpan GetOvertime(int dbhour, int dbmin, String dbampm, int actualo, int actualomin, String actualoampm) {
+            // TO DO: if early, no overtime.
+            var t1 = "01/01/0001 " + dbhour.ToString("00") + ":" + dbmin.ToString("00") + ":00 " + dbampm;
+            var t2 = "01/01/0001 " + actualo.ToString("00") + ":" + actualomin.ToString("00") + ":00 " + actualoampm;
+            var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            var time2 = DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            if (time2 < time1) {
+                Console.WriteLine("Date is on Next Day!");
+                time2 = time2.AddDays(1);
+            } else {
+                Console.WriteLine("same day");
+            }
+            TimeSpan ts = time2 - time1;
+            if (ts.TotalHours > 8) {
+                return new TimeSpan(0, 0, 0);
+            } else {
+                return ts;
+            }
+        }
+
+        #endregion New Region
+
+       
+      
+     
+        #endregion
+
+        #region Subclasses
+
+        public class Period {
+            public List<int> Mon = new List<int>(),
+                     Tue = new List<int>(),
+                     Wed = new List<int>(),
+                     Thu = new List<int>(),
+                     Fri = new List<int>(),
+                     Sat = new List<int>(),
+                     Sun = new List<int>();
+            public int month = 0;
+            public int period = 0;
+            public int year = 0;
+
+            public Period(int period, int month, int year) {
+                this.period = period;
+                this.month = month;
+                this.year = year;
 
 
-        //    throw new NotImplementedException();
-        //}
+                int s = (period == 1 ? 1 : 16),
+                    e = (period == 1 ? 15 : DateTime.DaysInMonth(year, month));
+                for (int c = s; c <= e; c++) {
+                    switch (new DateTime(year, month, c).DayOfWeek) {
+                        case DayOfWeek.Monday: Mon.Add(c); break;
+                        case DayOfWeek.Tuesday: Tue.Add(c); break;
+                        case DayOfWeek.Wednesday: Wed.Add(c); break;
+                        case DayOfWeek.Thursday: Thu.Add(c); break;
+                        case DayOfWeek.Friday: Fri.Add(c); break;
+                        case DayOfWeek.Saturday: Sat.Add(c); break;
+                        case DayOfWeek.Sunday: Sun.Add(c); break;
+                    }
+                }
+            }
+        }
 
+        public class Hours {
+            public TimeSpan holiday_day = new TimeSpan(0, 0, 0);
+            public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
+            public TimeSpan normal_day = new TimeSpan(0, 0, 0);
+            public TimeSpan normal_night = new TimeSpan(0, 0, 0);
+            public TimeSpan total = new TimeSpan(0, 0, 0);
+            public string GetHolidayDay() {
+                return ((int)holiday_day.TotalMinutes / 60).ToString("00") + ":" + (holiday_day.TotalMinutes % 60).ToString("00");
+            }
+            public string GetHolidayNight() {
+                return ((int)holiday_night.TotalMinutes / 60).ToString("00") + ":" + (holiday_night.TotalMinutes % 60).ToString("00");
+            }
+            public string GetNormalDay() {
+                return ((int)normal_day.TotalMinutes / 60).ToString("00") + ":" + (normal_day.TotalMinutes % 60).ToString("00");
+            }
+            public string GetNormalNight() {
+                return ((int)normal_night.TotalMinutes / 60).ToString("00") + ":" + (normal_night.TotalMinutes % 60).ToString("00");
+            }
+            public string GetTotal() {
+                return ((int)total.TotalMinutes / 60).ToString("00") + ":" + (total.TotalMinutes % 60).ToString("00");
+            }
+        }
 
-
-
-
-        #region OLD
+#endregion New Region
 
         /*
          *  Payrolls are calculated on the 16th-19th of the month (Period 2)
@@ -510,11 +514,10 @@ namespace MSAMISUserInterface {
             }
         }
         #endregion
-        #endregion
+
     }
-
-
-
-    #endregion
 }
+
+
+    
 
