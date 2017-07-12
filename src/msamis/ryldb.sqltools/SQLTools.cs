@@ -187,7 +187,7 @@ namespace MSAMISUserInterface {
         }
 
         public static String ExecuteSingleResult(String query) {
-          Console.WriteLine(">>>> Your query was:  " + query);
+      
             DataTable dt = ExecuteQuery(query);
             string asc;
             try { asc = dt.Rows[0][0].ToString(); }
