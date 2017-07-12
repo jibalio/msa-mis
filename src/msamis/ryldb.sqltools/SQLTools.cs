@@ -158,7 +158,7 @@ namespace MSAMISUserInterface {
         }
 
         public static void message (String query) {
-           
+            Console.WriteLine(query);
         }
         public static void ExecuteNonQueryNoDB(string query) {
             try {
