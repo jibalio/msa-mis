@@ -459,7 +459,7 @@ namespace MSAMISUserInterface {
                     view.Location = newFormLocation;
                     shadow.Transparent();
                     shadow.form = view;
-                    shadow.Show();
+                    shadow.ShowDialog();
                 }
             }
             catch (Exception) { }
@@ -595,7 +595,7 @@ namespace MSAMISUserInterface {
                 view.Location = newFormLocation;
                 shadow.Transparent();
                 shadow.form = view;
-                shadow.Show();
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -650,7 +650,7 @@ namespace MSAMISUserInterface {
                     view.Location = newFormLocation;
                     shadow.Transparent();
                     shadow.form = view;
-                    shadow.Show();
+                    shadow.ShowDialog();
                 }
             }
             catch (Exception) { }
@@ -761,7 +761,7 @@ namespace MSAMISUserInterface {
                 view.Location = newFormLocation;
                 shadow.Transparent();
                 shadow.form = view;
-                shadow.Show();
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -777,7 +777,7 @@ namespace MSAMISUserInterface {
                     view.Location = newFormLocation;
                     shadow.Transparent();
                     shadow.form = view;
-                    shadow.Show();
+                    shadow.ShowDialog();
                 }
                 catch (Exception) { }
             } else {
@@ -868,7 +868,7 @@ namespace MSAMISUserInterface {
 
                         shadow.Transparent();
                         shadow.form = view;
-                        shadow.Show();
+                        shadow.ShowDialog();
                     }
                     catch (Exception) { }
                 } else {
@@ -882,7 +882,7 @@ namespace MSAMISUserInterface {
 
                         shadow.Transparent();
                         shadow.form = view;
-                        shadow.Show();
+                        shadow.ShowDialog();
                     }
                     catch (Exception) { }
                 }
@@ -983,7 +983,7 @@ namespace MSAMISUserInterface {
 
                     shadow.Transparent();
                     shadow.form = view;
-                    shadow.Show();
+                    shadow.ShowDialog();
                 }
                 catch (Exception) { }
             }
@@ -1022,7 +1022,7 @@ namespace MSAMISUserInterface {
 
                 shadow.Transparent();
                 shadow.form = view;
-                shadow.Show();
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -1098,7 +1098,7 @@ namespace MSAMISUserInterface {
 
                 shadow.Transparent();
                 shadow.form = view;
-                shadow.Show();
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -1113,7 +1113,7 @@ namespace MSAMISUserInterface {
 
                 shadow.Transparent();
                 shadow.form = view;
-                shadow.Show();
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -1146,7 +1146,7 @@ namespace MSAMISUserInterface {
 
                 shadow.Transparent();
                 shadow.form = view;
-                shadow.Show();
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -1161,7 +1161,7 @@ namespace MSAMISUserInterface {
 
                 shadow.Transparent();
                 shadow.form = view;
-                shadow.Show();
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -1180,7 +1180,7 @@ namespace MSAMISUserInterface {
 
                 shadow.Transparent();
                 shadow.form = view;
-                shadow.Show();
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }

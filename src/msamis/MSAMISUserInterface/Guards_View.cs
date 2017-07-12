@@ -45,7 +45,7 @@ namespace MSAMISUserInterface {
         }
 
         private void RViewEmployees_FormClosing(object sender, FormClosingEventArgs e) {
-            refer.Hide();
+            refer.Close();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -275,6 +275,10 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_MouseLeave(object sender, EventArgs e) {
             CloseBTN.ForeColor = dark;
+        }
+
+        private void Guards_View_FormClosed(object sender, FormClosedEventArgs e) {
+
         }
     }
 
