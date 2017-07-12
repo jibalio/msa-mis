@@ -67,7 +67,7 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (AddBTN.Text.Equals("ADD")) Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text);
-            else { Holiday.EditHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text); CancelBTN.PerformClick(); }
+            else { Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), DescBX.Text); CancelBTN.PerformClick(); }
             LoadPage();
         }
 
