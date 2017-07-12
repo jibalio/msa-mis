@@ -20,7 +20,7 @@ namespace MSAMISUserInterface {
 
         private void Backend_Tester_Load(object sender, EventArgs e) {
             //  dtq.Text = ;
-            Attendance.Period p = Attendance.GetCurrentPayPeriod(0);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod();
 
             Attendance a = new Attendance(1, p.month, p.period, p.year);
            // dgv.DataSource = a.GetAttendance();
