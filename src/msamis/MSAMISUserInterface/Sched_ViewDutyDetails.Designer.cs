@@ -75,6 +75,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.AShiftLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Header = new System.Windows.Forms.ToolStrip();
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).BeginInit();
@@ -464,6 +465,7 @@
             // 
             // AttendancePNL
             // 
+            this.AttendancePNL.Controls.Add(this.Header);
             this.AttendancePNL.Controls.Add(this.ACertifiedLBL);
             this.AttendancePNL.Controls.Add(this.label21);
             this.AttendancePNL.Controls.Add(this.label4);
@@ -609,8 +611,10 @@
             this.AttendanceGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.AttendanceGRD.RowHeadersVisible = false;
             this.AttendanceGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.AttendanceGRD.ShowCellToolTips = false;
             this.AttendanceGRD.Size = new System.Drawing.Size(489, 191);
             this.AttendanceGRD.TabIndex = 9;
+            this.AttendanceGRD.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.AttendanceGRD_CellMouseEnter);
             // 
             // label9
             // 
@@ -734,6 +738,14 @@
             this.label2.TabIndex = 272;
             this.label2.Text = "For the current payroll period:";
             // 
+            // Header
+            // 
+            this.Header.Location = new System.Drawing.Point(0, 0);
+            this.Header.Name = "Header";
+            this.Header.Size = new System.Drawing.Size(524, 25);
+            this.Header.TabIndex = 272;
+            this.Header.Text = "toolStrip1";
+            // 
             // Sched_ViewDutyDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -822,5 +834,6 @@
         private System.Windows.Forms.Label AttendanceLBL;
         private System.Windows.Forms.ComboBox PeriodCMBX;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStrip Header;
     }
 }

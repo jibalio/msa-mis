@@ -26,9 +26,10 @@ namespace MSAMISUserInterface {
             this.Opacity = 0;
         }
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
-            FadeTMR.Start();
-            Attendance.Period p = Attendance.GetCurrentPayPeriod(0);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod(AID);
             A = new Attendance(AID, p.month, p.period, p.year);
+
+            FadeTMR.Start();
             RefreshData();
             RefreshDutyDetails();
             RefreshCurrent();
@@ -45,6 +46,8 @@ namespace MSAMISUserInterface {
             if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
         }
         public void RefreshCurrent() {
+            Attendance.Period p = Attendance.GetCurrentPayPeriod(AID);
+            A = new Attendance(AID, p.month, p.period, p.year);
             Attendance.Hours hrs = A.GetAttendanceSummary();
             RShiftLBL.Text = hrs.GetNormalDay() + " hrs";
             RNightLBL.Text = hrs.GetNormalNight() + " hrs";
@@ -77,16 +80,19 @@ namespace MSAMISUserInterface {
             AttendanceGRD.Columns[3].HeaderText = "IN-OUT";
             AttendanceGRD.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
             AttendanceGRD.Columns[4].Width = 50;
-            AttendanceGRD.Columns[4].HeaderText = "REG";
+            AttendanceGRD.Columns[4].HeaderText = "RD";
             AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
             AttendanceGRD.Columns[5].Width = 50;
-            AttendanceGRD.Columns[5].HeaderText = "NIGHT";
+            AttendanceGRD.Columns[5].HeaderText = "RN";
             AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
             AttendanceGRD.Columns[6].Width = 50;
-            AttendanceGRD.Columns[6].HeaderText = "OT";
+            AttendanceGRD.Columns[6].HeaderText = "HD";
             AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
             AttendanceGRD.Columns[7].Width = 60;
-            AttendanceGRD.Columns[7].HeaderText = "HOLIDAY";
+            AttendanceGRD.Columns[7].HeaderText = "HN";
+            AttendanceGRD.Columns[8].Visible = false;
+            AttendanceGRD.Columns[9].Visible = false;
+            AttendanceGRD.Columns[10].Visible = false;
             AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
             AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -218,9 +224,16 @@ namespace MSAMISUserInterface {
         private void DutyDetailsLBL_MouseLeave(object sender, EventArgs e) {
             if (!DutyDetailsPNL.Visible) DutyDetailsLBL.ForeColor = light;
         }
+
+
         #endregion
 
-
-
+        private void AttendanceGRD_CellMouseEnter(object sender, DataGridViewCellEventArgs e) {
+            if (e.RowIndex == -1 && e.ColumnIndex != -1) {
+                Header.Show();
+            } else {
+                Header.Hide();
+            }
+        }
     }
 }
