@@ -43,9 +43,7 @@ namespace MSAMISUserInterface {
                                         group by month,period,year order by year desc, month desc, period desc;");
         }
 
-        private void init() {
-
-        }
+        
         public class Hours {
             public TimeSpan holiday_day = new TimeSpan(0, 0, 0);
             public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
@@ -69,6 +67,18 @@ namespace MSAMISUserInterface {
             }
         }
         #region Statics
+        public static bool IsHolidayToday(DateTime e) {
+            if (holly.Contains(new Holiday(e.Month, e.Day))) {
+                return true;
+            } else return false;
+        }
+
+        public static bool IsHolidayTomorrow(DateTime e) {
+            if (holly.Contains(new Holiday(e.Month, e.Day))) {
+                return true;
+            } else return false;
+        }
+
         public static DateTime GetDateTime_(String hhmmss_tt) {
             var t2 = "01/01/0001 " + hhmmss_tt;
             return DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm tt", CultureInfo.InvariantCulture);
@@ -104,15 +114,6 @@ namespace MSAMISUserInterface {
             DateTime Midnight = new DateTime(1, 1, 2, 0, 0, 0); DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
             // if not same
             if (actuals > actuale) {
-                #region + OLD
-                /*actuale = actuale.AddDays(1);
-                NightEnd = NightEnd.AddDays(1);
-                DateTime maxStart = actuals < NightStart ? NightStart : actuals;
-                DateTime minEnd = actuale < NightEnd ? actuale : NightEnd;
-                TimeSpan interval = minEnd - maxStart;
-                double nh = interval > TimeSpan.FromSeconds(0) ? interval.TotalMinutes : 0;
-                // return nh;*/
-                #endregion
                 actuale = actuale.AddDays(1);
                 NightEnd = NightEnd.AddDays(1);
                 // First Half
@@ -305,27 +306,7 @@ namespace MSAMISUserInterface {
                 Console.WriteLine("Yes!");
             }
         }
-        public static void GetDaysInPeriod() {
-            int month = GetMonth();
-            Period p = GetCurrentPayPeriod();
-            #region helpinfo - Days
-            
-            #endregion
-
-
-        }
-        public static bool IsHolidayToday(DateTime e) {
-            if (holly.Contains(new Holiday(e.Month, e.Day))) {
-                return true;
-            } else return false;
-        }
-
-        public static bool IsHolidayTomorrow(DateTime e) {
-            if (holly.Contains(new Holiday(e.Month, e.Day))) {
-                return true;
-            } else return false;
-        }
-
+        
         public DataTable GetAttendance() {
             return GetAttendance(period.month, period.period, period.year);
         }
@@ -491,25 +472,6 @@ namespace MSAMISUserInterface {
          *  (16-19) Period 1
          *  Total 4 days of preparation.
          */
-
-
-
-        public static string GetPayPeriodRange(int mo, int yyyy, int period) {
-            DateTime Start = new DateTime(), End = new DateTime();
-            if (period == 1) {
-                Start = new DateTime(yyyy, mo, 1);
-                End = new DateTime(yyyy, mo, 15);
-            } else {
-                Start = new DateTime(yyyy, mo, 16);
-                End = new DateTime(yyyy, mo, DateTime.DaysInMonth(yyyy, mo));
-            }
-            return (Start.ToString("MMMM dd, yyyy") + " to " + End.ToString("MMMM dd, yyyy"));
-        }
-
-
-
-
-
 
         /*
          * For testing only, input custom date.
