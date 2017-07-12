@@ -368,14 +368,14 @@ namespace MSAMISUserInterface {
         }
         private void RAddEmpBTN_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Guards_Edit view = new Guards_Edit();
                 view.reference = this;
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
-                view.ShowDialog();
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -452,14 +452,14 @@ namespace MSAMISUserInterface {
                     rylui.RylMessageBox.ShowDialog("No guard is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else {
                     Guards_View view = new Guards_View();
-                    shadow.Transparent();
-                    shadow.Show();
                     view.GID = GuardsGID[0];
                     view.reference = this;
                     view.conn = this.conn;
                     view.refer = this.shadow;
                     view.Location = newFormLocation;
-                    view.ShowDialog();
+                    shadow.Transparent();
+                    shadow.form = view;
+                    shadow.Show();
                 }
             }
             catch (Exception) { }
@@ -588,14 +588,14 @@ namespace MSAMISUserInterface {
 
         private void CAddClientBTN_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Clients_Edit view = new Clients_Edit();
                 view.reference = this;
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
-                view.ShowDialog();
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }
@@ -643,14 +643,14 @@ namespace MSAMISUserInterface {
                 if (CClientListTBL.SelectedRows.Count == 0) {
                     rylui.RylMessageBox.ShowDialog("No client is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else {
-                    shadow.Transparent();
-                    shadow.Show();
                     view.CID = int.Parse(CClientListTBL.SelectedRows[0].Cells[0].Value.ToString());
                     view.reference = this;
                     view.conn = this.conn;
                     view.refer = this.shadow;
                     view.Location = newFormLocation;
-                    view.ShowDialog();
+                    shadow.Transparent();
+                    shadow.form = view;
+                    shadow.Show();
                 }
             }
             catch (Exception) { }
@@ -754,22 +754,20 @@ namespace MSAMISUserInterface {
 
         private void SViewReqAssBTN_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Sched_RequestGuard view = new Sched_RequestGuard();
                 view.reference = this;
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
-                view.ShowDialog();
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }
         private void SViewReqDisBTN_Click(object sender, EventArgs e) {
             if (isUnscheduled()) {
                 try {
-                    shadow.Transparent();
-                    shadow.Show();
                     Sched_UnassignGuard view = new Sched_UnassignGuard();
                     view.reference = this;
                     view.CID = int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID);
@@ -777,7 +775,9 @@ namespace MSAMISUserInterface {
                     view.refer = this.shadow;
                     view.guards = SViewAssGRD.SelectedRows;
                     view.Location = newFormLocation;
-                    view.ShowDialog();
+                    shadow.Transparent();
+                    shadow.form = view;
+                    shadow.Show();
                 }
                 catch (Exception) { }
             } else {
@@ -859,28 +859,30 @@ namespace MSAMISUserInterface {
             try {
                 if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment")) {
                     try {
-                        shadow.Transparent();
-                        shadow.Show();
                         Sched_ViewAssReq view = new Sched_ViewAssReq();
                         view.reference = this;
                         view.RAID = this.RID;
                         view.conn = this.conn;
                         view.refer = this.shadow;
                         view.Location = newFormLocation;
-                        view.ShowDialog();
+
+                        shadow.Transparent();
+                        shadow.form = view;
+                        shadow.Show();
                     }
                     catch (Exception) { }
                 } else {
                     try {
-                        shadow.Transparent();
-                        shadow.Show();
                         Sched_ViewDisReq view = new Sched_ViewDisReq();
                         view.reference = this;
                         view.conn = this.conn;
                         view.RID = this.RID;
                         view.refer = this.shadow;
                         view.Location = newFormLocation;
-                        view.ShowDialog();
+
+                        shadow.Transparent();
+                        shadow.form = view;
+                        shadow.Show();
                     }
                     catch (Exception) { }
                 }
@@ -972,15 +974,16 @@ namespace MSAMISUserInterface {
                 rylui.RylMessageBox.ShowDialog("More than one assignment is selected", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else {
                 try {
-                    shadow.Transparent();
-                    shadow.Show();
                     Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
                     view.reference = this;
                     view.conn = this.conn;
                     view.refer = this.shadow;
                     view.AID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
                     view.Location = newFormLocation;
-                    view.ShowDialog();
+
+                    shadow.Transparent();
+                    shadow.form = view;
+                    shadow.Show();
                 }
                 catch (Exception) { }
             }
@@ -1011,14 +1014,15 @@ namespace MSAMISUserInterface {
 
         private void SArchiveViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
                 view.reference = this;
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
-                view.ShowDialog();
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }
@@ -1087,27 +1091,29 @@ namespace MSAMISUserInterface {
 
         private void PConfHoliday_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Payroll_ConfHolidays view = new Payroll_ConfHolidays();
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
-                view.ShowDialog();
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }
         private void PEmpListViewBTN_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Payroll_EmployeeView view = new Payroll_EmployeeView();
                 view.reference = this;
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 //view.PID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
                 view.Location = newFormLocation;
-                view.ShowDialog();
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }
@@ -1131,29 +1137,31 @@ namespace MSAMISUserInterface {
         #region PMS - Basic Pay 
         private void PBasicPayAddBTN_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Payroll_BasicPay view = new Payroll_BasicPay();
                 view.reference = this;
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 //view.BPID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
                 view.Location = newFormLocation;
-                view.ShowDialog();
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }
         private void PBasicPayEditBTN_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Payroll_BasicPay view = new Payroll_BasicPay();
                 view.reference = this;
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 //view.BPID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
                 view.Location = newFormLocation;
-                view.ShowDialog();
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }
@@ -1163,15 +1171,16 @@ namespace MSAMISUserInterface {
         #region Cash Advance Request
         private void SCashAdvViewBTN_Click(object sender, EventArgs e) {
             try {
-                shadow.Transparent();
-                shadow.Show();
                 Payroll_ViewCashAdv view = new Payroll_ViewCashAdv();
                 view.reference = this;
                 view.conn = this.conn;
                 view.refer = this.shadow;
                 //view.PID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
                 view.Location = newFormLocation;
-                view.ShowDialog();
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }

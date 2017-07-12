@@ -89,6 +89,13 @@ namespace MSAMISUserInterface {
             AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
             AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            Attendance B = new Attendance(AID, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            Attendance.Hours hrs = B.GetAttendanceSummary();
+            AShiftLBL.Text = hrs.GetNormalDay();
+            ANightLBL.Text = hrs.GetNormalNight();
+            AHShiftLBL.Text = hrs.GetHolidayDay();
+            AHNightLBL.Text = hrs.GetHolidayNight();
+            ACertifiedLBL.Text = B.GetCertifiedBy();
         }
         #endregion
 
@@ -172,13 +179,7 @@ namespace MSAMISUserInterface {
                 PeriodCMBX.Size = new System.Drawing.Size(352, 25);
             }
 
-            Attendance B = new Attendance(AID, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-            Attendance.Hours hrs = B.GetAttendanceSummary();
-            AShiftLBL.Text = hrs.GetNormalDay();
-            ANightLBL.Text = hrs.GetNormalNight();
-            AHShiftLBL.Text = hrs.GetHolidayDay();
-            AHNightLBL.Text = hrs.GetHolidayNight();
-            ACertifiedLBL.Text = B.GetCertifiedBy();
+            
 
         }
         #endregion

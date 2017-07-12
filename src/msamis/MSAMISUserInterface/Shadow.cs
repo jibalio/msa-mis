@@ -10,24 +10,21 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Shadow : Form {
+        public Form form { get; set; }
+
         public Shadow() {
             InitializeComponent();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.1;
-            if (this.Opacity >= 0.6) { FadeTMR.Stop(); }
-        }
-
-        private void Shadow_Load(object sender, EventArgs e) {
-            
+            if (this.Opacity >= 0.6) { FadeTMR.Stop(); form.ShowDialog(); }
         }
         public void Transparent() {
             this.Opacity = 0;
             FadeTMR.Start();
         }
 
-        private void Shadow_FormClosing(object sender, FormClosingEventArgs e) {
-        }
+
     }
 }
