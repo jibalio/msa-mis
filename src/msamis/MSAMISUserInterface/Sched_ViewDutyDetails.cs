@@ -30,7 +30,8 @@ namespace MSAMISUserInterface {
             Attendance.Period p = Attendance.GetCurrentPayPeriod(0);
             A = new Attendance(AID, p.month, p.period, p.year);
             RefreshData();
-            
+            RefreshDutyDetails();
+            RefreshCurrent();
         }
         public void RefreshData() {
             DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
@@ -38,15 +39,20 @@ namespace MSAMISUserInterface {
             FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
             ClientLBL.Text = dt.Rows[0][3].ToString();
 
+            foreach (DataRow row in Attendance.GetPeriods(AID).Rows) {
+                PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+            }
+            if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
+        }
+        public void RefreshCurrent() {
             Attendance.Hours hrs = A.GetAttendanceSummary();
             RShiftLBL.Text = hrs.GetNormalDay() + " hrs";
             RNightLBL.Text = hrs.GetNormalNight() + " hrs";
             HShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
             HNightLBL.Text = hrs.GetHolidayNight() + " hrs";
             CertifiedLBL.Text = A.GetCertifiedBy();
-
-            RefreshDutyDetails();
         }
+
         public void RefreshDutyDetails() {
             DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(AID);
             DutyDetailsGRD.Columns[0].Visible = false;
@@ -59,11 +65,6 @@ namespace MSAMISUserInterface {
             DutyDetailsGRD.Columns[3].Width = 150;
 
             DutyDetailsGRD.Select();
-
-            foreach (DataRow row in Attendance.GetPeriods(AID).Rows) {
-                PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
-            }
-            if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
         }
         public void RefreshAttendance() {
             AttendanceGRD.DataSource = A.GetAttendance_View(((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
@@ -96,13 +97,6 @@ namespace MSAMISUserInterface {
             AHShiftLBL.Text = hrs.GetHolidayDay();
             AHNightLBL.Text = hrs.GetHolidayNight();
             ACertifiedLBL.Text = B.GetCertifiedBy();
-
-            Attendance.Hours hrp = A.GetAttendanceSummary();
-            RShiftLBL.Text = hrp.GetNormalDay() + " hrs";
-            RNightLBL.Text = hrp.GetNormalNight() + " hrs";
-            HShiftLBL.Text = hrp.GetHolidayDay() + " hrs";
-            HNightLBL.Text = hrp.GetHolidayNight() + " hrs";
-            CertifiedLBL.Text = A.GetCertifiedBy();
         }
         #endregion
 
