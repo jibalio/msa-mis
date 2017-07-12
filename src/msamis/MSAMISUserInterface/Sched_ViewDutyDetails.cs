@@ -26,7 +26,7 @@ namespace MSAMISUserInterface {
             this.Opacity = 0;
         }
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
-            Attendance.Period p = Attendance.GetCurrentPayPeriod(AID);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
 
             FadeTMR.Start();
@@ -46,7 +46,7 @@ namespace MSAMISUserInterface {
             if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
         }
         public void RefreshCurrent() {
-            Attendance.Period p = Attendance.GetCurrentPayPeriod(AID);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
             Attendance.Hours hrs = A.GetAttendanceSummary();
             RShiftLBL.Text = hrs.GetNormalDay() + " hrs";

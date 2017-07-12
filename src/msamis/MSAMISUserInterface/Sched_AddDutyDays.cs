@@ -34,7 +34,7 @@ namespace MSAMISUserInterface {
             this.Close();
         }
         private void LoadPage() {
-            Attendance.Period p = Attendance.GetCurrentPayPeriod(0);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
             RefreshData();
         }
