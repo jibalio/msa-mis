@@ -15,7 +15,7 @@ namespace MSAMISUserInterface {
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
+            this.Opacity += 0.1;
             if (this.Opacity >= 0.6) { FadeTMR.Stop(); }
         }
 

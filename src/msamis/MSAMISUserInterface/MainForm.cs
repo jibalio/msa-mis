@@ -178,7 +178,7 @@ namespace MSAMISUserInterface {
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
-            shadow.Hide();
+            shadow.Close();
             lf.Opacity = 0;
             lf.Show();
             lf.Location = newFormLocation;
