@@ -27,7 +27,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Clients_View_FormClosing(object sender, FormClosingEventArgs e) {
-            refer.Hide();
+            refer.Close();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
