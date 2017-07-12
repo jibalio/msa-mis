@@ -175,6 +175,7 @@
             this.PEmpListBTN = new System.Windows.Forms.Button();
             this.PBasicPayBTN = new System.Windows.Forms.Button();
             this.PCashAdvBTN = new System.Windows.Forms.Button();
+            this.PConfHoliday = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
             this.PSalaryReportBTN = new System.Windows.Forms.Button();
@@ -264,7 +265,6 @@
             this.QuoteMainBX = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.ClientRequestsTLTP = new System.Windows.Forms.ToolTip(this.components);
-            this.PConfHoliday = new System.Windows.Forms.Button();
             this.ControlBoxPanel.SuspendLayout();
             this.DashboardPage.SuspendLayout();
             this.DSalaryReportPNL.SuspendLayout();
@@ -2332,6 +2332,22 @@
             this.PCashAdvBTN.UseVisualStyleBackColor = true;
             this.PCashAdvBTN.Click += new System.EventHandler(this.PCashAdvBTN_Click);
             // 
+            // PConfHoliday
+            // 
+            this.PConfHoliday.FlatAppearance.BorderSize = 0;
+            this.PConfHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PConfHoliday.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.PConfHoliday.ForeColor = System.Drawing.Color.White;
+            this.PConfHoliday.Location = new System.Drawing.Point(2, 150);
+            this.PConfHoliday.Margin = new System.Windows.Forms.Padding(2);
+            this.PConfHoliday.Name = "PConfHoliday";
+            this.PConfHoliday.Size = new System.Drawing.Size(172, 26);
+            this.PConfHoliday.TabIndex = 25;
+            this.PConfHoliday.Text = "configure holidays";
+            this.PConfHoliday.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PConfHoliday.UseVisualStyleBackColor = true;
+            this.PConfHoliday.Click += new System.EventHandler(this.PConfHoliday_Click);
+            // 
             // button22
             // 
             this.button22.Enabled = false;
@@ -3727,22 +3743,6 @@
             this.ClientRequestsTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ClientRequestsTLTP.ToolTipTitle = "Client Requests";
             // 
-            // PConfHoliday
-            // 
-            this.PConfHoliday.FlatAppearance.BorderSize = 0;
-            this.PConfHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PConfHoliday.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.PConfHoliday.ForeColor = System.Drawing.Color.White;
-            this.PConfHoliday.Location = new System.Drawing.Point(2, 150);
-            this.PConfHoliday.Margin = new System.Windows.Forms.Padding(2);
-            this.PConfHoliday.Name = "PConfHoliday";
-            this.PConfHoliday.Size = new System.Drawing.Size(172, 26);
-            this.PConfHoliday.TabIndex = 25;
-            this.PConfHoliday.Text = "configure holidays";
-            this.PConfHoliday.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PConfHoliday.UseVisualStyleBackColor = true;
-            this.PConfHoliday.Click += new System.EventHandler(this.PConfHoliday_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3752,12 +3752,12 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ControlBoxPanel);
-            this.Controls.Add(this.PayrollPage);
-            this.Controls.Add(this.SchedulesPage);
-            this.Controls.Add(this.DashboardPage);
             this.Controls.Add(this.GuardsPage);
             this.Controls.Add(this.ClientsPage);
             this.Controls.Add(this.SamplePNL);
+            this.Controls.Add(this.PayrollPage);
+            this.Controls.Add(this.SchedulesPage);
+            this.Controls.Add(this.DashboardPage);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
