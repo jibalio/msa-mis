@@ -96,6 +96,8 @@ namespace MSAMISUserInterface {
             AHShiftLBL.Text = hrs.GetHolidayDay();
             AHNightLBL.Text = hrs.GetHolidayNight();
             ACertifiedLBL.Text = B.GetCertifiedBy();
+
+            RefreshData();
         }
         #endregion
 
