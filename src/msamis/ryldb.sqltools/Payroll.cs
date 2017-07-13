@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
 
@@ -12,7 +13,7 @@ namespace MSAMISUserInterface {
         
 
         public static double BasicPay = 340.00;
-        
+        public static Attendance.Period period = Attendance.GetCurrentPayPeriod();
         
 
 
@@ -44,16 +45,41 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        public static void GetGrossPay (int GID) {
-            string q = "select ";
+
+        public static Attendance.Hours GetHoursForThisPeriod (int GID) {
+            DataTable aid_dt = SQLTools.ExecuteQuery(
+                String.Format(@"
+                    select atid, timein, timeout from attendance 
+                    left join period on period.pid = attendance.pid
+                    left join dutydetails on attendance.did = dutydetails.did
+                    left join sduty_assignment on sduty_assignment.aid = dutydetails.aid
+                    left join guards on guards.gid=sduty_assignment.gid
+                    where guards.gid={0}
+                    and period={1} 
+                    and year={2}
+                    and month={3}
+            ;",GID, period.period, period.year, period.month));
+            Attendance.Hours HourIterationTotal = new Attendance.Hours();
+            foreach (DataRow DataRowIteration in aid_dt.Rows) {
+                DateTime TimeInDateTime = Attendance.GetDateTime_(DataRowIteration["TimeIn"].ToString());
+                DateTime TimeOutDateTime = Attendance.GetDateTime_(DataRowIteration["TimeOut"].ToString());
+                Attendance.Hours asx = Attendance.GetHours(TimeInDateTime, TimeOutDateTime);
+                HourIterationTotal.normal_day+= asx.normal_day;
+                HourIterationTotal.normal_night += asx.normal_night;
+                HourIterationTotal.holiday_day += asx.holiday_day;
+                HourIterationTotal.holiday_night += asx.holiday_night;
+                HourIterationTotal.total += asx.total;
+            }
+            return HourIterationTotal;
         }
 
-        //public static 
+        
         
 
 
 
-        public class Adjustment {
+        public class PayrollData {
+
 
         }
 

@@ -24,7 +24,8 @@ namespace ryldb.sqltools {
             // DateTime start = Attendance.GetDateTime(s);
             //DateTime end = Attendance.GetDateTime(e);
             //Attendance.Hours x = Attendance.GetHours(start, end);
-            Holiday.InitHolidays();
+            //Holiday.InitHolidays();
+            Payroll.GetGrossPay(306);
         }
     }
 }
