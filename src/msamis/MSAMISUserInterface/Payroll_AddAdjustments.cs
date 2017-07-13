@@ -19,7 +19,6 @@ namespace MSAMISUserInterface {
         public Payroll_AddAdjustments() {
             InitializeComponent();
             this.Opacity = 0;
-            ChangeMode();
         }
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
@@ -37,24 +36,7 @@ namespace MSAMISUserInterface {
             this.Close();
         }
         #endregion
-
-        private void ChangeMode() {
-            switch (Mode) {
-                case 1:
-                    DAdjBTN.Enabled = false;
-                    DCashAdvBTN.Enabled = false;
-                    DStoreCreditBTN.Enabled = false;
-                    DSocialBenefitBTN.Enabled = false;
-                    DCashBondBTN.Enabled = false;
-                    break;
-                case 2:
-                    B13MonthBTN.Enabled = false;
-                    BColaBTN.Enabled = false;
-                    BAdjBTN.Enabled = false;
-                    break;
-            }
-
-        }
+        
         private bool DataValidation() {
             bool ret = true;
          /*   if (float.Parse(ValueMBX.Text.ToString()) < 0) {

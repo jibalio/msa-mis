@@ -28,6 +28,9 @@ PM > Get-Project -ryldb.sqltools | Install-Package MySqlBackup.NET -Version 2.0.
 * Duty Scheduling Module
 * Payroll Module
 
+![](sss-contribution-table-2017.png)
+![](revised-withholding-tax-tables.jpg)
+
 <br>
 <br>
 <br>
