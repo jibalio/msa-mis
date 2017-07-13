@@ -37,14 +37,15 @@ namespace MSAMISUserInterface {
             BasicPayGRD.Columns[1].HeaderText = "AMOUNT";
             BasicPayGRD.Columns[1].Width = 100;
             BasicPayGRD.Columns[2].HeaderText = "STARTING DATE";
-            BasicPayGRD.Columns[2].Width = 150;
+            BasicPayGRD.Columns[2].Width = 140;
             BasicPayGRD.Columns[3].HeaderText = "ENDING DATE";
-            BasicPayGRD.Columns[3].Width = 150;
+            BasicPayGRD.Columns[3].Width = 140;
             BasicPayGRD.Columns[4].HeaderText = "STATUS";
             BasicPayGRD.Columns[4].Width = 100;
 
-
-            CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
+            if (Payroll.GetCurrentBasicPay().Length == 7)
+                CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
+            else CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -57,20 +58,38 @@ namespace MSAMISUserInterface {
 
         private void AdjustBTN_Click(object sender, EventArgs e) {
             AdjustPNL.Visible = true;
-            CBasicPay.Visible = false;
-            AdjustBTN.Visible = false;
+            CurrentPNL.Visible = false;
+            BasicPayGRD.Size = new Size(500,160);
+            AdjustMBX.Text = "0 000.00";
         }
 
         private void CancelBTN_Click(object sender, EventArgs e) {
             AdjustPNL.Visible = false;
-            CBasicPay.Visible = true;
-            AdjustBTN.Visible = true;
+            CurrentPNL.Visible = true;
+            BasicPayGRD.Size = new Size(500, 220);
         }
 
         private void SaveBTN_Click(object sender, EventArgs e) {
-            Payroll.AddBasicPay(StartDate.Value, float.Parse(AdjustMBX.Text.Substring(2).Replace(" ", String.Empty)));
-            LoadPage();
-            CancelBTN.PerformClick();
+            if (DataVal()) { 
+                Payroll.AddBasicPay(StartDate.Value, float.Parse(AdjustMBX.Text.Substring(2).Replace(" ", String.Empty)));
+                LoadPage();
+                CancelBTN.PerformClick();
+            }
+        }
+
+        private bool DataVal() {
+            bool ret = true;
+
+            if (float.Parse(AdjustMBX.Text.Substring(2).Replace(" ", String.Empty)) == 0.0) {
+                InputTLTP.ToolTipTitle = "Adjustment Value";
+                InputTLTP.Show("Please specify a valid value", AdjustMBX);
+                ret = false;
+            }
+            return ret;
+        }
+
+        private void AdjustMBX_TextChanged(object sender, EventArgs e) {
+            InputTLTP.Hide(AdjustMBX);
         }
     }
 }

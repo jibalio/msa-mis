@@ -243,16 +243,16 @@ namespace MSAMISUserInterface {
             PAYLoadPage();
         }
         private void SettingsBTN_Click(object sender, EventArgs e) {
-            try {
-                shadow.Transparent();
-                shadow.Show();
+            try {;
                 About view = new About();
                 view.reference = this;
                 view.conn = this.conn;
                 view.UN = user;
                 view.refer = shadow;
                 view.Location = newFormLocation;
-                view.ShowDialog();
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.Show();
             }
             catch (Exception) { }
         }
