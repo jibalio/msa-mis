@@ -9,7 +9,14 @@ namespace MSAMISUserInterface {
 
     public class Payroll {
 
+        
+
         public static double BasicPay = 340.00;
+
+
+
+
+        #region Basic Pay Operations
 
         public static void AddBasicPay(DateTime start, double pay) {
             String paystring = pay.ToString("0000.##");
@@ -26,16 +33,24 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetBasicPayHistory () {
-            String q = @"select * from basicpay";
+            String q = @"select * from basicpay order by status desc";
             return SQLTools.ExecuteQuery(q);
         }
 
-        public static void LoadPayrolls () {
+#endregion New Region
 
+        public static void LoadPayrolls () {
+            
         }
 
+        //public static 
         
 
+
+
+        public class Adjustment {
+
+        }
 
         
     }
