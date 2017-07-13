@@ -10,33 +10,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
-    public partial class Payroll_BasicPay : Form {
-        public int BPID { get; set; }
-        public MainForm reference;
+    public partial class Payroll_ConfigBasicPay : Form {
         public MySqlConnection conn;
-
         public Shadow refer;
-        public Payroll_BasicPay() {
+
+        public Payroll_ConfigBasicPay() {
             InitializeComponent();
             this.Opacity = 0;
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            if (this.Opacity >= 1) FadeTMR.Stop();
         }
 
-        private void Payroll_BasicPay_Load(object sender, EventArgs e) {
-            this.Location = new Point(this.Location.X + 175, this.Location.Y + 100);
+        private void Payroll_ConfigBasicPay_Load(object sender, EventArgs e) {
+            this.Location = new Point(this.Location.X + 150, this.Location.Y);
             FadeTMR.Start();
-        }
-
-        private void Payroll_BasicPay_FormClosing(object sender, FormClosingEventArgs e) {
-            refer.Hide();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void Payroll_ConfigBasicPay_FormClosing(object sender, FormClosingEventArgs e) {
+            refer.Close();
         }
     }
 }
