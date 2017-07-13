@@ -11,6 +11,7 @@ namespace MSAMISUserInterface {
         public static double BasicPay = 340.00;
 
         public static void AddBasicPay(DateTime start, double pay) {
+            String paystring = pay.ToString("0000.##");
             String q;
             q = @"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{0}', '{1}', '{2}', '{3}');";
             string status;
@@ -19,10 +20,10 @@ namespace MSAMISUserInterface {
             // Case 1: If karon gamiton
             if (sta < end) status = "0";
             else status = "1";
-            q = String.Format(q, sta.ToString("yyyy-MM-dd"), "", status);
+            q = String.Format(q, paystring, sta.ToString("yyyy-MM-dd"), "", status);
             SQLTools.ExecuteNonQuery(q);
         }
-
+        
     }
 
 }
