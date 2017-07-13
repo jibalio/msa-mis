@@ -229,11 +229,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         private void AttendanceGRD_CellMouseEnter(object sender, DataGridViewCellEventArgs e) {
-            if (e.RowIndex == -1 && e.ColumnIndex != -1) {
-                Header.Show();
-            } else {
-                Header.Hide();
-            }
         }
     }
 }

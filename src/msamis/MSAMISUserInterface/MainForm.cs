@@ -1048,38 +1048,47 @@ namespace MSAMISUserInterface {
             PPayrollSummaryBTN.PerformClick();
         }
 
-        private void PCHnagePanel(Panel newP, Button newBTN, bool BasicPay) {
+        private void PCHnagePanel(Panel newP, Button newBTN) {
             ScurrentPanel.Hide();
             newP.Show();
             ScurrentBTN.Font = defaultFont;
             newBTN.Font = selectedFont;
             ScurrentBTN = newBTN;
             ScurrentPanel = newP;
-            PBasicPayBTN.Visible = BasicPay;
         }
 
         private void PEmpListBTN_Click(object sender, EventArgs e) {
-            PCHnagePanel(PEmpListPage, PEmpListBTN, true);
+            PCHnagePanel(PEmpListPage, PEmpListBTN);
             PAYLoadEmployeeList();
         }
         private void PAdjustBTN_Click(object sender, EventArgs e) {
-            PCHnagePanel(PBasicPayHistoryPage, PBasicPayBTN, true);
+            try {
+                Payroll_ConfigBasicPay view = new Payroll_ConfigBasicPay();
+                view.conn = this.conn;
+                view.refer = this.shadow;
+                view.Location = newFormLocation;
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.ShowDialog();
+            }
+            catch (Exception) { }
         }
 
         private void PCashAdvBTN_Click(object sender, EventArgs e) {
-            PCHnagePanel(PCashAdvancePage, PCashAdvBTN, false);
+            PCHnagePanel(PCashAdvancePage, PCashAdvBTN);
         }
 
         private void PPayrollSummaryBTN_Click(object sender, EventArgs e) {
-            PCHnagePanel(PPayrollSummaryPage, PPayrollSummaryBTN, false);
+            PCHnagePanel(PPayrollSummaryPage, PPayrollSummaryBTN);
         }
 
         private void PSalaryReportBTN_Click(object sender, EventArgs e) {
-            PCHnagePanel(PSalaryReportPage, PSalaryReportBTN, false);
+            PCHnagePanel(PSalaryReportPage, PSalaryReportBTN);
         }
 
         private void PArchiveBTN_Click(object sender, EventArgs e) {
-            PCHnagePanel(PArchivePage, PArchiveBTN, false);
+            PCHnagePanel(PArchivePage, PArchiveBTN);
         }
 
         #endregion
@@ -1132,40 +1141,6 @@ namespace MSAMISUserInterface {
             }
             PEmpListSearchLine.Visible = false;
         }
-        #endregion
-
-        #region PMS - Basic Pay 
-        private void PBasicPayAddBTN_Click(object sender, EventArgs e) {
-            try {
-                Payroll_BasicPay view = new Payroll_BasicPay();
-                view.reference = this;
-                view.conn = this.conn;
-                view.refer = this.shadow;
-                //view.BPID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
-                view.Location = newFormLocation;
-
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
-            }
-            catch (Exception) { }
-        }
-        private void PBasicPayEditBTN_Click(object sender, EventArgs e) {
-            try {
-                Payroll_BasicPay view = new Payroll_BasicPay();
-                view.reference = this;
-                view.conn = this.conn;
-                view.refer = this.shadow;
-                //view.BPID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
-                view.Location = newFormLocation;
-
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
-            }
-            catch (Exception) { }
-        }
-
         #endregion
 
         #region Cash Advance Request

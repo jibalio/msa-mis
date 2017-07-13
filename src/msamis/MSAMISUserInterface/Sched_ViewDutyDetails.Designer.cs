@@ -75,7 +75,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.AShiftLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Header = new System.Windows.Forms.ToolStrip();
+            this.Header = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).BeginInit();
@@ -465,7 +465,6 @@
             // 
             // AttendancePNL
             // 
-            this.AttendancePNL.Controls.Add(this.Header);
             this.AttendancePNL.Controls.Add(this.ACertifiedLBL);
             this.AttendancePNL.Controls.Add(this.label21);
             this.AttendancePNL.Controls.Add(this.label4);
@@ -738,14 +737,6 @@
             this.label2.TabIndex = 272;
             this.label2.Text = "For the current payroll period:";
             // 
-            // Header
-            // 
-            this.Header.Location = new System.Drawing.Point(0, 0);
-            this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(524, 25);
-            this.Header.TabIndex = 272;
-            this.Header.Text = "toolStrip1";
-            // 
             // Sched_ViewDutyDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -834,6 +825,6 @@
         private System.Windows.Forms.Label AttendanceLBL;
         private System.Windows.Forms.ComboBox PeriodCMBX;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ToolStrip Header;
+        private System.Windows.Forms.ToolTip Header;
     }
 }
