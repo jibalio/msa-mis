@@ -24,28 +24,30 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payroll_ConfigBasicPay));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.AdjustPNL = new System.Windows.Forms.Panel();
+            this.StartDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.AdjustMBX = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.AttendanceGRD = new System.Windows.Forms.DataGridView();
+            this.BasicPayGRD = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CBasicPay = new System.Windows.Forms.TextBox();
+            this.AdjustBTN = new System.Windows.Forms.Button();
+            this.SaveBTN = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CancelBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).BeginInit();
+            this.AdjustPNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BasicPayGRD)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,44 +98,27 @@
             this.FadeTMR.Interval = 1;
             this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
             // 
-            // panel3
+            // AdjustPNL
             // 
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.dateTimePicker1);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.maskedTextBox1);
-            this.panel3.Location = new System.Drawing.Point(3, 29);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(547, 163);
-            this.panel3.TabIndex = 237;
+            this.AdjustPNL.Controls.Add(this.CancelBTN);
+            this.AdjustPNL.Controls.Add(this.SaveBTN);
+            this.AdjustPNL.Controls.Add(this.StartDate);
+            this.AdjustPNL.Controls.Add(this.label1);
+            this.AdjustPNL.Controls.Add(this.AdjustMBX);
+            this.AdjustPNL.Location = new System.Drawing.Point(3, 59);
+            this.AdjustPNL.Name = "AdjustPNL";
+            this.AdjustPNL.Size = new System.Drawing.Size(547, 163);
+            this.AdjustPNL.TabIndex = 237;
+            this.AdjustPNL.Visible = false;
             // 
-            // button1
+            // StartDate
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(232, 114);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 32);
-            this.button1.TabIndex = 236;
-            this.button1.Text = "SAVE";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(266, 64);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(125, 29);
-            this.dateTimePicker1.TabIndex = 132;
+            this.StartDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StartDate.Location = new System.Drawing.Point(266, 64);
+            this.StartDate.Name = "StartDate";
+            this.StartDate.Size = new System.Drawing.Size(125, 29);
+            this.StartDate.TabIndex = 132;
             // 
             // label1
             // 
@@ -147,18 +132,18 @@
             this.label1.Text = "Starting Date:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // maskedTextBox1
+            // AdjustMBX
             // 
-            this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 24F);
-            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.maskedTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.maskedTextBox1.Mask = "P 999 999.99";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(547, 43);
-            this.maskedTextBox1.TabIndex = 131;
-            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AdjustMBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AdjustMBX.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AdjustMBX.Font = new System.Drawing.Font("Segoe UI", 24F);
+            this.AdjustMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AdjustMBX.Location = new System.Drawing.Point(0, 0);
+            this.AdjustMBX.Mask = "P 9 999.99";
+            this.AdjustMBX.Name = "AdjustMBX";
+            this.AdjustMBX.Size = new System.Drawing.Size(547, 43);
+            this.AdjustMBX.TabIndex = 131;
+            this.AdjustMBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -167,106 +152,164 @@
             this.label3.Location = new System.Drawing.Point(20, 144);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(461, 21);
+            this.label3.Size = new System.Drawing.Size(491, 21);
             this.label3.TabIndex = 236;
             this.label3.Text = "Current Basic Pay";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button2
+            // BasicPayGRD
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(324, 142);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(71, 25);
-            this.button2.TabIndex = 240;
-            this.button2.Text = "ADJUST";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // AttendanceGRD
-            // 
-            this.AttendanceGRD.AllowUserToAddRows = false;
-            this.AttendanceGRD.AllowUserToDeleteRows = false;
-            this.AttendanceGRD.AllowUserToResizeColumns = false;
-            this.AttendanceGRD.AllowUserToResizeRows = false;
-            this.AttendanceGRD.BackgroundColor = System.Drawing.Color.White;
-            this.AttendanceGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AttendanceGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.AttendanceGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AttendanceGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.AttendanceGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AttendanceGRD.DefaultCellStyle = dataGridViewCellStyle2;
-            this.AttendanceGRD.EnableHeadersVisualStyles = false;
-            this.AttendanceGRD.Location = new System.Drawing.Point(3, 241);
-            this.AttendanceGRD.MultiSelect = false;
-            this.AttendanceGRD.Name = "AttendanceGRD";
-            this.AttendanceGRD.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AttendanceGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.AttendanceGRD.RowHeadersVisible = false;
-            this.AttendanceGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AttendanceGRD.ShowCellToolTips = false;
-            this.AttendanceGRD.Size = new System.Drawing.Size(547, 177);
-            this.AttendanceGRD.TabIndex = 241;
+            this.BasicPayGRD.AllowUserToAddRows = false;
+            this.BasicPayGRD.AllowUserToDeleteRows = false;
+            this.BasicPayGRD.AllowUserToResizeColumns = false;
+            this.BasicPayGRD.AllowUserToResizeRows = false;
+            this.BasicPayGRD.BackgroundColor = System.Drawing.Color.White;
+            this.BasicPayGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BasicPayGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.BasicPayGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle7.NullValue = "-";
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BasicPayGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.BasicPayGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BasicPayGRD.DefaultCellStyle = dataGridViewCellStyle8;
+            this.BasicPayGRD.EnableHeadersVisualStyles = false;
+            this.BasicPayGRD.Location = new System.Drawing.Point(3, 296);
+            this.BasicPayGRD.MultiSelect = false;
+            this.BasicPayGRD.Name = "BasicPayGRD";
+            this.BasicPayGRD.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BasicPayGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.BasicPayGRD.RowHeadersVisible = false;
+            this.BasicPayGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BasicPayGRD.ShowCellToolTips = false;
+            this.BasicPayGRD.Size = new System.Drawing.Size(547, 177);
+            this.BasicPayGRD.TabIndex = 241;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(2, 195);
+            this.label5.Location = new System.Drawing.Point(2, 225);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(551, 43);
+            this.label5.Size = new System.Drawing.Size(551, 48);
             this.label5.TabIndex = 240;
             this.label5.Text = "Basic Pay History";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
-            this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.CBasicPay);
+            this.flowLayoutPanel1.Controls.Add(this.AdjustPNL);
             this.flowLayoutPanel1.Controls.Add(this.label5);
-            this.flowLayoutPanel1.Controls.Add(this.AttendanceGRD);
+            this.flowLayoutPanel1.Controls.Add(this.label4);
+            this.flowLayoutPanel1.Controls.Add(this.BasicPayGRD);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(20, 173);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(547, 403);
             this.flowLayoutPanel1.TabIndex = 242;
             // 
-            // textBox1
+            // CBasicPay
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 242;
+            this.CBasicPay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CBasicPay.Font = new System.Drawing.Font("Segoe UI", 24F);
+            this.CBasicPay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.CBasicPay.Location = new System.Drawing.Point(3, 3);
+            this.CBasicPay.Name = "CBasicPay";
+            this.CBasicPay.Size = new System.Drawing.Size(544, 43);
+            this.CBasicPay.TabIndex = 242;
+            this.CBasicPay.Text = "P 345.23";
+            this.CBasicPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // AdjustBTN
+            // 
+            this.AdjustBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AdjustBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AdjustBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AdjustBTN.BackgroundImage")));
+            this.AdjustBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AdjustBTN.FlatAppearance.BorderSize = 0;
+            this.AdjustBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AdjustBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.AdjustBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdjustBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.AdjustBTN.ForeColor = System.Drawing.Color.White;
+            this.AdjustBTN.Location = new System.Drawing.Point(339, 142);
+            this.AdjustBTN.Name = "AdjustBTN";
+            this.AdjustBTN.Size = new System.Drawing.Size(71, 25);
+            this.AdjustBTN.TabIndex = 240;
+            this.AdjustBTN.Text = "ADJUST";
+            this.AdjustBTN.UseVisualStyleBackColor = false;
+            this.AdjustBTN.Click += new System.EventHandler(this.AdjustBTN_Click);
+            // 
+            // SaveBTN
+            // 
+            this.SaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SaveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SaveBTN.BackgroundImage")));
+            this.SaveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SaveBTN.FlatAppearance.BorderSize = 0;
+            this.SaveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.SaveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveBTN.ForeColor = System.Drawing.Color.White;
+            this.SaveBTN.Location = new System.Drawing.Point(194, 111);
+            this.SaveBTN.Name = "SaveBTN";
+            this.SaveBTN.Size = new System.Drawing.Size(78, 32);
+            this.SaveBTN.TabIndex = 236;
+            this.SaveBTN.Text = "SAVE";
+            this.SaveBTN.UseVisualStyleBackColor = false;
+            this.SaveBTN.Click += new System.EventHandler(this.SaveBTN_Click);
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label4.Location = new System.Drawing.Point(2, 273);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(551, 20);
+            this.label4.TabIndex = 243;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // CancelBTN
+            // 
+            this.CancelBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.CancelBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CancelBTN.BackgroundImage")));
+            this.CancelBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CancelBTN.FlatAppearance.BorderSize = 0;
+            this.CancelBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.CancelBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.CancelBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.CancelBTN.ForeColor = System.Drawing.Color.White;
+            this.CancelBTN.Location = new System.Drawing.Point(277, 111);
+            this.CancelBTN.Name = "CancelBTN";
+            this.CancelBTN.Size = new System.Drawing.Size(78, 32);
+            this.CancelBTN.TabIndex = 239;
+            this.CancelBTN.Text = "CANCEL";
+            this.CancelBTN.UseVisualStyleBackColor = false;
+            this.CancelBTN.Click += new System.EventHandler(this.CancelBTN_Click);
             // 
             // Payroll_ConfigBasicPay
             // 
@@ -275,7 +318,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(600, 600);
             this.ControlBox = false;
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.AdjustBTN);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -287,9 +330,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payroll_ConfigBasicPay_FormClosing);
             this.Load += new System.EventHandler(this.Payroll_ConfigBasicPay_Load);
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).EndInit();
+            this.AdjustPNL.ResumeLayout(false);
+            this.AdjustPNL.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BasicPayGRD)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -302,16 +345,18 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Timer FadeTMR;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Panel AdjustPNL;
+        private System.Windows.Forms.DateTimePicker StartDate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox AdjustMBX;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView AttendanceGRD;
+        private System.Windows.Forms.Button SaveBTN;
+        private System.Windows.Forms.Button AdjustBTN;
+        private System.Windows.Forms.DataGridView BasicPayGRD;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox CBasicPay;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button CancelBTN;
     }
 }

@@ -26,6 +26,7 @@ namespace MSAMISUserInterface {
 
         private void Payroll_ConfigBasicPay_Load(object sender, EventArgs e) {
             this.Location = new Point(this.Location.X + 150, this.Location.Y);
+            StartDate.MinDate = DateTime.Now;
             FadeTMR.Start();
         }
 
@@ -35,6 +36,22 @@ namespace MSAMISUserInterface {
 
         private void Payroll_ConfigBasicPay_FormClosing(object sender, FormClosingEventArgs e) {
             refer.Close();
+        }
+
+        private void AdjustBTN_Click(object sender, EventArgs e) {
+            AdjustPNL.Visible = true;
+            CBasicPay.Visible = false;
+            AdjustBTN.Visible = false;
+        }
+
+        private void CancelBTN_Click(object sender, EventArgs e) {
+            AdjustPNL.Visible = false;
+            CBasicPay.Visible = true;
+            AdjustBTN.Visible = true;
+        }
+
+        private void SaveBTN_Click(object sender, EventArgs e) {
+            Payroll.AddBasicPay(StartDate.Value, Double.Parse(AdjustMBX.Text.Split('P')[0]));
         }
     }
 }
