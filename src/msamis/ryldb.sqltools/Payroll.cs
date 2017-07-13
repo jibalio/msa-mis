@@ -12,8 +12,7 @@ namespace MSAMISUserInterface {
         
 
         public static double BasicPay = 340.00;
-
-        string x = "65.02";
+        
         
 
 
@@ -25,7 +24,6 @@ namespace MSAMISUserInterface {
         }
 
         public static void AddBasicPay(DateTime start, double pay) {
-            double d = double.Parse(x);
             String paystring = pay.ToString("0000.##");
             String q;
             q = @"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{0}', '{1}', '{2}', '{3}');";
@@ -46,7 +44,7 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        public static void LoadPayrolls () {
+        public static void GetGrossPay (int GID) {
             
         }
 
