@@ -1,3 +1,10 @@
+﻿AddHoliday(SelectionRange r, string name, string desc)
+EditHoliday (SelectionRange r, string name, string desc)
+RemoveHoliday(SelectionRange r, string name, string desc)
+DataTable GetHolidays()
+
+
+
 ###################################################################
 UPDATE July 03, 2017
 

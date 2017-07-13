@@ -27,7 +27,6 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_AddAdjustments_FormClosing(object sender, FormClosingEventArgs e) {
-            FadeTMR.Start();
         }
 
         private void Payroll_AddAdjustments_Load(object sender, EventArgs e) {

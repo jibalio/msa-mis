@@ -14,6 +14,7 @@ namespace MSAMISUserInterface {
         public String UN { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
+        public Shadow refer;
 
         Color chose = Color.FromArgb(53, 64, 82);
         Color def = Color.Gray;
@@ -39,12 +40,12 @@ namespace MSAMISUserInterface {
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             this.Opacity += 0.2;
-            if (reference.Opacity == 0.6 || this.Opacity >= 1) { FadeTMR.Stop(); }
-            if (reference.Opacity > 0.7) { reference.Opacity -= 0.1; }
+            if (this.Opacity >= 1) { FadeTMR.Stop(); }
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             this.Close();
+            refer.Hide();
         }
 
         private void ChangePanel(Label newL, Panel newP) {

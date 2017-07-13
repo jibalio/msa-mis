@@ -17,6 +17,8 @@ namespace MSAMISUserInterface {
         public String button = "ADD";
         public MySql.Data.MySqlClient.MySqlConnection conn;
 
+        public Shadow refer;
+
         public Clients_Edit() {
             InitializeComponent();
             this.Opacity = 0;
@@ -24,14 +26,8 @@ namespace MSAMISUserInterface {
 
         #region Form Props
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            if (button.Equals("ADD")) {
-                if (reference.Opacity > 0.7) reference.Opacity -= 0.1;
-                this.Opacity += 0.2;
-                if (reference.Opacity <= 0.7 && this.Opacity == 1) FadeTMR.Stop();
-            } else {
-                this.Opacity += 0.2;
-                if (this.Opacity == 1) FadeTMR.Stop();
-            }
+            this.Opacity += 0.2;
+            if (this.Opacity == 1) FadeTMR.Stop();
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
             if (isEmpty() == false) {
@@ -53,6 +49,8 @@ namespace MSAMISUserInterface {
                 reference.Opacity = 1;
                 Console.WriteLine("[Guard_Edit] Setting Opacity to 100");
                 reference.Enabled = true;
+
+                refer.Hide();
                 Console.WriteLine("[Guard_Edit] Setting reference.Enable to true");
             }
         }

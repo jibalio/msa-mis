@@ -17,13 +17,14 @@ namespace ryldb.sqltools {
             // Case 7: Pos TI / Pre TO
             // Case 8: Pos TI / Exa TO
             // Case 9: Pos TI / Pos TO
-            string s = "01:00:00 AM";
-            string e = "05:00:00 AM";
-            Attendance.htod = true;
-            Attendance.htom = true;
-            DateTime start = Attendance.GetDateTime(s);
-            DateTime end = Attendance.GetDateTime(e);
-            Attendance.Hours x = Attendance.GetHours(start, end);
+            //string s = "01:00:00 AM";
+            //string e = "05:00:00 AM";
+            // Attendance.htod = true;
+            //Attendance.htom = true;
+            // DateTime start = Attendance.GetDateTime(s);
+            //DateTime end = Attendance.GetDateTime(e);
+            //Attendance.Hours x = Attendance.GetHours(start, end);
+            Holiday.InitHolidays();
         }
     }
 }

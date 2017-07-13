@@ -34,7 +34,7 @@ namespace MSAMISUserInterface {
             this.Close();
         }
         private void LoadPage() {
-            Attendance.Period p = Attendance.GetCurrentPayPeriod(0);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
             RefreshData();
         }
@@ -48,6 +48,7 @@ namespace MSAMISUserInterface {
                 }
                 A.SetCertifiedBy(AID, CertifiedBX.Text);
                 reference.RefreshAttendance();
+                reference.RefreshCurrent();
                 this.Close();
             }
         }
@@ -68,7 +69,7 @@ namespace MSAMISUserInterface {
         }
         
         private void RefreshData() {
-            if (A.GetAttendance().Rows.Count > 0) {
+            if (A.GetAttendance_View().Rows.Count > 0) {
                 foreach (DataRow row in A.GetAttendance().Rows) {
                     DaysGRD.Rows.Add(row[0], row[2], row[5].ToString().Split(':')[0], ":", row[5].ToString().Split(':')[1].Split(' ')[0], row[5].ToString().Split(':')[1].Split(' ')[1], row[6].ToString().Split(':')[0], ":", row[6].ToString().Split(':')[1].Split(' ')[0], row[6].ToString().Split(':')[1].Split(' ')[1], "0");
                 }

@@ -158,8 +158,6 @@ namespace MSAMISUserInterface {
         }
 
         public static void message (String query) {
-            Console.WriteLine("--------------------------------------------------------");
-            Console.WriteLine("SQLTools >> Your query was");
             Console.WriteLine(query);
         }
         public static void ExecuteNonQueryNoDB(string query) {
@@ -189,9 +187,12 @@ namespace MSAMISUserInterface {
         }
 
         public static String ExecuteSingleResult(String query) {
-          Console.WriteLine(">>>> Your query was:  " + query);
+      
             DataTable dt = ExecuteQuery(query);
-            return dt.Rows[0][0].ToString();
+            string asc;
+            try { asc = dt.Rows[0][0].ToString(); }
+            catch (Exception sd) { return ""; }
+            return asc;
         }
         
         public static int GetInt (String query) {

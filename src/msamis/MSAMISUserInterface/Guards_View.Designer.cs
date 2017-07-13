@@ -1192,6 +1192,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RViewEmployees_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Guards_View_FormClosed);
             this.Load += new System.EventHandler(this.RViewEmployees_Load);
             this.PersonalPNL.ResumeLayout(false);
             this.PersonalPNL.PerformLayout();
