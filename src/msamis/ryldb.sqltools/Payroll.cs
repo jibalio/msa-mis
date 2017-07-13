@@ -19,8 +19,8 @@ namespace MSAMISUserInterface {
         #region Basic Pay Operations
 
         public static string GetCurrentBasicPay() {
-            double bpay = SQLTools.GetInt("select amount from basicpay where status = 1");
-            return bpay.ToString("0000.##");
+            return SQLTools.ExecuteSingleResult("select amount from basicpay where status = 1");
+           
         }
 
         public static void AddBasicPay(DateTime start, double pay) {
@@ -45,7 +45,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         public static void GetGrossPay (int GID) {
-            
+            string q = "select ";
         }
 
         //public static 
