@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
     public partial class Sched_ViewDutyDetails : Form {
         public int AID { get; set; }
+        public int GID { get; set; }
         public MainForm reference;
         public MySqlConnection conn;
 
@@ -40,7 +41,7 @@ namespace MSAMISUserInterface {
             FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
             ClientLBL.Text = dt.Rows[0][3].ToString();
 
-            foreach (DataRow row in Attendance.GetPeriods(AID).Rows) {
+            foreach (DataRow row in Attendance.GetPeriods(GID).Rows) {
                 PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
             }
             if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
@@ -98,11 +99,11 @@ namespace MSAMISUserInterface {
 
             Attendance B = new Attendance(AID, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
             Attendance.Hours hrs = B.GetAttendanceSummary();
-            AShiftLBL.Text = hrs.GetNormalDay();
-            ANightLBL.Text = hrs.GetNormalNight();
-            AHShiftLBL.Text = hrs.GetHolidayDay();
-            AHNightLBL.Text = hrs.GetHolidayNight();
-            ACertifiedLBL.Text = B.GetCertifiedBy();
+            AShiftLBL.Text = hrs.GetNormalDay() + " hrs";
+            ANightLBL.Text = hrs.GetNormalNight() + " hrs";
+            AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
+            AHNightLBL.Text = hrs.GetHolidayNight() + " hrs";
+            ACertifiedLBL.Text = B.GetCertifiedBy() + " hrs";
         }
         #endregion
 

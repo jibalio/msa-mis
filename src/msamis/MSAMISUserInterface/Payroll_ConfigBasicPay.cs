@@ -28,6 +28,23 @@ namespace MSAMISUserInterface {
             this.Location = new Point(this.Location.X + 150, this.Location.Y);
             StartDate.MinDate = DateTime.Now;
             FadeTMR.Start();
+            LoadPage();
+        }
+
+        private void LoadPage() {
+            BasicPayGRD.DataSource = Payroll.GetBasicPayHistory();
+            BasicPayGRD.Columns[0].Visible = false;
+            BasicPayGRD.Columns[1].HeaderText = "AMOUNT";
+            BasicPayGRD.Columns[1].Width = 100;
+            BasicPayGRD.Columns[2].HeaderText = "STARTING DATE";
+            BasicPayGRD.Columns[2].Width = 150;
+            BasicPayGRD.Columns[3].HeaderText = "ENDING DATE";
+            BasicPayGRD.Columns[3].Width = 150;
+            BasicPayGRD.Columns[4].HeaderText = "STATUS";
+            BasicPayGRD.Columns[4].Width = 100;
+
+
+            CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -51,7 +68,9 @@ namespace MSAMISUserInterface {
         }
 
         private void SaveBTN_Click(object sender, EventArgs e) {
-            Payroll.AddBasicPay(StartDate.Value, Double.Parse(AdjustMBX.Text.Split('P')[0]));
+            Payroll.AddBasicPay(StartDate.Value, float.Parse(AdjustMBX.Text.Substring(2).Replace(" ", String.Empty)));
+            LoadPage();
+            CancelBTN.PerformClick();
         }
     }
 }

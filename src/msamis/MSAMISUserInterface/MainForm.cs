@@ -979,6 +979,7 @@ namespace MSAMISUserInterface {
                     view.conn = this.conn;
                     view.refer = this.shadow;
                     view.AID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
+                    view.GID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[0].Value.ToString());
                     view.Location = newFormLocation;
 
                     shadow.Transparent();

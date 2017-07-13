@@ -24,15 +24,17 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payroll_ConfigBasicPay));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.AdjustPNL = new System.Windows.Forms.Panel();
+            this.CancelBTN = new System.Windows.Forms.Button();
+            this.SaveBTN = new System.Windows.Forms.Button();
             this.StartDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.AdjustMBX = new System.Windows.Forms.MaskedTextBox();
@@ -40,15 +42,15 @@
             this.BasicPayGRD = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.CBasicPay = new System.Windows.Forms.TextBox();
-            this.AdjustBTN = new System.Windows.Forms.Button();
-            this.SaveBTN = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.CancelBTN = new System.Windows.Forms.Button();
+            this.AdjustBTN = new System.Windows.Forms.Button();
+            this.CBasicPay = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.AdjustPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BasicPayGRD)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -105,11 +107,51 @@
             this.AdjustPNL.Controls.Add(this.StartDate);
             this.AdjustPNL.Controls.Add(this.label1);
             this.AdjustPNL.Controls.Add(this.AdjustMBX);
-            this.AdjustPNL.Location = new System.Drawing.Point(3, 59);
+            this.AdjustPNL.Location = new System.Drawing.Point(3, 46);
             this.AdjustPNL.Name = "AdjustPNL";
             this.AdjustPNL.Size = new System.Drawing.Size(547, 163);
             this.AdjustPNL.TabIndex = 237;
             this.AdjustPNL.Visible = false;
+            // 
+            // CancelBTN
+            // 
+            this.CancelBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.CancelBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CancelBTN.BackgroundImage")));
+            this.CancelBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CancelBTN.FlatAppearance.BorderSize = 0;
+            this.CancelBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.CancelBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.CancelBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.CancelBTN.ForeColor = System.Drawing.Color.White;
+            this.CancelBTN.Location = new System.Drawing.Point(277, 111);
+            this.CancelBTN.Name = "CancelBTN";
+            this.CancelBTN.Size = new System.Drawing.Size(78, 32);
+            this.CancelBTN.TabIndex = 239;
+            this.CancelBTN.Text = "CANCEL";
+            this.CancelBTN.UseVisualStyleBackColor = false;
+            this.CancelBTN.Click += new System.EventHandler(this.CancelBTN_Click);
+            // 
+            // SaveBTN
+            // 
+            this.SaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SaveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SaveBTN.BackgroundImage")));
+            this.SaveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SaveBTN.FlatAppearance.BorderSize = 0;
+            this.SaveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.SaveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveBTN.ForeColor = System.Drawing.Color.White;
+            this.SaveBTN.Location = new System.Drawing.Point(194, 111);
+            this.SaveBTN.Name = "SaveBTN";
+            this.SaveBTN.Size = new System.Drawing.Size(78, 32);
+            this.SaveBTN.TabIndex = 236;
+            this.SaveBTN.Text = "SAVE";
+            this.SaveBTN.UseVisualStyleBackColor = false;
+            this.SaveBTN.Click += new System.EventHandler(this.SaveBTN_Click);
             // 
             // StartDate
             // 
@@ -167,48 +209,48 @@
             this.BasicPayGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BasicPayGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.BasicPayGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle7.NullValue = "-";
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BasicPayGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BasicPayGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.BasicPayGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BasicPayGRD.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BasicPayGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.BasicPayGRD.EnableHeadersVisualStyles = false;
-            this.BasicPayGRD.Location = new System.Drawing.Point(3, 296);
+            this.BasicPayGRD.Location = new System.Drawing.Point(39, 0);
             this.BasicPayGRD.MultiSelect = false;
             this.BasicPayGRD.Name = "BasicPayGRD";
             this.BasicPayGRD.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BasicPayGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BasicPayGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.BasicPayGRD.RowHeadersVisible = false;
             this.BasicPayGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BasicPayGRD.ShowCellToolTips = false;
-            this.BasicPayGRD.Size = new System.Drawing.Size(547, 177);
+            this.BasicPayGRD.Size = new System.Drawing.Size(502, 177);
             this.BasicPayGRD.TabIndex = 241;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(2, 225);
+            this.label5.Location = new System.Drawing.Point(2, 212);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(551, 48);
@@ -222,23 +264,22 @@
             this.flowLayoutPanel1.Controls.Add(this.AdjustPNL);
             this.flowLayoutPanel1.Controls.Add(this.label5);
             this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.BasicPayGRD);
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(20, 173);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(547, 403);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(547, 456);
             this.flowLayoutPanel1.TabIndex = 242;
             // 
-            // CBasicPay
+            // label4
             // 
-            this.CBasicPay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CBasicPay.Font = new System.Drawing.Font("Segoe UI", 24F);
-            this.CBasicPay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CBasicPay.Location = new System.Drawing.Point(3, 3);
-            this.CBasicPay.Name = "CBasicPay";
-            this.CBasicPay.Size = new System.Drawing.Size(544, 43);
-            this.CBasicPay.TabIndex = 242;
-            this.CBasicPay.Text = "P 345.23";
-            this.CBasicPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label4.Location = new System.Drawing.Point(2, 260);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(551, 20);
+            this.label4.TabIndex = 243;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // AdjustBTN
             // 
@@ -260,56 +301,25 @@
             this.AdjustBTN.UseVisualStyleBackColor = false;
             this.AdjustBTN.Click += new System.EventHandler(this.AdjustBTN_Click);
             // 
-            // SaveBTN
+            // CBasicPay
             // 
-            this.SaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SaveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SaveBTN.BackgroundImage")));
-            this.SaveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SaveBTN.FlatAppearance.BorderSize = 0;
-            this.SaveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.SaveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.SaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveBTN.ForeColor = System.Drawing.Color.White;
-            this.SaveBTN.Location = new System.Drawing.Point(194, 111);
-            this.SaveBTN.Name = "SaveBTN";
-            this.SaveBTN.Size = new System.Drawing.Size(78, 32);
-            this.SaveBTN.TabIndex = 236;
-            this.SaveBTN.Text = "SAVE";
-            this.SaveBTN.UseVisualStyleBackColor = false;
-            this.SaveBTN.Click += new System.EventHandler(this.SaveBTN_Click);
+            this.CBasicPay.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CBasicPay.Font = new System.Drawing.Font("Segoe UI", 24F);
+            this.CBasicPay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.CBasicPay.Location = new System.Drawing.Point(3, 0);
+            this.CBasicPay.Name = "CBasicPay";
+            this.CBasicPay.Size = new System.Drawing.Size(544, 43);
+            this.CBasicPay.TabIndex = 244;
+            this.CBasicPay.Text = "label6";
+            this.CBasicPay.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label4
+            // panel2
             // 
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label4.Location = new System.Drawing.Point(2, 273);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(551, 20);
-            this.label4.TabIndex = 243;
-            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // CancelBTN
-            // 
-            this.CancelBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.CancelBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CancelBTN.BackgroundImage")));
-            this.CancelBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CancelBTN.FlatAppearance.BorderSize = 0;
-            this.CancelBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.CancelBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.CancelBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.CancelBTN.ForeColor = System.Drawing.Color.White;
-            this.CancelBTN.Location = new System.Drawing.Point(277, 111);
-            this.CancelBTN.Name = "CancelBTN";
-            this.CancelBTN.Size = new System.Drawing.Size(78, 32);
-            this.CancelBTN.TabIndex = 239;
-            this.CancelBTN.Text = "CANCEL";
-            this.CancelBTN.UseVisualStyleBackColor = false;
-            this.CancelBTN.Click += new System.EventHandler(this.CancelBTN_Click);
+            this.panel2.Controls.Add(this.BasicPayGRD);
+            this.panel2.Location = new System.Drawing.Point(3, 283);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(544, 189);
+            this.panel2.TabIndex = 245;
             // 
             // Payroll_ConfigBasicPay
             // 
@@ -334,7 +344,7 @@
             this.AdjustPNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BasicPayGRD)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -355,8 +365,9 @@
         private System.Windows.Forms.DataGridView BasicPayGRD;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox CBasicPay;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button CancelBTN;
+        private System.Windows.Forms.Label CBasicPay;
+        private System.Windows.Forms.Panel panel2;
     }
 }
