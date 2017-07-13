@@ -13,12 +13,19 @@ namespace MSAMISUserInterface {
 
         public static double BasicPay = 340.00;
 
-
+        string x = "65.02";
+        
 
 
         #region Basic Pay Operations
 
+        public static string GetCurrentBasicPay() {
+            double bpay = SQLTools.GetInt("select amount from basicpay where status = 1");
+            return bpay.ToString("0000.##");
+        }
+
         public static void AddBasicPay(DateTime start, double pay) {
+            double d = double.Parse(x);
             String paystring = pay.ToString("0000.##");
             String q;
             q = @"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{0}', '{1}', '{2}', '{3}');";
@@ -37,7 +44,7 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery(q);
         }
 
-#endregion New Region
+        #endregion
 
         public static void LoadPayrolls () {
             
