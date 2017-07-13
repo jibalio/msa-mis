@@ -137,6 +137,12 @@
     <Compile Include="Guards_View.Designer.cs">
       <DependentUpon>Guards_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForm.Designer.cs">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sched_AddDutyDays.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </Compile>
     <EmbeddedResource Include="Guards_View.resx">
       <DependentUpon>Guards_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForm.resx">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sched_AddDutyDays.resx">
       <DependentUpon>Sched_AddDutyDays.cs</DependentUpon>
