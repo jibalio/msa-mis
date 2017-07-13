@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,19 @@ namespace MSAMISUserInterface {
             q = String.Format(q, paystring, sta.ToString("yyyy-MM-dd"), "", status);
             SQLTools.ExecuteNonQuery(q);
         }
+
+        public static DataTable GetBasicPayHistory () {
+            String q = @"select * from basicpay";
+            return SQLTools.ExecuteQuery(q);
+        }
+
+        public static void LoadPayrolls () {
+
+        }
+
+        
+
+
         
     }
 
