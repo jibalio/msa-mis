@@ -26,43 +26,59 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payroll_AddAdjustments));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.AddBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.ValueTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label20);
+            this.panel2.Controls.Add(this.label19);
+            this.panel2.Controls.Add(this.label18);
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.numericUpDown8);
             this.panel2.Controls.Add(this.numericUpDown7);
             this.panel2.Controls.Add(this.numericUpDown5);
@@ -87,6 +103,170 @@
             this.panel2.Size = new System.Drawing.Size(550, 378);
             this.panel2.TabIndex = 126;
             // 
+            // numericUpDown8
+            // 
+            this.numericUpDown8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown8.DecimalPlaces = 2;
+            this.numericUpDown8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown8.Location = new System.Drawing.Point(300, 299);
+            this.numericUpDown8.Name = "numericUpDown8";
+            this.numericUpDown8.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown8.TabIndex = 252;
+            this.numericUpDown8.ThousandsSeparator = true;
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown7.DecimalPlaces = 2;
+            this.numericUpDown7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown7.Location = new System.Drawing.Point(300, 272);
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown7.TabIndex = 251;
+            this.numericUpDown7.ThousandsSeparator = true;
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown5.DecimalPlaces = 2;
+            this.numericUpDown5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown5.Location = new System.Drawing.Point(300, 245);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown5.TabIndex = 250;
+            this.numericUpDown5.ThousandsSeparator = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label12.Location = new System.Drawing.Point(163, 302);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(43, 20);
+            this.label12.TabIndex = 249;
+            this.label12.Text = "- SSS";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label11.Location = new System.Drawing.Point(161, 273);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 20);
+            this.label11.TabIndex = 248;
+            this.label11.Text = "- Pagibig";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(163, 246);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 20);
+            this.label3.TabIndex = 247;
+            this.label3.Text = "- Philhealth";
+            // 
+            // numericUpDown6
+            // 
+            this.numericUpDown6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown6.DecimalPlaces = 2;
+            this.numericUpDown6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown6.Location = new System.Drawing.Point(300, 330);
+            this.numericUpDown6.Name = "numericUpDown6";
+            this.numericUpDown6.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown6.TabIndex = 246;
+            this.numericUpDown6.ThousandsSeparator = true;
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown4.DecimalPlaces = 2;
+            this.numericUpDown4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown4.Location = new System.Drawing.Point(301, 189);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown4.TabIndex = 244;
+            this.numericUpDown4.ThousandsSeparator = true;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown3.DecimalPlaces = 2;
+            this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown3.Location = new System.Drawing.Point(301, 158);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown3.TabIndex = 243;
+            this.numericUpDown3.ThousandsSeparator = true;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown2.DecimalPlaces = 2;
+            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown2.Location = new System.Drawing.Point(300, 68);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown2.TabIndex = 242;
+            this.numericUpDown2.ThousandsSeparator = true;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown1.Location = new System.Drawing.Point(300, 37);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown1.TabIndex = 241;
+            this.numericUpDown1.ThousandsSeparator = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label10.Location = new System.Drawing.Point(146, 331);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 20);
+            this.label10.TabIndex = 238;
+            this.label10.Text = "Cash Bonds";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label2.Location = new System.Drawing.Point(204, 113);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 21);
+            this.label2.TabIndex = 124;
+            this.label2.Text = "Deduction Type:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label9.Location = new System.Drawing.Point(146, 218);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 20);
+            this.label9.TabIndex = 237;
+            this.label9.Text = "Social Benefit";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -99,6 +279,50 @@
             this.label1.TabIndex = 120;
             this.label1.Text = "Bonus Type:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label8.Location = new System.Drawing.Point(146, 189);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 20);
+            this.label8.TabIndex = 236;
+            this.label8.Text = "Store Credit";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label7.Location = new System.Drawing.Point(145, 158);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 20);
+            this.label7.TabIndex = 235;
+            this.label7.Text = "Cash Advance";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label5.Location = new System.Drawing.Point(145, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.TabIndex = 130;
+            this.label5.Text = "13th Month";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(145, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 20);
+            this.label6.TabIndex = 234;
+            this.label6.Text = "Cola";
             // 
             // CloseBTN
             // 
@@ -164,221 +388,93 @@
             this.label4.Text = "Add Adjustment";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label5
+            // label13
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(145, 36);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 20);
-            this.label5.TabIndex = 130;
-            this.label5.Text = "13th Month";
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label13.Location = new System.Drawing.Point(279, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 20);
+            this.label13.TabIndex = 253;
+            this.label13.Text = "₱";
             // 
-            // label6
+            // label14
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(145, 64);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 20);
-            this.label6.TabIndex = 234;
-            this.label6.Text = "Cola";
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label14.Location = new System.Drawing.Point(279, 66);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 20);
+            this.label14.TabIndex = 254;
+            this.label14.Text = "₱";
             // 
-            // label7
+            // label15
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(145, 158);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 20);
-            this.label7.TabIndex = 235;
-            this.label7.Text = "Cash Advance";
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label15.Location = new System.Drawing.Point(277, 157);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(18, 20);
+            this.label15.TabIndex = 255;
+            this.label15.Text = "₱";
             // 
-            // label8
+            // label16
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(146, 189);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 20);
-            this.label8.TabIndex = 236;
-            this.label8.Text = "Store Credit";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label16.Location = new System.Drawing.Point(277, 188);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(18, 20);
+            this.label16.TabIndex = 256;
+            this.label16.Text = "₱";
             // 
-            // label9
+            // label17
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(146, 218);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 20);
-            this.label9.TabIndex = 237;
-            this.label9.Text = "Social Benefit";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label17.Location = new System.Drawing.Point(279, 244);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(18, 20);
+            this.label17.TabIndex = 257;
+            this.label17.Text = "₱";
             // 
-            // label10
+            // label18
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(146, 331);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(85, 20);
-            this.label10.TabIndex = 238;
-            this.label10.Text = "Cash Bonds";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label18.Location = new System.Drawing.Point(278, 271);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(18, 20);
+            this.label18.TabIndex = 258;
+            this.label18.Text = "₱";
             // 
-            // label2
+            // label19
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(204, 113);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 21);
-            this.label2.TabIndex = 124;
-            this.label2.Text = "Deduction Type:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label19.Location = new System.Drawing.Point(277, 297);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(18, 20);
+            this.label19.TabIndex = 259;
+            this.label19.Text = "₱";
             // 
-            // numericUpDown1
+            // label20
             // 
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown1.Hexadecimal = true;
-            this.numericUpDown1.Location = new System.Drawing.Point(291, 37);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown1.TabIndex = 241;
-            this.numericUpDown1.ThousandsSeparator = true;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown2.Hexadecimal = true;
-            this.numericUpDown2.Location = new System.Drawing.Point(291, 68);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown2.TabIndex = 242;
-            this.numericUpDown2.ThousandsSeparator = true;
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown3.Hexadecimal = true;
-            this.numericUpDown3.Location = new System.Drawing.Point(291, 158);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown3.TabIndex = 243;
-            this.numericUpDown3.ThousandsSeparator = true;
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown4.Hexadecimal = true;
-            this.numericUpDown4.Location = new System.Drawing.Point(291, 189);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown4.TabIndex = 244;
-            this.numericUpDown4.ThousandsSeparator = true;
-            // 
-            // numericUpDown6
-            // 
-            this.numericUpDown6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown6.DecimalPlaces = 2;
-            this.numericUpDown6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown6.Hexadecimal = true;
-            this.numericUpDown6.Location = new System.Drawing.Point(291, 330);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown6.TabIndex = 246;
-            this.numericUpDown6.ThousandsSeparator = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(163, 246);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 20);
-            this.label3.TabIndex = 247;
-            this.label3.Text = "- Philhealth";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label11.Location = new System.Drawing.Point(161, 273);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 20);
-            this.label11.TabIndex = 248;
-            this.label11.Text = "- Pagibig";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label12.Location = new System.Drawing.Point(163, 302);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(43, 20);
-            this.label12.TabIndex = 249;
-            this.label12.Text = "- SSS";
-            // 
-            // numericUpDown5
-            // 
-            this.numericUpDown5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown5.DecimalPlaces = 2;
-            this.numericUpDown5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown5.Hexadecimal = true;
-            this.numericUpDown5.Location = new System.Drawing.Point(291, 245);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown5.TabIndex = 250;
-            this.numericUpDown5.ThousandsSeparator = true;
-            // 
-            // numericUpDown7
-            // 
-            this.numericUpDown7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown7.DecimalPlaces = 2;
-            this.numericUpDown7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown7.Hexadecimal = true;
-            this.numericUpDown7.Location = new System.Drawing.Point(291, 272);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown7.TabIndex = 251;
-            this.numericUpDown7.ThousandsSeparator = true;
-            // 
-            // numericUpDown8
-            // 
-            this.numericUpDown8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown8.DecimalPlaces = 2;
-            this.numericUpDown8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown8.Hexadecimal = true;
-            this.numericUpDown8.Location = new System.Drawing.Point(291, 299);
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown8.TabIndex = 252;
-            this.numericUpDown8.ThousandsSeparator = true;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label20.Location = new System.Drawing.Point(276, 328);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(18, 20);
+            this.label20.TabIndex = 260;
+            this.label20.Text = "₱";
             // 
             // Payroll_AddAdjustments
             // 
@@ -399,14 +495,14 @@
             this.Load += new System.EventHandler(this.Payroll_AddAdjustments_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,5 +533,13 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
     }
 }

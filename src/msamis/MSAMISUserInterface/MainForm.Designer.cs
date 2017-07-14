@@ -339,6 +339,7 @@
             // 
             // SettingsBTN
             // 
+            this.SettingsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SettingsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.SettingsBTN.FlatAppearance.BorderSize = 0;
             this.SettingsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
@@ -376,6 +377,7 @@
             // 
             // ControlBoxTimeLBL
             // 
+            this.ControlBoxTimeLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ControlBoxTimeLBL.AutoSize = true;
             this.ControlBoxTimeLBL.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ControlBoxTimeLBL.ForeColor = System.Drawing.Color.White;
@@ -1233,6 +1235,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.panel1.Controls.Add(this.ClientBTN);
             this.panel1.Controls.Add(this.RecordsBTN);
@@ -1321,6 +1325,10 @@
             // 
             // SchedulesPage
             // 
+            this.SchedulesPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SchedulesPage.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.SchedulesPage.IsSplitterFixed = true;
             this.SchedulesPage.Location = new System.Drawing.Point(70, 32);
             this.SchedulesPage.Margin = new System.Windows.Forms.Padding(2);
@@ -1334,6 +1342,7 @@
             this.SchedulesPage.Panel1.Controls.Add(this.SUnassignedGuardsLBL);
             this.SchedulesPage.Panel1.Controls.Add(this.SAssignedGuardsLBL);
             this.SchedulesPage.Panel1.Controls.Add(this.label24);
+            this.SchedulesPage.Panel1MinSize = 206;
             // 
             // SchedulesPage.Panel2
             // 
@@ -1586,6 +1595,9 @@
             // 
             // SViewAssPNL
             // 
+            this.SViewAssPNL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SViewAssPNL.Controls.Add(this.SViewAssViewDetailsBTN);
             this.SViewAssPNL.Controls.Add(this.SViewAssUnassignBTN);
             this.SViewAssPNL.Controls.Add(this.label21);
@@ -1603,6 +1615,7 @@
             // 
             // SViewAssViewDetailsBTN
             // 
+            this.SViewAssViewDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SViewAssViewDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssViewDetailsBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
             this.SViewAssViewDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -1622,6 +1635,7 @@
             // 
             // SViewAssUnassignBTN
             // 
+            this.SViewAssUnassignBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SViewAssUnassignBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.SViewAssUnassignBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
             this.SViewAssUnassignBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -1668,6 +1682,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
@@ -1680,6 +1695,7 @@
             // 
             // SViewAssCMBX
             // 
+            this.SViewAssCMBX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SViewAssCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SViewAssCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SViewAssCMBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1698,6 +1714,8 @@
             // 
             // SViewAssSearchTXTBX
             // 
+            this.SViewAssSearchTXTBX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SViewAssSearchTXTBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SViewAssSearchTXTBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
@@ -1716,6 +1734,9 @@
             this.SViewAssGRD.AllowUserToDeleteRows = false;
             this.SViewAssGRD.AllowUserToResizeColumns = false;
             this.SViewAssGRD.AllowUserToResizeRows = false;
+            this.SViewAssGRD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SViewAssGRD.BackgroundColor = System.Drawing.Color.White;
             this.SViewAssGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SViewAssGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -1758,6 +1779,7 @@
             // 
             // SViewAssSearchLine
             // 
+            this.SViewAssSearchLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
@@ -3647,8 +3669,8 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "MainForm";
-            this.Opacity = 0.9D;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
