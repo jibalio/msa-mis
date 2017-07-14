@@ -27,12 +27,11 @@ namespace MSAMISUserInterface {
 
         private void Payroll_EmployeeView_Load(object sender, EventArgs e) {
             FadeTMR.Start();
-            currentLBL = AdjLBL;
-            currentPNL = AdjPNL;
-            AdjPNL.Visible = true;
+            currentLBL = OverviewLBL;
+            currentPNL = OverviewPNL;
+            OverviewPNL.Visible = true;
             BonusPNL.Visible = false;
-            DeductionsPNL.Visible = false;
-            AdjPNL.Visible = false;
+            OverviewPNL.Visible =true;
         }
 
         private void ChangePanel(Label newL, Panel newP) {
@@ -58,55 +57,30 @@ namespace MSAMISUserInterface {
         }
 
         private void BonusesLBL_Click(object sender, EventArgs e) {
-            ChangePanel(BonusesLBL, BonusPNL);
+            ChangePanel(AdjustmentsLBL, BonusPNL);
         }
 
         private void DeductionsLBL_Click(object sender, EventArgs e) {
-            ChangePanel(DeductionsLBL, DeductionsPNL);
         }
 
         private void AdjLBL_Click(object sender, EventArgs e) {
-            ChangePanel(AdjLBL, AdjPNL);
+            ChangePanel(OverviewLBL, OverviewPNL);
         }
 
         private void BonusesLBL_MouseEnter(object sender, EventArgs e) {
-            BonusesLBL.ForeColor = Color.FromArgb(53, 64, 82);
-        }
-
-        private void DeductionsLBL_MouseEnter(object sender, EventArgs e) {
-            DeductionsLBL.ForeColor = Color.FromArgb(53, 64, 82);
+            AdjustmentsLBL.ForeColor = Color.FromArgb(53, 64, 82);
         }
 
         private void AdjLBL_MouseEnter(object sender, EventArgs e) {
-            AdjLBL.ForeColor = Color.FromArgb(53, 64, 82);
+            OverviewLBL.ForeColor = Color.FromArgb(53, 64, 82);
         }
 
         private void BonusesLBL_MouseLeave(object sender, EventArgs e) {
-            if(!BonusPNL.Visible) BonusesLBL.ForeColor = Color.Gray;
-        }
-
-        private void DeductionsLBL_MouseLeave(object sender, EventArgs e) {
-            if(!DeductionsPNL.Visible) DeductionsLBL.ForeColor = Color.Gray;
+            if(!BonusPNL.Visible) AdjustmentsLBL.ForeColor = Color.Gray;
         }
 
         private void AdjLBL_MouseLeave(object sender, EventArgs e) {
-            if(!AdjPNL.Visible) AdjLBL.ForeColor = Color.Gray;
-        }
-
-        private void BonusAddBTN_Click(object sender, EventArgs e) {
-           Payroll_AddAdjustments view = new Payroll_AddAdjustments();
-            view.PID = this.PID;
-            view.conn = this.conn;
-            view.Location = new Point(this.Location.X + 350, this.Location.Y);
-            view.ShowDialog();
-        }
-
-        private void DedAddBTN_Click(object sender, EventArgs e) {
-            Payroll_AddAdjustments view = new Payroll_AddAdjustments();
-            view.PID = this.PID;
-            view.conn = this.conn;
-            view.Location = new Point(this.Location.X + 350, this.Location.Y);
-            view.ShowDialog();
+            if(!OverviewPNL.Visible) OverviewLBL.ForeColor = Color.Gray;
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
@@ -115,6 +89,14 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_MouseLeave(object sender, EventArgs e) {
             CloseBTN.ForeColor = Color.FromArgb(53, 64, 82);
+        }
+
+        private void BonusAddBTN_Click_1(object sender, EventArgs e) {
+            Payroll_AddAdjustments view = new Payroll_AddAdjustments();
+            view.PID = this.PID;
+            view.conn = this.conn;
+            view.Location = new Point(this.Location.X + 350, this.Location.Y);
+            view.ShowDialog();
         }
     }
 }

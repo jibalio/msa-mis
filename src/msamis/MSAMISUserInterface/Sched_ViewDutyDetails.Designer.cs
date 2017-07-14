@@ -441,8 +441,8 @@
             this.panel3.Controls.Add(this.AttendanceLBL);
             this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Controls.Add(this.DutyDetailsLBL);
-            this.panel3.Controls.Add(this.DutyDetailsPNL);
             this.panel3.Controls.Add(this.AttendancePNL);
+            this.panel3.Controls.Add(this.DutyDetailsPNL);
             this.panel3.Location = new System.Drawing.Point(329, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(570, 600);
