@@ -38,6 +38,8 @@ namespace MSAMISUserInterface {
             int date = 0;
         }
         public int GID;
+
+
         #region Constructors
         public Attendance(int AID, int month, int periodx, int year) {
             this.AID = AID;
@@ -69,8 +71,8 @@ namespace MSAMISUserInterface {
                 DateTime zero = new DateTime(1, 1, 1, 0, 0, 0);
                 sw.Stop();
                 TimeSpan ts = sw.Elapsed;
-                Console.WriteLine("Finished inserting in " + ts.ToString("ss\\.ff") + " seconds");
-                Console.WriteLine("Yes!");
+                SQLTools.message("Finished inserting in " + ts.ToString("ss\\.ff") + " seconds");
+                SQLTools.message("Yes!");
 
 
                 int count = 0;
@@ -323,46 +325,41 @@ namespace MSAMISUserInterface {
 
         #region MethodFamily: TimeSpan Operations
 
-        public static TimeSpan GetTimeDiff(int t1hour, int t1min, String t1ampm, int t2hour, int t2min, String t2ampm) {
-
-            var t1 = "01/01/0001 " + t1hour.ToString("00") + ":" + t1min.ToString("00") + ":00 " + t1ampm;
-            var t2 = "01/01/0001 " + t2hour.ToString("00") + ":" + t2min.ToString("00") + ":00 " + t2ampm;
-            var time1 = DateTime.ParseExact(t1, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-            var time2 = DateTime.ParseExact(t2, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-            if (time2 < time1) {
-                Console.WriteLine("Date is on Next Day!");
-                time2 = time2.AddDays(1);
-            } else {
-                Console.WriteLine("same day");
-            }
-            return time2 - time1;
+        public static TimeSpan GetTimeDiff(int StartHour, int StartMinute, String StartAmpm, int EndHour, int EndMinute, String EndAmpm) {
+            var StartTimeString = "01/01/0001 " + StartHour.ToString("00") + ":" + StartMinute.ToString("00") + ":00 " + StartAmpm;
+            var EndTimeString = "01/01/0001 " + EndHour.ToString("00") + ":" + EndMinute.ToString("00") + ":00 " + EndAmpm;
+            var StartDateTime = DateTime.ParseExact(StartTimeString, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            var EndDateTime = DateTime.ParseExact(EndTimeString, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            if (EndDateTime < StartDateTime)
+                EndDateTime = EndDateTime.AddDays(1);
+            return EndDateTime - StartDateTime;
         }
 
         // =============================================================================================
         //          STATIC METHODS / VARIABLES
         // =============================================================================================
-        public static Hours GetHours(DateTime actuals, DateTime actuale) {
+        public static Hours GetHours(DateTime TimeIn, DateTime TimeOut) {
             Hours h = new Hours();
             DateTime NightStart = new DateTime(1, 1, 1, 22, 00, 00);
             DateTime NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
             DateTime Midnight = new DateTime(1, 1, 2, 0, 0, 0); DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
             // if not same
-            if (actuals > actuale) {
-                actuale = actuale.AddDays(1);
+            if (TimeIn > TimeOut) {
+                TimeOut = TimeOut.AddDays(1);
                 NightEnd = NightEnd.AddDays(1);
                 // First Half
                 // 1: Max Selection, either nighstart or actuals
-                maxStart = actuals < NightStart ? NightStart : actuals;
-                minStart = actuals < NightStart ? actuals : NightStart;
+                maxStart = TimeIn < NightStart ? NightStart : TimeIn;
+                minStart = TimeIn < NightStart ? TimeIn : NightStart;
                 TimeSpan d1_night = Midnight - maxStart;
                 TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart - minStart : new TimeSpan(0, 0, 0);
                 // Second Half
-                minEnd = actuale < NightEnd ? actuale : NightEnd;
-                maxEnd = actuale > NightEnd ? actuale : NightEnd;
+                minEnd = TimeOut < NightEnd ? TimeOut : NightEnd;
+                maxEnd = TimeOut > NightEnd ? TimeOut : NightEnd;
                 TimeSpan d2_night = minEnd - Midnight;
                 TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
                 // Check if today is holiday.
-                if (IsHolidayToday(actuals)) {
+                if (IsHolidayToday(TimeIn)) {
                     h.holiday_night += d1_night;
                     h.holiday_day += d1_day;
                 } else {
@@ -370,7 +367,7 @@ namespace MSAMISUserInterface {
                     h.normal_day += d1_day;
                 }
                 //Check if tomorrow is holiday.
-                if (IsHolidayTomorrow(actuals)) {
+                if (IsHolidayTomorrow(TimeIn)) {
                     h.holiday_night += d2_night;
                     h.holiday_day += d2_day;
                 } else {
@@ -380,20 +377,21 @@ namespace MSAMISUserInterface {
             } else {
                 // if same day
                 NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
-                maxStart = actuals < NightStart ? actuals : NightStart;
-                minStart = actuals > NightStart ? actuals : NightStart;
-                minEnd = actuale < NightEnd ? actuale : NightEnd;
-                maxEnd = actuale > NightEnd ? actuale : NightEnd;
-                if (IsHolidayToday(actuals)) {
+                maxStart = TimeIn < NightStart ? TimeIn : NightStart;
+                minStart = TimeIn > NightStart ? TimeIn : NightStart;
+                minEnd = TimeOut < NightEnd ? TimeOut : NightEnd;
+                maxEnd = TimeOut > NightEnd ? TimeOut : NightEnd;
+                if (IsHolidayToday(TimeIn)) {
                     h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
-                    h.holiday_day += (actuale - NightEnd) > TimeSpan.FromSeconds(0) ? actuale - NightEnd : new TimeSpan(0, 0, 0);
+                    h.holiday_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
                 } else {
                     h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
-                    h.normal_day += (actuale - NightEnd) > TimeSpan.FromSeconds(0) ? actuale - NightEnd : new TimeSpan(0, 0, 0);
+                    h.normal_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.normal_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
                 }
             }
+            h.total = h.normal_day + h.normal_night + h.holiday_day + h.holiday_night;
             return h;
         }
 
