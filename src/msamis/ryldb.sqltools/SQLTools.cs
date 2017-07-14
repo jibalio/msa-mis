@@ -157,8 +157,9 @@ namespace MSAMISUserInterface {
            
         }
 
+        public static bool EnableConsoleDebugging = false;
         public static void message (String query) {
-            Console.WriteLine(query);
+            if (EnableConsoleDebugging) Console.WriteLine(query);
         }
         public static void ExecuteNonQueryNoDB(string query) {
             try {
