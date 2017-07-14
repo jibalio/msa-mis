@@ -32,12 +32,17 @@ namespace MSAMISUserInterface {
 
 
     public class Attendance {
+        public int GID;
         #region Constructors
         public Attendance(int AID, int month, int periodx, int year) {
             this.AID = AID;
             period = new Period(periodx, month, year);
             Console.Write(period.period);
             DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun from dutydetails where AID =" + AID);
+
+            GID = SQLTools.GetInt("select gid from sduty_assignment where aid=" + AID);
+
+
             foreach (DataRow duties in x.Rows) {
                 int did = int.Parse(duties["did"].ToString());
                 List<int> dutydates = new List<int>();
@@ -51,8 +56,8 @@ namespace MSAMISUserInterface {
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 DateTime zero = new DateTime(1, 1, 1, 0, 0, 0);
-                String ax = "INSERT IGNORE INTO `msadb`.`period` (`AID`, `month`, `period`, `year`) VALUES ('{0}', '{1}', '{2}', '{3}');";
-                ax = String.Format(ax, AID, month, periodx, year);
+                String ax = "INSERT IGNORE INTO `msadb`.`period` (`GID`, `month`, `period`, `year`) VALUES ('{0}', '{1}', '{2}', '{3}');";
+                ax = String.Format(ax, GID, month, periodx, year);
                 SQLTools.ExecuteNonQuery(ax);
 
                 string ifn = SQLTools.getLastInsertedId("period", "pid");
@@ -225,7 +230,7 @@ namespace MSAMISUserInterface {
 
         public void SetCertifiedBy(int AID, String cert) {
             Period p = GetCurrentPayPeriod();
-            String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `AID`='" + AID + "' AND month='" + p.month + "' AND period='" + p.period + "' AND year='" + p.year + "';";
+            String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `GID`='" + GID + "' AND month='" + p.month + "' AND period='" + p.period + "' AND year='" + p.year + "';";
             SQLTools.ExecuteNonQuery(q);
         }
         #endregion
@@ -265,10 +270,10 @@ namespace MSAMISUserInterface {
             return new Period(p, m, y); ;
         }
 
-        public static DataTable GetPeriods(int AID) {
+        public static DataTable GetPeriods(int GID) {
             return SQLTools.ExecuteQuery(@"SELECT month, period, year
                                         FROM msadb.period 
-                                        where AID = " + AID + @"
+                                        where GID = " + GID + @"
                                         group by month,period,year order by year desc, month desc, period desc;");
         }
         #endregion
