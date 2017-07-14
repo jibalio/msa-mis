@@ -27,6 +27,9 @@ namespace MSAMISUserInterface {
             this.Opacity = 0;
         }
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
+            LoadPage();
+        }
+        public void LoadPage() {
             Attendance.Period p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
 

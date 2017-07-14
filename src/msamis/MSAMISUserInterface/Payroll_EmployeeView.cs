@@ -30,7 +30,7 @@ namespace MSAMISUserInterface {
             currentLBL = OverviewLBL;
             currentPNL = OverviewPNL;
             OverviewPNL.Visible = true;
-            BonusPNL.Visible = false;
+            AdjPNL.Visible = false;
             OverviewPNL.Visible =true;
         }
 
@@ -57,7 +57,7 @@ namespace MSAMISUserInterface {
         }
 
         private void BonusesLBL_Click(object sender, EventArgs e) {
-            ChangePanel(AdjustmentsLBL, BonusPNL);
+            ChangePanel(AdjustmentsLBL, AdjPNL);
         }
 
         private void DeductionsLBL_Click(object sender, EventArgs e) {
@@ -76,7 +76,7 @@ namespace MSAMISUserInterface {
         }
 
         private void BonusesLBL_MouseLeave(object sender, EventArgs e) {
-            if(!BonusPNL.Visible) AdjustmentsLBL.ForeColor = Color.Gray;
+            if(!AdjPNL.Visible) AdjustmentsLBL.ForeColor = Color.Gray;
         }
 
         private void AdjLBL_MouseLeave(object sender, EventArgs e) {
