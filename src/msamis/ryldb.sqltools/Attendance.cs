@@ -32,6 +32,11 @@ namespace MSAMISUserInterface {
 
 
     public class Attendance {
+
+        private class ate_internal {
+            int did = 0;
+            int date = 0;
+        }
         public int GID;
         #region Constructors
         public Attendance(int AID, int month, int periodx, int year) {
@@ -42,10 +47,16 @@ namespace MSAMISUserInterface {
 
             GID = SQLTools.GetInt("select gid from sduty_assignment where aid=" + AID);
 
-
+            // Insert new period
+            String ax = "INSERT IGNORE INTO `msadb`.`period` (`GID`, `month`, `period`, `year`) VALUES ";
+            ax += @"('" + GID + @"', '" + month + @"', '" + periodx + @"', '" + year + @"')";
+            SQLTools.ExecuteNonQuery(ax);
+            string ifn = SQLTools.getLastInsertedId("period", "pid");
+            
+            
             foreach (DataRow duties in x.Rows) {
-                int did = int.Parse(duties["did"].ToString());
                 List<int> dutydates = new List<int>();
+                int did = int.Parse(duties["did"].ToString());
                 if (duties["mon"].ToString() == "1") dutydates.AddRange(period.Mon);
                 if (duties["tue"].ToString() == "1") dutydates.AddRange(period.Tue);
                 if (duties["wed"].ToString() == "1") dutydates.AddRange(period.Wed);
@@ -56,27 +67,26 @@ namespace MSAMISUserInterface {
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 DateTime zero = new DateTime(1, 1, 1, 0, 0, 0);
-                String ax = "INSERT IGNORE INTO `msadb`.`period` (`GID`, `month`, `period`, `year`) VALUES ('{0}', '{1}', '{2}', '{3}');";
-                ax = String.Format(ax, GID, month, periodx, year);
-                SQLTools.ExecuteNonQuery(ax);
-
-                string ifn = SQLTools.getLastInsertedId("period", "pid");
-                foreach (int date in dutydates) {
-
-                    DateTime d = new DateTime(period.year, period.month, date);
-                    String q = @"INSERT IGNORE INTO `msadb`.`attendance` (
-                            `DID`, `date`, `PID`
-                            ) VALUES (
-                           '{0}','{1}','{2}'
-                            );";
-                    q = String.Format(q, did, d.ToString("yyyy-MM-dd HH:mm:ss"), ifn);
-                    SQLTools.ExecuteNonQuery(q);
-                }
                 sw.Stop();
                 TimeSpan ts = sw.Elapsed;
                 Console.WriteLine("Finished inserting in " + ts.ToString("ss\\.ff") + " seconds");
                 Console.WriteLine("Yes!");
+
+
+                int count = 0;
+                int max = dutydates.Count;
+                String q = @"INSERT IGNORE INTO `msadb`.`attendance` (`DID`, `date`, `PID`) VALUES ";
+                foreach (int date in dutydates) {
+                    DateTime d = new DateTime(period.year, period.month, date);
+                    count++;
+                    q += @"('" + did + "','" + d.ToString("yyyy-MM-dd HH:mm:ss") + "','" + ifn + "')";
+                    if (count < max) q += ",\n";
+
+                }
+                if (x.Rows.Count != 0) SQLTools.ExecuteNonQuery(q);
+
             }
+            
         }
         #endregion
 
@@ -112,9 +122,10 @@ namespace MSAMISUserInterface {
                             where period = '{0}'
                             and month = '{1}'
                             and year = '{2}'
+                            and period.gid = '{3}'
                             order by date asc
                             ";
-            q = String.Format(q, period, month, year);
+            q = String.Format(q, period, month, year, this.GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             return d;
         }
@@ -139,9 +150,10 @@ namespace MSAMISUserInterface {
                             where period = '{1}'
                             and month = '{0}'
                             and year = '{2}'
+                            and gid = '{3}'
                             order by date asc
                             ";
-            q = String.Format(q, month, period, year);
+            q = String.Format(q, month, period, year, this.GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
@@ -181,9 +193,10 @@ namespace MSAMISUserInterface {
                             where period = '{0}'
                             and month = '{1}'
                             and year = '{2}'
+                            and period.gid = {3}
                             order by date asc
                             ";
-            q = String.Format(q, period.period, period.month, period.year);
+            q = String.Format(q, period.period, period.month, period.year, this.GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
