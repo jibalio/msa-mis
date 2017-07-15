@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +12,6 @@ namespace MSAMISUserInterface {
     public partial class Sched_ViewDisReq : Form {
         public int RID { get; set; }
         public MainForm reference;
-        public MySqlConnection conn;
 
         public Shadow refer;
 

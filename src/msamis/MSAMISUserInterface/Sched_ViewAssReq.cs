@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +12,6 @@ namespace MSAMISUserInterface {
     public partial class Sched_ViewAssReq : Form {
         public int RAID { get; set; }
         public MainForm reference;
-        public MySqlConnection conn;
         public Shadow refer;
         int numGuards;
 
@@ -71,7 +69,6 @@ namespace MSAMISUserInterface {
             if (AssignBTN.Text.Equals("ASSIGN")) {
                 try {
                     Sched_AssignGuards view = new Sched_AssignGuards();
-                    view.conn = this.conn;
                     view.RID = this.RAID;
                     view.NumberOfGuards = numGuards;
                     view.refer = this;

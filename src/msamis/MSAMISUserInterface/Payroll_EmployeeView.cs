@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +12,6 @@ namespace MSAMISUserInterface {
     public partial class Payroll_EmployeeView : Form {
         public int PID { get; set; }
         public MainForm reference;
-        public MySqlConnection conn;
 
         public Shadow refer;
 
@@ -32,6 +30,8 @@ namespace MSAMISUserInterface {
             OverviewPNL.Visible = true;
             AdjPNL.Visible = false;
             OverviewPNL.Visible =true;
+
+            EmpListGRD.DataSource = Payroll.GetGuardsPayrollMinimal();
         }
 
         private void ChangePanel(Label newL, Panel newP) {
@@ -94,7 +94,6 @@ namespace MSAMISUserInterface {
         private void BonusAddBTN_Click_1(object sender, EventArgs e) {
             Payroll_AddAdjustments view = new Payroll_AddAdjustments();
             view.PID = this.PID;
-            view.conn = this.conn;
             view.Location = new Point(this.Location.X + 350, this.Location.Y);
             view.ShowDialog();
         }

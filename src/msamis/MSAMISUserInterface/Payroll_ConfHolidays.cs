@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using ryldb.sqltools;
+﻿using ryldb.sqltools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +11,6 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Payroll_ConfHolidays : Form {
-        public MySqlConnection conn;
         public Shadow refer;
 
         #region Form Properties and Load

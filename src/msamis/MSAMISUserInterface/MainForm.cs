@@ -413,6 +413,10 @@ namespace MSAMISUserInterface {
             GUARDSRefreshGuardsList();
         }
 
+        private void GAllGuardsGRD_DoubleClick(object sender, EventArgs e) {
+            if (GEditDetailsBTN.Visible) GEditDetailsBTN.PerformClick();
+        }
+
         public void GUARDSRefreshGuardsList() {
             GAllGuardsGRD.DataSource = GetGuardList(GViewAllViewByCMBX.SelectedIndex);
             if (GViewAllViewByCMBX.SelectedIndex == 0) {
@@ -636,7 +640,9 @@ namespace MSAMISUserInterface {
             CActiveClientLBL.Text = GetNumberOfActiveClients() + " active clients";
             CTotalClientLBL.Text = GetTotalClients() + " total clients";
         }
-        
+        private void CClientListTBL_DoubleClick(object sender, EventArgs e) {
+            CViewDetailsBTN.PerformClick();
+        }
         private void CViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
                 Clients_View view = new Clients_View();
@@ -756,7 +762,6 @@ namespace MSAMISUserInterface {
             try {
                 Sched_RequestGuard view = new Sched_RequestGuard();
                 view.reference = this;
-                view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
                 shadow.Transparent();
@@ -771,7 +776,6 @@ namespace MSAMISUserInterface {
                     Sched_UnassignGuard view = new Sched_UnassignGuard();
                     view.reference = this;
                     view.CID = int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID);
-                    view.conn = this.conn;
                     view.refer = this.shadow;
                     view.guards = SViewAssGRD.SelectedRows;
                     view.Location = newFormLocation;
@@ -792,6 +796,10 @@ namespace MSAMISUserInterface {
 
         private void SViewReqGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             RID = int.Parse(SViewReqGRD.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
+        private void SViewReqGRD_DoubleClick(object sender, EventArgs e) {
+            SViewReqViewBTN.PerformClick();
         }
 
         private void SViewReqFilterCMBX_SelectedIndexChanged(object sender, EventArgs e) {
@@ -862,7 +870,6 @@ namespace MSAMISUserInterface {
                         Sched_ViewAssReq view = new Sched_ViewAssReq();
                         view.reference = this;
                         view.RAID = this.RID;
-                        view.conn = this.conn;
                         view.refer = this.shadow;
                         view.Location = newFormLocation;
 
@@ -875,7 +882,6 @@ namespace MSAMISUserInterface {
                     try {
                         Sched_ViewDisReq view = new Sched_ViewDisReq();
                         view.reference = this;
-                        view.conn = this.conn;
                         view.RID = this.RID;
                         view.refer = this.shadow;
                         view.Location = newFormLocation;
@@ -907,6 +913,9 @@ namespace MSAMISUserInterface {
             DataTable dt = dv.ToTable();
 
             for (int i = 0; i < dt.Rows.Count; i++) SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+        }
+        private void SViewAssGRD_DoubleClick(object sender, EventArgs e) {
+            if (SViewAssViewDetailsBTN.Visible) SViewAssViewDetailsBTN.PerformClick();
         }
 
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
@@ -976,7 +985,6 @@ namespace MSAMISUserInterface {
                 try {
                     Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
                     view.reference = this;
-                    view.conn = this.conn;
                     view.refer = this.shadow;
                     view.AID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
                     view.GID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[0].Value.ToString());
@@ -1017,7 +1025,6 @@ namespace MSAMISUserInterface {
             try {
                 Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
                 view.reference = this;
-                view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
 
@@ -1065,7 +1072,6 @@ namespace MSAMISUserInterface {
         private void PAdjustBTN_Click(object sender, EventArgs e) {
             try {
                 Payroll_ConfigBasicPay view = new Payroll_ConfigBasicPay();
-                view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
 
@@ -1097,12 +1103,12 @@ namespace MSAMISUserInterface {
         #region PMS - Employee List 
         private void PAYLoadEmployeeList() {
             PEmpListSortCMBX.SelectedIndex = 0;
+            PEmpListGRD.DataSource = Payroll.GetGuardsPayrollMain();
         }
 
         private void PConfHoliday_Click(object sender, EventArgs e) {
             try {
                 Payroll_ConfHolidays view = new Payroll_ConfHolidays();
-                view.conn = this.conn;
                 view.refer = this.shadow;
                 view.Location = newFormLocation;
 
@@ -1116,9 +1122,20 @@ namespace MSAMISUserInterface {
             try {
                 Payroll_EmployeeView view = new Payroll_EmployeeView();
                 view.reference = this;
-                view.conn = this.conn;
                 view.refer = this.shadow;
                 //view.PID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
+                view.Location = newFormLocation;
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+        private void PConfigSSSBTN_Click(object sender, EventArgs e) {
+            try {
+                Payroll_ConfigSSS view = new Payroll_ConfigSSS();
+                view.refer = this.shadow;
                 view.Location = newFormLocation;
 
                 shadow.Transparent();
@@ -1149,7 +1166,6 @@ namespace MSAMISUserInterface {
             try {
                 Payroll_ViewCashAdv view = new Payroll_ViewCashAdv();
                 view.reference = this;
-                view.conn = this.conn;
                 view.refer = this.shadow;
                 //view.PID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
                 view.Location = newFormLocation;
