@@ -30,9 +30,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sched_ViewDisReq));
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.NameLBL = new System.Windows.Forms.Label();
             this.ClientLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.NameLBL = new System.Windows.Forms.Label();
             this.AssignedGRD = new System.Windows.Forms.DataGridView();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.ApproveBTN = new System.Windows.Forms.Button();
@@ -56,19 +56,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(545, 71);
             this.panel1.TabIndex = 125;
-            // 
-            // NameLBL
-            // 
-            this.NameLBL.AutoSize = true;
-            this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NameLBL.Location = new System.Drawing.Point(172, 20);
-            this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.NameLBL.Name = "NameLBL";
-            this.NameLBL.Size = new System.Drawing.Size(201, 21);
-            this.NameLBL.TabIndex = 145;
-            this.NameLBL.Text = "Guards to be unassigned:";
-            this.NameLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ClientLBL
             // 
@@ -95,6 +82,19 @@
             this.label2.TabIndex = 121;
             this.label2.Text = "REQUEST BY";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // NameLBL
+            // 
+            this.NameLBL.AutoSize = true;
+            this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NameLBL.Location = new System.Drawing.Point(172, 20);
+            this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NameLBL.Name = "NameLBL";
+            this.NameLBL.Size = new System.Drawing.Size(201, 21);
+            this.NameLBL.TabIndex = 145;
+            this.NameLBL.Text = "Guards to be unassigned:";
+            this.NameLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AssignedGRD
             // 
@@ -153,7 +153,7 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(513, 1);
+            this.CloseBTN.Location = new System.Drawing.Point(514, 0);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(34, 32);
             this.CloseBTN.TabIndex = 147;

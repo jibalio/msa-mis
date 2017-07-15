@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +11,6 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
     public partial class Sched_UnassignGuard : Form {
         public MainForm reference;
-        public MySqlConnection conn;
         public DataGridViewSelectedRowCollection guards { get; set; }
         public int CID { get; set; }
         public Shadow refer;

@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +10,6 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Sched_AddDutyDetail : Form {
-        public MySqlConnection conn;
         public String button = "ADD";
         public int AID { get; set; }
         public int DID { get; set; }

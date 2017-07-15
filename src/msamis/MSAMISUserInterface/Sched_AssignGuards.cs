@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +10,6 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Sched_AssignGuards : Form {
-        public MySqlConnection conn;
         public Sched_ViewAssReq refer { get; set; }
         public int RID { get; set; }
         public int NumberOfGuards { get; set; }

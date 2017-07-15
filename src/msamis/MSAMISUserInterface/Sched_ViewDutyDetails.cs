@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +13,6 @@ namespace MSAMISUserInterface {
         public int AID { get; set; }
         public int GID { get; set; }
         public MainForm reference;
-        public MySqlConnection conn;
 
         public Shadow refer;
 
@@ -127,7 +125,6 @@ namespace MSAMISUserInterface {
             view.AID = this.AID;
             view.button = "UPDATE";
             view.refer = this;
-            view.conn = this.conn;
             view.DID = this.DID;
             view.Location = new Point(this.Location.X + 330, this.Location.Y);
             view.ShowDialog();
@@ -136,7 +133,6 @@ namespace MSAMISUserInterface {
         private void EditDaysBTN_Click(object sender, EventArgs e) {
             Sched_AddDutyDays view = new Sched_AddDutyDays();
             view.AID = this.AID;
-            view.conn = this.conn;
             view.button = "UPDATE";
             view.reference = this;
             view.Location = new Point(this.Location.X + 330, this.Location.Y);
@@ -146,7 +142,6 @@ namespace MSAMISUserInterface {
         private void AddDutyDetailsBTN_Click(object sender, EventArgs e) {
             try {
                 Sched_AddDutyDetail view = new Sched_AddDutyDetail();
-                view.conn = this.conn;
                 view.AID = this.AID;
                 view.refer = this;
                 view.Location = new Point(this.Location.X + 330, this.Location.Y);

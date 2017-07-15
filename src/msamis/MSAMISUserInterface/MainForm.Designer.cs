@@ -181,6 +181,27 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.PArchivePage = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.SArchiveViewBTN = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.PCashAdvancePage = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.SCashAdvViewBTN = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.PEmpListPage = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.PEmpListSortCMBX = new System.Windows.Forms.ComboBox();
+            this.PEmpListSearchBX = new System.Windows.Forms.TextBox();
+            this.PEmpListViewBTN = new System.Windows.Forms.Button();
+            this.PEmpListGRD = new System.Windows.Forms.DataGridView();
+            this.PEmpListSearchLine = new System.Windows.Forms.Label();
             this.PSalaryReportPage = new System.Windows.Forms.Panel();
             this.label42 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
@@ -208,27 +229,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.PSumBasicPayLBL = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
-            this.PArchivePage = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.SArchiveViewBTN = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.PCashAdvancePage = new System.Windows.Forms.Panel();
-            this.label40 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.SCashAdvViewBTN = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.PEmpListPage = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.PEmpListSortCMBX = new System.Windows.Forms.ComboBox();
-            this.PEmpListSearchBX = new System.Windows.Forms.TextBox();
-            this.PEmpListViewBTN = new System.Windows.Forms.Button();
-            this.PEmpListGRD = new System.Windows.Forms.DataGridView();
-            this.PEmpListSearchLine = new System.Windows.Forms.Label();
             this.ClientsPage = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label34 = new System.Windows.Forms.Label();
@@ -257,6 +257,7 @@
             this.QuoteMainBX = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.ClientRequestsTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.PConfigSSSBTN = new System.Windows.Forms.Button();
             this.ControlBoxPanel.SuspendLayout();
             this.DashboardPage.SuspendLayout();
             this.DSalaryReportPNL.SuspendLayout();
@@ -293,17 +294,17 @@
             this.PayrollPage.Panel2.SuspendLayout();
             this.PayrollPage.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.PSalaryReportPage.SuspendLayout();
-            this.PPayrollSummaryPage.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.PArchivePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.PCashAdvancePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.PEmpListPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PEmpListGRD)).BeginInit();
+            this.PSalaryReportPage.SuspendLayout();
+            this.PPayrollSummaryPage.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsPage)).BeginInit();
             this.ClientsPage.Panel1.SuspendLayout();
             this.ClientsPage.Panel2.SuspendLayout();
@@ -1075,6 +1076,7 @@
             this.GAllGuardsGRD.Size = new System.Drawing.Size(655, 498);
             this.GAllGuardsGRD.TabIndex = 5;
             this.GAllGuardsGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.GAllGuardsGRD_CellEnter);
+            this.GAllGuardsGRD.DoubleClick += new System.EventHandler(this.GAllGuardsGRD_DoubleClick);
             // 
             // GViewAllSearchLine
             // 
@@ -1609,7 +1611,7 @@
             this.SViewAssPNL.Controls.Add(this.SViewAssSearchLine);
             this.SViewAssPNL.Location = new System.Drawing.Point(15, 14);
             this.SViewAssPNL.Name = "SViewAssPNL";
-            this.SViewAssPNL.Size = new System.Drawing.Size(691, 640);
+            this.SViewAssPNL.Size = new System.Drawing.Size(692, 640);
             this.SViewAssPNL.TabIndex = 13;
             this.SViewAssPNL.Visible = false;
             // 
@@ -1625,7 +1627,7 @@
             this.SViewAssViewDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SViewAssViewDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SViewAssViewDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewAssViewDetailsBTN.Location = new System.Drawing.Point(229, 600);
+            this.SViewAssViewDetailsBTN.Location = new System.Drawing.Point(230, 600);
             this.SViewAssViewDetailsBTN.Name = "SViewAssViewDetailsBTN";
             this.SViewAssViewDetailsBTN.Size = new System.Drawing.Size(131, 32);
             this.SViewAssViewDetailsBTN.TabIndex = 18;
@@ -1645,7 +1647,7 @@
             this.SViewAssUnassignBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SViewAssUnassignBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SViewAssUnassignBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewAssUnassignBTN.Location = new System.Drawing.Point(366, 600);
+            this.SViewAssUnassignBTN.Location = new System.Drawing.Point(367, 600);
             this.SViewAssUnassignBTN.Name = "SViewAssUnassignBTN";
             this.SViewAssUnassignBTN.Size = new System.Drawing.Size(109, 32);
             this.SViewAssUnassignBTN.TabIndex = 20;
@@ -1686,7 +1688,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(501, 23);
+            this.label10.Location = new System.Drawing.Point(502, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 19);
@@ -1705,7 +1707,7 @@
             "All",
             "Scheduled",
             "Unscheduled"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(553, 20);
+            this.SViewAssCMBX.Location = new System.Drawing.Point(554, 20);
             this.SViewAssCMBX.Name = "SViewAssCMBX";
             this.SViewAssCMBX.Size = new System.Drawing.Size(119, 25);
             this.SViewAssCMBX.Sorted = true;
@@ -1721,7 +1723,7 @@
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssSearchTXTBX.Location = new System.Drawing.Point(246, 71);
             this.SViewAssSearchTXTBX.Name = "SViewAssSearchTXTBX";
-            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(200, 18);
+            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(201, 18);
             this.SViewAssSearchTXTBX.TabIndex = 8;
             this.SViewAssSearchTXTBX.Text = "Search or filter";
             this.SViewAssSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1773,9 +1775,10 @@
             this.SViewAssGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
             this.SViewAssGRD.RowHeadersVisible = false;
             this.SViewAssGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SViewAssGRD.Size = new System.Drawing.Size(656, 458);
+            this.SViewAssGRD.Size = new System.Drawing.Size(657, 458);
             this.SViewAssGRD.TabIndex = 5;
             this.SViewAssGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewAssGRD_CellEnter);
+            this.SViewAssGRD.DoubleClick += new System.EventHandler(this.SViewAssGRD_DoubleClick);
             // 
             // SViewAssSearchLine
             // 
@@ -1783,7 +1786,7 @@
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SViewAssSearchLine.Location = new System.Drawing.Point(241, 76);
+            this.SViewAssSearchLine.Location = new System.Drawing.Point(242, 76);
             this.SViewAssSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SViewAssSearchLine.Name = "SViewAssSearchLine";
             this.SViewAssSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -1946,6 +1949,7 @@
             this.SViewReqGRD.Size = new System.Drawing.Size(655, 498);
             this.SViewReqGRD.TabIndex = 5;
             this.SViewReqGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewReqGRD_CellEnter);
+            this.SViewReqGRD.DoubleClick += new System.EventHandler(this.SViewReqGRD_DoubleClick);
             // 
             // SViewReqSearchLine
             // 
@@ -2236,11 +2240,11 @@
             // 
             // PayrollPage.Panel2
             // 
-            this.PayrollPage.Panel2.Controls.Add(this.PArchivePage);
-            this.PayrollPage.Panel2.Controls.Add(this.PCashAdvancePage);
             this.PayrollPage.Panel2.Controls.Add(this.PEmpListPage);
             this.PayrollPage.Panel2.Controls.Add(this.PSalaryReportPage);
             this.PayrollPage.Panel2.Controls.Add(this.PPayrollSummaryPage);
+            this.PayrollPage.Panel2.Controls.Add(this.PArchivePage);
+            this.PayrollPage.Panel2.Controls.Add(this.PCashAdvancePage);
             this.PayrollPage.Size = new System.Drawing.Size(930, 668);
             this.PayrollPage.SplitterDistance = 206;
             this.PayrollPage.SplitterWidth = 3;
@@ -2255,6 +2259,7 @@
             this.flowLayoutPanel3.Controls.Add(this.PCashAdvBTN);
             this.flowLayoutPanel3.Controls.Add(this.PConfHoliday);
             this.flowLayoutPanel3.Controls.Add(this.PBasicPayBTN);
+            this.flowLayoutPanel3.Controls.Add(this.PConfigSSSBTN);
             this.flowLayoutPanel3.Controls.Add(this.button22);
             this.flowLayoutPanel3.Controls.Add(this.label46);
             this.flowLayoutPanel3.Controls.Add(this.PSalaryReportBTN);
@@ -2366,7 +2371,7 @@
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button22.Location = new System.Drawing.Point(2, 180);
+            this.button22.Location = new System.Drawing.Point(2, 210);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(172, 26);
@@ -2378,7 +2383,7 @@
             // 
             this.label46.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.label46.ForeColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(2, 208);
+            this.label46.Location = new System.Drawing.Point(2, 238);
             this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(172, 28);
@@ -2392,7 +2397,7 @@
             this.PSalaryReportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PSalaryReportBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PSalaryReportBTN.ForeColor = System.Drawing.Color.White;
-            this.PSalaryReportBTN.Location = new System.Drawing.Point(2, 238);
+            this.PSalaryReportBTN.Location = new System.Drawing.Point(2, 268);
             this.PSalaryReportBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PSalaryReportBTN.Name = "PSalaryReportBTN";
             this.PSalaryReportBTN.Size = new System.Drawing.Size(172, 26);
@@ -2409,7 +2414,7 @@
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button26.Location = new System.Drawing.Point(2, 268);
+            this.button26.Location = new System.Drawing.Point(2, 298);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(172, 26);
@@ -2423,7 +2428,7 @@
             this.PArchiveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PArchiveBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.PArchiveBTN.ForeColor = System.Drawing.Color.White;
-            this.PArchiveBTN.Location = new System.Drawing.Point(2, 298);
+            this.PArchiveBTN.Location = new System.Drawing.Point(2, 328);
             this.PArchiveBTN.Margin = new System.Windows.Forms.Padding(2);
             this.PArchiveBTN.Name = "PArchiveBTN";
             this.PArchiveBTN.Size = new System.Drawing.Size(172, 26);
@@ -2468,372 +2473,6 @@
             this.label29.Size = new System.Drawing.Size(128, 51);
             this.label29.TabIndex = 0;
             this.label29.Text = "payroll";
-            // 
-            // PSalaryReportPage
-            // 
-            this.PSalaryReportPage.Controls.Add(this.label42);
-            this.PSalaryReportPage.Controls.Add(this.button8);
-            this.PSalaryReportPage.Controls.Add(this.label43);
-            this.PSalaryReportPage.Location = new System.Drawing.Point(15, 14);
-            this.PSalaryReportPage.Name = "PSalaryReportPage";
-            this.PSalaryReportPage.Size = new System.Drawing.Size(690, 640);
-            this.PSalaryReportPage.TabIndex = 20;
-            this.PSalaryReportPage.Visible = false;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label42.Location = new System.Drawing.Point(257, 278);
-            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(165, 19);
-            this.label42.TabIndex = 15;
-            this.label42.Text = "Summary as of 01/01/2017";
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.button8.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(282, 322);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(112, 32);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "PRINT";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Segoe UI Light", 28F);
-            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label43.Location = new System.Drawing.Point(213, 223);
-            this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(252, 51);
-            this.label43.TabIndex = 4;
-            this.label43.Text = "Salary Reports";
-            // 
-            // PPayrollSummaryPage
-            // 
-            this.PPayrollSummaryPage.Controls.Add(this.PSumTotalBonLBL);
-            this.PPayrollSummaryPage.Controls.Add(this.label59);
-            this.PPayrollSummaryPage.Controls.Add(this.PSumTotalDeducLBL);
-            this.PPayrollSummaryPage.Controls.Add(this.label55);
-            this.PPayrollSummaryPage.Controls.Add(this.PSumTotalBaseLBL);
-            this.PPayrollSummaryPage.Controls.Add(this.label53);
-            this.PPayrollSummaryPage.Controls.Add(this.PSumStatusLBL);
-            this.PPayrollSummaryPage.Controls.Add(this.label48);
-            this.PPayrollSummaryPage.Controls.Add(this.panel3);
-            this.PPayrollSummaryPage.Controls.Add(this.panel2);
-            this.PPayrollSummaryPage.Controls.Add(this.panel4);
-            this.PPayrollSummaryPage.Location = new System.Drawing.Point(15, 14);
-            this.PPayrollSummaryPage.Name = "PPayrollSummaryPage";
-            this.PPayrollSummaryPage.Size = new System.Drawing.Size(690, 640);
-            this.PPayrollSummaryPage.TabIndex = 19;
-            this.PPayrollSummaryPage.Visible = false;
-            // 
-            // PSumTotalBonLBL
-            // 
-            this.PSumTotalBonLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PSumTotalBonLBL.AutoSize = true;
-            this.PSumTotalBonLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.PSumTotalBonLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PSumTotalBonLBL.Location = new System.Drawing.Point(472, 399);
-            this.PSumTotalBonLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumTotalBonLBL.Name = "PSumTotalBonLBL";
-            this.PSumTotalBonLBL.Size = new System.Drawing.Size(136, 30);
-            this.PSumTotalBonLBL.TabIndex = 238;
-            this.PSumTotalBonLBL.Text = "P 28,349.00";
-            this.PSumTotalBonLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label59
-            // 
-            this.label59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label59.Location = new System.Drawing.Point(472, 380);
-            this.label59.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(92, 19);
-            this.label59.TabIndex = 237;
-            this.label59.Text = "Total bonuses";
-            this.label59.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // PSumTotalDeducLBL
-            // 
-            this.PSumTotalDeducLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PSumTotalDeducLBL.AutoSize = true;
-            this.PSumTotalDeducLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.PSumTotalDeducLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PSumTotalDeducLBL.Location = new System.Drawing.Point(284, 399);
-            this.PSumTotalDeducLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumTotalDeducLBL.Name = "PSumTotalDeducLBL";
-            this.PSumTotalDeducLBL.Size = new System.Drawing.Size(132, 30);
-            this.PSumTotalDeducLBL.TabIndex = 234;
-            this.PSumTotalDeducLBL.Text = "P -9,929.00";
-            this.PSumTotalDeducLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label55
-            // 
-            this.label55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label55.Location = new System.Drawing.Point(284, 380);
-            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(107, 19);
-            this.label55.TabIndex = 233;
-            this.label55.Text = "Total deductions";
-            this.label55.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // PSumTotalBaseLBL
-            // 
-            this.PSumTotalBaseLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PSumTotalBaseLBL.AutoSize = true;
-            this.PSumTotalBaseLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.PSumTotalBaseLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PSumTotalBaseLBL.Location = new System.Drawing.Point(93, 399);
-            this.PSumTotalBaseLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumTotalBaseLBL.Name = "PSumTotalBaseLBL";
-            this.PSumTotalBaseLBL.Size = new System.Drawing.Size(136, 30);
-            this.PSumTotalBaseLBL.TabIndex = 232;
-            this.PSumTotalBaseLBL.Text = "P 28,349.00";
-            this.PSumTotalBaseLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label53
-            // 
-            this.label53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label53.Location = new System.Drawing.Point(93, 380);
-            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(95, 19);
-            this.label53.TabIndex = 231;
-            this.label53.Text = "Total base pay";
-            this.label53.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // PSumStatusLBL
-            // 
-            this.PSumStatusLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.PSumStatusLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PSumStatusLBL.Location = new System.Drawing.Point(0, 518);
-            this.PSumStatusLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumStatusLBL.Name = "PSumStatusLBL";
-            this.PSumStatusLBL.Size = new System.Drawing.Size(690, 40);
-            this.PSumStatusLBL.TabIndex = 18;
-            this.PSumStatusLBL.Text = "Calculated";
-            this.PSumStatusLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label48
-            // 
-            this.label48.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label48.Location = new System.Drawing.Point(0, 500);
-            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(690, 19);
-            this.label48.TabIndex = 16;
-            this.label48.Text = "Status";
-            this.label48.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.panel3.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Payroll;
-            this.panel3.Controls.Add(this.PSumReportBTN);
-            this.panel3.Controls.Add(this.PSumPaydayOnLBL);
-            this.panel3.Controls.Add(this.label47);
-            this.panel3.Controls.Add(this.PSumCalculatedLastLBL);
-            this.panel3.Controls.Add(this.label45);
-            this.panel3.Controls.Add(this.PSumTotalCost);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(46, 103);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(600, 150);
-            this.panel3.TabIndex = 17;
-            // 
-            // PSumReportBTN
-            // 
-            this.PSumReportBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PSumReportBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
-            this.PSumReportBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
-            this.PSumReportBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PSumReportBTN.FlatAppearance.BorderSize = 0;
-            this.PSumReportBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
-            this.PSumReportBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
-            this.PSumReportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PSumReportBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.PSumReportBTN.ForeColor = System.Drawing.Color.White;
-            this.PSumReportBTN.Location = new System.Drawing.Point(44, 95);
-            this.PSumReportBTN.Name = "PSumReportBTN";
-            this.PSumReportBTN.Size = new System.Drawing.Size(80, 25);
-            this.PSumReportBTN.TabIndex = 228;
-            this.PSumReportBTN.Text = "REPORT";
-            this.PSumReportBTN.UseVisualStyleBackColor = false;
-            // 
-            // PSumPaydayOnLBL
-            // 
-            this.PSumPaydayOnLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PSumPaydayOnLBL.AutoSize = true;
-            this.PSumPaydayOnLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.PSumPaydayOnLBL.ForeColor = System.Drawing.Color.White;
-            this.PSumPaydayOnLBL.Location = new System.Drawing.Point(300, 97);
-            this.PSumPaydayOnLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumPaydayOnLBL.Name = "PSumPaydayOnLBL";
-            this.PSumPaydayOnLBL.Size = new System.Drawing.Size(229, 21);
-            this.PSumPaydayOnLBL.TabIndex = 21;
-            this.PSumPaydayOnLBL.Text = "Saturday, December 31, 2017";
-            this.PSumPaydayOnLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label47
-            // 
-            this.label47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label47.ForeColor = System.Drawing.Color.White;
-            this.label47.Location = new System.Drawing.Point(300, 77);
-            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(73, 19);
-            this.label47.TabIndex = 20;
-            this.label47.Text = "Payday on";
-            this.label47.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // PSumCalculatedLastLBL
-            // 
-            this.PSumCalculatedLastLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PSumCalculatedLastLBL.AutoSize = true;
-            this.PSumCalculatedLastLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.PSumCalculatedLastLBL.ForeColor = System.Drawing.Color.White;
-            this.PSumCalculatedLastLBL.Location = new System.Drawing.Point(300, 43);
-            this.PSumCalculatedLastLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumCalculatedLastLBL.Name = "PSumCalculatedLastLBL";
-            this.PSumCalculatedLastLBL.Size = new System.Drawing.Size(176, 21);
-            this.PSumCalculatedLastLBL.TabIndex = 19;
-            this.PSumCalculatedLastLBL.Text = "Sunday, June 25, 2017";
-            this.PSumCalculatedLastLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label45
-            // 
-            this.label45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label45.ForeColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(300, 23);
-            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(95, 19);
-            this.label45.TabIndex = 18;
-            this.label45.Text = "Calculated last";
-            this.label45.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // PSumTotalCost
-            // 
-            this.PSumTotalCost.AutoSize = true;
-            this.PSumTotalCost.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.PSumTotalCost.ForeColor = System.Drawing.Color.White;
-            this.PSumTotalCost.Location = new System.Drawing.Point(39, 48);
-            this.PSumTotalCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumTotalCost.Name = "PSumTotalCost";
-            this.PSumTotalCost.Size = new System.Drawing.Size(211, 45);
-            this.PSumTotalCost.TabIndex = 17;
-            this.PSumTotalCost.Text = "P 112,121.00";
-            this.PSumTotalCost.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(45, 32);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 19);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Total Cost:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.PSumDateLBL);
-            this.panel2.Controls.Add(this.PParyrollSummaryPage);
-            this.panel2.Location = new System.Drawing.Point(2, 16);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(690, 79);
-            this.panel2.TabIndex = 16;
-            // 
-            // PSumDateLBL
-            // 
-            this.PSumDateLBL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PSumDateLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.PSumDateLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PSumDateLBL.Location = new System.Drawing.Point(0, 39);
-            this.PSumDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumDateLBL.Name = "PSumDateLBL";
-            this.PSumDateLBL.Size = new System.Drawing.Size(690, 19);
-            this.PSumDateLBL.TabIndex = 15;
-            this.PSumDateLBL.Text = "Sunday, June 25, 2017 - Saturday, July 1, 2017";
-            this.PSumDateLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // PParyrollSummaryPage
-            // 
-            this.PParyrollSummaryPage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PParyrollSummaryPage.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.PParyrollSummaryPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PParyrollSummaryPage.Location = new System.Drawing.Point(0, 0);
-            this.PParyrollSummaryPage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PParyrollSummaryPage.Name = "PParyrollSummaryPage";
-            this.PParyrollSummaryPage.Size = new System.Drawing.Size(690, 39);
-            this.PParyrollSummaryPage.TabIndex = 4;
-            this.PParyrollSummaryPage.Text = "Payroll Details";
-            this.PParyrollSummaryPage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.PSumBasicPayLBL);
-            this.panel4.Controls.Add(this.label51);
-            this.panel4.Location = new System.Drawing.Point(2, 286);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(685, 65);
-            this.panel4.TabIndex = 239;
-            // 
-            // PSumBasicPayLBL
-            // 
-            this.PSumBasicPayLBL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PSumBasicPayLBL.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.PSumBasicPayLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PSumBasicPayLBL.Location = new System.Drawing.Point(0, 19);
-            this.PSumBasicPayLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumBasicPayLBL.Name = "PSumBasicPayLBL";
-            this.PSumBasicPayLBL.Size = new System.Drawing.Size(685, 45);
-            this.PSumBasicPayLBL.TabIndex = 230;
-            this.PSumBasicPayLBL.Text = "P 30,000";
-            this.PSumBasicPayLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label51
-            // 
-            this.label51.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label51.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label51.Location = new System.Drawing.Point(0, 0);
-            this.label51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(685, 19);
-            this.label51.TabIndex = 229;
-            this.label51.Text = "Month\'s basic pay";
-            this.label51.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // PArchivePage
             // 
@@ -3229,6 +2868,372 @@
             this.PEmpListSearchLine.Text = "_________________________________";
             this.PEmpListSearchLine.Visible = false;
             // 
+            // PSalaryReportPage
+            // 
+            this.PSalaryReportPage.Controls.Add(this.label42);
+            this.PSalaryReportPage.Controls.Add(this.button8);
+            this.PSalaryReportPage.Controls.Add(this.label43);
+            this.PSalaryReportPage.Location = new System.Drawing.Point(15, 14);
+            this.PSalaryReportPage.Name = "PSalaryReportPage";
+            this.PSalaryReportPage.Size = new System.Drawing.Size(690, 640);
+            this.PSalaryReportPage.TabIndex = 20;
+            this.PSalaryReportPage.Visible = false;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label42.Location = new System.Drawing.Point(257, 278);
+            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(165, 19);
+            this.label42.TabIndex = 15;
+            this.label42.Text = "Summary as of 01/01/2017";
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.button8.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(282, 322);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(112, 32);
+            this.button8.TabIndex = 6;
+            this.button8.Text = "PRINT";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Segoe UI Light", 28F);
+            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label43.Location = new System.Drawing.Point(213, 223);
+            this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(252, 51);
+            this.label43.TabIndex = 4;
+            this.label43.Text = "Salary Reports";
+            // 
+            // PPayrollSummaryPage
+            // 
+            this.PPayrollSummaryPage.Controls.Add(this.PSumTotalBonLBL);
+            this.PPayrollSummaryPage.Controls.Add(this.label59);
+            this.PPayrollSummaryPage.Controls.Add(this.PSumTotalDeducLBL);
+            this.PPayrollSummaryPage.Controls.Add(this.label55);
+            this.PPayrollSummaryPage.Controls.Add(this.PSumTotalBaseLBL);
+            this.PPayrollSummaryPage.Controls.Add(this.label53);
+            this.PPayrollSummaryPage.Controls.Add(this.PSumStatusLBL);
+            this.PPayrollSummaryPage.Controls.Add(this.label48);
+            this.PPayrollSummaryPage.Controls.Add(this.panel3);
+            this.PPayrollSummaryPage.Controls.Add(this.panel2);
+            this.PPayrollSummaryPage.Controls.Add(this.panel4);
+            this.PPayrollSummaryPage.Location = new System.Drawing.Point(15, 14);
+            this.PPayrollSummaryPage.Name = "PPayrollSummaryPage";
+            this.PPayrollSummaryPage.Size = new System.Drawing.Size(690, 640);
+            this.PPayrollSummaryPage.TabIndex = 19;
+            this.PPayrollSummaryPage.Visible = false;
+            // 
+            // PSumTotalBonLBL
+            // 
+            this.PSumTotalBonLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PSumTotalBonLBL.AutoSize = true;
+            this.PSumTotalBonLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.PSumTotalBonLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PSumTotalBonLBL.Location = new System.Drawing.Point(472, 399);
+            this.PSumTotalBonLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumTotalBonLBL.Name = "PSumTotalBonLBL";
+            this.PSumTotalBonLBL.Size = new System.Drawing.Size(136, 30);
+            this.PSumTotalBonLBL.TabIndex = 238;
+            this.PSumTotalBonLBL.Text = "P 28,349.00";
+            this.PSumTotalBonLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label59
+            // 
+            this.label59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label59.Location = new System.Drawing.Point(472, 380);
+            this.label59.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(92, 19);
+            this.label59.TabIndex = 237;
+            this.label59.Text = "Total bonuses";
+            this.label59.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // PSumTotalDeducLBL
+            // 
+            this.PSumTotalDeducLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PSumTotalDeducLBL.AutoSize = true;
+            this.PSumTotalDeducLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.PSumTotalDeducLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PSumTotalDeducLBL.Location = new System.Drawing.Point(284, 399);
+            this.PSumTotalDeducLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumTotalDeducLBL.Name = "PSumTotalDeducLBL";
+            this.PSumTotalDeducLBL.Size = new System.Drawing.Size(132, 30);
+            this.PSumTotalDeducLBL.TabIndex = 234;
+            this.PSumTotalDeducLBL.Text = "P -9,929.00";
+            this.PSumTotalDeducLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label55
+            // 
+            this.label55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label55.Location = new System.Drawing.Point(284, 380);
+            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(107, 19);
+            this.label55.TabIndex = 233;
+            this.label55.Text = "Total deductions";
+            this.label55.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // PSumTotalBaseLBL
+            // 
+            this.PSumTotalBaseLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PSumTotalBaseLBL.AutoSize = true;
+            this.PSumTotalBaseLBL.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.PSumTotalBaseLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PSumTotalBaseLBL.Location = new System.Drawing.Point(93, 399);
+            this.PSumTotalBaseLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumTotalBaseLBL.Name = "PSumTotalBaseLBL";
+            this.PSumTotalBaseLBL.Size = new System.Drawing.Size(136, 30);
+            this.PSumTotalBaseLBL.TabIndex = 232;
+            this.PSumTotalBaseLBL.Text = "P 28,349.00";
+            this.PSumTotalBaseLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label53
+            // 
+            this.label53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label53.Location = new System.Drawing.Point(93, 380);
+            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(95, 19);
+            this.label53.TabIndex = 231;
+            this.label53.Text = "Total base pay";
+            this.label53.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // PSumStatusLBL
+            // 
+            this.PSumStatusLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.PSumStatusLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PSumStatusLBL.Location = new System.Drawing.Point(0, 518);
+            this.PSumStatusLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumStatusLBL.Name = "PSumStatusLBL";
+            this.PSumStatusLBL.Size = new System.Drawing.Size(690, 40);
+            this.PSumStatusLBL.TabIndex = 18;
+            this.PSumStatusLBL.Text = "Calculated";
+            this.PSumStatusLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label48
+            // 
+            this.label48.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label48.Location = new System.Drawing.Point(0, 500);
+            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(690, 19);
+            this.label48.TabIndex = 16;
+            this.label48.Text = "Status";
+            this.label48.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.panel3.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Payroll;
+            this.panel3.Controls.Add(this.PSumReportBTN);
+            this.panel3.Controls.Add(this.PSumPaydayOnLBL);
+            this.panel3.Controls.Add(this.label47);
+            this.panel3.Controls.Add(this.PSumCalculatedLastLBL);
+            this.panel3.Controls.Add(this.label45);
+            this.panel3.Controls.Add(this.PSumTotalCost);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Location = new System.Drawing.Point(46, 103);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(600, 150);
+            this.panel3.TabIndex = 17;
+            // 
+            // PSumReportBTN
+            // 
+            this.PSumReportBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PSumReportBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
+            this.PSumReportBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.BTNV2;
+            this.PSumReportBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PSumReportBTN.FlatAppearance.BorderSize = 0;
+            this.PSumReportBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.PSumReportBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.PSumReportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PSumReportBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.PSumReportBTN.ForeColor = System.Drawing.Color.White;
+            this.PSumReportBTN.Location = new System.Drawing.Point(44, 95);
+            this.PSumReportBTN.Name = "PSumReportBTN";
+            this.PSumReportBTN.Size = new System.Drawing.Size(80, 25);
+            this.PSumReportBTN.TabIndex = 228;
+            this.PSumReportBTN.Text = "REPORT";
+            this.PSumReportBTN.UseVisualStyleBackColor = false;
+            // 
+            // PSumPaydayOnLBL
+            // 
+            this.PSumPaydayOnLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PSumPaydayOnLBL.AutoSize = true;
+            this.PSumPaydayOnLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.PSumPaydayOnLBL.ForeColor = System.Drawing.Color.White;
+            this.PSumPaydayOnLBL.Location = new System.Drawing.Point(300, 97);
+            this.PSumPaydayOnLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumPaydayOnLBL.Name = "PSumPaydayOnLBL";
+            this.PSumPaydayOnLBL.Size = new System.Drawing.Size(229, 21);
+            this.PSumPaydayOnLBL.TabIndex = 21;
+            this.PSumPaydayOnLBL.Text = "Saturday, December 31, 2017";
+            this.PSumPaydayOnLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label47
+            // 
+            this.label47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label47.ForeColor = System.Drawing.Color.White;
+            this.label47.Location = new System.Drawing.Point(300, 77);
+            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(73, 19);
+            this.label47.TabIndex = 20;
+            this.label47.Text = "Payday on";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // PSumCalculatedLastLBL
+            // 
+            this.PSumCalculatedLastLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PSumCalculatedLastLBL.AutoSize = true;
+            this.PSumCalculatedLastLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.PSumCalculatedLastLBL.ForeColor = System.Drawing.Color.White;
+            this.PSumCalculatedLastLBL.Location = new System.Drawing.Point(300, 43);
+            this.PSumCalculatedLastLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumCalculatedLastLBL.Name = "PSumCalculatedLastLBL";
+            this.PSumCalculatedLastLBL.Size = new System.Drawing.Size(176, 21);
+            this.PSumCalculatedLastLBL.TabIndex = 19;
+            this.PSumCalculatedLastLBL.Text = "Sunday, June 25, 2017";
+            this.PSumCalculatedLastLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label45
+            // 
+            this.label45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label45.ForeColor = System.Drawing.Color.White;
+            this.label45.Location = new System.Drawing.Point(300, 23);
+            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(95, 19);
+            this.label45.TabIndex = 18;
+            this.label45.Text = "Calculated last";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // PSumTotalCost
+            // 
+            this.PSumTotalCost.AutoSize = true;
+            this.PSumTotalCost.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.PSumTotalCost.ForeColor = System.Drawing.Color.White;
+            this.PSumTotalCost.Location = new System.Drawing.Point(39, 48);
+            this.PSumTotalCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumTotalCost.Name = "PSumTotalCost";
+            this.PSumTotalCost.Size = new System.Drawing.Size(211, 45);
+            this.PSumTotalCost.TabIndex = 17;
+            this.PSumTotalCost.Text = "P 112,121.00";
+            this.PSumTotalCost.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(45, 32);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 19);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Total Cost:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.PSumDateLBL);
+            this.panel2.Controls.Add(this.PParyrollSummaryPage);
+            this.panel2.Location = new System.Drawing.Point(2, 16);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(690, 79);
+            this.panel2.TabIndex = 16;
+            // 
+            // PSumDateLBL
+            // 
+            this.PSumDateLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PSumDateLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.PSumDateLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PSumDateLBL.Location = new System.Drawing.Point(0, 39);
+            this.PSumDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumDateLBL.Name = "PSumDateLBL";
+            this.PSumDateLBL.Size = new System.Drawing.Size(690, 19);
+            this.PSumDateLBL.TabIndex = 15;
+            this.PSumDateLBL.Text = "Sunday, June 25, 2017 - Saturday, July 1, 2017";
+            this.PSumDateLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // PParyrollSummaryPage
+            // 
+            this.PParyrollSummaryPage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PParyrollSummaryPage.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.PParyrollSummaryPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PParyrollSummaryPage.Location = new System.Drawing.Point(0, 0);
+            this.PParyrollSummaryPage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PParyrollSummaryPage.Name = "PParyrollSummaryPage";
+            this.PParyrollSummaryPage.Size = new System.Drawing.Size(690, 39);
+            this.PParyrollSummaryPage.TabIndex = 4;
+            this.PParyrollSummaryPage.Text = "Payroll Details";
+            this.PParyrollSummaryPage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.PSumBasicPayLBL);
+            this.panel4.Controls.Add(this.label51);
+            this.panel4.Location = new System.Drawing.Point(2, 286);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(685, 65);
+            this.panel4.TabIndex = 239;
+            // 
+            // PSumBasicPayLBL
+            // 
+            this.PSumBasicPayLBL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PSumBasicPayLBL.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.PSumBasicPayLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PSumBasicPayLBL.Location = new System.Drawing.Point(0, 19);
+            this.PSumBasicPayLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSumBasicPayLBL.Name = "PSumBasicPayLBL";
+            this.PSumBasicPayLBL.Size = new System.Drawing.Size(685, 45);
+            this.PSumBasicPayLBL.TabIndex = 230;
+            this.PSumBasicPayLBL.Text = "P 30,000";
+            this.PSumBasicPayLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label51
+            // 
+            this.label51.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label51.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label51.Location = new System.Drawing.Point(0, 0);
+            this.label51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(685, 19);
+            this.label51.TabIndex = 229;
+            this.label51.Text = "Month\'s basic pay";
+            this.label51.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // ClientsPage
             // 
             this.ClientsPage.IsSplitterFixed = true;
@@ -3482,6 +3487,7 @@
             this.CClientListTBL.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CClientListTBL.Size = new System.Drawing.Size(655, 498);
             this.CClientListTBL.TabIndex = 5;
+            this.CClientListTBL.DoubleClick += new System.EventHandler(this.CClientListTBL_DoubleClick);
             // 
             // CViewAllSearchLine
             // 
@@ -3585,7 +3591,7 @@
             this.DevBX.Name = "DevBX";
             this.DevBX.Size = new System.Drawing.Size(458, 32);
             this.DevBX.TabIndex = 15;
-            this.DevBX.Text = "Jan Leryc Ibalio - Developer";
+            this.DevBX.Text = "Developer Name";
             this.DevBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DevBX.Visible = false;
             // 
@@ -3650,6 +3656,22 @@
             this.ClientRequestsTLTP.ReshowDelay = 100;
             this.ClientRequestsTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ClientRequestsTLTP.ToolTipTitle = "Client Requests";
+            // 
+            // PConfigSSSBTN
+            // 
+            this.PConfigSSSBTN.FlatAppearance.BorderSize = 0;
+            this.PConfigSSSBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PConfigSSSBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.PConfigSSSBTN.ForeColor = System.Drawing.Color.White;
+            this.PConfigSSSBTN.Location = new System.Drawing.Point(2, 180);
+            this.PConfigSSSBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.PConfigSSSBTN.Name = "PConfigSSSBTN";
+            this.PConfigSSSBTN.Size = new System.Drawing.Size(172, 26);
+            this.PConfigSSSBTN.TabIndex = 26;
+            this.PConfigSSSBTN.Text = "configure SSS benefit";
+            this.PConfigSSSBTN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PConfigSSSBTN.UseVisualStyleBackColor = true;
+            this.PConfigSSSBTN.Click += new System.EventHandler(this.PConfigSSSBTN_Click);
             // 
             // MainForm
             // 
@@ -3729,14 +3751,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PayrollPage)).EndInit();
             this.PayrollPage.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
-            this.PSalaryReportPage.ResumeLayout(false);
-            this.PSalaryReportPage.PerformLayout();
-            this.PPayrollSummaryPage.ResumeLayout(false);
-            this.PPayrollSummaryPage.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.PArchivePage.ResumeLayout(false);
             this.PArchivePage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -3746,6 +3760,14 @@
             this.PEmpListPage.ResumeLayout(false);
             this.PEmpListPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PEmpListGRD)).EndInit();
+            this.PSalaryReportPage.ResumeLayout(false);
+            this.PSalaryReportPage.PerformLayout();
+            this.PPayrollSummaryPage.ResumeLayout(false);
+            this.PPayrollSummaryPage.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ClientsPage.Panel1.ResumeLayout(false);
             this.ClientsPage.Panel1.PerformLayout();
             this.ClientsPage.Panel2.ResumeLayout(false);
@@ -3973,6 +3995,7 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Button PConfHoliday;
+        private System.Windows.Forms.Button PConfigSSSBTN;
     }
 }
 

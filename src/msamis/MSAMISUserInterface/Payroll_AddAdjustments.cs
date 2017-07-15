@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +11,6 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
     public partial class Payroll_AddAdjustments : Form {
         public int PID { get; set; }
-        public MySqlConnection conn;
         public int Mode;
 
         #region Form Properties
@@ -39,16 +37,6 @@ namespace MSAMISUserInterface {
         
         private bool DataValidation() {
             bool ret = true;
-         /*   if (float.Parse(ValueMBX.Text.ToString()) < 0) {
-                ValueTLTP.ToolTipTitle = "Value";
-                ValueTLTP.Show("Please enter a valid amount", ValueMBX);
-                ret = false;
-            }*/
-
-            if (Mode == 1) {
-
-
-            }
             return ret;
         }
         private void AddBTN_Click(object sender, EventArgs e) {
