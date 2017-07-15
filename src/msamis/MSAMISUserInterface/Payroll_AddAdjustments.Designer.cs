@@ -26,6 +26,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payroll_AddAdjustments));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
@@ -50,14 +58,6 @@
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.ValueTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.label4 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
@@ -102,6 +102,94 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(550, 378);
             this.panel2.TabIndex = 126;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label20.Location = new System.Drawing.Point(276, 328);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(18, 20);
+            this.label20.TabIndex = 260;
+            this.label20.Text = "₱";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label19.Location = new System.Drawing.Point(277, 297);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(18, 20);
+            this.label19.TabIndex = 259;
+            this.label19.Text = "₱";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label18.Location = new System.Drawing.Point(278, 271);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(18, 20);
+            this.label18.TabIndex = 258;
+            this.label18.Text = "₱";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label17.Location = new System.Drawing.Point(279, 244);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(18, 20);
+            this.label17.TabIndex = 257;
+            this.label17.Text = "₱";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label16.Location = new System.Drawing.Point(277, 188);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(18, 20);
+            this.label16.TabIndex = 256;
+            this.label16.Text = "₱";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label15.Location = new System.Drawing.Point(277, 157);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(18, 20);
+            this.label15.TabIndex = 255;
+            this.label15.Text = "₱";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label14.Location = new System.Drawing.Point(279, 66);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 20);
+            this.label14.TabIndex = 254;
+            this.label14.Text = "₱";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label13.Location = new System.Drawing.Point(279, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 20);
+            this.label13.TabIndex = 253;
+            this.label13.Text = "₱";
             // 
             // numericUpDown8
             // 
@@ -336,7 +424,7 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(276, 536);
+            this.CloseBTN.Location = new System.Drawing.Point(278, 538);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(80, 29);
             this.CloseBTN.TabIndex = 232;
@@ -356,7 +444,7 @@
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(193, 536);
+            this.AddBTN.Location = new System.Drawing.Point(195, 538);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(80, 29);
             this.AddBTN.TabIndex = 231;
@@ -388,106 +476,18 @@
             this.label4.Text = "Add Adjustment";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label13.Location = new System.Drawing.Point(279, 36);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(18, 20);
-            this.label13.TabIndex = 253;
-            this.label13.Text = "₱";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label14.Location = new System.Drawing.Point(279, 66);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(18, 20);
-            this.label14.TabIndex = 254;
-            this.label14.Text = "₱";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label15.Location = new System.Drawing.Point(277, 157);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(18, 20);
-            this.label15.TabIndex = 255;
-            this.label15.Text = "₱";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label16.Location = new System.Drawing.Point(277, 188);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(18, 20);
-            this.label16.TabIndex = 256;
-            this.label16.Text = "₱";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label17.Location = new System.Drawing.Point(279, 244);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(18, 20);
-            this.label17.TabIndex = 257;
-            this.label17.Text = "₱";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label18.Location = new System.Drawing.Point(278, 271);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(18, 20);
-            this.label18.TabIndex = 258;
-            this.label18.Text = "₱";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label19.Location = new System.Drawing.Point(277, 297);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(18, 20);
-            this.label19.TabIndex = 259;
-            this.label19.Text = "₱";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label20.Location = new System.Drawing.Point(276, 328);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(18, 20);
-            this.label20.TabIndex = 260;
-            this.label20.Text = "₱";
-            // 
             // Payroll_AddAdjustments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(548, 598);
+            this.ClientSize = new System.Drawing.Size(550, 600);
             this.ControlBox = false;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Payroll_AddAdjustments";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

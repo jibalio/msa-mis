@@ -632,9 +632,9 @@ namespace MSAMISUserInterface {
             CClientListTBL.Columns["cid"].HeaderText = "ID";
             CClientListTBL.Columns["cid"].Visible = false;
             CClientListTBL.Columns["name"].HeaderText = "NAME";
-            CClientListTBL.Columns["name"].Width = 310;
+            CClientListTBL.Columns["name"].Width = 300;
             CClientListTBL.Columns["contactno"].HeaderText = "LOCATION";
-            CClientListTBL.Columns["contactno"].Width = 310;
+            CClientListTBL.Columns["contactno"].Width = 300;
             CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
 
             CActiveClientLBL.Text = GetNumberOfActiveClients() + " active clients";
@@ -832,19 +832,21 @@ namespace MSAMISUserInterface {
 
         private void LoadViewReqTable(DataTable dv) {
             SViewReqGRD.DataSource = dv;
-            SViewReqGRD.Columns["rid"].Visible = false;
-            SViewReqGRD.Columns["name"].HeaderText = "NAME";
-            SViewReqGRD.Columns["dateentry"].HeaderText = "DATE ENTRY";
-            SViewReqGRD.Columns["dateentry"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            SViewReqGRD.Columns["type"].HeaderText = "TYPE";
-            SViewReqGRD.Columns["status"].HeaderText = "STATUS";
+            SViewReqGRD.Columns[0].Visible = false;
+            SViewReqGRD.Columns[1].HeaderText = "NAME";
+            SViewReqGRD.Columns[2].HeaderText = "DATE ENTRY";
+            SViewReqGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            SViewReqGRD.Columns[3].HeaderText = "TYPE";
+            SViewReqGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            SViewReqGRD.Columns[4].HeaderText = "STATUS";
+            SViewReqGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            SViewReqGRD.Columns["name"].Width = 250;
-            SViewReqGRD.Columns["dateentry"].Width = 200;
-            SViewReqGRD.Columns["type"].Width = 100;
-            SViewReqGRD.Columns["status"].Width = 100;
+            SViewReqGRD.Columns[1].Width = 250;
+            SViewReqGRD.Columns[2].Width = 150;
+            SViewReqGRD.Columns[3].Width = 150;
+            SViewReqGRD.Columns[4].Width = 70;
 
-            SViewReqGRD.Sort(SViewReqGRD.Columns["dateentry"], ListSortDirection.Descending);
+            SViewReqGRD.Sort(SViewReqGRD.Columns[2], ListSortDirection.Descending);
         }
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {
@@ -944,7 +946,7 @@ namespace MSAMISUserInterface {
             SViewAssGRD.Columns[6].HeaderText = "STATUS";
 
             SViewAssGRD.Columns[3].Width = 200;
-            SViewAssGRD.Columns[4].Width = 250;
+            SViewAssGRD.Columns[4].Width = 210;
             SViewAssGRD.Columns[5].Width = 100;
             SViewAssGRD.Columns[5].Width = 100;
 
@@ -1055,7 +1057,30 @@ namespace MSAMISUserInterface {
             ScurrentBTN = PPayrollSummaryBTN;
             PPayrollSummaryBTN.PerformClick();
         }
+        private void PConfHoliday_Click(object sender, EventArgs e) {
+            try {
+                Payroll_ConfHolidays view = new Payroll_ConfHolidays();
+                view.refer = this.shadow;
+                view.Location = newFormLocation;
 
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+        private void PConfigSSSBTN_Click(object sender, EventArgs e) {
+            try {
+                Payroll_ConfigSSS view = new Payroll_ConfigSSS();
+                view.refer = this.shadow;
+                view.Location = newFormLocation;
+
+                shadow.Transparent();
+                shadow.form = view;
+                shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
         private void PCHnagePanel(Panel newP, Button newBTN) {
             ScurrentPanel.Hide();
             newP.Show();
@@ -1104,26 +1129,26 @@ namespace MSAMISUserInterface {
         private void PAYLoadEmployeeList() {
             PEmpListSortCMBX.SelectedIndex = 0;
             PEmpListGRD.DataSource = Payroll.GetGuardsPayrollMain();
+            PEmpListGRD.Columns[0].Visible = false;
+            PEmpListGRD.Columns[1].HeaderText = "GUARD'S NAME";
+            PEmpListGRD.Columns[2].HeaderText = "ASSIGNED TO";
+            PEmpListGRD.Columns[3].HeaderText = "ATTENDANCE";
+
+            PEmpListGRD.Columns[1].Width = 200;
+            PEmpListGRD.Columns[2].Width = 200;
+            PEmpListGRD.Columns[3].Width = 200;
+
+            PEmpListGRD.Sort(PEmpListGRD.Columns[1], ListSortDirection.Ascending);
         }
-
-        private void PConfHoliday_Click(object sender, EventArgs e) {
-            try {
-                Payroll_ConfHolidays view = new Payroll_ConfHolidays();
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
-
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
-            }
-            catch (Exception) { }
+        private void PEmpListGRD_DoubleClick(object sender, EventArgs e) {
+            PEmpListViewBTN.PerformClick();
         }
         private void PEmpListViewBTN_Click(object sender, EventArgs e) {
             try {
                 Payroll_EmployeeView view = new Payroll_EmployeeView();
                 view.reference = this;
                 view.refer = this.shadow;
-                //view.PID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
+                view.GID = int.Parse(PEmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
                 view.Location = newFormLocation;
 
                 shadow.Transparent();
@@ -1132,18 +1157,7 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
-        private void PConfigSSSBTN_Click(object sender, EventArgs e) {
-            try {
-                Payroll_ConfigSSS view = new Payroll_ConfigSSS();
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
-
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
-            }
-            catch (Exception) { }
-        }
+     
         private void PEmpListSearchBX_Enter(object sender, EventArgs e) {
             if (PEmpListSearchBX.Text == FilterText) {
                 PEmpListSearchBX.Text = EmptyText;
@@ -1236,6 +1250,5 @@ namespace MSAMISUserInterface {
             String q = "SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno FROM client" + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
-
     }
 }

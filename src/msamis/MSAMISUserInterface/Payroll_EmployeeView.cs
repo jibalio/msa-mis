@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Payroll_EmployeeView : Form {
-        public int PID { get; set; }
+        public int GID { get; set; }
         public MainForm reference;
 
         public Shadow refer;
@@ -31,7 +31,28 @@ namespace MSAMISUserInterface {
             AdjPNL.Visible = false;
             OverviewPNL.Visible =true;
 
+            RefreshPayrollList();
+        }
+        public void RefreshPayrollList() {
             EmpListGRD.DataSource = Payroll.GetGuardsPayrollMinimal();
+            EmpListGRD.Columns[0].Visible = false;
+            EmpListGRD.Columns[1].Width = 320;
+            EmpListGRD.Sort(EmpListGRD.Columns[1], ListSortDirection.Ascending);
+            
+
+            foreach (DataGridViewRow row in EmpListGRD.Rows) {
+                if (row.Cells[0].Value.ToString().Equals(GID.ToString())) {
+                    row.Selected = true;
+                    currentrow = row;
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                    if (row.Index > 4) EmpListGRD.FirstDisplayedScrollingRowIndex = (row.Index - 4);
+                    else EmpListGRD.FirstDisplayedScrollingRowIndex = 0;
+                    break;
+                }
+            }
+
+            
+
         }
 
         private void ChangePanel(Label newL, Panel newP) {
@@ -93,9 +114,34 @@ namespace MSAMISUserInterface {
 
         private void BonusAddBTN_Click_1(object sender, EventArgs e) {
             Payroll_AddAdjustments view = new Payroll_AddAdjustments();
-            view.PID = this.PID;
+            view.PID = this.GID;
             view.Location = new Point(this.Location.X + 350, this.Location.Y);
             view.ShowDialog();
+        }
+        DataGridViewRow currentrow;
+        private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            if (EmpListGRD.SelectedRows.Count > 0) {
+                currentrow.DefaultCellStyle.Font = new Font("Segoe UI", 12);
+                EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                currentrow = EmpListGRD.SelectedRows[0];
+                GID = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
+                LoadDetails();
+            }
+        }
+
+        private void LoadDetails() {
+
+        }
+
+        private void DownArrow_Click(object sender, EventArgs e) {
+            EmpListGRD.FirstDisplayedScrollingRowIndex = EmpListGRD.FirstDisplayedScrollingRowIndex + 3;
+        }
+
+        private void UpArrow_Click(object sender, EventArgs e) {
+            try {
+                EmpListGRD.FirstDisplayedScrollingRowIndex = EmpListGRD.FirstDisplayedScrollingRowIndex - 3;
+            }
+            catch { EmpListGRD.FirstDisplayedScrollingRowIndex = 0; }
         }
     }
 }
