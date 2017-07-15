@@ -28,13 +28,20 @@ namespace MSAMISUserInterface {
         private void RefreshData() {
             DataTable dt = Scheduling.GetUnassignmentRequestDetails(RID);
             ClientLBL.Text = dt.Rows[0][0].ToString();
-
             if (dt.Rows[0][1].ToString().Equals("Approved")) {
                 ApproveBTN.Visible = false;
+                DeclineBTN.Visible = false;
                 NameLBL.Text = "Guards Unassigned";
+            } else if (dt.Rows[0][1].ToString().Equals("Pending")) {
+                ApproveBTN.Visible = true;
+                DeclineBTN.Visible = true;
+            } else {
+                ApproveBTN.Visible = false;
+                DeclineBTN.Visible = false;
+                NameLBL.Text = "Declined Request to Unassign";
             }
 
-            AssignedGRD.DataSource = Scheduling.GetGuardsToBeUnassigned(RID);
+                AssignedGRD.DataSource = Scheduling.GetGuardsToBeUnassigned(RID);
             AssignedGRD.Columns[0].Visible = false;
             AssignedGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             AssignedGRD.Columns[1].Width = 400;
@@ -58,6 +65,13 @@ namespace MSAMISUserInterface {
             Scheduling.ApproveUnassignment(RID);
             reference.SCHEDLoadPage();
             this.Close();
+        }
+
+        private void DeclineBTN_Click(object sender, EventArgs e) {
+            Scheduling.DeclineRequest(RID);
+            ApproveBTN.Visible = false;
+            DeclineBTN.Visible = false;
+            reference.SCHEDRefreshRequests();
         }
     }
 }

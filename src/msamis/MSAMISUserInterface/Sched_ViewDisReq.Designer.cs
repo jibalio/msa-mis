@@ -37,6 +37,7 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.ApproveBTN = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.DeclineBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).BeginInit();
             this.panel2.SuspendLayout();
@@ -120,8 +121,8 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.AssignedGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.AssignedGRD.EnableHeadersVisualStyles = false;
@@ -173,7 +174,7 @@
             this.ApproveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ApproveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ApproveBTN.ForeColor = System.Drawing.Color.White;
-            this.ApproveBTN.Location = new System.Drawing.Point(220, 382);
+            this.ApproveBTN.Location = new System.Drawing.Point(175, 381);
             this.ApproveBTN.Name = "ApproveBTN";
             this.ApproveBTN.Size = new System.Drawing.Size(105, 32);
             this.ApproveBTN.TabIndex = 146;
@@ -184,6 +185,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.DeclineBTN);
             this.panel2.Controls.Add(this.ApproveBTN);
             this.panel2.Controls.Add(this.NameLBL);
             this.panel2.Controls.Add(this.AssignedGRD);
@@ -191,6 +193,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(557, 445);
             this.panel2.TabIndex = 148;
+            // 
+            // DeclineBTN
+            // 
+            this.DeclineBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeclineBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.DeclineBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeclineBTN.BackgroundImage")));
+            this.DeclineBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DeclineBTN.FlatAppearance.BorderSize = 0;
+            this.DeclineBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DeclineBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.DeclineBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeclineBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.DeclineBTN.ForeColor = System.Drawing.Color.White;
+            this.DeclineBTN.Location = new System.Drawing.Point(286, 381);
+            this.DeclineBTN.Name = "DeclineBTN";
+            this.DeclineBTN.Size = new System.Drawing.Size(105, 32);
+            this.DeclineBTN.TabIndex = 147;
+            this.DeclineBTN.Text = "DECLINE";
+            this.DeclineBTN.UseVisualStyleBackColor = false;
+            this.DeclineBTN.Click += new System.EventHandler(this.DeclineBTN_Click);
             // 
             // Sched_ViewDisReq
             // 
@@ -227,5 +249,6 @@
         private System.Windows.Forms.Button CloseBTN;
         private System.Windows.Forms.Button ApproveBTN;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button DeclineBTN;
     }
 }

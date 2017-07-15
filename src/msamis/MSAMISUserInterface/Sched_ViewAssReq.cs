@@ -44,9 +44,11 @@ namespace MSAMISUserInterface {
             } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Approved.ToString())) {
                 AssignBTN.Text = "ASSIGN";
                 StatusLBL.Text = "Status: Approved";
+                AssignBTN.Location = new Point(220, 411);
             } else {
                 AssignBTN.Visible = false;
                 AvailablePNL.Visible = false;
+                DeclineBTN.Visible = false;
                 if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Active.ToString())) StatusLBL.Text = "Status: Active";
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString())) StatusLBL.Text = "Status: Inctive";
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) StatusLBL.Text = "Status: Decline";
@@ -80,8 +82,17 @@ namespace MSAMISUserInterface {
             } else {
                 Scheduling.UpdateRequestStatus(RAID, Enumeration.RequestStatus.Approved);
                 AssignBTN.Text = "ASSIGN";
+                AssignBTN.Location = new Point(220, 411);
                 StatusLBL.Text = "Status: Approved";
             }
+        }
+
+        private void DeclineBTN_Click(object sender, EventArgs e) {
+            Scheduling.DeclineRequest(RAID);
+            AssignBTN.Visible = false;
+            DeclineBTN.Visible = false;
+            AvailablePNL.Visible = false;
+            StatusLBL.Text = "Status: Declined";
         }
     }
 }

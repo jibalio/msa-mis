@@ -842,9 +842,9 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             SViewReqGRD.Columns[1].Width = 250;
-            SViewReqGRD.Columns[2].Width = 150;
-            SViewReqGRD.Columns[3].Width = 150;
-            SViewReqGRD.Columns[4].Width = 70;
+            SViewReqGRD.Columns[2].Width = 120;
+            SViewReqGRD.Columns[3].Width = 120;
+            SViewReqGRD.Columns[4].Width = 100;
 
             SViewReqGRD.Sort(SViewReqGRD.Columns[2], ListSortDirection.Descending);
         }

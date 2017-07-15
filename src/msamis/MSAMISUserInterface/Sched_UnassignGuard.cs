@@ -72,39 +72,35 @@ namespace MSAMISUserInterface {
                 ReportLBL.ForeColor = light;
                 ret = false;
             }
-
+            GuardsPNL.Hide();
+            ReportPNL.Show();
+            GuardsLBL.ForeColor = light;
+            ReportLBL.ForeColor = dark;
             if (LocationBX.Text.Equals("")) {
-                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(LocationTLTP, "Event Location", "Where did this incident happen?", LocationBX);
                 ret = false;
             }
             if (DescriptionBX.Text.Equals("")) {
-                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(DescriptionTLTP, "Event Description", "What happened in this incident?", DescriptionBX);
                 ret = false;
             }
             if (CheckNameNotRequired(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX, Dependent1RBX)) {
-                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep1Warn, "Dependent's Name", "Please complete the fields", Dependent1FirstBX);
                 ret = false;
             }
             if (CheckNameNotRequired(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX, Dependent2RBX)) {
-                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep2Warn, "Dependent's Name", "Please complete the fields", Dependent2FirstBX);
                ret = false;
             }
             if (CheckNameNotRequired(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX, Dependent3RBX)) {
-                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep3Warn, "Dependent's Name", "Please complete the fields", Dependent3FirstBX);
                 ret = false;
             }
             if (CheckNameNotRequired(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX, Dependent4RBX)) {
-                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep4Warn, "Dependent's Name", "Please complete the fields", Dependent4FirstBX);
                 ret = false;
             }
             if (CheckNameNotRequired(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX, Dependent5RBX)) {
-                GuardsPNL.AutoScrollPosition = new Point(GuardsPNL.Location.X, 600);
                 ShowToolTipOnBX(Dep5Warn, "Dependent's Name", "Please complete the fields", Dependent5FirstBX);
                 ret = false;
             }
@@ -182,6 +178,10 @@ namespace MSAMISUserInterface {
 
         private void GuardsLBL_MouseLeave(object sender, EventArgs e) {
             if (!GuardsPNL.Visible) GuardsLBL.ForeColor = light;
+        }
+
+        private void LocationBX_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }

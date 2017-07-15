@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sched_ViewAssReq));
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.StatusLBL = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.DeclineBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.AvailablePNL.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -210,7 +212,7 @@
             this.AssignBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AssignBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AssignBTN.ForeColor = System.Drawing.Color.White;
-            this.AssignBTN.Location = new System.Drawing.Point(222, 411);
+            this.AssignBTN.Location = new System.Drawing.Point(168, 411);
             this.AssignBTN.Name = "AssignBTN";
             this.AssignBTN.Size = new System.Drawing.Size(105, 32);
             this.AssignBTN.TabIndex = 135;
@@ -248,12 +250,33 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.DeclineBTN);
             this.panel2.Controls.Add(this.AssignBTN);
             this.panel2.Controls.Add(this.AvailablePNL);
             this.panel2.Location = new System.Drawing.Point(-1, 134);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(549, 469);
             this.panel2.TabIndex = 139;
+            // 
+            // DeclineBTN
+            // 
+            this.DeclineBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeclineBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.DeclineBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeclineBTN.BackgroundImage")));
+            this.DeclineBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DeclineBTN.FlatAppearance.BorderSize = 0;
+            this.DeclineBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DeclineBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.DeclineBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeclineBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.DeclineBTN.ForeColor = System.Drawing.Color.White;
+            this.DeclineBTN.Location = new System.Drawing.Point(279, 411);
+            this.DeclineBTN.Name = "DeclineBTN";
+            this.DeclineBTN.Size = new System.Drawing.Size(105, 32);
+            this.DeclineBTN.TabIndex = 136;
+            this.DeclineBTN.Text = "DECLINE";
+            this.DeclineBTN.UseVisualStyleBackColor = false;
+            this.DeclineBTN.Click += new System.EventHandler(this.DeclineBTN_Click);
             // 
             // Sched_ViewAssReq
             // 
@@ -298,5 +321,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label StatusLBL;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button DeclineBTN;
     }
 }
