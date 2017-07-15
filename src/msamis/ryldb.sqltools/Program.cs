@@ -26,8 +26,8 @@ namespace ryldb.sqltools {
             //Attendance.Hours x = Attendance.GetHours(start, end);
             //Holiday.InitHolidays();
             //Payroll.GetGrossPay(306);
-            Payroll.LoadData(228);
-            Payroll.ComputeGrossPay();
+            HourProcessor e = new HourProcessor(new DateTime(2017, 1, 1, 20, 0, 0), new DateTime(2017, 1, 1, 5, 0, 0));
+            e = e;
         }
     }
 }
