@@ -46,8 +46,8 @@ namespace MSAMISUserInterface {
         #endregion
 
 
-        public static Attendance.Hours GetHoursForThisPeriod (int GID) {
-            DataTable aid_dt = SQLTools.ExecuteQuery(
+        public static Attendance.Hours GetHoursInCurrentPeriod (int GID) {
+            DataTable HourIterationDataTable = SQLTools.ExecuteQuery(
                 String.Format(@"
                     select atid, timein, timeout from attendance 
                     left join period on period.pid = attendance.pid
@@ -60,7 +60,7 @@ namespace MSAMISUserInterface {
                     and month={3}
             ;",GID, period.period, period.year, period.month));
             Attendance.Hours HourIterationTotal = new Attendance.Hours();
-            foreach (DataRow DataRowIteration in aid_dt.Rows) {
+            foreach (DataRow DataRowIteration in HourIterationDataTable.Rows) {
                 DateTime TimeInDateTime = Attendance.GetDateTime_(DataRowIteration["TimeIn"].ToString());
                 DateTime TimeOutDateTime = Attendance.GetDateTime_(DataRowIteration["TimeOut"].ToString());
                 Attendance.Hours asx = Attendance.GetHours(TimeInDateTime, TimeOutDateTime);
@@ -72,6 +72,7 @@ namespace MSAMISUserInterface {
             }
             return HourIterationTotal;
         }
+
 
         
 

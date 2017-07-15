@@ -7,6 +7,9 @@ using rylui;
 using ryldb.sqltools;
 
 namespace MSAMISUserInterface {
+
+    // Peak: 30mbs - July 14, 2017
+
     static class Program {
         /// <summary>
         /// The main entry point for the application.
@@ -15,6 +18,8 @@ namespace MSAMISUserInterface {
         static void Main() {
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
+            SQLTools.EnableConsoleDebugging = false;
+            Data.InitData();
 
             Holiday.InitHolidays();
              Application.EnableVisualStyles();

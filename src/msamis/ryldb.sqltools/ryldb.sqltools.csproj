@@ -60,6 +60,7 @@
     <Compile Include="Attendance.cs" />
     <Compile Include="AutoLoader.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="Enumeration.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="Holiday.cs" />
