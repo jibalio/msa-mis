@@ -1,4 +1,24 @@
-﻿AddHoliday(SelectionRange r, string name, string desc)
+﻿
+New Funcs
+Saturday, Jul 15
+
+DataTabe GetGuardsPayrollMain()		<-- para sa main payroll list page Columns: [gid, name, company, hasattendance?]
+Datatable GetGuardsPayrollMinimal()	<-- para sa sidebar sidebar thing:	[gid, name]
+Hours GetHoursInCurrentPeriod (int GID) <-- kung gusto ka makabalo pila iyang work hours, etc
+
+Basic Pays
+AddBasicPay(DateTime start, double pay)
+string GetCurrentBasicPay()
+
+Under construction paning naa sa baba
+Payroll.LoadData(int GID)  <-- 	call this first b4 using other payroll functions.
+								every switch employee, call this
+Payroll.GetNightDifferential()
+Payroll.ComputeBasicPay()
+
+
+
+AddHoliday(SelectionRange r, string name, string desc)
 EditHoliday (SelectionRange r, string name, string desc)
 RemoveHoliday(SelectionRange r, string name, string desc)
 DataTable GetHolidays()

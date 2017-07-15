@@ -354,7 +354,7 @@ namespace MSAMISUserInterface {
                 TimeSpan d1_night = Midnight - maxStart;
                 TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart - minStart : new TimeSpan(0, 0, 0);
                 if (TimeIn.DayOfWeek==DayOfWeek.Sunday) {
-                    h.sunday += d1_day + d1_night;
+                    h.SundayTotal += d1_day + d1_night;
                 }
                 // Second Half
                 
@@ -363,7 +363,7 @@ namespace MSAMISUserInterface {
                 TimeSpan d2_night = minEnd - Midnight;
                 TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
                 if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
-                    h.sunday += d2_day + d2_night;
+                    h.SundayTotal += d2_day + d2_night;
                 }
 
                 // Check if today is holiday.
@@ -395,12 +395,12 @@ namespace MSAMISUserInterface {
                     h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
                     h.holiday_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
-                    if (TimeIn.DayOfWeek==DayOfWeek.Sunday) h.sunday += h.holiday_night + h.holiday_day;
+                    if (TimeIn.DayOfWeek==DayOfWeek.Sunday) h.SundayTotal += h.holiday_night + h.holiday_day;
                 } else {
                     h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
                     h.normal_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.normal_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
-                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) h.sunday += h.normal_night + h.normal_day;
+                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) h.SundayTotal += h.normal_night + h.normal_day;
                 }
             }
             h.total = h.normal_day + h.normal_night + h.holiday_day + h.holiday_night;
@@ -423,7 +423,7 @@ namespace MSAMISUserInterface {
                 TimeSpan d1_night = Midnight - maxStart;
                 TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart - minStart : new TimeSpan(0, 0, 0);
                 if (TimeIn.DayOfWeek == DayOfWeek.Sunday) {
-                    h.sunday += d1_day + d1_night;
+                    h.SundayTotal += d1_day + d1_night;
                 }
                 // Second Half
 
@@ -432,24 +432,40 @@ namespace MSAMISUserInterface {
                 TimeSpan d2_night = minEnd - Midnight;
                 TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
                 if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
-                    h.sunday += d2_day + d2_night;
+                    h.SundayTotal += d2_day + d2_night;
                 }
 
                 // Check if today is holiday.
                 if (IsHolidayToday(TimeIn)) {
                     h.holiday_night += d1_night;
                     h.holiday_day += d1_day;
+                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) {
+                        h.Sunday_holiday_day += d1_day;
+                        h.Sunday_holiday_night += d1_night;
+                    }
                 } else {
                     h.normal_night += d1_night;
                     h.normal_day += d1_day;
+                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) {
+                        h.Sunday_normal_day += d1_day;
+                        h.Sunday_normal_night += d1_night;
+                    }
                 }
                 //Check if tomorrow is holiday.
                 if (IsHolidayTomorrow(TimeIn)) {
                     h.holiday_night += d2_night;
                     h.holiday_day += d2_day;
+                    if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
+                        h.Sunday_holiday_day += d2_day;
+                        h.Sunday_holiday_night += d2_night;
+                    }
                 } else {
                     h.normal_night += d2_night;
                     h.normal_day += d2_day;
+                    if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
+                        h.Sunday_normal_day += d2_day;
+                        h.Sunday_normal_night += d2_night;
+                    }
                 }
 
 
@@ -464,15 +480,25 @@ namespace MSAMISUserInterface {
                     h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
                     h.holiday_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
-                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) h.sunday += h.holiday_night + h.holiday_day;
+                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) {
+                        h.SundayTotal += h.holiday_night + h.holiday_day;
+                        h.Sunday_holiday_day += h.holiday_day;
+                        h.Sunday_holiday_night += h.holiday_night;
+                    }
+
                 } else {
                     h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
                     h.normal_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.normal_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
-                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) h.sunday += h.normal_night + h.normal_day;
+                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) {
+                        h.SundayTotal += h.normal_night + h.normal_day;
+                        h.Sunday_normal_day += h.normal_day;
+                        h.Sunday_normal_night += h.normal_night;
+                    }
                 }
             }
             h.total = h.normal_day + h.normal_night + h.holiday_day + h.holiday_night;
+            
             return h;
         }
 
@@ -545,7 +571,12 @@ namespace MSAMISUserInterface {
             public TimeSpan normal_day = new TimeSpan(0, 0, 0);
             public TimeSpan normal_night = new TimeSpan(0, 0, 0);
             public TimeSpan total = new TimeSpan(0, 0, 0);
-            public TimeSpan sunday = new TimeSpan(0, 0, 0);
+
+            public TimeSpan SundayTotal = new TimeSpan(0, 0, 0);
+            public TimeSpan Sunday_holiday_day = new TimeSpan(0, 0, 0);
+            public TimeSpan Sunday_holiday_night = new TimeSpan(0, 0, 0);
+            public TimeSpan Sunday_normal_day = new TimeSpan(0, 0, 0);
+            public TimeSpan Sunday_normal_night = new TimeSpan(0, 0, 0);
             public string GetHolidayDay() {
                 return ((int)holiday_day.TotalMinutes / 60).ToString("00") + ":" + (holiday_day.TotalMinutes % 60).ToString("00");
             }
@@ -562,7 +593,7 @@ namespace MSAMISUserInterface {
                 return ((int)total.TotalMinutes / 60).ToString("00") + ":" + (total.TotalMinutes % 60).ToString("00");
             }
             public string GetSunday() {
-                return ((int)sunday.TotalMinutes / 60).ToString("00") + ":" + (sunday.TotalMinutes % 60).ToString("00");
+                return ((int)SundayTotal.TotalMinutes / 60).ToString("00") + ":" + (SundayTotal.TotalMinutes % 60).ToString("00");
             }
         }
 

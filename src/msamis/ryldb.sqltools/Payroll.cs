@@ -71,7 +71,7 @@ namespace MSAMISUserInterface {
                 HourIterationTotal.holiday_day += asx.holiday_day;
                 HourIterationTotal.holiday_night += asx.holiday_night;
                 HourIterationTotal.total += asx.total;
-                HourIterationTotal.sunday += asx.sunday;
+                HourIterationTotal.SundayTotal += asx.SundayTotal;
             }
             return HourIterationTotal;
         }
@@ -116,11 +116,35 @@ namespace MSAMISUserInterface {
         }
 
         #region Compuations
-        public static double ComputeGrossPay(int GID) {
-            Attendance.Hours hour = GetHoursInCurrentPeriod(GID);
-
-            throw new NotImplementedException();
+        public class HourCostPair {
+            double hour;
+            double cost;
+            double total;
+            public HourCostPair (double hours, double basicpay) {
+                this.hour = hours;
+                this.cost = basicpay;
+                this.total = hours * basicpay;
+            }
         }
+
+        public static Attendance.Hours hour;
+        public static void LoadData(int GID) {
+            hour = GetHoursInCurrentPeriod(GID);
+        }
+        public static HourCostPair ComputeGrossPay() {
+            HourCostPair e = new HourCostPair(hour.total.TotalHours, BasicPay);
+            return e;
+        }
+        public static HourCostPair ComputeOrdinaryNightDifferential() {
+            throw new NotImplementedException();
+            //HourCostPair e = new HourCostPair(hour.ordinary_night.TotalHours, BasicPay * 0.10);
+            //return e;
+        }
+        public static HourCostPair ComputeHolidayNightDifferential() {
+            HourCostPair e = new HourCostPair(hour.holiday_night.TotalHours, BasicPay * 0.10);
+            return e;
+        }
+        //public static HourCostPair ComputeSSS(int GID) { }
         #endregion
 
 
