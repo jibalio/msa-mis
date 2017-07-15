@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 namespace MSAMISUserInterface {
     public class Enumeration {
 
+        public class HolidayType {
+            public static int Regular = 1;
+            public static int Special = 2;
+        }
+
         public class Schedule {
             public static int Active = 1;
             public static int Dismissed = 2;

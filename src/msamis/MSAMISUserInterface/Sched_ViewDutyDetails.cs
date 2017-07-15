@@ -52,7 +52,7 @@ namespace MSAMISUserInterface {
         public void RefreshCurrent() {
             Attendance.Period p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
-            Attendance.Hours hrs = A.GetAttendanceSummary();
+            Hours hrs = A.GetAttendanceSummary();
             RShiftLBL.Text = hrs.GetNormalDay() + " hrs";
             RNightLBL.Text = hrs.GetNormalNight() + " hrs";
             HShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
@@ -101,7 +101,7 @@ namespace MSAMISUserInterface {
             AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             Attendance B = new Attendance(AID, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-            Attendance.Hours hrs = B.GetAttendanceSummary();
+            Hours hrs = B.GetAttendanceSummary();
             AShiftLBL.Text = hrs.GetNormalDay() + " hrs";
             ANightLBL.Text = hrs.GetNormalNight() + " hrs";
             AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";

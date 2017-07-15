@@ -16,7 +16,7 @@
                 Integer array:  980.2 ms
             So, yes, I'm definitely gonna use lists here.
             See more: https://www.dotnetperls.com/array-memory
- */ 
+ */
 
 using ryldb.sqltools;
 using System;
@@ -203,7 +203,7 @@ namespace MSAMISUserInterface {
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
                 DateTime to = GetDateTime_(f["TimeOut"].ToString());
-                Hours asx = GetHours(ti, to);
+                MSAMISUserInterface.Hours asx = GetHours(ti, to);
                 hourlist.Add(asx);
                 f["normal_day"] = asx.GetNormalDay();
                 f["normal_night"] = asx.GetNormalNight();
@@ -296,15 +296,29 @@ namespace MSAMISUserInterface {
         #region MethodFamily: Holiday Operations
 
         public static bool IsHolidayToday(DateTime e) {
-            if (Holiday.holidaylist.Contains(new Holiday(e.Month, e.Day))) {
+            if (Holiday.holidaylist.Contains(new Holiday(e.Month, e.Day, 0))) {
                 return true;
             } else return false;
         }
 
         public static bool IsHolidayTomorrow(DateTime e) {
-            if (Holiday.holidaylist.Contains(new Holiday(e.Month, e.Day))) {
-                return true;
-            } else return false;
+            return IsHolidayToday(e.AddDays(1));
+        }
+
+        public class HE_internal {
+            public bool isholiday;
+            public int type;
+            public HE_internal (bool isholiday, int type) { this.isholiday = isholiday; this.type = type; }
+        }
+        public static HE_internal IsHolidayToday_(DateTime e) {
+            if (Holiday.holidaylist.Contains(new Holiday(e.Month, e.Day, 0))) {
+                Holiday value = Holiday.holidaylist.First(item => item.month == e.Month && item.day==e.Day);
+                return new HE_internal (true, value.type);
+            } else return new HE_internal(false, 0);
+        }
+
+        public static bool IsHolidayTomorrow_(DateTime e) {
+            return IsHolidayToday(e.AddDays(1));
         }
 
         #endregion MethodFamily: Holiday Operations
@@ -431,18 +445,12 @@ namespace MSAMISUserInterface {
                 maxEnd = TimeOut > NightEnd ? TimeOut : NightEnd;
                 TimeSpan d2_night = minEnd - Midnight;
                 TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
-                if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
-                    h.SundayTotal += d2_day + d2_night;
-                }
+               
 
                 // Check if today is holiday.
                 if (IsHolidayToday(TimeIn)) {
                     h.holiday_night += d1_night;
                     h.holiday_day += d1_day;
-                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) {
-                        h.Sunday_holiday_day += d1_day;
-                        h.Sunday_holiday_night += d1_night;
-                    }
                 } else {
                     h.normal_night += d1_night;
                     h.normal_day += d1_day;
@@ -455,17 +463,10 @@ namespace MSAMISUserInterface {
                 if (IsHolidayTomorrow(TimeIn)) {
                     h.holiday_night += d2_night;
                     h.holiday_day += d2_day;
-                    if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
-                        h.Sunday_holiday_day += d2_day;
-                        h.Sunday_holiday_night += d2_night;
-                    }
                 } else {
                     h.normal_night += d2_night;
                     h.normal_day += d2_day;
-                    if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
-                        h.Sunday_normal_day += d2_day;
-                        h.Sunday_normal_night += d2_night;
-                    }
+                    
                 }
 
 
@@ -480,11 +481,7 @@ namespace MSAMISUserInterface {
                     h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
                     h.holiday_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
-                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) {
-                        h.SundayTotal += h.holiday_night + h.holiday_day;
-                        h.Sunday_holiday_day += h.holiday_day;
-                        h.Sunday_holiday_night += h.holiday_night;
-                    }
+                    
 
                 } else {
                     h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
@@ -565,37 +562,7 @@ namespace MSAMISUserInterface {
             }
         }
 
-        public class Hours {
-            public TimeSpan holiday_day = new TimeSpan(0, 0, 0);
-            public TimeSpan holiday_night = new TimeSpan(0, 0, 0);
-            public TimeSpan normal_day = new TimeSpan(0, 0, 0);
-            public TimeSpan normal_night = new TimeSpan(0, 0, 0);
-            public TimeSpan total = new TimeSpan(0, 0, 0);
-
-            public TimeSpan SundayTotal = new TimeSpan(0, 0, 0);
-            public TimeSpan Sunday_holiday_day = new TimeSpan(0, 0, 0);
-            public TimeSpan Sunday_holiday_night = new TimeSpan(0, 0, 0);
-            public TimeSpan Sunday_normal_day = new TimeSpan(0, 0, 0);
-            public TimeSpan Sunday_normal_night = new TimeSpan(0, 0, 0);
-            public string GetHolidayDay() {
-                return ((int)holiday_day.TotalMinutes / 60).ToString("00") + ":" + (holiday_day.TotalMinutes % 60).ToString("00");
-            }
-            public string GetHolidayNight() {
-                return ((int)holiday_night.TotalMinutes / 60).ToString("00") + ":" + (holiday_night.TotalMinutes % 60).ToString("00");
-            }
-            public string GetNormalDay() {
-                return ((int)normal_day.TotalMinutes / 60).ToString("00") + ":" + (normal_day.TotalMinutes % 60).ToString("00");
-            }
-            public string GetNormalNight() {
-                return ((int)normal_night.TotalMinutes / 60).ToString("00") + ":" + (normal_night.TotalMinutes % 60).ToString("00");
-            }
-            public string GetTotal() {
-                return ((int)total.TotalMinutes / 60).ToString("00") + ":" + (total.TotalMinutes % 60).ToString("00");
-            }
-            public string GetSunday() {
-                return ((int)SundayTotal.TotalMinutes / 60).ToString("00") + ":" + (SundayTotal.TotalMinutes % 60).ToString("00");
-            }
-        }
+        
 
 #endregion New Region
 

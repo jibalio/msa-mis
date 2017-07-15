@@ -93,6 +93,7 @@
     <Compile Include="Guards_Edit.Designer.cs">
       <DependentUpon>Guards_Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hours.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -18,9 +18,10 @@ namespace ryldb.sqltools {
         public static List<Holiday> holidaylist = new List<Holiday>();
         public static int Default = 0;
 
-        public Holiday(int month, int day) {
+        public Holiday(int month, int day, int type) {
             this.month = month;
             this.day = day;
+            this.type = type;
         }
 
         public bool Equals(Holiday other) {
@@ -58,7 +59,7 @@ namespace ryldb.sqltools {
                 DateTime start = DateTime.ParseExact(e["datestart"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
                 DateTime end = DateTime.ParseExact(e["dateend"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
                 for (DateTime c = start; c <= end; c=c.AddDays(1)) {
-                    holidaylist.Add(new Holiday(c.Month,c.Day));
+                    holidaylist.Add(new Holiday(c.Month,c.Day, int.Parse(e["type"].ToString())));
                 }
             }
         }

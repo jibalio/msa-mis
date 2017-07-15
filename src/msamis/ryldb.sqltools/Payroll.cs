@@ -46,7 +46,7 @@ namespace MSAMISUserInterface {
         #endregion
 
 
-        public static Attendance.Hours GetHoursInCurrentPeriod (int GID) {
+        public static Hours GetHoursInCurrentPeriod (int GID) {
             DataTable HourIterationDataTable = SQLTools.ExecuteQuery(
                 String.Format(@"
                     select atid, date, timein, timeout from attendance 
@@ -59,13 +59,13 @@ namespace MSAMISUserInterface {
                     and year={2}
                     and month={3}
             ;",GID, period.period, period.year, period.month));
-            Attendance.Hours HourIterationTotal = new Attendance.Hours();
+            Hours HourIterationTotal = new Hours();
             foreach (DataRow DataRowIteration in HourIterationDataTable.Rows) {
                 string ti = DataRowIteration["date"].ToString().Substring(0, 11) + DataRowIteration["TimeIn"].ToString();
                 string to = DataRowIteration["date"].ToString().Substring(0, 10) + " " + DataRowIteration["TimeOut"].ToString();
                 DateTime TimeInDateTime = DateTime.Parse(ti);
                 DateTime TimeOutDateTime = DateTime.Parse(to);
-                Attendance.Hours asx = Attendance.GetHours(TimeInDateTime, TimeOutDateTime, TimeInDateTime);
+                Hours asx = new Hours (TimeInDateTime, TimeOutDateTime, TimeInDateTime);
                 HourIterationTotal.normal_day+= asx.normal_day;
                 HourIterationTotal.normal_night += asx.normal_night;
                 HourIterationTotal.holiday_day += asx.holiday_day;
@@ -77,7 +77,7 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetGuardsPayrollMain() {
-            return SQLTools.ExecuteQuery(@"     select gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
+            return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
                                                             WHEN period.pid IS NULL
                                                             THEN 'Yes'
@@ -99,7 +99,7 @@ namespace MSAMISUserInterface {
                                                 ");
         }
         public static DataTable GetGuardsPayrollMinimal() {
-            return SQLTools.ExecuteQuery(@"     select gid, concat(ln,', ',fn,' ',mn) as name
+            return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name
                                                 from request
                                                 left join client on client.cid=request.cid
                                                 left join request_assign on request_assign.rid=request.rid
@@ -127,7 +127,7 @@ namespace MSAMISUserInterface {
             }
         }
 
-        public static Attendance.Hours hour;
+        public static Hours hour;
         public static void LoadData(int GID) {
             hour = GetHoursInCurrentPeriod(GID);
         }
@@ -135,6 +135,13 @@ namespace MSAMISUserInterface {
             HourCostPair e = new HourCostPair(hour.total.TotalHours, BasicPay);
             return e;
         }
+
+
+        /* The bonuses for hours
+         * 
+         * Here are the following bonussess
+         * 
+         */
         public static HourCostPair ComputeOrdinaryNightDifferential() {
             throw new NotImplementedException();
             //HourCostPair e = new HourCostPair(hour.ordinary_night.TotalHours, BasicPay * 0.10);
@@ -144,7 +151,8 @@ namespace MSAMISUserInterface {
             HourCostPair e = new HourCostPair(hour.holiday_night.TotalHours, BasicPay * 0.10);
             return e;
         }
-        //public static HourCostPair ComputeSSS(int GID) { }
+
+        
         #endregion
 
 
@@ -152,9 +160,22 @@ namespace MSAMISUserInterface {
 
 
 
-        public class PayrollData {
+        public class Data {
+            // Personal Data
+            int GID;
+            int NumberOfDependents;
+            // Monthly Base
+            double BasePay;
+            
+
+
             // Sunday Premium pay = *30%
 
+
+        }
+
+        public class Defaults {
+            
         }
 
         
