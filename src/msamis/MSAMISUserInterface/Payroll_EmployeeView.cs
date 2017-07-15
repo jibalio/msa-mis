@@ -134,7 +134,9 @@ namespace MSAMISUserInterface {
         }
 
         private void DownArrow_Click(object sender, EventArgs e) {
-            EmpListGRD.FirstDisplayedScrollingRowIndex = EmpListGRD.FirstDisplayedScrollingRowIndex + 3;
+            try {
+                EmpListGRD.FirstDisplayedScrollingRowIndex = EmpListGRD.FirstDisplayedScrollingRowIndex + 3;
+            } catch { }
         }
 
         private void UpArrow_Click(object sender, EventArgs e) {
