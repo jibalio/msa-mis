@@ -353,11 +353,19 @@ namespace MSAMISUserInterface {
                 minStart = TimeIn < NightStart ? TimeIn : NightStart;
                 TimeSpan d1_night = Midnight - maxStart;
                 TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                if (TimeIn.DayOfWeek==DayOfWeek.Sunday) {
+                    h.sunday += d1_day + d1_night;
+                }
                 // Second Half
+                
                 minEnd = TimeOut < NightEnd ? TimeOut : NightEnd;
                 maxEnd = TimeOut > NightEnd ? TimeOut : NightEnd;
                 TimeSpan d2_night = minEnd - Midnight;
                 TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
+                if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
+                    h.sunday += d2_day + d2_night;
+                }
+
                 // Check if today is holiday.
                 if (IsHolidayToday(TimeIn)) {
                     h.holiday_night += d1_night;
@@ -374,6 +382,8 @@ namespace MSAMISUserInterface {
                     h.normal_night += d2_night;
                     h.normal_day += d2_day;
                 }
+                
+
             } else {
                 // if same day
                 NightEnd = new DateTime(1, 1, 1, 6, 00, 00);
@@ -385,10 +395,81 @@ namespace MSAMISUserInterface {
                     h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
                     h.holiday_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                    if (TimeIn.DayOfWeek==DayOfWeek.Sunday) h.sunday += h.holiday_night + h.holiday_day;
                 } else {
                     h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
                     h.normal_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
                     h.normal_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) h.sunday += h.normal_night + h.normal_day;
+                }
+            }
+            h.total = h.normal_day + h.normal_night + h.holiday_day + h.holiday_night;
+            return h;
+        }
+
+        public static Hours GetHours(DateTime TimeIn, DateTime TimeOut, DateTime f) {
+            Hours h = new Hours();
+            DateTime NightStart = new DateTime(f.Year, f.Month, f.Day, 22, 00, 00);
+            DateTime NightEnd = new DateTime(f.Year, f.Month, f.Day, 6, 00, 00);
+            DateTime Midnight = new DateTime(f.Year, f.Month, f.Day, 0, 0, 0).AddDays(1); DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
+            // if not same
+            if (TimeIn > TimeOut) {
+                TimeOut = TimeOut.AddDays(1);
+                NightEnd = NightEnd.AddDays(1);
+                // First Half
+                // 1: Max Selection, either nighstart or actuals
+                maxStart = TimeIn < NightStart ? NightStart : TimeIn;
+                minStart = TimeIn < NightStart ? TimeIn : NightStart;
+                TimeSpan d1_night = Midnight - maxStart;
+                TimeSpan d1_day = (NightStart - minStart > TimeSpan.FromSeconds(0)) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                if (TimeIn.DayOfWeek == DayOfWeek.Sunday) {
+                    h.sunday += d1_day + d1_night;
+                }
+                // Second Half
+
+                minEnd = TimeOut < NightEnd ? TimeOut : NightEnd;
+                maxEnd = TimeOut > NightEnd ? TimeOut : NightEnd;
+                TimeSpan d2_night = minEnd - Midnight;
+                TimeSpan d2_day = (maxEnd - NightEnd > TimeSpan.FromSeconds(0)) ? maxEnd - NightEnd : new TimeSpan(0, 0, 0);
+                if (TimeOut.DayOfWeek == DayOfWeek.Sunday) {
+                    h.sunday += d2_day + d2_night;
+                }
+
+                // Check if today is holiday.
+                if (IsHolidayToday(TimeIn)) {
+                    h.holiday_night += d1_night;
+                    h.holiday_day += d1_day;
+                } else {
+                    h.normal_night += d1_night;
+                    h.normal_day += d1_day;
+                }
+                //Check if tomorrow is holiday.
+                if (IsHolidayTomorrow(TimeIn)) {
+                    h.holiday_night += d2_night;
+                    h.holiday_day += d2_day;
+                } else {
+                    h.normal_night += d2_night;
+                    h.normal_day += d2_day;
+                }
+
+
+            } else {
+                // if same day
+                NightEnd = new DateTime(f.Year, f.Month, f.Day, 6, 00, 00);
+                maxStart = TimeIn < NightStart ? TimeIn : NightStart;
+                minStart = TimeIn > NightStart ? TimeIn : NightStart;
+                minEnd = TimeOut < NightEnd ? TimeOut : NightEnd;
+                maxEnd = TimeOut > NightEnd ? TimeOut : NightEnd;
+                if (IsHolidayToday(TimeIn)) {
+                    h.holiday_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
+                    h.holiday_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
+                    h.holiday_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) h.sunday += h.holiday_night + h.holiday_day;
+                } else {
+                    h.normal_night += (minEnd - maxStart) > TimeSpan.FromSeconds(0) ? minEnd - maxStart : new TimeSpan(0, 0, 0);
+                    h.normal_day += (TimeOut - NightEnd) > TimeSpan.FromSeconds(0) ? TimeOut - NightEnd : new TimeSpan(0, 0, 0);
+                    h.normal_day += (NightStart - minStart) > TimeSpan.FromSeconds(0) ? NightStart - minStart : new TimeSpan(0, 0, 0);
+                    if (TimeIn.DayOfWeek == DayOfWeek.Sunday) h.sunday += h.normal_night + h.normal_day;
                 }
             }
             h.total = h.normal_day + h.normal_night + h.holiday_day + h.holiday_night;
@@ -464,6 +545,7 @@ namespace MSAMISUserInterface {
             public TimeSpan normal_day = new TimeSpan(0, 0, 0);
             public TimeSpan normal_night = new TimeSpan(0, 0, 0);
             public TimeSpan total = new TimeSpan(0, 0, 0);
+            public TimeSpan sunday = new TimeSpan(0, 0, 0);
             public string GetHolidayDay() {
                 return ((int)holiday_day.TotalMinutes / 60).ToString("00") + ":" + (holiday_day.TotalMinutes % 60).ToString("00");
             }
@@ -478,6 +560,9 @@ namespace MSAMISUserInterface {
             }
             public string GetTotal() {
                 return ((int)total.TotalMinutes / 60).ToString("00") + ":" + (total.TotalMinutes % 60).ToString("00");
+            }
+            public string GetSunday() {
+                return ((int)sunday.TotalMinutes / 60).ToString("00") + ":" + (sunday.TotalMinutes % 60).ToString("00");
             }
         }
 
