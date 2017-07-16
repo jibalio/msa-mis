@@ -41,16 +41,15 @@ namespace MSAMISUserInterface {
             
 
             foreach (DataGridViewRow row in EmpListGRD.Rows) {
-                if (row.Cells[0].Value.ToString().Equals(GID.ToString())) {
+                if (row.Cells[1].Value.ToString().Equals("")) {
+                    row.Visible = false;
+                } else if (row.Cells[0].Value.ToString().Equals(GID.ToString())) {
                     row.Selected = true;
                     currentrow = row;
                     row.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                     if (row.Index > 4) EmpListGRD.FirstDisplayedScrollingRowIndex = (row.Index - 4);
                     else EmpListGRD.FirstDisplayedScrollingRowIndex = 0;
                     break;
-                }
-                if (row.Cells[1].Value.ToString().Equals("")){
-                    row.Visible = false;
                 }
             }
         }

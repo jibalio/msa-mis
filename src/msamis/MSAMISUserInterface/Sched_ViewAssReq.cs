@@ -45,6 +45,8 @@ namespace MSAMISUserInterface {
                 AssignBTN.Text = "ASSIGN";
                 StatusLBL.Text = "Status: Approved";
                 AssignBTN.Location = new Point(220, 411);
+                DeclineBTN.Visible = false;
+
             } else {
                 AssignBTN.Visible = false;
                 AvailablePNL.Visible = false;
@@ -84,6 +86,7 @@ namespace MSAMISUserInterface {
                 AssignBTN.Text = "ASSIGN";
                 AssignBTN.Location = new Point(220, 411);
                 StatusLBL.Text = "Status: Approved";
+                DeclineBTN.Visible = false;
             }
         }
 
