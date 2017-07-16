@@ -1139,6 +1139,10 @@ namespace MSAMISUserInterface {
             PEmpListGRD.Columns[3].Width = 200;
 
             PEmpListGRD.Sort(PEmpListGRD.Columns[1], ListSortDirection.Ascending);
+            PEmpListViewBTN.Visible = false;
+        }
+        private void PEmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            PEmpListViewBTN.Visible = true;
         }
         private void PEmpListGRD_DoubleClick(object sender, EventArgs e) {
             PEmpListViewBTN.PerformClick();
@@ -1250,5 +1254,7 @@ namespace MSAMISUserInterface {
             String q = "SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno FROM client" + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
+
+
     }
 }

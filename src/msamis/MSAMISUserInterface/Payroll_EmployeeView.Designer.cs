@@ -83,8 +83,6 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.EmpListGRD = new System.Windows.Forms.DataGridView();
-            this.DownArrow = new System.Windows.Forms.Button();
-            this.UpArrow = new System.Windows.Forms.Button();
             this.LLBL = new System.Windows.Forms.Label();
             this.OverviewPNL.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -853,6 +851,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 600);
             this.panel3.TabIndex = 240;
+            this.panel3.MouseEnter += new System.EventHandler(this.EmpListGRD_MouseLeave);
             // 
             // EmpListGRD
             // 
@@ -876,44 +875,18 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.EmpListGRD.DefaultCellStyle = dataGridViewCellStyle4;
-            this.EmpListGRD.Location = new System.Drawing.Point(43, 134);
+            this.EmpListGRD.Location = new System.Drawing.Point(42, 104);
             this.EmpListGRD.MultiSelect = false;
             this.EmpListGRD.Name = "EmpListGRD";
             this.EmpListGRD.ReadOnly = true;
             this.EmpListGRD.RowHeadersVisible = false;
-            this.EmpListGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.EmpListGRD.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.EmpListGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EmpListGRD.Size = new System.Drawing.Size(330, 404);
+            this.EmpListGRD.Size = new System.Drawing.Size(307, 444);
             this.EmpListGRD.TabIndex = 259;
             this.EmpListGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmpListGRD_CellEnter);
-            // 
-            // DownArrow
-            // 
-            this.DownArrow.FlatAppearance.BorderSize = 0;
-            this.DownArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DownArrow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DownArrow.ForeColor = System.Drawing.Color.White;
-            this.DownArrow.Location = new System.Drawing.Point(43, 540);
-            this.DownArrow.Name = "DownArrow";
-            this.DownArrow.Size = new System.Drawing.Size(280, 23);
-            this.DownArrow.TabIndex = 260;
-            this.DownArrow.Text = "˅";
-            this.DownArrow.UseVisualStyleBackColor = true;
-            this.DownArrow.Click += new System.EventHandler(this.DownArrow_Click);
-            // 
-            // UpArrow
-            // 
-            this.UpArrow.FlatAppearance.BorderSize = 0;
-            this.UpArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpArrow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpArrow.ForeColor = System.Drawing.Color.White;
-            this.UpArrow.Location = new System.Drawing.Point(43, 108);
-            this.UpArrow.Name = "UpArrow";
-            this.UpArrow.Size = new System.Drawing.Size(280, 23);
-            this.UpArrow.TabIndex = 261;
-            this.UpArrow.Text = "˄";
-            this.UpArrow.UseVisualStyleBackColor = true;
-            this.UpArrow.Click += new System.EventHandler(this.UpArrow_Click);
+            this.EmpListGRD.MouseEnter += new System.EventHandler(this.EmpListGRD_MouseEnter);
+            this.EmpListGRD.MouseLeave += new System.EventHandler(this.EmpListGRD_MouseLeave);
             // 
             // LLBL
             // 
@@ -933,11 +906,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(898, 598);
             this.ControlBox = false;
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.EmpListGRD);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.LLBL);
-            this.Controls.Add(this.UpArrow);
-            this.Controls.Add(this.DownArrow);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Gray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -946,6 +917,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payroll_EmployeeView_FormClosing);
             this.Load += new System.EventHandler(this.Payroll_EmployeeView_Load);
+            this.MouseEnter += new System.EventHandler(this.EmpListGRD_MouseLeave);
             this.OverviewPNL.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1017,8 +989,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView EmpListGRD;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button DownArrow;
-        private System.Windows.Forms.Button UpArrow;
         private System.Windows.Forms.Label LLBL;
     }
 }

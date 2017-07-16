@@ -1611,7 +1611,7 @@
             this.SViewAssPNL.Controls.Add(this.SViewAssSearchLine);
             this.SViewAssPNL.Location = new System.Drawing.Point(15, 14);
             this.SViewAssPNL.Name = "SViewAssPNL";
-            this.SViewAssPNL.Size = new System.Drawing.Size(693, 640);
+            this.SViewAssPNL.Size = new System.Drawing.Size(694, 640);
             this.SViewAssPNL.TabIndex = 13;
             this.SViewAssPNL.Visible = false;
             // 
@@ -1627,7 +1627,7 @@
             this.SViewAssViewDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SViewAssViewDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SViewAssViewDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewAssViewDetailsBTN.Location = new System.Drawing.Point(231, 600);
+            this.SViewAssViewDetailsBTN.Location = new System.Drawing.Point(232, 600);
             this.SViewAssViewDetailsBTN.Name = "SViewAssViewDetailsBTN";
             this.SViewAssViewDetailsBTN.Size = new System.Drawing.Size(131, 32);
             this.SViewAssViewDetailsBTN.TabIndex = 18;
@@ -1647,7 +1647,7 @@
             this.SViewAssUnassignBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SViewAssUnassignBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SViewAssUnassignBTN.ForeColor = System.Drawing.Color.White;
-            this.SViewAssUnassignBTN.Location = new System.Drawing.Point(368, 600);
+            this.SViewAssUnassignBTN.Location = new System.Drawing.Point(369, 600);
             this.SViewAssUnassignBTN.Name = "SViewAssUnassignBTN";
             this.SViewAssUnassignBTN.Size = new System.Drawing.Size(109, 32);
             this.SViewAssUnassignBTN.TabIndex = 20;
@@ -1688,7 +1688,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(503, 23);
+            this.label10.Location = new System.Drawing.Point(504, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 19);
@@ -1707,7 +1707,7 @@
             "All",
             "Scheduled",
             "Unscheduled"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(555, 20);
+            this.SViewAssCMBX.Location = new System.Drawing.Point(556, 20);
             this.SViewAssCMBX.Name = "SViewAssCMBX";
             this.SViewAssCMBX.Size = new System.Drawing.Size(119, 25);
             this.SViewAssCMBX.Sorted = true;
@@ -1723,7 +1723,7 @@
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssSearchTXTBX.Location = new System.Drawing.Point(246, 71);
             this.SViewAssSearchTXTBX.Name = "SViewAssSearchTXTBX";
-            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(202, 18);
+            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(203, 18);
             this.SViewAssSearchTXTBX.TabIndex = 8;
             this.SViewAssSearchTXTBX.Text = "Search or filter";
             this.SViewAssSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1775,7 +1775,7 @@
             this.SViewAssGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.SViewAssGRD.RowHeadersVisible = false;
             this.SViewAssGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SViewAssGRD.Size = new System.Drawing.Size(658, 458);
+            this.SViewAssGRD.Size = new System.Drawing.Size(659, 458);
             this.SViewAssGRD.TabIndex = 5;
             this.SViewAssGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewAssGRD_CellEnter);
             this.SViewAssGRD.DoubleClick += new System.EventHandler(this.SViewAssGRD_DoubleClick);
@@ -1786,7 +1786,7 @@
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SViewAssSearchLine.Location = new System.Drawing.Point(243, 76);
+            this.SViewAssSearchLine.Location = new System.Drawing.Point(244, 76);
             this.SViewAssSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SViewAssSearchLine.Name = "SViewAssSearchLine";
             this.SViewAssSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -2561,6 +2561,7 @@
             this.PEmpListViewBTN.TabIndex = 6;
             this.PEmpListViewBTN.Text = "VIEW DETAILS";
             this.PEmpListViewBTN.UseVisualStyleBackColor = false;
+            this.PEmpListViewBTN.Visible = false;
             this.PEmpListViewBTN.Click += new System.EventHandler(this.PEmpListViewBTN_Click);
             // 
             // PEmpListGRD
@@ -2608,6 +2609,7 @@
             this.PEmpListGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PEmpListGRD.Size = new System.Drawing.Size(655, 498);
             this.PEmpListGRD.TabIndex = 5;
+            this.PEmpListGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.PEmpListGRD_CellEnter);
             this.PEmpListGRD.DoubleClick += new System.EventHandler(this.PEmpListGRD_DoubleClick);
             // 
             // PEmpListSearchLine

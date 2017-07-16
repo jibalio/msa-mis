@@ -49,10 +49,10 @@ namespace MSAMISUserInterface {
                     else EmpListGRD.FirstDisplayedScrollingRowIndex = 0;
                     break;
                 }
+                if (row.Cells[1].Value.ToString().Equals("")){
+                    row.Visible = false;
+                }
             }
-
-            
-
         }
 
         private void ChangePanel(Label newL, Panel newP) {
@@ -120,30 +120,29 @@ namespace MSAMISUserInterface {
         }
         DataGridViewRow currentrow;
         private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            if (EmpListGRD.SelectedRows.Count > 0) {
+            try {
                 currentrow.DefaultCellStyle.Font = new Font("Segoe UI", 12);
                 EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 currentrow = EmpListGRD.SelectedRows[0];
                 GID = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
                 LoadDetails();
             }
+            catch { }
         }
 
         private void LoadDetails() {
 
         }
-
-        private void DownArrow_Click(object sender, EventArgs e) {
-            try {
-                EmpListGRD.FirstDisplayedScrollingRowIndex = EmpListGRD.FirstDisplayedScrollingRowIndex + 3;
-            } catch { }
+        private void EmpListGRD_MouseEnter(object sender, EventArgs e) {
+            int first = EmpListGRD.FirstDisplayedScrollingRowIndex;
+            EmpListGRD.ScrollBars = ScrollBars.Vertical;
+            EmpListGRD.FirstDisplayedScrollingRowIndex = first;
         }
 
-        private void UpArrow_Click(object sender, EventArgs e) {
-            try {
-                EmpListGRD.FirstDisplayedScrollingRowIndex = EmpListGRD.FirstDisplayedScrollingRowIndex - 3;
-            }
-            catch { EmpListGRD.FirstDisplayedScrollingRowIndex = 0; }
+        private void EmpListGRD_MouseLeave(object sender, EventArgs e) {
+            int first = EmpListGRD.FirstDisplayedScrollingRowIndex;
+            EmpListGRD.ScrollBars = ScrollBars.None;
+            EmpListGRD.FirstDisplayedScrollingRowIndex = first;
         }
     }
 }
