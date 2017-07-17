@@ -6,15 +6,57 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*TODO: Fill hourcosts dictionary with basicpay * rates (stored in rates dictionary)
+ * ComputeGrossPay ni na func.
+ */
 namespace MSAMISUserInterface {
 
     public class Payroll {
 
+        public int GID;
+
+        public static Dictionary<string, HourCostPair> hourcosts = new Dictionary<string, HourCostPair>();
+        public static Dictionary<string, double> rates = new Dictionary<string, double>();
         
+         
+
 
         public static double BasicPay = 340.00;
         public static Attendance.Period period = Attendance.GetCurrentPayPeriod();
+        public static Hours total_old;
+        public HourProcessor totalhours = new HourProcessor();
+        #region Compuations
+
+
+
+        public class HourCostPair {
+            double hour;
+            double cost;
+            double total;
+            public HourCostPair (double hours, double basicpay) {
+                this.hour = hours;
+                this.cost = basicpay;
+                this.total = hours * basicpay;
+            }
+            public HourCostPair () {
+                this.hour = 0;
+                this.cost = 0;
+                this.total = 0;
+            }
+        }
+
         
+
+        public Payroll (int GID) {
+            this.GID = GID;
+            //Total = GetHoursInCurrentPeriod();
+        }
+
+        
+        
+        #endregion
+       
+
 
 
         #region Basic Pay Operations
@@ -45,35 +87,41 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        #region GetGuardsList Operations
 
-        public static Hours GetHoursInCurrentPeriod (int GID) {
+        public void ComputeHours () {
             DataTable HourIterationDataTable = SQLTools.ExecuteQuery(
                 String.Format(@"
-                    select atid, date, timein, timeout from attendance 
+                    select dutydetails.did, atid, date, timein, timeout, 
+                    ti_hh, ti_mm, ti_period, to_hh, to_mm, to_period
+                    from attendance 
                     left join period on period.pid = attendance.pid
                     left join dutydetails on attendance.did = dutydetails.did
                     left join sduty_assignment on sduty_assignment.aid = dutydetails.aid
-                    left join guards on guards.gid=sduty_assignment.gid
-                    where guards.gid={0}
-                    and period={1} 
-                    and year={2}
-                    and month={3}
-            ;",GID, period.period, period.year, period.month));
+                    left join guards on guards.gid=sduty_assignment.gid 
+            ;", GID, period.period, period.year, period.month));
             Hours HourIterationTotal = new Hours();
-            foreach (DataRow DataRowIteration in HourIterationDataTable.Rows) {
-                string ti = DataRowIteration["date"].ToString().Substring(0, 11) + DataRowIteration["TimeIn"].ToString();
-                string to = DataRowIteration["date"].ToString().Substring(0, 10) + " " + DataRowIteration["TimeOut"].ToString();
+            foreach (DataRow dr in HourIterationDataTable.Rows) {
+                
+
+                string ti = dr["date"].ToString().Substring(0, 11) + dr["TimeIn"].ToString();
+                string to = dr["date"].ToString().Substring(0, 10) + " " + dr["TimeOut"].ToString();
                 DateTime TimeInDateTime = DateTime.Parse(ti);
                 DateTime TimeOutDateTime = DateTime.Parse(to);
-                Hours asx = new Hours (TimeInDateTime, TimeOutDateTime, TimeInDateTime);
-                HourIterationTotal.normal_day+= asx.normal_day;
-                HourIterationTotal.normal_night += asx.normal_night;
-                HourIterationTotal.holiday_day += asx.holiday_day;
-                HourIterationTotal.holiday_night += asx.holiday_night;
-                HourIterationTotal.total += asx.total;
-                HourIterationTotal.SundayTotal += asx.SundayTotal;
+
+                string StartDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["ti_hh"] + ":" + dr["ti_mm"] + " " + dr["ti_ampm"];
+                string EndDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["to_hh"] + ":" + dr["to_mm"] + " " + dr["to_ampm"];
+                DateTime DutyStart = DateTime.Parse(StartDutyString);
+                DateTime DutyEnd = DateTime.Parse(EndDutyString);
+                HourProcessor hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
+                totalhours.Add(hp);
             }
-            return HourIterationTotal;
+        }
+        public HourProcessor GetHours() {
+            return totalhours;
+        }
+        public void ComputeGrossPay () {
+            throw new NotImplementedException();
         }
 
         public static DataTable GetGuardsPayrollMain() {
@@ -118,64 +166,9 @@ namespace MSAMISUserInterface {
                                                 ");
         }
 
-        #region Compuations
-        public class HourCostPair {
-            double hour;
-            double cost;
-            double total;
-            public HourCostPair (double hours, double basicpay) {
-                this.hour = hours;
-                this.cost = basicpay;
-                this.total = hours * basicpay;
-            }
-        }
-
-        public static Hours hour;
-        public static void LoadData(int GID) {
-            hour = GetHoursInCurrentPeriod(GID);
-        }
-        public static HourCostPair ComputeGrossPay() {
-            HourCostPair e = new HourCostPair(hour.total.TotalHours, BasicPay);
-            return e;
-        }
-
-
-        /* The bonuses for hours
-         * 
-         * Here are the following bonussess
-         * 
-         */
-        public static HourCostPair ComputeOrdinaryNightDifferential() {
-            throw new NotImplementedException();
-            //HourCostPair e = new HourCostPair(hour.ordinary_night.TotalHours, BasicPay * 0.10);
-            //return e;
-        }
-        public static HourCostPair ComputeHolidayNightDifferential() {
-            HourCostPair e = new HourCostPair(hour.holiday_night.TotalHours, BasicPay * 0.10);
-            return e;
-        }
-
+#endregion New Region
+      
         
-        #endregion
-
-
-
-
-
-
-        public class Data {
-            // Personal Data
-            int GID;
-            int NumberOfDependents;
-            // Monthly Base
-            double BasePay;
-            
-
-
-            // Sunday Premium pay = *30%
-
-
-        }
 
         public class Defaults {
             

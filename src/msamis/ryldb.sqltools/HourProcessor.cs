@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MSAMISUserInterface {
-    class HourProcessor {
-
+    public class HourProcessor {
+        
         #region Fields
         TimeSpan nsu_proper_day_normal, nsu_proper_day_special, nsu_proper_day_regular, nsu_proper_night_normal,
                 nsu_proper_night_special, nsu_proper_night_regular, nsu_overtime_day_normal, nsu_overtime_day_special,
@@ -186,7 +186,34 @@ namespace MSAMISUserInterface {
             }
         
         public HourProcessor() {
+            nsu_proper_day_normal = nsu_proper_day_special = nsu_proper_day_regular = nsu_proper_night_normal = nsu_proper_night_special = nsu_proper_night_regular = nsu_overtime_day_normal = nsu_overtime_day_special = nsu_overtime_day_regular = nsu_overtime_night_normal = nsu_overtime_night_special = nsu_overtime_night_regular = sun_proper_day_normal = sun_proper_day_special = sun_proper_day_regular = sun_proper_night_normal = sun_proper_night_special = sun_proper_night_regular = sun_overtime_day_normal = sun_overtime_day_special= sun_overtime_day_regular = sun_overtime_night_normal = sun_overtime_night_special = sun_overtime_night_regular = nsu_proper_day_normal = nsu_proper_day_special = nsu_proper_day_regular = nsu_proper_night_normal = nsu_proper_night_special = nsu_proper_night_regular = nsu_overtime_day_normal = nsu_overtime_day_special = nsu_overtime_day_regular = nsu_overtime_night_normal = nsu_overtime_night_special = nsu_overtime_night_regular = sun_proper_day_normal = sun_proper_day_special = sun_proper_day_regular = sun_proper_night_normal = sun_proper_night_special = sun_proper_night_regular = sun_overtime_day_normal = sun_overtime_day_special= sun_overtime_day_regular = sun_overtime_night_normal = sun_overtime_night_special = sun_overtime_night_regular = new TimeSpan(0, 0, 0);
+        }
 
+        public void Add (HourProcessor e) {
+            this.nsu_proper_day_normal += e.nsu_proper_day_normal;
+            this.nsu_proper_day_special += e.nsu_proper_day_special;
+            this.nsu_proper_day_regular += e.nsu_proper_day_regular;
+            this.nsu_proper_night_normal += e.nsu_proper_night_normal;
+            this.nsu_proper_night_special += e.nsu_proper_night_special;
+            this.nsu_proper_night_regular += e.nsu_proper_night_regular;
+            this.nsu_overtime_day_normal += e.nsu_overtime_day_normal;
+            this.nsu_overtime_day_special += e.nsu_overtime_day_special;
+            this.nsu_overtime_day_regular += e.nsu_overtime_day_regular;
+            this.nsu_overtime_night_normal += e.nsu_overtime_night_normal;
+            this.nsu_overtime_night_special += e.nsu_overtime_night_special;
+            this.nsu_overtime_night_regular += e.nsu_overtime_night_regular;
+            this.sun_proper_day_normal += e.sun_proper_day_normal;
+            this.sun_proper_day_special += e.sun_proper_day_special;
+            this.sun_proper_day_regular += e.sun_proper_day_regular;
+            this.sun_proper_night_normal += e.sun_proper_night_normal;
+            this.sun_proper_night_special += e.sun_proper_night_special;
+            this.sun_proper_night_regular += e.sun_proper_night_regular;
+            this.sun_overtime_day_normal += e.sun_overtime_day_normal;
+            this.sun_overtime_day_special += e.sun_overtime_day_special;
+            this.sun_overtime_day_regular += e.sun_overtime_day_regular;
+            this.sun_overtime_night_normal += e.sun_overtime_night_normal;
+            this.sun_overtime_night_special += e.sun_overtime_night_special;
+            this.sun_overtime_night_regular += e.sun_overtime_night_regular;
         }
 
         private static TimeSpan GetOverlap(DateTime firstStart, DateTime firstEnd, DateTime secondStart, DateTime secondEnd) {
@@ -196,5 +223,7 @@ namespace MSAMISUserInterface {
             TimeSpan returnValue = interval > TimeSpan.FromSeconds(0) ? interval : new TimeSpan(0,0,0);
             return returnValue;
         }
+
+        
     }
 }
