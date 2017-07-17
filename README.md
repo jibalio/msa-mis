@@ -18,9 +18,10 @@ PM > Get-Project -ryldb.sqltools | Install-Package MySqlBackup.NET -Version 2.0.
 **The program automatically imports the database**. If this fails, download the SQL Dump [here](https://github.com/lerycibalio/msa-mis/tree/master/sql) and manually import to databases `msadb` and `msadbarchive`.
 
 ### Software
-**Backend:** Export the database dump **using MySQL Workbench 6.3.8+ only**. Using older versions will cause MSA-MIS's auto-database-import component `(AutoLoader.cs)` to fail. *Ayaw gamita ang sql workbench sa F610 kay mabungkag ang AutoLoader.cs, kara-an kaayo*.
+~~**Backend:** Export the database dump **using MySQL Workbench 6.3.8+ only**. Using older versions will cause MSA-MIS's auto-database-import component `(AutoLoader.cs)` to fail. *Ayaw gamita ang sql workbench sa F610 kay mabungkag ang AutoLoader.cs, kara-an kaayo*.~~
+Nvm ok na.
 
-**Important**: Turn on  'Include Create Schema' in export settings. 
+**Important (MySql Workbench 6.3+ only)**: Turn on  'Include Create Schema' in export settings. 
 
 ## About
 ### Modules
