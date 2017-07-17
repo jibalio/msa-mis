@@ -12,34 +12,11 @@ namespace MSAMISUserInterface {
         public static void InitData() {
             Payroll.BasicPay = 340.00;
             initRates();
-            initHourCosts();
+           
         }
 
         private static void initHourCosts() {
-            Payroll.hourcosts.Add("nsu_proper_day_normal", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_proper_day_special", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_proper_day_regular", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_proper_night_normal", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_proper_night_special", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_proper_night_regular", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_overtime_day_normal", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_overtime_day_special", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_overtime_day_regular", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_overtime_night_normal", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_overtime_night_special", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("nsu_overtime_night_regular", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_proper_day_normal", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_proper_day_special", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_proper_day_regular", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_proper_night_normal", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_proper_night_special", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_proper_night_regular", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_overtime_day_normal", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_overtime_day_special", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_overtime_day_regular", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_overtime_night_normal", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_overtime_night_special", new Payroll.HourCostPair());
-            Payroll.hourcosts.Add("sun_overtime_night_regular", new Payroll.HourCostPair());
+           
         }
 
         public static void UpdateExipiry() {
