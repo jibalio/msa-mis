@@ -30,11 +30,10 @@ namespace MSAMISUserInterface {
         public void LoadPage() {
             Attendance.Period p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
-
-            FadeTMR.Start();
-            RefreshData();
             RefreshDutyDetails();
             RefreshCurrent();
+            RefreshData();
+            FadeTMR.Start();
         }
         public void RefreshData() {
             DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
@@ -46,6 +45,14 @@ namespace MSAMISUserInterface {
                 PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
             }
             if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
+
+            if (!DismissBTN.Visible) {
+                MainAttendancePNL.Visible = false;
+                ErrorPNL.Visible = true;
+            } else {
+                MainAttendancePNL.Visible = true;
+                ErrorPNL.Visible = false;
+            }
         }
         public void RefreshCurrent() {
 
@@ -97,6 +104,9 @@ namespace MSAMISUserInterface {
             ANightLBL.Text = hrs.GetNormalNight() + " hrs";
             AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
             AHNightLBL.Text = hrs.GetHolidayNight() + " hrs";
+            if (B.GetCertifiedBy().Equals(""))  {
+                ACertifiedLBL.Text = "Unedited Attendance";
+            } else
             ACertifiedLBL.Text = B.GetCertifiedBy();
         }
         #endregion
@@ -146,6 +156,7 @@ namespace MSAMISUserInterface {
         private void DutyDetailsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (DutyDetailsGRD.SelectedRows.Count > 0) {
                 DID = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
+                AddDutyDetailsBTN.Location = new Point(137, 431);
                 AddDutyDetailsBTN.Show();
                 EditDutyDetailsBTN.Show();
                 DismissBTN.Show();
