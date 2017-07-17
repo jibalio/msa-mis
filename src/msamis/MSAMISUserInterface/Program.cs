@@ -17,12 +17,13 @@ namespace MSAMISUserInterface {
         [STAThread]
         static void Main() {
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
-
+            
             SQLTools.EnableConsoleDebugging = false;
             Data.InitData();
             AutoLoader.AutoImportSql(true, true);
             Holiday.InitHolidays();
-             Application.EnableVisualStyles();
+            Data.InitData();
+            Application.EnableVisualStyles();
                Application.SetCompatibleTextRenderingDefault(false);
              
             Application.Run(new LoginForm());
@@ -37,6 +38,9 @@ namespace MSAMISUserInterface {
 
         }
     }
+
+
+
     class ComboBoxItem {
         String displayValue;
         string itemID;

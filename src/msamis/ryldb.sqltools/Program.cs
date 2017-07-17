@@ -28,8 +28,13 @@ namespace ryldb.sqltools {
             //Payroll.GetGrossPay(306);
 
             //HourProcessor e = new HourProcessor(new DateTime(2017, 1, 1, 15, 0, 0), new DateTime(2017, 1, 1, 23, 0, 0), new DateTime(2017,1,1,15,0,0), new DateTime(2017,1,1,20,0,0));
-            HourProcessor e = new HourProcessor(new DateTime(2017, 1, 1, 01, 0, 0), new DateTime(2017, 1, 1, 11, 0, 0), new DateTime(2017, 1, 1, 01, 0, 0), new DateTime(2017, 1, 1, 09, 0, 0));
-            e = e;
+            //HourProcessor e = new HourProcessor(new DateTime(2017,1, 1, 14, 0, 0), new DateTime(2017, 1, 1, 00, 0, 0), new DateTime(2017, 1, 1, 14, 0, 0), new DateTime(2017, 1, 1, 20, 0, 0));
+            Data.InitData();
+
+            Payroll pay = new Payroll(239);
+            pay.ComputeHours();
+            pay.ComputeGrossPay();
+            pay = pay;
         }
     }
 }
