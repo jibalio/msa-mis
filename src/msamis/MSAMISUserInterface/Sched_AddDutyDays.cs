@@ -46,7 +46,6 @@ namespace MSAMISUserInterface {
                 }
                 A.SetCertifiedBy(AID, CertifiedBX.Text);
                 reference.RefreshAttendance();
-                reference.RefreshCurrent();
                 this.Close();
             }
         }

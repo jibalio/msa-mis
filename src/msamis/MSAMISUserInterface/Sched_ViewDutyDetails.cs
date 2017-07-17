@@ -48,14 +48,7 @@ namespace MSAMISUserInterface {
             if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
         }
         public void RefreshCurrent() {
-            Attendance.Period p = Attendance.GetCurrentPayPeriod();
-            A = new Attendance(AID, p.month, p.period, p.year);
-            Hours hrs = A.GetAttendanceSummary();
-            RShiftLBL.Text = hrs.GetNormalDay() + " hrs";
-            RNightLBL.Text = hrs.GetNormalNight() + " hrs";
-            HShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
-            HNightLBL.Text = hrs.GetHolidayNight() + " hrs";
-            CertifiedLBL.Text = A.GetCertifiedBy();
+
         }
 
         public void RefreshDutyDetails() {
@@ -104,7 +97,7 @@ namespace MSAMISUserInterface {
             ANightLBL.Text = hrs.GetNormalNight() + " hrs";
             AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
             AHNightLBL.Text = hrs.GetHolidayNight() + " hrs";
-            ACertifiedLBL.Text = B.GetCertifiedBy() + " hrs";
+            ACertifiedLBL.Text = B.GetCertifiedBy();
         }
         #endregion
 

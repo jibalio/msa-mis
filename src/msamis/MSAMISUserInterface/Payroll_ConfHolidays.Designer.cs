@@ -43,6 +43,8 @@
             this.EditBTN = new System.Windows.Forms.Button();
             this.CancelBTN = new System.Windows.Forms.Button();
             this.AddBTN = new System.Windows.Forms.Button();
+            this.DescTLTP = new System.Windows.Forms.ToolTip(this.components);
+            this.DateTLTP = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HolidaysGRD)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -288,6 +290,20 @@
             this.AddBTN.UseVisualStyleBackColor = false;
             this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
             // 
+            // DescTLTP
+            // 
+            this.DescTLTP.AutoPopDelay = 3000;
+            this.DescTLTP.InitialDelay = 500;
+            this.DescTLTP.ReshowDelay = 100;
+            this.DescTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // DateTLTP
+            // 
+            this.DateTLTP.AutoPopDelay = 3000;
+            this.DateTLTP.InitialDelay = 500;
+            this.DateTLTP.ReshowDelay = 100;
+            this.DateTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
             // Payroll_ConfHolidays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,5 +354,7 @@
         private System.Windows.Forms.Button EditBTN;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button RemoveBTN;
+        private System.Windows.Forms.ToolTip DescTLTP;
+        private System.Windows.Forms.ToolTip DateTLTP;
     }
 }

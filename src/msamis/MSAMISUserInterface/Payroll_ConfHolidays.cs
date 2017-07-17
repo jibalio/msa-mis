@@ -37,11 +37,13 @@ namespace MSAMISUserInterface {
             HolidaysGRD.DataSource = Holiday.GetHolidays();
             HolidaysGRD.Columns[0].Visible = false;
             HolidaysGRD.Columns[1].HeaderText = "START DATE";
-            HolidaysGRD.Columns[1].Width = 130;
+            HolidaysGRD.Columns[1].Width = 110;
             HolidaysGRD.Columns[2].HeaderText = "START END";
-            HolidaysGRD.Columns[2].Width = 130;
+            HolidaysGRD.Columns[2].Width = 110;
             HolidaysGRD.Columns[3].HeaderText = "DESCRIPTION";
-            HolidaysGRD.Columns[3].Width = 200;
+            HolidaysGRD.Columns[3].Width = 160;
+            HolidaysGRD.Columns[4].HeaderText = "TYPE";
+            HolidaysGRD.Columns[4].Width = 80;
 
             List<DateTime> dts = new List<DateTime>();
 
@@ -64,9 +66,30 @@ namespace MSAMISUserInterface {
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
-            if (AddBTN.Text.Equals("ADD")) Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text);
-            else { Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), DescBX.Text); CancelBTN.PerformClick(); }
-            LoadPage();
+            if (DataVal()) {
+                if (AddBTN.Text.Equals("ADD")) Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text);
+                else { Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), DescBX.Text); CancelBTN.PerformClick(); }
+                LoadPage();
+            }
+        }
+
+        private bool DataVal() {
+            bool ret = true;
+
+            if (DescBX.Text.Trim(' ').Equals("")) {
+                DescTLTP.ToolTipTitle = "Description";
+                DescTLTP.Show("Please enter a description", DescBX);
+                ret = false;
+            }
+
+            if (DateLBL.Text.Equals("Please choose a date/dates")) {
+                DateTLTP.ToolTipTitle = "Date";
+                DateTLTP.Show("Please choose a date from the calendar", DateLBL);
+                ret = false;
+            }
+
+            return ret;
+
         }
 
         DateTime start, end;

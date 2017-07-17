@@ -1107,10 +1107,6 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
 
-        private void PCashAdvBTN_Click(object sender, EventArgs e) {
-            PCHnagePanel(PCashAdvancePage, PCashAdvBTN);
-        }
-
         private void PPayrollSummaryBTN_Click(object sender, EventArgs e) {
             PCHnagePanel(PPayrollSummaryPage, PPayrollSummaryBTN);
         }
@@ -1133,10 +1129,12 @@ namespace MSAMISUserInterface {
             PEmpListGRD.Columns[1].HeaderText = "GUARD'S NAME";
             PEmpListGRD.Columns[2].HeaderText = "ASSIGNED TO";
             PEmpListGRD.Columns[3].HeaderText = "ATTENDANCE";
+            PEmpListGRD.Columns[4].HeaderText = "STATUS";
 
             PEmpListGRD.Columns[1].Width = 200;
-            PEmpListGRD.Columns[2].Width = 200;
-            PEmpListGRD.Columns[3].Width = 200;
+            PEmpListGRD.Columns[2].Width = 180;
+            PEmpListGRD.Columns[3].Width = 130;
+            PEmpListGRD.Columns[4].Width = 90;
 
             PEmpListGRD.Sort(PEmpListGRD.Columns[1], ListSortDirection.Ascending);
             PEmpListViewBTN.Visible = false;

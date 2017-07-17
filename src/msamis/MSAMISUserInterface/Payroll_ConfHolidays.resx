@@ -169,4 +169,10 @@
         2GwIXDiwOSjqzMQ5ruFqFjpa3Jc/d8pvIqUMQA0AAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="DescTLTP.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>144, 20</value>
+  </metadata>
+  <metadata name="DateTLTP.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>241, 20</value>
+  </metadata>
 </root>
