@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `msadb`;
--- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: msadb
+-- Host: localhost    Database: msadb
 -- ------------------------------------------------------
--- Server version	5.7.13-log
+-- Server version	5.5.48-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -74,6 +74,32 @@ CREATE TABLE `adjustments` (
 LOCK TABLES `adjustments` WRITE;
 /*!40000 ALTER TABLE `adjustments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `adjustments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `at`
+--
+
+DROP TABLE IF EXISTS `at`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `at` (
+  `TID` int(11) NOT NULL AUTO_INCREMENT,
+  `AID` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `period` int(11) DEFAULT NULL,
+  `year` int(5) DEFAULT NULL,
+  PRIMARY KEY (`TID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `at`
+--
+
+LOCK TABLES `at` WRITE;
+/*!40000 ALTER TABLE `at` DISABLE KEYS */;
+/*!40000 ALTER TABLE `at` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -283,18 +309,19 @@ INSERT INTO `guards` VALUES (1,'Kendra','Snowder','Frohman',1,'7/2/1991',1,'5 11
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `guardslist`
+-- Temporary table structure for view `guardslist`
 --
 
 DROP TABLE IF EXISTS `guardslist`;
 /*!50001 DROP VIEW IF EXISTS `guardslist`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `guardslist` AS SELECT 
- 1 AS `gid`,
- 1 AS `name`,
- 1 AS `contactno`,
- 1 AS `gstatus`*/;
+/*!50001 CREATE TABLE `guardslist` (
+  `gid` int(11),
+  `name` varchar(138),
+  `contactno` varchar(185),
+  `gstatus` int(11)
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -306,10 +333,10 @@ DROP TABLE IF EXISTS `holiday`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `holiday` (
   `hid` int(11) NOT NULL AUTO_INCREMENT,
-  `type` int(1) DEFAULT NULL,
   `datestart` varchar(45) DEFAULT NULL,
   `dateend` varchar(45) DEFAULT NULL,
   `desc` varchar(120) DEFAULT NULL,
+  `type` int(1) DEFAULT NULL,
   PRIMARY KEY (`hid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -320,7 +347,7 @@ CREATE TABLE `holiday` (
 
 LOCK TABLES `holiday` WRITE;
 /*!40000 ALTER TABLE `holiday` DISABLE KEYS */;
-INSERT INTO `holiday` VALUES (1,1,'07/18/2017','07/22/2017','Kadayawan');
+INSERT INTO `holiday` VALUES (1,'07/18/2017','07/22/2017','Kadayawan',1);
 /*!40000 ALTER TABLE `holiday` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,18 +404,19 @@ INSERT INTO `meta` VALUES (1,'5');
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `new_view`
+-- Temporary table structure for view `new_view`
 --
 
 DROP TABLE IF EXISTS `new_view`;
 /*!50001 DROP VIEW IF EXISTS `new_view`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `new_view` AS SELECT 
- 1 AS `gid`,
- 1 AS `name`,
- 1 AS `contactno`,
- 1 AS `gstatus`*/;
+/*!50001 CREATE TABLE `new_view` (
+  `gid` int(11),
+  `name` varchar(138),
+  `contactno` varchar(185),
+  `gstatus` int(11)
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -537,6 +565,29 @@ INSERT INTO `request_assign` VALUES (1,1,'2017-07-14 00:00:00','2017-07-14 00:00
 UNLOCK TABLES;
 
 --
+-- Table structure for table `request_dismiss`
+--
+
+DROP TABLE IF EXISTS `request_dismiss`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `request_dismiss` (
+  `RDID` int(11) NOT NULL AUTO_INCREMENT,
+  `RID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`RDID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `request_dismiss`
+--
+
+LOCK TABLES `request_dismiss` WRITE;
+/*!40000 ALTER TABLE `request_dismiss` DISABLE KEYS */;
+/*!40000 ALTER TABLE `request_dismiss` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `request_unassign`
 --
 
@@ -591,9 +642,46 @@ INSERT INTO `sduty_assignment` VALUES (1,239,1,1),(2,228,1,1),(3,181,1,1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `time`
+--
+
+DROP TABLE IF EXISTS `time`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `time` (
+  `TID` int(11) NOT NULL AUTO_INCREMENT,
+  `AID` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `period` int(11) DEFAULT NULL,
+  `year` int(5) DEFAULT NULL,
+  `normal_day` int(11) DEFAULT NULL,
+  `normal_night` int(11) DEFAULT NULL,
+  `holiday_day` int(11) DEFAULT NULL,
+  `holiday_night` int(11) DEFAULT NULL,
+  `certifiedby` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`TID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `time`
+--
+
+LOCK TABLES `time` WRITE;
+/*!40000 ALTER TABLE `time` DISABLE KEYS */;
+INSERT INTO `time` VALUES (1,1,1,11,2017,1,1,1,1,'1'),(2,115,7,2,2017,199,12,12,12,'Holly'),(3,115,2,2,2017,123,999,123,123,'Holly');
+/*!40000 ALTER TABLE `time` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'msadb'
+--
+
+--
 -- Final view structure for view `guardslist`
 --
 
+/*!50001 DROP TABLE IF EXISTS `guardslist`*/;
 /*!50001 DROP VIEW IF EXISTS `guardslist`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -612,6 +700,7 @@ UNLOCK TABLES;
 -- Final view structure for view `new_view`
 --
 
+/*!50001 DROP TABLE IF EXISTS `new_view`*/;
 /*!50001 DROP VIEW IF EXISTS `new_view`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -635,4 +724,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-16  2:25:51
+-- Dump completed on 2017-07-17  8:13:09
