@@ -77,24 +77,27 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetGuardsPayrollMain() {
-            return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
+            return SQLTools.ExecuteQuery(@"     
+                                                select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
-                                                            WHEN period.pid IS NULL
+                                                            WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL)
                                                             THEN 'Yes'
                                                             ELSE 'No Attendance Details Found'
                                                         END
-                                                      ) AS attendance
+                                                      ) AS attendance, pstatus
                                                  from request
                                                 left join client on client.cid=request.cid
                                                 left join request_assign on request_assign.rid=request.rid
                                                 left join sduty_assignment on sduty_assignment.raid=request_assign.raid
                                                 left join guards on guards.gid=sduty_assignment.gid
                                                 left join period on guards.gid=period.gid
+												left join dutydetails on dutydetails.aid=sduty_assignment.aid
+												left join payroll on guards.gid=payroll.gid
                                                 where RequestType = 1 and
                                                 ((period=1
                                                 and month = 7
                                                 and year = 2017) OR
-                                                (pid is null))
+                                                (period.pid is null))
                                                 group by guards.gid
                                                 ");
         }
