@@ -6,16 +6,38 @@ using System.Threading.Tasks;
 
 namespace MSAMISUserInterface {
     public class HourProcessor {
-        
-        #region Fields
-        TimeSpan nsu_proper_day_normal, nsu_proper_day_special, nsu_proper_day_regular, nsu_proper_night_normal,
-                nsu_proper_night_special, nsu_proper_night_regular, nsu_overtime_day_normal, nsu_overtime_day_special,
-                nsu_overtime_day_regular, nsu_overtime_night_normal, nsu_overtime_night_special, nsu_overtime_night_regular,
-                sun_proper_day_normal, sun_proper_day_special, sun_proper_day_regular, sun_proper_night_normal,
-                sun_proper_night_special, sun_proper_night_regular, sun_overtime_day_normal, sun_overtime_day_special,
-                sun_overtime_day_regular, sun_overtime_night_normal, sun_overtime_night_special, sun_overtime_night_regular;
+        Dictionary<string, TimeSpan> hp = new Dictionary<string, TimeSpan> { 
+            #region + Keys Definition
+            {"nsu_proper_day_normal", new TimeSpan(0,0,0)},
+            {"nsu_proper_day_special", new TimeSpan(0,0,0)},
+            {"nsu_proper_day_regular", new TimeSpan(0,0,0)},
+            {"nsu_proper_night_normal", new TimeSpan(0,0,0)},
+            {"nsu_proper_night_special", new TimeSpan(0,0,0)},
+            {"nsu_proper_night_regular", new TimeSpan(0,0,0)},
+            {"nsu_overtime_day_normal", new TimeSpan(0,0,0)},
+            {"nsu_overtime_day_special", new TimeSpan(0,0,0)},
+            {"nsu_overtime_day_regular", new TimeSpan(0,0,0)},
+            {"nsu_overtime_night_normal", new TimeSpan(0,0,0)},
+            {"nsu_overtime_night_special", new TimeSpan(0,0,0)},
+            {"nsu_overtime_night_regular", new TimeSpan(0,0,0)},
+            {"sun_proper_day_normal", new TimeSpan(0,0,0)},
+            {"sun_proper_day_special", new TimeSpan(0,0,0)},
+            {"sun_proper_day_regular", new TimeSpan(0,0,0)},
+            {"sun_proper_night_normal", new TimeSpan(0,0,0)},
+            {"sun_proper_night_special", new TimeSpan(0,0,0)},
+            {"sun_proper_night_regular", new TimeSpan(0,0,0)},
+            {"sun_overtime_day_normal", new TimeSpan(0,0,0)},
+            {"sun_overtime_day_special", new TimeSpan(0,0,0)},
+            {"sun_overtime_day_regular", new TimeSpan(0,0,0)},
+            {"sun_overtime_night_normal", new TimeSpan(0,0,0)},
+            {"sun_overtime_night_special", new TimeSpan(0,0,0)},
+            {"sun_overtime_night_regular", new TimeSpan(0,0,0)},
+            #endregion
+        };
         TimeSpan total, totalday, totalnight;
-        #endregion
+        public Dictionary<string, TimeSpan> GetHourDictionary() {
+            return hp;
+        }
         public HourProcessor(DateTime ti, DateTime to, DateTime startduty, DateTime endduty) {
             DateTime NightStart = new DateTime(ti.Year, ti.Month, ti.Day, 22, 00, 00);
             DateTime NightEnd = new DateTime(ti.Year, ti.Month, ti.Day, 6, 00, 00);
@@ -51,28 +73,28 @@ namespace MSAMISUserInterface {
                 if (o.isholiday) {
                     if (o.type == Enumeration.HolidayType.Regular) {
                         if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                            sun_proper_day_regular += d1_day;
-                            sun_proper_night_regular += d1_night;
+                            this.hp["sun_proper_day_regular"] += d1_day;
+                            this.hp["sun_proper_night_regular"] += d1_night;
                         } else {
-                            nsu_proper_day_regular += d1_day;
-                            nsu_proper_night_regular += d1_night;
+                            this.hp["nsu_proper_day_regular"] += d1_day;
+                            this.hp["nsu_proper_night_regular"] += d1_night;
                         }
                     } else {
                         if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                            sun_proper_day_special += d1_day;
-                            sun_proper_night_special += d1_night;
+                            this.hp["sun_proper_day_special"] += d1_day;
+                            this.hp["sun_proper_night_special"] += d1_night;
                         } else {
-                            nsu_proper_day_special += d1_day;
-                            nsu_proper_night_special += d1_night;
+                            this.hp["nsu_proper_day_special"] += d1_day;
+                            this.hp["nsu_proper_night_special"] += d1_night;
                         }
                     }
                 } else {
                     if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                        sun_proper_day_normal += d1_day;
-                        sun_proper_night_normal += d1_night;
+                        this.hp["sun_proper_day_normal"] += d1_day;
+                        this.hp["sun_proper_night_normal"] += d1_night;
                     } else {
-                        nsu_proper_day_normal += d1_day;
-                        nsu_proper_night_normal += d1_night;
+                        this.hp["nsu_proper_day_normal"] += d1_day;
+                        this.hp["nsu_proper_night_normal"] += d1_night;
                     }
                 }
                 //Check if tomorrow is holiday.
@@ -80,41 +102,41 @@ namespace MSAMISUserInterface {
                 if (o.isholiday) {
                     if (o.type == Enumeration.HolidayType.Regular) {
                         if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                            sun_proper_day_regular += d2_day;
-                            sun_proper_night_regular += d2_night;
-                            sun_overtime_day_regular += d2_overtime_day;
-                            sun_overtime_night_regular += d2_overtime_night;
+                            this.hp["sun_proper_day_regular"] += d2_day;
+                            this.hp["sun_proper_night_regular"] += d2_night;
+                            this.hp["sun_overtime_day_regular"] += d2_overtime_day;
+                            this.hp["sun_overtime_night_regular"] += d2_overtime_night;
 
                         } else {
-                            nsu_proper_day_regular += d2_day;
-                            nsu_proper_night_regular += d2_night;
-                            nsu_overtime_day_regular += d2_overtime_day;
-                            nsu_overtime_night_regular += d2_overtime_night;
+                            this.hp["nsu_proper_day_regular"] += d2_day;
+                            this.hp["nsu_proper_night_regular"] += d2_night;
+                            this.hp["nsu_overtime_day_regular"] += d2_overtime_day;
+                            this.hp["nsu_overtime_night_regular"] += d2_overtime_night;
                         }
                     } else {
                         if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                            sun_proper_day_special += d2_day;
-                            sun_proper_night_special += d2_night;
-                            sun_overtime_day_special += d2_overtime_day;
-                            sun_overtime_night_special += d2_overtime_night;
+                            this.hp["sun_proper_day_special"] += d2_day;
+                            this.hp["sun_proper_night_special"] += d2_night;
+                            this.hp["sun_overtime_day_special"] += d2_overtime_day;
+                            this.hp["sun_overtime_night_special"] += d2_overtime_night;
                         } else {
-                            nsu_proper_day_special += d2_day;
-                            nsu_proper_night_special += d2_night;
-                            nsu_overtime_day_special += d2_overtime_day;
-                            nsu_overtime_night_special += d2_overtime_night;
+                            this.hp["nsu_proper_day_special"] += d2_day;
+                            this.hp["nsu_proper_night_special"] += d2_night;
+                            this.hp["nsu_overtime_day_special"] += d2_overtime_day;
+                            this.hp["nsu_overtime_night_special"] += d2_overtime_night;
                         }
                     }
                 } else {
                     if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                        sun_proper_day_normal += d2_day;
-                        sun_proper_night_normal += d2_night;
-                        sun_overtime_day_normal += d2_overtime_day;
-                        sun_overtime_night_normal += d2_overtime_night;
+                        this.hp["sun_proper_day_normal"] += d2_day;
+                        this.hp["sun_proper_night_normal"] += d2_night;
+                        this.hp["sun_overtime_day_normal"] += d2_overtime_day;
+                        this.hp["sun_overtime_night_normal"] += d2_overtime_night;
                     } else {
-                        nsu_proper_day_normal += d2_day;
-                        nsu_proper_night_normal += d2_night;
-                        nsu_overtime_day_normal += d2_overtime_day;
-                        nsu_overtime_night_normal += d2_overtime_night;
+                        this.hp["nsu_proper_day_normal"] += d2_day;
+                        this.hp["nsu_proper_night_normal"] += d2_night;
+                        this.hp["nsu_overtime_day_normal"] += d2_overtime_day;
+                        this.hp["nsu_overtime_night_normal"] += d2_overtime_night;
                     }
                 }
             } else {
@@ -146,74 +168,72 @@ namespace MSAMISUserInterface {
                    
                         if (o.type == Enumeration.HolidayType.Regular) {
                             if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                                sun_proper_day_regular += day;
-                                sun_proper_night_regular += night;
-                                sun_overtime_day_regular += overtimeday;
-                                sun_overtime_night_regular += overtimenight;
+                                this.hp["sun_proper_day_regular"] += day;
+                                this.hp["sun_proper_night_regular"] += night;
+                                this.hp["sun_overtime_day_regular"] += overtimeday;
+                                this.hp["sun_overtime_night_regular"] += overtimenight;
                             } else {
-                                nsu_proper_day_regular += day;
-                                nsu_proper_night_regular += night;
-                                nsu_overtime_day_regular += overtimeday;
-                                nsu_overtime_night_regular += overtimenight;
+                                this.hp["nsu_proper_day_regular"] += day;
+                                this.hp["nsu_proper_night_regular"] += night;
+                                this.hp["nsu_overtime_day_regular"] += overtimeday;
+                                this.hp["nsu_overtime_night_regular"] += overtimenight;
                             }
                         } else {
                             if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                                sun_proper_day_special += day;
-                                sun_proper_night_special += night;
-                                sun_overtime_day_special += overtimeday;
-                                sun_overtime_night_special += overtimenight;
-                            } else {
-                                nsu_proper_day_special += day;
-                                nsu_proper_night_special += night;
-                                nsu_overtime_day_special += overtimeday;
-                                nsu_overtime_night_special += overtimenight;
+                                this.hp["sun_proper_day_special"] += day;
+                                this.hp["sun_proper_night_special"] += night;
+                                this.hp["sun_overtime_day_special"] += overtimeday;
+                                this.hp["sun_overtime_night_special"] += overtimenight;
+                            } else { 
+                                this.hp["nsu_proper_day_special"] += day;
+                                this.hp["nsu_proper_night_special"] += night;
+                                this.hp["nsu_overtime_day_special"] += overtimeday;
+                                this.hp["nsu_overtime_night_special"] += overtimenight;
                             }
                         }
                     } else {
                         if (ti.DayOfWeek == DayOfWeek.Sunday) {
-                            sun_proper_day_normal += day;
-                            sun_proper_night_normal += night;
-                            sun_overtime_day_normal += overtimeday;
-                            sun_overtime_night_normal += overtimenight;
+                            this.hp["sun_proper_day_normal"] += day;
+                            this.hp["sun_proper_night_normal"] += night;
+                            this.hp["sun_overtime_day_normal"] += overtimeday;
+                            this.hp["sun_overtime_night_normal"] += overtimenight;
                         } else {
-                            nsu_proper_day_normal += day;
-                            nsu_proper_night_normal += night;
-                            sun_overtime_day_normal += overtimeday;
-                            sun_overtime_night_normal += overtimenight;
+                           this.hp["nsu_proper_day_normal"] += day;
+                           this.hp["nsu_proper_night_normal"] += night;
+                           this.hp["sun_overtime_day_normal"] += overtimeday;
+                           this.hp["sun_overtime_night_normal"] += overtimenight;
                         }
                     }
                 }
             }
         
-        public HourProcessor() {
-            nsu_proper_day_normal = nsu_proper_day_special = nsu_proper_day_regular = nsu_proper_night_normal = nsu_proper_night_special = nsu_proper_night_regular = nsu_overtime_day_normal = nsu_overtime_day_special = nsu_overtime_day_regular = nsu_overtime_night_normal = nsu_overtime_night_special = nsu_overtime_night_regular = sun_proper_day_normal = sun_proper_day_special = sun_proper_day_regular = sun_proper_night_normal = sun_proper_night_special = sun_proper_night_regular = sun_overtime_day_normal = sun_overtime_day_special= sun_overtime_day_regular = sun_overtime_night_normal = sun_overtime_night_special = sun_overtime_night_regular = nsu_proper_day_normal = nsu_proper_day_special = nsu_proper_day_regular = nsu_proper_night_normal = nsu_proper_night_special = nsu_proper_night_regular = nsu_overtime_day_normal = nsu_overtime_day_special = nsu_overtime_day_regular = nsu_overtime_night_normal = nsu_overtime_night_special = nsu_overtime_night_regular = sun_proper_day_normal = sun_proper_day_special = sun_proper_day_regular = sun_proper_night_normal = sun_proper_night_special = sun_proper_night_regular = sun_overtime_day_normal = sun_overtime_day_special= sun_overtime_day_regular = sun_overtime_night_normal = sun_overtime_night_special = sun_overtime_night_regular = new TimeSpan(0, 0, 0);
-        }
+        public HourProcessor() { }
 
         public void Add (HourProcessor e) {
-            this.nsu_proper_day_normal += e.nsu_proper_day_normal;
-            this.nsu_proper_day_special += e.nsu_proper_day_special;
-            this.nsu_proper_day_regular += e.nsu_proper_day_regular;
-            this.nsu_proper_night_normal += e.nsu_proper_night_normal;
-            this.nsu_proper_night_special += e.nsu_proper_night_special;
-            this.nsu_proper_night_regular += e.nsu_proper_night_regular;
-            this.nsu_overtime_day_normal += e.nsu_overtime_day_normal;
-            this.nsu_overtime_day_special += e.nsu_overtime_day_special;
-            this.nsu_overtime_day_regular += e.nsu_overtime_day_regular;
-            this.nsu_overtime_night_normal += e.nsu_overtime_night_normal;
-            this.nsu_overtime_night_special += e.nsu_overtime_night_special;
-            this.nsu_overtime_night_regular += e.nsu_overtime_night_regular;
-            this.sun_proper_day_normal += e.sun_proper_day_normal;
-            this.sun_proper_day_special += e.sun_proper_day_special;
-            this.sun_proper_day_regular += e.sun_proper_day_regular;
-            this.sun_proper_night_normal += e.sun_proper_night_normal;
-            this.sun_proper_night_special += e.sun_proper_night_special;
-            this.sun_proper_night_regular += e.sun_proper_night_regular;
-            this.sun_overtime_day_normal += e.sun_overtime_day_normal;
-            this.sun_overtime_day_special += e.sun_overtime_day_special;
-            this.sun_overtime_day_regular += e.sun_overtime_day_regular;
-            this.sun_overtime_night_normal += e.sun_overtime_night_normal;
-            this.sun_overtime_night_special += e.sun_overtime_night_special;
-            this.sun_overtime_night_regular += e.sun_overtime_night_regular;
+            this.hp["nsu_proper_day_normal"] += e.hp["nsu_proper_day_normal"];
+            this.hp["nsu_proper_day_special"] += e.hp["nsu_proper_day_special"];
+            this.hp["nsu_proper_day_regular"] += e.hp["nsu_proper_day_regular"];
+            this.hp["nsu_proper_night_normal"] += e.hp["nsu_proper_night_normal"];
+            this.hp["nsu_proper_night_special"] += e.hp["nsu_proper_night_special"];
+            this.hp["nsu_proper_night_regular"] += e.hp["nsu_proper_night_regular"];
+            this.hp["nsu_overtime_day_normal"] += e.hp["nsu_overtime_day_normal"];
+            this.hp["nsu_overtime_day_special"] += e.hp["nsu_overtime_day_special"];
+            this.hp["nsu_overtime_day_regular"] += e.hp["nsu_overtime_day_regular"];
+            this.hp["nsu_overtime_night_normal"] += e.hp["nsu_overtime_night_normal"];
+            this.hp["nsu_overtime_night_special"] += e.hp["nsu_overtime_night_special"];
+            this.hp["nsu_overtime_night_regular"] += e.hp["nsu_overtime_night_regular"];
+            this.hp["sun_proper_day_normal"] += e.hp["sun_proper_day_normal"];
+            this.hp["sun_proper_day_special"] += e.hp["sun_proper_day_special"];
+            this.hp["sun_proper_day_regular"] += e.hp["sun_proper_day_regular"];
+            this.hp["sun_proper_night_normal"] += e.hp["sun_proper_night_normal"];
+            this.hp["sun_proper_night_special"] += e.hp["sun_proper_night_special"];
+            this.hp["sun_proper_night_regular"] += e.hp["sun_proper_night_regular"];
+            this.hp["sun_overtime_day_normal"] += e.hp["sun_overtime_day_normal"];
+            this.hp["sun_overtime_day_special"] += e.hp["sun_overtime_day_special"];
+            this.hp["sun_overtime_day_regular"] += e.hp["sun_overtime_day_regular"];
+            this.hp["sun_overtime_night_normal"] += e.hp["sun_overtime_night_normal"];
+            this.hp["sun_overtime_night_special"] += e.hp["sun_overtime_night_special"];
+            this.hp["sun_overtime_night_regular"] += e.hp["sun_overtime_night_regular"];
         }
 
         private static TimeSpan GetOverlap(DateTime firstStart, DateTime firstEnd, DateTime secondStart, DateTime secondEnd) {

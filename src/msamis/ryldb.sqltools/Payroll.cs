@@ -17,17 +17,20 @@ namespace MSAMISUserInterface {
 
         public static Dictionary<string, HourCostPair> hourcosts = new Dictionary<string, HourCostPair>();
         public static Dictionary<string, double> rates = new Dictionary<string, double>();
-        
-         
-
-
+        public HourProcessor totalhours = new HourProcessor();
         public static double BasicPay = 340.00;
         public static Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public static Hours total_old;
-        public HourProcessor totalhours = new HourProcessor();
+        
         #region Compuations
 
-
+        public void ComputeGrossPay() {
+            int gid = GID;
+            HourCostPair hcp;
+            foreach (string key in hourcosts.Keys) {
+                hcp = new HourCostPair();
+            }
+        }
 
         public class HourCostPair {
             double hour;
@@ -99,6 +102,7 @@ namespace MSAMISUserInterface {
                     left join dutydetails on attendance.did = dutydetails.did
                     left join sduty_assignment on sduty_assignment.aid = dutydetails.aid
                     left join guards on guards.gid=sduty_assignment.gid 
+                    where period.period = "+period.period+" and month="+period.month+" and year="+period.year+@" 
             ;", GID, period.period, period.year, period.month));
             Hours HourIterationTotal = new Hours();
             foreach (DataRow dr in HourIterationDataTable.Rows) {
@@ -109,8 +113,8 @@ namespace MSAMISUserInterface {
                 DateTime TimeInDateTime = DateTime.Parse(ti);
                 DateTime TimeOutDateTime = DateTime.Parse(to);
 
-                string StartDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["ti_hh"] + ":" + dr["ti_mm"] + " " + dr["ti_ampm"];
-                string EndDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["to_hh"] + ":" + dr["to_mm"] + " " + dr["to_ampm"];
+                string StartDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["ti_hh"] + ":" + dr["ti_mm"] + " " + dr["ti_period"];
+                string EndDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["to_hh"] + ":" + dr["to_mm"] + " " + dr["to_period"];
                 DateTime DutyStart = DateTime.Parse(StartDutyString);
                 DateTime DutyEnd = DateTime.Parse(EndDutyString);
                 HourProcessor hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
@@ -120,9 +124,7 @@ namespace MSAMISUserInterface {
         public HourProcessor GetHours() {
             return totalhours;
         }
-        public void ComputeGrossPay () {
-            throw new NotImplementedException();
-        }
+       
 
         public static DataTable GetGuardsPayrollMain() {
             return SQLTools.ExecuteQuery(@"     
