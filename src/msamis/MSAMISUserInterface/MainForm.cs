@@ -439,24 +439,23 @@ namespace MSAMISUserInterface {
                 GAllGuardsGRD.Columns["STATUS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns["STATUS"].Width = 70;
             }
+            GAllGuardsGRD.ClearSelection();
 
             GActiveLBL.Text = SQLTools.GetNumberOfGuards("active") + " active guards";
             GInactiveLBL.Text = SQLTools.GetNumberOfGuards("inactive") + " inactive guards";
+
+
         }
 
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             try {
-                List<int> GuardsGID = new List<int>();
-                foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows) {
-                    GuardsGID.Add(int.Parse(row.Cells[0].Value.ToString()));
-                }
-                if (GuardsGID.Count > 1) {
+                if (GAllGuardsGRD.SelectedRows.Count > 1) {
                     rylui.RylMessageBox.ShowDialog("More than 1 guard is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                } else if (GuardsGID.Count == 0) {
+                } else if (GAllGuardsGRD.SelectedRows.Count == 0) {
                     rylui.RylMessageBox.ShowDialog("No guard is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else {
                     Guards_View view = new Guards_View();
-                    view.GID = GuardsGID[0];
+                    view.GID = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString());
                     view.reference = this;
                     view.conn = this.conn;
                     view.refer = this.shadow;
@@ -639,6 +638,8 @@ namespace MSAMISUserInterface {
 
             CActiveClientLBL.Text = GetNumberOfActiveClients() + " active clients";
             CTotalClientLBL.Text = GetTotalClients() + " total clients";
+
+            CClientListTBL.ClearSelection();
         }
         private void CClientListTBL_DoubleClick(object sender, EventArgs e) {
             CViewDetailsBTN.PerformClick();

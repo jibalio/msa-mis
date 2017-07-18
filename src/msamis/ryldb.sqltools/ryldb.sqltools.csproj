@@ -64,6 +64,7 @@
     <Compile Include="Enumeration.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="Holiday.cs" />
+    <Compile Include="HourCostPair.cs" />
     <Compile Include="HourProcessor.cs" />
     <Compile Include="Hours.cs" />
     <Compile Include="LoaderGUI.cs">

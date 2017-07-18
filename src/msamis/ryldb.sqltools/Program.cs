@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MSAMISUserInterface;
+using System.Windows.Forms;
 
 namespace ryldb.sqltools {
     class Program {
@@ -35,6 +36,7 @@ namespace ryldb.sqltools {
             pay.ComputeHours();
             pay.ComputeGrossPay();
             pay = pay;
+            MessageBox.Show(pay.hc["nsu_proper_day_special"].cost.ToString());
         }
     }
 }

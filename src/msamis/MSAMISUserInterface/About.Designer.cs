@@ -294,6 +294,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.About_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.About_FormClosed);
             this.Load += new System.EventHandler(this.About_Load);
             this.panel1.ResumeLayout(false);
             this.AboutPNL.ResumeLayout(false);

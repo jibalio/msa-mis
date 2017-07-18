@@ -14,14 +14,22 @@ namespace MSAMISUserInterface {
 
         #region Fields Definition
         public int GID;
-
-        
         public static Dictionary<string, double> rates = new Dictionary<string, double>();
         public HourProcessor totalhours = new HourProcessor();
         public static double BasicPay = 340.00;
         public static Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public static Hours total_old;
-        public Dictionary<string, HourCostPair> hourcosts = new Dictionary<string, HourCostPair> {
+        public static Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
+            #region + Keys Definition
+            {"normal_nsu", new HourCostPair () },
+            {"normal_sun", new HourCostPair () },
+            {"regular_nsu", new HourCostPair () },
+            {"regular_sun", new HourCostPair () },
+            {"special_nsu", new HourCostPair () },
+            {"special_sun", new HourCostPair () }
+            #endregion
+        };
+        public Dictionary<string, HourCostPair> hc = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
             {"nsu_proper_day_normal", new HourCostPair()},
             {"nsu_proper_day_special", new HourCostPair()},
@@ -55,14 +63,14 @@ namespace MSAMISUserInterface {
             this.GID = GID;
         }
         #endregion
-        #region 
+        #region  Computationes
         int hml = 0;
         public void ComputeGrossPay() {
             int gid = GID;
             hml++;
-            foreach (string key in hourcosts.Keys.ToList()) {
-               
-                this.hourcosts[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
+            var keys = new List<string>(hc.Keys);
+            foreach (string key in keys) {
+                this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             }
         }
 
@@ -92,6 +100,27 @@ namespace MSAMISUserInterface {
                 HourProcessor hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
                 totalhours.Add(hp);
             }
+
+            ComputeTotalSummary();
+
+        }
+
+        private void ComputeTotalSummary() {
+            /*  normal_nsu
+                normal_sun
+                regular_nsu
+                regular_sun
+                special_nsu
+                special_sun*/
+            TotalSummary["normal_nsu"] =
+                         hc["nsu_proper_day_normal"] +
+                        hc["nsu_overtime_day_normal"] +
+                        hc["nsu_proper_night_normal"] +
+                        hc["nsu_overtime_night_normal"];
+
+
+
+
         }
 
         #endregion
@@ -171,21 +200,7 @@ namespace MSAMISUserInterface {
 
         #endregion New Region
         #region Sub-classes
-        public class HourCostPair {
-            double hour;
-            double cost;
-            double total;
-            public HourCostPair(double hours, double basicpay) {
-                this.hour = hours;
-                this.cost = basicpay;
-                this.total = hours * basicpay;
-            }
-            public HourCostPair() {
-                this.hour = 0;
-                this.cost = 0;
-                this.total = 0;
-            }
-        }
+        
         #endregion
 
     }
