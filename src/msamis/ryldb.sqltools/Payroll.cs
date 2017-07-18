@@ -19,6 +19,16 @@ namespace MSAMISUserInterface {
         public static double BasicPay = 340.00;
         public static Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public static Hours total_old;
+        public static Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
+            #region + Keys Definition
+            {"normal_nsu", new HourCostPair () },
+            {"normal_sun", new HourCostPair () },
+            {"regular_nsu", new HourCostPair () },
+            {"regular_sun", new HourCostPair () },
+            {"special_nsu", new HourCostPair () },
+            {"special_sun", new HourCostPair () }
+            #endregion
+        };
         public Dictionary<string, HourCostPair> hc = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
             {"nsu_proper_day_normal", new HourCostPair()},
@@ -90,6 +100,19 @@ namespace MSAMISUserInterface {
                 HourProcessor hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
                 totalhours.Add(hp);
             }
+
+            ComputeTotalSummary();
+
+        }
+
+        private void ComputeTotalSummary() {
+            /*  normal_nsu
+                normal_sun
+                regular_nsu
+                regular_sun
+                special_nsu
+                special_sun*/
+            
         }
 
         #endregion
@@ -169,21 +192,7 @@ namespace MSAMISUserInterface {
 
         #endregion New Region
         #region Sub-classes
-        public class HourCostPair {
-            double hour;
-            double cost;
-            double total;
-            public HourCostPair(double hours, double basicpay) {
-                this.hour = hours;
-                this.cost = basicpay;
-                this.total = hours * basicpay;
-            }
-            public HourCostPair() {
-                this.hour = 0;
-                this.cost = 0;
-                this.total = 0;
-            }
-        }
+        
         #endregion
 
     }

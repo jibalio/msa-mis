@@ -49,6 +49,14 @@ HourCostPair e = pay.hc ["KEY"]  <--- Returns HourCostPair Object
 e.hour
 e.cost
 e.total
-							
-	
-		
+
+TotalSummarys:
+Ordinary Days
+	NSU				- normal_nsu
+	SUN				- normal_nsu
+Regular Holidays
+	NSU				- regular_nsu
+	SUN				- regular_sun
+Special Holidays
+	NSU				- special_nsu
+	SUN				- special_sun
