@@ -112,7 +112,7 @@ namespace MSAMISUserInterface {
                 regular_sun
                 special_nsu
                 special_sun*/
-                TotalSummary["normal_nsu"] = 
+               // TotalSummary["normal_nsu"] = 
                             
                         
             
