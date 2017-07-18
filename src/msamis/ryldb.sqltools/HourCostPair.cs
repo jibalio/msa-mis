@@ -30,7 +30,7 @@ namespace MSAMISUserInterface {
             return x;
         }
 
-        public static void Add (HourCostPair e) {
+        public void Add (HourCostPair e) {
             hour += e.hour;
             cost += e.hour;
             total += e.total;

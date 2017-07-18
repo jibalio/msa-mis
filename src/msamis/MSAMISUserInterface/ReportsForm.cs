@@ -90,7 +90,6 @@ namespace MSAMISUserInterface {
                 }
             }
             ExcelApp.ActiveWorkbook.SaveAs(FilePath);
-            ExcelApp.ActiveWorkbook.SaveCopyAs(FilePath);
             ExcelApp.ActiveWorkbook.Saved = true;
             ExcelApp.Quit();
         }
