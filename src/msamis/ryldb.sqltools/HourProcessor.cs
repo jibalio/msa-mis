@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MSAMISUserInterface {
     public class HourProcessor {
-        Dictionary<string, TimeSpan> hp = new Dictionary<string, TimeSpan> { 
+        public Dictionary<string, TimeSpan> hp = new Dictionary<string, TimeSpan> { 
             #region + Keys Definition
             {"nsu_proper_day_normal", new TimeSpan(0,0,0)},
             {"nsu_proper_day_special", new TimeSpan(0,0,0)},

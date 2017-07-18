@@ -72,8 +72,11 @@ namespace MSAMISUserInterface {
         public void ComputeGrossPay() {
             int gid = GID;
             hml++;
-            this.hc["nsu_proper_day_normal"] = new HourCostPair(totalhours.GetHourDictionary()["nsu_proper_day_normal"].TotalHours, BasicPay * rates["nsu_proper_day_normal"]);
-            
+            foreach (string key in hc.Keys.ToList()) {
+                this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
+            }
+            ComputeTotalSummary();
+
         }
 
         public void ComputeHours() {
@@ -103,7 +106,7 @@ namespace MSAMISUserInterface {
                 totalhours.Add(hp);
             }
 
-            ComputeTotalSummary();
+            
 
         }
 
@@ -173,6 +176,8 @@ namespace MSAMISUserInterface {
                     hc["sun_overtime_night_special"];
             TotalSummary["total"] =
                 TotalSummary["special"] + TotalSummary["regular"] + TotalSummary["normal"];
+
+           
         }
 
         #endregion

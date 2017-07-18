@@ -29,5 +29,11 @@ namespace MSAMISUserInterface {
             l.total +=e.total;
             return x;
         }
+
+        public static void Add (HourCostPair e) {
+            hour += e.hour;
+            cost += e.hour;
+            total += e.total;
+        }
     }
 }
