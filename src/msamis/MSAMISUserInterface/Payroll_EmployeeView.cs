@@ -180,14 +180,14 @@ namespace MSAMISUserInterface {
         }
         DataGridViewRow currentrow;
         private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            
+            try {
                 LoadDetails();
                 currentrow.DefaultCellStyle.Font = new Font("Segoe UI", 10);
                 EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 currentrow = EmpListGRD.SelectedRows[0];
                 GID = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
-            
-           
+            }
+            catch { }
         }
 
         private void LoadDetails() {
@@ -195,12 +195,35 @@ namespace MSAMISUserInterface {
             pay.ComputeHours();
             pay.ComputeGrossPay();
 
-            HourCostPair e;
-            e = pay.hc["nsu_proper_day_normal"];
-            MondaySaturday.Items[1].Text = e.cost + " x " + e.hour;
+            UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal", "nsu_overtime_night_normal", MondaySaturday);
 
+            UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal", "sun_overtime_night_normal", MondaySaturday);
 
+            UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special", "nsu_overtime_night_special", MondaySaturday);
+
+            UpdatePopUp("sun_proper_day_special", "sun_overtime_day_special", "sun_proper_night_special", "sun_overtime_night_special", MondaySaturday);
+
+            UpdatePopUp("nsu_proper_day_regular", "nsu_overtime_day_regular", "nsu_proper_night_regular", "nsu_overtime_night_regular", MondaySaturday);
+
+            UpdatePopUp("sun_proper_day_regular", "sun_overtime_day_regular", "sun_proper_night_regular", "sun_overtime_night_regular", MondaySaturday);
         }
+
+        private void UpdatePopUp(String Day, String DayO, String Night, String NightO, ContextMenuStrip CMS) {
+            HourCostPair e;
+            e = pay.hc[Day];
+            CMS.Items[1].Text = e.cost + " x " + e.hour;
+
+            e = pay.hc[DayO];
+            CMS.Items[3].Text = e.cost + " x " + e.hour;
+
+            e = pay.hc[Night];
+            CMS.Items[5].Text = e.cost + " x " + e.hour;
+
+            e = pay.hc[NightO];
+            CMS.Items[7].Text = e.cost + " x " + e.hour;
+        }
+
+
         private void EmpListGRD_MouseEnter(object sender, EventArgs e) {
             int first = EmpListGRD.FirstDisplayedScrollingRowIndex;
             EmpListGRD.ScrollBars = ScrollBars.Vertical;

@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AdjustmentsLBL = new System.Windows.Forms.Label();
             this.OverviewLBL = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -39,6 +39,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PeriodCMBX = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.SSundays = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.SMondays = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.RSundays = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.RMondays = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.OSundays = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -85,28 +100,13 @@
             this.LLBL = new System.Windows.Forms.Label();
             this.MondaySaturday = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Day = new System.Windows.Forms.ToolStripTextBox();
-            this.DayO = new System.Windows.Forms.ToolStripTextBox();
-            this.Night = new System.Windows.Forms.ToolStripTextBox();
-            this.NightO = new System.Windows.Forms.ToolStripTextBox();
             this.DayLBL = new System.Windows.Forms.ToolStripTextBox();
+            this.DayO = new System.Windows.Forms.ToolStripTextBox();
             this.DayOLBL = new System.Windows.Forms.ToolStripTextBox();
+            this.Night = new System.Windows.Forms.ToolStripTextBox();
             this.NightLBL = new System.Windows.Forms.ToolStripTextBox();
+            this.NightO = new System.Windows.Forms.ToolStripTextBox();
             this.NightOLBL = new System.Windows.Forms.ToolStripTextBox();
-            this.OSundays = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.RSundays = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.RMondays = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.SSundays = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.SMondays = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
             this.Sundays = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
@@ -355,6 +355,201 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(462, 303);
             this.panel2.TabIndex = 297;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label32.Location = new System.Drawing.Point(278, 259);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(59, 21);
+            this.label32.TabIndex = 327;
+            this.label32.Text = "645/hr";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // SSundays
+            // 
+            this.SSundays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.SSundays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SSundays.Location = new System.Drawing.Point(40, 259);
+            this.SSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SSundays.Name = "SSundays";
+            this.SSundays.Size = new System.Drawing.Size(234, 21);
+            this.SSundays.TabIndex = 325;
+            this.SSundays.Text = "Sundays";
+            this.SSundays.MouseEnter += new System.EventHandler(this.SSundays_MouseEnter);
+            this.SSundays.MouseLeave += new System.EventHandler(this.SSundays_MouseLeave);
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label49.Location = new System.Drawing.Point(40, 258);
+            this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(59, 21);
+            this.label49.TabIndex = 326;
+            this.label49.Text = "645/hr";
+            this.label49.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label50.Location = new System.Drawing.Point(21, 206);
+            this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(106, 19);
+            this.label50.TabIndex = 322;
+            this.label50.Text = "Special Holidays";
+            this.label50.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // SMondays
+            // 
+            this.SMondays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.SMondays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SMondays.Location = new System.Drawing.Point(41, 234);
+            this.SMondays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SMondays.Name = "SMondays";
+            this.SMondays.Size = new System.Drawing.Size(234, 21);
+            this.SMondays.TabIndex = 323;
+            this.SMondays.Text = "Mondays to Saturday";
+            this.SMondays.MouseEnter += new System.EventHandler(this.SMondays_MouseEnter);
+            this.SMondays.MouseLeave += new System.EventHandler(this.SMondays_MouseLeave);
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label52.Location = new System.Drawing.Point(279, 233);
+            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(59, 21);
+            this.label52.TabIndex = 324;
+            this.label52.Text = "645/hr";
+            this.label52.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label4.Location = new System.Drawing.Point(280, 179);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 21);
+            this.label4.TabIndex = 321;
+            this.label4.Text = "645/hr";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // RSundays
+            // 
+            this.RSundays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RSundays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RSundays.Location = new System.Drawing.Point(42, 179);
+            this.RSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RSundays.Name = "RSundays";
+            this.RSundays.Size = new System.Drawing.Size(234, 21);
+            this.RSundays.TabIndex = 319;
+            this.RSundays.Text = "Sundays";
+            this.RSundays.MouseEnter += new System.EventHandler(this.RSundays_MouseEnter);
+            this.RSundays.MouseLeave += new System.EventHandler(this.RSundays_MouseLeave);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label17.Location = new System.Drawing.Point(42, 178);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 21);
+            this.label17.TabIndex = 320;
+            this.label17.Text = "645/hr";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label18.Location = new System.Drawing.Point(23, 126);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(111, 19);
+            this.label18.TabIndex = 316;
+            this.label18.Text = "Regular Holidays";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // RMondays
+            // 
+            this.RMondays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RMondays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RMondays.Location = new System.Drawing.Point(43, 154);
+            this.RMondays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RMondays.Name = "RMondays";
+            this.RMondays.Size = new System.Drawing.Size(234, 21);
+            this.RMondays.TabIndex = 317;
+            this.RMondays.Text = "Mondays to Saturday";
+            this.RMondays.MouseEnter += new System.EventHandler(this.RMondays_MouseEnter);
+            this.RMondays.MouseLeave += new System.EventHandler(this.RMondays_MouseLeave);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label31.Location = new System.Drawing.Point(281, 153);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(59, 21);
+            this.label31.TabIndex = 318;
+            this.label31.Text = "645/hr";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label7.Location = new System.Drawing.Point(280, 99);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 21);
+            this.label7.TabIndex = 315;
+            this.label7.Text = "645/hr";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // OSundays
+            // 
+            this.OSundays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.OSundays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.OSundays.Location = new System.Drawing.Point(42, 99);
+            this.OSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.OSundays.Name = "OSundays";
+            this.OSundays.Size = new System.Drawing.Size(234, 21);
+            this.OSundays.TabIndex = 313;
+            this.OSundays.Text = "Sundays";
+            this.OSundays.MouseEnter += new System.EventHandler(this.OSundays_MouseEnter);
+            this.OSundays.MouseLeave += new System.EventHandler(this.OSundays_MouseLeave);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(42, 98);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 21);
+            this.label6.TabIndex = 314;
+            this.label6.Text = "645/hr";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label28
             // 
@@ -858,36 +1053,36 @@
             this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView3.EnableHeadersVisualStyles = false;
             this.dataGridView3.Location = new System.Drawing.Point(25, 17);
             this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(417, 432);
@@ -941,15 +1136,15 @@
             this.EmpListGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.EmpListGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.EmpListGRD.ColumnHeadersVisible = false;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle32.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.EmpListGRD.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EmpListGRD.DefaultCellStyle = dataGridViewCellStyle4;
             this.EmpListGRD.Location = new System.Drawing.Point(42, 104);
             this.EmpListGRD.MultiSelect = false;
             this.EmpListGRD.Name = "EmpListGRD";
@@ -990,7 +1185,7 @@
             this.MondaySaturday.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.MondaySaturday.Name = "contextMenuStrip1";
             this.MondaySaturday.ShowImageMargin = false;
-            this.MondaySaturday.Size = new System.Drawing.Size(136, 190);
+            this.MondaySaturday.Size = new System.Drawing.Size(136, 212);
             this.MondaySaturday.Text = "Mondays to Saturdays";
             // 
             // Day
@@ -1005,6 +1200,18 @@
             this.Day.Size = new System.Drawing.Size(100, 15);
             this.Day.Text = "DAY";
             // 
+            // DayLBL
+            // 
+            this.DayLBL.BackColor = System.Drawing.Color.White;
+            this.DayLBL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DayLBL.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DayLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DayLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.DayLBL.Name = "DayLBL";
+            this.DayLBL.ReadOnly = true;
+            this.DayLBL.Size = new System.Drawing.Size(100, 18);
+            this.DayLBL.Text = "345 x 8hrs";
+            // 
             // DayO
             // 
             this.DayO.BackColor = System.Drawing.Color.White;
@@ -1016,6 +1223,17 @@
             this.DayO.ReadOnly = true;
             this.DayO.Size = new System.Drawing.Size(100, 15);
             this.DayO.Text = "DAY OVERTIME";
+            // 
+            // DayOLBL
+            // 
+            this.DayOLBL.BackColor = System.Drawing.Color.White;
+            this.DayOLBL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DayOLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DayOLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.DayOLBL.Name = "DayOLBL";
+            this.DayOLBL.ReadOnly = true;
+            this.DayOLBL.Size = new System.Drawing.Size(100, 16);
+            this.DayOLBL.Text = "345 x 8hrs";
             // 
             // Night
             // 
@@ -1029,6 +1247,17 @@
             this.Night.Size = new System.Drawing.Size(100, 15);
             this.Night.Text = "NIGHT";
             // 
+            // NightLBL
+            // 
+            this.NightLBL.BackColor = System.Drawing.Color.White;
+            this.NightLBL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NightLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NightLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.NightLBL.Name = "NightLBL";
+            this.NightLBL.ReadOnly = true;
+            this.NightLBL.Size = new System.Drawing.Size(100, 16);
+            this.NightLBL.Text = "345 x 8hrs";
+            // 
             // NightO
             // 
             this.NightO.BackColor = System.Drawing.Color.White;
@@ -1041,40 +1270,6 @@
             this.NightO.Size = new System.Drawing.Size(100, 15);
             this.NightO.Text = "NIGHT OVERTIME";
             // 
-            // DayLBL
-            // 
-            this.DayLBL.BackColor = System.Drawing.Color.White;
-            this.DayLBL.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DayLBL.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DayLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DayLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
-            this.DayLBL.Name = "DayLBL";
-            this.DayLBL.ReadOnly = true;
-            this.DayLBL.Size = new System.Drawing.Size(100, 18);
-            this.DayLBL.Text = "345 x 8hrs";
-            // 
-            // DayOLBL
-            // 
-            this.DayOLBL.BackColor = System.Drawing.Color.White;
-            this.DayOLBL.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DayOLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DayOLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
-            this.DayOLBL.Name = "DayOLBL";
-            this.DayOLBL.ReadOnly = true;
-            this.DayOLBL.Size = new System.Drawing.Size(100, 16);
-            this.DayOLBL.Text = "345 x 8hrs";
-            // 
-            // NightLBL
-            // 
-            this.NightLBL.BackColor = System.Drawing.Color.White;
-            this.NightLBL.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NightLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NightLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
-            this.NightLBL.Name = "NightLBL";
-            this.NightLBL.ReadOnly = true;
-            this.NightLBL.Size = new System.Drawing.Size(100, 16);
-            this.NightLBL.Text = "345 x 8hrs";
-            // 
             // NightOLBL
             // 
             this.NightOLBL.BackColor = System.Drawing.Color.White;
@@ -1085,201 +1280,6 @@
             this.NightOLBL.ReadOnly = true;
             this.NightOLBL.Size = new System.Drawing.Size(100, 16);
             this.NightOLBL.Text = "345 x 8hrs";
-            // 
-            // OSundays
-            // 
-            this.OSundays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.OSundays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.OSundays.Location = new System.Drawing.Point(42, 99);
-            this.OSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.OSundays.Name = "OSundays";
-            this.OSundays.Size = new System.Drawing.Size(234, 21);
-            this.OSundays.TabIndex = 313;
-            this.OSundays.Text = "Sundays";
-            this.OSundays.MouseEnter += new System.EventHandler(this.OSundays_MouseEnter);
-            this.OSundays.MouseLeave += new System.EventHandler(this.OSundays_MouseLeave);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(42, 98);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 21);
-            this.label6.TabIndex = 314;
-            this.label6.Text = "645/hr";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(280, 99);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 21);
-            this.label7.TabIndex = 315;
-            this.label7.Text = "645/hr";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label4.Location = new System.Drawing.Point(280, 179);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 21);
-            this.label4.TabIndex = 321;
-            this.label4.Text = "645/hr";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // RSundays
-            // 
-            this.RSundays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RSundays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RSundays.Location = new System.Drawing.Point(42, 179);
-            this.RSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.RSundays.Name = "RSundays";
-            this.RSundays.Size = new System.Drawing.Size(234, 21);
-            this.RSundays.TabIndex = 319;
-            this.RSundays.Text = "Sundays";
-            this.RSundays.MouseEnter += new System.EventHandler(this.RSundays_MouseEnter);
-            this.RSundays.MouseLeave += new System.EventHandler(this.RSundays_MouseLeave);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label17.Location = new System.Drawing.Point(42, 178);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 21);
-            this.label17.TabIndex = 320;
-            this.label17.Text = "645/hr";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label18.Location = new System.Drawing.Point(23, 126);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(111, 19);
-            this.label18.TabIndex = 316;
-            this.label18.Text = "Regular Holidays";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // RMondays
-            // 
-            this.RMondays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RMondays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RMondays.Location = new System.Drawing.Point(43, 154);
-            this.RMondays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.RMondays.Name = "RMondays";
-            this.RMondays.Size = new System.Drawing.Size(234, 21);
-            this.RMondays.TabIndex = 317;
-            this.RMondays.Text = "Mondays to Saturday";
-            this.RMondays.MouseEnter += new System.EventHandler(this.RMondays_MouseEnter);
-            this.RMondays.MouseLeave += new System.EventHandler(this.RMondays_MouseLeave);
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label31.Location = new System.Drawing.Point(281, 153);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(59, 21);
-            this.label31.TabIndex = 318;
-            this.label31.Text = "645/hr";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label32.Location = new System.Drawing.Point(278, 259);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(59, 21);
-            this.label32.TabIndex = 327;
-            this.label32.Text = "645/hr";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // SSundays
-            // 
-            this.SSundays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.SSundays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SSundays.Location = new System.Drawing.Point(40, 259);
-            this.SSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SSundays.Name = "SSundays";
-            this.SSundays.Size = new System.Drawing.Size(234, 21);
-            this.SSundays.TabIndex = 325;
-            this.SSundays.Text = "Sundays";
-            this.SSundays.MouseEnter += new System.EventHandler(this.SSundays_MouseEnter);
-            this.SSundays.MouseLeave += new System.EventHandler(this.SSundays_MouseLeave);
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label49.Location = new System.Drawing.Point(40, 258);
-            this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(59, 21);
-            this.label49.TabIndex = 326;
-            this.label49.Text = "645/hr";
-            this.label49.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label50.Location = new System.Drawing.Point(21, 206);
-            this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(106, 19);
-            this.label50.TabIndex = 322;
-            this.label50.Text = "Special Holidays";
-            this.label50.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // SMondays
-            // 
-            this.SMondays.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.SMondays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SMondays.Location = new System.Drawing.Point(41, 234);
-            this.SMondays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SMondays.Name = "SMondays";
-            this.SMondays.Size = new System.Drawing.Size(234, 21);
-            this.SMondays.TabIndex = 323;
-            this.SMondays.Text = "Mondays to Saturday";
-            this.SMondays.MouseEnter += new System.EventHandler(this.SMondays_MouseEnter);
-            this.SMondays.MouseLeave += new System.EventHandler(this.SMondays_MouseLeave);
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label52.Location = new System.Drawing.Point(279, 233);
-            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(59, 21);
-            this.label52.TabIndex = 324;
-            this.label52.Text = "645/hr";
-            this.label52.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Sundays
             // 
