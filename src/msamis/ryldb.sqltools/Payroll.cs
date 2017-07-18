@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/*TODO: Fix: hourcost dictionary hours items have money value even with 0 hours. ???
- */
+/*TODO: Fix: hourcost dictionary hours items have money value even with 0 hours. */
 namespace MSAMISUserInterface {
 
     public class Payroll {
@@ -144,11 +143,33 @@ namespace MSAMISUserInterface {
                         hc["nsu_overtime_day_special"] +
                         hc["nsu_proper_night_special"] +
                         hc["nsu_overtime_night_special"];
-
-
-
-
-
+            TotalSummary["normal"] =
+                     hc["nsu_proper_day_normal"] +
+                    hc["nsu_overtime_day_normal"] +
+                    hc["nsu_proper_night_normal"] +
+                    hc["nsu_overtime_night_normal"]+                
+                    hc["sun_proper_day_normal"] +   
+                    hc["sun_overtime_day_normal"] +  
+                    hc["sun_proper_night_normal"] +  
+                    hc["sun_overtime_night_normal"]; 
+            TotalSummary["regular"]=
+                 hc["nsu_proper_day_regular"] +
+                    hc["nsu_overtime_day_regular"] +
+                    hc["nsu_proper_night_regular"] +
+                    hc["nsu_overtime_night_regular"] +
+                    hc["sun_proper_day_regular"] +
+                    hc["sun_overtime_day_regular"] +
+                    hc["sun_proper_night_regular"] +
+                    hc["sun_overtime_night_regular"];
+            TotalSummary["special"] =
+                 hc["nsu_proper_day_special"] +
+                    hc["nsu_overtime_day_special"] +
+                    hc["nsu_proper_night_special"] +
+                    hc["nsu_overtime_night_special"] +
+                    hc["sun_proper_day_special"] +
+                    hc["sun_overtime_day_special"] +
+                    hc["sun_proper_night_special"] +
+                    hc["sun_overtime_night_special"];
         }
 
         #endregion
