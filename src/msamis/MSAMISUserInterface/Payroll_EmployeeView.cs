@@ -193,7 +193,6 @@ namespace MSAMISUserInterface {
         private void LoadDetails() {
             pay = new Payroll(GID);
             pay.ComputeHours();
-            pay.ComputeGrossPay();
             UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal", "nsu_overtime_night_normal", MondaySaturday);
             UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal", "sun_overtime_night_normal", Sundays);
             UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special", "nsu_overtime_night_special", RMond);
@@ -206,7 +205,6 @@ namespace MSAMISUserInterface {
             UpdateLBL("regular_sun", RSLBL);
             UpdateLBL("special_nsu", SMLBL);
             UpdateLBL("special_sun", SSLBL);
-
             UpdateLBL("normal", OTLBL);
             UpdateLBL("regular", RTLBL);
             UpdateLBL("special", STLBL);
@@ -216,22 +214,22 @@ namespace MSAMISUserInterface {
         private void UpdatePopUp(String Day, String DayO, String Night, String NightO, ContextMenuStrip CMS) {
             HourCostPair e;
             e = pay.hc[Day];
-            CMS.Items[1].Text = e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[1].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[DayO];
-            CMS.Items[3].Text = e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[3].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[Night];
-            CMS.Items[5].Text = e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[5].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[NightO];
-            CMS.Items[7].Text = e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[7].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
         }
 
         private void UpdateLBL(String key, Label lbl) {
             HourCostPair e;
             e = pay.TotalSummary[key];
-            lbl.Text = e.total.ToString() + " hr(s)";
+            lbl.Text = "₱ " + e.total.ToString();
         }
 
 
