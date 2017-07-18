@@ -19,7 +19,7 @@ namespace MSAMISUserInterface {
         public static double BasicPay = 340.00;
         public static Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public static Hours total_old;
-        public Dictionary<string, HourCostPair> hourcosts = new Dictionary<string, HourCostPair> {
+        public Dictionary<string, HourCostPair> hc = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
             {"nsu_proper_day_normal", new HourCostPair()},
             {"nsu_proper_day_special", new HourCostPair()},
@@ -58,9 +58,9 @@ namespace MSAMISUserInterface {
         public void ComputeGrossPay() {
             int gid = GID;
             hml++;
-            foreach (string key in hourcosts.Keys.ToList()) {
+            foreach (string key in hc.Keys.ToList()) {
                
-                this.hourcosts[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
+                this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             }
         }
 

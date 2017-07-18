@@ -1,0 +1,54 @@
+Ordinary Days
+	Mondays to Saturday
+		Day Shift				nsu_proper_day_normal
+		Day Overtime			nsu_overtime_day_normal
+		Night Shift				nsu_proper_night_normal
+		Night Overtime			nsu_overtime_night_normal
+	Sundays 
+		Day Shift				sun_proper_day_normal	
+		Day Overtime			sun_overtime_day_normal
+		Night Shift				sun_proper_night_normal
+		Night Overtime			sun_overtime_night_normal
+Regular Holidays
+	Mondays to Saturday
+		Day Shift				nsu_proper_day_special
+		Day Overtime			nsu_overtime_day_special
+		Night Shift				nsu_proper_night_special
+		Night Overtime			nsu_overtime_night_special
+	Sundays	
+		Day Shift				sun_proper_day_special
+		Day Overtime			sun_overtime_day_special
+		Night Shift				sun_proper_night_special
+		Night Overtime			sun_overtime_night_special
+Special Holidays
+	Mondays to Saturday
+		Day Shift				nsu_proper_day_regular
+		Day Overtime			nsu_overtime_day_regular
+		Night Shift				nsu_proper_night_regular
+		Night Overtime			nsu_overtime_night_regular
+	Sundays
+		Day Shift				sun_proper_day_regular
+		Day Overtime			sun_overtime_day_regular
+		Night Shift				sun_proper_night_regular
+		Night Overtime			sun_overtime_night_regular
+		
+
+HOW TO USE PAYROLL.CS
+In order dapat ni pag call.
+
+Payroll pay = new Payroll(GID);		// Make Payroll Object!
+pay.ComputeHours();					// Computes TOtal Hours of Guar
+pay.ComputeGrossPay();				// Computes Gross pay (based on hours)
+
+// How to get hours + cost
+HourCostPair e = pay.hc ["KEY"]  <--- Returns HourCostPair Object
+						HourCostPair: 3 fields lng
+							- hour (number of hours)
+							- cost (cost per hour)
+							- total (cost)
+e.hour
+e.cost
+e.total
+							
+	
+		
