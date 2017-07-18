@@ -53,7 +53,7 @@ e.total
 TotalSummarys:
 Ordinary Days
 	NSU				- normal_nsu
-	SUN				- normal_nsu
+	SUN				- normal_sun
 Regular Holidays
 	NSU				- regular_nsu
 	SUN				- regular_sun

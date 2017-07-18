@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MSAMISUserInterface {
     public class HourCostPair {
-        double hour;
-        double cost;
-        double total;
+        public double hour;
+        public double cost;
+        public double total;
         public HourCostPair(double hours, double basicpay) {
             this.hour = hours;
             this.cost = basicpay;
@@ -18,6 +18,15 @@ namespace MSAMISUserInterface {
             this.hour = 0;
             this.cost = 0;
             this.total = 0;
+        }
+
+        
+        public static HourCostPair operator +(HourCostPair e) {
+            HourCostPair x = new HourCostPair();
+            x.hour += e.hour;
+            x.cost += e.hour;
+            x.total += e.total;
+            return x;
         }
     }
 }
