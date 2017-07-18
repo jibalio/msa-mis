@@ -193,7 +193,6 @@ namespace MSAMISUserInterface {
         private void LoadDetails() {
             pay = new Payroll(GID);
             pay.ComputeHours();
-            pay.ComputeGrossPay();
             UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal", "nsu_overtime_night_normal", MondaySaturday);
             UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal", "sun_overtime_night_normal", Sundays);
             UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special", "nsu_overtime_night_special", RMond);
