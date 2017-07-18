@@ -56,21 +56,22 @@ namespace MSAMISUserInterface {
         {
             SaveFileDialog savefile = new SaveFileDialog();
             // set a default file name
-            savefile.FileName = "Book1.xlsx";
+            savefile.FileName = "Book1.xls";
             // set filters - this can be done in properties as well
-            savefile.Filter = "Excel|*.xls|Excel 2010|*.xlsx";
+            savefile.Filter = "Excel Workbook (.xlsx)|*.xlsx|Excel 97-2003 Template (.xls)|*.xls";
 
             if (savefile.ShowDialog() == DialogResult.OK)
             {
                 string filePath = System.IO.Path.GetDirectoryName(savefile.FileName);
-                ExporttoExcel(filePath);
+                string fileName = System.IO.Path.GetFileName(savefile.FileName);
+                ExporttoExcel(filePath, fileName);
             }
         }
 
-        private void ExporttoExcel(String FilePath)
+        private void ExporttoExcel(String FilePath, String FileName)
         {
-            String q = "SELECT gid, fn FROM guards" + ExtraQueryParams;
-            DataTable dtMainSQLData = SQLTools.ExecuteQuery(q);
+
+            DataTable dtMainSQLData = GetClientList();
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
 
             Excel.Application ExcelApp = new
@@ -89,7 +90,7 @@ namespace MSAMISUserInterface {
                         ExcelApp.Cells[i, j] = dtMainSQLData.Rows[i - 2][j - 1].ToString();
                 }
             }
-            ExcelApp.ActiveWorkbook.SaveAs(FilePath);
+            ExcelApp.ActiveWorkbook.SaveAs(FilePath + "\\" + FileName);
             ExcelApp.ActiveWorkbook.Saved = true;
             ExcelApp.Quit();
         }

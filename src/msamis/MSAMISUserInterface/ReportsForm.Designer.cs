@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.PSalaryReportPage = new System.Windows.Forms.Panel();
+            this.CClientListTBL = new System.Windows.Forms.DataGridView();
             this.label42 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
-            this.CClientListTBL = new System.Windows.Forms.DataGridView();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.PSalaryReportPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CClientListTBL)).BeginInit();
@@ -43,6 +43,14 @@
             this.PSalaryReportPage.Name = "PSalaryReportPage";
             this.PSalaryReportPage.Size = new System.Drawing.Size(690, 640);
             this.PSalaryReportPage.TabIndex = 21;
+            // 
+            // CClientListTBL
+            // 
+            this.CClientListTBL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CClientListTBL.Location = new System.Drawing.Point(18, 109);
+            this.CClientListTBL.Name = "CClientListTBL";
+            this.CClientListTBL.Size = new System.Drawing.Size(652, 476);
+            this.CClientListTBL.TabIndex = 16;
             // 
             // label42
             // 
@@ -70,7 +78,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(112, 32);
             this.button8.TabIndex = 6;
-            this.button8.Text = "PRINT";
+            this.button8.Text = "EXPORT";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.PrintClientReportBTN_Click);
             // 
@@ -85,14 +93,6 @@
             this.label43.Size = new System.Drawing.Size(252, 51);
             this.label43.TabIndex = 4;
             this.label43.Text = "Salary Reports";
-            // 
-            // CClientListTBL
-            // 
-            this.CClientListTBL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CClientListTBL.Location = new System.Drawing.Point(18, 109);
-            this.CClientListTBL.Name = "CClientListTBL";
-            this.CClientListTBL.Size = new System.Drawing.Size(652, 476);
-            this.CClientListTBL.TabIndex = 16;
             // 
             // ReportsForm
             // 
