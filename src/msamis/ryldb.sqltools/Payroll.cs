@@ -14,8 +14,6 @@ namespace MSAMISUserInterface {
 
         #region Fields Definition
         public int GID;
-
-        
         public static Dictionary<string, double> rates = new Dictionary<string, double>();
         public HourProcessor totalhours = new HourProcessor();
         public static double BasicPay = 340.00;
@@ -55,7 +53,7 @@ namespace MSAMISUserInterface {
             this.GID = GID;
         }
         #endregion
-        #region 
+        #region  Computationes
         int hml = 0;
         public void ComputeGrossPay() {
             int gid = GID;

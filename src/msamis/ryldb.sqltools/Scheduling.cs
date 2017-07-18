@@ -386,13 +386,19 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         }
         #endregion
 
-
+        /// <summary>
+        /// Returns DataTable: Location, ContractStart, ContractEnd
+        /// of guard with corresponding AID number.
+        /// </summary>
+        /// <param name="aid"></param>
+        /// <returns></returns>
         public static DataTable GetAssignmentDetails (int aid) {
+            // Location, ContractStart, ContractEnd
             String q = @"SELECT concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location, ContractStart, ContractEnd FROM msadb.sduty_assignment
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request.rid=request_assign.rid
                         where sduty_assignment.aid="+aid+";";
-                                    return SQLTools.ExecuteQuery(q);
+                        return SQLTools.ExecuteQuery(q);
         }
 
         #region View Request Methods

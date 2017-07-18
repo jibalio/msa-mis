@@ -1,0 +1,36 @@
+Ordinary Days
+	Mondays to Saturday
+		Day Shift			340 x 8 hrs
+		Day Overtime		740 x 8hrs
+		Night Shift			1000 x 4.2 hrs
+		Night Overtime
+	Sundays
+		Day Shift
+		Day Overtime
+		Night Shift
+		Night Overtime
+Regular Holidays
+	Mondays to Saturday
+		Day Shift
+		Day Overtime
+		Night Shift
+		Night Overtime
+	Sundays
+		Day Shift
+		Day Overtime
+		Night Shift
+		Night Overtime
+Special Holidays
+	Mondays to Saturday
+		Day Shift
+		Day Overtime
+		Night Shift
+		Night Overtime
+	Sundays
+		Day Shift
+		Day Overtime
+		Night Shift
+		Night Overtime
+
+	
+		
