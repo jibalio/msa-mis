@@ -69,11 +69,6 @@ namespace MSAMISUserInterface {
         public void ComputeGrossPay() {
             int gid = GID;
             hml++;
-            //var keys = new List<string>(hc.Keys);
-            Dictionary<string, TimeSpan> e = totalhours.GetHourDictionary();
-            MessageBox.Show(e["nsu_proper_day_normal"].ToString(@"hh\:mm"));
-            Dictionary<string, double> x = rates;
-            MessageBox.Show(x["nsu_proper_day_normal"].ToString());
             this.hc["nsu_proper_day_normal"] = new HourCostPair(totalhours.GetHourDictionary()["nsu_proper_day_normal"].TotalHours, BasicPay * rates["nsu_proper_day_normal"]);
             
         }

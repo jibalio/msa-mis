@@ -36,7 +36,7 @@ namespace ryldb.sqltools {
             pay.ComputeHours();
             pay.ComputeGrossPay();
             pay = pay;
-            MessageBox.Show(pay.hc["nsu_proper_day_special"].cost.ToString());
+          
         }
     }
 }
