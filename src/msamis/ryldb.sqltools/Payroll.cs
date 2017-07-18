@@ -19,7 +19,7 @@ namespace MSAMISUserInterface {
         public static double BasicPay = 340.00;
         public static Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public static Hours total_old;
-        public static Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
+        public Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
             {"normal_nsu", new HourCostPair () },
             {"normal_sun", new HourCostPair () },
@@ -29,7 +29,8 @@ namespace MSAMISUserInterface {
             {"special_sun", new HourCostPair () },
             {"special", new HourCostPair () },
             {"normal", new HourCostPair() },
-            {"regular", new HourCostPair() }
+            {"regular", new HourCostPair() },
+            {"total", new HourCostPair() }
             #endregion
         };
         public Dictionary<string, HourCostPair> hc = new Dictionary<string, HourCostPair> {
@@ -170,6 +171,8 @@ namespace MSAMISUserInterface {
                     hc["sun_overtime_day_special"] +
                     hc["sun_proper_night_special"] +
                     hc["sun_overtime_night_special"];
+            TotalSummary["total"] =
+                TotalSummary["special"] + TotalSummary["regular"] + TotalSummary["normal"];
         }
 
         #endregion
