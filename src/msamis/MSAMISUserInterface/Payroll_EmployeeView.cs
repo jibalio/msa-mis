@@ -206,7 +206,6 @@ namespace MSAMISUserInterface {
             UpdateLBL("regular_sun", RSLBL);
             UpdateLBL("special_nsu", SMLBL);
             UpdateLBL("special_sun", SSLBL);
-
             UpdateLBL("normal", OTLBL);
             UpdateLBL("regular", RTLBL);
             UpdateLBL("special", STLBL);
@@ -216,22 +215,22 @@ namespace MSAMISUserInterface {
         private void UpdatePopUp(String Day, String DayO, String Night, String NightO, ContextMenuStrip CMS) {
             HourCostPair e;
             e = pay.hc[Day];
-            CMS.Items[1].Text = e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[1].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[DayO];
-            CMS.Items[3].Text = e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[3].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[Night];
-            CMS.Items[5].Text = e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[5].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[NightO];
-            CMS.Items[7].Text = e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[7].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
         }
 
         private void UpdateLBL(String key, Label lbl) {
             HourCostPair e;
             e = pay.TotalSummary[key];
-            lbl.Text = e.total.ToString() + " hr(s)";
+            lbl.Text = "₱ " + e.total.ToString();
         }
 
 
