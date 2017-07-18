@@ -34,8 +34,7 @@ namespace MSAMISUserInterface {
         }
 
         private void About_FormClosing(object sender, FormClosingEventArgs e) {
-            reference.Opacity = 1;
-            reference.Show();
+            refer.Hide();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -79,6 +78,10 @@ namespace MSAMISUserInterface {
 
         private void UsersLBL_MouseLeave(object sender, EventArgs e) {
             if (!UsersPNL.Visible) UsersLBL.ForeColor = def;
+        }
+
+        private void About_FormClosed(object sender, FormClosedEventArgs e) {
+            
         }
     }
 }
