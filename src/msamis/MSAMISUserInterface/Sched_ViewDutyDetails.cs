@@ -55,7 +55,10 @@ namespace MSAMISUserInterface {
             }
         }
         public void RefreshCurrent() {
-
+            DataTable dt = Scheduling.GetAssignmentDetails(AID);
+            LocationLBL.Text = dt.Rows[0][0].ToString();
+            StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
+            EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];
         }
 
         public void RefreshDutyDetails() {
