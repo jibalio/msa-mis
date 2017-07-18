@@ -22,7 +22,7 @@ namespace MSAMISUserInterface {
             Data.InitData();
             AutoLoader.AutoImportSql(true, true);
             Holiday.InitHolidays();
-            Data.InitData();
+            //Data.InitData();
             Application.EnableVisualStyles();
                Application.SetCompatibleTextRenderingDefault(false);
              
