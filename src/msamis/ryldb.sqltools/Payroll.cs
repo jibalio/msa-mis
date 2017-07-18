@@ -68,8 +68,8 @@ namespace MSAMISUserInterface {
         public void ComputeGrossPay() {
             int gid = GID;
             hml++;
-            foreach (string key in hc.Keys.ToList()) {
-               
+            var keys = new List<string>(hc.Keys);
+            foreach (string key in keys) {
                 this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             }
         }
@@ -112,10 +112,15 @@ namespace MSAMISUserInterface {
                 regular_sun
                 special_nsu
                 special_sun*/
-               // TotalSummary["normal_nsu"] = 
-                            
-                        
-            
+            TotalSummary["normal_nsu"] =
+                         hc["nsu_proper_day_normal"] +
+                        hc["nsu_overtime_day_normal"] +
+                        hc["nsu_proper_night_normal"] +
+                        hc["nsu_overtime_night_normal"];
+
+
+
+
         }
 
         #endregion

@@ -14,6 +14,7 @@ namespace MSAMISUserInterface {
             this.cost = basicpay;
             this.total = hours * basicpay;
         }
+
         public HourCostPair() {
             this.hour = 0;
             this.cost = 0;
@@ -21,11 +22,11 @@ namespace MSAMISUserInterface {
         }
 
         
-        public static HourCostPair operator +(HourCostPair e) {
+        public static HourCostPair operator +(HourCostPair l, HourCostPair e) {
             HourCostPair x = new HourCostPair();
-            x.hour += e.hour;
-            x.cost += e.hour;
-            x.total += e.total;
+            l.hour += e.hour;
+            l.cost += e.hour;
+            l.total +=e.total;
             return x;
         }
     }
