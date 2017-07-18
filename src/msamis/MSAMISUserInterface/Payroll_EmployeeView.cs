@@ -194,33 +194,44 @@ namespace MSAMISUserInterface {
             pay = new Payroll(GID);
             pay.ComputeHours();
             pay.ComputeGrossPay();
-
             UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal", "nsu_overtime_night_normal", MondaySaturday);
-
             UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal", "sun_overtime_night_normal", Sundays);
-
             UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special", "nsu_overtime_night_special", RMond);
-
             UpdatePopUp("sun_proper_day_special", "sun_overtime_day_special", "sun_proper_night_special", "sun_overtime_night_special", RSunds);
-
             UpdatePopUp("nsu_proper_day_regular", "nsu_overtime_day_regular", "nsu_proper_night_regular", "nsu_overtime_night_regular", SMond);
-
             UpdatePopUp("sun_proper_day_regular", "sun_overtime_day_regular", "sun_proper_night_regular", "sun_overtime_night_regular", SSunds);
+            UpdateLBL("normal_nsu", OMLBL);
+            UpdateLBL("normal_sun", OSLBL);
+            UpdateLBL("regular_nsu", RMLBL);
+            UpdateLBL("regular_sun", RSLBL);
+            UpdateLBL("special_nsu", SMLBL);
+            UpdateLBL("special_sun", SSLBL);
+
+            UpdateLBL("normal", OTLBL);
+            UpdateLBL("regular", RTLBL);
+            UpdateLBL("special", STLBL);
+            UpdateLBL("total", WorkTotalLBL);
         }
 
         private void UpdatePopUp(String Day, String DayO, String Night, String NightO, ContextMenuStrip CMS) {
             HourCostPair e;
             e = pay.hc[Day];
-            CMS.Items[1].Text = e.cost + " x " + e.hour + " hrs";
+            CMS.Items[1].Text = e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[DayO];
-            CMS.Items[3].Text = e.cost + " x " + e.hour + " hrs";
+            CMS.Items[3].Text = e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[Night];
-            CMS.Items[5].Text = e.cost + " x " + e.hour + " hrs";
+            CMS.Items[5].Text = e.cost + " x " + e.hour + " hr(s)";
 
             e = pay.hc[NightO];
-            CMS.Items[7].Text = e.cost + " x " + e.hour + " hrs";
+            CMS.Items[7].Text = e.cost + " x " + e.hour + " hr(s)";
+        }
+
+        private void UpdateLBL(String key, Label lbl) {
+            HourCostPair e;
+            e = pay.TotalSummary[key];
+            lbl.Text = e.total.ToString() + " hr(s)";
         }
 
 
