@@ -27,7 +27,10 @@ namespace MSAMISUserInterface {
             {"regular_nsu", new HourCostPair () },
             {"regular_sun", new HourCostPair () },
             {"special_nsu", new HourCostPair () },
-            {"special_sun", new HourCostPair () }
+            {"special_sun", new HourCostPair () },
+            {"special", new HourCostPair () },
+            {"normal", new HourCostPair() },
+            {"regular", new HourCostPair() }
             #endregion
         };
         public Dictionary<string, HourCostPair> hc = new Dictionary<string, HourCostPair> {
@@ -116,6 +119,32 @@ namespace MSAMISUserInterface {
                         hc["nsu_overtime_day_normal"] +
                         hc["nsu_proper_night_normal"] +
                         hc["nsu_overtime_night_normal"];
+            TotalSummary["normal_sun"] =
+                         hc["sun_proper_day_normal"] +
+                        hc["sun_overtime_day_normal"] +
+                        hc["sun_proper_night_normal"] +
+                        hc["sun_overtime_night_normal"];
+            TotalSummary["regular_nsu"] =
+                         hc["nsu_proper_day_regular"] +
+                        hc["nsu_overtime_day_regular"] +
+                        hc["nsu_proper_night_regular"] +
+                        hc["nsu_overtime_night_regular"];
+            TotalSummary["regular_sun"] =
+                         hc["sun_proper_day_regular"] +
+                        hc["sun_overtime_day_regular"] +
+                        hc["sun_proper_night_regular"] +
+                        hc["sun_overtime_night_regular"];
+            TotalSummary["special_sun"] =
+                         hc["sun_proper_day_special"] +
+                        hc["sun_overtime_day_special"] +
+                        hc["sun_proper_night_special"] +
+                        hc["sun_overtime_night_special"];
+            TotalSummary["special_nsu"] =
+                         hc["nsu_proper_day_special"] +
+                        hc["nsu_overtime_day_special"] +
+                        hc["nsu_proper_night_special"] +
+                        hc["nsu_overtime_night_special"];
+
 
 
 
