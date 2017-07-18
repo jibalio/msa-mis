@@ -181,11 +181,11 @@ namespace MSAMISUserInterface {
         DataGridViewRow currentrow;
         private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             try {
-                LoadDetails();
                 currentrow.DefaultCellStyle.Font = new Font("Segoe UI", 10);
                 EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 currentrow = EmpListGRD.SelectedRows[0];
                 GID = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
+                LoadDetails();
             }
             catch { }
         }
