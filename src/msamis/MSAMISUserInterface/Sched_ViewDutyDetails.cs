@@ -33,6 +33,7 @@ namespace MSAMISUserInterface {
             RefreshDutyDetails();
             RefreshCurrent();
             RefreshData();
+            RefreshAttendance();
             FadeTMR.Start();
         }
         public void RefreshData() {
@@ -171,6 +172,11 @@ namespace MSAMISUserInterface {
             if (x == DialogResult.Yes) {
                 Scheduling.DismissDuty(DID);
                 RefreshDutyDetails();
+            }
+            if (DutyDetailsGRD.Rows.Count == 0) {
+                DismissBTN.Visible = false;
+                AddDutyDetailsBTN.Location = new Point(223, 431);
+                EditDutyDetailsBTN.Visible = false;
             }
         }
 
