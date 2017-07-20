@@ -29,9 +29,9 @@ namespace ryldb.sqltools {
         }
 
 
-        public static void AddHoliday(SelectionRange r, string desc) {
-                string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`) VALUES ('{0}', '{1}', '{2}');";
-                q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc);
+        public static void AddHoliday(SelectionRange r, string desc, int type) {
+                string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`) VALUES ('{0}', '{1}', '{2}', '{3}');";
+                q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc, type);
                 SQLTools.ExecuteNonQuery(q);
             
         }
