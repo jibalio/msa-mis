@@ -30,9 +30,10 @@ namespace ryldb.sqltools {
 
 
         public static void AddHoliday(SelectionRange r, string desc, int type) {
-                string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`) VALUES ('{0}', '{1}', '{2}', '{3}');";
+                string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`,`type`) VALUES ('{0}', '{1}', '{2}', '{3}');";
                 q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc, type);
                 SQLTools.ExecuteNonQuery(q);
+            InitHolidays();
             
         }
             
@@ -40,10 +41,12 @@ namespace ryldb.sqltools {
                 string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}', type='{2}' where hid='{1}';";
                 q = String.Format(q,  desc, hid, type);
                 SQLTools.ExecuteNonQuery(q);
+            InitHolidays();
         }
 
         public static void RemoveHoliday(int hid) {
             SQLTools.ExecuteNonQuery("delete from holiday where hid=" + hid);
+            InitHolidays();
         }
 
         public static DataTable GetHolidays() {
@@ -57,6 +60,7 @@ namespace ryldb.sqltools {
         }
 
         public static void InitHolidays() {
+            holidaylist.Clear();
             // datestart, dateend, desc
             string q = "select * from holiday";
             DataTable dt = SQLTools.ExecuteQuery(q);
