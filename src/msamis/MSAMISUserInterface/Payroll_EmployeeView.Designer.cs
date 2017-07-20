@@ -1314,7 +1314,7 @@
             this.MondaySaturday.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.MondaySaturday.Name = "contextMenuStrip1";
             this.MondaySaturday.ShowImageMargin = false;
-            this.MondaySaturday.Size = new System.Drawing.Size(186, 190);
+            this.MondaySaturday.Size = new System.Drawing.Size(236, 190);
             this.MondaySaturday.Text = "Mondays to Saturdays";
             // 
             // Day
@@ -1326,7 +1326,7 @@
             this.Day.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.Day.Name = "Day";
             this.Day.ReadOnly = true;
-            this.Day.Size = new System.Drawing.Size(150, 15);
+            this.Day.Size = new System.Drawing.Size(200, 15);
             this.Day.Text = "DAY";
             // 
             // DayLBL
@@ -1338,7 +1338,7 @@
             this.DayLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.DayLBL.Name = "DayLBL";
             this.DayLBL.ReadOnly = true;
-            this.DayLBL.Size = new System.Drawing.Size(150, 18);
+            this.DayLBL.Size = new System.Drawing.Size(200, 18);
             this.DayLBL.Text = "345 x 8hrs";
             // 
             // DayO
@@ -1350,7 +1350,7 @@
             this.DayO.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.DayO.Name = "DayO";
             this.DayO.ReadOnly = true;
-            this.DayO.Size = new System.Drawing.Size(150, 15);
+            this.DayO.Size = new System.Drawing.Size(200, 15);
             this.DayO.Text = "DAY OVERTIME";
             // 
             // DayOLBL
@@ -1361,7 +1361,7 @@
             this.DayOLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.DayOLBL.Name = "DayOLBL";
             this.DayOLBL.ReadOnly = true;
-            this.DayOLBL.Size = new System.Drawing.Size(150, 16);
+            this.DayOLBL.Size = new System.Drawing.Size(200, 16);
             this.DayOLBL.Text = "345 x 8hrs";
             // 
             // Night
@@ -1373,7 +1373,7 @@
             this.Night.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.Night.Name = "Night";
             this.Night.ReadOnly = true;
-            this.Night.Size = new System.Drawing.Size(150, 15);
+            this.Night.Size = new System.Drawing.Size(200, 15);
             this.Night.Text = "NIGHT";
             // 
             // NightLBL
@@ -1384,7 +1384,7 @@
             this.NightLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.NightLBL.Name = "NightLBL";
             this.NightLBL.ReadOnly = true;
-            this.NightLBL.Size = new System.Drawing.Size(150, 16);
+            this.NightLBL.Size = new System.Drawing.Size(200, 16);
             this.NightLBL.Text = "345 x 8hrs";
             // 
             // NightO
@@ -1396,7 +1396,7 @@
             this.NightO.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.NightO.Name = "NightO";
             this.NightO.ReadOnly = true;
-            this.NightO.Size = new System.Drawing.Size(150, 15);
+            this.NightO.Size = new System.Drawing.Size(200, 15);
             this.NightO.Text = "NIGHT OVERTIME";
             // 
             // NightOLBL
@@ -1407,7 +1407,7 @@
             this.NightOLBL.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.NightOLBL.Name = "NightOLBL";
             this.NightOLBL.ReadOnly = true;
-            this.NightOLBL.Size = new System.Drawing.Size(150, 16);
+            this.NightOLBL.Size = new System.Drawing.Size(200, 16);
             this.NightOLBL.Text = "345 x 8hrs";
             // 
             // Sundays
@@ -1426,7 +1426,7 @@
             this.Sundays.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.Sundays.Name = "contextMenuStrip1";
             this.Sundays.ShowImageMargin = false;
-            this.Sundays.Size = new System.Drawing.Size(186, 190);
+            this.Sundays.Size = new System.Drawing.Size(236, 190);
             this.Sundays.Text = "Mondays to Saturdays";
             // 
             // toolStripTextBox1
@@ -1438,7 +1438,7 @@
             this.toolStripTextBox1.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.ReadOnly = true;
-            this.toolStripTextBox1.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox1.Text = "DAY";
             // 
             // toolStripTextBox2
@@ -1450,7 +1450,7 @@
             this.toolStripTextBox2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.ReadOnly = true;
-            this.toolStripTextBox2.Size = new System.Drawing.Size(150, 18);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(200, 18);
             this.toolStripTextBox2.Text = "345 x 8hrs";
             // 
             // toolStripTextBox3
@@ -1462,7 +1462,7 @@
             this.toolStripTextBox3.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox3.Name = "toolStripTextBox3";
             this.toolStripTextBox3.ReadOnly = true;
-            this.toolStripTextBox3.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox3.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox3.Text = "DAY OVERTIME";
             // 
             // toolStripTextBox4
@@ -1473,7 +1473,7 @@
             this.toolStripTextBox4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox4.Name = "toolStripTextBox4";
             this.toolStripTextBox4.ReadOnly = true;
-            this.toolStripTextBox4.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox4.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox4.Text = "345 x 8hrs";
             // 
             // toolStripTextBox5
@@ -1485,7 +1485,7 @@
             this.toolStripTextBox5.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox5.Name = "toolStripTextBox5";
             this.toolStripTextBox5.ReadOnly = true;
-            this.toolStripTextBox5.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox5.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox5.Text = "NIGHT";
             // 
             // toolStripTextBox6
@@ -1496,7 +1496,7 @@
             this.toolStripTextBox6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox6.Name = "toolStripTextBox6";
             this.toolStripTextBox6.ReadOnly = true;
-            this.toolStripTextBox6.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox6.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox6.Text = "345 x 8hrs";
             // 
             // toolStripTextBox7
@@ -1508,7 +1508,7 @@
             this.toolStripTextBox7.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox7.Name = "toolStripTextBox7";
             this.toolStripTextBox7.ReadOnly = true;
-            this.toolStripTextBox7.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox7.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox7.Text = "NIGHT OVERTIME";
             // 
             // toolStripTextBox8
@@ -1519,7 +1519,7 @@
             this.toolStripTextBox8.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox8.Name = "toolStripTextBox8";
             this.toolStripTextBox8.ReadOnly = true;
-            this.toolStripTextBox8.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox8.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox8.Text = "345 x 8hrs";
             // 
             // RMond
@@ -1538,7 +1538,7 @@
             this.RMond.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.RMond.Name = "contextMenuStrip1";
             this.RMond.ShowImageMargin = false;
-            this.RMond.Size = new System.Drawing.Size(186, 190);
+            this.RMond.Size = new System.Drawing.Size(236, 190);
             this.RMond.Text = "Mondays to Saturdays";
             // 
             // toolStripTextBox9
@@ -1550,7 +1550,7 @@
             this.toolStripTextBox9.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox9.Name = "toolStripTextBox9";
             this.toolStripTextBox9.ReadOnly = true;
-            this.toolStripTextBox9.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox9.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox9.Text = "DAY";
             // 
             // toolStripTextBox10
@@ -1562,7 +1562,7 @@
             this.toolStripTextBox10.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox10.Name = "toolStripTextBox10";
             this.toolStripTextBox10.ReadOnly = true;
-            this.toolStripTextBox10.Size = new System.Drawing.Size(150, 18);
+            this.toolStripTextBox10.Size = new System.Drawing.Size(200, 18);
             this.toolStripTextBox10.Text = "345 x 8hrs";
             // 
             // toolStripTextBox11
@@ -1574,7 +1574,7 @@
             this.toolStripTextBox11.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox11.Name = "toolStripTextBox11";
             this.toolStripTextBox11.ReadOnly = true;
-            this.toolStripTextBox11.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox11.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox11.Text = "DAY OVERTIME";
             // 
             // toolStripTextBox12
@@ -1585,7 +1585,7 @@
             this.toolStripTextBox12.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox12.Name = "toolStripTextBox12";
             this.toolStripTextBox12.ReadOnly = true;
-            this.toolStripTextBox12.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox12.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox12.Text = "345 x 8hrs";
             // 
             // toolStripTextBox13
@@ -1597,7 +1597,7 @@
             this.toolStripTextBox13.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox13.Name = "toolStripTextBox13";
             this.toolStripTextBox13.ReadOnly = true;
-            this.toolStripTextBox13.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox13.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox13.Text = "NIGHT";
             // 
             // toolStripTextBox14
@@ -1608,7 +1608,7 @@
             this.toolStripTextBox14.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox14.Name = "toolStripTextBox14";
             this.toolStripTextBox14.ReadOnly = true;
-            this.toolStripTextBox14.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox14.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox14.Text = "345 x 8hrs";
             // 
             // toolStripTextBox15
@@ -1620,7 +1620,7 @@
             this.toolStripTextBox15.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox15.Name = "toolStripTextBox15";
             this.toolStripTextBox15.ReadOnly = true;
-            this.toolStripTextBox15.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox15.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox15.Text = "NIGHT OVERTIME";
             // 
             // toolStripTextBox16
@@ -1631,7 +1631,7 @@
             this.toolStripTextBox16.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox16.Name = "toolStripTextBox16";
             this.toolStripTextBox16.ReadOnly = true;
-            this.toolStripTextBox16.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox16.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox16.Text = "345 x 8hrs";
             // 
             // RSunds
@@ -1650,7 +1650,7 @@
             this.RSunds.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.RSunds.Name = "contextMenuStrip1";
             this.RSunds.ShowImageMargin = false;
-            this.RSunds.Size = new System.Drawing.Size(186, 190);
+            this.RSunds.Size = new System.Drawing.Size(236, 190);
             this.RSunds.Text = "Mondays to Saturdays";
             // 
             // toolStripTextBox17
@@ -1662,7 +1662,7 @@
             this.toolStripTextBox17.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox17.Name = "toolStripTextBox17";
             this.toolStripTextBox17.ReadOnly = true;
-            this.toolStripTextBox17.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox17.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox17.Text = "DAY";
             // 
             // toolStripTextBox18
@@ -1674,7 +1674,7 @@
             this.toolStripTextBox18.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox18.Name = "toolStripTextBox18";
             this.toolStripTextBox18.ReadOnly = true;
-            this.toolStripTextBox18.Size = new System.Drawing.Size(150, 18);
+            this.toolStripTextBox18.Size = new System.Drawing.Size(200, 18);
             this.toolStripTextBox18.Text = "345 x 8hrs";
             // 
             // toolStripTextBox19
@@ -1686,7 +1686,7 @@
             this.toolStripTextBox19.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox19.Name = "toolStripTextBox19";
             this.toolStripTextBox19.ReadOnly = true;
-            this.toolStripTextBox19.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox19.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox19.Text = "DAY OVERTIME";
             // 
             // toolStripTextBox20
@@ -1697,7 +1697,7 @@
             this.toolStripTextBox20.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox20.Name = "toolStripTextBox20";
             this.toolStripTextBox20.ReadOnly = true;
-            this.toolStripTextBox20.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox20.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox20.Text = "345 x 8hrs";
             // 
             // toolStripTextBox21
@@ -1709,7 +1709,7 @@
             this.toolStripTextBox21.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox21.Name = "toolStripTextBox21";
             this.toolStripTextBox21.ReadOnly = true;
-            this.toolStripTextBox21.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox21.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox21.Text = "NIGHT";
             // 
             // toolStripTextBox22
@@ -1720,7 +1720,7 @@
             this.toolStripTextBox22.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox22.Name = "toolStripTextBox22";
             this.toolStripTextBox22.ReadOnly = true;
-            this.toolStripTextBox22.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox22.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox22.Text = "345 x 8hrs";
             // 
             // toolStripTextBox23
@@ -1732,7 +1732,7 @@
             this.toolStripTextBox23.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox23.Name = "toolStripTextBox23";
             this.toolStripTextBox23.ReadOnly = true;
-            this.toolStripTextBox23.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox23.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox23.Text = "NIGHT OVERTIME";
             // 
             // toolStripTextBox24
@@ -1743,7 +1743,7 @@
             this.toolStripTextBox24.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox24.Name = "toolStripTextBox24";
             this.toolStripTextBox24.ReadOnly = true;
-            this.toolStripTextBox24.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox24.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox24.Text = "345 x 8hrs";
             // 
             // SMond
@@ -1762,7 +1762,7 @@
             this.SMond.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.SMond.Name = "contextMenuStrip1";
             this.SMond.ShowImageMargin = false;
-            this.SMond.Size = new System.Drawing.Size(186, 190);
+            this.SMond.Size = new System.Drawing.Size(236, 190);
             this.SMond.Text = "Mondays to Saturdays";
             // 
             // toolStripTextBox25
@@ -1774,7 +1774,7 @@
             this.toolStripTextBox25.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox25.Name = "toolStripTextBox25";
             this.toolStripTextBox25.ReadOnly = true;
-            this.toolStripTextBox25.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox25.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox25.Text = "DAY";
             // 
             // toolStripTextBox26
@@ -1786,7 +1786,7 @@
             this.toolStripTextBox26.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox26.Name = "toolStripTextBox26";
             this.toolStripTextBox26.ReadOnly = true;
-            this.toolStripTextBox26.Size = new System.Drawing.Size(150, 18);
+            this.toolStripTextBox26.Size = new System.Drawing.Size(200, 18);
             this.toolStripTextBox26.Text = "345 x 8hrs";
             // 
             // toolStripTextBox27
@@ -1798,7 +1798,7 @@
             this.toolStripTextBox27.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox27.Name = "toolStripTextBox27";
             this.toolStripTextBox27.ReadOnly = true;
-            this.toolStripTextBox27.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox27.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox27.Text = "DAY OVERTIME";
             // 
             // toolStripTextBox28
@@ -1809,7 +1809,7 @@
             this.toolStripTextBox28.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox28.Name = "toolStripTextBox28";
             this.toolStripTextBox28.ReadOnly = true;
-            this.toolStripTextBox28.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox28.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox28.Text = "345 x 8hrs";
             // 
             // toolStripTextBox29
@@ -1821,7 +1821,7 @@
             this.toolStripTextBox29.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox29.Name = "toolStripTextBox29";
             this.toolStripTextBox29.ReadOnly = true;
-            this.toolStripTextBox29.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox29.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox29.Text = "NIGHT";
             // 
             // toolStripTextBox30
@@ -1832,7 +1832,7 @@
             this.toolStripTextBox30.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox30.Name = "toolStripTextBox30";
             this.toolStripTextBox30.ReadOnly = true;
-            this.toolStripTextBox30.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox30.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox30.Text = "345 x 8hrs";
             // 
             // toolStripTextBox31
@@ -1844,7 +1844,7 @@
             this.toolStripTextBox31.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox31.Name = "toolStripTextBox31";
             this.toolStripTextBox31.ReadOnly = true;
-            this.toolStripTextBox31.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox31.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox31.Text = "NIGHT OVERTIME";
             // 
             // toolStripTextBox32
@@ -1855,7 +1855,7 @@
             this.toolStripTextBox32.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox32.Name = "toolStripTextBox32";
             this.toolStripTextBox32.ReadOnly = true;
-            this.toolStripTextBox32.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox32.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox32.Text = "345 x 8hrs";
             // 
             // SSunds
@@ -1874,7 +1874,7 @@
             this.SSunds.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.SSunds.Name = "contextMenuStrip1";
             this.SSunds.ShowImageMargin = false;
-            this.SSunds.Size = new System.Drawing.Size(186, 190);
+            this.SSunds.Size = new System.Drawing.Size(236, 212);
             this.SSunds.Text = "Mondays to Saturdays";
             // 
             // toolStripTextBox33
@@ -1886,7 +1886,7 @@
             this.toolStripTextBox33.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox33.Name = "toolStripTextBox33";
             this.toolStripTextBox33.ReadOnly = true;
-            this.toolStripTextBox33.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox33.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox33.Text = "DAY";
             // 
             // toolStripTextBox34
@@ -1898,7 +1898,7 @@
             this.toolStripTextBox34.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox34.Name = "toolStripTextBox34";
             this.toolStripTextBox34.ReadOnly = true;
-            this.toolStripTextBox34.Size = new System.Drawing.Size(150, 18);
+            this.toolStripTextBox34.Size = new System.Drawing.Size(200, 18);
             this.toolStripTextBox34.Text = "345 x 8hrs";
             // 
             // toolStripTextBox35
@@ -1910,7 +1910,7 @@
             this.toolStripTextBox35.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox35.Name = "toolStripTextBox35";
             this.toolStripTextBox35.ReadOnly = true;
-            this.toolStripTextBox35.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox35.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox35.Text = "DAY OVERTIME";
             // 
             // toolStripTextBox36
@@ -1921,7 +1921,7 @@
             this.toolStripTextBox36.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox36.Name = "toolStripTextBox36";
             this.toolStripTextBox36.ReadOnly = true;
-            this.toolStripTextBox36.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox36.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox36.Text = "345 x 8hrs";
             // 
             // toolStripTextBox37
@@ -1933,7 +1933,7 @@
             this.toolStripTextBox37.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox37.Name = "toolStripTextBox37";
             this.toolStripTextBox37.ReadOnly = true;
-            this.toolStripTextBox37.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox37.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox37.Text = "NIGHT";
             // 
             // toolStripTextBox38
@@ -1944,7 +1944,7 @@
             this.toolStripTextBox38.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox38.Name = "toolStripTextBox38";
             this.toolStripTextBox38.ReadOnly = true;
-            this.toolStripTextBox38.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox38.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox38.Text = "345 x 8hrs";
             // 
             // toolStripTextBox39
@@ -1956,7 +1956,7 @@
             this.toolStripTextBox39.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox39.Name = "toolStripTextBox39";
             this.toolStripTextBox39.ReadOnly = true;
-            this.toolStripTextBox39.Size = new System.Drawing.Size(150, 15);
+            this.toolStripTextBox39.Size = new System.Drawing.Size(200, 15);
             this.toolStripTextBox39.Text = "NIGHT OVERTIME";
             // 
             // toolStripTextBox40
@@ -1967,7 +1967,7 @@
             this.toolStripTextBox40.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox40.Name = "toolStripTextBox40";
             this.toolStripTextBox40.ReadOnly = true;
-            this.toolStripTextBox40.Size = new System.Drawing.Size(150, 16);
+            this.toolStripTextBox40.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox40.Text = "345 x 8hrs";
             // 
             // Payroll_EmployeeView

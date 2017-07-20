@@ -36,10 +36,10 @@ namespace MSAMISUserInterface {
         }
         public void RefreshPayrollList() {
             EmpListGRD.DataSource = Payroll.GetGuardsPayrollMinimal();
+            currentrow = EmpListGRD.Rows[0];
             EmpListGRD.Columns[0].Visible = false;
             EmpListGRD.Columns[1].Width = 320;
             EmpListGRD.Sort(EmpListGRD.Columns[1], ListSortDirection.Ascending);
-            currentrow = EmpListGRD.Rows[0];
 
             foreach (DataGridViewRow row in EmpListGRD.Rows) {
                 if (row.Cells[0].Value.ToString().Equals(GID.ToString())) {
@@ -180,12 +180,15 @@ namespace MSAMISUserInterface {
         
         private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             try {
-                currentrow.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-                EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-                currentrow = EmpListGRD.SelectedRows[0];
-                GID = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
+                if (EmpListGRD.Rows.Count > 0) { 
+                    currentrow.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+                    EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                    currentrow = EmpListGRD.SelectedRows[0];
+                    GID = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
+                }
             }
-            catch { }
+            catch {
+            }
             LoadDetails();
         }
 
@@ -214,22 +217,26 @@ namespace MSAMISUserInterface {
         private void UpdatePopUp(String Day, String DayO, String Night, String NightO, ContextMenuStrip CMS) {
             HourCostPair e;
             e = pay.hc[Day];
-            CMS.Items[1].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)" + " = ₱ " + e.total;
+            CMS.Items[1].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
 
             e = pay.hc[DayO];
-            CMS.Items[3].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)" + " = ₱ " + e.total;
+            CMS.Items[3].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
 
             e = pay.hc[Night];
-            CMS.Items[5].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)" + " = ₱ " + e.total;
+            CMS.Items[5].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
 
             e = pay.hc[NightO];
-            CMS.Items[7].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)" + " = ₱ " + e.total;
+            CMS.Items[7].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
+        }
+
+        private String CurrencyFormat(Double Money) {
+            return "₱ " + Money.ToString("N2");
         }
 
         private void UpdateLBL(String key, Label lbl) {
             HourCostPair e;
             e = pay.TotalSummary[key];
-            lbl.Text = "₱ " + e.total.ToString();
+            lbl.Text = CurrencyFormat(e.total);
         }
 
 
