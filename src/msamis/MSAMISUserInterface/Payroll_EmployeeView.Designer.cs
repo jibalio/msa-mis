@@ -24,19 +24,17 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AdjustmentsLBL = new System.Windows.Forms.Label();
             this.OverviewLBL = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.PSumTotalCost = new System.Windows.Forms.Label();
+            this.NetPayLBL = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.OverviewPNL = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.PeriodCMBX = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.STLBL = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
@@ -62,25 +60,24 @@
             this.OSLBL = new System.Windows.Forms.Label();
             this.OSundays = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.DSSSLBL = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.DPagIbigLBL = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.BBondsLBL = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
+            this.DTotalLBL = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
+            this.BTotalLBL = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.DPhilHealthLBL = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
+            this.DCashAdvanceLBL = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.WorkTotalLBL = new System.Windows.Forms.Label();
@@ -88,16 +85,21 @@
             this.OMondaysLBL = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.OMLBL = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.BColaLBL = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.B13LBL = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.BonusAddBTN = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PeriodCMBX = new System.Windows.Forms.ComboBox();
             this.AdjPNL = new System.Windows.Forms.Panel();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.NoPayrollPNL = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.EmpListGRD = new System.Windows.Forms.DataGridView();
             this.LLBL = new System.Windows.Forms.Label();
             this.MondaySaturday = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -154,14 +156,16 @@
             this.toolStripTextBox38 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox39 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox40 = new System.Windows.Forms.ToolStripTextBox();
-            this.NoPayrollPNL = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.BAllowanceLBL = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.DWithLBL = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.OverviewPNL.SuspendLayout();
             this.panel2.SuspendLayout();
             this.AdjPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.panel3.SuspendLayout();
+            this.NoPayrollPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmpListGRD)).BeginInit();
             this.MondaySaturday.SuspendLayout();
             this.Sundays.SuspendLayout();
@@ -169,7 +173,6 @@
             this.RSunds.SuspendLayout();
             this.SMond.SuspendLayout();
             this.SSunds.SuspendLayout();
-            this.NoPayrollPNL.SuspendLayout();
             this.SuspendLayout();
             // 
             // AdjustmentsLBL
@@ -214,25 +217,25 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(227, 394);
+            this.button2.Location = new System.Drawing.Point(227, 388);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(91, 29);
             this.button2.TabIndex = 255;
-            this.button2.Text = "CALCULATE";
+            this.button2.Text = "FINALIZE";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // PSumTotalCost
+            // NetPayLBL
             // 
-            this.PSumTotalCost.BackColor = System.Drawing.Color.Transparent;
-            this.PSumTotalCost.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
-            this.PSumTotalCost.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PSumTotalCost.Location = new System.Drawing.Point(105, 339);
-            this.PSumTotalCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.PSumTotalCost.Name = "PSumTotalCost";
-            this.PSumTotalCost.Size = new System.Drawing.Size(252, 41);
-            this.PSumTotalCost.TabIndex = 244;
-            this.PSumTotalCost.Text = "₱ 12,121.00";
-            this.PSumTotalCost.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.NetPayLBL.BackColor = System.Drawing.Color.Transparent;
+            this.NetPayLBL.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
+            this.NetPayLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NetPayLBL.Location = new System.Drawing.Point(105, 339);
+            this.NetPayLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NetPayLBL.Name = "NetPayLBL";
+            this.NetPayLBL.Size = new System.Drawing.Size(252, 41);
+            this.NetPayLBL.TabIndex = 244;
+            this.NetPayLBL.Text = "₱ 12,121.00";
+            this.NetPayLBL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label5
             // 
@@ -256,7 +259,7 @@
             // 
             this.OverviewPNL.AutoScroll = true;
             this.OverviewPNL.Controls.Add(this.button2);
-            this.OverviewPNL.Controls.Add(this.PSumTotalCost);
+            this.OverviewPNL.Controls.Add(this.NetPayLBL);
             this.OverviewPNL.Controls.Add(this.label5);
             this.OverviewPNL.Controls.Add(this.panel2);
             this.OverviewPNL.Controls.Add(this.BonusAddBTN);
@@ -265,41 +268,21 @@
             this.OverviewPNL.Size = new System.Drawing.Size(465, 431);
             this.OverviewPNL.TabIndex = 237;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(76, 117);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 19);
-            this.label1.TabIndex = 276;
-            this.label1.Text = "For payroll period:";
-            // 
-            // PeriodCMBX
-            // 
-            this.PeriodCMBX.BackColor = System.Drawing.Color.White;
-            this.PeriodCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PeriodCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PeriodCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.PeriodCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PeriodCMBX.FormattingEnabled = true;
-            this.PeriodCMBX.Location = new System.Drawing.Point(201, 114);
-            this.PeriodCMBX.Name = "PeriodCMBX";
-            this.PeriodCMBX.Size = new System.Drawing.Size(314, 25);
-            this.PeriodCMBX.TabIndex = 275;
-            this.PeriodCMBX.SelectedIndexChanged += new System.EventHandler(this.PeriodCMBX_SelectedIndexChanged);
-            // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.DWithLBL);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.BAllowanceLBL);
+            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.STLBL);
             this.panel2.Controls.Add(this.label56);
             this.panel2.Controls.Add(this.label57);
             this.panel2.Controls.Add(this.RTLBL);
             this.panel2.Controls.Add(this.label53);
             this.panel2.Controls.Add(this.label54);
+            this.panel2.Controls.Add(this.BBondsLBL);
+            this.panel2.Controls.Add(this.label23);
             this.panel2.Controls.Add(this.OTLBL);
             this.panel2.Controls.Add(this.label30);
             this.panel2.Controls.Add(this.label45);
@@ -318,25 +301,22 @@
             this.panel2.Controls.Add(this.OSLBL);
             this.panel2.Controls.Add(this.OSundays);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label26);
+            this.panel2.Controls.Add(this.DSSSLBL);
             this.panel2.Controls.Add(this.label27);
-            this.panel2.Controls.Add(this.label24);
+            this.panel2.Controls.Add(this.DPagIbigLBL);
             this.panel2.Controls.Add(this.label25);
-            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label23);
             this.panel2.Controls.Add(this.label48);
             this.panel2.Controls.Add(this.label47);
             this.panel2.Controls.Add(this.label41);
-            this.panel2.Controls.Add(this.label42);
+            this.panel2.Controls.Add(this.DTotalLBL);
             this.panel2.Controls.Add(this.label43);
-            this.panel2.Controls.Add(this.label44);
+            this.panel2.Controls.Add(this.BTotalLBL);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.DPhilHealthLBL);
             this.panel2.Controls.Add(this.label36);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label39);
+            this.panel2.Controls.Add(this.DCashAdvanceLBL);
             this.panel2.Controls.Add(this.label35);
             this.panel2.Controls.Add(this.label40);
             this.panel2.Controls.Add(this.WorkTotalLBL);
@@ -344,10 +324,10 @@
             this.panel2.Controls.Add(this.OMondaysLBL);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.OMLBL);
-            this.panel2.Controls.Add(this.label19);
+            this.panel2.Controls.Add(this.BColaLBL);
             this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.label22);
-            this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.B13LBL);
             this.panel2.Controls.Add(this.label46);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -660,25 +640,25 @@
             this.label6.Text = "645/hr";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label26
+            // DSSSLBL
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label26.Location = new System.Drawing.Point(280, 773);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(87, 21);
-            this.label26.TabIndex = 310;
-            this.label26.Text = "-23,289.29";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.DSSSLBL.AutoSize = true;
+            this.DSSSLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DSSSLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DSSSLBL.Location = new System.Drawing.Point(280, 827);
+            this.DSSSLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DSSSLBL.Name = "DSSSLBL";
+            this.DSSSLBL.Size = new System.Drawing.Size(87, 21);
+            this.DSSSLBL.TabIndex = 310;
+            this.DSSSLBL.Text = "-23,289.29";
+            this.DSSSLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label27.Location = new System.Drawing.Point(21, 768);
+            this.label27.Location = new System.Drawing.Point(21, 822);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(60, 19);
@@ -686,25 +666,25 @@
             this.label27.Text = "     - SSS";
             this.label27.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label24
+            // DPagIbigLBL
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label24.Location = new System.Drawing.Point(280, 746);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(87, 21);
-            this.label24.TabIndex = 308;
-            this.label24.Text = "-23,289.29";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.DPagIbigLBL.AutoSize = true;
+            this.DPagIbigLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DPagIbigLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DPagIbigLBL.Location = new System.Drawing.Point(280, 800);
+            this.DPagIbigLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DPagIbigLBL.Name = "DPagIbigLBL";
+            this.DPagIbigLBL.Size = new System.Drawing.Size(87, 21);
+            this.DPagIbigLBL.TabIndex = 308;
+            this.DPagIbigLBL.Text = "-23,289.29";
+            this.DPagIbigLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label25.Location = new System.Drawing.Point(21, 742);
+            this.label25.Location = new System.Drawing.Point(21, 796);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(91, 19);
@@ -712,25 +692,12 @@
             this.label25.Text = "     - Pag-IBIG";
             this.label25.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(281, 692);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 21);
-            this.label2.TabIndex = 306;
-            this.label2.Text = "-23,289.29";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(22, 690);
+            this.label3.Location = new System.Drawing.Point(22, 744);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 19);
@@ -738,25 +705,25 @@
             this.label3.Text = "Social Benefits Total";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label13
+            // BBondsLBL
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label13.Location = new System.Drawing.Point(281, 665);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(87, 21);
-            this.label13.TabIndex = 304;
-            this.label13.Text = "-23,289.29";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BBondsLBL.AutoSize = true;
+            this.BBondsLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBondsLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.BBondsLBL.Location = new System.Drawing.Point(280, 577);
+            this.BBondsLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BBondsLBL.Name = "BBondsLBL";
+            this.BBondsLBL.Size = new System.Drawing.Size(81, 21);
+            this.BBondsLBL.TabIndex = 304;
+            this.BBondsLBL.Text = "23,289.29";
+            this.BBondsLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(22, 664);
+            this.label23.Location = new System.Drawing.Point(21, 576);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(81, 19);
@@ -768,7 +735,7 @@
             // 
             this.label48.AutoSize = true;
             this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
-            this.label48.Location = new System.Drawing.Point(17, 790);
+            this.label48.Location = new System.Drawing.Point(17, 844);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(385, 13);
             this.label48.TabIndex = 302;
@@ -778,7 +745,7 @@
             // 
             this.label47.AutoSize = true;
             this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
-            this.label47.Location = new System.Drawing.Point(17, 536);
+            this.label47.Location = new System.Drawing.Point(17, 596);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(385, 13);
             this.label47.TabIndex = 301;
@@ -788,7 +755,7 @@
             // 
             this.label41.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label41.Location = new System.Drawing.Point(21, 811);
+            this.label41.Location = new System.Drawing.Point(21, 865);
             this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(196, 19);
@@ -796,23 +763,23 @@
             this.label41.Text = "Total";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label42
+            // DTotalLBL
             // 
-            this.label42.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label42.Location = new System.Drawing.Point(280, 805);
-            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(162, 30);
-            this.label42.TabIndex = 300;
-            this.label42.Text = "₱ -10,919.20";
-            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DTotalLBL.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.DTotalLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DTotalLBL.Location = new System.Drawing.Point(280, 859);
+            this.DTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DTotalLBL.Name = "DTotalLBL";
+            this.DTotalLBL.Size = new System.Drawing.Size(162, 30);
+            this.DTotalLBL.TabIndex = 300;
+            this.DTotalLBL.Text = "₱ -10,919.20";
+            this.DTotalLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label43
             // 
             this.label43.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label43.Location = new System.Drawing.Point(22, 558);
+            this.label43.Location = new System.Drawing.Point(22, 618);
             this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(196, 19);
@@ -820,23 +787,23 @@
             this.label43.Text = "Total";
             this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label44
+            // BTotalLBL
             // 
-            this.label44.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label44.Location = new System.Drawing.Point(280, 551);
-            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(162, 30);
-            this.label44.TabIndex = 298;
-            this.label44.Text = "P 10,919.20";
-            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BTotalLBL.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.BTotalLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.BTotalLBL.Location = new System.Drawing.Point(280, 611);
+            this.BTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BTotalLBL.Name = "BTotalLBL";
+            this.BTotalLBL.Size = new System.Drawing.Size(162, 30);
+            this.BTotalLBL.TabIndex = 298;
+            this.BTotalLBL.Text = "P 10,919.20";
+            this.BTotalLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(24, 602);
+            this.label10.Location = new System.Drawing.Point(24, 661);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(211, 19);
@@ -844,25 +811,25 @@
             this.label10.Text = "DEDUCTIONS";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label11
+            // DPhilHealthLBL
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label11.Location = new System.Drawing.Point(281, 719);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 21);
-            this.label11.TabIndex = 295;
-            this.label11.Text = "-23,289.29";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.DPhilHealthLBL.AutoSize = true;
+            this.DPhilHealthLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DPhilHealthLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DPhilHealthLBL.Location = new System.Drawing.Point(281, 773);
+            this.DPhilHealthLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DPhilHealthLBL.Name = "DPhilHealthLBL";
+            this.DPhilHealthLBL.Size = new System.Drawing.Size(87, 21);
+            this.DPhilHealthLBL.TabIndex = 295;
+            this.DPhilHealthLBL.Text = "-23,289.29";
+            this.DPhilHealthLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label36
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label36.Location = new System.Drawing.Point(22, 716);
+            this.label36.Location = new System.Drawing.Point(22, 770);
             this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(100, 19);
@@ -882,18 +849,18 @@
             this.label9.Text = "WORK";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label39
+            // DCashAdvanceLBL
             // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label39.Location = new System.Drawing.Point(281, 636);
-            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(87, 21);
-            this.label39.TabIndex = 291;
-            this.label39.Text = "-23,289.29";
-            this.label39.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.DCashAdvanceLBL.AutoSize = true;
+            this.DCashAdvanceLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DCashAdvanceLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DCashAdvanceLBL.Location = new System.Drawing.Point(281, 717);
+            this.DCashAdvanceLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DCashAdvanceLBL.Name = "DCashAdvanceLBL";
+            this.DCashAdvanceLBL.Size = new System.Drawing.Size(87, 21);
+            this.DCashAdvanceLBL.TabIndex = 291;
+            this.DCashAdvanceLBL.Text = "-23,289.29";
+            this.DCashAdvanceLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label35
             // 
@@ -912,7 +879,7 @@
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label40.Location = new System.Drawing.Point(22, 637);
+            this.label40.Location = new System.Drawing.Point(22, 718);
             this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(95, 19);
@@ -983,18 +950,18 @@
             this.OMLBL.Text = "645/hr";
             this.OMLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label19
+            // BColaLBL
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label19.Location = new System.Drawing.Point(280, 515);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(81, 21);
-            this.label19.TabIndex = 269;
-            this.label19.Text = "23,289.29";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BColaLBL.AutoSize = true;
+            this.BColaLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BColaLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.BColaLBL.Location = new System.Drawing.Point(280, 515);
+            this.BColaLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BColaLBL.Name = "BColaLBL";
+            this.BColaLBL.Size = new System.Drawing.Size(81, 21);
+            this.BColaLBL.TabIndex = 269;
+            this.BColaLBL.Text = "23,289.29";
+            this.BColaLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label20
             // 
@@ -1022,18 +989,18 @@
             this.label22.Text = "13th Month";
             this.label22.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label21
+            // B13LBL
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label21.Location = new System.Drawing.Point(280, 486);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(81, 21);
-            this.label21.TabIndex = 267;
-            this.label21.Text = "23,289.29";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.B13LBL.AutoSize = true;
+            this.B13LBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.B13LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.B13LBL.Location = new System.Drawing.Point(280, 486);
+            this.B13LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.B13LBL.Name = "B13LBL";
+            this.B13LBL.Size = new System.Drawing.Size(81, 21);
+            this.B13LBL.TabIndex = 267;
+            this.B13LBL.Text = "23,289.29";
+            this.B13LBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label46
             // 
@@ -1058,13 +1025,39 @@
             this.BonusAddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BonusAddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.BonusAddBTN.ForeColor = System.Drawing.Color.White;
-            this.BonusAddBTN.Location = new System.Drawing.Point(138, 386);
+            this.BonusAddBTN.Location = new System.Drawing.Point(138, 388);
             this.BonusAddBTN.Name = "BonusAddBTN";
             this.BonusAddBTN.Size = new System.Drawing.Size(83, 29);
             this.BonusAddBTN.TabIndex = 274;
             this.BonusAddBTN.Text = "ADJUST";
             this.BonusAddBTN.UseVisualStyleBackColor = false;
             this.BonusAddBTN.Click += new System.EventHandler(this.BonusAddBTN_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label1.Location = new System.Drawing.Point(76, 117);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 19);
+            this.label1.TabIndex = 276;
+            this.label1.Text = "For payroll period:";
+            // 
+            // PeriodCMBX
+            // 
+            this.PeriodCMBX.BackColor = System.Drawing.Color.White;
+            this.PeriodCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PeriodCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PeriodCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.PeriodCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PeriodCMBX.FormattingEnabled = true;
+            this.PeriodCMBX.Location = new System.Drawing.Point(201, 114);
+            this.PeriodCMBX.Name = "PeriodCMBX";
+            this.PeriodCMBX.Size = new System.Drawing.Size(314, 25);
+            this.PeriodCMBX.TabIndex = 275;
+            this.PeriodCMBX.SelectedIndexChanged += new System.EventHandler(this.PeriodCMBX_SelectedIndexChanged);
             // 
             // AdjPNL
             // 
@@ -1084,36 +1077,36 @@
             this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView3.EnableHeadersVisualStyles = false;
             this.dataGridView3.Location = new System.Drawing.Point(25, 17);
             this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(417, 375);
@@ -1157,6 +1150,39 @@
             this.panel3.TabIndex = 240;
             this.panel3.MouseEnter += new System.EventHandler(this.EmpListGRD_MouseLeave);
             // 
+            // NoPayrollPNL
+            // 
+            this.NoPayrollPNL.Controls.Add(this.label7);
+            this.NoPayrollPNL.Controls.Add(this.label4);
+            this.NoPayrollPNL.Location = new System.Drawing.Point(53, 47);
+            this.NoPayrollPNL.Name = "NoPayrollPNL";
+            this.NoPayrollPNL.Size = new System.Drawing.Size(466, 532);
+            this.NoPayrollPNL.TabIndex = 266;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label7.Location = new System.Drawing.Point(0, 233);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(466, 37);
+            this.label7.TabIndex = 278;
+            this.label7.Text = "Please add Duty Details for this guard";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label4.Location = new System.Drawing.Point(2, 201);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(460, 25);
+            this.label4.TabIndex = 277;
+            this.label4.Text = "No Payroll Details Found";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // EmpListGRD
             // 
             this.EmpListGRD.AllowUserToAddRows = false;
@@ -1170,15 +1196,15 @@
             this.EmpListGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.EmpListGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.EmpListGRD.ColumnHeadersVisible = false;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.EmpListGRD.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EmpListGRD.DefaultCellStyle = dataGridViewCellStyle8;
             this.EmpListGRD.Location = new System.Drawing.Point(42, 104);
             this.EmpListGRD.MultiSelect = false;
             this.EmpListGRD.Name = "EmpListGRD";
@@ -1875,38 +1901,57 @@
             this.toolStripTextBox40.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox40.Text = "345 x 8hrs";
             // 
-            // NoPayrollPNL
+            // BAllowanceLBL
             // 
-            this.NoPayrollPNL.Controls.Add(this.label7);
-            this.NoPayrollPNL.Controls.Add(this.label4);
-            this.NoPayrollPNL.Location = new System.Drawing.Point(53, 47);
-            this.NoPayrollPNL.Name = "NoPayrollPNL";
-            this.NoPayrollPNL.Size = new System.Drawing.Size(466, 532);
-            this.NoPayrollPNL.TabIndex = 266;
+            this.BAllowanceLBL.AutoSize = true;
+            this.BAllowanceLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BAllowanceLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.BAllowanceLBL.Location = new System.Drawing.Point(280, 544);
+            this.BAllowanceLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BAllowanceLBL.Name = "BAllowanceLBL";
+            this.BAllowanceLBL.Size = new System.Drawing.Size(81, 21);
+            this.BAllowanceLBL.TabIndex = 338;
+            this.BAllowanceLBL.Text = "23,289.29";
+            this.BAllowanceLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label4
+            // label11
             // 
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label4.Location = new System.Drawing.Point(2, 201);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(460, 25);
-            this.label4.TabIndex = 277;
-            this.label4.Text = "No Payroll Details Found";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label11.Location = new System.Drawing.Point(22, 546);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(141, 19);
+            this.label11.TabIndex = 337;
+            this.label11.Text = "Emergency Allowance";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label7
+            // DWithLBL
             // 
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(0, 233);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(466, 37);
-            this.label7.TabIndex = 278;
-            this.label7.Text = "Please add Duty Details for this guard";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.DWithLBL.AutoSize = true;
+            this.DWithLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DWithLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DWithLBL.Location = new System.Drawing.Point(281, 689);
+            this.DWithLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DWithLBL.Name = "DWithLBL";
+            this.DWithLBL.Size = new System.Drawing.Size(87, 21);
+            this.DWithLBL.TabIndex = 340;
+            this.DWithLBL.Text = "-23,289.29";
+            this.DWithLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label13.Location = new System.Drawing.Point(22, 690);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(106, 19);
+            this.label13.TabIndex = 339;
+            this.label13.Text = "Withholding Tax";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Payroll_EmployeeView
             // 
@@ -1934,6 +1979,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.NoPayrollPNL.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EmpListGRD)).EndInit();
             this.MondaySaturday.ResumeLayout(false);
             this.MondaySaturday.PerformLayout();
@@ -1947,7 +1993,6 @@
             this.SMond.PerformLayout();
             this.SSunds.ResumeLayout(false);
             this.SSunds.PerformLayout();
-            this.NoPayrollPNL.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1961,22 +2006,22 @@
         private System.Windows.Forms.Panel OverviewPNL;
         private System.Windows.Forms.Panel AdjPNL;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label PSumTotalCost;
+        private System.Windows.Forms.Label NetPayLBL;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button BonusAddBTN;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label BColaLBL;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label B13LBL;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox PeriodCMBX;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label DPhilHealthLBL;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label DCashAdvanceLBL;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label WorkTotalLBL;
@@ -1985,19 +2030,18 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label OMLBL;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label DTotalLBL;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label BTotalLBL;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label BBondsLBL;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label DSSSLBL;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label DPagIbigLBL;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView EmpListGRD;
         private System.Windows.Forms.DataGridView dataGridView3;
@@ -2083,5 +2127,9 @@
         private System.Windows.Forms.Panel NoPayrollPNL;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label DWithLBL;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label BAllowanceLBL;
+        private System.Windows.Forms.Label label11;
     }
 }
