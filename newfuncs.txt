@@ -1,4 +1,37 @@
-﻿
+﻿#########################################################################
+NEW FUNCTIONS 
+July 20, 2017
+
+
+assume na na instantiate na ang new Payroll (GID),
+then na ComputeHours() and ComputeGrossPay() na sya
+ma access na nimo ni: (for each payroll object ni.)
+
+Mga things na ma view sa form
+
+Deductions
+	HDMF (Pag-ibig):	pay.pagibig     double
+	PHIC (PhilHealth):	pay.PhilHealth  double
+	Widthholding Tax:	pay.withtax		double
+	Cash Advance		pay.cashadv		double
+Bonuses
+	13th Month Pay:		pay.thirteen	double
+	Cash Bond:			pay.cashbond	double
+	Emergency Allowan.	pay.emerallowance	
+	COLA				pay.cola    	double gyapon
+
+TOTAL NA GYUD NA APIL NA ANG BONUS + DEDUCTION
+	pay.NetPay			dubol.
+
+
+
+
+
+
+##########################################################################
+
+
+
 New Funcs
 Saturday, Jul 15
 

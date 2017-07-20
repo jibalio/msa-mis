@@ -19,6 +19,7 @@ namespace MSAMISUserInterface {
         public static double BasicPay = 340.00;
         public Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public static Hours total_old;
+       
         public Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
             {"normal_nsu", new HourCostPair () },
@@ -82,7 +83,9 @@ namespace MSAMISUserInterface {
                 this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             }
             ComputeTotalSummary();
-
+            ComputeBonuses();
+            ComputeDeductions();
+            ComputeNet();
         }
 
         public void ComputeHours() {
@@ -114,7 +117,7 @@ namespace MSAMISUserInterface {
         }
 
         private void ComputeTotalSummary() {
-            /*  normal_nsu
+                /* normal_nsu
                 normal_sun
                 regular_nsu
                 regular_sun
@@ -143,15 +146,15 @@ namespace MSAMISUserInterface {
             TotalSummary["special_sun"] =
                          hc["sun_proper_day_special"] +
                         hc["sun_overtime_day_special"] +
-                        hc["sun_proper_night_special"] +
-                        hc["sun_overtime_night_special"];
+                    hc["sun_proper_night_special"] +
+                    hc["sun_overtime_night_special"];
             TotalSummary["special_nsu"] =
-                         hc["nsu_proper_day_special"] +
-                        hc["nsu_overtime_day_special"] +
-                        hc["nsu_proper_night_special"] +
-                        hc["nsu_overtime_night_special"];
+                    hc["nsu_proper_day_special"] +
+                    hc["nsu_overtime_day_special"] +
+                    hc["nsu_proper_night_special"] +
+                    hc["nsu_overtime_night_special"];
             TotalSummary["normal"] =
-                     hc["nsu_proper_day_normal"] +
+                    hc["nsu_proper_day_normal"] +
                     hc["nsu_overtime_day_normal"] +
                     hc["nsu_proper_night_normal"] +
                     hc["nsu_overtime_night_normal"]+                
@@ -179,10 +182,77 @@ namespace MSAMISUserInterface {
                     hc["sun_overtime_night_special"];
             TotalSummary["total"] =
                 TotalSummary["special"] + TotalSummary["regular"] + TotalSummary["normal"];
-
-           
+            NetPay = TotalSummary["total"].cost;
         }
 
+        public double NetPay;
+        public double sss;
+        public double pagibig;
+        public double philhealth;
+        public double withtax;
+        public double cashadv;
+        public double cashbond;
+        
+        public double ComputeNet() {
+            double e = NetPay;
+            e +=(ComputeDeductions());
+            e += ComputeBonuses();
+            return e;
+        }
+
+        public double ComputeDeductions() {
+            this.sss = ComputeSSS();
+            this.pagibig = ComputeHDMF();
+            this.philhealth = ComputePHIC();
+            this.cashadv = ComputeCashAdvance();
+            double e =  sss + pagibig + philhealth + cashadv;
+            return e;
+        }
+
+        public double thirteen;
+        public double cola;
+        public double emerallowance;
+        public double ComputeBonuses() {
+            this.thirteen = ComputeThirteen();
+            this.cola = ComputeCola();
+            this.emerallowance = ComputeEmer();
+            this.cashbond = ComputeCashBond();
+            return thirteen + cola + emerallowance + cashbond;
+        }
+
+        public static double ComputeCashBond() {
+            return 5000;
+        }
+        public static double ComputeCashAdvance() {
+            return 20;
+        }
+        public static double ComputeWithTax() {
+            return 1250;
+        }
+        public static double ComputeSSS() {
+            return 555;
+        }
+        public static double ComputeHDMF () {
+            return 1500;
+        }
+
+        public static double ComputePHIC() {
+            return 2000;
+        }
+
+        public static double ComputeThirteen() {
+            return 5000;
+        }
+
+        public static double ComputeCola () {
+            return 50;
+        }
+
+        public static double ComputeEmer() {
+            return 2500;
+        }
+
+        
         #endregion
         #region Basic Pay Operations
 
