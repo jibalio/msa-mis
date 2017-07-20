@@ -14,6 +14,7 @@ namespace MSAMISUserInterface {
         public MainForm reference;
         Payroll pay;
         public Shadow refer;
+        DataGridViewRow currentrow;
 
         public Payroll_EmployeeView() {
             InitializeComponent();
@@ -38,12 +39,10 @@ namespace MSAMISUserInterface {
             EmpListGRD.Columns[0].Visible = false;
             EmpListGRD.Columns[1].Width = 320;
             EmpListGRD.Sort(EmpListGRD.Columns[1], ListSortDirection.Ascending);
-            
+            currentrow = EmpListGRD.Rows[0];
 
             foreach (DataGridViewRow row in EmpListGRD.Rows) {
-                if (row.Cells[1].Value.ToString().Equals("")) {
-                    row.Visible = false;
-                } else if (row.Cells[0].Value.ToString().Equals(GID.ToString())) {
+                if (row.Cells[0].Value.ToString().Equals(GID.ToString())) {
                     row.Selected = true;
                     currentrow = row;
                     row.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
@@ -178,7 +177,7 @@ namespace MSAMISUserInterface {
             view.Location = new Point(this.Location.X + 350, this.Location.Y);
             view.ShowDialog();
         }
-        DataGridViewRow currentrow;
+        
         private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             try {
                 currentrow.DefaultCellStyle.Font = new Font("Segoe UI", 10);
@@ -193,6 +192,7 @@ namespace MSAMISUserInterface {
         private void LoadDetails() {
             pay = new Payroll(GID);
             pay.ComputeHours();
+            pay.ComputeGrossPay();
             UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal", "nsu_overtime_night_normal", MondaySaturday);
             UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal", "sun_overtime_night_normal", Sundays);
             UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special", "nsu_overtime_night_special", RMond);
