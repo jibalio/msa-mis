@@ -238,12 +238,12 @@ namespace MSAMISUserInterface {
                 BColaLBL.Text = CurrencyFormat(pay.cola);
                 BTotalLBL.Text = CurrencyFormat(pay.ComputeBonuses());
 
-                DCashAdvanceLBL.Text = CurrencyFormat(pay.cashadv);
-                DPagIbigLBL.Text = CurrencyFormat(pay.pagibig);
-                DPhilHealthLBL.Text = CurrencyFormat(pay.philhealth);
-                DSSSLBL.Text = CurrencyFormat(pay.sss);
-                DWithLBL.Text = CurrencyFormat(pay.withtax);
-                DTotalLBL.Text = CurrencyFormat(pay.ComputeDeductions());
+                DCashAdvanceLBL.Text = CurrencyFormatNegative(pay.cashadv);
+                DPagIbigLBL.Text = CurrencyFormatNegative(pay.pagibig);
+                DPhilHealthLBL.Text = CurrencyFormatNegative(pay.philhealth);
+                DSSSLBL.Text = CurrencyFormatNegative(pay.sss);
+                DWithLBL.Text = CurrencyFormatNegative(pay.withtax);
+                DTotalLBL.Text = CurrencyFormatNegative(pay.ComputeDeductions());
 
                 NetPayLBL.Text = CurrencyFormat(pay.NetPay);
 
@@ -267,6 +267,10 @@ namespace MSAMISUserInterface {
 
         private String CurrencyFormat(Double Money) {
             return "₱ " + Money.ToString("N2");
+        }
+
+        private String CurrencyFormatNegative(Double Money) {
+            return "₱ -" + Money.ToString("N2");
         }
 
         private void UpdateLBL(String key, Label lbl) {
