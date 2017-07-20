@@ -17,7 +17,7 @@ namespace MSAMISUserInterface {
         };
         public HourProcessor totalhours = new HourProcessor();
         public static double BasicPay = 340.00;
-        public static Attendance.Period period = Attendance.GetCurrentPayPeriod();
+        public Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public static Hours total_old;
         public Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
@@ -65,6 +65,12 @@ namespace MSAMISUserInterface {
         #region Constructors
         public Payroll(int GID) {
             this.GID = GID;
+        }
+        public Payroll(int GID, int month, int period, int year) {
+            this.GID = GID;
+            this.period.period = period;
+            this.period.month = month;
+            this.period.year = year;
         }
         #endregion
         #region  Computationes
