@@ -145,7 +145,6 @@
             this.PersonalPNL.Size = new System.Drawing.Size(437, 421);
             this.PersonalPNL.TabIndex = 13;
             this.PersonalPNL.Visible = false;
-            this.PersonalPNL.Paint += new System.Windows.Forms.PaintEventHandler(this.DetailsPNL_Paint);
             // 
             // CivilStatusLBL
             // 
@@ -350,7 +349,6 @@
             this.label8.Size = new System.Drawing.Size(63, 17);
             this.label8.TabIndex = 9;
             this.label8.Text = "Birthdate:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -1192,7 +1190,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RViewEmployees_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Guards_View_FormClosed);
             this.Load += new System.EventHandler(this.RViewEmployees_Load);
             this.PersonalPNL.ResumeLayout(false);
             this.PersonalPNL.PerformLayout();

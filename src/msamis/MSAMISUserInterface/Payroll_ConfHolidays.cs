@@ -1,12 +1,7 @@
 ﻿using ryldb.sqltools;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -16,22 +11,22 @@ namespace MSAMISUserInterface {
         #region Form Properties and Load
         public Payroll_ConfHolidays() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         private void Sched_ConfHolidays_Load(object sender, EventArgs e) {
-            this.Location = new Point(this.Location.X + 150, this.Location.Y);
+            Location = new Point(Location.X + 150, Location.Y);
             LoadPage();
             FadeTMR.Start();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) FadeTMR.Stop();
+            Opacity += 0.2;
+            if (Opacity >= 1) FadeTMR.Stop();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
         private void LoadPage() {
             HolidaysGRD.DataSource = Holiday.GetHolidays();
@@ -51,8 +46,8 @@ namespace MSAMISUserInterface {
                 if (row.Cells[1].Value.ToString().Equals(row.Cells[2].Value.ToString())) {
                     dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]), int.Parse(row.Cells[1].Value.ToString().Split('/')[0]), int.Parse(row.Cells[1].Value.ToString().Split('/')[1])));
                 } else {
-                    int count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) - int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
-                    for (int i = 0; i < count+1; i++) dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]), int.Parse(row.Cells[1].Value.ToString().Split('/')[0]), int.Parse(row.Cells[1].Value.ToString().Split('/')[1])+i));
+                    var count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) - int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
+                    for (var i = 0; i < count+1; i++) dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]), int.Parse(row.Cells[1].Value.ToString().Split('/')[0]), int.Parse(row.Cells[1].Value.ToString().Split('/')[1])+i));
                 }
             }
            HoldaysCLNDR.BoldedDates = dts.ToArray();
@@ -67,7 +62,7 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
-                int type = 1;
+                var type = 1;
                 if (SpecialBTN.Checked) type = 2; 
 
                 if (AddBTN.Text.Equals("ADD")) Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type);
@@ -77,7 +72,7 @@ namespace MSAMISUserInterface {
         }
 
         private bool DataVal() {
-            bool ret = true;
+            var ret = true;
 
             if (DescBX.Text.Trim(' ').Equals("")) {
                 DescTLTP.ToolTipTitle = "Description";
@@ -101,9 +96,7 @@ namespace MSAMISUserInterface {
             if (HolidaysGRD.SelectedRows.Count > 0) {
                 start = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[2]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[0]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[1]));
                 end = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[2]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[0]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[1]));
-                if (HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Special")) {
-                    SpecialBTN.Checked = true;
-                } else SpecialBTN.Checked = false;
+                var b = (HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Special")) ? SpecialBTN.Checked = true : SpecialBTN.Checked = false;
                 DateLBL.Text = start.ToShortDateString() + " - " + end.ToShortDateString();
                 DescBX.Text = HolidaysGRD.SelectedRows[0].Cells[3].Value.ToString();
             }
@@ -136,10 +129,6 @@ namespace MSAMISUserInterface {
 
         private void Payroll_ConfHolidays_FormClosing(object sender, FormClosingEventArgs e) {
             refer.Hide();
-        }
-
-        private void HolidaysGRD_CellClick(object sender, DataGridViewCellEventArgs e) {
-            
         }
     }
 }

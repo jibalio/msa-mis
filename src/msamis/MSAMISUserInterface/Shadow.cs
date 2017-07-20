@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -17,11 +10,11 @@ namespace MSAMISUserInterface {
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.1;
-            if (this.Opacity >= 0.6) { FadeTMR.Stop(); form.ShowDialog(); }
+            Opacity += 0.1;
+            if (Opacity >= 0.6) { FadeTMR.Stop(); form.ShowDialog(); }
         }
         public void Transparent() {
-            this.Opacity = 0;
+            Opacity = 0;
             FadeTMR.Start();
         }
 

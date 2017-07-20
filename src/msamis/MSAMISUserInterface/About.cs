@@ -1,59 +1,55 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class About : Form {
-        public String UN { get; set; }
-        public MainForm reference;
-        public MySqlConnection conn;
-        public Shadow refer;
+        public string Username { get; set; }
+        public MainForm Reference;
+        public MySqlConnection Connection;
+        public Shadow Refer;
 
-        Color chose = Color.FromArgb(53, 64, 82);
-        Color def = Color.Gray;
+        private readonly Color _chose = Color.FromArgb(53, 64, 82);
+        private readonly Color _def = Color.Gray;
+        private Label _currentLbl;
+        private Panel _currentPnl;
+
         public About() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
-        Label currentLBL;
-        Panel currentPNL;
+
         private void About_Load(object sender, EventArgs e) {
             FadeTMR.Start();
-            currentLBL = AboutLBL;
-            currentPNL = AboutPNL;
+            _currentLbl = AboutLBL;
+            _currentPnl = AboutPNL;
             
             UsersPNL.Visible = false;
         }
 
         private void About_FormClosing(object sender, FormClosingEventArgs e) {
-            refer.Hide();
+            Refer.Hide();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
-            refer.Hide();
+            Close();
+            Refer.Hide();
         }
 
         private void ChangePanel(Label newL, Panel newP) {
-            currentLBL.ForeColor = def;
-            currentPNL.Visible = false;
-            newL.ForeColor = chose;
+            _currentLbl.ForeColor = _def;
+            _currentPnl.Visible = false;
+            newL.ForeColor = _chose;
             newP.Visible = true;
-            currentLBL = newL;
-            currentPNL = newP;
+            _currentLbl = newL;
+            _currentPnl = newP;
         }
 
         private void AboutLBL_Click(object sender, EventArgs e) {
@@ -65,19 +61,19 @@ namespace MSAMISUserInterface {
         }
 
         private void UsersLBL_MouseEnter(object sender, EventArgs e) {
-            UsersLBL.ForeColor = chose;
+            UsersLBL.ForeColor = _chose;
         }
 
         private void AboutLBL_MouseEnter(object sender, EventArgs e) {
-            AboutLBL.ForeColor = chose;
+            AboutLBL.ForeColor = _chose;
         }
 
         private void AboutLBL_MouseLeave(object sender, EventArgs e) {
-            if (!AboutPNL.Visible) AboutLBL.ForeColor = def;
+            if (!AboutPNL.Visible) AboutLBL.ForeColor = _def;
         }
 
         private void UsersLBL_MouseLeave(object sender, EventArgs e) {
-            if (!UsersPNL.Visible) UsersLBL.ForeColor = def;
+            if (!UsersPNL.Visible) UsersLBL.ForeColor = _def;
         }
 
         private void About_FormClosed(object sender, FormClosedEventArgs e) {

@@ -118,7 +118,6 @@
             this.HolidaysGRD.ShowCellToolTips = false;
             this.HolidaysGRD.Size = new System.Drawing.Size(466, 180);
             this.HolidaysGRD.TabIndex = 157;
-            this.HolidaysGRD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.HolidaysGRD_CellClick);
             // 
             // label1
             // 

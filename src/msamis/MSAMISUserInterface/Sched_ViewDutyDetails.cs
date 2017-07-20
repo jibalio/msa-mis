@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -13,7 +9,6 @@ namespace MSAMISUserInterface {
         public int AID { get; set; }
         public int GID { get; set; }
         public MainForm reference;
-
         public Shadow refer;
 
         private Attendance A;
@@ -22,13 +17,13 @@ namespace MSAMISUserInterface {
         #region Form Initialization and Load
         public Sched_ViewDutyDetails() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
             LoadPage();
         }
         public void LoadPage() {
-            Attendance.Period p = Attendance.GetCurrentPayPeriod();
+            var p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
             RefreshDutyDetails();
             RefreshCurrent();
@@ -37,7 +32,7 @@ namespace MSAMISUserInterface {
             FadeTMR.Start();
         }
         public void RefreshData() {
-            DataTable dt = Scheduling.GetAllAssignmentDetails(AID);
+            var dt = Scheduling.GetAllAssignmentDetails(AID);
             NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0];
             FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
             ClientLBL.Text = dt.Rows[0][3].ToString();
@@ -56,10 +51,10 @@ namespace MSAMISUserInterface {
             }
         }
         public void RefreshCurrent() {
-            DataTable dt = Scheduling.GetAssignmentDetails(AID);
-            //LocationLBL.Text = dt.Rows[0][0].ToString();
-            //StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
-            //EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];
+            var dt = Scheduling.GetAssignmentDetails(AID);
+            LocationLBL.Text = dt.Rows[0][0].ToString();
+            StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
+            EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];
         }
 
         public void RefreshDutyDetails() {
@@ -102,56 +97,63 @@ namespace MSAMISUserInterface {
             AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
             AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            Attendance B = new Attendance(AID, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-            Hours hrs = B.GetAttendanceSummary();
+            var B = new Attendance(AID, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            var hrs = B.GetAttendanceSummary();
             AShiftLBL.Text = hrs.GetNormalDay() + " hrs";
             ANightLBL.Text = hrs.GetNormalNight() + " hrs";
             AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
             AHNightLBL.Text = hrs.GetHolidayNight() + " hrs";
-            if (B.GetCertifiedBy().Equals(""))  {
-                ACertifiedLBL.Text = "Unedited Attendance";
-            } else
-            ACertifiedLBL.Text = B.GetCertifiedBy();
+
+            var b = (B.GetCertifiedBy().Equals("")) ? ACertifiedLBL.Text = "Unedited Attendance" : ACertifiedLBL.Text = B.GetCertifiedBy();
         }
         #endregion
 
         #region Form Props
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
             reference.SCHEDRefreshAssignments();
-            this.Close();
+            Close();
         }
         private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
             refer.Hide();
         }
         private void EditDutyDetailsBTN_Click(object sender, EventArgs e) {
-            Sched_AddDutyDetail view = new Sched_AddDutyDetail();
-            view.AID = this.AID;
-            view.button = "UPDATE";
-            view.refer = this;
-            view.DID = this.DID;
-            view.Location = new Point(this.Location.X + 330, this.Location.Y);
+            var view = new Sched_AddDutyDetail {
+                AID = AID,
+                button = "UPDATE",
+                refer = this,
+                DID = DID,
+                Location = new Point(Location.X + 330, Location.Y)
+            };
             view.ShowDialog();
         }
 
         private void EditDaysBTN_Click(object sender, EventArgs e) {
-            Sched_AddDutyDays view = new Sched_AddDutyDays();
-            view.AID = this.AID;
-            view.button = "UPDATE";
-            view.reference = this;
-            view.Location = new Point(this.Location.X + 330, this.Location.Y);
+            var view = new Sched_AddDutyDays {
+                AID = AID,
+                button = "UPDATE",
+                reference = this,
+                Location = new Point(Location.X + 330, Location.Y)
+
+
+            };
+
             view.ShowDialog();
         }
 
         private void AddDutyDetailsBTN_Click(object sender, EventArgs e) {
             try {
-                Sched_AddDutyDetail view = new Sched_AddDutyDetail();
-                view.AID = this.AID;
-                view.refer = this;
-                view.Location = new Point(this.Location.X + 330, this.Location.Y);
+                var view = new Sched_AddDutyDetail {
+                    AID = AID,
+                    refer = this,
+                    Location = new Point(Location.X + 330, Location.Y)
+
+
+                };
+
                 view.ShowDialog();
             }
             catch (Exception) { }
@@ -168,7 +170,7 @@ namespace MSAMISUserInterface {
         }
 
         private void DismissBTN_Click(object sender, EventArgs e) {
-            DialogResult x = rylui.RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected assignments?", "Dismiss Assignments", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var x = rylui.RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected assignments?", "Dismiss Assignments", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (x == DialogResult.Yes) {
                 Scheduling.DismissDuty(DID);
                 RefreshDutyDetails();
@@ -185,27 +187,27 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_MouseLeave(object sender, EventArgs e) {
-            CloseBTN.ForeColor = this.BackColor;
+            CloseBTN.ForeColor = BackColor;
         }
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             RefreshAttendance();
             if (PeriodCMBX.SelectedIndex == 0) {
                 EditDaysBTN.Visible = true;
-                PeriodCMBX.Size = new System.Drawing.Size(257, 25);
+                PeriodCMBX.Size = new Size(257, 25);
             } else if (PeriodCMBX.SelectedIndex > 0) {
                 EditDaysBTN.Visible = false;
-                PeriodCMBX.Size = new System.Drawing.Size(352, 25);
+                PeriodCMBX.Size = new Size(352, 25);
             }
 
-            
+
 
         }
         #endregion
 
         #region Form Navigation
-        Color dark = Color.FromArgb(53, 64, 82);
-        Color light = Color.DarkGray;
+        private readonly Color dark = Color.FromArgb(53, 64, 82);
+        private readonly Color light = Color.DarkGray;
 
         private void AttendanceLBL_Click(object sender, EventArgs e) {
             AttendanceLBL.ForeColor = dark;
@@ -240,8 +242,5 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        private void AttendanceGRD_CellMouseEnter(object sender, DataGridViewCellEventArgs e) {
-
-        }
     }
 }

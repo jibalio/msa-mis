@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -13,13 +11,13 @@ namespace MSAMISUserInterface {
         public Sched_ViewAssReq refer { get; set; }
         public int RID { get; set; }
         public int NumberOfGuards { get; set; }
-        public String ClientName;
+        public string ClientName;
 
         int[] GIDs = { -1 };
 
         public Sched_AssignGuards() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         private void Sched_AssignGuards_Load(object sender, EventArgs e) {
@@ -40,7 +38,7 @@ namespace MSAMISUserInterface {
         }
         private void RefreshAvailable() {
             AvailableGRD.Rows.Clear();
-            DataTable dt = Scheduling.GetUnassignedGuards("", "name asc");
+            var dt = Scheduling.GetUnassignedGuards("", "name asc");
             foreach (DataRow row in dt.Rows) {
                 if (!GIDs.Contains(int.Parse(row[0].ToString()))) AvailableGRD.Rows.Add(row[0], row[1], row[2]);
             }
@@ -51,36 +49,36 @@ namespace MSAMISUserInterface {
             AvailableGRD.Columns[2].Width = 210;
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
 
         private void ConfirmBTN_Click(object sender, EventArgs e) {
-            if (NumberOfGuards < GIDs.Count()) {
-                DialogResult rs = rylui.RylMessageBox.ShowDialog("The number of guards you've assigned is \n more than what the client requested \n Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (NumberOfGuards < GIDs.Length) {
+                var rs = rylui.RylMessageBox.ShowDialog("The number of guards you've assigned is \n more than what the client requested \n Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (rs == DialogResult.Yes) {
                     Scheduling.AddAssignment(RID, GIDs);
-                    this.Close();
+                    Close();
                     refer.Close();
                 }
-            } else if (NumberOfGuards > GIDs.Count()) {
-                DialogResult rs = rylui.RylMessageBox.ShowDialog("The number of guards you've assigned is not enough", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else if (NumberOfGuards > GIDs.Length) {
+                rylui.RylMessageBox.ShowDialog("The number of guards you've assigned is not enough", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
                 Scheduling.AddAssignment(RID, GIDs);
-                this.Close();
+                Close();
                 refer.Close();
             }
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
         }
         private void AssignBTN_Click(object sender, EventArgs e) {
             AddGuards();
         }
 
         private void AddGuards (){
-            for (int i = 0; i < AvailableGRD.SelectedRows.Count; i++) {
+            for (var i = 0; i < AvailableGRD.SelectedRows.Count; i++) {
                 AssignedGRD.Rows.Add(AvailableGRD.SelectedRows[i].Cells[0].Value.ToString(), AvailableGRD.SelectedRows[i].Cells[1].Value.ToString(), AvailableGRD.SelectedRows[i].Cells[2].Value.ToString());
             }
             foreach (DataGridViewRow row in AvailableGRD.SelectedRows) {
@@ -91,7 +89,7 @@ namespace MSAMISUserInterface {
 
         private void UpdateNeeded() {
             GIDs = new int[AssignedGRD.Rows.Count];
-            for (int i = 0; i < AssignedGRD.Rows.Count; i++) {
+            for (var i = 0; i < AssignedGRD.Rows.Count; i++) {
                 GIDs[i] = int.Parse(AssignedGRD.Rows[i].Cells[0].Value.ToString());
             }
 
@@ -104,8 +102,8 @@ namespace MSAMISUserInterface {
             AvailableGRD.Sort(AvailableGRD.Columns[1], ListSortDirection.Ascending);
         }
 
-        private Color dark = Color.FromArgb(53, 64, 82);
-        private Color light = Color.FromArgb(94, 114, 146);
+        private readonly Color dark = Color.FromArgb(53, 64, 82);
+        private readonly Color light = Color.FromArgb(94, 114, 146);
 
         private void AssignedLBL_Click(object sender, EventArgs e) {
             AvailablePNL.Visible = false;
@@ -138,8 +136,8 @@ namespace MSAMISUserInterface {
         }
         private void DeleteBTN_Click(object sender, EventArgs e) {
             foreach (DataGridViewRow row in AssignedGRD.SelectedRows) {
-                int numToRemove = int.Parse(row.Cells[0].Value.ToString());
-                int numIdx = Array.IndexOf(GIDs, numToRemove);
+                var numToRemove = int.Parse(row.Cells[0].Value.ToString());
+                var numIdx = Array.IndexOf(GIDs, numToRemove);
                 List<int> tmp = new List<int>(GIDs);
                 tmp.RemoveAt(numIdx);
                 GIDs = tmp.ToArray();

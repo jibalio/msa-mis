@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -13,31 +7,32 @@ namespace MSAMISUserInterface {
         public int RAID { get; set; }
         public MainForm reference;
         public Shadow refer;
-        int numGuards;
+
+        private int numGuards;
 
         public Sched_ViewAssReq() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
         }
 
         private void Sched_ViewAssReq_Load(object sender, EventArgs e) {
             RefreshData();
-            this.Location = new Point(this.Location.X + 175, this.Location.Y);
+            Location = new Point(Location.X + 175, Location.Y);
             FadeTMR.Start();
         }
         private void RefreshData() {
-            DataTable dt = Scheduling.GetAssignmentRequestDetails(RAID);
+            var dt = Scheduling.GetAssignmentRequestDetails(RAID);
             ClientLBL.Text = dt.Rows[0]["name"].ToString();
-            PermAddLBL.Text = "Location: " + dt.Rows[0]["location"].ToString();
-            ContractStartLBL.Text = "Contract Start: " + dt.Rows[0]["contractstart"].ToString();
-            ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"].ToString();
+            PermAddLBL.Text = "Location: " + dt.Rows[0]["location"];
+            ContractStartLBL.Text = "Contract Start: " + dt.Rows[0]["contractstart"];
+            ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"];
             numGuards = int.Parse(dt.Rows[0]["noguards"].ToString());
-            NoLBL.Text = "Guards Needed: " + numGuards.ToString();
+            NoLBL.Text = "Guards Needed: " + numGuards;
             if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Pending.ToString())) {
                 AssignBTN.Text = "APPROVE";
                 StatusLBL.Text = "Status: Pending";
@@ -55,8 +50,7 @@ namespace MSAMISUserInterface {
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString())) StatusLBL.Text = "Status: Inctive";
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) StatusLBL.Text = "Status: Decline";
             }
-            if (numGuards > Scheduling.GetNumberOfUnassignedGuards()) NeededLBL.ForeColor = Color.Salmon;
-            else NeededLBL.ForeColor = Color.OliveDrab;
+            var b = (numGuards > Scheduling.GetNumberOfUnassignedGuards()) ? NeededLBL.ForeColor = Color.Salmon : NeededLBL.ForeColor = Color.OliveDrab;
             NeededLBL.Text = Scheduling.GetNumberOfUnassignedGuards().ToString() + " available guards";
         }
 
@@ -66,18 +60,19 @@ namespace MSAMISUserInterface {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
 
         private void AssignBTN_Click(object sender, EventArgs e) {
             if (AssignBTN.Text.Equals("ASSIGN")) {
                 try {
-                    Sched_AssignGuards view = new Sched_AssignGuards();
-                    view.RID = this.RAID;
-                    view.NumberOfGuards = numGuards;
-                    view.refer = this;
-                    view.ClientName = ClientLBL.Text;
-                    view.Location = this.Location;
+                    var view = new Sched_AssignGuards {
+                        RID = RAID,
+                        NumberOfGuards = numGuards,
+                        refer = this,
+                        ClientName = ClientLBL.Text,
+                        Location = Location
+                    };
                     view.ShowDialog();
                 }
                 catch (Exception) { }

@@ -1,40 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Sched_AddDutyDetail : Form {
-        public String button = "ADD";
+        public string button = "ADD";
         public int AID { get; set; }
         public int DID { get; set; }
         public Sched_ViewDutyDetails refer { get; set; }
 
-        private bool[] DutyDays = new bool[7];
+        private readonly bool[] DutyDays = new bool[7];
 
         #region Form Properties
         public Sched_AddDutyDetail() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
-        Color dark = Color.FromArgb(53, 64, 82);
-        Color light = Color.White;
+        private readonly Color dark = Color.FromArgb(53, 64, 82);
 
         private void changeDayStatus(int n, Button btn) {
-            if (DutyDays[n] == true) {
+            if (DutyDays[n]) {
                 DutyDays[n] = false;
                 btn.BackColor = Color.White;
                 btn.ForeColor = dark;
@@ -87,7 +81,7 @@ namespace MSAMISUserInterface {
                 TimeOutHrBX.SelectedIndex = 0;
                 TimeOutMinBX.SelectedIndex = 0;
             } else {
-                DataTable dt = Scheduling.GetDutyDetailsDetails(DID);
+                var dt = Scheduling.GetDutyDetailsDetails(DID);
                 TimeInHrBX.SelectedIndex = int.Parse(dt.Rows[0][0].ToString())-1;
                 TimeInMinBX.SelectedIndex = int.Parse(dt.Rows[0][1].ToString()); 
                 TimeInAMPMBX.Text = dt.Rows[0][2].ToString();
@@ -113,15 +107,15 @@ namespace MSAMISUserInterface {
         private bool DataValidation() {
             DaysTLTP.Hide(MBTN);
             HoursTLTP.Hide(HoursLBL);
-            bool ret = true;
+            var ret = true;
             if (!DutyDays.Contains(true)) {
                 DaysTLTP.ToolTipTitle = "Duty Days";
                 DaysTLTP.Show("Please choose at least one day", MBTN);
                 ret = false;
             }
 
-            float TimeIn = float.Parse(TimeInHrBX.Text.ToString()) + (float.Parse(TimeInMinBX.Text.ToString()) / 100);
-            float TimeOut = float.Parse(TimeOutHrBX.Text.ToString()) + (float.Parse(TimeOutMinBX.Text.ToString()) / 100);
+            var TimeIn = float.Parse(TimeInHrBX.Text) + (float.Parse(TimeInMinBX.Text) / 100);
+            var TimeOut = float.Parse(TimeOutHrBX.Text) + (float.Parse(TimeOutMinBX.Text) / 100);
             if (TimeInAMPMBX.SelectedIndex == 1) TimeIn = TimeIn + 12;
             if (TimeOutAMPMBX.SelectedIndex == 1) TimeOut = TimeOut + 12;
             if ((TimeOut - TimeIn) < 8) {
@@ -144,7 +138,7 @@ namespace MSAMISUserInterface {
                 } else if (button.Equals("UPDATE")) {
                     Scheduling.UpdateDutyDetail(DID, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text, TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text, new Scheduling.Days(DutyDays[1], DutyDays[2], DutyDays[3], DutyDays[4], DutyDays[5], DutyDays[6], DutyDays[0]));
                 }
-                this.Close();
+                Close();
                 refer.LoadPage();
             }
         }

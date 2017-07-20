@@ -1,38 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Sched_AddDutyDays : Form {
         public Sched_ViewDutyDetails reference;
-        public String button = "ADD";
+        public string button = "ADD";
         public int AID { get; set; }
-        Attendance A;
+        private Attendance A;
 
         #region Form Properties and Load
         public Sched_AddDutyDays() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
         private void SAddDutyDays_Load(object sender, EventArgs e) {
             LoadPage();
             FadeTMR.Start();
         }
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) FadeTMR.Stop();
+            Opacity += 0.2;
+            if (Opacity >= 1) FadeTMR.Stop();
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
         private void LoadPage() {
-            Attendance.Period p = Attendance.GetCurrentPayPeriod();
+            var p = Attendance.GetCurrentPayPeriod();
             A = new Attendance(AID, p.month, p.period, p.year);
             RefreshData();
         }
@@ -46,17 +40,17 @@ namespace MSAMISUserInterface {
                 }
                 A.SetCertifiedBy(AID, CertifiedBX.Text);
                 reference.RefreshAttendance();
-                this.Close();
+                Close();
             }
         }
         private void DaysGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            if (DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[DaysGRD.CurrentCell.ColumnIndex].ReadOnly == true) SendKeys.Send("{Tab}");
+            if (DaysGRD.Rows[DaysGRD.CurrentCell.RowIndex].Cells[DaysGRD.CurrentCell.ColumnIndex].ReadOnly) SendKeys.Send("{Tab}");
         }
         #endregion
 
         #region Data Refresh and Validation
         private bool DataValidation() {
-            bool ret = true;
+            var ret = true;
             if (CertifiedBX.Text.Equals("")) {
                 CertifiedTLTP.ToolTipTitle = "Certification";
                 CertifiedTLTP.Show("Who certified this attendanca?", CertifiedBX);

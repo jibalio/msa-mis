@@ -1,60 +1,58 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Clients_View : Form {
-        public int CID { get; set; }
-        public MainForm reference;
-        public MySqlConnection conn;
-        public Shadow refer;
+        public int Cid { get; set; }
+        public MainForm Reference;
+        public MySqlConnection Connection;
+        public Shadow Refer;
         public Clients_View() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         private void Clients_View_Load(object sender, EventArgs e) {
             RefreshData();
-            this.Location = new Point(this.Location.X + 150, this.Location.Y);
+            Location = new Point(Location.X + 150, Location.Y);
             FadeTMR.Start();
         }
 
         private void Clients_View_FormClosing(object sender, FormClosingEventArgs e) {
-            refer.Close();
+            Refer.Close();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
 
         }
 
         private void CEditDetailsBTN_Click(object sender, EventArgs e) {
-            Clients_Edit view = new Clients_Edit();
-            view.CID = this.CID;
-            view.button = "UPDATE";
-            view.conn = this.conn;
-            view.viewref = this;
-            view.reference = this.reference;
-            view.Location = this.Location;
+            var view = new Clients_Edit
+            {
+                Cid = Cid,
+                Button = "UPDATE",
+                Connection = Connection,
+                ViewRef = this,
+                Reference = Reference,
+                Location = Location
+
+            };
             view.ShowDialog();
         }
 
         public void RefreshData() {
             try {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE CID = " + CID, conn);
+                Connection.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE CID = " + Cid, Connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -62,15 +60,15 @@ namespace MSAMISUserInterface {
                 NameLBL.Text = dt.Rows[0]["name"].ToString();
                 CIDLBL.Text = dt.Rows[0]["CID"].ToString();
 
-               LocationLBL.Text = dt.Rows[0]["ClientStreetNo"].ToString() + " " + dt.Rows[0]["ClientStreet"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientBrgy"].ToString() + ", " + dt.Rows[0]["ClientCity"].ToString();
-                ManagerLBL.Text = "Manager: " + dt.Rows[0]["Manager"].ToString();
-                ContactLBL.Text = "Contact Person: " + dt.Rows[0]["ContactPerson"].ToString();
-                ContactNoLBL.Text = "Contact No: " + dt.Rows[0]["ContactNo"].ToString();
+               LocationLBL.Text = dt.Rows[0]["ClientStreetNo"] + " " + dt.Rows[0]["ClientStreet"] + ", " + dt.Rows[0]["ClientBrgy"] + ", " + dt.Rows[0]["ClientBrgy"] + ", " + dt.Rows[0]["ClientCity"];
+                ManagerLBL.Text = "Manager: " + dt.Rows[0]["Manager"];
+                ContactLBL.Text = "Contact Person: " + dt.Rows[0]["ContactPerson"];
+                ContactNoLBL.Text = "Contact No: " + dt.Rows[0]["ContactNo"];
 
-                conn.Close();
+                Connection.Close();
             }
             catch (Exception ee) {
-                conn.Close();
+                Connection.Close();
                 MessageBox.Show(ee.Message);
             }
         }

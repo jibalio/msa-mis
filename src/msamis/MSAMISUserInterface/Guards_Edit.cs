@@ -1,12 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -14,7 +9,7 @@ namespace MSAMISUserInterface {
         public int GID;
         public MainForm reference;
         public Guards_View viewref;
-        public String button = "ADD";
+        public string button = "ADD";
         public MySqlConnection conn;
         public int[] dependents;
 
@@ -26,25 +21,25 @@ namespace MSAMISUserInterface {
         
         private int gender;
 
-        private Color dark = Color.FromArgb(53, 64, 82);
-        private Color light = Color.DarkGray;
+        private readonly Color dark = Color.FromArgb(53, 64, 82);
+        private readonly Color light = Color.DarkGray;
 
         private Panel PNL;
         private Label LBL;
 
         public Guards_Edit() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         #region Form Props
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity == 1) FadeTMR.Stop();
+            Opacity += 0.2;
+            if (Opacity.Equals(1)) FadeTMR.Stop();
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
-            DialogResult rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rs == DialogResult.Yes) this.Close();
+            var rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rs == DialogResult.Yes) Close();
         }
         private void Guards_EditEmployees_Load(object sender, EventArgs e) {
             GEditDetailsBTN.Text = button;
@@ -78,12 +73,12 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Clearing of TextBoxes While Editing
-        private void ClearBox(TextBox TX) {
+        private static void ClearBox(TextBoxBase TX) {
             if (TX.Text.Equals("Last")) TX.Clear();
             else if (TX.Text.Equals("Middle")) TX.Clear();
             else if (TX.Text.Equals("First")) TX.Clear();
         }
-        private void ClearAddressBox(TextBox TX) {
+        private static void ClearAddressBox(TextBoxBase TX) {
             if (TX.Text.Equals("No.")) TX.Clear();
             else if (TX.Text.Equals("Street Name")) TX.Clear();
             else if (TX.Text.Equals("Brgy")) TX.Clear();
@@ -95,10 +90,6 @@ namespace MSAMISUserInterface {
 
         private void LastNameBX_Enter(object sender, EventArgs e) {
             ClearBox(LastNameBX);
-        }
-
-        private void MiddleNameBX_TextChanged(object sender, EventArgs e) {
-            ClearBox(MiddleNameBX);
         }
 
         private void FatherFirstBX_Enter(object sender, EventArgs e) {
@@ -259,8 +250,8 @@ namespace MSAMISUserInterface {
         }
 
         private void LastNameBX_Leave(object sender, EventArgs e) {
-            TextBox lastbx = sender as TextBox;
-            if (lastbx.Text.Trim(' ').Length == 0) {
+            var lastbx = sender as TextBox;
+            if (LastNameBX.Text.Trim(' ').Length == 0) {
                 lastbx.Text = "Last";
             }
         }
@@ -272,21 +263,21 @@ namespace MSAMISUserInterface {
         }
 
         private void StreetNoBX_Leave(object sender, EventArgs e) {
-            TextBox streetnobx = sender as TextBox;
+            var streetnobx = sender as TextBox;
             if (streetnobx.Text.Trim(' ').Length == 0) streetnobx.Text = "No.";
         }
         private void StreetNameBX_Leave(object sender, EventArgs e) {
-            TextBox streetnamebx = sender as TextBox;
+            var streetnamebx = sender as TextBox;
             if (streetnamebx.Text.Trim(' ').Length == 0) streetnamebx.Text = "Street Name";
         }
 
         private void BrgyBX_Leave(object sender, EventArgs e) {
-            TextBox brgybx = sender as TextBox;
+            var brgybx = sender as TextBox;
             if (brgybx.Text.Trim(' ').Length == 0) brgybx.Text = "Brgy";
         }
 
         private void CityBX_Leave(object sender, EventArgs e) {
-            TextBox citybx = sender as TextBox;
+            var citybx = sender as TextBox;
             if (citybx.Text.Trim(' ').Length == 0) citybx.Text = "City";
         }
 
@@ -329,42 +320,42 @@ namespace MSAMISUserInterface {
 
         //For Resetting cursor position
         private void WeightBX_Enter(object sender, EventArgs e) {
-            this.BeginInvoke((MethodInvoker)delegate () {
+            BeginInvoke((MethodInvoker)delegate {
                 WeightBX.Select(0, 0);
             });
         }
         private void HeightBX_Enter(object sender, EventArgs e) {
-            this.BeginInvoke((MethodInvoker)delegate () {
+            BeginInvoke((MethodInvoker)delegate {
                 HeightBX.Select(0, 0);
             });
         }
         private void CellNoBX_Enter(object sender, EventArgs e) {
-            this.BeginInvoke((MethodInvoker)delegate () {
+            BeginInvoke((MethodInvoker)delegate {
                 CellNoBX.Select(0, 0);
             });
         }
         private void TellNoBX_Enter(object sender, EventArgs e) {
-            this.BeginInvoke((MethodInvoker)delegate () {
+            BeginInvoke((MethodInvoker)delegate {
                 TellNoBX.Select(0, 0);
             });
         }
         private void LicenseNoBX_Enter(object sender, EventArgs e) {
-            this.BeginInvoke((MethodInvoker)delegate () {
+            BeginInvoke((MethodInvoker)delegate {
                 LicenseNoBX.Select(0, 0);
             });
         }
         private void SSSNoBX_Enter(object sender, EventArgs e) {
-            this.BeginInvoke((MethodInvoker)delegate () {
+            BeginInvoke((MethodInvoker)delegate {
                 SSSNoBX.Select(0, 0);
             });
         }
         private void TINNoBX_Enter(object sender, EventArgs e) {
-            this.BeginInvoke((MethodInvoker)delegate () {
+            BeginInvoke((MethodInvoker)delegate {
                 TINNoBX.Select(0, 0);
             });
         }
         private void PhilHealthBX_Enter(object sender, EventArgs e) {
-            this.BeginInvoke((MethodInvoker)delegate () {
+            BeginInvoke((MethodInvoker)delegate {
                 PhilHealthBX.Select(0, 0);
             });
         }
@@ -415,8 +406,9 @@ namespace MSAMISUserInterface {
                 LastNameBX.Text = dt.Rows[0]["ln"].ToString();
                 FirstNameBX.Text = dt.Rows[0]["fn"].ToString();
                 MiddleNameBX.Text = dt.Rows[0]["mn"].ToString();
-                if (dt.Rows[0]["gstatus"].ToString().Equals("1")) StatusLBL.Text = "Status: Active";
-                else StatusLBL.Text = "Status: Inactive";
+
+                var b = dt.Rows[0]["gstatus"].ToString().Equals("1") ? StatusLBL.Text = "Status: Active" : StatusLBL.Text = "Status: Inactive";
+
                 String[] date = dt.Rows[0]["Bdate"].ToString().Split('/');
                 BirthdateBX.Value = new DateTime(int.Parse(date[2]), int.Parse(date[0]), int.Parse(date[1]));
                 if (dt.Rows[0]["gender"].ToString().Equals("1")) MaleRDBTN.Checked = true;
@@ -650,7 +642,7 @@ namespace MSAMISUserInterface {
                 }
                 #endregion
                 reference.GUARDSRefreshGuardsList();
-                this.Close();
+                Close();
             }
         }
         private void InsertDependent(int Rel, String First, String Middle, String Last) {
@@ -679,7 +671,7 @@ namespace MSAMISUserInterface {
 
         #region DataValidation
         private bool CheckInput() {
-            bool check = true;
+            var check = true;
 
             if (CheckName(LastNameBX, "Last")) {
                 ShowToolTipOnBX(LastNameWarn, "Last Name", "Please enter last name", LastNameBX);
@@ -804,48 +796,48 @@ namespace MSAMISUserInterface {
             return check;
         }
 
-        private void ShowToolTipOnLBL(ToolTip ttp, String title, String message, Label lb) {
+        private static void ShowToolTipOnLBL(ToolTip ttp, String title, String message, Label lb) {
             ttp.ToolTipTitle = title;
             ttp.Show(message, lb);
         }
 
-        private void ShowToolTipOnBX(ToolTip ttp, String title, String message, TextBox lb) {
+        private static void ShowToolTipOnBX(ToolTip ttp, String title, String message, TextBox lb) {
             ttp.ToolTipTitle = title;
             ttp.Show(message, lb);
         }
 
-        private void ShowToolTipOnMBX(ToolTip ttp, String title, String message, MaskedTextBox lb) {
+        private static void ShowToolTipOnMBX(ToolTip ttp, String title, String message, MaskedTextBox lb) {
             ttp.ToolTipTitle = title;
             ttp.Show(message, lb);
         }
 
-        private bool CheckName(TextBox tb, String arg1) {
+        private bool CheckName(Control tb, string arg1) {
             return (tb.Text.Equals(arg1) || LastNameBX.Text.Trim(' ').Length == 0);
         }
-        private bool CheckAdd(TextBox BrgyBX, TextBox CityBX, TextBox StreetNameBX, TextBox StreetNoBX) {
+        private static bool CheckAdd(Control BrgyBX, Control CityBX, Control StreetNameBX, Control StreetNoBX) {
             return (BrgyBX.Text.Equals("Brgy") || CityBX.Text.Equals("City") || StreetNameBX.Text.Equals("Street Name") || StreetNoBX.Text.Equals("No.") ||
                 BrgyBX.Text.Equals("") || CityBX.Text.Equals("") || StreetNameBX.Text.Equals("") || StreetNoBX.Text.Equals(""));
         }
 
-        private bool CheckName(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX) {
+        private static bool CheckName(Control FirstBX, Control MiddleBX, Control LastBX) {
             return (FirstBX.Text.Equals("First") || MiddleBX.Text.Equals("Middle") || LastBX.Text.Equals("Last") ||
                 FirstBX.Text.Equals("") || MiddleBX.Text.Equals("") || LastBX.Text.Equals(""));
         }
 
-        private bool CheckNameNotRequired(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX, ComboBox RBX) {
+        private static bool CheckNameNotRequired(Control FirstBX, Control MiddleBX, Control LastBX, ListControl RBX) {
             return (CheckNameNotRequired(FirstBX, MiddleBX, LastBX) && CheckForInput(FirstBX, MiddleBX, LastBX, RBX));
         }
 
-        private bool CheckNameNotRequired(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX) {
+        private static bool CheckNameNotRequired(Control FirstBX, Control MiddleBX, Control LastBX) {
             return (CheckForInput(FirstBX, MiddleBX, LastBX) && CheckName(FirstBX, MiddleBX, LastBX));
         }
 
-        private bool CheckForInput(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX) {
+        private static bool CheckForInput(Control FirstBX, Control MiddleBX, Control LastBX) {
             return (!(FirstBX.Text.Equals("First") || FirstBX.Text.Equals("")) || !(MiddleBX.Text.Equals("Middle") || MiddleBX.Text.Equals("")) ||
                !(LastBX.Text.Equals("Last") || LastBX.Text.Equals("")));
         }
 
-        private bool CheckForInput(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX, ComboBox RBX) {
+        private static bool CheckForInput(Control FirstBX, Control MiddleBX, Control LastBX, ListControl RBX) {
             return (!(FirstBX.Text.Equals("First") || FirstBX.Text.Equals("")) || !(MiddleBX.Text.Equals("Middle") || MiddleBX.Text.Equals("")) ||
                !(LastBX.Text.Equals("Last") || LastBX.Text.Equals("")) || RBX.SelectedIndex>0);
         }

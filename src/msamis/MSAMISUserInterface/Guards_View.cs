@@ -1,13 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -21,8 +15,8 @@ namespace MSAMISUserInterface {
         MySqlDataAdapter adp = new MySqlDataAdapter();
         DataTable dt = new DataTable();
 
-        private Color dark = Color.FromArgb(53, 64, 82);
-        private Color light = Color.DarkGray;
+        private readonly Color dark = Color.FromArgb(53, 64, 82);
+        private readonly Color light = Color.DarkGray;
 
         private Panel PNL;
         private Label LBL;
@@ -31,7 +25,7 @@ namespace MSAMISUserInterface {
 
         public Guards_View() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         #region Form Properties and Features
@@ -49,23 +43,25 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
             reference.GUARDSRefreshGuardsList();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop();}
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop();}
         }
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
-            Guards_Edit view = new Guards_Edit();
-            view.GID = this.GID;
-            view.button = "UPDATE";
-            view.conn = this.conn;
-            view.viewref = this;
-            view.reference = this.reference;
-            view.dependents = this.dependents;
-            view.Location = this.Location;
+            var view = new Guards_Edit
+            {
+                GID = GID,
+                button = "UPDATE",
+                conn = conn,
+                viewref = this,
+                reference = reference,
+                dependents = dependents,
+                Location = Location
+            };
             view.ShowDialog();
         }
 
@@ -77,8 +73,8 @@ namespace MSAMISUserInterface {
             try {
                 GetQueryReult("SELECT * FROM guards WHERE GID = " + GID);
                 GIDLBL.Text = GID.ToString();
-                LNLBL.Text = dt.Rows[0]["fn"].ToString() + " " + dt.Rows[0]["mn"].ToString();
-                LLBL.Text = dt.Rows[0]["ln"].ToString() + ", ";
+                LNLBL.Text = dt.Rows[0]["fn"] + " " + dt.Rows[0]["mn"];
+                LLBL.Text = dt.Rows[0]["ln"] + ", ";
                 StatusLBL.Text = GetStatus(dt);
                 BdateLBL.Text = dt.Rows[0]["Bdate"].ToString();
                 GenderLBL.Text = GetGender(dt);
@@ -99,7 +95,7 @@ namespace MSAMISUserInterface {
                 TrainLBL.Text = dt.Rows[0]["MilitaryTrainings"].ToString();
                 ContactLBL.Text = dt.Rows[0]["EmergencyContact"].ToString();
                 EmergencyLBL.Text = dt.Rows[0]["EmergencyNo"].ToString();
-            } catch (System.IndexOutOfRangeException) {
+            } catch (IndexOutOfRangeException) {
                 conn.Close();
             }
             catch {
@@ -144,7 +140,7 @@ namespace MSAMISUserInterface {
             }
         }
 
-        private void GetQueryReult(String query) {
+        private void GetQueryReult(string query) {
             conn.Open();
             comm = new MySqlCommand(query, conn);
             adp = new MySqlDataAdapter(comm);
@@ -153,7 +149,7 @@ namespace MSAMISUserInterface {
             conn.Close();
         }
 
-        private String GetStatus(DataTable dt) {
+        private static string GetStatus(DataTable dt) {
             switch (dt.Rows[0]["gstatus"].ToString()) {
                 case "1": return "Active";
                 case "2": return "Inactive";
@@ -161,7 +157,7 @@ namespace MSAMISUserInterface {
             }
         }
 
-        private String GetEducationalAttainment(DataTable dt) {
+        private static string GetEducationalAttainment(DataTable dt) {
             switch (dt.Rows[0]["EdAtt"].ToString()) {
                 case "1": return "None";
                 case "2": return "Elementary";
@@ -171,7 +167,7 @@ namespace MSAMISUserInterface {
             }
         }
 
-        private String GetGender(DataTable dt) {
+        private static string GetGender(DataTable dt) {
             switch (dt.Rows[0]["gender"].ToString()) {
                 case "1": return "Male";
                 case "2": return "Female";
@@ -179,7 +175,7 @@ namespace MSAMISUserInterface {
             }
         }
 
-        private String GetCivilStatus(DataTable dt) {
+        private static string GetCivilStatus(DataTable dt) {
             switch (dt.Rows[0]["CivilStatus"].ToString()) {
                 case "1": return "Single";
                 case "2": return "Married";
@@ -188,7 +184,7 @@ namespace MSAMISUserInterface {
             }
         }
 
-        private String AddRelationship(String RelationshipType, String Lab) {
+        private static string AddRelationship(String RelationshipType, String Lab) {
             switch (RelationshipType) {
                 case "1":
                     return Lab + " - Son";
@@ -201,22 +197,15 @@ namespace MSAMISUserInterface {
             }
         }
 
-        private String BuildName(DataTable dt, int row) {
-            return dt.Rows[row]["ln"].ToString() + ", " + dt.Rows[row]["fn"].ToString() + " " + dt.Rows[row]["mn"].ToString();
+        private static string BuildName(DataTable dt, int row) {
+            return dt.Rows[row]["ln"] + ", " + dt.Rows[row]["fn"] + " " + dt.Rows[row]["mn"];
         }
 
-        private String BuildStreet(DataTable dt, int row) {
-            return dt.Rows[row]["streetno"].ToString() + ", " + dt.Rows[row]["street"].ToString() + ", " + dt.Rows[row]["brgy"].ToString() + ", " + dt.Rows[row]["city"].ToString();
+        private static string BuildStreet(DataTable dt, int row) {
+            return dt.Rows[row]["streetno"] + ", " + dt.Rows[row]["street"] + ", " + dt.Rows[row]["brgy"] + ", " + dt.Rows[row]["city"];
         }
 
         #endregion
-
-        private void DetailsPNL_Paint(object sender, PaintEventArgs e)
-        {
-            // AJ HI
-
-            // HI BES XD
-        }
 
         private void ChangePage(Panel NewP, Label newB) {
             PNL.Visible = false;
@@ -265,20 +254,12 @@ namespace MSAMISUserInterface {
             ChangePage(WorkPNL, WorkLBL);
         }
 
-        private void label8_Click(object sender, EventArgs e) {
-
-        }
-
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
             CloseBTN.ForeColor = Color.White;
         }
 
         private void CloseBTN_MouseLeave(object sender, EventArgs e) {
             CloseBTN.ForeColor = dark;
-        }
-
-        private void Guards_View_FormClosed(object sender, FormClosedEventArgs e) {
-
         }
     }
 

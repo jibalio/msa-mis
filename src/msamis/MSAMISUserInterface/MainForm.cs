@@ -1,39 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using ryldb.sqltools;
 using System.IO;
-using System.Runtime.InteropServices;
 
 namespace MSAMISUserInterface {
     public partial class MainForm : Form {
 
         //Only Paste Global Variable Here//
 
-        public MySqlConnection conn;
-        public LoginForm lf;
-        Point newFormLocation;
-        Shadow shadow = new Shadow();
+        public MySqlConnection Conn;
+        public LoginForm Lf;
+        public string User;
 
-        Font selectedFont = new Font("Segoe UI Semibold", 10);
-        Font defaultFont = new Font("Segoe UI Semilight", 10);
-
-        Panel ScurrentPanel;
-        Button ScurrentBTN;
-
-        String FilterText = "Search or filter";
-        String EmptyText = "";
-        String ExtraQueryParams = "";
-
-        public String user;
-
+        private Point _newFormLocation;
+        private readonly Shadow _shadow = new Shadow();
+        private readonly Font _selectedFont = new Font("Segoe UI Semibold", 10);
+        private readonly Font _defaultFont = new Font("Segoe UI Semilight", 10);
+        private Panel _scurrentPanel;
+        private Button _scurrentBtn;
+        private const string FilterText = "Search or filter";
+        private const string EmptyText = "";
+        private string _extraQueryParams = "";
 
         #region Form Initiation and load
         public MainForm() {
@@ -42,14 +32,14 @@ namespace MSAMISUserInterface {
 
         private void MainForm_Load(object sender, EventArgs e) {
             //Get the relative position after loading
-            newFormLocation = new Point(this.Location.X+50, this.Location.Y + 66);
-            shadow.Location = this.Location;
+            _newFormLocation = new Point(Location.X + 50, Location.Y + 66);
+            _shadow.Location = Location;
 
             //Initiate the methods that updates the app
-            initiateForm();
+            InitiateForm();
         }
 
-        private void initiateForm() {
+        private void InitiateForm() {
             //This method is used to initiate the look and feel of the Main Form
             //Can also be used to initiate global variables
 
@@ -64,11 +54,11 @@ namespace MSAMISUserInterface {
             ControlBoxPanel.BackColor = dahsbard;
 
             //Variable Initialization
-            conn = SQLTools.conn;
-            ControlBoxTimeLBL.Text = "Logged in as, " + user;
+            Conn = SQLTools.conn;
+            ControlBoxTimeLBL.Text = "Logged in as, " + User;
             TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy").ToUpper();
-            ScurrentPanel = GViewAllPNL;
-            ScurrentBTN = GViewAllPageBTN;
+            _scurrentPanel = GViewAllPNL;
+            _scurrentBtn = GViewAllPageBTN;
 
             //Initial Methods
             DailyQuote();
@@ -105,7 +95,7 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             //For the Logout Button on the Control Box
-            this.Close();
+            Close();
         }
 
         private void LoadNotifications() {
@@ -116,7 +106,7 @@ namespace MSAMISUserInterface {
             if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) {
                 ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN, 2000);
                 ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN, 2000);
-                SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).ToString();
+                SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending);
             } else SchedBTN.Text = String.Empty;
         }
         #endregion
@@ -136,8 +126,8 @@ namespace MSAMISUserInterface {
         }
         private void Form_MouseMove(object sender, MouseEventArgs e) {
             if (mouseDown) {
-                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
-                this.Update();
+                Location = new Point((Location.X - lastLocation.X) + e.X, (Location.Y - lastLocation.Y) + e.Y);
+                Update();
             }
         }
         #endregion
@@ -159,7 +149,7 @@ namespace MSAMISUserInterface {
             }
         }
         private void Dashboard_MouseMove(object sender, MouseEventArgs e) {
-            if (mouseDown) 
+            if (mouseDown)
                 if (((DashboardPage.Location.Y - lastLocation.Y) + e.Y) < 32)
                     DashboardPage.Location = new Point((DashboardPage.Location.X), (DashboardPage.Location.Y - lastLocation.Y) + e.Y);
         }
@@ -168,26 +158,26 @@ namespace MSAMISUserInterface {
         private void FadeTMR_Tick(object sender, EventArgs e) {
             //Gives the form a Fade-In effect
 
-            this.Opacity += 0.2;
-            if (this.Opacity == 1) {
+            Opacity += 0.2;
+            if (Opacity.Equals(1)) {
                 FadeTMR.Stop();
-                
+
                 //Call the tooltips after the Timer to avoid them being dismissed
                 LoadNotifications();
             }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
-            shadow.Close();
-            lf.Opacity = 0;
-            lf.Show();
-            lf.Location = newFormLocation;
-            this.Hide();
+            _shadow.Close();
+            Lf.Opacity = 0;
+            Lf.Show();
+            Lf.Location = _newFormLocation;
+            Hide();
         }
 
         private void MainForm_LocationChanged(object sender, EventArgs e) {
-            newFormLocation = new Point(this.Location.X + 50, this.Location.Y + 66);
-            shadow.Location = this.Location;
+            _newFormLocation = new Point(Location.X + 50, Location.Y + 66);
+            _shadow.Location = Location;
         }
         #endregion
 
@@ -197,9 +187,9 @@ namespace MSAMISUserInterface {
         Button currentBTN;
         SplitContainer currentPage;
 
-        Color accent = Color.FromArgb(94, 114, 146);
-        Color primary = Color.FromArgb(53, 64, 82);
-        Color dahsbard = Color.FromArgb(42, 72, 119);
+        private readonly Color accent = Color.FromArgb(94, 114, 146);
+        private readonly Color primary = Color.FromArgb(53, 64, 82);
+        private readonly Color dahsbard = Color.FromArgb(42, 72, 119);
 
         private void DashboardBTN_Click(object sender, EventArgs e) {
             DashboardToBeMinimized = false;
@@ -212,7 +202,7 @@ namespace MSAMISUserInterface {
         }
         private void ChangePage(SplitContainer newP, Button newBTN) {
             //Generic Function to switch the panels that are shown and hidden
-            ExtraQueryParams = "";
+            _extraQueryParams = "";
             DashboardToBeMinimized = true;
             DashboardTMR.Start();
             newP.Show();
@@ -223,8 +213,8 @@ namespace MSAMISUserInterface {
             currentPage = newP;
             currentBTN = newBTN;
 
-            ScurrentPanel.Hide();
-            ScurrentBTN.Font = defaultFont;
+            _scurrentPanel.Hide();
+            _scurrentBtn.Font = _defaultFont;
         }
         private void RecordsBTN_Click(object sender, EventArgs e) {
             ChangePage(GuardsPage, RecordsBTN);
@@ -243,16 +233,17 @@ namespace MSAMISUserInterface {
             PAYLoadPage();
         }
         private void SettingsBTN_Click(object sender, EventArgs e) {
-            try {;
-                About view = new About();
-                view.reference = this;
-                view.conn = this.conn;
-                view.UN = user;
-                view.refer = shadow;
-                view.Location = newFormLocation;
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.Show();
+            try {
+                var view = new About {
+                    Reference = this,
+                    Username = User,
+                    Refer = _shadow,
+                    Location = _newFormLocation
+
+                };
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.Show();
             }
             catch (Exception) { }
         }
@@ -260,14 +251,14 @@ namespace MSAMISUserInterface {
             //This event gives the dashboard its slide-up effect when changing panels
 
             if (DashboardToBeMinimized) {
-                Point defaultPoint = new Point(100, -865);
+                var defaultPoint = new Point(100, -865);
                 if (DashboardPage.Location.Y > defaultPoint.Y) DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y - 60);
                 else { DashboardTMR.Stop(); ControlBoxLBL.Visible = true; ControlBoxTimeLBL.Visible = true; ControlBoxPanel.BackColor = primary; SettingsBTN.Visible = true; }
             } else if (!DashboardToBeMinimized) {
                 ControlBoxLBL.Visible = false;
                 ControlBoxTimeLBL.Visible = false;
                 SettingsBTN.Visible = false;
-                Point defaultPoint = new Point(70, 32);
+                var defaultPoint = new Point(70, 32);
                 if (DashboardPage.Location.Y != defaultPoint.Y) {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y + 60);
                 } else {
@@ -283,8 +274,7 @@ namespace MSAMISUserInterface {
 
         #region Dashboard Page Notifs
 
-        Color DashboardDefault = Color.FromArgb(94, 114, 146);
-        Color DashboardHover = Color.FromArgb(72, 87, 112);
+        private readonly Color DashboardHover = Color.FromArgb(72, 87, 112);
 
         private void ArrangeNotif() {
             // This method is used to rearrange the Notifs Widgets when dismissing them
@@ -292,7 +282,6 @@ namespace MSAMISUserInterface {
             bool[] pnl = { DMonthlyDutyReportPNL.Visible, DClientSummaryPNL.Visible, DSalaryReportPNL.Visible };
             Point loc1 = new Point(308, 208);
             Point loc2 = new Point(308, 310);
-            Point loc3 = new Point(308, 413);
             if (pnl[0]) if (!pnl[1]) DSalaryReportPNL.Location = loc2;
             if (pnl[1]) if (!pnl[0]) { DClientSummaryPNL.Location = loc1; DSalaryReportPNL.Location = loc2; }
             if (pnl[2]) if (!pnl[0] && !pnl[1]) { DSalaryReportPNL.Location = loc1; }
@@ -303,7 +292,7 @@ namespace MSAMISUserInterface {
         }
 
         private void DMonthlyDutyReportPNL_MouseLeave(object sender, EventArgs e) {
-            DMonthlyDutyReportPNL.BackColor = DashboardDefault;
+            DMonthlyDutyReportPNL.BackColor = accent;
         }
 
         private void DClientSummaryPNL_MouseEnter(object sender, EventArgs e) {
@@ -311,7 +300,7 @@ namespace MSAMISUserInterface {
         }
 
         private void DClientSummaryPNL_MouseLeave(object sender, EventArgs e) {
-            DClientSummaryPNL.BackColor = DashboardDefault;
+            DClientSummaryPNL.BackColor = accent;
         }
 
         private void DSalaryReportPNL_MouseEnter(object sender, EventArgs e) {
@@ -319,7 +308,7 @@ namespace MSAMISUserInterface {
         }
 
         private void DSalaryReportPNL_MouseLeave(object sender, EventArgs e) {
-            DSalaryReportPNL.BackColor = DashboardDefault;
+            DSalaryReportPNL.BackColor = accent;
         }
 
         private void DMonthlyX_Click(object sender, EventArgs e) {
@@ -361,36 +350,37 @@ namespace MSAMISUserInterface {
         public void GUARDSLoadPage() {
             //This method is used to intiate the forms
 
-            ScurrentPanel = GViewAllPNL;
-            ScurrentBTN = GViewAllPageBTN;
+            _scurrentPanel = GViewAllPNL;
+            _scurrentBtn = GViewAllPageBTN;
             GViewAllViewByCMBX.SelectedIndex = 0;
             GViewAllPageBTN.PerformClick();
         }
         private void RAddEmpBTN_Click(object sender, EventArgs e) {
             try {
-                Guards_Edit view = new Guards_Edit();
-                view.reference = this;
-                view.conn = this.conn;
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
+                var view = new Guards_Edit {
+                    reference = this,
+                    conn = Conn,
+                    refer = _shadow,
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }
         private void GChangePanel(Panel newP, Button newBTN) {
-            ExtraQueryParams = "";
+            _extraQueryParams = "";
 
 
-            ScurrentPanel.Hide();
+            _scurrentPanel.Hide();
             newP.Show();
 
-            ScurrentBTN.Font = defaultFont;
-            newBTN.Font = selectedFont;
+            _scurrentBtn.Font = _defaultFont;
+            newBTN.Font = _selectedFont;
 
-            ScurrentPanel = newP;
-            ScurrentBTN = newBTN;
+            _scurrentPanel = newP;
+            _scurrentBtn = newBTN;
         }
         private void GArchivePageBTN_Click(object sender, EventArgs e) {
             GChangePanel(GArchivePNL, GArchivePageBTN);
@@ -454,15 +444,16 @@ namespace MSAMISUserInterface {
                 } else if (GAllGuardsGRD.SelectedRows.Count == 0) {
                     rylui.RylMessageBox.ShowDialog("No guard is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else {
-                    Guards_View view = new Guards_View();
-                    view.GID = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString());
-                    view.reference = this;
-                    view.conn = this.conn;
-                    view.refer = this.shadow;
-                    view.Location = newFormLocation;
-                    shadow.Transparent();
-                    shadow.form = view;
-                    shadow.ShowDialog();
+                    var view = new Guards_View {
+                        GID = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString()),
+                        reference = this,
+                        conn = Conn,
+                        refer = _shadow,
+                        Location = _newFormLocation
+                    };
+                    _shadow.Transparent();
+                    _shadow.form = view;
+                    _shadow.ShowDialog();
                 }
             }
             catch (Exception) { }
@@ -482,7 +473,7 @@ namespace MSAMISUserInterface {
                     GArchiveBTN.Visible = true;
                 }
             } else if (GAllGuardsGRD.SelectedRows.Count > 1) {
-                bool ret = true;
+                var ret = true;
                 foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows) {
                     if (row.Cells[2].Value.ToString().Equals("Active")) ret = false;
                 }
@@ -502,7 +493,7 @@ namespace MSAMISUserInterface {
         private void GViewAllSearchTXTBX_Enter(object sender, EventArgs e) {
             if (GViewAllSearchTXTBX.Text == FilterText) {
                 GViewAllSearchTXTBX.Text = EmptyText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             GViewAllSearchLine.Visible = true;
         }
@@ -510,15 +501,15 @@ namespace MSAMISUserInterface {
         private void GViewAllSearchTXTBX_Leave(object sender, EventArgs e) {
             if (GViewAllSearchTXTBX.Text == EmptyText) {
                 GViewAllSearchTXTBX.Text = FilterText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             GUARDSRefreshGuardsList();
             GViewAllSearchLine.Visible = false;
         }
 
         private void GViewAllSearchTXTBX_TextChanged(object sender, EventArgs e) {
-            String temp = GViewAllSearchTXTBX.Text;
-            String Kazoo;
+            var temp = GViewAllSearchTXTBX.Text;
+            string Kazoo;
             if (GViewAllViewByCMBX.SelectedIndex == 0) {
                 Kazoo = "concat(ln,', ',fn,' ',mn)";
             } else {
@@ -528,7 +519,7 @@ namespace MSAMISUserInterface {
             if (GViewAllSearchTXTBX.Text.Contains("\\")) {
                 temp = temp + "?";
             }
-            ExtraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
+            _extraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
             GUARDSRefreshGuardsList();
         }
         #endregion
@@ -538,11 +529,11 @@ namespace MSAMISUserInterface {
         #region GMS - Archive 
         private void ArchiveButton_Event(object sender, EventArgs e) {
             // Initialize archive connection.
-            DialogResult x = rylui.RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var x = rylui.RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             //if (x == DialogResult.Yes) MoveGuardsToArchive(GuardsGID);
         }
         private void RefreshArchivedGuards() {
-          
+
         }
         #endregion
 
@@ -557,22 +548,22 @@ namespace MSAMISUserInterface {
         private void GArchiveSearchBX_Leave(object sender, EventArgs e) {
             if (GArchiveSearchBX.Text.Equals("")) {
                 GArchiveSearchBX.Text = "Search or filter";
-                ExtraQueryParams = "";
+                _extraQueryParams = "";
             }
-            ExtraQueryParams = "";
+            _extraQueryParams = "";
             RefreshArchivedGuards();
             GArchiveSearchLine.Visible = false;
         }
         private void GArchiveSearchBX_TextChanged(object sender, EventArgs e) {
-            String temp = GArchiveSearchBX.Text;
-            String Kazoo;
+            var temp = GArchiveSearchBX.Text;
+            string Kazoo;
 
             Kazoo = "name";
 
             if (GViewAllSearchTXTBX.Text.Contains("\\")) {
                 temp = temp + "?";
             }
-            ExtraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
+            _extraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
             RefreshArchivedGuards();
         }
 
@@ -581,35 +572,36 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Clients Management Page
-        
+
         #region CMS - Page Load and Side Panel
         public void CLIENTSLoadPage() {
-            ScurrentBTN = CViewAllClientBTN;
-            ScurrentPanel = CViewAllPNL;
+            _scurrentBtn = CViewAllClientBTN;
+            _scurrentPanel = CViewAllPNL;
             CViewAllClientBTN.PerformClick();
         }
 
         private void CAddClientBTN_Click(object sender, EventArgs e) {
             try {
-                Clients_Edit view = new Clients_Edit();
-                view.reference = this;
-                view.conn = this.conn;
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
+                var view = new Clients_Edit {
+                    Reference = this,
+                    Connection = Conn,
+                    Refer = _shadow,
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }
 
         private void CChangePanel(Panel newP, Button newBTN) {
-            ScurrentPanel.Hide();
+            _scurrentPanel.Hide();
             newP.Show();
-            ScurrentBTN.Font = defaultFont;
-            newBTN.Font = selectedFont;
-            ScurrentBTN = newBTN;
-            ScurrentPanel = newP;
+            _scurrentBtn.Font = _defaultFont;
+            newBTN.Font = _selectedFont;
+            _scurrentBtn = newBTN;
+            _scurrentPanel = newP;
         }
 
         private void CViewAllClientBTN_Click(object sender, EventArgs e) {
@@ -646,18 +638,19 @@ namespace MSAMISUserInterface {
         }
         private void CViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
-                Clients_View view = new Clients_View();
                 if (CClientListTBL.SelectedRows.Count == 0) {
                     rylui.RylMessageBox.ShowDialog("No client is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else {
-                    view.CID = int.Parse(CClientListTBL.SelectedRows[0].Cells[0].Value.ToString());
-                    view.reference = this;
-                    view.conn = this.conn;
-                    view.refer = this.shadow;
-                    view.Location = newFormLocation;
-                    shadow.Transparent();
-                    shadow.form = view;
-                    shadow.ShowDialog();
+                    var view = new Clients_View {
+                        Cid = int.Parse(CClientListTBL.SelectedRows[0].Cells[0].Value.ToString()),
+                        Reference = this,
+                        Connection = Conn,
+                        Refer = _shadow,
+                        Location = _newFormLocation
+                    };
+                    _shadow.Transparent();
+                    _shadow.form = view;
+                    _shadow.ShowDialog();
                 }
             }
             catch (Exception) { }
@@ -678,20 +671,20 @@ namespace MSAMISUserInterface {
             if (CViewAllSearchBX.Text.Equals("")) {
                 CViewAllSearchBX.Text = "Search or filter";
             }
-            ExtraQueryParams = "";
+            _extraQueryParams = "";
             CViewAllSearchLine.Visible = false;
             CLIENTSRefreshClientsList();
         }
         private void CViewAllSearchBX_TextChanged(object sender, EventArgs e) {
-            String temp = CViewAllSearchBX.Text;
-            String Kazoo;
+            var temp = CViewAllSearchBX.Text;
+            string Kazoo;
 
             Kazoo = "name";
 
             if (CViewAllSearchBX.Text.Contains("\\")) {
                 temp = temp + "?";
             }
-            ExtraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
+            _extraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
             CLIENTSRefreshClientsList();
         }
 
@@ -708,28 +701,28 @@ namespace MSAMISUserInterface {
         public void SCHEDLoadPage() {
             SCHEDLoadSidePNL();
 
-            ScurrentBTN = SViewReqBTN;
-            ScurrentPanel = SViewReqPNL;
+            _scurrentBtn = SViewReqBTN;
+            _scurrentPanel = SViewReqPNL;
 
             SViewReqBTN.PerformClick();
         }
 
         public void SCHEDLoadSidePNL() {
-            if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0"))
-                SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).ToString();
-            else SchedBTN.Text = String.Empty;
+            var b = (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) ?
+                SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) :
+                SchedBTN.Text = string.Empty;
             SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests";
             SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
             SAssignedGuardsLBL.Text = Scheduling.GetNumberOfAssignedGuards() + " assigned guards";
         }
 
         private void SChangePanel(Panel newP, Button newBTN, bool Req) {
-            ScurrentPanel.Hide();
+            _scurrentPanel.Hide();
             newP.Show();
-            ScurrentBTN.Font = defaultFont;
-            newBTN.Font = selectedFont;
-            ScurrentBTN = newBTN;
-            ScurrentPanel = newP;
+            _scurrentBtn.Font = _defaultFont;
+            newBTN.Font = _selectedFont;
+            _scurrentBtn = newBTN;
+            _scurrentPanel = newP;
             SViewReqAssBTN.Visible = Req;
         }
 
@@ -761,28 +754,31 @@ namespace MSAMISUserInterface {
 
         private void SViewReqAssBTN_Click(object sender, EventArgs e) {
             try {
-                Sched_RequestGuard view = new Sched_RequestGuard();
-                view.reference = this;
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
+                var view = new Sched_RequestGuard {
+                    reference = this,
+                    refer = _shadow,
+                    Location = _newFormLocation,
+                };
+
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }
         private void SViewReqDisBTN_Click(object sender, EventArgs e) {
             if (isUnscheduled()) {
                 try {
-                    Sched_UnassignGuard view = new Sched_UnassignGuard();
-                    view.reference = this;
-                    view.CID = int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID);
-                    view.refer = this.shadow;
-                    view.guards = SViewAssGRD.SelectedRows;
-                    view.Location = newFormLocation;
-                    shadow.Transparent();
-                    shadow.form = view;
-                    shadow.ShowDialog();
+                    var view = new Sched_UnassignGuard {
+                        reference = this,
+                        CID = int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID),
+                        refer = _shadow,
+                        guards = SViewAssGRD.SelectedRows,
+                        Location = _newFormLocation
+                    };
+                    _shadow.Transparent();
+                    _shadow.form = view;
+                    _shadow.ShowDialog();
                 }
                 catch (Exception) { }
             } else {
@@ -792,8 +788,8 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region SMS - View Requests
-        int RID;
-        bool ChangeDate;
+        private int RID;
+        private bool ChangeDate;
 
         private void SViewReqGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             RID = int.Parse(SViewReqGRD.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -852,7 +848,7 @@ namespace MSAMISUserInterface {
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {
                 SViewReqSearchTXTBX.Text = EmptyText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             SViewReqSearchLine.Visible = true;
         }
@@ -860,7 +856,7 @@ namespace MSAMISUserInterface {
         private void SViewReqSearchTXTBX_Leave(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == EmptyText) {
                 SViewReqSearchTXTBX.Text = FilterText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             SCHEDRefreshRequests();
             SViewReqSearchLine.Visible = false;
@@ -870,28 +866,28 @@ namespace MSAMISUserInterface {
             try {
                 if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment")) {
                     try {
-                        Sched_ViewAssReq view = new Sched_ViewAssReq();
-                        view.reference = this;
-                        view.RAID = this.RID;
-                        view.refer = this.shadow;
-                        view.Location = newFormLocation;
-
-                        shadow.Transparent();
-                        shadow.form = view;
-                        shadow.ShowDialog();
+                        var view = new Sched_ViewAssReq {
+                            reference = this,
+                            RAID = RID,
+                            refer = _shadow,
+                            Location = _newFormLocation
+                        };
+                        _shadow.Transparent();
+                        _shadow.form = view;
+                        _shadow.ShowDialog();
                     }
                     catch (Exception) { }
                 } else {
                     try {
-                        Sched_ViewDisReq view = new Sched_ViewDisReq();
-                        view.reference = this;
-                        view.RID = this.RID;
-                        view.refer = this.shadow;
-                        view.Location = newFormLocation;
-
-                        shadow.Transparent();
-                        shadow.form = view;
-                        shadow.ShowDialog();
+                        var view = new Sched_ViewDisReq {
+                            reference = this,
+                            RID = RID,
+                            refer = _shadow,
+                            Location = _newFormLocation
+                        };
+                        _shadow.Transparent();
+                        _shadow.form = view;
+                        _shadow.ShowDialog();
                     }
                     catch (Exception) { }
                 }
@@ -911,11 +907,11 @@ namespace MSAMISUserInterface {
             SViewAssViewDetailsBTN.Location = new Point(282, 600);
             SViewAssUnassignBTN.Visible = false;
 
-            DataView dv = Client.GetClients().DefaultView;
+            var dv = Client.GetClients().DefaultView;
             dv.Sort = "name asc";
-            DataTable dt = dv.ToTable();
+            var dt = dv.ToTable();
 
-            for (int i = 0; i < dt.Rows.Count; i++) SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+            for (var i = 0; i < dt.Rows.Count; i++) SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
         }
         private void SViewAssGRD_DoubleClick(object sender, EventArgs e) {
             if (SViewAssViewDetailsBTN.Visible) SViewAssViewDetailsBTN.PerformClick();
@@ -937,21 +933,21 @@ namespace MSAMISUserInterface {
         public void SCHEDRefreshAssignments() {
             SViewAssGRD.DataSource = Scheduling.GetAssignmentsByClient(int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID), SViewAssCMBX.SelectedIndex);
 
-            if ( SViewAssGRD.Rows.Count > 0) { 
-            SViewAssGRD.Columns[0].Visible = false;
-            SViewAssGRD.Columns[1].Visible = false;
-            SViewAssGRD.Columns[2].Visible = false;
-            SViewAssGRD.Columns[3].HeaderText = "NAME";
-            SViewAssGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
-            SViewAssGRD.Columns[5].HeaderText = "SCHEDULE";
-            SViewAssGRD.Columns[6].HeaderText = "STATUS";
+            if (SViewAssGRD.Rows.Count > 0) {
+                SViewAssGRD.Columns[0].Visible = false;
+                SViewAssGRD.Columns[1].Visible = false;
+                SViewAssGRD.Columns[2].Visible = false;
+                SViewAssGRD.Columns[3].HeaderText = "NAME";
+                SViewAssGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
+                SViewAssGRD.Columns[5].HeaderText = "SCHEDULE";
+                SViewAssGRD.Columns[6].HeaderText = "STATUS";
 
-            SViewAssGRD.Columns[3].Width = 200;
-            SViewAssGRD.Columns[4].Width = 210;
-            SViewAssGRD.Columns[5].Width = 100;
-            SViewAssGRD.Columns[5].Width = 100;
+                SViewAssGRD.Columns[3].Width = 200;
+                SViewAssGRD.Columns[4].Width = 210;
+                SViewAssGRD.Columns[5].Width = 100;
+                SViewAssGRD.Columns[5].Width = 100;
 
-            SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
+                SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
             }
         }
 
@@ -960,14 +956,13 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewAssGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Inactive")) { SViewAssViewDetailsBTN.Visible = false; SViewAssUnassignBTN.Visible = false;  } 
-            else {SViewAssViewDetailsBTN.Visible = true; if (SViewAssSearchClientCMBX.SelectedIndex != 0)SViewAssUnassignBTN.Visible = true; }
+            if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Inactive")) { SViewAssViewDetailsBTN.Visible = false; SViewAssUnassignBTN.Visible = false; } else { SViewAssViewDetailsBTN.Visible = true; if (SViewAssSearchClientCMBX.SelectedIndex != 0) SViewAssUnassignBTN.Visible = true; }
         }
 
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewAssSearchTXTBX.Text == FilterText) {
                 SViewAssSearchTXTBX.Text = EmptyText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             SViewAssSearchLine.Visible = true;
         }
@@ -975,7 +970,7 @@ namespace MSAMISUserInterface {
         private void SViewAssSearchTXTBX_Leave(object sender, EventArgs e) {
             if (SViewAssSearchTXTBX.Text == EmptyText) {
                 SViewAssSearchTXTBX.Text = FilterText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             SCHEDRefreshAssignments();
             SViewAssSearchLine.Visible = false;
@@ -986,16 +981,16 @@ namespace MSAMISUserInterface {
                 rylui.RylMessageBox.ShowDialog("More than one assignment is selected", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else {
                 try {
-                    Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
-                    view.reference = this;
-                    view.refer = this.shadow;
-                    view.AID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
-                    view.GID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[0].Value.ToString());
-                    view.Location = newFormLocation;
-
-                    shadow.Transparent();
-                    shadow.form = view;
-                    shadow.ShowDialog();
+                    var view = new Sched_ViewDutyDetails {
+                        reference = this,
+                        refer = _shadow,
+                        AID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString()),
+                        GID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[0].Value.ToString()),
+                        Location = _newFormLocation
+                    };
+                    _shadow.Transparent();
+                    _shadow.form = view;
+                    _shadow.ShowDialog();
                 }
                 catch (Exception) { }
             }
@@ -1004,7 +999,7 @@ namespace MSAMISUserInterface {
         private bool isUnscheduled() {
             //Method to check if the selected Guards are ready to be dismissed
 
-            bool ret = true;
+            var ret = true;
             foreach (DataGridViewRow row in SViewAssGRD.SelectedRows)
                 if (!row.Cells[5].Value.ToString().Equals("Unscheduled")) ret = false;
             return ret;
@@ -1019,21 +1014,21 @@ namespace MSAMISUserInterface {
         private void SArchiveSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SArchiveSearchTXTBX.Text == FilterText) {
                 SArchiveSearchTXTBX.Text = EmptyText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             SArchiveSearchLine.Visible = true;
         }
 
         private void SArchiveViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
-                Sched_ViewDutyDetails view = new Sched_ViewDutyDetails();
-                view.reference = this;
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
-
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
+                var view = new Sched_ViewDutyDetails {
+                    reference = this,
+                    refer = _shadow,
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -1041,7 +1036,7 @@ namespace MSAMISUserInterface {
         private void SArchiveSearchTXTBX_Leave(object sender, EventArgs e) {
             if (SArchiveSearchTXTBX.Text == EmptyText) {
                 SArchiveSearchTXTBX.Text = FilterText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             SCHEDRefreshArchive();
             SArchiveSearchTXTBX.Visible = false;
@@ -1054,41 +1049,43 @@ namespace MSAMISUserInterface {
 
         #region PMS - Load/Side Panel
         private void PAYLoadPage() {
-            ScurrentPanel = PPayrollSummaryPage;
-            ScurrentBTN = PPayrollSummaryBTN;
+            _scurrentPanel = PPayrollSummaryPage;
+            _scurrentBtn = PPayrollSummaryBTN;
             PPayrollSummaryBTN.PerformClick();
         }
         private void PConfHoliday_Click(object sender, EventArgs e) {
             try {
-                Payroll_ConfHolidays view = new Payroll_ConfHolidays();
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
+                var view = new Payroll_ConfHolidays {
+                    refer = _shadow,
+                    Location = _newFormLocation
+                };
 
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
+
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }
         private void PConfigSSSBTN_Click(object sender, EventArgs e) {
             try {
-                Payroll_ConfigSSS view = new Payroll_ConfigSSS();
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
-
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
+                var view = new Payroll_ConfigSSS {
+                    refer = _shadow,
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }
         private void PCHnagePanel(Panel newP, Button newBTN) {
-            ScurrentPanel.Hide();
+            _scurrentPanel.Hide();
             newP.Show();
-            ScurrentBTN.Font = defaultFont;
-            newBTN.Font = selectedFont;
-            ScurrentBTN = newBTN;
-            ScurrentPanel = newP;
+            _scurrentBtn.Font = _defaultFont;
+            newBTN.Font = _selectedFont;
+            _scurrentBtn = newBTN;
+            _scurrentPanel = newP;
         }
 
         private void PEmpListBTN_Click(object sender, EventArgs e) {
@@ -1097,13 +1094,15 @@ namespace MSAMISUserInterface {
         }
         private void PAdjustBTN_Click(object sender, EventArgs e) {
             try {
-                Payroll_ConfigBasicPay view = new Payroll_ConfigBasicPay();
-                view.refer = this.shadow;
-                view.Location = newFormLocation;
+                var view = new Payroll_ConfigBasicPay {
+                    refer = _shadow,
+                    Location = _newFormLocation,
+                };
 
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
+
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }
@@ -1148,23 +1147,23 @@ namespace MSAMISUserInterface {
         }
         private void PEmpListViewBTN_Click(object sender, EventArgs e) {
             try {
-                Payroll_EmployeeView view = new Payroll_EmployeeView();
-                view.reference = this;
-                view.refer = this.shadow;
-                view.GID = int.Parse(PEmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
-                view.Location = newFormLocation;
-
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
+                var view = new Payroll_EmployeeView {
+                    reference = this,
+                    refer = _shadow,
+                    GID = int.Parse(PEmpListGRD.SelectedRows[0].Cells[0].Value.ToString()),
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.form = view;
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }
-     
+
         private void PEmpListSearchBX_Enter(object sender, EventArgs e) {
             if (PEmpListSearchBX.Text == FilterText) {
                 PEmpListSearchBX.Text = EmptyText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             PEmpListSearchLine.Visible = true;
         }
@@ -1172,29 +1171,10 @@ namespace MSAMISUserInterface {
         private void PEmpListSearchBX_Leave(object sender, EventArgs e) {
             if (PEmpListSearchBX.Text == EmptyText) {
                 PEmpListSearchBX.Text = FilterText;
-                ExtraQueryParams = EmptyText;
+                _extraQueryParams = EmptyText;
             }
             PEmpListSearchLine.Visible = false;
         }
-        #endregion
-
-        #region Cash Advance Request
-        private void SCashAdvViewBTN_Click(object sender, EventArgs e) {
-            try {
-                Payroll_ViewCashAdv view = new Payroll_ViewCashAdv();
-                view.reference = this;
-                view.refer = this.shadow;
-                //view.PID = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString());
-                view.Location = newFormLocation;
-
-                shadow.Transparent();
-                shadow.form = view;
-                shadow.ShowDialog();
-            }
-            catch (Exception) { }
-        }
-
-
         #endregion
 
         #endregion
@@ -1211,46 +1191,46 @@ namespace MSAMISUserInterface {
             DataTable dt;
             if (Mode == 0) {
                 query = "Select gid,concat(ln,', ',fn,' ',mn) as NAME, " +
-                    "case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS', " +
-                    "bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', " +
-                    "cellno as 'CONTACTNO' " +
-                    "FROM Guards ";
+                        "case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS', " +
+                        "bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', " +
+                        "cellno as 'CONTACTNO' " +
+                        "FROM Guards ";
                 orderbyclause = "ORDER BY NAME ASC;";
             } else {
                 query = "Select Guards.gid,concat(ln,', ',fn,' ',mn) as NAME, " +
-                   "concat(StreetNo,', ', Brgy,', ',Street, ', ', City) As LOCATION, case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS' " +
-                   "FROM Guards LEFT JOIN Address ON Address.GID = Guards.GID ";
+                        "concat(StreetNo,', ', Brgy,', ',Street, ', ', City) As LOCATION, case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS' " +
+                        "FROM Guards LEFT JOIN Address ON Address.GID = Guards.GID ";
                 orderbyclause = "AND Atype = 2 ORDER BY NAME ASC;";
             }
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand(query + ExtraQueryParams + orderbyclause, conn);
+            Conn.Open();
+            MySqlCommand comm = new MySqlCommand(query + _extraQueryParams + orderbyclause, Conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             dt = new DataTable();
             adp.Fill(dt);
-            conn.Close();
+            Conn.Close();
             return dt;
         }
 
         private int GetNumberOfActiveClients() {
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE cstatus = 1", conn);
+            Conn.Open();
+            MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE cstatus = 1", Conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
-            conn.Close();
+            Conn.Close();
             return dt.Rows.Count;
         }
         private int GetTotalClients() {
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand("SELECT * FROM client", conn);
+            Conn.Open();
+            MySqlCommand comm = new MySqlCommand("SELECT * FROM client", Conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
-            conn.Close();
+            Conn.Close();
             return dt.Rows.Count;
         }
         private DataTable GetClientList() {
-            String q = "SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno FROM client" + ExtraQueryParams;
+            String q = "SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno FROM client" + _extraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
 

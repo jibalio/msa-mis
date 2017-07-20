@@ -1,28 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Payroll_EmployeeView : Form {
         public int GID { get; set; }
         public MainForm reference;
-        Payroll pay;
         public Shadow refer;
-        DataGridViewRow currentrow;
+
+        private DataGridViewRow currentrow;
+        private Label currentLBL;
+        private Panel currentPNL;
+        private Payroll pay;
 
         public Payroll_EmployeeView() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
-        Label currentLBL;
-        Panel currentPNL;
+
 
         private void Payroll_EmployeeView_Load(object sender, EventArgs e) {
             FadeTMR.Start();
@@ -56,12 +54,12 @@ namespace MSAMISUserInterface {
 
         #region Popups  
 
-        private void ShowPopup(ContextMenuStrip CMS, Control cntrl) {
-            CMS.Show(cntrl, new Point((int)((cntrl.Size.Width)*2 / 3), 0));
+        private static void ShowPopup(ToolStripDropDown cms, Control cntrl) {
+            cms.Show(cntrl , new Point(((cntrl.Size.Width) * 2) / 3), 0);
         }
 
-        private void HidePop(ContextMenuStrip CMS) {
-            CMS.Hide();
+        private static void HidePop(Control cms) {
+            cms.Hide();
         }
         private void MondaysLBL_MouseEnter(object sender, EventArgs e) {
             ShowPopup(MondaySaturday, OMondaysLBL);
@@ -124,8 +122,8 @@ namespace MSAMISUserInterface {
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
         }
 
         private void Payroll_EmployeeView_FormClosing(object sender, FormClosingEventArgs e) {
@@ -133,14 +131,11 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
 
         private void BonusesLBL_Click(object sender, EventArgs e) {
             ChangePanel(AdjustmentsLBL, AdjPNL);
-        }
-
-        private void DeductionsLBL_Click(object sender, EventArgs e) {
         }
 
         private void AdjLBL_Click(object sender, EventArgs e) {
@@ -172,9 +167,11 @@ namespace MSAMISUserInterface {
         }
 
         private void BonusAddBTN_Click_1(object sender, EventArgs e) {
-            Payroll_AddAdjustments view = new Payroll_AddAdjustments();
-            view.PID = this.GID;
-            view.Location = new Point(this.Location.X + 350, this.Location.Y);
+            var view = new Payroll_AddAdjustments
+            {
+                PID = GID,
+                Location = new Point(Location.X + 350, Location.Y)
+            };
             view.ShowDialog();
         }
         
@@ -246,13 +243,11 @@ namespace MSAMISUserInterface {
                 DTotalLBL.Text = CurrencyFormatNegative(pay.ComputeDeductions());
 
                 NetPayLBL.Text = CurrencyFormat(pay.NetPay);
-
             }
         }
 
-        private void UpdatePopUp(String Day, String DayO, String Night, String NightO, ContextMenuStrip CMS) {
-            HourCostPair e;
-            e = pay.hc[Day];
+        private void UpdatePopUp(string Day, string DayO, string Night, string NightO, ToolStrip CMS) {
+            var e = pay.hc[Day];
             CMS.Items[1].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
 
             e = pay.hc[DayO];
@@ -265,29 +260,28 @@ namespace MSAMISUserInterface {
             CMS.Items[7].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
         }
 
-        private String CurrencyFormat(Double Money) {
-            return "₱ " + Money.ToString("N2");
+        private static string CurrencyFormat(double money) {
+            return "₱ " + money.ToString("N2");
         }
 
-        private String CurrencyFormatNegative(Double Money) {
-            return "₱ -" + Money.ToString("N2");
+        private static string CurrencyFormatNegative(double money) {
+            return "₱ -" + money.ToString("N2");
         }
 
-        private void UpdateLBL(String key, Label lbl) {
-            HourCostPair e;
-            e = pay.TotalSummary[key];
+        private void UpdateLBL(string key, Control lbl) {
+            var e = pay.TotalSummary[key];
             lbl.Text = CurrencyFormat(e.total);
         }
 
 
         private void EmpListGRD_MouseEnter(object sender, EventArgs e) {
-            int first = EmpListGRD.FirstDisplayedScrollingRowIndex;
+            var first = EmpListGRD.FirstDisplayedScrollingRowIndex;
             EmpListGRD.ScrollBars = ScrollBars.Vertical;
             EmpListGRD.FirstDisplayedScrollingRowIndex = first;
         }
 
         private void EmpListGRD_MouseLeave(object sender, EventArgs e) {
-            int first = EmpListGRD.FirstDisplayedScrollingRowIndex;
+            var first = EmpListGRD.FirstDisplayedScrollingRowIndex;
             EmpListGRD.ScrollBars = ScrollBars.None;
             EmpListGRD.FirstDisplayedScrollingRowIndex = first;
         }

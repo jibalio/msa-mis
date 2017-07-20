@@ -130,12 +130,6 @@
     <Compile Include="Payroll_EmployeeView.Designer.cs">
       <DependentUpon>Payroll_EmployeeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Payroll_ViewCashAdv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Payroll_ViewCashAdv.Designer.cs">
-      <DependentUpon>Payroll_ViewCashAdv.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Guards_View.cs">
@@ -242,9 +236,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll_EmployeeView.resx">
       <DependentUpon>Payroll_EmployeeView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Payroll_ViewCashAdv.resx">
-      <DependentUpon>Payroll_ViewCashAdv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

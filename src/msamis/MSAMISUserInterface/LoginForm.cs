@@ -1,26 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ryldb.sqltools;
 
 namespace MSAMISUserInterface {
     public partial class LoginForm : Form {
 
         public LoginForm() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
             FadeTMR.Start();
         }
 
         #region Form Properties
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
+            Opacity += 0.2;
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
             Application.Exit();
@@ -37,10 +30,10 @@ namespace MSAMISUserInterface {
         }
         private void Form_MouseMove(object sender, MouseEventArgs e) {
             if (mouseDown) {
-                this.Location = new Point(
-                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y
+                Location = new Point(
+                    (Location.X - lastLocation.X) + e.X, (Location.Y - lastLocation.Y) + e.Y
                     );
-                this.Update();
+                Update();
             }
         }
         private void PassPic_MouseDown(object sender, MouseEventArgs e) {
@@ -91,13 +84,15 @@ namespace MSAMISUserInterface {
                 UsernameTLTP.ToolTipTitle = "Username";
                 UsernameTLTP.Show("Please enter your username", UsernameBX);
             } else {
-                MainForm mf = new MainForm();
-                mf.Opacity = 0;
-                mf.lf = this;
-                mf.Location = new Point (this.Location.X-50, this.Location.Y-66);
-                mf.user = UsernameBX.Text;
+                var mf = new MainForm
+                {
+                    Opacity = 0,
+                    Lf = this,
+                    Location = new Point(Location.X - 50, Location.Y - 66),
+                    User = UsernameBX.Text,
+                };
                 mf.Show();
-                this.Hide();
+                Hide();
             }
         }
 

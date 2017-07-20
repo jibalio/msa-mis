@@ -1,32 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Sched_RequestGuard : Form {
         public MainForm reference;
-        String FilterText = "Search or filter";
-        String EmptyText = "";
-        String ExtraQueryParams = "";
-        String CID = "-1";
+        private String FilterText = "Search or filter";
+        private String EmptyText = "";
+        private String ExtraQueryParams = "";
+        private String CID = "-1";
 
         public Shadow refer;
 
         #region Form Initializtion and Load
         public Sched_RequestGuard() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         private void Sched_RequestGuard_Load(object sender, EventArgs e) {
             LoadClients();
-            this.Location = new Point(this.Location.X + 175, this.Location.Y);
+            Location = new Point(Location.X + 175, Location.Y);
             RequestPNL.Hide();
             PickPNL.Show();
             FadeTMR.Start();
@@ -45,11 +39,11 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
         }
         #endregion
 
@@ -86,7 +80,7 @@ namespace MSAMISUserInterface {
         private void AssCityBX_Enter(object sender, EventArgs e) {
             ClearAddressBox(AssCityBX);
         }
-        private void ClearAddressBox(TextBox TX) {
+        private static void ClearAddressBox(TextBoxBase TX) {
             if (TX.Text.Equals("No.")) TX.Clear();
             else if (TX.Text.Equals("Street Name")) TX.Clear();
             else if (TX.Text.Equals("Brgy")) TX.Clear();
@@ -107,9 +101,8 @@ namespace MSAMISUserInterface {
             ContractEndDTPKR.MinDate = ContractStartDTPKR.Value;
         }
         private bool DataValidation() {
-            bool ret = true;
+            var ret = true;
             if (NeededBX.Value == 0) {
-                ;
                 NeededTLTP.ToolTipTitle = "Guards Needed";
                 NeededTLTP.Show("Please specify how many guards the client needs", NeededBX);
                 ret = false;
@@ -127,7 +120,7 @@ namespace MSAMISUserInterface {
             }
             return ret;
         }
-        private bool CheckAdd(TextBox BrgyBX, TextBox CityBX, TextBox StreetNameBX, TextBox StreetNoBX) {
+        private static bool CheckAdd(Control BrgyBX, Control CityBX, Control StreetNameBX, Control StreetNoBX) {
             return (BrgyBX.Text.Equals("Brgy") || CityBX.Text.Equals("City") || StreetNameBX.Text.Equals("Street Name") || StreetNoBX.Text.Equals("No.") ||
                 BrgyBX.Text.Equals("") || CityBX.Text.Equals("") || StreetNameBX.Text.Equals("") || StreetNoBX.Text.Equals(""));
         }
@@ -150,8 +143,8 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Navigation
-        private Color dark = Color.FromArgb(53, 64, 82);
-        private Color light = Color.DarkGray;
+        private readonly Color dark = Color.FromArgb(53, 64, 82);
+        private readonly Color light = Color.DarkGray;
 
         private void PickLBL_Click(object sender, EventArgs e) {
             NextBTN.PerformClick();
@@ -197,13 +190,12 @@ namespace MSAMISUserInterface {
         #region Adding
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
-
                 if (CID.Equals("-1")) {
                     rylui.RylMessageBox.ShowDialog("Please select a client", "Request a guard", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
                     Scheduling.AddAssignmentRequest(int.Parse(CID), AssStreetNoBX.Text, AssStreetNameBX.Text, AssBrgyBX.Text, AssCityBX.Text, ContractStartDTPKR.Value, ContractEndDTPKR.Value, (int)(NeededBX.Value));
                     reference.SCHEDLoadPage();
-                    this.Close();
+                    Close();
                 }
             }
         }

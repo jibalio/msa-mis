@@ -1,56 +1,51 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Clients_Edit : Form {
-        public int CID;
-        public MainForm reference;
-        public Clients_View viewref;
-        public String button = "ADD";
-        public MySql.Data.MySqlClient.MySqlConnection conn;
+        public int Cid;
+        public MainForm Reference;
+        public Clients_View ViewRef;
+        public string Button = "ADD";
+        public MySqlConnection Connection;
 
-        public Shadow refer;
+        public Shadow Refer;
 
         public Clients_Edit() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         #region Form Props
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity == 1) FadeTMR.Stop();
+            Opacity += 0.2;
+            if (Opacity.Equals(1)) FadeTMR.Stop();
         }
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (isEmpty() == false) {
-                DialogResult rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (rs == DialogResult.Yes) this.Close();
-            } else { this.Close(); }
+            if (IsEmpty() == false) {
+                var rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rs == DialogResult.Yes) Close();
+            } else { Close(); }
         }
         private void Clients_Edit_Load(object sender, EventArgs e) {
-            GEditDetailsBTN.Text = button;
-            if (button.Equals("UPDATE")) {
+            GEditDetailsBTN.Text = Button;
+            if (Button.Equals("UPDATE")) {
                 AddLBL.Text = "Edit details";
                 PopulateEdit();
-            } else this.Location = new Point(this.Location.X + 150, this.Location.Y);
+            } else Location = new Point(Location.X + 150, Location.Y);
             FadeTMR.Start();
         }
         private void Clients_Edit_FormClosing(object sender, FormClosingEventArgs e) {
-            if (button.Equals("ADD")) {
+            if (Button.Equals("ADD")) {
                 Console.WriteLine("[Guard_Edit] Closing Event");
-                reference.Opacity = 1;
+                Reference.Opacity = 1;
                 Console.WriteLine("[Guard_Edit] Setting Opacity to 100");
-                reference.Enabled = true;
+                Reference.Enabled = true;
 
-                refer.Hide();
+                Refer.Hide();
                 Console.WriteLine("[Guard_Edit] Setting reference.Enable to true");
             }
         }
@@ -117,10 +112,10 @@ namespace MSAMISUserInterface {
 
         private void Clients_Edit_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Escape) {
-                    if (isEmpty() == false) {
-                        DialogResult rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (rs == DialogResult.Yes) this.Close();
-                    } else { this.Close(); }
+                    if (IsEmpty() == false) {
+                        var rs = rylui.RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (rs == DialogResult.Yes) Close();
+                    } else { Close(); }
 
                 }
             }
@@ -128,7 +123,7 @@ namespace MSAMISUserInterface {
 
         #region Adding and Editign
         private bool DataVal() {
-            bool ret = true;
+            var ret = true;
             if (NameBX.Text.Equals("") || NameBX.Text.Equals("Name")) {
                 NameTLTP.ToolTipTitle = "Client Name";
                 NameTLTP.Show("Please enter client name", NameBX);
@@ -165,9 +160,9 @@ namespace MSAMISUserInterface {
             return ret;
         }
 
-        private bool isEmpty()
+        private bool IsEmpty()
         {
-            bool ret = false;
+            bool ret;
             if ((NameBX.Text.Equals("") || NameBX.Text.Equals("Name")) &&
                 (LocationStreetNoBX.Text.Equals("") || LocationStreetNoBX.Text.Equals("No.")) &&
                 (LocationStreetNameBX.Text.Equals("") || LocationStreetNameBX.Text.Equals("Street Name")) &&
@@ -175,8 +170,9 @@ namespace MSAMISUserInterface {
                 (LocationBrgyBX.Text.Equals("") || LocationBrgyBX.Text.Equals("Brgy"))
                 && ManagerBX.Text.Equals("")
                 && ContactBX.Text.Equals("")
-                && ContactNoBX.Text.Equals(""))
+                && ContactNoBX.Text.Equals("")) {
                 ret = true;
+            } else ret = false;
 
             return ret;
         }
@@ -188,32 +184,32 @@ namespace MSAMISUserInterface {
             if (DataVal()) {
                 if (GEditDetailsBTN.Text.Equals("ADD")) {
                     try {
-                        conn.Open();
-                        MySqlCommand comm = new MySqlCommand("INSERT INTO Client(Name, ClientStreetNo, ClientStreet, ClientBrgy, ClientCity, ContactPerson, ContactNo, Manager, CStatus) VALUES ('" + NameBX.Text + "','" + LocationStreetNoBX.Text + "','" + LocationStreetNameBX.Text + "','" + LocationBrgyBX.Text + "','" + LocationCityBX.Text + "','" + ContactBX.Text + "','" + ContactNoBX.Text + "','" + ManagerBX.Text + "', '0')", conn);
+                        Connection.Open();
+                        MySqlCommand comm = new MySqlCommand("INSERT INTO Client(Name, ClientStreetNo, ClientStreet, ClientBrgy, ClientCity, ContactPerson, ContactNo, Manager, CStatus) VALUES ('" + NameBX.Text + "','" + LocationStreetNoBX.Text + "','" + LocationStreetNameBX.Text + "','" + LocationBrgyBX.Text + "','" + LocationCityBX.Text + "','" + ContactBX.Text + "','" + ContactNoBX.Text + "','" + ManagerBX.Text + "', '0')", Connection);
                         comm.ExecuteNonQuery();
-                        conn.Close();
+                        Connection.Close();
                     }
                     catch (Exception ee) {
-                        conn.Close();
+                        Connection.Close();
                         rylui.RylMessageBox.ShowDialog(ee.Message);
                     }
                 } else {
                     try {
                         int status = 0;
 
-                        conn.Open();
-                        MySqlCommand comm = new MySqlCommand("UPDATE Client SET Name = '" + NameBX.Text + "', ClientStreetNo = '" + LocationStreetNoBX.Text + "', ClientStreet = '" + LocationStreetNameBX.Text + "', ClientBrgy = '" + LocationBrgyBX.Text + "', ClientCity = '" + LocationCityBX.Text + "', ContactPerson = '" + ContactBX.Text + "', ContactNo = '" + ContactNoBX.Text + "', Manager = '" + ManagerBX.Text + "', CStatus = '" + status + "' WHERE CID =" + CID, conn);
+                        Connection.Open();
+                        MySqlCommand comm = new MySqlCommand("UPDATE Client SET Name = '" + NameBX.Text + "', ClientStreetNo = '" + LocationStreetNoBX.Text + "', ClientStreet = '" + LocationStreetNameBX.Text + "', ClientBrgy = '" + LocationBrgyBX.Text + "', ClientCity = '" + LocationCityBX.Text + "', ContactPerson = '" + ContactBX.Text + "', ContactNo = '" + ContactNoBX.Text + "', Manager = '" + ManagerBX.Text + "', CStatus = '" + status + "' WHERE CID =" + Cid, Connection);
                         comm.ExecuteNonQuery();
-                        conn.Close();
+                        Connection.Close();
                     }
                     catch (Exception ee) {
-                        conn.Close();
+                        Connection.Close();
                         rylui.RylMessageBox.ShowDialog(ee.Message);
                     }
-                    viewref.RefreshData();
+                    ViewRef.RefreshData();
                 }
-                reference.CLIENTSRefreshClientsList();
-                this.Close();
+                Reference.CLIENTSRefreshClientsList();
+                Close();
             }
         }
         #endregion
@@ -221,8 +217,8 @@ namespace MSAMISUserInterface {
         #region Populating 
         private void PopulateEdit() {
             try {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE CID = " + CID, conn);
+                Connection.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE CID = " + Cid, Connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -237,10 +233,10 @@ namespace MSAMISUserInterface {
                 ContactBX.Text = dt.Rows[0]["ContactPerson"].ToString();
                 ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
 
-                conn.Close();
+                Connection.Close();
             }
             catch (Exception ee) {
-                conn.Close();
+                Connection.Close();
                 MessageBox.Show(ee.Message);
             }
 

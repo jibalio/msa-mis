@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -14,15 +9,16 @@ namespace MSAMISUserInterface {
         public DataGridViewSelectedRowCollection guards { get; set; }
         public int CID { get; set; }
         public Shadow refer;
+
         public Sched_UnassignGuard() {
             InitializeComponent();
-            this.Opacity = 0;
+            Opacity = 0;
         }
 
         #region Form Properties
         private void Sched_DismissGuard_Load(object sender, EventArgs e) {
             LoadPage();
-            this.Location = new Point(this.Location.X + 175, this.Location.Y);
+            Location = new Point(Location.X + 175, Location.Y);
             FadeTMR.Start();
             IncidentTypeCMBX.SelectedIndex = 1;
             GuardsPNL.Show();
@@ -40,12 +36,12 @@ namespace MSAMISUserInterface {
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
-            this.Opacity += 0.2;
-            if (this.Opacity >= 1) { FadeTMR.Stop(); }
+            Opacity += 0.2;
+            if (Opacity >= 1) { FadeTMR.Stop(); }
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            this.Close();
+            Close();
         }
 
         private void Sched_DismissGuard_FormClosing(object sender, FormClosingEventArgs e) {
@@ -61,11 +57,11 @@ namespace MSAMISUserInterface {
 
         #region DataValidation
         private bool DataValidation() {
-            bool ret = true;
+            var ret = true;
 
             if (GuardsGRD.RowCount == 0) {
                 rylui.RylMessageBox.ShowDialog("There are no guards to be dismissed \nThis request will be canceled", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
+                Close();
                 GuardsPNL.Show();
                 ReportPNL.Hide();
                 GuardsLBL.ForeColor = dark;
@@ -106,11 +102,11 @@ namespace MSAMISUserInterface {
             }
             return ret;
         }
-        private void ShowToolTipOnBX(ToolTip ttp, String title, String message, TextBox lb) {
+        private static void ShowToolTipOnBX(ToolTip ttp, String title, String message, TextBox lb) {
             ttp.ToolTipTitle = title;
             ttp.Show(message, lb);
         }
-        private bool CheckName(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX) {
+        private static bool CheckName(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX) {
             return (FirstBX.Text.Equals("First") || MiddleBX.Text.Equals("Middle") || LastBX.Text.Equals("Last") ||
                 FirstBX.Text.Equals("") || MiddleBX.Text.Equals("") || LastBX.Text.Equals(""));
         }
@@ -123,12 +119,12 @@ namespace MSAMISUserInterface {
             return (CheckForInput(FirstBX, MiddleBX, LastBX) && CheckName(FirstBX, MiddleBX, LastBX));
         }
 
-        private bool CheckForInput(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX) {
+        private static bool CheckForInput(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX) {
             return (!(FirstBX.Text.Equals("First") || FirstBX.Text.Equals("")) || !(MiddleBX.Text.Equals("Middle") || MiddleBX.Text.Equals("")) ||
                !(LastBX.Text.Equals("Last") || LastBX.Text.Equals("")));
         }
 
-        private bool CheckForInput(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX, ComboBox RBX) {
+        private static bool CheckForInput(TextBox FirstBX, TextBox MiddleBX, TextBox LastBX, ComboBox RBX) {
             return (!(FirstBX.Text.Equals("First") || FirstBX.Text.Equals("")) || !(MiddleBX.Text.Equals("Middle") || MiddleBX.Text.Equals("")) ||
                !(LastBX.Text.Equals("Last") || LastBX.Text.Equals("")) || RBX.SelectedIndex > 0);
         }
@@ -138,16 +134,16 @@ namespace MSAMISUserInterface {
         private void DismissBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
                 int[] GIDs = new int[GuardsGRD.RowCount];
-                for (int i = 0; i < GuardsGRD.RowCount; i++) {
+                for (var i = 0; i < GuardsGRD.RowCount; i++) {
                     GIDs[i] = int.Parse(GuardsGRD.Rows[i].Cells[0].Value.ToString());
                 }
                 Scheduling.AddUnassignmentRequest(CID, GIDs, IncidentTypeCMBX.SelectedIndex, "Admin", DateDTPKR.Value, LocationBX.Text, DescriptionBX.Text);
                 reference.SCHEDLoadSidePNL();
-                this.Close();
+                Close();
             }
         }
-        private Color dark = Color.FromArgb(53, 64, 82);
-        private Color light = Color.DarkGray;
+        private readonly Color dark = Color.FromArgb(53, 64, 82);
+        private readonly Color light = Color.DarkGray;
 
 
         private void ReportLBL_Click(object sender, EventArgs e) {
