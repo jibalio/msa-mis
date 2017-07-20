@@ -58,7 +58,7 @@ namespace MSAMISUserInterface {
         #region Popups  
 
         private void ShowPopup(ContextMenuStrip CMS, Control cntrl) {
-            CMS.Show(cntrl, new Point((int)((cntrl.Size.Width) / 2), 0));
+            CMS.Show(cntrl, new Point((int)((cntrl.Size.Width)*2 / 3), 0));
         }
 
         private void HidePop(ContextMenuStrip CMS) {
@@ -214,16 +214,16 @@ namespace MSAMISUserInterface {
         private void UpdatePopUp(String Day, String DayO, String Night, String NightO, ContextMenuStrip CMS) {
             HourCostPair e;
             e = pay.hc[Day];
-            CMS.Items[1].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[1].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)" + " = ₱ " + e.total;
 
             e = pay.hc[DayO];
-            CMS.Items[3].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[3].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)" + " = ₱ " + e.total;
 
             e = pay.hc[Night];
-            CMS.Items[5].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[5].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)" + " = ₱ " + e.total;
 
             e = pay.hc[NightO];
-            CMS.Items[7].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)";
+            CMS.Items[7].Text = "₱ " + e.cost + " x " + e.hour + " hr(s)" + " = ₱ " + e.total;
         }
 
         private void UpdateLBL(String key, Label lbl) {
