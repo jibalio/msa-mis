@@ -30,7 +30,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -41,7 +40,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -49,7 +47,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -63,7 +60,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -75,7 +71,6 @@
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
@@ -86,7 +81,6 @@
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.numericUpDown6);
-            this.panel2.Controls.Add(this.numericUpDown4);
             this.panel2.Controls.Add(this.numericUpDown3);
             this.panel2.Controls.Add(this.numericUpDown2);
             this.panel2.Controls.Add(this.numericUpDown1);
@@ -94,11 +88,10 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(1, 131);
+            this.panel2.Location = new System.Drawing.Point(1, 130);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(550, 378);
             this.panel2.TabIndex = 126;
@@ -108,7 +101,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label20.Location = new System.Drawing.Point(276, 328);
+            this.label20.Location = new System.Drawing.Point(276, 312);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(18, 20);
             this.label20.TabIndex = 260;
@@ -119,7 +112,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label19.Location = new System.Drawing.Point(277, 297);
+            this.label19.Location = new System.Drawing.Point(277, 279);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(18, 20);
             this.label19.TabIndex = 259;
@@ -130,7 +123,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label18.Location = new System.Drawing.Point(278, 271);
+            this.label18.Location = new System.Drawing.Point(278, 250);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(18, 20);
             this.label18.TabIndex = 258;
@@ -141,22 +134,11 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label17.Location = new System.Drawing.Point(279, 244);
+            this.label17.Location = new System.Drawing.Point(279, 220);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(18, 20);
             this.label17.TabIndex = 257;
             this.label17.Text = "₱";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label16.Location = new System.Drawing.Point(277, 188);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(18, 20);
-            this.label16.TabIndex = 256;
-            this.label16.Text = "₱";
             // 
             // label15
             // 
@@ -197,7 +179,7 @@
             this.numericUpDown8.DecimalPlaces = 2;
             this.numericUpDown8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.numericUpDown8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown8.Location = new System.Drawing.Point(300, 299);
+            this.numericUpDown8.Location = new System.Drawing.Point(300, 281);
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(120, 21);
             this.numericUpDown8.TabIndex = 252;
@@ -209,7 +191,7 @@
             this.numericUpDown7.DecimalPlaces = 2;
             this.numericUpDown7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.numericUpDown7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown7.Location = new System.Drawing.Point(300, 272);
+            this.numericUpDown7.Location = new System.Drawing.Point(300, 251);
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(120, 21);
             this.numericUpDown7.TabIndex = 251;
@@ -221,7 +203,7 @@
             this.numericUpDown5.DecimalPlaces = 2;
             this.numericUpDown5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.numericUpDown5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown5.Location = new System.Drawing.Point(300, 245);
+            this.numericUpDown5.Location = new System.Drawing.Point(300, 221);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(120, 21);
             this.numericUpDown5.TabIndex = 250;
@@ -232,7 +214,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label12.Location = new System.Drawing.Point(163, 302);
+            this.label12.Location = new System.Drawing.Point(163, 284);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(43, 20);
             this.label12.TabIndex = 249;
@@ -243,7 +225,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label11.Location = new System.Drawing.Point(161, 273);
+            this.label11.Location = new System.Drawing.Point(161, 252);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(69, 20);
             this.label11.TabIndex = 248;
@@ -254,7 +236,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(163, 246);
+            this.label3.Location = new System.Drawing.Point(163, 222);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 20);
             this.label3.TabIndex = 247;
@@ -266,23 +248,11 @@
             this.numericUpDown6.DecimalPlaces = 2;
             this.numericUpDown6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.numericUpDown6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown6.Location = new System.Drawing.Point(300, 330);
+            this.numericUpDown6.Location = new System.Drawing.Point(300, 314);
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(120, 21);
             this.numericUpDown6.TabIndex = 246;
             this.numericUpDown6.ThousandsSeparator = true;
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown4.Location = new System.Drawing.Point(301, 189);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown4.TabIndex = 244;
-            this.numericUpDown4.ThousandsSeparator = true;
             // 
             // numericUpDown3
             // 
@@ -325,7 +295,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(146, 331);
+            this.label10.Location = new System.Drawing.Point(146, 315);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(85, 20);
             this.label10.TabIndex = 238;
@@ -349,7 +319,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(146, 218);
+            this.label9.Location = new System.Drawing.Point(146, 191);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 20);
             this.label9.TabIndex = 237;
@@ -367,17 +337,6 @@
             this.label1.TabIndex = 120;
             this.label1.Text = "Bonus Type:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(146, 189);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 20);
-            this.label8.TabIndex = 236;
-            this.label8.Text = "Store Credit";
             // 
             // label7
             // 
@@ -499,7 +458,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -518,7 +476,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -529,7 +486,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
@@ -537,7 +493,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;

@@ -185,19 +185,34 @@ namespace MSAMISUserInterface {
                     EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                     currentrow = EmpListGRD.SelectedRows[0];
                     GID = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
+                    
                 }
             }
             catch {
             }
             LoadDetails();
+            LoadComputations();
+
         }
 
         private void LoadDetails() {
+            PeriodCMBX.Items.Clear();
             foreach (DataRow row in Attendance.GetPeriods(GID).Rows) {
                 PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
             }
-            PeriodCMBX.SelectedIndex = 0;
-            pay = new Payroll(GID);
+            if (PeriodCMBX.Items.Count > 0) {
+                PeriodCMBX.SelectedIndex = 0;
+                NoPayrollPNL.Visible = false;
+            } else {
+                NoPayrollPNL.BringToFront();
+                NoPayrollPNL.Visible = true;
+            }
+            ChangePanel(OverviewLBL, OverviewPNL);
+        }
+
+        private void LoadComputations() {
+            if (PeriodCMBX.Items.Count > 0) { 
+                pay = new Payroll(GID, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
             pay.ComputeHours();
             pay.ComputeGrossPay();
             UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal", "nsu_overtime_night_normal", MondaySaturday);
@@ -216,6 +231,7 @@ namespace MSAMISUserInterface {
             UpdateLBL("regular", RTLBL);
             UpdateLBL("special", STLBL);
             UpdateLBL("total", WorkTotalLBL);
+            }
         }
 
         private void UpdatePopUp(String Day, String DayO, String Night, String NightO, ContextMenuStrip CMS) {
@@ -256,7 +272,8 @@ namespace MSAMISUserInterface {
             EmpListGRD.FirstDisplayedScrollingRowIndex = first;
         }
 
-
-
+        private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            LoadComputations();
+        }
     }
 }
