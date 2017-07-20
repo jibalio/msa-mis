@@ -36,9 +36,9 @@ namespace ryldb.sqltools {
             
         }
             
-        public static void EditHoliday (int hid, string desc) {
-                string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}' where hid='{1}';";
-                q = String.Format(q,  desc, hid);
+        public static void EditHoliday (int hid, string desc, int type) {
+                string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}', type='{2}' where hid='{1}';";
+                q = String.Format(q,  desc, hid, type);
                 SQLTools.ExecuteNonQuery(q);
         }
 
