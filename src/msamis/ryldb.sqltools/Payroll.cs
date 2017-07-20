@@ -89,7 +89,7 @@ namespace MSAMISUserInterface {
                     left join dutydetails on attendance.did = dutydetails.did
                     left join sduty_assignment on sduty_assignment.aid = dutydetails.aid
                     left join guards on guards.gid=sduty_assignment.gid 
-                    where period.period = "+period.period+" and month="+period.month+" and year="+period.year+@" 
+                    where period.period = "+period.period+" and month="+period.month+" and year="+period.year+@" and guards.gid="+ GID +@"
             ;", GID, period.period, period.year, period.month));
             Hours HourIterationTotal = new Hours();
             foreach (DataRow dr in HourIterationDataTable.Rows) {
