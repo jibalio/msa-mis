@@ -207,7 +207,7 @@ namespace MSAMISUserInterface {
                 NoPayrollPNL.BringToFront();
                 NoPayrollPNL.Visible = true;
             }
-            ChangePanel(OverviewLBL, OverviewPNL);
+            if (OverviewPNL.Visible == false) ChangePanel(OverviewLBL, OverviewPNL);
         }
 
         private void LoadComputations() {
