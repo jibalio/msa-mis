@@ -101,7 +101,7 @@ namespace MSAMISUserInterface {
             if (HolidaysGRD.SelectedRows.Count > 0) {
                 start = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[2]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[0]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[1]));
                 end = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[2]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[0]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[1]));
-                if (HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("2")) {
+                if (HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Special")) {
                     SpecialBTN.Checked = true;
                 } else SpecialBTN.Checked = false;
                 DateLBL.Text = start.ToShortDateString() + " - " + end.ToShortDateString();
@@ -119,6 +119,8 @@ namespace MSAMISUserInterface {
             AddBTN.Text = "ADD";
             DateLBL.Text = "Please choose a date/dates";
             DescBX.Text = "";
+            SpecialBTN.Checked = false;
+            RegularBTN.Checked = false;
             HoldaysCLNDR.Enabled = true;
             RemoveBTN.Visible = true;
             CloseBTN.Visible = true;
