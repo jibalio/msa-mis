@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportsForm));
             this.PSalaryReportPage = new System.Windows.Forms.Panel();
             this.CClientListTBL = new System.Windows.Forms.DataGridView();
             this.label42 = new System.Windows.Forms.Label();
@@ -46,9 +47,12 @@
             // 
             // CClientListTBL
             // 
+            this.CClientListTBL.AllowUserToAddRows = false;
+            this.CClientListTBL.AllowUserToDeleteRows = false;
             this.CClientListTBL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CClientListTBL.Location = new System.Drawing.Point(18, 109);
             this.CClientListTBL.Name = "CClientListTBL";
+            this.CClientListTBL.ReadOnly = true;
             this.CClientListTBL.Size = new System.Drawing.Size(652, 476);
             this.CClientListTBL.TabIndex = 16;
             // 
@@ -92,7 +96,7 @@
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(252, 51);
             this.label43.TabIndex = 4;
-            this.label43.Text = "Salary Reports";
+            this.label43.Text = "Guards Report";
             // 
             // ReportsForm
             // 
@@ -101,7 +105,7 @@
             this.ClientSize = new System.Drawing.Size(717, 669);
             this.Controls.Add(this.PSalaryReportPage);
             this.Name = "ReportsForm";
-            this.Text = "ReportsForm";
+            this.Text = resources.GetString("$this.Text");
             this.PSalaryReportPage.ResumeLayout(false);
             this.PSalaryReportPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CClientListTBL)).EndInit();
