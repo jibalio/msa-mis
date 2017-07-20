@@ -193,6 +193,10 @@ namespace MSAMISUserInterface {
         }
 
         private void LoadDetails() {
+            foreach (DataRow row in Attendance.GetPeriods(GID).Rows) {
+                PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+            }
+            PeriodCMBX.SelectedIndex = 0;
             pay = new Payroll(GID);
             pay.ComputeHours();
             pay.ComputeGrossPay();

@@ -35,22 +35,38 @@ namespace MSAMISUserInterface {
             CLIENTSRefreshClientsList();
         }
 
-        public void CLIENTSRefreshClientsList()
-        {
-            CClientListTBL.DataSource = GetClientList();
-            CClientListTBL.Columns["gid"].HeaderText = "ID";
-            CClientListTBL.Columns["gid"].Visible = false;
-            CClientListTBL.Columns["fn"].HeaderText = "NAME";
-            CClientListTBL.Columns["fn"].Width = 300;
-            CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
-        }
-
+        #region SQL
 
         private DataTable GetClientList()
         {
-            String q = "SELECT gid, fn FROM guards" + ExtraQueryParams;
+            ExtraQueryParams = " ORDER BY ln asc";
+            String q = "SELECT concat(ln,', ',fn,' ',mn) AS fullname, GStatus, CellNo, LicenseNo, SSS, TIN, PhilHealth FROM msadb.guards" + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
+
+        public void CLIENTSRefreshClientsList()
+        {
+            CClientListTBL.DataSource = GetClientList();
+            CClientListTBL.Columns["fullname"].HeaderText = "NAME";
+            CClientListTBL.Columns["Gstatus"].HeaderText = "STATUS";
+            CClientListTBL.Columns["CellNo"].HeaderText = "CONTACT NUMBER";
+            CClientListTBL.Columns["LicenseNo"].HeaderText = "LICENSE NO";
+            CClientListTBL.Columns["SSS"].HeaderText = "SSS";
+            CClientListTBL.Columns["TIN"].HeaderText = "TIN NO";
+            CClientListTBL.Columns["PhilHealth"].HeaderText = "PHIC";
+
+            #region Format Table
+            CClientListTBL.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            CClientListTBL.Columns["fullname"].Width = 200;
+            CClientListTBL.Columns["Gstatus"].Width = 70;
+            CClientListTBL.Columns["CellNo"].Width = 140;
+
+            CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
+            #endregion
+
+        }
+        #endregion
+        #region Export
 
         private void PrintClientReportBTN_Click(object sender, EventArgs e)
         {
@@ -74,8 +90,8 @@ namespace MSAMISUserInterface {
             DataTable dtMainSQLData = GetClientList();
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
 
-            Excel.Application ExcelApp = new
-            Excel.Application();
+            Excel.Application ExcelApp = new Excel.Application();
+
             ExcelApp.Application.Workbooks.Add(Type.Missing);
 
             for (int i = 1; i < dtMainSQLData.Rows.Count + 2; i++)
@@ -94,6 +110,8 @@ namespace MSAMISUserInterface {
             ExcelApp.ActiveWorkbook.Saved = true;
             ExcelApp.Quit();
         }
+        #endregion
+
     }
 
 }
