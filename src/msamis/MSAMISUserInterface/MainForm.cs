@@ -135,10 +135,10 @@ namespace MSAMISUserInterface {
             lastLocation = e.Location;
         }
         private void Form_MouseMove(object sender, MouseEventArgs e) {
-            //if (mouseDown) {
+            if (mouseDown) {
                 this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
                 this.Update();
-           // }
+            }
         }
         #endregion
 

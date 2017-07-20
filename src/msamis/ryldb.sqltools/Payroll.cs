@@ -89,7 +89,7 @@ namespace MSAMISUserInterface {
                     left join dutydetails on attendance.did = dutydetails.did
                     left join sduty_assignment on sduty_assignment.aid = dutydetails.aid
                     left join guards on guards.gid=sduty_assignment.gid 
-                    where period.period = "+period.period+" and month="+period.month+" and year="+period.year+@" 
+                    where period.period = "+period.period+" and month="+period.month+" and year="+period.year+@" and guards.gid="+ GID +@"
             ;", GID, period.period, period.year, period.month));
             Hours HourIterationTotal = new Hours();
             foreach (DataRow dr in HourIterationDataTable.Rows) {
@@ -105,9 +105,6 @@ namespace MSAMISUserInterface {
                 HourProcessor hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
                 totalhours.Add(hp);
             }
-
-            
-
         }
 
         private void ComputeTotalSummary() {
@@ -226,11 +223,8 @@ namespace MSAMISUserInterface {
                                                 left join period on guards.gid=period.gid
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
-                                                where RequestType = 1 and
-                                                ((period=1
-                                                and month = 7
-                                                and year = 2017) OR
-                                                (period.pid is null))
+                                                where RequestType = 1 
+                                                
                                                 group by guards.gid
                                                 ");
         }
@@ -242,11 +236,8 @@ namespace MSAMISUserInterface {
                                                 left join sduty_assignment on sduty_assignment.raid=request_assign.raid
                                                 left join guards on guards.gid=sduty_assignment.gid
                                                 left join period on guards.gid=period.gid
-                                                where RequestType = 1 and
-                                                ((period=1
-                                                and month = 7
-                                                and year = 2017) OR
-                                                (pid is null))
+                                                where RequestType = 1 
+                                                
                                                 group by guards.gid
                                                 ");
         }

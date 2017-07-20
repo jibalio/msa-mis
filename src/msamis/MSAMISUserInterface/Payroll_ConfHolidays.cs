@@ -67,8 +67,11 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
-                if (AddBTN.Text.Equals("ADD")) Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text);
-                else { Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), DescBX.Text); CancelBTN.PerformClick(); }
+                int type = 1;
+                if (SpecialBTN.Checked) type = 2; 
+
+                if (AddBTN.Text.Equals("ADD")) Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type);
+                else { Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), DescBX.Text, type); CancelBTN.PerformClick(); }
                 LoadPage();
             }
         }
@@ -98,7 +101,9 @@ namespace MSAMISUserInterface {
             if (HolidaysGRD.SelectedRows.Count > 0) {
                 start = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[2]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[0]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[1]));
                 end = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[2]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[0]), int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[1]));
-
+                if (HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Special")) {
+                    SpecialBTN.Checked = true;
+                } else SpecialBTN.Checked = false;
                 DateLBL.Text = start.ToShortDateString() + " - " + end.ToShortDateString();
                 DescBX.Text = HolidaysGRD.SelectedRows[0].Cells[3].Value.ToString();
             }
@@ -114,6 +119,8 @@ namespace MSAMISUserInterface {
             AddBTN.Text = "ADD";
             DateLBL.Text = "Please choose a date/dates";
             DescBX.Text = "";
+            SpecialBTN.Checked = false;
+            RegularBTN.Checked = false;
             HoldaysCLNDR.Enabled = true;
             RemoveBTN.Visible = true;
             CloseBTN.Visible = true;

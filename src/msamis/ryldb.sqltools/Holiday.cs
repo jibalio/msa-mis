@@ -29,16 +29,16 @@ namespace ryldb.sqltools {
         }
 
 
-        public static void AddHoliday(SelectionRange r, string desc) {
-                string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`) VALUES ('{0}', '{1}', '{2}');";
-                q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc);
+        public static void AddHoliday(SelectionRange r, string desc, int type) {
+                string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`) VALUES ('{0}', '{1}', '{2}', '{3}');";
+                q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc, type);
                 SQLTools.ExecuteNonQuery(q);
             
         }
             
-        public static void EditHoliday (int hid, string desc) {
-                string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}' where hid='{1}';";
-                q = String.Format(q,  desc, hid);
+        public static void EditHoliday (int hid, string desc, int type) {
+                string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}', type='{2}' where hid='{1}';";
+                q = String.Format(q,  desc, hid, type);
                 SQLTools.ExecuteNonQuery(q);
         }
 
@@ -47,7 +47,12 @@ namespace ryldb.sqltools {
         }
 
         public static DataTable GetHolidays() {
-            string q = "select * from holiday";
+            string q = @"SELECT hid, datestart, dateend, `desc`, 
+                        case type
+                        when 1 then 'Regular'
+                        when 2 then 'Special'
+                        end as type
+                        FROM msadb.holiday; ";
             return SQLTools.ExecuteQuery(q);
         }
 
