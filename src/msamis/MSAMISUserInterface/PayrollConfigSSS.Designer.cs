@@ -1,5 +1,5 @@
 ﻿namespace MSAMISUserInterface {
-    partial class PayrollConfigSSS {
+    partial class PayrollConfigSss {
         /// <summary>
         /// Required designer variable.
         /// </summary>

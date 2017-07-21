@@ -2,10 +2,10 @@
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
-    public partial class PayrollConfigSSS : Form {
+    public partial class PayrollConfigSss : Form {
         public Shadow Refer;
 
-        public PayrollConfigSSS() {
+        public PayrollConfigSss() {
             InitializeComponent();
             Opacity = 0;
         }

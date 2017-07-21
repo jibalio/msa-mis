@@ -1068,7 +1068,7 @@ namespace MSAMISUserInterface {
         }
         private void PConfigSSSBTN_Click(object sender, EventArgs e) {
             try {
-                var view = new PayrollConfigSSS {
+                var view = new PayrollConfigSss {
                     Refer = _shadow,
                     Location = _newFormLocation
                 };

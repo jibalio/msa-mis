@@ -133,11 +133,11 @@ namespace MSAMISUserInterface {
 
         private void DismissBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
-                int[] GIDs = new int[GuardsGRD.RowCount];
+                int[] giDs = new int[GuardsGRD.RowCount];
                 for (var i = 0; i < GuardsGRD.RowCount; i++) {
-                    GIDs[i] = int.Parse(GuardsGRD.Rows[i].Cells[0].Value.ToString());
+                    giDs[i] = int.Parse(GuardsGRD.Rows[i].Cells[0].Value.ToString());
                 }
-                Scheduling.AddUnassignmentRequest(Cid, GIDs, IncidentTypeCMBX.SelectedIndex, "Admin", DateDTPKR.Value, LocationBX.Text, DescriptionBX.Text);
+                Scheduling.AddUnassignmentRequest(Cid, giDs, IncidentTypeCMBX.SelectedIndex, "Admin", DateDTPKR.Value, LocationBX.Text, DescriptionBX.Text);
                 Reference.SchedLoadSidePnl();
                 Close();
             }

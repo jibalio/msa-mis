@@ -97,14 +97,14 @@ namespace MSAMISUserInterface {
             AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
             AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            var B = new Attendance(Aid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-            var hrs = B.GetAttendanceSummary();
+            var attendance = new Attendance(Aid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            var hrs = attendance.GetAttendanceSummary();
             AShiftLBL.Text = hrs.GetNormalDay() + " hrs";
             ANightLBL.Text = hrs.GetNormalNight() + " hrs";
             AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
             AHNightLBL.Text = hrs.GetHolidayNight() + " hrs";
 
-            var b = (B.GetCertifiedBy().Equals("")) ? ACertifiedLBL.Text = "Unedited Attendance" : ACertifiedLBL.Text = B.GetCertifiedBy();
+            var b = (attendance.GetCertifiedBy().Equals("")) ? ACertifiedLBL.Text = "Unedited Attendance" : ACertifiedLBL.Text = attendance.GetCertifiedBy();
         }
         #endregion
 
