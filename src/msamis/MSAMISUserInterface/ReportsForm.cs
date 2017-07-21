@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +11,11 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data.OleDb;
 
-namespace MSAMISUserInterface {
-    public partial class ReportsForm : Form {
-        public MySqlConnection conn;
+namespace MSAMISUserInterface
+{
+    public partial class ReportsForm : Form
+    {
+        public SqlConnection conn;
         public LoginForm lf;
         Point newFormLocation;
         Shadow shadow = new Shadow();
@@ -40,26 +42,27 @@ namespace MSAMISUserInterface {
         private DataTable GetClientList()
         {
             ExtraQueryParams = " ORDER BY ln asc";
-            String q = "SELECT concat(ln,', ',fn,' ',mn) AS fullname, GStatus, CellNo, LicenseNo, SSS, TIN, PhilHealth FROM msadb.guards" + ExtraQueryParams;
+            String q = "SELECT concat(ln,', ',fn,' ',mn) AS 'Full Name', CASE WHEN GStatus = 1 THEN 'Active' WHEN GStatus = 2 THEN 'Inactive' END as Status, CellNo as 'Cell Number', LicenseNo as 'License Number', SSS, TIN, PhilHealth as PHIC FROM msadb.guards" + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
 
         public void CLIENTSRefreshClientsList()
         {
             CClientListTBL.DataSource = GetClientList();
-            CClientListTBL.Columns["fullname"].HeaderText = "NAME";
-            CClientListTBL.Columns["Gstatus"].HeaderText = "STATUS";
-            CClientListTBL.Columns["CellNo"].HeaderText = "CONTACT NUMBER";
-            CClientListTBL.Columns["LicenseNo"].HeaderText = "LICENSE NO";
+
+            CClientListTBL.Columns["Full Name"].HeaderText = "NAME";
+            CClientListTBL.Columns["Status"].HeaderText = "STATUS";
+            CClientListTBL.Columns["Cell Number"].HeaderText = "CONTACT NUMBER";
+            CClientListTBL.Columns["License Number"].HeaderText = "LICENSE NUMBER";
             CClientListTBL.Columns["SSS"].HeaderText = "SSS";
             CClientListTBL.Columns["TIN"].HeaderText = "TIN NO";
-            CClientListTBL.Columns["PhilHealth"].HeaderText = "PHIC";
+            CClientListTBL.Columns["PHIC"].HeaderText = "PHIC";
 
             #region Format Table
             CClientListTBL.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            CClientListTBL.Columns["fullname"].Width = 200;
-            CClientListTBL.Columns["Gstatus"].Width = 70;
-            CClientListTBL.Columns["CellNo"].Width = 140;
+            CClientListTBL.Columns["Full Name"].Width = 200;
+            CClientListTBL.Columns["Status"].Width = 70;
+            CClientListTBL.Columns["Cell Number"].Width = 140;
 
             CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
             #endregion
@@ -71,9 +74,7 @@ namespace MSAMISUserInterface {
         private void PrintClientReportBTN_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
-            // set a default file name
-            savefile.FileName = "Book1.xls";
-            // set filters - this can be done in properties as well
+            savefile.FileName = "Book1";
             savefile.Filter = "Excel Workbook (.xlsx)|*.xlsx|Excel 97-2003 Template (.xls)|*.xls";
 
             if (savefile.ShowDialog() == DialogResult.OK)
@@ -91,8 +92,9 @@ namespace MSAMISUserInterface {
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
 
             Excel.Application ExcelApp = new Excel.Application();
+            var ExcelWorkbook = ExcelApp.Application.Workbooks.Add(Type.Missing);
+            var ExcelWorkSheet = (Excel.Worksheet)ExcelWorkbook.Worksheets.Item[1];
 
-            ExcelApp.Application.Workbooks.Add(Type.Missing);
 
             for (int i = 1; i < dtMainSQLData.Rows.Count + 2; i++)
             {
@@ -105,10 +107,28 @@ namespace MSAMISUserInterface {
                     else
                         ExcelApp.Cells[i, j] = dtMainSQLData.Rows[i - 2][j - 1].ToString();
                 }
+                ExcelWorkSheet.Rows[i].rowheight = 19;
             }
+            ExcelWorkSheet.Rows[1].rowheight = 23;
+            ExcelWorkSheet.Cells[1, 1].EntireRow.Font.Size = 12;
+            ExcelWorkSheet.Cells[1, 1].EntireRow.Font.Bold = true;
+            ExcelWorkSheet.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            FormatClientWorkSheet(ExcelWorkSheet);
+
             ExcelApp.ActiveWorkbook.SaveAs(FilePath + "\\" + FileName);
             ExcelApp.ActiveWorkbook.Saved = true;
             ExcelApp.Quit();
+        }
+
+        private void FormatClientWorkSheet(Excel.Worksheet ews)
+        {
+            ews.Columns[1].columnwidth = 35;
+            ews.Columns[2].columnwidth = 10;
+            ews.Columns[3].columnwidth = 18;
+            ews.Columns[4].columnwidth = 17;
+            ews.Columns[5].columnwidth = 14;
+            ews.Columns[6].columnwidth = 13;
+            ews.Columns[7].columnwidth = 16;
         }
         #endregion
 
