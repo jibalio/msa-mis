@@ -6,22 +6,22 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Guards_View : Form {
-        public int GID { get; set; }
-        public MainForm reference;
-        public int[] dependents;
+        public int Gid { get; set; }
+        public MainForm Reference;
+        public int[] Dependents;
 
-        public MySqlConnection conn;
-        MySqlCommand comm;
-        MySqlDataAdapter adp = new MySqlDataAdapter();
-        DataTable dt = new DataTable();
+        public MySqlConnection Connection;
+        private MySqlCommand _mySqlCommand;
+        private MySqlDataAdapter _mySqlDataAdapter = new MySqlDataAdapter();
+        private DataTable _dataTable = new DataTable();
 
-        private readonly Color dark = Color.FromArgb(53, 64, 82);
-        private readonly Color light = Color.DarkGray;
+        private readonly Color _dark = Color.FromArgb(53, 64, 82);
+        private readonly Color _light = Color.DarkGray;
 
-        private Panel PNL;
-        private Label LBL;
+        private Panel _panel;
+        private Label _label;
 
-        public Shadow refer;
+        public Shadow Shadow;
 
         public Guards_View() {
             InitializeComponent();
@@ -33,18 +33,18 @@ namespace MSAMISUserInterface {
         private void RViewEmployees_Load(object sender, EventArgs e) {
             RefreshData();
             FadeTMR.Start();
-            PNL = PersonalPNL;
-            LBL = PersonalLBL;
+            _panel = PersonalPNL;
+            _label = PersonalLBL;
             PersonalPNL.Visible = true;
         }
 
         private void RViewEmployees_FormClosing(object sender, FormClosingEventArgs e) {
-            refer.Close();
+            Shadow.Close();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             Close();
-            reference.GUARDSRefreshGuardsList();
+            Reference.GUARDSRefreshGuardsList();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -54,12 +54,12 @@ namespace MSAMISUserInterface {
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             var view = new Guards_Edit
             {
-                GID = GID,
-                button = "UPDATE",
-                conn = conn,
-                viewref = this,
-                reference = reference,
-                dependents = dependents,
+                Gid = Gid,
+                Button = "UPDATE",
+                Connection = Connection,
+                ViewRef = this,
+                Reference = Reference,
+                Dependents = Dependents,
                 Location = Location
             };
             view.ShowDialog();
@@ -71,82 +71,82 @@ namespace MSAMISUserInterface {
 
         public void RefreshData() {       
             try {
-                GetQueryReult("SELECT * FROM guards WHERE GID = " + GID);
-                GIDLBL.Text = GID.ToString();
-                LNLBL.Text = dt.Rows[0]["fn"] + " " + dt.Rows[0]["mn"];
-                LLBL.Text = dt.Rows[0]["ln"] + ", ";
-                StatusLBL.Text = GetStatus(dt);
-                BdateLBL.Text = dt.Rows[0]["Bdate"].ToString();
-                GenderLBL.Text = GetGender(dt);
-                HeightLBL.Text = dt.Rows[0]["Height"].ToString();
-                WeightLBL.Text = dt.Rows[0]["Weight"].ToString();
-                ReligionLBL.Text = dt.Rows[0]["Religion"].ToString();
-                CivilStatusLBL.Text = GetCivilStatus(dt);
-                ContactNoLBL.Text = dt.Rows[0]["CellNo"].ToString();
-                TelNoLBL.Text = dt.Rows[0]["TelNo"].ToString();
-                LicenseNoLBL.Text = dt.Rows[0]["LicenseNo"].ToString();
-                SSSLBL.Text = dt.Rows[0]["SSS"].ToString();
-                TINLBL.Text = dt.Rows[0]["TIN"].ToString();
-                PhilHealthLBL.Text = dt.Rows[0]["PhilHealth"].ToString();
-                PrevAgencyLBL.Text = dt.Rows[0]["PrevAgency"].ToString();
-                PrevAssLVL.Text = dt.Rows[0]["PrevAss"].ToString();
-                EdAtLBL.Text = GetEducationalAttainment(dt);
-                CourseLBL.Text = dt.Rows[0]["Course"].ToString();
-                TrainLBL.Text = dt.Rows[0]["MilitaryTrainings"].ToString();
-                ContactLBL.Text = dt.Rows[0]["EmergencyContact"].ToString();
-                EmergencyLBL.Text = dt.Rows[0]["EmergencyNo"].ToString();
+                GetQueryReult("SELECT * FROM guards WHERE GID = " + Gid);
+                GIDLBL.Text = Gid.ToString();
+                LNLBL.Text = _dataTable.Rows[0]["fn"] + " " + _dataTable.Rows[0]["mn"];
+                LLBL.Text = _dataTable.Rows[0]["ln"] + ", ";
+                StatusLBL.Text = GetStatus(_dataTable);
+                BdateLBL.Text = _dataTable.Rows[0]["Bdate"].ToString();
+                GenderLBL.Text = GetGender(_dataTable);
+                HeightLBL.Text = _dataTable.Rows[0]["Height"].ToString();
+                WeightLBL.Text = _dataTable.Rows[0]["Weight"].ToString();
+                ReligionLBL.Text = _dataTable.Rows[0]["Religion"].ToString();
+                CivilStatusLBL.Text = GetCivilStatus(_dataTable);
+                ContactNoLBL.Text = _dataTable.Rows[0]["CellNo"].ToString();
+                TelNoLBL.Text = _dataTable.Rows[0]["TelNo"].ToString();
+                LicenseNoLBL.Text = _dataTable.Rows[0]["LicenseNo"].ToString();
+                SSSLBL.Text = _dataTable.Rows[0]["SSS"].ToString();
+                TINLBL.Text = _dataTable.Rows[0]["TIN"].ToString();
+                PhilHealthLBL.Text = _dataTable.Rows[0]["PhilHealth"].ToString();
+                PrevAgencyLBL.Text = _dataTable.Rows[0]["PrevAgency"].ToString();
+                PrevAssLVL.Text = _dataTable.Rows[0]["PrevAss"].ToString();
+                EdAtLBL.Text = GetEducationalAttainment(_dataTable);
+                CourseLBL.Text = _dataTable.Rows[0]["Course"].ToString();
+                TrainLBL.Text = _dataTable.Rows[0]["MilitaryTrainings"].ToString();
+                ContactLBL.Text = _dataTable.Rows[0]["EmergencyContact"].ToString();
+                EmergencyLBL.Text = _dataTable.Rows[0]["EmergencyNo"].ToString();
             } catch (IndexOutOfRangeException) {
-                conn.Close();
+                Connection.Close();
             }
             catch {
             }
             
             try {
-                GetQueryReult("SELECT * FROM address WHERE GID=" + GID + " ORDER BY Atype ASC");
-                BirthplaceLBL.Text = BuildStreet(dt, 0);
-                PermAddLBL.Text = BuildStreet(dt, 1);
-                TempAddLBL.Text = BuildStreet(dt, 2);
+                GetQueryReult("SELECT * FROM address WHERE GID=" + Gid + " ORDER BY Atype ASC");
+                BirthplaceLBL.Text = BuildStreet(_dataTable, 0);
+                PermAddLBL.Text = BuildStreet(_dataTable, 1);
+                TempAddLBL.Text = BuildStreet(_dataTable, 2);
             }
             catch {
             }
             try {
-                GetQueryReult("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
-                MotherLBL.Text = BuildName(dt, 1);
-                FatherLBL.Text = BuildName(dt, 0);
-                try { SpouseLBL.Text = BuildName(dt, 2); } catch { }
+                GetQueryReult("SELECT * FROM dependents WHERE GID=" + Gid + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
+                MotherLBL.Text = BuildName(_dataTable, 1);
+                FatherLBL.Text = BuildName(_dataTable, 0);
+                try { SpouseLBL.Text = BuildName(_dataTable, 2); } catch { }
             }
             catch {
             }
             try {
-                GetQueryReult("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
+                GetQueryReult("SELECT * FROM dependents WHERE GID=" + Gid + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
                 try {
-                    dependents = new int[dt.Rows.Count];
-                    dependents[0] = int.Parse(dt.Rows[0]["DeID"].ToString());
-                    Dependent1LBL.Text = AddRelationship(dt.Rows[0]["DRelationship"].ToString(), BuildName(dt, 0));
-                    dependents[1] = int.Parse(dt.Rows[1]["DeID"].ToString());
-                    Dependent2LBL.Text = AddRelationship(dt.Rows[1]["DRelationship"].ToString(), BuildName(dt, 1));
-                    dependents[2] = int.Parse(dt.Rows[2]["DeID"].ToString());
-                    Dependent3LBL.Text = AddRelationship(dt.Rows[2]["DRelationship"].ToString(), BuildName(dt, 2));
-                    dependents[3] = int.Parse(dt.Rows[3]["DeID"].ToString());
-                    Dependent4LBL.Text = AddRelationship(dt.Rows[3]["DRelationship"].ToString(), BuildName(dt, 3));
-                    dependents[4] = int.Parse(dt.Rows[4]["DeID"].ToString());
-                    Dependent5LBL.Text = AddRelationship(dt.Rows[4]["DRelationship"].ToString(), BuildName(dt, 4));
+                    Dependents = new int[_dataTable.Rows.Count];
+                    Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
+                    Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(), BuildName(_dataTable, 0));
+                    Dependents[1] = int.Parse(_dataTable.Rows[1]["DeID"].ToString());
+                    Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(), BuildName(_dataTable, 1));
+                    Dependents[2] = int.Parse(_dataTable.Rows[2]["DeID"].ToString());
+                    Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(), BuildName(_dataTable, 2));
+                    Dependents[3] = int.Parse(_dataTable.Rows[3]["DeID"].ToString());
+                    Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(), BuildName(_dataTable, 3));
+                    Dependents[4] = int.Parse(_dataTable.Rows[4]["DeID"].ToString());
+                    Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(), BuildName(_dataTable, 4));
                 }
                 catch { }
-                conn.Close();
+                Connection.Close();
             }
             catch {
-                conn.Close();
+                Connection.Close();
             }
         }
 
         private void GetQueryReult(string query) {
-            conn.Open();
-            comm = new MySqlCommand(query, conn);
-            adp = new MySqlDataAdapter(comm);
-            dt = new DataTable();
-            adp.Fill(dt);
-            conn.Close();
+            Connection.Open();
+            _mySqlCommand = new MySqlCommand(query, Connection);
+            _mySqlDataAdapter = new MySqlDataAdapter(_mySqlCommand);
+            _dataTable = new DataTable();
+            _mySqlDataAdapter.Fill(_dataTable);
+            Connection.Close();
         }
 
         private static string GetStatus(DataTable dt) {
@@ -184,16 +184,16 @@ namespace MSAMISUserInterface {
             }
         }
 
-        private static string AddRelationship(String RelationshipType, String Lab) {
-            switch (RelationshipType) {
+        private static string AddRelationship(string relationshipType, string lab) {
+            switch (relationshipType) {
                 case "1":
-                    return Lab + " - Son";
+                    return lab + " - Son";
                 case "2":
-                    return Lab + " - Daughter";
+                    return lab + " - Daughter";
                 case "3":
-                    return Lab + " - Sibling";
+                    return lab + " - Sibling";
                 default:
-                    return Lab + " - Undpecified";
+                    return lab + " - Undpecified";
             }
         }
 
@@ -207,39 +207,39 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        private void ChangePage(Panel NewP, Label newB) {
-            PNL.Visible = false;
-            LBL.ForeColor = light;
+        private void ChangePage(Panel newP, Label newB) {
+            _panel.Visible = false;
+            _label.ForeColor = _light;
 
-            NewP.Visible = true;
-            newB.ForeColor = dark;
+            newP.Visible = true;
+            newB.ForeColor = _dark;
 
-            PNL = NewP;
-            LBL = newB;
+            _panel = newP;
+            _label = newB;
         }
 
         private void FamilyLBL_MouseEnter(object sender, EventArgs e) {
-            FamilyLBL.ForeColor = dark;
+            FamilyLBL.ForeColor = _dark;
         }
 
         private void WorkLBL_MouseEnter(object sender, EventArgs e) {
-            WorkLBL.ForeColor = dark;
+            WorkLBL.ForeColor = _dark;
         }
 
         private void PersonalLBL_MouseEnter(object sender, EventArgs e) {
-            PersonalLBL.ForeColor = dark;
+            PersonalLBL.ForeColor = _dark;
         }
 
         private void PersonalLBL_MouseLeave(object sender, EventArgs e) {
-            if(PersonalLBL != LBL) PersonalLBL.ForeColor = light;
+            if(PersonalLBL != _label) PersonalLBL.ForeColor = _light;
         }
 
         private void FamilyLBL_MouseLeave(object sender, EventArgs e) {
-            if (FamilyLBL != LBL) FamilyLBL.ForeColor = light;
+            if (FamilyLBL != _label) FamilyLBL.ForeColor = _light;
         }
 
         private void WorkLBL_MouseLeave(object sender, EventArgs e) {
-            if (WorkLBL != LBL) WorkLBL.ForeColor = light;
+            if (WorkLBL != _label) WorkLBL.ForeColor = _light;
         }
 
         private void PersonalLBL_Click(object sender, EventArgs e) {
@@ -259,7 +259,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_MouseLeave(object sender, EventArgs e) {
-            CloseBTN.ForeColor = dark;
+            CloseBTN.ForeColor = _dark;
         }
     }
 
