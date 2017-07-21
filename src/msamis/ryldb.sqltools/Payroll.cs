@@ -117,51 +117,45 @@ namespace MSAMISUserInterface {
         }
 
         private void ComputeTotalSummary() {
-                /* normal_nsu
-                normal_sun
-                regular_nsu
-                regular_sun
-                special_nsu
-                special_sun*/
             TotalSummary["normal_nsu"] =
-                         hc["nsu_proper_day_normal"] +
+                        hc["nsu_proper_day_normal"] +
                         hc["nsu_overtime_day_normal"] +
                         hc["nsu_proper_night_normal"] +
                         hc["nsu_overtime_night_normal"];
             TotalSummary["normal_sun"] =
-                         hc["sun_proper_day_normal"] +
+                        hc["sun_proper_day_normal"] +
                         hc["sun_overtime_day_normal"] +
                         hc["sun_proper_night_normal"] +
                         hc["sun_overtime_night_normal"];
             TotalSummary["regular_nsu"] =
-                         hc["nsu_proper_day_regular"] +
+                        hc["nsu_proper_day_regular"] +
                         hc["nsu_overtime_day_regular"] +
                         hc["nsu_proper_night_regular"] +
                         hc["nsu_overtime_night_regular"];
             TotalSummary["regular_sun"] =
-                         hc["sun_proper_day_regular"] +
+                        hc["sun_proper_day_regular"] +
                         hc["sun_overtime_day_regular"] +
                         hc["sun_proper_night_regular"] +
                         hc["sun_overtime_night_regular"];
             TotalSummary["special_sun"] =
-                         hc["sun_proper_day_special"] +
+                        hc["sun_proper_day_special"] +
                         hc["sun_overtime_day_special"] +
-                    hc["sun_proper_night_special"] +
-                    hc["sun_overtime_night_special"];
+                        hc["sun_proper_night_special"] +
+                        hc["sun_overtime_night_special"];
             TotalSummary["special_nsu"] =
-                    hc["nsu_proper_day_special"] +
-                    hc["nsu_overtime_day_special"] +
-                    hc["nsu_proper_night_special"] +
-                    hc["nsu_overtime_night_special"];
+                        hc["nsu_proper_day_special"] +
+                        hc["nsu_overtime_day_special"] +
+                        hc["nsu_proper_night_special"] +
+                        hc["nsu_overtime_night_special"];
             TotalSummary["normal"] =
-                    hc["nsu_proper_day_normal"] +
-                    hc["nsu_overtime_day_normal"] +
-                    hc["nsu_proper_night_normal"] +
-                    hc["nsu_overtime_night_normal"]+                
-                    hc["sun_proper_day_normal"] +   
-                    hc["sun_overtime_day_normal"] +  
-                    hc["sun_proper_night_normal"] +  
-                    hc["sun_overtime_night_normal"]; 
+                        hc["nsu_proper_day_normal"] +
+                        hc["nsu_overtime_day_normal"] +
+                        hc["nsu_proper_night_normal"] +
+                        hc["nsu_overtime_night_normal"]+                
+                        hc["sun_proper_day_normal"] +   
+                        hc["sun_overtime_day_normal"] +  
+                        hc["sun_proper_night_normal"] +  
+                     hc["sun_overtime_night_normal"]; 
             TotalSummary["regular"]=
                  hc["nsu_proper_day_regular"] +
                     hc["nsu_overtime_day_regular"] +
@@ -182,16 +176,20 @@ namespace MSAMISUserInterface {
                     hc["sun_overtime_night_special"];
             TotalSummary["total"] =
                 TotalSummary["special"] + TotalSummary["regular"] + TotalSummary["normal"];
-            NetPay = TotalSummary["total"].cost;
+            GrossPay = NetPay = TotalSummary["total"].cost;
         }
 
         public double NetPay;
+        public double GrossPay;
+        public double TaxableIncome;
         public double sss;
         public double pagibig;
         public double philhealth;
         public double withtax;
         public double cashadv;
         public double cashbond;
+
+
         
         public double ComputeNet() {
             double e = NetPay;
@@ -200,6 +198,17 @@ namespace MSAMISUserInterface {
             return e;
         }
 
+        public double ComputeTaxableIncome() {
+            /*  Status
+                Do you have any dependents and how many?
+                How much is your SSS/Philhealth and PagIbig contributions
+                Allowances and other benefits if any
+                Copy of the BIR Tax table 
+             */
+            return GrossPay - sss - pagibig - philhealth;
+        }
+
+        #region In Genera Calculations
         public double ComputeDeductions() {
             this.sss = ComputeSSS();
             this.pagibig = ComputeHDMF();
@@ -219,6 +228,8 @@ namespace MSAMISUserInterface {
             this.cashbond = ComputeCashBond();
             return thirteen + cola + emerallowance + cashbond;
         }
+        #endregion
+
 
         public static double ComputeCashBond() {
             return 5000;
