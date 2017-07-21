@@ -293,6 +293,19 @@ namespace MSAMISUserInterface {
 
         #endregion
         #region Accessor Functions Operations
+
+        public static DataTable GetSSSContribTable() {
+            return SQLTools.ExecuteQuery("select * from ssscontrib;");
+        }
+        public static void EditSSSContrib(int sssid, double range_start, double range_end, double ec) {
+            string q = @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='"+sssid+"';";
+            q = String.Format(q, range_start, range_end, ec);
+            SQLTools.ExecuteNonQuery(q);
+        }
+        public static void RemoveSSSContrib(int sssid) {
+            SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + sssid + "';");
+        }
+
         public static DataTable GetGuardsPayrollMain() {
             return SQLTools.ExecuteQuery(@"     
                                                 select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
