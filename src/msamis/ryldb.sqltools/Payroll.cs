@@ -294,6 +294,7 @@ namespace MSAMISUserInterface {
         #endregion
         #region Accessor Functions Operations
 
+            #region + SSS Contribution CRUD Methods
         public static DataTable GetSSSContribTable() {
             return SQLTools.ExecuteQuery("select * from ssscontrib;");
         }
@@ -306,16 +307,22 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + sssid + "';");
         }
 
+        public static void AddSSSContrib(double range_start, double range_end, double ec) {
+            string q = String.Format(@"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`) VALUES ('{0}', '{1}','{2}');",
+                range_start, range_end, ec);
+            SQLTools.ExecuteNonQuery(q);
+        }
+        #endregion
+            #region + GetGuardsList Methods Min/Max
         public static DataTable GetGuardsPayrollMain() {
-            return SQLTools.ExecuteQuery(@"     
-                                                select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
+            return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
                                                             WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL)
                                                             THEN 'Yes'
                                                             ELSE 'No Attendance Details Found'
                                                         END
                                                       ) AS attendance, pstatus
-                                                 from request
+                                                from request
                                                 left join client on client.cid=request.cid
                                                 left join request_assign on request_assign.rid=request.rid
                                                 left join sduty_assignment on sduty_assignment.raid=request_assign.raid
@@ -341,6 +348,11 @@ namespace MSAMISUserInterface {
                                                 group by guards.gid
                                                 ");
         }
+        #endregion
+            
+        
+
+
 
         public HourProcessor GetTotalHours() {
             return totalhours;
