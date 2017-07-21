@@ -168,7 +168,9 @@ namespace MSAMISUserInterface {
             var view = new PayrollAddAdjustments
             {
                 Pid = Gid,
-                Location = new Point(Location.X + 350, Location.Y)
+                Location = new Point(Location.X + 350, Location.Y),
+                Pay = _pay,
+                Period = "for " + PeriodCMBX.Text
             };
             view.ShowDialog();
         }
@@ -180,7 +182,6 @@ namespace MSAMISUserInterface {
                     EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                     _currentRow = EmpListGRD.SelectedRows[0];
                     Gid = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
-                    
                 }
             }
             catch {

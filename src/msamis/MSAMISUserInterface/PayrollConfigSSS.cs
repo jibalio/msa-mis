@@ -12,6 +12,19 @@ namespace MSAMISUserInterface {
 
         private void Payroll_ConfigSSS_Load(object sender, EventArgs e) {
             FadeTMR.Start();
+            LoadTable();
+        }
+
+        private void LoadTable() {
+            SSSGRD.DataSource = Payroll.GetSSSContribTable();
+            SSSGRD.Columns[0].Visible = false;
+            SSSGRD.Columns[1].HeaderText = "RANGE START";
+            SSSGRD.Columns[1].Width = 140;
+            SSSGRD.Columns[2].HeaderText = "RANGE END";
+            SSSGRD.Columns[2].Width = 140;
+            SSSGRD.Columns[3].HeaderText = "CONTRIBUTION";
+            SSSGRD.Columns[3].Width = 140;
+
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {

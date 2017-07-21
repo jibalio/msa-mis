@@ -242,7 +242,7 @@ namespace MSAMISUserInterface {
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
-                _shadow.Show();
+                _shadow.ShowDialog();
             }
             catch (Exception) { }
         }

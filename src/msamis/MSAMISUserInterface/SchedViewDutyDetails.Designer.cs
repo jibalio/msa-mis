@@ -343,8 +343,8 @@
             // 
             // AttendancePNL
             // 
-            this.AttendancePNL.Controls.Add(this.ErrorPNL);
             this.AttendancePNL.Controls.Add(this.MainAttendancePNL);
+            this.AttendancePNL.Controls.Add(this.ErrorPNL);
             this.AttendancePNL.Location = new System.Drawing.Point(27, 101);
             this.AttendancePNL.Name = "AttendancePNL";
             this.AttendancePNL.Size = new System.Drawing.Size(524, 485);
@@ -691,7 +691,7 @@
             this.label5.Text = "Contract Start";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Sched_ViewDutyDetails
+            // SchedViewDutyDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -708,7 +708,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Sched_ViewDutyDetails";
+            this.Name = "SchedViewDutyDetails";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_ViewDutyDetails_FormClosing);
