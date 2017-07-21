@@ -75,23 +75,23 @@
     <Compile Include="Backend_Tester.Designer.cs">
       <DependentUpon>Backend_Tester.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clients_Edit.cs">
+    <Compile Include="ClientsEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Clients_Edit.Designer.cs">
-      <DependentUpon>Clients_Edit.cs</DependentUpon>
+    <Compile Include="ClientsEdit.Designer.cs">
+      <DependentUpon>ClientsEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clients_View.cs">
+    <Compile Include="ClientsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Clients_View.Designer.cs">
-      <DependentUpon>Clients_View.cs</DependentUpon>
+    <Compile Include="ClientsView.Designer.cs">
+      <DependentUpon>ClientsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Guards_Edit.cs">
+    <Compile Include="GuardsEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Guards_Edit.Designer.cs">
-      <DependentUpon>Guards_Edit.cs</DependentUpon>
+    <Compile Include="GuardsEdit.Designer.cs">
+      <DependentUpon>GuardsEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Hours.cs" />
     <Compile Include="LoginForm.cs">
@@ -106,37 +106,37 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Payroll_AddAdjustments.cs">
+    <Compile Include="PayrollAddAdjustments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Payroll_AddAdjustments.Designer.cs">
-      <DependentUpon>Payroll_AddAdjustments.cs</DependentUpon>
+    <Compile Include="PayrollAddAdjustments.Designer.cs">
+      <DependentUpon>PayrollAddAdjustments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Payroll_ConfigBasicPay.cs">
+    <Compile Include="PayrollConfigBasicPay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Payroll_ConfigBasicPay.Designer.cs">
-      <DependentUpon>Payroll_ConfigBasicPay.cs</DependentUpon>
+    <Compile Include="PayrollConfigBasicPay.Designer.cs">
+      <DependentUpon>PayrollConfigBasicPay.cs</DependentUpon>
     </Compile>
-    <Compile Include="Payroll_ConfigSSS.cs">
+    <Compile Include="PayrollConfigSSS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Payroll_ConfigSSS.Designer.cs">
-      <DependentUpon>Payroll_ConfigSSS.cs</DependentUpon>
+    <Compile Include="PayrollConfigSSS.Designer.cs">
+      <DependentUpon>PayrollConfigSSS.cs</DependentUpon>
     </Compile>
-    <Compile Include="Payroll_EmployeeView.cs">
+    <Compile Include="PayrollEmployeeView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Payroll_EmployeeView.Designer.cs">
-      <DependentUpon>Payroll_EmployeeView.cs</DependentUpon>
+    <Compile Include="PayrollEmployeeView.Designer.cs">
+      <DependentUpon>PayrollEmployeeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Guards_View.cs">
+    <Compile Include="GuardsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Guards_View.Designer.cs">
-      <DependentUpon>Guards_View.cs</DependentUpon>
+    <Compile Include="GuardsView.Designer.cs">
+      <DependentUpon>GuardsView.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportsForm.cs">
       <SubType>Form</SubType>
@@ -144,59 +144,59 @@
     <Compile Include="ReportsForm.Designer.cs">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_AddDutyDays.cs">
+    <Compile Include="SchedAddDutyDays.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_AddDutyDays.Designer.cs">
-      <DependentUpon>Sched_AddDutyDays.cs</DependentUpon>
+    <Compile Include="SchedAddDutyDays.Designer.cs">
+      <DependentUpon>SchedAddDutyDays.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_AddDutyDetail.cs">
+    <Compile Include="SchedAddDutyDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_AddDutyDetail.Designer.cs">
-      <DependentUpon>Sched_AddDutyDetail.cs</DependentUpon>
+    <Compile Include="SchedAddDutyDetail.Designer.cs">
+      <DependentUpon>SchedAddDutyDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_AssignGuards.cs">
+    <Compile Include="SchedAssignGuards.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_AssignGuards.Designer.cs">
-      <DependentUpon>Sched_AssignGuards.cs</DependentUpon>
+    <Compile Include="SchedAssignGuards.Designer.cs">
+      <DependentUpon>SchedAssignGuards.cs</DependentUpon>
     </Compile>
-    <Compile Include="Payroll_ConfHolidays.cs">
+    <Compile Include="PayrollConfHolidays.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Payroll_ConfHolidays.Designer.cs">
-      <DependentUpon>Payroll_ConfHolidays.cs</DependentUpon>
+    <Compile Include="PayrollConfHolidays.Designer.cs">
+      <DependentUpon>PayrollConfHolidays.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_UnassignGuard.cs">
+    <Compile Include="SchedUnassignGuard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_UnassignGuard.Designer.cs">
-      <DependentUpon>Sched_UnassignGuard.cs</DependentUpon>
+    <Compile Include="SchedUnassignGuard.Designer.cs">
+      <DependentUpon>SchedUnassignGuard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_RequestGuard.cs">
+    <Compile Include="SchedRequestGuard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_RequestGuard.Designer.cs">
-      <DependentUpon>Sched_RequestGuard.cs</DependentUpon>
+    <Compile Include="SchedRequestGuard.Designer.cs">
+      <DependentUpon>SchedRequestGuard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_ViewAssReq.cs">
+    <Compile Include="SchedViewAssReq.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_ViewAssReq.Designer.cs">
-      <DependentUpon>Sched_ViewAssReq.cs</DependentUpon>
+    <Compile Include="SchedViewAssReq.Designer.cs">
+      <DependentUpon>SchedViewAssReq.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_ViewDisReq.cs">
+    <Compile Include="SchedViewDisReq.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_ViewDisReq.Designer.cs">
-      <DependentUpon>Sched_ViewDisReq.cs</DependentUpon>
+    <Compile Include="SchedViewDisReq.Designer.cs">
+      <DependentUpon>SchedViewDisReq.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sched_ViewDutyDetails.cs">
+    <Compile Include="SchedViewDutyDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sched_ViewDutyDetails.Designer.cs">
-      <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
+    <Compile Include="SchedViewDutyDetails.Designer.cs">
+      <DependentUpon>SchedViewDutyDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Shadow.cs">
       <SubType>Form</SubType>
@@ -210,14 +210,14 @@
     <EmbeddedResource Include="Backend_Tester.resx">
       <DependentUpon>Backend_Tester.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Clients_Edit.resx">
-      <DependentUpon>Clients_Edit.cs</DependentUpon>
+    <EmbeddedResource Include="ClientsEdit.resx">
+      <DependentUpon>ClientsEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Clients_View.resx">
-      <DependentUpon>Clients_View.cs</DependentUpon>
+    <EmbeddedResource Include="ClientsView.resx">
+      <DependentUpon>ClientsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Guards_Edit.resx">
-      <DependentUpon>Guards_Edit.cs</DependentUpon>
+    <EmbeddedResource Include="GuardsEdit.resx">
+      <DependentUpon>GuardsEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -225,17 +225,17 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Payroll_AddAdjustments.resx">
-      <DependentUpon>Payroll_AddAdjustments.cs</DependentUpon>
+    <EmbeddedResource Include="PayrollAddAdjustments.resx">
+      <DependentUpon>PayrollAddAdjustments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Payroll_ConfigBasicPay.resx">
-      <DependentUpon>Payroll_ConfigBasicPay.cs</DependentUpon>
+    <EmbeddedResource Include="PayrollConfigBasicPay.resx">
+      <DependentUpon>PayrollConfigBasicPay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Payroll_ConfigSSS.resx">
-      <DependentUpon>Payroll_ConfigSSS.cs</DependentUpon>
+    <EmbeddedResource Include="PayrollConfigSSS.resx">
+      <DependentUpon>PayrollConfigSSS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Payroll_EmployeeView.resx">
-      <DependentUpon>Payroll_EmployeeView.cs</DependentUpon>
+    <EmbeddedResource Include="PayrollEmployeeView.resx">
+      <DependentUpon>PayrollEmployeeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -247,38 +247,38 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Guards_View.resx">
-      <DependentUpon>Guards_View.cs</DependentUpon>
+    <EmbeddedResource Include="GuardsView.resx">
+      <DependentUpon>GuardsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportsForm.resx">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_AddDutyDays.resx">
-      <DependentUpon>Sched_AddDutyDays.cs</DependentUpon>
+    <EmbeddedResource Include="SchedAddDutyDays.resx">
+      <DependentUpon>SchedAddDutyDays.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_AddDutyDetail.resx">
-      <DependentUpon>Sched_AddDutyDetail.cs</DependentUpon>
+    <EmbeddedResource Include="SchedAddDutyDetail.resx">
+      <DependentUpon>SchedAddDutyDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_AssignGuards.resx">
-      <DependentUpon>Sched_AssignGuards.cs</DependentUpon>
+    <EmbeddedResource Include="SchedAssignGuards.resx">
+      <DependentUpon>SchedAssignGuards.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Payroll_ConfHolidays.resx">
-      <DependentUpon>Payroll_ConfHolidays.cs</DependentUpon>
+    <EmbeddedResource Include="PayrollConfHolidays.resx">
+      <DependentUpon>PayrollConfHolidays.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_UnassignGuard.resx">
-      <DependentUpon>Sched_UnassignGuard.cs</DependentUpon>
+    <EmbeddedResource Include="SchedUnassignGuard.resx">
+      <DependentUpon>SchedUnassignGuard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_RequestGuard.resx">
-      <DependentUpon>Sched_RequestGuard.cs</DependentUpon>
+    <EmbeddedResource Include="SchedRequestGuard.resx">
+      <DependentUpon>SchedRequestGuard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_ViewAssReq.resx">
-      <DependentUpon>Sched_ViewAssReq.cs</DependentUpon>
+    <EmbeddedResource Include="SchedViewAssReq.resx">
+      <DependentUpon>SchedViewAssReq.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_ViewDisReq.resx">
-      <DependentUpon>Sched_ViewDisReq.cs</DependentUpon>
+    <EmbeddedResource Include="SchedViewDisReq.resx">
+      <DependentUpon>SchedViewDisReq.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sched_ViewDutyDetails.resx">
-      <DependentUpon>Sched_ViewDutyDetails.cs</DependentUpon>
+    <EmbeddedResource Include="SchedViewDutyDetails.resx">
+      <DependentUpon>SchedViewDutyDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Shadow.resx">
       <DependentUpon>Shadow.cs</DependentUpon>

@@ -19,19 +19,19 @@ namespace MSAMISUserInterface {
             Application.Exit();
         }
 
-        bool mouseDown;
-        Point lastLocation;
+        private bool _mouseDown;
+        private Point _lastLocation;
         private void Form_MouseUp(object sender, MouseEventArgs e) {
-            mouseDown = false;
+            _mouseDown = false;
         }
         private void Form_MouseDown(object sender, MouseEventArgs e) {
-            mouseDown = true;
-            lastLocation = e.Location;
+            _mouseDown = true;
+            _lastLocation = e.Location;
         }
         private void Form_MouseMove(object sender, MouseEventArgs e) {
-            if (mouseDown) {
+            if (_mouseDown) {
                 Location = new Point(
-                    (Location.X - lastLocation.X) + e.X, (Location.Y - lastLocation.Y) + e.Y
+                    (Location.X - _lastLocation.X) + e.X, (Location.Y - _lastLocation.Y) + e.Y
                     );
                 Update();
             }
