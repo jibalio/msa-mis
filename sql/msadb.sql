@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `msadb`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: 127.0.0.1    Database: msadb
@@ -652,7 +650,7 @@ CREATE TABLE `ssscontrib` (
   `range_end` decimal(7,2) DEFAULT NULL,
   `ec` decimal(7,2) DEFAULT NULL,
   PRIMARY KEY (`sssid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -661,7 +659,7 @@ CREATE TABLE `ssscontrib` (
 
 LOCK TABLES `ssscontrib` WRITE;
 /*!40000 ALTER TABLE `ssscontrib` DISABLE KEYS */;
-INSERT INTO `ssscontrib` VALUES (1,1000.00,1249.99,36.30);
+INSERT INTO `ssscontrib` VALUES (1,1000.00,1249.99,36.30),(2,1250.00,1349.99,40.00),(3,1500.00,99999.99,50.00);
 /*!40000 ALTER TABLE `ssscontrib` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -742,4 +740,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-20 18:43:53
+-- Dump completed on 2017-07-21 14:51:18
