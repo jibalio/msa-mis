@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `msadb`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: 127.0.0.1    Database: msadb
@@ -696,6 +698,57 @@ INSERT INTO `time` VALUES (1,1,1,11,2017,1,1,1,1,'1'),(2,115,7,2,2017,199,12,12,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `withtax_bracket`
+--
+
+DROP TABLE IF EXISTS `withtax_bracket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `withtax_bracket` (
+  `wbid` int(11) NOT NULL AUTO_INCREMENT,
+  `estatus` varchar(5) DEFAULT NULL,
+  `bracket` decimal(7,2) DEFAULT NULL,
+  `taxid` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`wbid`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `withtax_bracket`
+--
+
+LOCK TABLES `withtax_bracket` WRITE;
+/*!40000 ALTER TABLE `withtax_bracket` DISABLE KEYS */;
+INSERT INTO `withtax_bracket` VALUES (1,'z',1.00,'1'),(2,'z',0.00,'2'),(3,'z',417.00,'3'),(4,'z',1250.00,'4'),(5,'z',2917.00,'5'),(6,'z',5833.00,'6'),(7,'z',10417.00,'7'),(8,'z',20833.00,'8'),(9,'s0me0',1.00,'1'),(10,'s0me0',2083.00,'2'),(11,'s0me0',2500.00,'3'),(12,'s0me0',3333.00,'4'),(13,'s0me0',5000.00,'5'),(14,'s0me0',7917.00,'6'),(15,'s0me0',12500.00,'7'),(16,'s0me0',22917.00,'8'),(17,'s1me1',1.00,'1'),(18,'s1me1',3125.00,'2'),(19,'s1me1',3542.00,'3'),(20,'s1me1',4375.00,'4'),(21,'s1me1',6042.00,'5'),(22,'s1me1',88958.00,'6'),(23,'s1me1',16542.00,'7'),(24,'s1me1',23958.00,'8'),(25,'s2me2',1.00,'1'),(26,'s2me2',4167.00,'2'),(27,'s2me2',4583.00,'3'),(28,'s2me2',5417.00,'4'),(29,'s2me2',7083.00,'5'),(30,'s2me2',10000.00,'6'),(31,'s2me2',14583.00,'7'),(32,'s2me2',25000.00,'8'),(33,'s3me3',1.00,'1'),(34,'s3me3',5208.00,'2'),(35,'s3me3',5625.00,'3'),(36,'s3me3',6458.00,'4'),(37,'s3me3',8125.00,'5'),(38,'s3me3',11042.00,'6'),(39,'s3me3',15625.00,'7'),(40,'s3me3',26042.00,'8'),(41,'s4me4',1.00,'1'),(42,'s4me4',6250.00,'2'),(43,'s4me4',6667.00,'3'),(44,'s4me4',7500.00,'4'),(45,'s4me4',9167.00,'5'),(46,'s4me4',12083.00,'6'),(47,'s4me4',16667.00,'7'),(48,'s4me4',27083.00,'8');
+/*!40000 ALTER TABLE `withtax_bracket` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `withtax_value`
+--
+
+DROP TABLE IF EXISTS `withtax_value`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `withtax_value` (
+  `wid` int(11) NOT NULL AUTO_INCREMENT,
+  `value` decimal(7,2) DEFAULT NULL,
+  `excessmult` int(2) DEFAULT NULL,
+  PRIMARY KEY (`wid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `withtax_value`
+--
+
+LOCK TABLES `withtax_value` WRITE;
+/*!40000 ALTER TABLE `withtax_value` DISABLE KEYS */;
+INSERT INTO `withtax_value` VALUES (1,0.00,0),(2,0.00,5),(3,41.67,10),(4,208.33,15),(5,708.33,20),(6,1875.00,25),(7,4166.67,30),(8,10416.67,32);
+/*!40000 ALTER TABLE `withtax_value` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Final view structure for view `guardslist`
 --
 
@@ -740,4 +793,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-21 14:51:18
+-- Dump completed on 2017-07-21 17:53:14
