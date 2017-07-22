@@ -30,48 +30,88 @@ namespace MSAMISUserInterface
         String EmptyText = "";
         String ExtraQueryParams = "";
         public String user;
-
         public ReportsForm()
         {
             InitializeComponent();
-            CLIENTSRefreshClientsList();
+            RefreshGuardsSummaryList();
+            RefreshClientsSummaryList();
         }
 
         #region SQL
 
-        private DataTable GetClientList()
+        
+
+        private DataTable GetGuardsList()
         {
             ExtraQueryParams = " ORDER BY ln asc";
             String q = "SELECT concat(ln,', ',fn,' ',mn) AS 'Full Name', CASE WHEN GStatus = 1 THEN 'Active' WHEN GStatus = 2 THEN 'Inactive' END as Status, CellNo as 'Cell Number', LicenseNo as 'License Number', SSS, TIN, PhilHealth as PHIC FROM msadb.guards" + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
 
-        public void CLIENTSRefreshClientsList()
+        private DataTable GetClientsList()
         {
-            CClientListTBL.DataSource = GetClientList();
+            ExtraQueryParams = " ORDER BY Name asc";
+            String q = "SELECT Name as 'Name', CASE WHEN CStatus = 1 THEN 'Active' WHEN CStatus = 2 THEN 'Inactive' END as Status, concat(ClientStreetNo,' ', ClientStreet, ', ', ClientBrgy, ', ', ClientCity) as Address, Manager, ContactPerson as 'Contact Person', ContactNo as 'Contact Number' FROM msadb.client" + ExtraQueryParams;
+            return SQLTools.ExecuteQuery(q);
+        }
 
-            CClientListTBL.Columns["Full Name"].HeaderText = "NAME";
-            CClientListTBL.Columns["Status"].HeaderText = "STATUS";
-            CClientListTBL.Columns["Cell Number"].HeaderText = "CONTACT NUMBER";
-            CClientListTBL.Columns["License Number"].HeaderText = "LICENSE NUMBER";
-            CClientListTBL.Columns["SSS"].HeaderText = "SSS";
-            CClientListTBL.Columns["TIN"].HeaderText = "TIN NO";
-            CClientListTBL.Columns["PHIC"].HeaderText = "PHIC";
+
+        public void RefreshGuardsSummaryList()
+        {
+            GuardsSummaryTBL.DataSource = GetGuardsList();
+
+            GuardsSummaryTBL.Columns["Full Name"].HeaderText = "NAME";
+            GuardsSummaryTBL.Columns["Status"].HeaderText = "STATUS";
+            GuardsSummaryTBL.Columns["Cell Number"].HeaderText = "CONTACT NUMBER";
+            GuardsSummaryTBL.Columns["License Number"].HeaderText = "LICENSE NUMBER";
+            GuardsSummaryTBL.Columns["SSS"].HeaderText = "SSS";
+            GuardsSummaryTBL.Columns["TIN"].HeaderText = "TIN NO";
+            GuardsSummaryTBL.Columns["PHIC"].HeaderText = "PHIC";
 
             #region Format Table
-            CClientListTBL.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            CClientListTBL.Columns["Full Name"].Width = 200;
-            CClientListTBL.Columns["Status"].Width = 70;
-            CClientListTBL.Columns["Cell Number"].Width = 140;
+            GuardsSummaryTBL.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            GuardsSummaryTBL.Columns["Full Name"].Width = 200;
+            GuardsSummaryTBL.Columns["Status"].Width = 70;
+            GuardsSummaryTBL.Columns["Cell Number"].Width = 140;
 
-            CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
+            GuardsSummaryTBL.Sort(GuardsSummaryTBL.Columns[1], ListSortDirection.Ascending);
             #endregion
 
         }
+
+        public void RefreshClientsSummaryList()
+        {
+            ClientsSummaryTBL.DataSource = GetClientsList();
+
+            ClientsSummaryTBL.Columns["Name"].HeaderText = "NAME";
+            ClientsSummaryTBL.Columns["Status"].HeaderText = "STATUS";
+            ClientsSummaryTBL.Columns["Address"].HeaderText = "ADDRESS";
+            ClientsSummaryTBL.Columns["Manager"].HeaderText = "MANAGER";
+            ClientsSummaryTBL.Columns["Contact Person"].HeaderText = "CONTACT PERSON";
+            ClientsSummaryTBL.Columns["Contact Number"].HeaderText = "CONTACT NUMBER";
+
+            #region Format Table
+            ClientsSummaryTBL.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ClientsSummaryTBL.Sort(ClientsSummaryTBL.Columns[1], ListSortDirection.Ascending);
+            #endregion
+
+        }
+
         #endregion
         #region Export
 
-        private void PrintClientReportBTN_Click(object sender, EventArgs e)
+        private void ExportGuardsSummaryBTN_Click(object sender, EventArgs e)
+        {
+            ShowExportDialog("g");
+        }
+
+        private void ExportClientsSummaryBTN_Click(object sender, EventArgs e)
+        {
+            ShowExportDialog("c");
+        }
+
+
+        private void ShowExportDialog(string formOrigin)
         {
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.FileName = "Book1";
@@ -81,14 +121,24 @@ namespace MSAMISUserInterface
             {
                 string filePath = System.IO.Path.GetDirectoryName(savefile.FileName);
                 string fileName = System.IO.Path.GetFileName(savefile.FileName);
-                ExporttoExcel(filePath, fileName);
+                ExporttoExcel(filePath, fileName, formOrigin);
             }
         }
 
-        private void ExporttoExcel(String FilePath, String FileName)
+        private DataTable GetList(String formOrigin)
         {
+            if (formOrigin == "g")
+                return GetGuardsList();
+            else if (formOrigin == "c")
+                return GetClientsList();
+            else {
+                return null;
+            }
+        }
 
-            DataTable dtMainSQLData = GetClientList();
+        private void ExporttoExcel(String FilePath, String FileName, String formOrigin)
+        {
+            DataTable dtMainSQLData = GetList(formOrigin);
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
 
             Excel.Application ExcelApp = new Excel.Application();
@@ -113,14 +163,17 @@ namespace MSAMISUserInterface
             ExcelWorkSheet.Cells[1, 1].EntireRow.Font.Size = 12;
             ExcelWorkSheet.Cells[1, 1].EntireRow.Font.Bold = true;
             ExcelWorkSheet.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-            FormatClientWorkSheet(ExcelWorkSheet);
+            if (formOrigin == "g")
+                FormatGuardsWorkSheet(ExcelWorkSheet);
+            else if (formOrigin == "c")
+                FormatClientsWorkSheet(ExcelWorkSheet);
 
             ExcelApp.ActiveWorkbook.SaveAs(FilePath + "\\" + FileName);
             ExcelApp.ActiveWorkbook.Saved = true;
             ExcelApp.Quit();
         }
 
-        private void FormatClientWorkSheet(Excel.Worksheet ews)
+        private void FormatGuardsWorkSheet(Excel.Worksheet ews)
         {
             ews.Columns[1].columnwidth = 35;
             ews.Columns[2].columnwidth = 10;
@@ -130,8 +183,30 @@ namespace MSAMISUserInterface
             ews.Columns[6].columnwidth = 13;
             ews.Columns[7].columnwidth = 16;
         }
+
+        private void FormatClientsWorkSheet(Excel.Worksheet ews)
+        {
+            ews.Columns[1].columnwidth = 35;
+            ews.Columns[2].columnwidth = 10;
+            ews.Columns[3].columnwidth = 52;
+            ews.Columns[4].columnwidth = 30;
+            ews.Columns[5].columnwidth = 30;
+            ews.Columns[6].columnwidth = 17;
+        }
+
         #endregion
 
-    }
 
+        private void label43_Click(object sender, EventArgs e)
+        {
+            this.ClientsReportPNL.Hide();
+            this.GuardsReportPNL.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.GuardsReportPNL.Hide();
+            this.ClientsReportPNL.Show();
+        }
+    }
 }
