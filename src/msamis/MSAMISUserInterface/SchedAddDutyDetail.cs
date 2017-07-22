@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -113,19 +114,24 @@ namespace MSAMISUserInterface {
                 DaysTLTP.Show("Please choose at least one day", MBTN);
                 ret = false;
             }
+            
+            var ti = new TimeSpan(0, int.Parse(TimeInHrBX.Text), int.Parse(TimeInMinBX.Text),0);
+            var to = new TimeSpan(0, int.Parse(TimeOutHrBX.Text), int.Parse(TimeOutMinBX.Text), 0);
 
-            var timeIn = float.Parse(TimeInHrBX.Text) + (float.Parse(TimeInMinBX.Text) / 100);
-            var timeOut = float.Parse(TimeOutHrBX.Text) + (float.Parse(TimeOutMinBX.Text) / 100);
-            if (TimeInAMPMBX.SelectedIndex == 1) timeIn = timeIn + 12;
-            if (TimeOutAMPMBX.SelectedIndex == 1) timeOut = timeOut + 12;
-            if ((timeOut - timeIn) < 8) {
+            if (TimeInAMPMBX.SelectedIndex == 1 && TimeOutAMPMBX.SelectedIndex == 0) {
+                ti = new TimeSpan(0, int.Parse(TimeInHrBX.Text) + 12, int.Parse(TimeInMinBX.Text), 0);
+                to = new TimeSpan(1, int.Parse(TimeOutHrBX.Text), int.Parse(TimeOutMinBX.Text), 0);
+            } else if (TimeInAMPMBX.SelectedIndex == 0 && TimeOutAMPMBX.SelectedIndex == 1)
+                to = new TimeSpan(0, int.Parse(TimeOutHrBX.Text) + 12, int.Parse(TimeOutMinBX.Text), 0);
+
+            if ((to.TotalHours - ti.TotalHours) < 9) {
                 HoursTLTP.ToolTipTitle = "Duty Hours";
                 HoursTLTP.Show("The specified time is less than 8hrs", HoursLBL);
                 ret = false;
             }
-            if ((timeOut - timeIn) < 0) {
+            else if ((to.TotalHours - ti.TotalHours) > 9) {
                 HoursTLTP.ToolTipTitle = "Duty Hours";
-                HoursTLTP.Show("Please specify a valid shift", HoursLBL);
+                HoursTLTP.Show("The specified time is more than 8hrs", HoursLBL);
                 ret = false;
             }
             return ret;
