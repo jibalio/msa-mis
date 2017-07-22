@@ -24,7 +24,6 @@ namespace MSAMISUserInterface {
             SSSGRD.Columns[2].Width = 140;
             SSSGRD.Columns[3].HeaderText = "CONTRIBUTION";
             SSSGRD.Columns[3].Width = 140;
-
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
