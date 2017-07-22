@@ -45,6 +45,7 @@ namespace MSAMISUserInterface {
             if (!DismissBTN.Visible) {
                 MainAttendancePNL.Visible = false;
                 ErrorPNL.Visible = true;
+                ErrorPNL.BringToFront();
             } else {
                 MainAttendancePNL.Visible = true;
                 ErrorPNL.Visible = false;

@@ -341,21 +341,20 @@
             this.InputTLTP.ReshowDelay = 100;
             this.InputTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
-            // Payroll_ConfigBasicPay
+            // PayrollConfigBasicPay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(600, 600);
+            this.ClientSize = new System.Drawing.Size(598, 598);
             this.ControlBox = false;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Payroll_ConfigBasicPay";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "PayrollConfigBasicPay";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "---";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payroll_ConfigBasicPay_FormClosing);
             this.Load += new System.EventHandler(this.Payroll_ConfigBasicPay_Load);
             this.panel1.ResumeLayout(false);

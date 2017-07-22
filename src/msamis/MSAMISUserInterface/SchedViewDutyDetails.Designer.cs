@@ -48,8 +48,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.AttendanceLBL = new System.Windows.Forms.Label();
             this.AttendancePNL = new System.Windows.Forms.Panel();
-            this.ErrorPNL = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.MainAttendancePNL = new System.Windows.Forms.Panel();
             this.AttendanceGRD = new System.Windows.Forms.DataGridView();
             this.ACertifiedLBL = new System.Windows.Forms.Label();
@@ -67,6 +65,9 @@
             this.AHNightLBL = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.AShiftLBL = new System.Windows.Forms.Label();
+            this.ErrorPNL = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Header = new System.Windows.Forms.ToolTip(this.components);
             this.EndLBL = new System.Windows.Forms.Label();
@@ -78,9 +79,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).BeginInit();
             this.panel3.SuspendLayout();
             this.AttendancePNL.SuspendLayout();
-            this.ErrorPNL.SuspendLayout();
             this.MainAttendancePNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).BeginInit();
+            this.ErrorPNL.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -98,19 +99,19 @@
             // 
             this.ClientLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ClientLBL.ForeColor = System.Drawing.Color.White;
-            this.ClientLBL.Location = new System.Drawing.Point(6, 78);
+            this.ClientLBL.Location = new System.Drawing.Point(3, 78);
             this.ClientLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ClientLBL.Name = "ClientLBL";
             this.ClientLBL.Size = new System.Drawing.Size(245, 56);
             this.ClientLBL.TabIndex = 120;
-            this.ClientLBL.Text = "@ Laboriki Enterprises";
+            this.ClientLBL.Text = "Laboriki Enterprises";
             // 
             // FirstNameLBL
             // 
             this.FirstNameLBL.AutoSize = true;
             this.FirstNameLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.FirstNameLBL.ForeColor = System.Drawing.Color.White;
-            this.FirstNameLBL.Location = new System.Drawing.Point(2, 46);
+            this.FirstNameLBL.Location = new System.Drawing.Point(0, 46);
             this.FirstNameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FirstNameLBL.Name = "FirstNameLBL";
             this.FirstNameLBL.Size = new System.Drawing.Size(143, 25);
@@ -319,8 +320,9 @@
             this.panel3.Controls.Add(this.AttendanceLBL);
             this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Controls.Add(this.DutyDetailsLBL);
-            this.panel3.Controls.Add(this.AttendancePNL);
             this.panel3.Controls.Add(this.DutyDetailsPNL);
+            this.panel3.Controls.Add(this.AttendancePNL);
+            this.panel3.Controls.Add(this.ErrorPNL);
             this.panel3.Location = new System.Drawing.Point(329, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(570, 600);
@@ -344,32 +346,11 @@
             // AttendancePNL
             // 
             this.AttendancePNL.Controls.Add(this.MainAttendancePNL);
-            this.AttendancePNL.Controls.Add(this.ErrorPNL);
             this.AttendancePNL.Location = new System.Drawing.Point(27, 101);
             this.AttendancePNL.Name = "AttendancePNL";
             this.AttendancePNL.Size = new System.Drawing.Size(524, 485);
             this.AttendancePNL.TabIndex = 236;
             this.AttendancePNL.Visible = false;
-            // 
-            // ErrorPNL
-            // 
-            this.ErrorPNL.Controls.Add(this.label6);
-            this.ErrorPNL.Location = new System.Drawing.Point(15, 15);
-            this.ErrorPNL.Name = "ErrorPNL";
-            this.ErrorPNL.Size = new System.Drawing.Size(491, 457);
-            this.ErrorPNL.TabIndex = 273;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(104, 172);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(293, 19);
-            this.label6.TabIndex = 272;
-            this.label6.Text = "The current guard does not have a duty detail.";
             // 
             // MainAttendancePNL
             // 
@@ -631,6 +612,39 @@
             this.AShiftLBL.TabIndex = 264;
             this.AShiftLBL.Text = "23 hrs";
             // 
+            // ErrorPNL
+            // 
+            this.ErrorPNL.Controls.Add(this.label3);
+            this.ErrorPNL.Controls.Add(this.label6);
+            this.ErrorPNL.Location = new System.Drawing.Point(25, 38);
+            this.ErrorPNL.Name = "ErrorPNL";
+            this.ErrorPNL.Size = new System.Drawing.Size(526, 460);
+            this.ErrorPNL.TabIndex = 273;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(140, 198);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(246, 30);
+            this.label3.TabIndex = 123;
+            this.label3.Text = "No Duty Details Found";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(186, 236);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(154, 19);
+            this.label6.TabIndex = 272;
+            this.label6.Text = "Please add a duty detail";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -720,11 +734,11 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.AttendancePNL.ResumeLayout(false);
-            this.ErrorPNL.ResumeLayout(false);
-            this.ErrorPNL.PerformLayout();
             this.MainAttendancePNL.ResumeLayout(false);
             this.MainAttendancePNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).EndInit();
+            this.ErrorPNL.ResumeLayout(false);
+            this.ErrorPNL.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -774,5 +788,6 @@
         private System.Windows.Forms.Panel MainAttendancePNL;
         private System.Windows.Forms.Panel ErrorPNL;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
     }
 }

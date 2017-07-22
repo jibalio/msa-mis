@@ -947,6 +947,7 @@ namespace MSAMISUserInterface {
                 SViewAssGRD.Columns[5].Width = 100;
 
                 SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
+                SViewAssGRD.ClearSelection();
             }
         }
 
