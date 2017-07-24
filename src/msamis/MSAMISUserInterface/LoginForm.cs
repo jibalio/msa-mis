@@ -8,6 +8,7 @@ namespace MSAMISUserInterface {
         public LoginForm() {
             InitializeComponent();
             Opacity = 0;
+            ErrorLBL.Visible = false;
             FadeTMR.Start();
         }
 
@@ -46,14 +47,14 @@ namespace MSAMISUserInterface {
             PasswordTLTP.Hide(PasswordBX);
             UsernameTLTP.Hide(UsernameBX);
             if (e.KeyValue.ToString().Equals("13")) {
-                Login();
+                Logins();
             }
         }
         private void PasswordBX_KeyDown(object sender, KeyEventArgs e) {
             PasswordTLTP.Hide(PasswordBX);
             UsernameTLTP.Hide(UsernameBX);
             if (e.KeyValue.ToString().Equals("13")) {
-                Login();
+                Logins();
             }
 
         }
@@ -74,9 +75,9 @@ namespace MSAMISUserInterface {
 
 
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
-            Login();
+            Logins();
         }
-        private void Login() {
+        private void Logins() {
             if (PasswordBX.Text.Equals("")) {
                 PasswordTLTP.ToolTipTitle = "Password";
                 PasswordTLTP.Show("Please enter your password", PasswordBX);
@@ -84,15 +85,19 @@ namespace MSAMISUserInterface {
                 UsernameTLTP.ToolTipTitle = "Username";
                 UsernameTLTP.Show("Please enter your username", UsernameBX);
             } else {
-                var mf = new MainForm
-                {
-                    Opacity = 0,
-                    Lf = this,
-                    Location = new Point(Location.X - 50, Location.Y - 66),
-                    User = UsernameBX.Text,
-                };
-                mf.Show();
-                Hide();
+                if (Login.Authenticate(UsernameBX.Text, PasswordBX.Text)) {
+                    var mf = new MainForm {
+                        Opacity = 0,
+                        Lf = this,
+                        Location = new Point(Location.X - 50, Location.Y - 66),
+                        User = UsernameBX.Text,
+                    };
+                    mf.Show();
+                    Hide();
+                }
+                else {
+                    ErrorLBL.Visible = true;
+                }
             }
         }
 
