@@ -450,6 +450,7 @@
             this.DSalaryReportPNL.Name = "DSalaryReportPNL";
             this.DSalaryReportPNL.Size = new System.Drawing.Size(321, 92);
             this.DSalaryReportPNL.TabIndex = 7;
+            this.DSalaryReportPNL.Visible = false;
             this.DSalaryReportPNL.Click += new System.EventHandler(this.DSalaryReportPNL_Click);
             this.DSalaryReportPNL.MouseEnter += new System.EventHandler(this.DSalaryReportPNL_MouseEnter);
             this.DSalaryReportPNL.MouseLeave += new System.EventHandler(this.DSalaryReportPNL_MouseLeave);
@@ -544,6 +545,7 @@
             this.DClientSummaryPNL.Name = "DClientSummaryPNL";
             this.DClientSummaryPNL.Size = new System.Drawing.Size(321, 92);
             this.DClientSummaryPNL.TabIndex = 6;
+            this.DClientSummaryPNL.Visible = false;
             this.DClientSummaryPNL.Click += new System.EventHandler(this.DClientSummaryPNL_Click);
             this.DClientSummaryPNL.MouseEnter += new System.EventHandler(this.DClientSummaryPNL_MouseEnter);
             this.DClientSummaryPNL.MouseLeave += new System.EventHandler(this.DClientSummaryPNL_MouseLeave);
@@ -623,6 +625,7 @@
             this.DMonthlyDutyReportPNL.Name = "DMonthlyDutyReportPNL";
             this.DMonthlyDutyReportPNL.Size = new System.Drawing.Size(321, 92);
             this.DMonthlyDutyReportPNL.TabIndex = 5;
+            this.DMonthlyDutyReportPNL.Visible = false;
             this.DMonthlyDutyReportPNL.Click += new System.EventHandler(this.DMonthlyDutyReportPNL_Click);
             this.DMonthlyDutyReportPNL.MouseEnter += new System.EventHandler(this.DMonthlyDutyReportPNL_MouseEnter);
             this.DMonthlyDutyReportPNL.MouseLeave += new System.EventHandler(this.DMonthlyDutyReportPNL_MouseLeave);
@@ -2037,7 +2040,7 @@
             this.SViewAssPNL.Controls.Add(this.SViewAssSearchLine);
             this.SViewAssPNL.Location = new System.Drawing.Point(15, 14);
             this.SViewAssPNL.Name = "SViewAssPNL";
-            this.SViewAssPNL.Size = new System.Drawing.Size(700, 640);
+            this.SViewAssPNL.Size = new System.Drawing.Size(701, 640);
             this.SViewAssPNL.TabIndex = 13;
             this.SViewAssPNL.Visible = false;
             // 
@@ -2124,7 +2127,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(510, 23);
+            this.label10.Location = new System.Drawing.Point(511, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 19);
@@ -2143,7 +2146,7 @@
             "All",
             "Scheduled",
             "Unscheduled"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(562, 20);
+            this.SViewAssCMBX.Location = new System.Drawing.Point(563, 20);
             this.SViewAssCMBX.Name = "SViewAssCMBX";
             this.SViewAssCMBX.Size = new System.Drawing.Size(119, 25);
             this.SViewAssCMBX.Sorted = true;
@@ -2159,7 +2162,7 @@
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssSearchTXTBX.Location = new System.Drawing.Point(246, 71);
             this.SViewAssSearchTXTBX.Name = "SViewAssSearchTXTBX";
-            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(209, 18);
+            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(210, 18);
             this.SViewAssSearchTXTBX.TabIndex = 8;
             this.SViewAssSearchTXTBX.Text = "Search or filter";
             this.SViewAssSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2211,7 +2214,7 @@
             this.SViewAssGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.SViewAssGRD.RowHeadersVisible = false;
             this.SViewAssGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SViewAssGRD.Size = new System.Drawing.Size(665, 458);
+            this.SViewAssGRD.Size = new System.Drawing.Size(666, 458);
             this.SViewAssGRD.TabIndex = 5;
             this.SViewAssGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewAssGRD_CellEnter);
             this.SViewAssGRD.DoubleClick += new System.EventHandler(this.SViewAssGRD_DoubleClick);
@@ -2222,7 +2225,7 @@
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SViewAssSearchLine.Location = new System.Drawing.Point(250, 76);
+            this.SViewAssSearchLine.Location = new System.Drawing.Point(251, 76);
             this.SViewAssSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SViewAssSearchLine.Name = "SViewAssSearchLine";
             this.SViewAssSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -3542,12 +3545,12 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ControlBoxPanel);
-            this.Controls.Add(this.PayrollPage);
-            this.Controls.Add(this.SchedulesPage);
             this.Controls.Add(this.DashboardPage);
             this.Controls.Add(this.GuardsPage);
             this.Controls.Add(this.ClientsPage);
             this.Controls.Add(this.SamplePNL);
+            this.Controls.Add(this.PayrollPage);
+            this.Controls.Add(this.SchedulesPage);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
