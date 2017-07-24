@@ -29,6 +29,11 @@ namespace MSAMISUserInterface {
             OverviewPNL.Visible =true;
 
             RefreshPayrollList();
+
+            if (Login.AccountType == 2) {
+                BonusAddBTN.Visible = false;
+                ApproveBTN.Visible = false;
+            }
         }
         public void RefreshPayrollList() {
             EmpListGRD.DataSource = Payroll.GetGuardsPayrollMinimal();

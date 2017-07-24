@@ -152,7 +152,7 @@
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold);
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
             this.CloseBTN.Location = new System.Drawing.Point(514, 0);
             this.CloseBTN.Name = "CloseBTN";
@@ -180,6 +180,7 @@
             this.ApproveBTN.TabIndex = 146;
             this.ApproveBTN.Text = "APPROVE";
             this.ApproveBTN.UseVisualStyleBackColor = false;
+            this.ApproveBTN.Visible = false;
             this.ApproveBTN.Click += new System.EventHandler(this.ApproveBTN_Click);
             // 
             // panel2
@@ -212,9 +213,10 @@
             this.DeclineBTN.TabIndex = 147;
             this.DeclineBTN.Text = "DECLINE";
             this.DeclineBTN.UseVisualStyleBackColor = false;
+            this.DeclineBTN.Visible = false;
             this.DeclineBTN.Click += new System.EventHandler(this.DeclineBTN_Click);
             // 
-            // Sched_ViewDisReq
+            // SchedViewDisReq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -225,7 +227,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Sched_ViewDisReq";
+            this.Name = "SchedViewDisReq";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_ViewDisReq_FormClosing);

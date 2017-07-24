@@ -35,15 +35,16 @@
             this.LoginBTN = new System.Windows.Forms.Button();
             this.UsernameTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.PasswordTLTP = new System.Windows.Forms.ToolTip(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.InfoPNL = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.LLBL = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ErrorLBL = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PassPic)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.InfoPNL.SuspendLayout();
             this.SuspendLayout();
             // 
             // UsernameBX
@@ -56,8 +57,8 @@
             this.UsernameBX.Name = "UsernameBX";
             this.UsernameBX.Size = new System.Drawing.Size(213, 22);
             this.UsernameBX.TabIndex = 1;
-            this.UsernameBX.Text = "username";
             this.UsernameBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UsernameBX.Enter += new System.EventHandler(this.UsernameBX_Enter);
             this.UsernameBX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UsernameBX_KeyDown);
             // 
             // label5
@@ -84,6 +85,7 @@
             this.PasswordBX.TabIndex = 2;
             this.PasswordBX.Text = "pass";
             this.PasswordBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PasswordBX.Enter += new System.EventHandler(this.PasswordBX_Enter);
             this.PasswordBX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordBX_KeyDown);
             // 
             // label1
@@ -124,15 +126,17 @@
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold);
             this.CloseBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CloseBTN.Location = new System.Drawing.Point(865, 0);
+            this.CloseBTN.Location = new System.Drawing.Point(864, 0);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(36, 32);
             this.CloseBTN.TabIndex = 4;
             this.CloseBTN.Text = "X";
             this.CloseBTN.UseVisualStyleBackColor = false;
             this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
+            this.CloseBTN.MouseEnter += new System.EventHandler(this.CloseBTN_MouseEnter);
+            this.CloseBTN.MouseLeave += new System.EventHandler(this.CloseBTN_MouseLeave);
             // 
             // LoginBTN
             // 
@@ -168,17 +172,18 @@
             this.PasswordTLTP.ReshowDelay = 100;
             this.PasswordTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
-            // panel2
+            // InfoPNL
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.LLBL);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(431, 600);
-            this.panel2.TabIndex = 92;
+            this.InfoPNL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.InfoPNL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.InfoPNL.Controls.Add(this.label2);
+            this.InfoPNL.Controls.Add(this.label4);
+            this.InfoPNL.Controls.Add(this.LLBL);
+            this.InfoPNL.Controls.Add(this.label6);
+            this.InfoPNL.Location = new System.Drawing.Point(0, 0);
+            this.InfoPNL.Name = "InfoPNL";
+            this.InfoPNL.Size = new System.Drawing.Size(431, 600);
+            this.InfoPNL.TabIndex = 92;
             // 
             // label2
             // 
@@ -186,11 +191,11 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(38, 293);
+            this.label2.Location = new System.Drawing.Point(51, 319);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(186, 19);
+            this.label2.Size = new System.Drawing.Size(215, 19);
             this.label2.TabIndex = 238;
-            this.label2.Text = "Login to access your account";
+            this.label2.Text = "Management Information System";
             // 
             // label4
             // 
@@ -198,7 +203,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 24F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(35, 241);
+            this.label4.Location = new System.Drawing.Point(48, 267);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(192, 45);
             this.label4.TabIndex = 236;
@@ -210,7 +215,7 @@
             this.LLBL.BackColor = System.Drawing.Color.Transparent;
             this.LLBL.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.LLBL.ForeColor = System.Drawing.Color.White;
-            this.LLBL.Location = new System.Drawing.Point(216, 241);
+            this.LLBL.Location = new System.Drawing.Point(229, 267);
             this.LLBL.Name = "LLBL";
             this.LLBL.Size = new System.Drawing.Size(151, 45);
             this.LLBL.TabIndex = 235;
@@ -220,13 +225,13 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(475, 125);
+            this.label3.Location = new System.Drawing.Point(475, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(377, 36);
             this.label3.TabIndex = 239;
-            this.label3.Text = "Makabayan Security Agency";
+            this.label3.Text = "Login";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label7
@@ -238,7 +243,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(376, 30);
             this.label7.TabIndex = 240;
-            this.label7.Text = "Management Information System";
+            this.label7.Text = "Please enter your credentials";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ErrorLBL
@@ -252,6 +257,18 @@
             this.ErrorLBL.TabIndex = 241;
             this.ErrorLBL.Text = "Credentials not found!";
             this.ErrorLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 160F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(120, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(428, 283);
+            this.label6.TabIndex = 239;
+            this.label6.Text = "\'97";
             // 
             // LoginForm
             // 
@@ -271,7 +288,7 @@
             this.Controls.Add(this.PasswordBX);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.InfoPNL);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -281,8 +298,8 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.PassPic)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.InfoPNL.ResumeLayout(false);
+            this.InfoPNL.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,12 +317,13 @@
         private System.Windows.Forms.PictureBox PassPic;
         private System.Windows.Forms.ToolTip UsernameTLTP;
         private System.Windows.Forms.ToolTip PasswordTLTP;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel InfoPNL;
         private System.Windows.Forms.Label LLBL;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label ErrorLBL;
+        private System.Windows.Forms.Label label6;
     }
 }

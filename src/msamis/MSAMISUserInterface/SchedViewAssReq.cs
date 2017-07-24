@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -36,12 +37,13 @@ namespace MSAMISUserInterface {
             if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Pending.ToString())) {
                 AssignBTN.Text = "APPROVE";
                 StatusLBL.Text = "Status: Pending";
+                if (Login.AccountType == 2) {AssignBTN.Visible = false; DeclineBTN.Visible = false; }
             } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Approved.ToString())) {
                 AssignBTN.Text = "ASSIGN";
                 StatusLBL.Text = "Status: Approved";
                 AssignBTN.Location = new Point(220, 411);
+                if (Login.AccountType == 2) AssignBTN.Visible = false;
                 DeclineBTN.Visible = false;
-
             } else {
                 AssignBTN.Visible = false;
                 AvailablePNL.Visible = false;
@@ -51,7 +53,7 @@ namespace MSAMISUserInterface {
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) StatusLBL.Text = "Status: Decline";
             }
             var b = (_numGuards > Scheduling.GetNumberOfUnassignedGuards()) ? NeededLBL.ForeColor = Color.Salmon : NeededLBL.ForeColor = Color.OliveDrab;
-            NeededLBL.Text = Scheduling.GetNumberOfUnassignedGuards().ToString() + " available guards";
+            NeededLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " available guards";
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {

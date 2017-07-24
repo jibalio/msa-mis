@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchedViewDutyDetails));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchedViewDutyDetails));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,10 +39,11 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.DutyDetailsPNL = new System.Windows.Forms.Panel();
-            this.DismissBTN = new System.Windows.Forms.Button();
             this.DutyDetailsGRD = new System.Windows.Forms.DataGridView();
-            this.AddDutyDetailsBTN = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.DismissBTN = new System.Windows.Forms.Button();
             this.EditDutyDetailsBTN = new System.Windows.Forms.Button();
+            this.AddDutyDetailsBTN = new System.Windows.Forms.Button();
             this.LocationLBL = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -77,6 +78,7 @@
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.AttendancePNL.SuspendLayout();
             this.MainAttendancePNL.SuspendLayout();
@@ -154,7 +156,7 @@
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI Black", 8F, System.Drawing.FontStyle.Bold);
+            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold);
             this.CloseBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.CloseBTN.Location = new System.Drawing.Point(538, 0);
             this.CloseBTN.Name = "CloseBTN";
@@ -173,35 +175,12 @@
             // 
             // DutyDetailsPNL
             // 
-            this.DutyDetailsPNL.Controls.Add(this.DismissBTN);
             this.DutyDetailsPNL.Controls.Add(this.DutyDetailsGRD);
-            this.DutyDetailsPNL.Controls.Add(this.AddDutyDetailsBTN);
-            this.DutyDetailsPNL.Controls.Add(this.EditDutyDetailsBTN);
+            this.DutyDetailsPNL.Controls.Add(this.flowLayoutPanel1);
             this.DutyDetailsPNL.Location = new System.Drawing.Point(27, 101);
             this.DutyDetailsPNL.Name = "DutyDetailsPNL";
             this.DutyDetailsPNL.Size = new System.Drawing.Size(524, 485);
             this.DutyDetailsPNL.TabIndex = 233;
-            // 
-            // DismissBTN
-            // 
-            this.DismissBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DismissBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.DismissBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DismissBTN.BackgroundImage")));
-            this.DismissBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DismissBTN.FlatAppearance.BorderSize = 0;
-            this.DismissBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.DismissBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.DismissBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DismissBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.DismissBTN.ForeColor = System.Drawing.Color.White;
-            this.DismissBTN.Location = new System.Drawing.Point(309, 431);
-            this.DismissBTN.Name = "DismissBTN";
-            this.DismissBTN.Size = new System.Drawing.Size(80, 29);
-            this.DismissBTN.TabIndex = 4;
-            this.DismissBTN.Text = "DISMISS";
-            this.DismissBTN.UseVisualStyleBackColor = false;
-            this.DismissBTN.Visible = false;
-            this.DismissBTN.Click += new System.EventHandler(this.DismissBTN_Click);
             // 
             // DutyDetailsGRD
             // 
@@ -250,25 +229,37 @@
             this.DutyDetailsGRD.TabIndex = 1;
             this.DutyDetailsGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DutyDetailsGRD_CellEnter);
             // 
-            // AddDutyDetailsBTN
+            // flowLayoutPanel1
             // 
-            this.AddDutyDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AddDutyDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddDutyDetailsBTN.BackgroundImage")));
-            this.AddDutyDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddDutyDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.AddDutyDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
-            this.AddDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
-            this.AddDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.AddDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.AddDutyDetailsBTN.Location = new System.Drawing.Point(223, 431);
-            this.AddDutyDetailsBTN.Name = "AddDutyDetailsBTN";
-            this.AddDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
-            this.AddDutyDetailsBTN.TabIndex = 2;
-            this.AddDutyDetailsBTN.Text = "ADD";
-            this.AddDutyDetailsBTN.UseVisualStyleBackColor = false;
-            this.AddDutyDetailsBTN.Click += new System.EventHandler(this.AddDutyDetailsBTN_Click);
+            this.flowLayoutPanel1.Controls.Add(this.DismissBTN);
+            this.flowLayoutPanel1.Controls.Add(this.EditDutyDetailsBTN);
+            this.flowLayoutPanel1.Controls.Add(this.AddDutyDetailsBTN);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(241, 423);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(260, 34);
+            this.flowLayoutPanel1.TabIndex = 5;
+            // 
+            // DismissBTN
+            // 
+            this.DismissBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DismissBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.DismissBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DismissBTN.BackgroundImage")));
+            this.DismissBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DismissBTN.FlatAppearance.BorderSize = 0;
+            this.DismissBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DismissBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.DismissBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DismissBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.DismissBTN.ForeColor = System.Drawing.Color.White;
+            this.DismissBTN.Location = new System.Drawing.Point(177, 3);
+            this.DismissBTN.Name = "DismissBTN";
+            this.DismissBTN.Size = new System.Drawing.Size(80, 29);
+            this.DismissBTN.TabIndex = 4;
+            this.DismissBTN.Text = "DISMISS";
+            this.DismissBTN.UseVisualStyleBackColor = false;
+            this.DismissBTN.Visible = false;
+            this.DismissBTN.Click += new System.EventHandler(this.DismissBTN_Click);
             // 
             // EditDutyDetailsBTN
             // 
@@ -282,7 +273,7 @@
             this.EditDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.EditDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.EditDutyDetailsBTN.Location = new System.Drawing.Point(223, 431);
+            this.EditDutyDetailsBTN.Location = new System.Drawing.Point(91, 3);
             this.EditDutyDetailsBTN.Name = "EditDutyDetailsBTN";
             this.EditDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
             this.EditDutyDetailsBTN.TabIndex = 3;
@@ -290,6 +281,26 @@
             this.EditDutyDetailsBTN.UseVisualStyleBackColor = false;
             this.EditDutyDetailsBTN.Visible = false;
             this.EditDutyDetailsBTN.Click += new System.EventHandler(this.EditDutyDetailsBTN_Click);
+            // 
+            // AddDutyDetailsBTN
+            // 
+            this.AddDutyDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddDutyDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddDutyDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddDutyDetailsBTN.BackgroundImage")));
+            this.AddDutyDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddDutyDetailsBTN.FlatAppearance.BorderSize = 0;
+            this.AddDutyDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.AddDutyDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.AddDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.AddDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
+            this.AddDutyDetailsBTN.Location = new System.Drawing.Point(5, 3);
+            this.AddDutyDetailsBTN.Name = "AddDutyDetailsBTN";
+            this.AddDutyDetailsBTN.Size = new System.Drawing.Size(80, 29);
+            this.AddDutyDetailsBTN.TabIndex = 2;
+            this.AddDutyDetailsBTN.Text = "ADD";
+            this.AddDutyDetailsBTN.UseVisualStyleBackColor = false;
+            this.AddDutyDetailsBTN.Click += new System.EventHandler(this.AddDutyDetailsBTN_Click);
             // 
             // LocationLBL
             // 
@@ -731,6 +742,7 @@
             this.panel1.PerformLayout();
             this.DutyDetailsPNL.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.AttendancePNL.ResumeLayout(false);
@@ -789,5 +801,6 @@
         private System.Windows.Forms.Panel ErrorPNL;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

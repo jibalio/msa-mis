@@ -25,7 +25,7 @@ namespace MSAMISUserInterface {
                 ApproveBTN.Visible = false;
                 DeclineBTN.Visible = false;
                 NameLBL.Text = "Guards Unassigned";
-            } else if (dt.Rows[0][1].ToString().Equals("Pending")) {
+            } else if (dt.Rows[0][1].ToString().Equals("Pending") && Login.AccountType == 1) {
                 ApproveBTN.Visible = true;
                 DeclineBTN.Visible = true;
             } else {

@@ -163,7 +163,9 @@ namespace MSAMISUserInterface {
                 FadeTMR.Stop();
 
                 //Call the tooltips after the Timer to avoid them being dismissed
-                LoadNotifications();
+                if (Login.AccountType == 1)
+                    LoadNotifications();
+                else SchedBTN.Text = string.Empty;
             }
         }
 
@@ -349,11 +351,26 @@ namespace MSAMISUserInterface {
         public void GuardsLoadPage() {
             //This method is used to intiate the forms
 
+            GuardsUserMode();
             _scurrentPanel = GViewAllPNL;
             _scurrentBtn = GViewAllPageBTN;
             GViewAllViewByCMBX.SelectedIndex = 0;
             GViewAllPageBTN.PerformClick();
         }
+
+        private void GuardsUserMode() {
+            switch (Login.AccountType) {
+                case 2:
+                    GAddGuardBTN.Visible = true;
+                    GArchivePageBTN.Visible = false;
+                    break;
+                default:
+                    GAddGuardBTN.Visible = true;
+                    GArchivePageBTN.Visible = true;
+                    break;
+            }
+        }
+
         private void RAddEmpBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new GuardsEdit {
@@ -461,15 +478,10 @@ namespace MSAMISUserInterface {
         private void GAllGuardsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (GAllGuardsGRD.SelectedRows.Count == 1) {
                 if (GAllGuardsGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Active")) {
-                    GEditDetailsBTN.Location = new Point(294, 600);
-                    GArchiveBTN.Location = new Point(214, 601);
-                    GEditDetailsBTN.Visible = true;
-                    GArchiveBTN.Visible = false;
+                    HideBTNs(true, false);
                 } else {
-                    GEditDetailsBTN.Location = new Point(214, 601);
-                    GArchiveBTN.Location = new Point(346, 600);
-                    GEditDetailsBTN.Visible = true;
-                    GArchiveBTN.Visible = true;
+                    if (Login.AccountType == 2) HideBTNs(true, false);
+                    else HideBTNs(true, true);
                 }
             } else if (GAllGuardsGRD.SelectedRows.Count > 1) {
                 var ret = true;
@@ -477,15 +489,19 @@ namespace MSAMISUserInterface {
                     if (row.Cells[2].Value.ToString().Equals("Active")) ret = false;
                 }
                 if (ret) {
-                    GArchiveBTN.Location = new Point(294, 600);
-                    GEditDetailsBTN.Visible = false;
-                    GArchiveBTN.Visible = true;
+                    if (Login.AccountType == 2) HideBTNs(false, false);
+                    else HideBTNs(false, true);
                 } else {
-                    GEditDetailsBTN.Visible = false;
-                    GArchiveBTN.Visible = false;
+                    HideBTNs(false, false);
                 }
             }
         }
+
+        private void HideBTNs(bool add, bool archive) {
+            GEditDetailsBTN.Visible = add;
+            GArchiveBTN.Visible = archive;
+        }
+
         #endregion
 
         #region GMS - View All - Search
@@ -707,12 +723,29 @@ namespace MSAMISUserInterface {
         }
 
         public void SchedLoadSidePnl() {
+            if (Login.AccountType == 1) { 
             var b = (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) ?
                 SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) :
                 SchedBTN.Text = string.Empty;
+            } else SchedBTN.Text = string.Empty;
             SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests";
             SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
             SAssignedGuardsLBL.Text = Scheduling.GetNumberOfAssignedGuards() + " assigned guards";
+
+            switch (Login.AccountType) {
+                case 2:
+                    SViewReqsAssBTN.Visible = true;
+                    SArchiveBTN.Visible = false;
+                    break;
+                case 1:
+                    SViewReqsAssBTN.Visible = false;
+                    SArchiveBTN.Visible = true;
+                    break;
+                default:
+                    SViewReqsAssBTN.Visible = true;
+                    SArchiveBTN.Visible = true;
+                    break;
+            }
         }
 
         private void SChangePanel(Panel newP, Button newBtn, bool req) {
@@ -722,11 +755,12 @@ namespace MSAMISUserInterface {
             newBtn.Font = _selectedFont;
             _scurrentBtn = newBtn;
             _scurrentPanel = newP;
-            SViewReqAssBTN.Visible = req;
+            SViewReqsAssBTN.Visible = req;
         }
 
         private void SViewReqBTN_Click(object sender, EventArgs e) {
-            SChangePanel(SViewReqPNL, SViewReqBTN, true);
+            if (Login.AccountType == 1) SChangePanel(SViewReqPNL, SViewReqBTN, false);
+            else SChangePanel(SViewReqPNL, SViewReqBTN, true);
             SchedLoadRequestsPage();
         }
 
@@ -919,11 +953,8 @@ namespace MSAMISUserInterface {
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
             SViewAssCMBX.SelectedIndex = 0;
             if (int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID) != -1) {
-                SViewAssViewDetailsBTN.Location = new Point(228, 600);
-                SViewAssUnassignBTN.Location = new Point(365, 600);
-                SViewAssUnassignBTN.Visible = true;
+                if (Login.AccountType == 1) SViewAssUnassignBTN.Visible = true;
             } else {
-                SViewAssViewDetailsBTN.Location = new Point(182, 600);
                 SViewAssUnassignBTN.Visible = false;
             }
             SchedRefreshAssignments();
@@ -956,7 +987,14 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewAssGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Inactive")) { SViewAssViewDetailsBTN.Visible = false; SViewAssUnassignBTN.Visible = false; } else { SViewAssViewDetailsBTN.Visible = true; if (SViewAssSearchClientCMBX.SelectedIndex != 0) SViewAssUnassignBTN.Visible = true; }
+            if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Inactive")) {
+                SViewAssViewDetailsBTN.Visible = false;
+                SViewAssUnassignBTN.Visible = false;
+            } else if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Active") && Login.AccountType == 1) {
+                SViewAssViewDetailsBTN.Visible = true;
+                if (SViewAssSearchClientCMBX.SelectedIndex != 0)
+                    SViewAssUnassignBTN.Visible = true;
+            }
         }
 
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
@@ -1049,10 +1087,35 @@ namespace MSAMISUserInterface {
 
         #region PMS - Load/Side Panel
         private void PayLoadPage() {
+            PayrollHideBtn();
             _scurrentPanel = PPayrollSummaryPage;
             _scurrentBtn = PPayrollSummaryBTN;
             PPayrollSummaryBTN.PerformClick();
         }
+
+        private void PayrollHideBtn() {
+            switch (Login.AccountType) {
+                case 1:
+                    PConfHoliday.Visible = true;
+                    PBasicPayBTN.Visible = true;
+                    PConfigSSSBTN.Visible = true;
+                    PArchiveBTN.Visible = true;
+                    break;
+                case 2:
+                    PConfHoliday.Visible = false;
+                    PBasicPayBTN.Visible = false;
+                    PConfigSSSBTN.Visible = false;
+                    PArchiveBTN.Visible = false;
+                    break;
+                default:
+                    PConfHoliday.Visible = true;
+                    PBasicPayBTN.Visible = true;
+                    PConfigSSSBTN.Visible = true;
+                    PArchiveBTN.Visible = true;
+                    break;
+            }
+        }
+
         private void PConfHoliday_Click(object sender, EventArgs e) {
             try {
                 var view = new PayrollConfHolidays {

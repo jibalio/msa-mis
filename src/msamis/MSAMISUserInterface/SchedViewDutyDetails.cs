@@ -21,6 +21,7 @@ namespace MSAMISUserInterface {
         }
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
             LoadPage();
+            if (Login.AccountType == 2) DismissBTN.Visible = false;
         }
         public void LoadPage() {
             var p = Attendance.GetCurrentPayPeriod();
@@ -163,10 +164,9 @@ namespace MSAMISUserInterface {
         private void DutyDetailsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (DutyDetailsGRD.SelectedRows.Count > 0) {
                 _did = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
-                AddDutyDetailsBTN.Location = new Point(137, 431);
                 AddDutyDetailsBTN.Show();
                 EditDutyDetailsBTN.Show();
-                DismissBTN.Show();
+                if (Login.AccountType == 2) DismissBTN.Show();
             }
         }
 

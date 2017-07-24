@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -37,6 +38,38 @@ namespace MSAMISUserInterface {
 
         private void Payroll_ConfigSSS_FormClosing(object sender, FormClosingEventArgs e) {
             Refer.Close();
+        }
+
+        private void SSSPnl_Enter(object sender, EventArgs e) {
+            SSSPnl.BackColor = Color.White;
+            SSScon.ForeColor = RatesPNL.BackColor;
+            SSSlbl.ForeColor = RatesPNL.BackColor;
+        }
+
+        private void SSSPnl_Leave(object sender, EventArgs e) {
+            SSSPnl.BackColor = RatesPNL.BackColor;
+            SSScon.ForeColor = Color.White;
+            SSSlbl.ForeColor = Color.White;
+        }
+
+        private void TaxPnl_MouseEnter(object sender, EventArgs e) {
+            TaxPnl.BackColor = Color.White;
+            TaxLbl.ForeColor = RatesPNL.BackColor;
+            TaxConLbl.ForeColor = RatesPNL.BackColor;
+        }
+
+        private void TaxPnl_MouseLeave(object sender, EventArgs e) {
+            TaxPnl.BackColor = RatesPNL.BackColor;
+            TaxLbl.ForeColor = Color.White;
+            TaxConLbl.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = RatesPNL.BackColor;
         }
     }
 }
