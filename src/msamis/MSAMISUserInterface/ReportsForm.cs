@@ -55,6 +55,11 @@ namespace MSAMISUserInterface
             return SQLTools.ExecuteQuery(q);
         }
 
+        private DataTable GetGuardsID()
+        {
+            String q = "SELECT gid FROM msadb.guards";
+            return SQLTools.ExecuteQuery(q);
+        }
 
         public void RefreshGuardsSummaryList()
         {
@@ -98,6 +103,8 @@ namespace MSAMISUserInterface
         }
 
         #endregion
+
+
         #region Export
 
         private void ExportGuardsSummaryBTN_Click(object sender, EventArgs e)
@@ -195,6 +202,7 @@ namespace MSAMISUserInterface
         }
 
         #endregion
+
 
 
         private void label43_Click(object sender, EventArgs e)

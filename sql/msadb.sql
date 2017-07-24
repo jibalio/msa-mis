@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `msadb`;
--- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: msadb
 -- ------------------------------------------------------
--- Server version	5.7.13-log
+-- Server version	5.7.18-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -666,6 +666,31 @@ INSERT INTO `sduty_assignment` VALUES (1,319,1,1),(2,177,1,1),(3,77,1,1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `sduty_dismissal`
+--
+
+DROP TABLE IF EXISTS `sduty_dismissal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sduty_dismissal` (
+  `DisID` int(11) NOT NULL AUTO_INCREMENT,
+  `DID` int(11) DEFAULT NULL,
+  `RDID` int(11) DEFAULT NULL,
+  `DisStatus` int(11) DEFAULT NULL,
+  PRIMARY KEY (`DisID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sduty_dismissal`
+--
+
+LOCK TABLES `sduty_dismissal` WRITE;
+/*!40000 ALTER TABLE `sduty_dismissal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sduty_dismissal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ssscontrib`
 --
 
@@ -819,4 +844,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-24 15:36:08
+-- Dump completed on 2017-07-24 17:32:09
