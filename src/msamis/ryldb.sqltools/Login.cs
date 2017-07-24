@@ -16,12 +16,16 @@ namespace MSAMISUserInterface {
                 if (this_hash.Equals(db_hash)) {
                     UserName = dt.Rows[0]["uname"].ToString();
                     AccountType = int.Parse(dt.Rows[0]["type"].ToString());
+                    SQLTools.conn.Close();
                     return true;
                 }
 
                 else return false;
             } 
-            catch (Exception) { SQLTools.conn.Close();return false; }
+            catch (Exception) {
+                SQLTools.conn.Close();
+                return false;
+            }
         }
 
         public static int AccountType;
