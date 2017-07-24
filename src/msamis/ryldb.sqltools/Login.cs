@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MSAMISUserInterface {
-    class Login {
+    public class Login {
         public static bool Authenticate(string uname, string pword) {
             try {
                 string this_hash = pword;

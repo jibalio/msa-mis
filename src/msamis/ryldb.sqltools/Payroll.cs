@@ -235,8 +235,14 @@ namespace MSAMISUserInterface {
             return 20;
         }
         public static double ComputeWithTax() {
-            return 1250;
+            return 0250;
         }
+
+        public class WithTax_ {
+            public double withholdingtax = 0.0;
+            public int excess = 0;
+        }
+             
         public static double ComputeSSS() {
             return 555;
         }
