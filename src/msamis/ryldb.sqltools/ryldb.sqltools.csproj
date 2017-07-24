@@ -73,6 +73,7 @@
     <Compile Include="LoaderGUI.Designer.cs">
       <DependentUpon>LoaderGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs" />
     <Compile Include="Payroll.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

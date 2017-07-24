@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 /*TODO: Fix: hourcost dictionary hours items have money value even with 0 hours. */
 namespace MSAMISUserInterface {
@@ -295,18 +292,19 @@ namespace MSAMISUserInterface {
         #region Accessor Functions Operations
 
             #region + SSS Contribution CRUD Methods
-        public static DataTable GetSSSContribTable() {
+        public static DataTable GetSssContribTable() {
             return SQLTools.ExecuteQuery("select * from ssscontrib;");
         }
-        public static void EditSSSContrib(int sssid, double range_start, double range_end, double ec) {
+        public static void EditSSSContrib(int sssid, double rangeStart, double range_end, double ec) {
             string q = @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='"+sssid+"';";
-            q = String.Format(q, range_start, range_end, ec);
+            q = String.Format(q, rangeStart, range_end, ec);
             SQLTools.ExecuteNonQuery(q);
         }
         public static void RemoveSSSContrib(int sssid) {
             SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + sssid + "';");
         }
 
+        
         public static void AddSSSContrib(double range_start, double range_end, double ec) {
             string q = String.Format(@"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`) VALUES ('{0}', '{1}','{2}');",
                 range_start, range_end, ec);
