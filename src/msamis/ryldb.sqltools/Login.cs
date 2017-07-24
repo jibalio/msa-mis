@@ -10,13 +10,21 @@ namespace MSAMISUserInterface {
         public static bool Authenticate(string uname, string pword) {
             try {
                 string this_hash = pword;
-                String q = @"select hash from account where uname='" + uname + "'";
+                String q = @"select * from account where uname='" + uname + "'";
                 DataTable dt = SQLTools.ExecuteQuery_(q);
                 string db_hash = dt.Rows[0]["pword"].ToString();
-                if (this_hash.Equals(db_hash)) { return true; }
+                if (this_hash.Equals(db_hash)) {
+                    UserName = dt.Rows[0]["uname"].ToString();
+                    AccountType = int.Parse(dt.Rows[0]["type"].ToString());
+                    return true;
+                }
+
                 else return false;
             } 
             catch (Exception) { return false; }
         }
+
+        public static int AccountType;
+        public static string UserName;
     }
 }
