@@ -127,6 +127,16 @@ namespace MSAMISUserInterface {
             return dt;
         }
 
+        public static DataTable ExecuteQuery_ (String query) {
+            message(query);
+            DataTable dt = new DataTable();
+                MySqlCommand com = new MySqlCommand(query, SQLTools.conn);
+                SQLTools.conn.Open();
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                adp.Fill(dt);
+            return dt;
+        }
+
         public static void ExecuteNonQuery(string query) {
             ExecuteNonQuery(query, true);
         }
