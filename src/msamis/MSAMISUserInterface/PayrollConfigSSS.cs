@@ -16,7 +16,7 @@ namespace MSAMISUserInterface {
         }
 
         private void LoadTable() {
-            SSSGRD.DataSource = Payroll.GetSSSContribTable();
+            SSSGRD.DataSource = Payroll.GetSssContribTable();
             SSSGRD.Columns[0].Visible = false;
             SSSGRD.Columns[1].HeaderText = "RANGE START";
             SSSGRD.Columns[1].Width = 140;
