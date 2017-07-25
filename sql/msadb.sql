@@ -30,7 +30,7 @@ CREATE TABLE `account` (
   `hash` varchar(256) DEFAULT NULL,
   `type` int(1) DEFAULT NULL,
   PRIMARY KEY (`accid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'admin','admin',2),(2,'clerk','clerk',1);
+INSERT INTO `account` VALUES (1,'admin','admin',1),(2,'clerk','clerk',2),(3,'root','root',0);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -770,7 +770,7 @@ CREATE TABLE `withtax_value` (
 
 LOCK TABLES `withtax_value` WRITE;
 /*!40000 ALTER TABLE `withtax_value` DISABLE KEYS */;
-INSERT INTO `withtax_value` VALUES (1,0.00,0),(2,0.00,5),(3,41.67,10),(4,208.33,15),(5,708.33,20),(6,1875.00,25),(7,4166.67,30),(8,10416.67,32);
+INSERT INTO `withtax_value` VALUES (1,0.00,0),(2,0.00,5),(3,20.83,10),(4,104.17,15),(5,354.17,20),(6,937.50,25),(7,2083.33,30),(8,5208.33,32);
 /*!40000 ALTER TABLE `withtax_value` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -819,4 +819,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-24 15:36:08
+-- Dump completed on 2017-07-25  9:38:24
