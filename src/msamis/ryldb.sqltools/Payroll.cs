@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 /*TODO: Fix: hourcost dictionary hours items have money value even with 0 hours. */
 namespace MSAMISUserInterface {
@@ -80,9 +81,13 @@ namespace MSAMISUserInterface {
                 this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             }
             ComputeTotalSummary();
-            ComputeBonuses();
-            ComputeDeductions();
-            ComputeNet();
+            bonuses = ComputeBonuses();
+            deductions = ComputeDeductions();
+            NetPay = ComputeNet();
+            TaxableIncome = ComputeTaxableIncome();
+            Excess = GrossPay - TaxableIncome;
+            ComputeWithTax(TaxableIncome, Excess);
+
         }
 
         public void ComputeHours() {
@@ -177,8 +182,7 @@ namespace MSAMISUserInterface {
         }
 
         public double NetPay;
-        public double GrossPay;
-        public double TaxableIncome;
+        
         public double sss;
         public double pagibig;
         public double philhealth;
@@ -186,8 +190,14 @@ namespace MSAMISUserInterface {
         public double cashadv;
         public double cashbond;
 
+        public double deductions;
+        public double bonuses;
 
-        
+        public double GrossPay;
+        public double TaxableIncome;
+        public double Excess;
+
+
         public double ComputeNet() {
             double e = NetPay;
             e +=(ComputeDeductions());
@@ -234,24 +244,50 @@ namespace MSAMISUserInterface {
         public static double ComputeCashAdvance() {
             return 20;
         }
-        public static double ComputeWithTax() {
-            return 0250;
+        public double ComputeWithTax(double Taxable, double Excess) {
+            int NumDependents = Guard.GetNumberOfDependents(GID);
+            if (NumDependents > 4)
+                NumDependents = 4;
+            string sm = "s" + NumDependents + "me" + NumDependents;
+            WithTax w = new WithTax();
+            // Start Paper code
+            int prevbracket = 0;
+            double prevtaxbracket = 0;
+            DataTable dt = SQLTools.ExecuteQuery("Select * from withtax_bracket where estatus='" + sm + "'");
+            foreach (DataRow dr in dt.Rows) {
+                if (double.Parse(dr["bracket"].ToString()) > Taxable &&
+                    Taxable > prevtaxbracket) {
+
+                    DataTable dt2 = SQLTools.ExecuteQuery("select * from withtax_value where wid=" + (int.Parse(dr["taxid"].ToString())-1));
+                    
+                    w.withholdingtax = double.Parse(dt2.Rows[0]["value"].ToString());
+                    w.excessfactor = int.Parse(dt2.Rows[0]["excessmult"].ToString());
+                } else {
+                    prevtaxbracket = double.Parse(dr["bracket"].ToString());
+                    prevbracket++;
+                }
+            }
+            MessageBox.Show (String.Format(
+                "GrossPay:{0}\nTaxable:{1}\nWithholding Tax base:{2}\nExcess:{3}\nExcessMult:{4}\nWithholdingTax:{5}\nStatus:{6}",
+                GrossPay, Taxable, w.withholdingtax, Excess, w.excessfactor,
+                w.withholdingtax + Excess * ((double)w.excessfactor/100), sm));
+            return w.withholdingtax + Excess * ((double) w.excessfactor / 100);
         }
 
-        public class WithTax_ {
+        public class WithTax {
             public double withholdingtax = 0.0;
-            public int excess = 0;
+            public int excessfactor = 0;
         }
              
         public static double ComputeSSS() {
-            return 555;
+            return 500;
         }
         public static double ComputeHDMF () {
-            return 1500;
+            return 100;
         }
 
         public static double ComputePHIC() {
-            return 2000;
+            return 100;
         }
 
         public static double ComputeThirteen() {
