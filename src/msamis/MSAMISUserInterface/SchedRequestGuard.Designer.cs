@@ -94,7 +94,7 @@
             this.CloseBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.CloseBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBTN.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold);
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
             this.CloseBTN.Location = new System.Drawing.Point(514, 0);
             this.CloseBTN.Name = "CloseBTN";
@@ -482,7 +482,7 @@
             this.NextBTN.UseVisualStyleBackColor = false;
             this.NextBTN.Click += new System.EventHandler(this.NextBTN_Click);
             // 
-            // Sched_RequestGuard
+            // SchedRequestGuard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -498,7 +498,7 @@
             this.Controls.Add(this.PickPNL);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Sched_RequestGuard";
+            this.Name = "SchedRequestGuard";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_RequestGuard_FormClosing);

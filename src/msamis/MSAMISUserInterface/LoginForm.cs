@@ -86,6 +86,9 @@ namespace MSAMISUserInterface {
                 UsernameTLTP.Show("Please enter your username", UsernameBX);
             } else {
                 if (Login.Authenticate(UsernameBX.Text, PasswordBX.Text)) {
+                    ErrorLBL.Visible = false;
+                    PasswordBX.Clear();
+                    UsernameBX.SelectAll();
                     var mf = new MainForm {
                         Opacity = 0,
                         Lf = this,
@@ -103,6 +106,22 @@ namespace MSAMISUserInterface {
 
         private void LLBL_Click(object sender, EventArgs e) {
 
+        }
+
+        private void UsernameBX_Enter(object sender, EventArgs e) {
+            UsernameBX.SelectAll();
+        }
+
+        private void PasswordBX_Enter(object sender, EventArgs e) {
+            PasswordBX.SelectAll();
+        }
+
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = InfoPNL.BackColor;
         }
     }
 }

@@ -133,7 +133,7 @@
         2GwIXDiwOSjqzMQ5ruFqFjpa3Jc/d8pvIqUMQA0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="AddDutyDetailsBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="EditDutyDetailsBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
         MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAAFTSURBVGhD7dpBasNAEETR3CMQ
@@ -145,7 +145,7 @@
         2GwIXDiwOSjqzMQ5ruFqFjpa3Jc/d8pvIqUMQA0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="EditDutyDetailsBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AddDutyDetailsBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
         MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAAFTSURBVGhD7dpBasNAEETR3CMQ

@@ -44,8 +44,15 @@ namespace MSAMISUserInterface
         private DataTable GetGuardsList()
         {
             ExtraQueryParams = " ORDER BY ln asc";
-            String q = "SELECT concat(ln,', ',fn,' ',mn) AS 'Full Name', CASE WHEN GStatus = 1 THEN 'Active' WHEN GStatus = 2 THEN 'Inactive' END as Status, CellNo as 'Cell Number', LicenseNo as 'License Number', SSS, TIN, PhilHealth as PHIC FROM msadb.guards" + ExtraQueryParams;
-            return SQLTools.ExecuteQuery(q);
+            String q = "SELECT gid, concat(ln,', ',fn,' ',mn) AS 'Full Name', CASE WHEN GStatus = 1 THEN 'Active' WHEN GStatus = 2 THEN 'Inactive' END as Status, ' ' as 'Total Hours',  CellNo as 'Cell Number', LicenseNo as 'License Number', SSS, TIN, PhilHealth as PHIC FROM msadb.guards" + ExtraQueryParams;
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            foreach (DataRow dr in dt.Rows)
+            {
+                Payroll e = new Payroll(int.Parse(dr["gid"].ToString()));
+                e.ComputeHours();
+                 dr["Total Hours"] = e.TotalSummary["total"].hour.ToString(@":hh\:mm");
+            }
+            return dt;
         }
 
         private DataTable GetClientsList()
@@ -55,13 +62,12 @@ namespace MSAMISUserInterface
             return SQLTools.ExecuteQuery(q);
         }
 
-
         public void RefreshGuardsSummaryList()
         {
             GuardsSummaryTBL.DataSource = GetGuardsList();
-
             GuardsSummaryTBL.Columns["Full Name"].HeaderText = "NAME";
             GuardsSummaryTBL.Columns["Status"].HeaderText = "STATUS";
+            GuardsSummaryTBL.Columns["Total Hours"].HeaderText = "TOTAL HOURS";
             GuardsSummaryTBL.Columns["Cell Number"].HeaderText = "CONTACT NUMBER";
             GuardsSummaryTBL.Columns["License Number"].HeaderText = "LICENSE NUMBER";
             GuardsSummaryTBL.Columns["SSS"].HeaderText = "SSS";
@@ -73,6 +79,7 @@ namespace MSAMISUserInterface
             GuardsSummaryTBL.Columns["Full Name"].Width = 200;
             GuardsSummaryTBL.Columns["Status"].Width = 70;
             GuardsSummaryTBL.Columns["Cell Number"].Width = 140;
+            GuardsSummaryTBL.Columns["gid"].Visible = false;
 
             GuardsSummaryTBL.Sort(GuardsSummaryTBL.Columns[1], ListSortDirection.Ascending);
             #endregion
@@ -98,6 +105,8 @@ namespace MSAMISUserInterface
         }
 
         #endregion
+
+
         #region Export
 
         private void ExportGuardsSummaryBTN_Click(object sender, EventArgs e)
@@ -139,8 +148,9 @@ namespace MSAMISUserInterface
         private void ExporttoExcel(String FilePath, String FileName, String formOrigin)
         {
             DataTable dtMainSQLData = GetList(formOrigin);
+            if (formOrigin == "g")
+                dtMainSQLData.Columns.Remove("gid");
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
-
             Excel.Application ExcelApp = new Excel.Application();
             var ExcelWorkbook = ExcelApp.Application.Workbooks.Add(Type.Missing);
             var ExcelWorkSheet = (Excel.Worksheet)ExcelWorkbook.Worksheets.Item[1];
@@ -195,6 +205,7 @@ namespace MSAMISUserInterface
         }
 
         #endregion
+
 
 
         private void label43_Click(object sender, EventArgs e)
