@@ -958,6 +958,11 @@ namespace MSAMISUserInterface {
                 SViewAssUnassignBTN.Visible = false;
             }
             SchedRefreshAssignments();
+
+            if (SViewAssGRD.Rows.Count == 0) {
+                SViewAssignmentErrorPNL.Visible = true;
+                SViewAssignmentErrorPNL.BringToFront();
+            } else SViewAssignmentErrorPNL.Visible = false;
         }
 
         public void SchedRefreshAssignments() {

@@ -193,6 +193,7 @@ namespace MSAMISUserInterface {
             }
             LoadDetails();
             LoadComputations();
+            CalcPNL.AutoScrollPosition = new Point(0,0);
 
         }
 
@@ -243,10 +244,16 @@ namespace MSAMISUserInterface {
                 DPagIbigLBL.Text = CurrencyFormatNegative(_pay.pagibig);
                 DPhilHealthLBL.Text = CurrencyFormatNegative(_pay.philhealth);
                 DSSSLBL.Text = CurrencyFormatNegative(_pay.sss);
-                DWithLBL.Text = CurrencyFormatNegative(_pay.withtax);
                 DTotalLBL.Text = CurrencyFormatNegative(_pay.ComputeDeductions());
 
                 NetPayLBL.Text = CurrencyFormat(_pay.NetPay);
+
+                var wt = _pay.GetWithholdingTax();
+                TaxPop.Items[1].Text = CurrencyFormat(wt.TaxbaseD);
+                TaxPop.Items[3].Text = CurrencyFormat(wt.ExcessTax);
+                TaxPop.Items[5].Text = CurrencyFormat(wt.total);
+
+                DWithLBL.Text = CurrencyFormatNegative(wt.total);
             }
         }
 
@@ -292,6 +299,14 @@ namespace MSAMISUserInterface {
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             LoadComputations();
+        }
+
+        private void WithHoldingLBL_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(TaxPop, WithHoldingLBL);
+        }
+
+        private void WithHoldingLBL_MouseLeave(object sender, EventArgs e) {
+            HidePop(TaxPop);
         }
     }
 }

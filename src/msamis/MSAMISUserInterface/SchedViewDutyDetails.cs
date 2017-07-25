@@ -43,12 +43,10 @@ namespace MSAMISUserInterface {
             }
             if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
 
-            if (!DismissBTN.Visible) {
-                MainAttendancePNL.Visible = false;
+            if (DutyDetailsGRD.Rows.Count == 0) {
                 ErrorPNL.Visible = true;
                 ErrorPNL.BringToFront();
             } else {
-                MainAttendancePNL.Visible = true;
                 ErrorPNL.Visible = false;
             }
         }

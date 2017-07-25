@@ -631,6 +631,7 @@
             this.ErrorPNL.Name = "ErrorPNL";
             this.ErrorPNL.Size = new System.Drawing.Size(526, 460);
             this.ErrorPNL.TabIndex = 273;
+            this.ErrorPNL.Visible = false;
             // 
             // label3
             // 

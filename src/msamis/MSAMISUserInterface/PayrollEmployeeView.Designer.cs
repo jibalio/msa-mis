@@ -35,9 +35,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.OverviewPNL = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.CalcPNL = new System.Windows.Forms.Panel();
             this.DWithLBL = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.WithHoldingLBL = new System.Windows.Forms.Label();
             this.BAllowanceLBL = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.STLBL = new System.Windows.Forms.Label();
@@ -160,8 +160,15 @@
             this.toolStripTextBox38 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox39 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox40 = new System.Windows.Forms.ToolStripTextBox();
+            this.TaxPop = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripTextBox41 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox42 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox43 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox44 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox45 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox46 = new System.Windows.Forms.ToolStripTextBox();
             this.OverviewPNL.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.CalcPNL.SuspendLayout();
             this.AdjPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.panel3.SuspendLayout();
@@ -173,6 +180,7 @@
             this.RSunds.SuspendLayout();
             this.SMond.SuspendLayout();
             this.SSunds.SuspendLayout();
+            this.TaxPop.SuspendLayout();
             this.SuspendLayout();
             // 
             // AdjustmentsLBL
@@ -261,78 +269,78 @@
             this.OverviewPNL.Controls.Add(this.ApproveBTN);
             this.OverviewPNL.Controls.Add(this.NetPayLBL);
             this.OverviewPNL.Controls.Add(this.label5);
-            this.OverviewPNL.Controls.Add(this.panel2);
+            this.OverviewPNL.Controls.Add(this.CalcPNL);
             this.OverviewPNL.Controls.Add(this.BonusAddBTN);
             this.OverviewPNL.Location = new System.Drawing.Point(53, 148);
             this.OverviewPNL.Name = "OverviewPNL";
             this.OverviewPNL.Size = new System.Drawing.Size(465, 431);
             this.OverviewPNL.TabIndex = 237;
             // 
-            // panel2
+            // CalcPNL
             // 
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.DWithLBL);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.BAllowanceLBL);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.STLBL);
-            this.panel2.Controls.Add(this.label56);
-            this.panel2.Controls.Add(this.label57);
-            this.panel2.Controls.Add(this.RTLBL);
-            this.panel2.Controls.Add(this.label53);
-            this.panel2.Controls.Add(this.label54);
-            this.panel2.Controls.Add(this.BBondsLBL);
-            this.panel2.Controls.Add(this.label23);
-            this.panel2.Controls.Add(this.OTLBL);
-            this.panel2.Controls.Add(this.label30);
-            this.panel2.Controls.Add(this.label45);
-            this.panel2.Controls.Add(this.SSLBL);
-            this.panel2.Controls.Add(this.SSundays);
-            this.panel2.Controls.Add(this.label49);
-            this.panel2.Controls.Add(this.label50);
-            this.panel2.Controls.Add(this.SMondays);
-            this.panel2.Controls.Add(this.SMLBL);
-            this.panel2.Controls.Add(this.RSLBL);
-            this.panel2.Controls.Add(this.RSundays);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.RMondays);
-            this.panel2.Controls.Add(this.RMLBL);
-            this.panel2.Controls.Add(this.OSLBL);
-            this.panel2.Controls.Add(this.OSundays);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.DSSSLBL);
-            this.panel2.Controls.Add(this.label27);
-            this.panel2.Controls.Add(this.DPagIbigLBL);
-            this.panel2.Controls.Add(this.label25);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label48);
-            this.panel2.Controls.Add(this.label47);
-            this.panel2.Controls.Add(this.label41);
-            this.panel2.Controls.Add(this.DTotalLBL);
-            this.panel2.Controls.Add(this.label43);
-            this.panel2.Controls.Add(this.BTotalLBL);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.DPhilHealthLBL);
-            this.panel2.Controls.Add(this.label36);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.DCashAdvanceLBL);
-            this.panel2.Controls.Add(this.label35);
-            this.panel2.Controls.Add(this.label40);
-            this.panel2.Controls.Add(this.WorkTotalLBL);
-            this.panel2.Controls.Add(this.label33);
-            this.panel2.Controls.Add(this.OMondaysLBL);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.OMLBL);
-            this.panel2.Controls.Add(this.BColaLBL);
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.label22);
-            this.panel2.Controls.Add(this.B13LBL);
-            this.panel2.Controls.Add(this.label46);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(462, 307);
-            this.panel2.TabIndex = 297;
+            this.CalcPNL.AutoScroll = true;
+            this.CalcPNL.Controls.Add(this.DWithLBL);
+            this.CalcPNL.Controls.Add(this.WithHoldingLBL);
+            this.CalcPNL.Controls.Add(this.BAllowanceLBL);
+            this.CalcPNL.Controls.Add(this.label11);
+            this.CalcPNL.Controls.Add(this.STLBL);
+            this.CalcPNL.Controls.Add(this.label56);
+            this.CalcPNL.Controls.Add(this.label57);
+            this.CalcPNL.Controls.Add(this.RTLBL);
+            this.CalcPNL.Controls.Add(this.label53);
+            this.CalcPNL.Controls.Add(this.label54);
+            this.CalcPNL.Controls.Add(this.BBondsLBL);
+            this.CalcPNL.Controls.Add(this.label23);
+            this.CalcPNL.Controls.Add(this.OTLBL);
+            this.CalcPNL.Controls.Add(this.label30);
+            this.CalcPNL.Controls.Add(this.label45);
+            this.CalcPNL.Controls.Add(this.SSLBL);
+            this.CalcPNL.Controls.Add(this.SSundays);
+            this.CalcPNL.Controls.Add(this.label49);
+            this.CalcPNL.Controls.Add(this.label50);
+            this.CalcPNL.Controls.Add(this.SMondays);
+            this.CalcPNL.Controls.Add(this.SMLBL);
+            this.CalcPNL.Controls.Add(this.RSLBL);
+            this.CalcPNL.Controls.Add(this.RSundays);
+            this.CalcPNL.Controls.Add(this.label17);
+            this.CalcPNL.Controls.Add(this.label18);
+            this.CalcPNL.Controls.Add(this.RMondays);
+            this.CalcPNL.Controls.Add(this.RMLBL);
+            this.CalcPNL.Controls.Add(this.OSLBL);
+            this.CalcPNL.Controls.Add(this.OSundays);
+            this.CalcPNL.Controls.Add(this.label6);
+            this.CalcPNL.Controls.Add(this.DSSSLBL);
+            this.CalcPNL.Controls.Add(this.label27);
+            this.CalcPNL.Controls.Add(this.DPagIbigLBL);
+            this.CalcPNL.Controls.Add(this.label25);
+            this.CalcPNL.Controls.Add(this.label3);
+            this.CalcPNL.Controls.Add(this.label48);
+            this.CalcPNL.Controls.Add(this.label47);
+            this.CalcPNL.Controls.Add(this.label41);
+            this.CalcPNL.Controls.Add(this.DTotalLBL);
+            this.CalcPNL.Controls.Add(this.label43);
+            this.CalcPNL.Controls.Add(this.BTotalLBL);
+            this.CalcPNL.Controls.Add(this.label10);
+            this.CalcPNL.Controls.Add(this.DPhilHealthLBL);
+            this.CalcPNL.Controls.Add(this.label36);
+            this.CalcPNL.Controls.Add(this.label9);
+            this.CalcPNL.Controls.Add(this.DCashAdvanceLBL);
+            this.CalcPNL.Controls.Add(this.label35);
+            this.CalcPNL.Controls.Add(this.label40);
+            this.CalcPNL.Controls.Add(this.WorkTotalLBL);
+            this.CalcPNL.Controls.Add(this.label33);
+            this.CalcPNL.Controls.Add(this.OMondaysLBL);
+            this.CalcPNL.Controls.Add(this.label8);
+            this.CalcPNL.Controls.Add(this.OMLBL);
+            this.CalcPNL.Controls.Add(this.BColaLBL);
+            this.CalcPNL.Controls.Add(this.label20);
+            this.CalcPNL.Controls.Add(this.label22);
+            this.CalcPNL.Controls.Add(this.B13LBL);
+            this.CalcPNL.Controls.Add(this.label46);
+            this.CalcPNL.Location = new System.Drawing.Point(0, 0);
+            this.CalcPNL.Name = "CalcPNL";
+            this.CalcPNL.Size = new System.Drawing.Size(462, 307);
+            this.CalcPNL.TabIndex = 297;
             // 
             // DWithLBL
             // 
@@ -347,18 +355,19 @@
             this.DWithLBL.Text = "-23,289.29";
             this.DWithLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label13
+            // WithHoldingLBL
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label13.Location = new System.Drawing.Point(22, 692);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(106, 19);
-            this.label13.TabIndex = 339;
-            this.label13.Text = "Withholding Tax";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.WithHoldingLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.WithHoldingLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.WithHoldingLBL.Location = new System.Drawing.Point(22, 692);
+            this.WithHoldingLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.WithHoldingLBL.Name = "WithHoldingLBL";
+            this.WithHoldingLBL.Size = new System.Drawing.Size(255, 19);
+            this.WithHoldingLBL.TabIndex = 339;
+            this.WithHoldingLBL.Text = "Withholding Tax";
+            this.WithHoldingLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.WithHoldingLBL.MouseEnter += new System.EventHandler(this.WithHoldingLBL_MouseEnter);
+            this.WithHoldingLBL.MouseLeave += new System.EventHandler(this.WithHoldingLBL_MouseLeave);
             // 
             // BAllowanceLBL
             // 
@@ -1194,8 +1203,8 @@
             this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Controls.Add(this.AdjustmentsLBL);
             this.panel3.Controls.Add(this.OverviewPNL);
-            this.panel3.Controls.Add(this.NoPayrollPNL);
             this.panel3.Controls.Add(this.AdjPNL);
+            this.panel3.Controls.Add(this.NoPayrollPNL);
             this.panel3.Location = new System.Drawing.Point(349, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 600);
@@ -1953,6 +1962,93 @@
             this.toolStripTextBox40.Size = new System.Drawing.Size(200, 16);
             this.toolStripTextBox40.Text = "345 x 8hrs";
             // 
+            // TaxPop
+            // 
+            this.TaxPop.BackColor = System.Drawing.Color.White;
+            this.TaxPop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TaxPop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox41,
+            this.toolStripTextBox42,
+            this.toolStripTextBox43,
+            this.toolStripTextBox44,
+            this.toolStripTextBox45,
+            this.toolStripTextBox46});
+            this.TaxPop.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.TaxPop.Name = "contextMenuStrip1";
+            this.TaxPop.ShowImageMargin = false;
+            this.TaxPop.Size = new System.Drawing.Size(136, 144);
+            this.TaxPop.Text = "Mondays to Saturdays";
+            // 
+            // toolStripTextBox41
+            // 
+            this.toolStripTextBox41.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox41.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox41.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox41.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.toolStripTextBox41.Name = "toolStripTextBox41";
+            this.toolStripTextBox41.ReadOnly = true;
+            this.toolStripTextBox41.Size = new System.Drawing.Size(100, 15);
+            this.toolStripTextBox41.Text = "BASE TAX";
+            // 
+            // toolStripTextBox42
+            // 
+            this.toolStripTextBox42.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox42.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox42.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox42.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox42.Name = "toolStripTextBox42";
+            this.toolStripTextBox42.ReadOnly = true;
+            this.toolStripTextBox42.Size = new System.Drawing.Size(100, 18);
+            this.toolStripTextBox42.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox43
+            // 
+            this.toolStripTextBox43.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox43.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox43.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox43.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.toolStripTextBox43.Name = "toolStripTextBox43";
+            this.toolStripTextBox43.ReadOnly = true;
+            this.toolStripTextBox43.Size = new System.Drawing.Size(100, 15);
+            this.toolStripTextBox43.Text = "EXCESS TAX";
+            // 
+            // toolStripTextBox44
+            // 
+            this.toolStripTextBox44.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox44.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox44.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox44.Name = "toolStripTextBox44";
+            this.toolStripTextBox44.ReadOnly = true;
+            this.toolStripTextBox44.Size = new System.Drawing.Size(100, 16);
+            this.toolStripTextBox44.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox45
+            // 
+            this.toolStripTextBox45.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox45.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox45.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox45.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.toolStripTextBox45.Name = "toolStripTextBox45";
+            this.toolStripTextBox45.ReadOnly = true;
+            this.toolStripTextBox45.Size = new System.Drawing.Size(100, 15);
+            this.toolStripTextBox45.Text = "BASE + EX";
+            // 
+            // toolStripTextBox46
+            // 
+            this.toolStripTextBox46.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox46.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox46.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox46.Name = "toolStripTextBox46";
+            this.toolStripTextBox46.ReadOnly = true;
+            this.toolStripTextBox46.Size = new System.Drawing.Size(100, 16);
+            this.toolStripTextBox46.Text = "345 x 8hrs";
+            // 
             // PayrollEmployeeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1973,8 +2069,8 @@
             this.Load += new System.EventHandler(this.Payroll_EmployeeView_Load);
             this.MouseEnter += new System.EventHandler(this.EmpListGRD_MouseLeave);
             this.OverviewPNL.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.CalcPNL.ResumeLayout(false);
+            this.CalcPNL.PerformLayout();
             this.AdjPNL.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -1993,6 +2089,8 @@
             this.SMond.PerformLayout();
             this.SSunds.ResumeLayout(false);
             this.SSunds.PerformLayout();
+            this.TaxPop.ResumeLayout(false);
+            this.TaxPop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2016,7 +2114,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox PeriodCMBX;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel CalcPNL;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label DPhilHealthLBL;
         private System.Windows.Forms.Label label36;
@@ -2128,8 +2226,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label DWithLBL;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label WithHoldingLBL;
         private System.Windows.Forms.Label BAllowanceLBL;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ContextMenuStrip TaxPop;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox41;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox42;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox43;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox44;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox45;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox46;
     }
 }
