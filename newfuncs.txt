@@ -1,4 +1,22 @@
-﻿#########################################################################
+﻿########################################################################
+NEW FUNCTIONS
+July 25, 2017
+
+use this mitod:
+WithTax wt = pay.GetWithholdingTax()  <--ret
+Info for ToolTip:
+ 	Base Withholding Tax: wt.TaxbaseD
+ 	Excess Tax: wt.ExcessTax
+ 	Total Withholding Tax: wt.total
+
+
+
+
+
+
+
+
+#########################################################################
 NEW FUNCTIONS 
 July 20, 2017
 

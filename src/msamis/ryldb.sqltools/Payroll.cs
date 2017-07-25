@@ -260,7 +260,7 @@ namespace MSAMISUserInterface {
 
                     DataTable dt2 = SQLTools.ExecuteQuery("select * from withtax_value where wid=" + (int.Parse(dr["taxid"].ToString())-1));
                     
-                    w.withholdingtax = double.Parse(dt2.Rows[0]["value"].ToString());
+                    w.TaxbaseD = double.Parse(dt2.Rows[0]["value"].ToString());
                     w.excessfactor = int.Parse(dt2.Rows[0]["excessmult"].ToString());
                 } else {
                     prevtaxbracket = double.Parse(dr["bracket"].ToString());
@@ -268,16 +268,28 @@ namespace MSAMISUserInterface {
                 }
             }
             MessageBox.Show (String.Format(
-                "GrossPay:{0}\nTaxable:{1}\nWithholding Tax base:{2}\nExcess:{3}\nExcessMult:{4}\nWithholdingTax:{5}\nStatus:{6}",
-                GrossPay, Taxable, w.withholdingtax, Excess, w.excessfactor,
-                w.withholdingtax + Excess * ((double)w.excessfactor/100), sm));
-            return w.withholdingtax + Excess * ((double) w.excessfactor / 100);
+                "{0}Taxable Income:{1}\nWithholding Tax Base:{2}\nExcess Tax:{3}\nTotal Withholding Tax:{4}",
+                "", Taxable, w.TaxbaseD, ((double)w.excessfactor / 100), w.TaxbaseD + Excess * ((double)w.excessfactor / 100)));
+
+            wt.TaxbaseD = w.TaxbaseD;
+            wt.excessfactor = w.excessfactor;
+            wt.total = w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
+            wt.ExcessTax = ((double) w.excessfactor / 100);
+
+            return w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
         }
 
+        public WithTax GetWithholdingTax() {
+            return wt;
+        } 
+
         public class WithTax {
-            public double withholdingtax = 0.0;
+            public double TaxbaseD = 0.0;
             public int excessfactor = 0;
+            public double total = 0.0;
+            public double ExcessTax = 0.0;
         }
+        public WithTax wt = new WithTax();
              
         public static double ComputeSSS() {
             return 500;
