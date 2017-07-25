@@ -287,8 +287,13 @@ namespace MSAMISUserInterface {
         }
         public WithTax wt = new WithTax();
              
-        public static double ComputeSSS() {
-            return 500;
+        public double ComputeSSS() {
+            DataTable ssscontrib = SQLTools.ExecuteQuery("select * from ssscontrib");
+            foreach (DataRow dr in ssscontrib.Rows) {
+                if (double.Parse(dr["range_start"].ToString()) < GrossPay &&
+                    GrossPay < double.Parse(dr["range_end"].ToString())) { return double.Parse(dr["ec"].ToString());}
+            }
+            return 50.00;
         }
         public static double ComputeHDMF () {
             return 100;
