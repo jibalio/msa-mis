@@ -267,10 +267,6 @@ namespace MSAMISUserInterface {
                     prevbracket++;
                 }
             }
-            MessageBox.Show (String.Format(
-                "{0}Taxable Income:{1}\nWithholding Tax Base:{2}\nExcess Tax:{3}\nTotal Withholding Tax:{4}",
-                "", Taxable, w.TaxbaseD, ((double)w.excessfactor / 100), w.TaxbaseD + Excess * ((double)w.excessfactor / 100)));
-
             wt.TaxbaseD = w.TaxbaseD;
             wt.excessfactor = w.excessfactor;
             wt.total = w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
