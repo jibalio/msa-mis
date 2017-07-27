@@ -21,7 +21,7 @@ namespace MSAMISUserInterface {
             SQLTools.EnableConsoleDebugging = false;
             Data.InitData();
             AutoLoader.AutoImportSql(true, true);
-            Holiday.InitHolidays();
+           
             //Data.InitData();
             Application.EnableVisualStyles();
             try { Application.SetCompatibleTextRenderingDefault(false); }
