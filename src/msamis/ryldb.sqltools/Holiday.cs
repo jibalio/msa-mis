@@ -8,14 +8,14 @@ using System.Windows.Forms;
 using MSAMISUserInterface;
 using System.Globalization;
 
-namespace ryldb.sqltools {
+namespace MSAMISUserInterface {
     public class Holiday : IEquatable<Holiday> {
 
         public int month;
         public int day;
         public bool recurring;
         public int type;
-        public static List<Holiday> holidaylist = new List<Holiday>();
+        
         public static int Default = 0;
 
         public Holiday(int month, int day, int type) {
@@ -33,7 +33,7 @@ namespace ryldb.sqltools {
                 string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`,`type`) VALUES ('{0}', '{1}', '{2}', '{3}');";
                 q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc, type);
                 SQLTools.ExecuteNonQuery(q);
-            InitHolidays();
+           
             
         }
             
@@ -41,12 +41,12 @@ namespace ryldb.sqltools {
                 string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}', type='{2}' where hid='{1}';";
                 q = String.Format(q,  desc, hid, type);
                 SQLTools.ExecuteNonQuery(q);
-            InitHolidays();
+        
         }
 
         public static void RemoveHoliday(int hid) {
             SQLTools.ExecuteNonQuery("delete from holiday where hid=" + hid);
-            InitHolidays();
+          
         }
 
         public static DataTable GetHolidays() {
@@ -59,10 +59,10 @@ namespace ryldb.sqltools {
             return SQLTools.ExecuteQuery(q);
         }
 
-        public static void InitHolidays() {
-            holidaylist.Clear();
+        public static List<Holiday> InitHolidays(int year) {
+            List<Holiday> holidaylist = new List<Holiday>();
             // datestart, dateend, desc
-            string q = "select * from holiday";
+            string q = "select * from holiday where ds_yyyy="+year;
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
                 DateTime start = DateTime.ParseExact(e["datestart"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
@@ -71,6 +71,7 @@ namespace ryldb.sqltools {
                     holidaylist.Add(new Holiday(c.Month,c.Day, int.Parse(e["type"].ToString())));
                 }
             }
+            return holidaylist;
         }
         
     }
