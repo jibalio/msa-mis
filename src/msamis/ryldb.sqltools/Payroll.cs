@@ -285,6 +285,7 @@ namespace MSAMISUserInterface {
             public double total = 0.0;
             public double ExcessTax = 0.0;
         }
+
         public WithTax wt = new WithTax();
              
         public double ComputeSSS() {
@@ -303,8 +304,12 @@ namespace MSAMISUserInterface {
             return 100;
         }
 
-        public static double ComputeThirteen() {
-            return 5000;
+        public double ComputeThirteen() {
+            List<Payroll> py = new List<Payroll>();
+            for (int c = 1; c < 12; c++) { }
+            throw new NotImplementedException();
+
+
         }
 
         public static double ComputeCola () {
@@ -384,7 +389,6 @@ namespace MSAMISUserInterface {
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
                                                 where RequestType = 1 
-                                                
                                                 group by guards.gid
                                                 ");
         }
@@ -402,6 +406,13 @@ namespace MSAMISUserInterface {
                                                 ");
         }
         #endregion
+
+
+
+
+
+
+        
             
         
 
