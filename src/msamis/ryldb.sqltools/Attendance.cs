@@ -296,7 +296,8 @@ namespace MSAMISUserInterface {
         #region MethodFamily: Holiday Operations
 
         public static bool IsHolidayToday(DateTime e) {
-            if (Holiday.holidaylist.Contains(new Holiday(e.Month, e.Day, 0))) {
+            List<Holiday> holidaylist = Holiday.InitHolidays(e.Year);
+            if (holidaylist.Contains(new Holiday(e.Month, e.Day, 0))) {
                 return true;
             } else return false;
         }
@@ -310,9 +311,11 @@ namespace MSAMISUserInterface {
             public int type;
             public HE_internal (bool isholiday, int type) { this.isholiday = isholiday; this.type = type; }
         }
+
         public static HE_internal IsHolidayToday_(DateTime e) {
-            if (Holiday.holidaylist.Contains(new Holiday(e.Month, e.Day, 0))) {
-                Holiday value = Holiday.holidaylist.First(item => item.month == e.Month && item.day==e.Day);
+            var holidaylist = Holiday.InitHolidays(e.Year);
+            if (holidaylist.Contains(new Holiday(e.Month, e.Day, 0))) {
+                Holiday value = holidaylist.First(item => item.month == e.Month && item.day==e.Day);
                 return new HE_internal (true, value.type);
             } else return new HE_internal(false, 0);
         }
