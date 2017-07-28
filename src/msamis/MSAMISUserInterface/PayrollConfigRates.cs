@@ -180,7 +180,7 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        #region SSS Rate
+        #region SSS Rates
         private void LoadSssPage() {
             SSSGRD.Rows.Clear();
             foreach (DataRow row in Payroll.GetSssContribTable().Rows) {
@@ -210,6 +210,7 @@ namespace MSAMISUserInterface {
                 }
                 else SSSGRD.CurrentCell.Value = value.ToString("N2");
                 SSSSaveBTN.Visible = true;
+                SSSReset.Visible = true;
             }
         }
         private void SSSGRD_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
@@ -218,15 +219,20 @@ namespace MSAMISUserInterface {
 
         private void SSSAddRange_Click(object sender, EventArgs e) {
             SSSGRD.Rows.Add("-1", "00.00", "-", "00.00", "", "00.00");
+            SSSSaveBTN.Visible = true;
+            SSSReset.Visible = true;
         }
 
         private void SSSRemoveBTN_Click(object sender, EventArgs e) {
             SSSGRD.Rows.RemoveAt(SSSGRD.CurrentRow.Index);
+            SSSSaveBTN.Visible = true;
+            SSSReset.Visible = true;
         }
 
         private void SSSReset_Click(object sender, EventArgs e) {
             LoadSssPage();
             SSSSaveBTN.Visible = false;
+            SSSReset.Visible = false;
         }
 
         private void SSSSaveBTN_Click(object sender, EventArgs e) {
