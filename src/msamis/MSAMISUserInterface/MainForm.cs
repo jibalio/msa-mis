@@ -422,23 +422,23 @@ namespace MSAMISUserInterface {
             GAllGuardsGRD.DataSource = Guard.GetAllGuards(_extraQueryParams, GViewAllViewByCMBX.SelectedIndex);
             if (GViewAllViewByCMBX.SelectedIndex == 0) {
                 GAllGuardsGRD.Columns[0].Visible = false;
-                GAllGuardsGRD.Columns["NAME"].Width = 240;
-                GAllGuardsGRD.Columns["GENDER"].Width = 80;
-                GAllGuardsGRD.Columns["GENDER"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns["BIRTHDATE"].Width = 80;
-                GAllGuardsGRD.Columns["BIRTHDATE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns["CONTACTNO"].Width = 140;
+                GAllGuardsGRD.Columns[1].Width = 240;
+                GAllGuardsGRD.Columns[4].Width = 80;
+                GAllGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[3].Width = 80;
+                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[5].Width = 140;
 
-                GAllGuardsGRD.Columns["STATUS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns["STATUS"].Width = 70;
+                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[2].Width = 70;
             } else {
                 GAllGuardsGRD.Columns[0].Width = 0;
-                GAllGuardsGRD.Columns["NAME"].Width = 240;
-                GAllGuardsGRD.Columns["LOCATION"].Width = 300;
-                GAllGuardsGRD.Columns["LOCATION"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[1].Width = 240;
+                GAllGuardsGRD.Columns[2].Width = 300;
+                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                GAllGuardsGRD.Columns["STATUS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns["STATUS"].Width = 70;
+                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[3].Width = 70;
             }
             GAllGuardsGRD.ClearSelection();
 
@@ -472,10 +472,10 @@ namespace MSAMISUserInterface {
         private void GAllGuardsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (GAllGuardsGRD.SelectedRows.Count == 1) {
                 if (GAllGuardsGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Active")) {
-                    HideBTNs(true, false);
+                    HideBtNs(true, false);
                 } else {
-                    if (Login.AccountType == 2) HideBTNs(true, false);
-                    else HideBTNs(true, true);
+                    if (Login.AccountType == 2) HideBtNs(true, false);
+                    else HideBtNs(true, true);
                 }
             } else if (GAllGuardsGRD.SelectedRows.Count > 1) {
                 var ret = true;
@@ -483,15 +483,15 @@ namespace MSAMISUserInterface {
                     if (row.Cells[2].Value.ToString().Equals("Active")) ret = false;
                 }
                 if (ret) {
-                    if (Login.AccountType == 2) HideBTNs(false, false);
-                    else HideBTNs(false, true);
+                    if (Login.AccountType == 2) HideBtNs(false, false);
+                    else HideBtNs(false, true);
                 } else {
-                    HideBTNs(false, false);
+                    HideBtNs(false, false);
                 }
             }
         }
 
-        private void HideBTNs(bool add, bool archive) {
+        private void HideBtNs(bool add, bool archive) {
             GEditDetailsBTN.Visible = add;
             GArchiveBTN.Visible = archive;
         }
@@ -518,17 +518,17 @@ namespace MSAMISUserInterface {
 
         private void GViewAllSearchTXTBX_TextChanged(object sender, EventArgs e) {
             var temp = GViewAllSearchTXTBX.Text;
-            string Kazoo;
+            string kazoo;
             if (GViewAllViewByCMBX.SelectedIndex == 0) {
-                Kazoo = "concat(ln,', ',fn,' ',mn)";
+                kazoo = "concat(ln,', ',fn,' ',mn)";
             } else {
-                Kazoo = "concat(StreetNo,', ', Brgy,', ',Street, ', ', City)";
+                kazoo = "concat(StreetNo,', ', Brgy,', ',Street, ', ', City)";
             }
 
             if (GViewAllSearchTXTBX.Text.Contains("\\")) {
                 temp = temp + "?";
             }
-            _extraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp + "%' OR " + kazoo + " LIKe '%" + temp + "')";
             GuardsRefreshGuardsList();
         }
         #endregion
@@ -565,14 +565,12 @@ namespace MSAMISUserInterface {
         }
         private void GArchiveSearchBX_TextChanged(object sender, EventArgs e) {
             var temp = GArchiveSearchBX.Text;
-            string Kazoo;
-
-            Kazoo = "name";
+            const string kazoo = "name";
 
             if (GViewAllSearchTXTBX.Text.Contains("\\")) {
                 temp = temp + "?";
             }
-            _extraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp + "%' OR " + kazoo + " LIKe '%" + temp + "')";
             RefreshArchivedGuards();
         }
 
@@ -628,12 +626,12 @@ namespace MSAMISUserInterface {
 
         public void ClientsRefreshClientsList() {
             CClientListTBL.DataSource = Client.GetAllClientDetails(_extraQueryParams);
-            CClientListTBL.Columns["cid"].HeaderText = "ID";
-            CClientListTBL.Columns["cid"].Visible = false;
-            CClientListTBL.Columns["name"].HeaderText = "NAME";
-            CClientListTBL.Columns["name"].Width = 300;
-            CClientListTBL.Columns["contactno"].HeaderText = "LOCATION";
-            CClientListTBL.Columns["contactno"].Width = 300;
+            CClientListTBL.Columns[0].HeaderText = "ID";
+            CClientListTBL.Columns[0].Visible = false;
+            CClientListTBL.Columns[1].HeaderText = "NAME";
+            CClientListTBL.Columns[1].Width = 300;
+            CClientListTBL.Columns[2].HeaderText = "LOCATION";
+            CClientListTBL.Columns[2].Width = 300;
             CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
 
             CActiveClientLBL.Text = Client.GetNumberOfActiveClients() + " active clients";
@@ -684,14 +682,12 @@ namespace MSAMISUserInterface {
         }
         private void CViewAllSearchBX_TextChanged(object sender, EventArgs e) {
             var temp = CViewAllSearchBX.Text;
-            string Kazoo;
-
-            Kazoo = "name";
+            const string kazoo = "name";
 
             if (CViewAllSearchBX.Text.Contains("\\")) {
                 temp = temp + "?";
             }
-            _extraQueryParams = " where (" + Kazoo + " like '" + temp + "%' OR " + Kazoo + " like '%" + temp + "%' OR " + Kazoo + " LIKe '%" + temp + "')";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp + "%' OR " + kazoo + " LIKe '%" + temp + "')";
             ClientsRefreshClientsList();
         }
 
@@ -1094,19 +1090,16 @@ namespace MSAMISUserInterface {
             switch (Login.AccountType) {
                 case 1:
                     PConfHoliday.Visible = true;
-                    PBasicPayBTN.Visible = true;
                     PConfigSSSBTN.Visible = true;
                     PArchiveBTN.Visible = true;
                     break;
                 case 2:
                     PConfHoliday.Visible = false;
-                    PBasicPayBTN.Visible = false;
                     PConfigSSSBTN.Visible = false;
                     PArchiveBTN.Visible = false;
                     break;
                 default:
                     PConfHoliday.Visible = true;
-                    PBasicPayBTN.Visible = true;
                     PConfigSSSBTN.Visible = true;
                     PArchiveBTN.Visible = true;
                     break;
@@ -1129,7 +1122,7 @@ namespace MSAMISUserInterface {
         }
         private void PConfigSSSBTN_Click(object sender, EventArgs e) {
             try {
-                var view = new PayrollConfigSss {
+                var view = new PayrollConfigRates {
                     Refer = _shadow,
                     Location = _newFormLocation
                 };
@@ -1151,20 +1144,6 @@ namespace MSAMISUserInterface {
         private void PEmpListBTN_Click(object sender, EventArgs e) {
             PcHnagePanel(PEmpListPage, PEmpListBTN);
             PayLoadEmployeeList();
-        }
-        private void PAdjustBTN_Click(object sender, EventArgs e) {
-            try {
-                var view = new PayrollConfigBasicPay {
-                    Refer = _shadow,
-                    Location = _newFormLocation,
-                };
-
-
-                _shadow.Transparent();
-                _shadow.Form = view;
-                _shadow.ShowDialog();
-            }
-            catch (Exception) { }
         }
 
         private void PPayrollSummaryBTN_Click(object sender, EventArgs e) {

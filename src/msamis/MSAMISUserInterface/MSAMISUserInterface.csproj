@@ -112,17 +112,11 @@
     <Compile Include="PayrollAddAdjustments.Designer.cs">
       <DependentUpon>PayrollAddAdjustments.cs</DependentUpon>
     </Compile>
-    <Compile Include="PayrollConfigBasicPay.cs">
+    <Compile Include="PayrollConfigRates.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PayrollConfigBasicPay.Designer.cs">
-      <DependentUpon>PayrollConfigBasicPay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PayrollConfigSss.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PayrollConfigSss.Designer.cs">
-      <DependentUpon>PayrollConfigSss.cs</DependentUpon>
+    <Compile Include="PayrollConfigRates.Designer.cs">
+      <DependentUpon>PayrollConfigRates.cs</DependentUpon>
     </Compile>
     <Compile Include="PayrollEmployeeView.cs">
       <SubType>Form</SubType>
@@ -228,11 +222,8 @@
     <EmbeddedResource Include="PayrollAddAdjustments.resx">
       <DependentUpon>PayrollAddAdjustments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PayrollConfigBasicPay.resx">
-      <DependentUpon>PayrollConfigBasicPay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PayrollConfigSss.resx">
-      <DependentUpon>PayrollConfigSss.cs</DependentUpon>
+    <EmbeddedResource Include="PayrollConfigRates.resx">
+      <DependentUpon>PayrollConfigRates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PayrollEmployeeView.resx">
       <DependentUpon>PayrollEmployeeView.cs</DependentUpon>

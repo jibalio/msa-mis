@@ -7,7 +7,7 @@ namespace MSAMISUserInterface {
         public int Pid { get; set; }
         public string Period;
         public Payroll Pay;
-        private readonly Dictionary<string, double> Data = new Dictionary<string, double> {
+        private readonly Dictionary<string, double> _data = new Dictionary<string, double> {
             {"thirteen", 0},
             {"Cola", 0},
             {"Emergency", 0},
@@ -43,8 +43,8 @@ namespace MSAMISUserInterface {
         }
 
         private void UpdateKeys(string key, double value, NumericUpDown bx) {
-            bx.Value = decimal.Parse(value.ToString());
-            Data[key] = value;
+            bx.Value = decimal.Parse(value.ToString("N2"));
+            _data[key] = value;
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -52,17 +52,8 @@ namespace MSAMISUserInterface {
         }
         #endregion
 
-        private bool DataValidation() {
-            var ret = true;
-            return ret;
-        }
         private void AddBTN_Click(object sender, EventArgs e) {
-            if (Data["thirteen"].ToString().Equals(ThirteenBX.Value.ToString())) {
-            }
-
-
-            if (DataValidation()) {
-
+            if (_data["thirteen"].ToString("N2").Equals(ThirteenBX.Value.ToString("N2"))) {
             }
         }
     }
