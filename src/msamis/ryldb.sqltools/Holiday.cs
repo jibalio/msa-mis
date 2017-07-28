@@ -30,11 +30,11 @@ namespace MSAMISUserInterface {
 
 
         public static void AddHoliday(SelectionRange r, string desc, int type) {
-                string q = @"INSERT INTO `msadb`.`holiday` (`datestart`, `dateend`, `desc`,`type`) VALUES ('{0}', '{1}', '{2}', '{3}');";
-                q = String.Format(q, r.Start.ToString("MM/dd/yyyy"), r.End.ToString("MM/dd/yyyy"), desc, type);
+                string q =
+                    $@"INSERT INTO `msadb`.`holiday` (`type`, `ds_MM`, `ds_dd`, `ds_yyyy`, `de_MM`, `de_dd`, `de_yyyy`, `desc`, `status`, `datestart`, `dateend`) 
+                            VALUES ('{type}','{r.Start.Month}','{r.Start.Day}','{r.Start.Year}','{r.End.Month}','{
+                        r.End.Day}','{r.Start.Year}','{desc}','{1}', '{r.Start.ToString("MM/dd/yyyy")}', '{r.End.ToString("MM/dd/yyyy")}')";
                 SQLTools.ExecuteNonQuery(q);
-           
-            
         }
             
         public static void EditHoliday (int hid, string desc, int type) {
