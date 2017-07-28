@@ -78,20 +78,22 @@ namespace MSAMISUserInterface {
         #endregion
         #region  Computationes
         int hml = 0;
-        public void ComputeGrossPay() {
+        public void ComputeGrossPay(bool checkthirteen) {
             int gid = GID;
             hml++;
             foreach (string key in hc.Keys.ToList()) {
                 this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             }
             ComputeTotalSummary();
-            bonuses = ComputeBonuses();
+            bonuses = ComputeBonuses(checkthirteen);
             deductions = ComputeDeductions();
             NetPay = ComputeNet();
             TaxableIncome = ComputeTaxableIncome();
             Excess = GrossPay - TaxableIncome;
             ComputeWithTax(TaxableIncome, Excess);
-
+        }
+        public void ComputeGrossPay() {
+            ComputeGrossPay(true);
         }
 
         public void ComputeHours() {
@@ -205,7 +207,7 @@ namespace MSAMISUserInterface {
         public double ComputeNet() {
             double e = NetPay;
             e +=(ComputeDeductions());
-            e += ComputeBonuses();
+            e += ComputeBonuses(false);
             return e;
         }
 
@@ -232,12 +234,20 @@ namespace MSAMISUserInterface {
         public double thirteen;
         public double cola;
         public double emerallowance;
-        public double ComputeBonuses() {
-            this.thirteen = ComputeThirteen();
+        public double ComputeBonuses(bool ca) {
+            if (ca) {
+                if (this.period.month == 12 && this.period.period == 2) { this.thirteen = ComputeThirteen(); }
+            else { this.thirteen = 0; }}
+            
+            
             this.cola = ComputeCola();
             this.emerallowance = ComputeEmer();
             this.cashbond = ComputeCashBond();
             return thirteen + cola + emerallowance + cashbond;
+        }
+
+        public double ComputeBonuses() {
+            return ComputeBonuses(true);
         }
         #endregion
 
@@ -291,7 +301,8 @@ namespace MSAMISUserInterface {
         }
 
         public WithTax wt = new WithTax();
-             
+        private int year;
+
         public double ComputeSSS() {
             DataTable ssscontrib = SQLTools.ExecuteQuery("select * from ssscontrib");
             foreach (DataRow dr in ssscontrib.Rows) {
@@ -309,12 +320,22 @@ namespace MSAMISUserInterface {
         }
 
         public double ComputeThirteen() {
-            List<Payroll> py = new List<Payroll>();
-            for (int c = 1; c < 12; c++) { }
-            return 20.00;
-
-
+             { 
+                // TODO: Run this code only on every January 1-4
+                List<Payroll> py = new List<Payroll>();
+                for (int mm = 1; mm <= 12; mm++) {
+                    py.Add(new Payroll(this.GID, mm, 1, this.period.year));
+                    py.Add(new Payroll(this.GID, mm, 2, this.period.year));
+                }
+                HourCostPair hce = new HourCostPair();
+                foreach (Payroll pypy in py) {
+                    pypy.ComputeHours();
+                    pypy.ComputeGrossPay(false);
+                    hce += pypy.TotalSummary["total"];
+                }
+                return hce.cost / 12.00;
         }
+    }
 
         public static double ComputeCola () {
             return 50;
