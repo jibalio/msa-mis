@@ -93,7 +93,7 @@ namespace MSAMISUserInterface {
                         Opacity = 0,
                         Lf = this,
                         Location = new Point(Location.X - 50, Location.Y - 66),
-                        User = UsernameBX.Text,
+                        User = UsernameBX.Text[0].ToString().ToUpper() + UsernameBX.Text.Substring(1).ToLower(),
                     };
                     mf.Show();
                     Hide();

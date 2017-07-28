@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using System.IO;
 
 namespace MSAMISUserInterface {
@@ -11,7 +10,6 @@ namespace MSAMISUserInterface {
 
         //Only Paste Global Variable Here//
 
-        public MySqlConnection Conn;
         public LoginForm Lf;
         public string User;
 
@@ -22,7 +20,6 @@ namespace MSAMISUserInterface {
         private Panel _scurrentPanel;
         private Button _scurrentBtn;
         private const string FilterText = "Search or filter";
-        private const string EmptyText = "";
         private string _extraQueryParams = "";
 
         #region Form Initiation and load
@@ -54,7 +51,6 @@ namespace MSAMISUserInterface {
             ControlBoxPanel.BackColor = _dashboard;
 
             //Variable Initialization
-            Conn = SQLTools.conn;
             ControlBoxTimeLBL.Text = "Logged in as, " + User;
             TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy").ToUpper();
             _scurrentPanel = GViewAllPNL;
@@ -375,7 +371,6 @@ namespace MSAMISUserInterface {
             try {
                 var view = new GuardsEdit {
                     Reference = this,
-                    Connection = Conn,
                     Refer = _shadow,
                     Location = _newFormLocation
                 };
@@ -424,7 +419,7 @@ namespace MSAMISUserInterface {
         }
 
         public void GuardsRefreshGuardsList() {
-            GAllGuardsGRD.DataSource = GetGuardList(GViewAllViewByCMBX.SelectedIndex);
+            GAllGuardsGRD.DataSource = Guard.GetAllGuards(_extraQueryParams, GViewAllViewByCMBX.SelectedIndex);
             if (GViewAllViewByCMBX.SelectedIndex == 0) {
                 GAllGuardsGRD.Columns[0].Visible = false;
                 GAllGuardsGRD.Columns["NAME"].Width = 240;
@@ -463,7 +458,6 @@ namespace MSAMISUserInterface {
                     var view = new GuardsView {
                         Gid = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString()),
                         Reference = this,
-                        Connection =  Conn,
                         Shadow = _shadow,
                         Location = _newFormLocation
                     };
@@ -507,16 +501,16 @@ namespace MSAMISUserInterface {
         #region GMS - View All - Search
         private void GViewAllSearchTXTBX_Enter(object sender, EventArgs e) {
             if (GViewAllSearchTXTBX.Text == FilterText) {
-                GViewAllSearchTXTBX.Text = EmptyText;
-                _extraQueryParams = EmptyText;
+                GViewAllSearchTXTBX.Text = string.Empty;
+                _extraQueryParams = string.Empty;
             }
             GViewAllSearchLine.Visible = true;
         }
 
         private void GViewAllSearchTXTBX_Leave(object sender, EventArgs e) {
-            if (GViewAllSearchTXTBX.Text == EmptyText) {
+            if (GViewAllSearchTXTBX.Text == string.Empty) {
                 GViewAllSearchTXTBX.Text = FilterText;
-                _extraQueryParams = EmptyText;
+                _extraQueryParams = string.Empty;
             }
             GuardsRefreshGuardsList();
             GViewAllSearchLine.Visible = false;
@@ -599,7 +593,6 @@ namespace MSAMISUserInterface {
             try {
                 var view = new ClientsEdit {
                     Reference = this,
-                    Connection = Conn,
                     Refer = _shadow,
                     Location = _newFormLocation
                 };
@@ -634,7 +627,7 @@ namespace MSAMISUserInterface {
         #region CMS - View All Data Grid
 
         public void ClientsRefreshClientsList() {
-            CClientListTBL.DataSource = GetClientList();
+            CClientListTBL.DataSource = Client.GetAllClientDetails(_extraQueryParams);
             CClientListTBL.Columns["cid"].HeaderText = "ID";
             CClientListTBL.Columns["cid"].Visible = false;
             CClientListTBL.Columns["name"].HeaderText = "NAME";
@@ -643,8 +636,8 @@ namespace MSAMISUserInterface {
             CClientListTBL.Columns["contactno"].Width = 300;
             CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
 
-            CActiveClientLBL.Text = GetNumberOfActiveClients() + " active clients";
-            CTotalClientLBL.Text = GetTotalClients() + " total clients";
+            CActiveClientLBL.Text = Client.GetNumberOfActiveClients() + " active clients";
+            CTotalClientLBL.Text = Client.GetNumberOfTotalClients() + " total clients";
 
             CClientListTBL.ClearSelection();
         }
@@ -659,7 +652,6 @@ namespace MSAMISUserInterface {
                     var view = new ClientsView {
                         Cid = int.Parse(CClientListTBL.SelectedRows[0].Cells[0].Value.ToString()),
                         Reference = this,
-                        Connection = Conn,
                         Refer = _shadow,
                         Location = _newFormLocation
                     };
@@ -880,16 +872,16 @@ namespace MSAMISUserInterface {
         }
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {
-                SViewReqSearchTXTBX.Text = EmptyText;
-                _extraQueryParams = EmptyText;
+                SViewReqSearchTXTBX.Text = string.Empty;
+                _extraQueryParams = string.Empty;
             }
             SViewReqSearchLine.Visible = true;
         }
 
         private void SViewReqSearchTXTBX_Leave(object sender, EventArgs e) {
-            if (SViewReqSearchTXTBX.Text == EmptyText) {
+            if (SViewReqSearchTXTBX.Text == string.Empty) {
                 SViewReqSearchTXTBX.Text = FilterText;
-                _extraQueryParams = EmptyText;
+                _extraQueryParams = string.Empty;
             }
             SchedRefreshRequests();
             SViewReqSearchLine.Visible = false;
@@ -1004,16 +996,16 @@ namespace MSAMISUserInterface {
 
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewAssSearchTXTBX.Text == FilterText) {
-                SViewAssSearchTXTBX.Text = EmptyText;
-                _extraQueryParams = EmptyText;
+                SViewAssSearchTXTBX.Text = string.Empty;
+                _extraQueryParams = string.Empty;
             }
             SViewAssSearchLine.Visible = true;
         }
 
         private void SViewAssSearchTXTBX_Leave(object sender, EventArgs e) {
-            if (SViewAssSearchTXTBX.Text == EmptyText) {
+            if (SViewAssSearchTXTBX.Text == string.Empty) {
                 SViewAssSearchTXTBX.Text = FilterText;
-                _extraQueryParams = EmptyText;
+                _extraQueryParams = string.Empty;
             }
             SchedRefreshAssignments();
             SViewAssSearchLine.Visible = false;
@@ -1056,8 +1048,8 @@ namespace MSAMISUserInterface {
 
         private void SArchiveSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SArchiveSearchTXTBX.Text == FilterText) {
-                SArchiveSearchTXTBX.Text = EmptyText;
-                _extraQueryParams = EmptyText;
+                SArchiveSearchTXTBX.Text = string.Empty;
+                _extraQueryParams = string.Empty;
             }
             SArchiveSearchLine.Visible = true;
         }
@@ -1077,9 +1069,9 @@ namespace MSAMISUserInterface {
         }
 
         private void SArchiveSearchTXTBX_Leave(object sender, EventArgs e) {
-            if (SArchiveSearchTXTBX.Text == EmptyText) {
+            if (SArchiveSearchTXTBX.Text == string.Empty) {
                 SArchiveSearchTXTBX.Text = FilterText;
-                _extraQueryParams = EmptyText;
+                _extraQueryParams = string.Empty;
             }
             SCHEDRefreshArchive();
             SArchiveSearchTXTBX.Visible = false;
@@ -1230,78 +1222,21 @@ namespace MSAMISUserInterface {
 
         private void PEmpListSearchBX_Enter(object sender, EventArgs e) {
             if (PEmpListSearchBX.Text == FilterText) {
-                PEmpListSearchBX.Text = EmptyText;
-                _extraQueryParams = EmptyText;
+                PEmpListSearchBX.Text = string.Empty;
+                _extraQueryParams = string.Empty;
             }
             PEmpListSearchLine.Visible = true;
         }
 
         private void PEmpListSearchBX_Leave(object sender, EventArgs e) {
-            if (PEmpListSearchBX.Text == EmptyText) {
+            if (PEmpListSearchBX.Text == string.Empty) {
                 PEmpListSearchBX.Text = FilterText;
-                _extraQueryParams = EmptyText;
+                _extraQueryParams = string.Empty;
             }
             PEmpListSearchLine.Visible = false;
         }
         #endregion
 
         #endregion
-
-
-
-        //======================================//
-        //          BES MGA SQL METHODS         //
-        //======================================// 
-
-        private DataTable GetGuardList(int mode) {
-            String query;
-            String orderbyclause;
-            
-            if (mode == 0) {
-                query = "Select gid,concat(ln,', ',fn,' ',mn) as NAME, " +
-                        "case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS', " +
-                        "bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', " +
-                        "cellno as 'CONTACTNO' " +
-                        "FROM Guards ";
-                orderbyclause = "ORDER BY NAME ASC;";
-            } else {
-                query = "Select Guards.gid,concat(ln,', ',fn,' ',mn) as NAME, " +
-                        "concat(StreetNo,', ', Brgy,', ',Street, ', ', City) As LOCATION, case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS' " +
-                        "FROM Guards LEFT JOIN Address ON Address.GID = Guards.GID ";
-                orderbyclause = "AND Atype = 2 ORDER BY NAME ASC;";
-            }
-            Conn.Open();
-            MySqlCommand comm = new MySqlCommand(query + _extraQueryParams + orderbyclause, Conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            Conn.Close();
-            return dt;
-        }
-
-        private int GetNumberOfActiveClients() {
-            Conn.Open();
-            MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE cstatus = 1", Conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            Conn.Close();
-            return dt.Rows.Count;
-        }
-        private int GetTotalClients() {
-            Conn.Open();
-            MySqlCommand comm = new MySqlCommand("SELECT * FROM client", Conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            Conn.Close();
-            return dt.Rows.Count;
-        }
-        private DataTable GetClientList() {
-            String q = "SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno FROM client" + _extraQueryParams;
-            return SQLTools.ExecuteQuery(q);
-        }
-
-
     }
 }

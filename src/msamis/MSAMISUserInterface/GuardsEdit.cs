@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,13 +9,10 @@ namespace MSAMISUserInterface {
         public MainForm Reference;
         public GuardsView ViewRef;
         public string Button = "ADD";
-        public MySqlConnection Connection;
         public int[] Dependents;
 
         public Shadow Refer;
 
-        private MySqlCommand _mySqlCommand;
-        private MySqlDataAdapter _adapter = new MySqlDataAdapter();
         private DataTable _dataTable = new DataTable();
         
         private int _gender;
@@ -402,7 +398,7 @@ namespace MSAMISUserInterface {
         #region Populate Form (for Updating)
         private void PopulateEdit() {
             try {
-                GetResultQuery("SELECT * FROM guards WHERE GID = " + Gid);
+                _dataTable = Guard.GetGuardsBasicData(Gid);
                 LastNameBX.Text = _dataTable.Rows[0]["ln"].ToString();
                 FirstNameBX.Text = _dataTable.Rows[0]["fn"].ToString();
                 MiddleNameBX.Text = _dataTable.Rows[0]["mn"].ToString();
@@ -434,7 +430,7 @@ namespace MSAMISUserInterface {
             catch {
             }
             try {
-                GetResultQuery("SELECT * FROM address WHERE GID=" + Gid + " ORDER BY Atype ASC");
+                _dataTable = Guard.GetGuardsAddresses(Gid);
                 BirthplaceStreetNoBX.Text = _dataTable.Rows[0]["streetno"].ToString();
                 BirthplaceStreetNameBX.Text = _dataTable.Rows[0]["street"].ToString();
                 BirthplaceBrgyBX.Text = _dataTable.Rows[0]["brgy"].ToString();
@@ -449,13 +445,11 @@ namespace MSAMISUserInterface {
                 TempStreetNameBX.Text = _dataTable.Rows[2]["street"].ToString();
                 TempBrgyBX.Text = _dataTable.Rows[2]["brgy"].ToString();
                 TempCityBX.Text = _dataTable.Rows[2]["city"].ToString();
-
-                Connection.Close();
             }
             catch {
             }
             try {
-                GetResultQuery("SELECT * FROM dependents WHERE GID=" + Gid + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
+                _dataTable = Guard.GetGuardsParents(Gid);
                 try {
                     MotherFirstBX.Text = _dataTable.Rows[1]["fn"].ToString();
                     MotherMiddleBX.Text = _dataTable.Rows[1]["mn"].ToString();
@@ -468,13 +462,11 @@ namespace MSAMISUserInterface {
                     SpouseLastBX.Text = _dataTable.Rows[2]["ln"].ToString();
                 }
                 catch { }
-                Connection.Close();
             }
             catch {
-                Connection.Close();
             }
             try {
-                GetResultQuery("SELECT * FROM dependents WHERE GID=" + Gid + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
+                _dataTable = Guard.GetGuardsDependents(Gid);
                 try {
                     Dependent1FirstBX.Text = _dataTable.Rows[0]["fn"].ToString();
                     Dependent1MiddleBX.Text = _dataTable.Rows[0]["mn"].ToString();
@@ -502,19 +494,9 @@ namespace MSAMISUserInterface {
                     Dependent5RBX.SelectedIndex = int.Parse(_dataTable.Rows[4]["DRelationship"].ToString());
                 }
                 catch { }
-                Connection.Close();
             }
             catch {
-                Connection.Close();
             }
-        }
-        private void GetResultQuery(String query) {
-            Connection.Open();
-            _mySqlCommand = new MySqlCommand(query, Connection);
-            _adapter = new MySqlDataAdapter(_mySqlCommand);
-            _dataTable = new DataTable();
-            _adapter.Fill(_dataTable);
-            Connection.Close();
         }
         #endregion
 
@@ -524,37 +506,18 @@ namespace MSAMISUserInterface {
                 #region Adding
                 if (GEditDetailsBTN.Text.Equals("ADD")) {
                     try {
-                        Connection.Open();
-                        _mySqlCommand = new MySqlCommand("INSERT INTO Guards(FN, MN, LN, GStatus, BDate, Gender, Height, Weight, Religion, CivilStatus, CellNo, TelNo, LicenseNo, SSS, TIN, PhilHealth, PrevAgency, PrevAss, EdAtt, Course, MilitaryTrainings, EmergencyContact, EmergencyNo) VALUES ('" + FirstNameBX.Text + "','" + MiddleNameBX.Text + "','" + LastNameBX.Text + "','" + 0 + "','" + BirthdateBX.Value.Month + "/" + BirthdateBX.Value.Day + "/" + BirthdateBX.Value.Year + "','" + _gender + "','" + HeightBX.Text + "','" + WeightBX.Text + "','" + ReligionBX.Text + "','" + CVStatusBX.SelectedIndex + "','" + CellNoBX.Text + "','" + TellNoBX.Text + "','" + LicenseNoBX.Text + "','" + SSSNoBX.Text + "','" + TINNoBX.Text + "','" + PhilHealthBX.Text + "','" + PrevAgencyBX.Text + "','" + PrevAssBX.Text + "','" + EdAttBX.SelectedIndex + "','" + CourseBX.Text + "','" + MilTrainBX.Text + "','" + EmergBX.Text + "','" + EmergencyNoBX.Text + "')", Connection);
-                        _mySqlCommand.ExecuteNonQuery();
-                        Connection.Close();
-                    }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        rylui.RylMessageBox.ShowDialog(ee.Message);
-                    }
+                        Guard.AddGuardBasicInfo(FirstNameBX.Text,MiddleNameBX.Text,LastNameBX.Text, BirthdateBX.Value, _gender, HeightBX.Text, WeightBX.Text, ReligionBX.Text, CVStatusBX.SelectedIndex, CellNoBX.Text, TellNoBX.Text, LicenseNoBX.Text, SSSNoBX.Text, TINNoBX.Text, PhilHealthBX.Text, PrevAgencyBX.Text, PrevAssBX.Text, EdAttBX.SelectedIndex, CourseBX.Text, MilTrainBX.Text, EmergBX.Text, EmergencyNoBX.Text);
+                    } catch { }
                     try {
-                        GetResultQuery("SELECT gid FROM guards ORDER BY gid DESC");
-                        Gid = int.Parse(_dataTable.Rows[0][0].ToString());
-                    }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        rylui.RylMessageBox.ShowDialog(ee.Message);
-                    }
+                        Gid = int.Parse(SQLTools.getLastInsertedId("Guards", "GID"));
+                    } catch  { }
                     try {
-                        Connection.Open();
                         InsertAdd(1, BirthplaceStreetNoBX.Text, BirthplaceStreetNameBX.Text, BirthplaceCityBX.Text, BirthplaceBrgyBX.Text);
                         InsertAdd(2, PermStreetNoBX.Text, PermStreetNameBX.Text, PermCityBX.Text, PermBrgyBX.Text);
                         InsertAdd(3, TempStreetNoBX.Text, TempStreetNameBX.Text, TempCityBX.Text, TempBrgyBX.Text);
-                        Connection.Close();
                     }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        rylui.RylMessageBox.ShowDialog(ee.Message);
-
-                    }
+                    catch {}
                     try {
-                        Connection.Open();
                         InsertDependent(4, FatherFirstBX.Text, FatherMiddleBX.Text, FatherLastBX.Text);
                         InsertDependent(5, MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text);
                         if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX)) {
@@ -575,40 +538,29 @@ namespace MSAMISUserInterface {
                         if (!CheckName(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX)) {
                             InsertDependent(Dependent5RBX.SelectedIndex, Dependent5FirstBX.Text, Dependent5MiddleBX.Text, Dependent5LastBX.Text);
                         }
-                        Connection.Close();
                     }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        rylui.RylMessageBox.ShowDialog(ee.Message);
-                    }
+                    catch {}
                 }
                 #endregion
 
                 #region Updating
                 else if (GEditDetailsBTN.Text.Equals("UPDATE")) {
                     try {
-                        Connection.Open();
-                        MySqlCommand comm = new MySqlCommand("UPDATE Guards SET FN = '" + FirstNameBX.Text + "', MN = '" + MiddleNameBX.Text + "', LN = '" + LastNameBX.Text + "', BDate = '" + BirthdateBX.Value.Month + "/" + BirthdateBX.Value.Day + "/" + BirthdateBX.Value.Year + "', Gender =  '" + _gender + "', Height = '" + HeightBX.Text + "', Weight = '" + WeightBX.Text + "', Religion = '" + ReligionBX.Text + "', CivilStatus = '" + CVStatusBX.SelectedIndex + "', CellNo = '" + CellNoBX.Text + "', TelNo = '" + TellNoBX.Text + "', LicenseNo = '" + LicenseNoBX.Text + "', SSS = '" + SSSNoBX.Text + "', TIN = '" + TINNoBX.Text + "', PhilHealth = '" + PhilHealthBX.Text + "', PrevAgency = '" + PrevAgencyBX.Text + "', PrevAss = '" + PrevAssBX.Text + "', EdAtt = '" + EdAttBX.SelectedIndex + "', Course = '" + CourseBX.Text + "', MilitaryTrainings = '" + MilTrainBX.Text + "', EmergencyContact = '" + EmergBX.Text + "', EmergencyNo = '" + EmergencyNoBX.Text + "' WHERE GID=" + Gid, Connection);
-                        comm.ExecuteNonQuery();
-                        Connection.Close();
+                        Guard.UpdateGuardBasicInfo(Gid, FirstNameBX.Text, MiddleNameBX.Text, LastNameBX.Text,
+                            BirthdateBX.Value, _gender, HeightBX.Text, WeightBX.Text, ReligionBX.Text,
+                            CVStatusBX.SelectedIndex, CellNoBX.Text, TellNoBX.Text, LicenseNoBX.Text, SSSNoBX.Text,
+                            TINNoBX.Text, PhilHealthBX.Text, PrevAgencyBX.Text, PrevAssBX.Text, EdAttBX.SelectedIndex,
+                            CourseBX.Text, MilTrainBX.Text, EmergBX.Text, EmergencyNoBX.Text);
                     }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        rylui.RylMessageBox.ShowDialog(ee.Message);
-                    }
+
+                    catch { }
                     try {
-                        Connection.Open();
                         UpdateAdd(BirthplaceStreetNoBX.Text, BirthplaceStreetNameBX.Text, BirthplaceCityBX.Text, BirthplaceBrgyBX.Text, 1);
                         UpdateAdd(PermStreetNoBX.Text, PermStreetNameBX.Text, PermCityBX.Text, PermBrgyBX.Text, 2);
                         UpdateAdd(TempStreetNoBX.Text, TempStreetNameBX.Text, TempCityBX.Text, TempBrgyBX.Text, 3);
-                        Connection.Close();
                     }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        rylui.RylMessageBox.ShowDialog(ee.Message);
-                    }
+                    catch {}
                     try {
-                        Connection.Open();
                         UpdateDependent(FatherFirstBX.Text, FatherMiddleBX.Text, FatherLastBX.Text, 4);
                         UpdateDependent(MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text, 5);
                         if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX)) UpdateDependent(SpouseFirstBX.Text, SpouseMiddleBX.Text, SpouseLastBX.Text, 6);
@@ -631,41 +583,32 @@ namespace MSAMISUserInterface {
                         if (!CheckName(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX)){
                             if (Dependents.Length > 4) UpdateDependent(Dependent5FirstBX.Text, Dependent5MiddleBX.Text, Dependent5LastBX.Text, Dependent5RBX.SelectedIndex, Dependents[5]);
                             else InsertDependent(Dependent5RBX.SelectedIndex, Dependent5FirstBX.Text, Dependent5MiddleBX.Text, Dependent5LastBX.Text);
-                        }                       
-                        Connection.Close();
+                        }                
                         ViewRef.RefreshData();
                     }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        MessageBox.Show(ee.Message);
-                    } 
+                    catch { } 
                 }
                 #endregion
                 Reference.GuardsRefreshGuardsList();
                 Close();
             }
         }
-        private void InsertDependent(int Rel, String First, String Middle, String Last) {
-            _mySqlCommand = new MySqlCommand("INSERT INTO Dependents(DRelationship, GID, FN, MN, LN) VALUES ('" + Rel + "','" + Gid + "','" + First + "','" + Middle + "','" + Last + "')", Connection);
-            _mySqlCommand.ExecuteNonQuery();
+        private void InsertDependent(int rel, string first, string middle, string last) {
+            Guard.AddGuardsDependent(Gid, rel, first, middle, last);
         }
-        private void InsertAdd(int type, String StreetNo, String Street, String City, String Brgy) {
-            _mySqlCommand = new MySqlCommand("INSERT INTO Address(GID, AType, StreetNo, Street, City, Brgy) VALUES ('" + Gid + "','" + type + "','" + StreetNo + "','" + Street + "','" + City + "','" + Brgy + "')", Connection);
-            _mySqlCommand.ExecuteNonQuery();
+        private void InsertAdd(int type, string streetNo, string street, string city, string brgy) {
+            Guard.AddGuardAddress(Gid, type, streetNo, street, city, brgy);
         }
 
-        private void UpdateAdd(String StreetNo, String Street, String City, String Brgy, int type) {
-            _mySqlCommand = new MySqlCommand("UPDATE Address SET StreetNo = '" + StreetNo + "', Street = '" + Street + "', City = '" + City + "', Brgy = '" + Brgy + "' WHERE Atype = '" + type + "' AND GID=" + Gid, Connection);
-            _mySqlCommand.ExecuteNonQuery();
+        private void UpdateAdd(string streetNo, string street, string city, string brgy, int type) {
+            Guard.UpdateGuardAddress(Gid, streetNo, street, city, brgy, type);
         }
 
-        private void UpdateDependent(String First, String Middle, String Last, int Rel) {
-            _mySqlCommand = new MySqlCommand("UPDATE Dependents SET FN = '" + First + "', MN = '" + Middle + "', LN = '" + Last + "' WHERE DRelationship = '" + Rel + "' AND GID=" + Gid, Connection);
-            _mySqlCommand.ExecuteNonQuery();
+        private void UpdateDependent(string first, string middle, string last, int rel) {
+            Guard.UpdateGuardsDependent(Gid, rel, first, middle, last);
         }
-        private void UpdateDependent(String First, String Middle, String Last, int Rel, int ID) {
-            _mySqlCommand = new MySqlCommand("UPDATE Dependents SET FN = '" + First + "', MN = '" + Middle + "', LN = '" + Last + "', DRelationship = '" + Rel + "' WHERE GID=" + Gid + " AND DeID = " + ID, Connection);
-            _mySqlCommand.ExecuteNonQuery();
+        private void UpdateDependent(string first, string middle, string last, int rel, int id) {
+            Guard.UpdateGuardsDependent(Gid, first, middle, last, rel, id);
         }
         #endregion
 

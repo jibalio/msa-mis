@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -9,10 +8,7 @@ namespace MSAMISUserInterface {
         public int Gid { get; set; }
         public MainForm Reference;
         public int[] Dependents;
-
-        public MySqlConnection Connection;
-        private MySqlCommand _mySqlCommand;
-        private MySqlDataAdapter _mySqlDataAdapter = new MySqlDataAdapter();
+        
         private DataTable _dataTable = new DataTable();
 
         private readonly Color _dark = Color.FromArgb(53, 64, 82);
@@ -56,7 +52,6 @@ namespace MSAMISUserInterface {
             {
                 Gid = Gid,
                 Button = "UPDATE",
-                Connection = Connection,
                 ViewRef = this,
                 Reference = Reference,
                 Dependents = Dependents,
@@ -69,9 +64,9 @@ namespace MSAMISUserInterface {
 
         #region Refreshing Data
 
-        public void RefreshData() {       
+        public void RefreshData() {
             try {
-                GetQueryReult("SELECT * FROM guards WHERE GID = " + Gid);
+                _dataTable = Guard.GetGuardsBasicData(Gid);
                 GIDLBL.Text = Gid.ToString();
                 LNLBL.Text = _dataTable.Rows[0]["fn"] + " " + _dataTable.Rows[0]["mn"];
                 LLBL.Text = _dataTable.Rows[0]["ln"] + ", ";
@@ -95,14 +90,11 @@ namespace MSAMISUserInterface {
                 TrainLBL.Text = _dataTable.Rows[0]["MilitaryTrainings"].ToString();
                 ContactLBL.Text = _dataTable.Rows[0]["EmergencyContact"].ToString();
                 EmergencyLBL.Text = _dataTable.Rows[0]["EmergencyNo"].ToString();
-            } catch (IndexOutOfRangeException) {
-                Connection.Close();
             }
-            catch {
-            }
-            
+            catch { }
+
             try {
-                GetQueryReult("SELECT * FROM address WHERE GID=" + Gid + " ORDER BY Atype ASC");
+                _dataTable = Guard.GetGuardsAddresses(Gid);
                 BirthplaceLBL.Text = BuildStreet(_dataTable, 0);
                 PermAddLBL.Text = BuildStreet(_dataTable, 1);
                 TempAddLBL.Text = BuildStreet(_dataTable, 2);
@@ -110,7 +102,7 @@ namespace MSAMISUserInterface {
             catch {
             }
             try {
-                GetQueryReult("SELECT * FROM dependents WHERE GID=" + Gid + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
+                _dataTable = Guard.GetGuardsParents(Gid);
                 MotherLBL.Text = BuildName(_dataTable, 1);
                 FatherLBL.Text = BuildName(_dataTable, 0);
                 try { SpouseLBL.Text = BuildName(_dataTable, 2); } catch { }
@@ -118,7 +110,7 @@ namespace MSAMISUserInterface {
             catch {
             }
             try {
-                GetQueryReult("SELECT * FROM dependents WHERE GID=" + Gid + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
+                _dataTable = Guard.GetGuardsDependents(Gid);
                 try {
                     Dependents = new int[_dataTable.Rows.Count];
                     Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
@@ -133,20 +125,9 @@ namespace MSAMISUserInterface {
                     Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(), BuildName(_dataTable, 4));
                 }
                 catch { }
-                Connection.Close();
             }
             catch {
-                Connection.Close();
             }
-        }
-
-        private void GetQueryReult(string query) {
-            Connection.Open();
-            _mySqlCommand = new MySqlCommand(query, Connection);
-            _mySqlDataAdapter = new MySqlDataAdapter(_mySqlCommand);
-            _dataTable = new DataTable();
-            _mySqlDataAdapter.Fill(_dataTable);
-            Connection.Close();
         }
 
         private static string GetStatus(DataTable dt) {

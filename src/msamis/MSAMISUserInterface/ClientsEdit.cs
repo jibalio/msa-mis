@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,7 +9,6 @@ namespace MSAMISUserInterface {
         public MainForm Reference;
         public ClientsView ViewRef;
         public string Button = "ADD";
-        public MySqlConnection Connection;
 
         public Shadow Refer;
 
@@ -183,29 +181,9 @@ namespace MSAMISUserInterface {
     private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
                 if (GEditDetailsBTN.Text.Equals("ADD")) {
-                    try {
-                        Connection.Open();
-                        MySqlCommand comm = new MySqlCommand("INSERT INTO Client(Name, ClientStreetNo, ClientStreet, ClientBrgy, ClientCity, ContactPerson, ContactNo, Manager, CStatus) VALUES ('" + NameBX.Text + "','" + LocationStreetNoBX.Text + "','" + LocationStreetNameBX.Text + "','" + LocationBrgyBX.Text + "','" + LocationCityBX.Text + "','" + ContactBX.Text + "','" + ContactNoBX.Text + "','" + ManagerBX.Text + "', '0')", Connection);
-                        comm.ExecuteNonQuery();
-                        Connection.Close();
-                    }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        rylui.RylMessageBox.ShowDialog(ee.Message);
-                    }
+                    Client.AddClient(NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text, LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
                 } else {
-                    try {
-                        int status = 0;
-
-                        Connection.Open();
-                        MySqlCommand comm = new MySqlCommand("UPDATE Client SET Name = '" + NameBX.Text + "', ClientStreetNo = '" + LocationStreetNoBX.Text + "', ClientStreet = '" + LocationStreetNameBX.Text + "', ClientBrgy = '" + LocationBrgyBX.Text + "', ClientCity = '" + LocationCityBX.Text + "', ContactPerson = '" + ContactBX.Text + "', ContactNo = '" + ContactNoBX.Text + "', Manager = '" + ManagerBX.Text + "', CStatus = '" + status + "' WHERE CID =" + Cid, Connection);
-                        comm.ExecuteNonQuery();
-                        Connection.Close();
-                    }
-                    catch (Exception ee) {
-                        Connection.Close();
-                        rylui.RylMessageBox.ShowDialog(ee.Message);
-                    }
+                    Client.UpdateClient(Cid.ToString(), NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text, LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
                     ViewRef.RefreshData();
                 }
                 Reference.ClientsRefreshClientsList();
@@ -215,39 +193,20 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Populating 
+
         private void PopulateEdit() {
-            try {
-                Connection.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM client WHERE CID = " + Cid, Connection);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
+            DataTable dt = Client.GetClientDetails(Cid);
 
-                NameBX.Text = dt.Rows[0]["name"].ToString();
+            NameBX.Text = dt.Rows[0]["name"].ToString();
 
-                LocationStreetNoBX.Text = dt.Rows[0]["ClientStreetNo"].ToString();
-                LocationBrgyBX.Text = dt.Rows[0]["ClientBrgy"].ToString();
-                LocationStreetNameBX.Text = dt.Rows[0]["ClientStreet"].ToString();
-                LocationCityBX.Text = dt.Rows[0]["ClientCity"].ToString();
-                ManagerBX.Text = dt.Rows[0]["Manager"].ToString();
-                ContactBX.Text = dt.Rows[0]["ContactPerson"].ToString();
-                ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
-
-                Connection.Close();
-            }
-            catch (Exception ee) {
-                Connection.Close();
-                MessageBox.Show(ee.Message);
-            }
-
-
+            LocationStreetNoBX.Text = dt.Rows[0]["ClientStreetNo"].ToString();
+            LocationBrgyBX.Text = dt.Rows[0]["ClientBrgy"].ToString();
+            LocationStreetNameBX.Text = dt.Rows[0]["ClientStreet"].ToString();
+            LocationCityBX.Text = dt.Rows[0]["ClientCity"].ToString();
+            ManagerBX.Text = dt.Rows[0]["Manager"].ToString();
+            ContactBX.Text = dt.Rows[0]["ContactPerson"].ToString();
+            ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
         }
-
-
-
-
-
-
 
         #endregion
 
