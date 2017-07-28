@@ -4,7 +4,11 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
-/*TODO: Fix: hourcost dictionary hours items have money value even with 0 hours. */
+/*TODO: 
+ Perform tests on colliding holidays from multiple years.
+ Pword hash
+ 13th.
+     */
 namespace MSAMISUserInterface {
 
     public class Payroll {
@@ -307,7 +311,7 @@ namespace MSAMISUserInterface {
         public double ComputeThirteen() {
             List<Payroll> py = new List<Payroll>();
             for (int c = 1; c < 12; c++) { }
-            throw new NotImplementedException();
+            return 20.00;
 
 
         }
