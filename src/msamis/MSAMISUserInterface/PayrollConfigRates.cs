@@ -209,8 +209,7 @@ namespace MSAMISUserInterface {
                     SSSGRD.CurrentCell.Value = _currentval;
                 }
                 else SSSGRD.CurrentCell.Value = value.ToString("N2");
-                SSSSaveBTN.Visible = true;
-                SSSReset.Visible = true;
+                EditingMode(true);
             }
         }
         private void SSSGRD_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
@@ -219,20 +218,27 @@ namespace MSAMISUserInterface {
 
         private void SSSAddRange_Click(object sender, EventArgs e) {
             SSSGRD.Rows.Add("-1", "00.00", "-", "00.00", "", "00.00");
-            SSSSaveBTN.Visible = true;
-            SSSReset.Visible = true;
+            EditingMode(true);
         }
 
         private void SSSRemoveBTN_Click(object sender, EventArgs e) {
             SSSGRD.Rows.RemoveAt(SSSGRD.CurrentRow.Index);
-            SSSSaveBTN.Visible = true;
-            SSSReset.Visible = true;
+            EditingMode(true);
         }
 
         private void SSSReset_Click(object sender, EventArgs e) {
             LoadSssPage();
-            SSSSaveBTN.Visible = false;
-            SSSReset.Visible = false;
+            EditingMode(false);
+        }
+
+        private void EditingMode(bool mode) {
+            SSSSaveBTN.Visible = mode;
+            SSSReset.Visible = mode;
+            BasicPNL.Enabled = !mode;
+            TaxPnl.Enabled = !mode;
+            CloseBTN.Visible = !mode;
+            if (mode) SSSEditingPNL.FlowDirection = FlowDirection.LeftToRight;
+            else SSSEditingPNL.FlowDirection = FlowDirection.RightToLeft;
         }
 
         private void SSSSaveBTN_Click(object sender, EventArgs e) {
