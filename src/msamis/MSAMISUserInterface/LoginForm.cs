@@ -68,6 +68,11 @@ namespace MSAMISUserInterface {
                 bt.ShowDialog();
                 return true;
             }
+            if (keyData == (Keys.Control | Keys.R)) {
+                ReportsForm bt = new ReportsForm();
+                bt.ShowDialog();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
