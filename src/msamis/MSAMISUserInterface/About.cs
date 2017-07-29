@@ -1,31 +1,28 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class About : Form {
-        public string Username { get; set; }
-        public MainForm Reference;
-        public MySqlConnection Connection;
-        public Shadow Refer;
-
         private readonly Color _chose = Color.FromArgb(53, 64, 82);
         private readonly Color _def = Color.Gray;
         private Label _currentLbl;
         private Panel _currentPnl;
+        public Shadow Refer;
 
         public About() {
             InitializeComponent();
             Opacity = 0;
         }
 
+        public string Username { get; set; }
+
 
         private void About_Load(object sender, EventArgs e) {
             FadeTMR.Start();
             _currentLbl = AboutLBL;
             _currentPnl = AboutPNL;
-            
+
             UsersPNL.Visible = false;
         }
 
@@ -35,7 +32,7 @@ namespace MSAMISUserInterface {
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             Opacity += 0.2;
-            if (Opacity >= 1) { FadeTMR.Stop(); }
+            if (Opacity >= 1) FadeTMR.Stop();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -76,8 +73,6 @@ namespace MSAMISUserInterface {
             if (!UsersPNL.Visible) UsersLBL.ForeColor = _def;
         }
 
-        private void About_FormClosed(object sender, FormClosedEventArgs e) {
-            
-        }
+        private void About_FormClosed(object sender, FormClosedEventArgs e) { }
     }
 }

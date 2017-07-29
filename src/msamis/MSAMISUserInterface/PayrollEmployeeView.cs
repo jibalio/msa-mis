@@ -6,19 +6,20 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class PayrollEmployeeView : Form {
-        public int Gid { get; set; }
-        public MainForm Reference;
-        public Shadow Refer;
-
-        private DataGridViewRow _currentRow;
         private Label _currentLbl;
         private Panel _currentPnl;
+
+        private DataGridViewRow _currentRow;
         private Payroll _pay;
+        public Shadow Refer;
+        public MainForm Reference;
 
         public PayrollEmployeeView() {
             InitializeComponent();
             Opacity = 0;
         }
+
+        public int Gid { get; set; }
 
         private void Payroll_EmployeeView_Load(object sender, EventArgs e) {
             FadeTMR.Start();
@@ -26,7 +27,7 @@ namespace MSAMISUserInterface {
             _currentPnl = OverviewPNL;
             OverviewPNL.Visible = true;
             AdjPNL.Visible = false;
-            OverviewPNL.Visible =true;
+            OverviewPNL.Visible = true;
 
             RefreshPayrollList();
 
@@ -35,6 +36,7 @@ namespace MSAMISUserInterface {
                 ApproveBTN.Visible = false;
             }
         }
+
         public void RefreshPayrollList() {
             EmpListGRD.DataSource = Payroll.GetGuardsPayrollMinimal();
             _currentRow = EmpListGRD.Rows[0];
@@ -42,77 +44,16 @@ namespace MSAMISUserInterface {
             EmpListGRD.Columns[1].Width = 320;
             EmpListGRD.Sort(EmpListGRD.Columns[1], ListSortDirection.Ascending);
 
-            foreach (DataGridViewRow row in EmpListGRD.Rows) {
+            foreach (DataGridViewRow row in EmpListGRD.Rows)
                 if (row.Cells[0].Value.ToString().Equals(Gid.ToString())) {
                     row.Selected = true;
                     _currentRow = row;
                     row.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-                    if (row.Index > 4) EmpListGRD.FirstDisplayedScrollingRowIndex = (row.Index - 4);
+                    if (row.Index > 4) EmpListGRD.FirstDisplayedScrollingRowIndex = row.Index - 4;
                     else EmpListGRD.FirstDisplayedScrollingRowIndex = 0;
                     break;
                 }
-            }
         }
-
-
-        #region Popups  
-
-        private static void ShowPopup(ToolStripDropDown cms, Control cntrl) {
-            cms.Show(cntrl , new Point(((cntrl.Size.Width)*2)/3, 0));
-        }
-
-        private static void HidePop(Control cms) {
-            cms.Hide();
-        }
-        private void MondaysLBL_MouseEnter(object sender, EventArgs e) {
-            ShowPopup(MondaySaturday, OMondaysLBL);
-        }
-
-        private void MondaysLBL_MouseLeave(object sender, EventArgs e) {
-            HidePop(MondaySaturday);
-        }
-
-
-        private void OSundays_MouseEnter(object sender, EventArgs e) {
-            ShowPopup(Sundays, OSundays);
-        }
-
-        private void OSundays_MouseLeave(object sender, EventArgs e) {
-            HidePop(Sundays);
-        }
-
-        private void RMondays_MouseEnter(object sender, EventArgs e) {
-            ShowPopup(RMond, RMondays);
-        }
-
-        private void RMondays_MouseLeave(object sender, EventArgs e) {
-            HidePop(RMond);
-        }
-
-        private void RSundays_MouseEnter(object sender, EventArgs e) {
-            ShowPopup(RSunds, RSundays);
-        }
-
-        private void RSundays_MouseLeave(object sender, EventArgs e) {
-            HidePop(RSunds);
-        }
-
-        private void SMondays_MouseEnter(object sender, EventArgs e) {
-            ShowPopup(SMond, SMondays);
-        }
-
-        private void SMondays_MouseLeave(object sender, EventArgs e) {
-            HidePop(SMond);
-        }
-
-        private void SSundays_MouseEnter(object sender, EventArgs e) {
-            ShowPopup(SSunds, SSundays);
-        }
-
-        private void SSundays_MouseLeave(object sender, EventArgs e) {
-            HidePop(SSunds);
-        }
-        #endregion
 
 
         private void ChangePanel(Label newL, Panel newP) {
@@ -126,7 +67,7 @@ namespace MSAMISUserInterface {
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             Opacity += 0.2;
-            if (Opacity >= 1) { FadeTMR.Stop(); }
+            if (Opacity >= 1) FadeTMR.Stop();
         }
 
         private void Payroll_EmployeeView_FormClosing(object sender, FormClosingEventArgs e) {
@@ -154,11 +95,11 @@ namespace MSAMISUserInterface {
         }
 
         private void BonusesLBL_MouseLeave(object sender, EventArgs e) {
-            if(!AdjPNL.Visible) AdjustmentsLBL.ForeColor = Color.Gray;
+            if (!AdjPNL.Visible) AdjustmentsLBL.ForeColor = Color.Gray;
         }
 
         private void AdjLBL_MouseLeave(object sender, EventArgs e) {
-            if(!OverviewPNL.Visible) OverviewLBL.ForeColor = Color.Gray;
+            if (!OverviewPNL.Visible) OverviewLBL.ForeColor = Color.Gray;
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
@@ -170,8 +111,7 @@ namespace MSAMISUserInterface {
         }
 
         private void BonusAddBTN_Click_1(object sender, EventArgs e) {
-            var view = new PayrollAddAdjustments
-            {
+            var view = new PayrollAddAdjustments {
                 Pid = Gid,
                 Location = new Point(Location.X + 350, Location.Y),
                 Pay = _pay,
@@ -179,33 +119,32 @@ namespace MSAMISUserInterface {
             };
             view.ShowDialog();
         }
-        
+
         private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             try {
-                if (EmpListGRD.Rows.Count > 0) { 
+                if (EmpListGRD.Rows.Count > 0) {
                     _currentRow.DefaultCellStyle.Font = new Font("Segoe UI", 10);
                     EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                     _currentRow = EmpListGRD.SelectedRows[0];
                     Gid = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
                 }
             }
-            catch {
-            }
+            catch { }
             LoadDetails();
             LoadComputations();
-            CalcPNL.AutoScrollPosition = new Point(0,0);
-
+            CalcPNL.AutoScrollPosition = new Point(0, 0);
         }
 
         private void LoadDetails() {
             PeriodCMBX.Items.Clear();
-            foreach (DataRow row in Attendance.GetPeriods(Gid).Rows) {
-                PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()), int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
-            }
+            foreach (DataRow row in Attendance.GetPeriods(Gid).Rows)
+                PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
+                    int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
             if (PeriodCMBX.Items.Count > 0) {
                 PeriodCMBX.SelectedIndex = 0;
                 NoPayrollPNL.Visible = false;
-            } else {
+            }
+            else {
                 NoPayrollPNL.BringToFront();
                 NoPayrollPNL.Visible = true;
             }
@@ -213,16 +152,23 @@ namespace MSAMISUserInterface {
         }
 
         private void LoadComputations() {
-            if (PeriodCMBX.Items.Count > 0) { 
-                _pay = new Payroll(Gid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+            if (PeriodCMBX.Items.Count > 0) {
+                _pay = new Payroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
                 _pay.ComputeHours();
                 _pay.ComputeGrossPay();
-                UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal", "nsu_overtime_night_normal", MondaySaturday);
-                UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal", "sun_overtime_night_normal", Sundays);
-                UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special", "nsu_overtime_night_special", RMond);
-                UpdatePopUp("sun_proper_day_special", "sun_overtime_day_special", "sun_proper_night_special", "sun_overtime_night_special", RSunds);
-                UpdatePopUp("nsu_proper_day_regular", "nsu_overtime_day_regular", "nsu_proper_night_regular", "nsu_overtime_night_regular", SMond);
-                UpdatePopUp("sun_proper_day_regular", "sun_overtime_day_regular", "sun_proper_night_regular", "sun_overtime_night_regular", SSunds);
+                UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal",
+                    "nsu_overtime_night_normal", MondaySaturday);
+                UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal",
+                    "sun_overtime_night_normal", Sundays);
+                UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special",
+                    "nsu_overtime_night_special", RMond);
+                UpdatePopUp("sun_proper_day_special", "sun_overtime_day_special", "sun_proper_night_special",
+                    "sun_overtime_night_special", RSunds);
+                UpdatePopUp("nsu_proper_day_regular", "nsu_overtime_day_regular", "nsu_proper_night_regular",
+                    "nsu_overtime_night_regular", SMond);
+                UpdatePopUp("sun_proper_day_regular", "sun_overtime_day_regular", "sun_proper_night_regular",
+                    "sun_overtime_night_regular", SSunds);
                 UpdateLbl("normal_nsu", OMLBL);
                 UpdateLbl("normal_sun", OSLBL);
                 UpdateLbl("regular_nsu", RMLBL);
@@ -308,5 +254,67 @@ namespace MSAMISUserInterface {
         private void WithHoldingLBL_MouseLeave(object sender, EventArgs e) {
             HidePop(TaxPop);
         }
+
+
+        #region Popups  
+
+        private static void ShowPopup(ToolStripDropDown cms, Control cntrl) {
+            cms.Show(cntrl, new Point(cntrl.Size.Width * 2 / 3, 0));
+        }
+
+        private static void HidePop(Control cms) {
+            cms.Hide();
+        }
+
+        private void MondaysLBL_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(MondaySaturday, OMondaysLBL);
+        }
+
+        private void MondaysLBL_MouseLeave(object sender, EventArgs e) {
+            HidePop(MondaySaturday);
+        }
+
+
+        private void OSundays_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(Sundays, OSundays);
+        }
+
+        private void OSundays_MouseLeave(object sender, EventArgs e) {
+            HidePop(Sundays);
+        }
+
+        private void RMondays_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(RMond, RMondays);
+        }
+
+        private void RMondays_MouseLeave(object sender, EventArgs e) {
+            HidePop(RMond);
+        }
+
+        private void RSundays_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(RSunds, RSundays);
+        }
+
+        private void RSundays_MouseLeave(object sender, EventArgs e) {
+            HidePop(RSunds);
+        }
+
+        private void SMondays_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(SMond, SMondays);
+        }
+
+        private void SMondays_MouseLeave(object sender, EventArgs e) {
+            HidePop(SMond);
+        }
+
+        private void SSundays_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(SSunds, SSundays);
+        }
+
+        private void SSundays_MouseLeave(object sender, EventArgs e) {
+            HidePop(SSunds);
+        }
+
+        #endregion
     }
 }

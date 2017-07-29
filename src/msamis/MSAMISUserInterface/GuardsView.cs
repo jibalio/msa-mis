@@ -5,23 +5,78 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class GuardsView : Form {
-        public int Gid { get; set; }
-        public MainForm Reference;
-        public int[] Dependents;
-        
-        private DataTable _dataTable = new DataTable();
-
         private readonly Color _dark = Color.FromArgb(53, 64, 82);
         private readonly Color _light = Color.DarkGray;
 
-        private Panel _panel;
+        private DataTable _dataTable = new DataTable();
         private Label _label;
+
+        private Panel _panel;
+        public int[] Dependents;
+        public MainForm Reference;
 
         public Shadow Shadow;
 
         public GuardsView() {
             InitializeComponent();
             Opacity = 0;
+        }
+
+        public int Gid { get; set; }
+
+        private void ChangePage(Panel newP, Label newB) {
+            _panel.Visible = false;
+            _label.ForeColor = _light;
+
+            newP.Visible = true;
+            newB.ForeColor = _dark;
+
+            _panel = newP;
+            _label = newB;
+        }
+
+        private void FamilyLBL_MouseEnter(object sender, EventArgs e) {
+            FamilyLBL.ForeColor = _dark;
+        }
+
+        private void WorkLBL_MouseEnter(object sender, EventArgs e) {
+            WorkLBL.ForeColor = _dark;
+        }
+
+        private void PersonalLBL_MouseEnter(object sender, EventArgs e) {
+            PersonalLBL.ForeColor = _dark;
+        }
+
+        private void PersonalLBL_MouseLeave(object sender, EventArgs e) {
+            if (PersonalLBL != _label) PersonalLBL.ForeColor = _light;
+        }
+
+        private void FamilyLBL_MouseLeave(object sender, EventArgs e) {
+            if (FamilyLBL != _label) FamilyLBL.ForeColor = _light;
+        }
+
+        private void WorkLBL_MouseLeave(object sender, EventArgs e) {
+            if (WorkLBL != _label) WorkLBL.ForeColor = _light;
+        }
+
+        private void PersonalLBL_Click(object sender, EventArgs e) {
+            ChangePage(PersonalPNL, PersonalLBL);
+        }
+
+        private void FamilyLBL_Click(object sender, EventArgs e) {
+            ChangePage(FamilyPNL, FamilyLBL);
+        }
+
+        private void WorkLBL_MouseClick(object sender, MouseEventArgs e) {
+            ChangePage(WorkPNL, WorkLBL);
+        }
+
+        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
+            CloseBTN.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
+            CloseBTN.ForeColor = _dark;
         }
 
         #region Form Properties and Features
@@ -45,11 +100,11 @@ namespace MSAMISUserInterface {
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             Opacity += 0.2;
-            if (Opacity >= 1) { FadeTMR.Stop();}
+            if (Opacity >= 1) FadeTMR.Stop();
         }
+
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
-            var view = new GuardsEdit
-            {
+            var view = new GuardsEdit {
                 Gid = Gid,
                 Button = "UPDATE",
                 ViewRef = this,
@@ -99,35 +154,40 @@ namespace MSAMISUserInterface {
                 PermAddLBL.Text = BuildStreet(_dataTable, 1);
                 TempAddLBL.Text = BuildStreet(_dataTable, 2);
             }
-            catch {
-            }
+            catch { }
             try {
                 _dataTable = Guard.GetGuardsParents(Gid);
                 MotherLBL.Text = BuildName(_dataTable, 1);
                 FatherLBL.Text = BuildName(_dataTable, 0);
-                try { SpouseLBL.Text = BuildName(_dataTable, 2); } catch { }
+                try {
+                    SpouseLBL.Text = BuildName(_dataTable, 2);
+                }
+                catch { }
             }
-            catch {
-            }
+            catch { }
             try {
                 _dataTable = Guard.GetGuardsDependents(Gid);
                 try {
                     Dependents = new int[_dataTable.Rows.Count];
                     Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
-                    Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(), BuildName(_dataTable, 0));
+                    Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(),
+                        BuildName(_dataTable, 0));
                     Dependents[1] = int.Parse(_dataTable.Rows[1]["DeID"].ToString());
-                    Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(), BuildName(_dataTable, 1));
+                    Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(),
+                        BuildName(_dataTable, 1));
                     Dependents[2] = int.Parse(_dataTable.Rows[2]["DeID"].ToString());
-                    Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(), BuildName(_dataTable, 2));
+                    Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(),
+                        BuildName(_dataTable, 2));
                     Dependents[3] = int.Parse(_dataTable.Rows[3]["DeID"].ToString());
-                    Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(), BuildName(_dataTable, 3));
+                    Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(),
+                        BuildName(_dataTable, 3));
                     Dependents[4] = int.Parse(_dataTable.Rows[4]["DeID"].ToString());
-                    Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(), BuildName(_dataTable, 4));
+                    Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(),
+                        BuildName(_dataTable, 4));
                 }
                 catch { }
             }
-            catch {
-            }
+            catch { }
         }
 
         private static string GetStatus(DataTable dt) {
@@ -183,66 +243,10 @@ namespace MSAMISUserInterface {
         }
 
         private static string BuildStreet(DataTable dt, int row) {
-            return dt.Rows[row]["streetno"] + ", " + dt.Rows[row]["street"] + ", " + dt.Rows[row]["brgy"] + ", " + dt.Rows[row]["city"];
+            return dt.Rows[row]["streetno"] + ", " + dt.Rows[row]["street"] + ", " + dt.Rows[row]["brgy"] + ", " +
+                   dt.Rows[row]["city"];
         }
 
         #endregion
-
-        private void ChangePage(Panel newP, Label newB) {
-            _panel.Visible = false;
-            _label.ForeColor = _light;
-
-            newP.Visible = true;
-            newB.ForeColor = _dark;
-
-            _panel = newP;
-            _label = newB;
-        }
-
-        private void FamilyLBL_MouseEnter(object sender, EventArgs e) {
-            FamilyLBL.ForeColor = _dark;
-        }
-
-        private void WorkLBL_MouseEnter(object sender, EventArgs e) {
-            WorkLBL.ForeColor = _dark;
-        }
-
-        private void PersonalLBL_MouseEnter(object sender, EventArgs e) {
-            PersonalLBL.ForeColor = _dark;
-        }
-
-        private void PersonalLBL_MouseLeave(object sender, EventArgs e) {
-            if(PersonalLBL != _label) PersonalLBL.ForeColor = _light;
-        }
-
-        private void FamilyLBL_MouseLeave(object sender, EventArgs e) {
-            if (FamilyLBL != _label) FamilyLBL.ForeColor = _light;
-        }
-
-        private void WorkLBL_MouseLeave(object sender, EventArgs e) {
-            if (WorkLBL != _label) WorkLBL.ForeColor = _light;
-        }
-
-        private void PersonalLBL_Click(object sender, EventArgs e) {
-            ChangePage(PersonalPNL, PersonalLBL);
-        }
-
-        private void FamilyLBL_Click(object sender, EventArgs e) {
-            ChangePage(FamilyPNL, FamilyLBL);
-        }
-
-        private void WorkLBL_MouseClick(object sender, MouseEventArgs e) {
-            ChangePage(WorkPNL, WorkLBL);
-        }
-
-        private void CloseBTN_MouseEnter(object sender, EventArgs e) {
-            CloseBTN.ForeColor = Color.White;
-        }
-
-        private void CloseBTN_MouseLeave(object sender, EventArgs e) {
-            CloseBTN.ForeColor = _dark;
-        }
     }
-
-
 }

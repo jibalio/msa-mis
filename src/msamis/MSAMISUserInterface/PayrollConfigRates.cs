@@ -1,18 +1,20 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class PayrollConfigRates : Form {
-        public Shadow Refer;
+        private Label _curLabelCon;
+        private Label _currentLabel;
 
         private Panel _currentPanel;
         private Panel _currentSubPanel;
-        private Label _currentLabel;
-        private Label _curLabelCon;
+        public Shadow Refer;
 
         #region Form Load and Intialization
+
         public PayrollConfigRates() {
             InitializeComponent();
             Opacity = 0;
@@ -29,7 +31,7 @@ namespace MSAMISUserInterface {
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             Opacity += 0.2;
-            if (Opacity >= 1) { FadeTMR.Stop(); }
+            if (Opacity >= 1) FadeTMR.Stop();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -44,12 +46,15 @@ namespace MSAMISUserInterface {
         private void CloseBTN_MouseLeave(object sender, EventArgs e) {
             CloseBTN.ForeColor = RatesPNL.BackColor;
         }
+
         private void Payroll_ConfigSSS_FormClosing(object sender, FormClosingEventArgs e) {
             Refer.Close();
         }
+
         #endregion
 
         #region Form Navigation
+
         private void SSSPnl_Enter(object sender, EventArgs e) {
             SelectedColor(SSSPnl, SSSlbl, SSScon);
         }
@@ -93,7 +98,7 @@ namespace MSAMISUserInterface {
 
             DefaultColor(_currentSubPanel, _currentLabel, _curLabelCon);
             SelectedColor(npnl, nlbl, ncon);
-            
+
 
             _currentPanel = newP;
             _currentSubPanel = npnl;
@@ -115,10 +120,10 @@ namespace MSAMISUserInterface {
             ChangePage(WithPagePNL, TaxPnl, TaxLbl, TaxConLbl);
         }
 
-
         #endregion
 
         #region Basic Pay rates
+
         private void LoadBasicPayPage() {
             BasicPayGRD.DataSource = Payroll.GetBasicPayHistory();
             BasicPayGRD.Columns[0].Visible = false;
@@ -135,6 +140,7 @@ namespace MSAMISUserInterface {
                 CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
             else CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay();
         }
+
         private void AdjustBTN_Click(object sender, EventArgs e) {
             AdjustPNL.Visible = true;
             CurrentPNL.Visible = false;
@@ -157,7 +163,8 @@ namespace MSAMISUserInterface {
 
         private void SaveBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
-                Payroll.AddBasicPay(StartDate.Value, float.Parse(AdjustMBX.Text.Substring(2).Replace(" ", String.Empty)));
+                Payroll.AddBasicPay(StartDate.Value,
+                    float.Parse(AdjustMBX.Text.Substring(2).Replace(" ", string.Empty)));
                 LoadBasicPayPage();
                 CancelBTN.PerformClick();
             }
@@ -168,7 +175,7 @@ namespace MSAMISUserInterface {
 
             if (double.Parse(AdjustMBX.Text.Substring(2).Replace(" ", string.Empty)).Equals(0.0)) {
                 InputTLTP.ToolTipTitle = "Adjustment Value";
-                InputTLTP.Show("Please specify a valid value", AdjustMBX);
+                InputTLTP.Show("Please specify a valid value", AdjustMBX, 2000);
                 ret = false;
             }
             return ret;
@@ -181,17 +188,21 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region SSS Rates
+
         private void LoadSssPage() {
             SSSGRD.Rows.Clear();
-            foreach (DataRow row in Payroll.GetSssContribTable().Rows) {
-                SSSGRD.Rows.Add(row[0], row[1], "-", row[2], "", row[3]);
-            }
+            foreach (DataRow row in Payroll.GetSssContribTable().Rows)
+                SSSGRD.Rows.Add(double.Parse(row[0].ToString()).ToString("N2"),
+                    double.Parse(row[1].ToString()).ToString("N2"), "-", double.Parse(row[2].ToString()).ToString("N2"),
+                    "", double.Parse(row[3].ToString()).ToString("N2"));
             SSSGRD.CurrentCell = SSSGRD.Rows[0].Cells[1];
         }
 
         private string _currentval;
+
         private void SSSGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            if (SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[SSSGRD.CurrentCell.ColumnIndex].ReadOnly) SendKeys.Send("{Tab}");
+            if (SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[SSSGRD.CurrentCell.ColumnIndex].ReadOnly)
+                SendKeys.Send("{Tab}");
             _currentval = SSSGRD.CurrentCell.Value.ToString();
         }
 
@@ -200,18 +211,72 @@ namespace MSAMISUserInterface {
             if (!_currentval.Equals(SSSGRD.CurrentCell.Value.ToString())) {
                 double value;
                 if (!double.TryParse(SSSGRD.CurrentCell.Value.ToString(), out value)) {
-                    SSSPopup.Show("Enter a valid number", SSSGRD,
-                        new Point(
-                            SSSGRD.GetCellDisplayRectangle(SSSGRD.CurrentCell.ColumnIndex, SSSGRD.CurrentCell.RowIndex,
-                                true).X + 30,
-                            SSSGRD.GetCellDisplayRectangle(SSSGRD.CurrentCell.ColumnIndex, SSSGRD.CurrentCell.RowIndex,
-                                true).Y + 20));
-                    SSSGRD.CurrentCell.Value = _currentval;
+                    SssShowToolTip("Enter a valid number");
                 }
-                else SSSGRD.CurrentCell.Value = value.ToString("N2");
-                EditingMode(true);
+                else {
+                    SSSGRD.CurrentCell.Value = value.ToString("N2");
+                    if (
+                        SSSGRD.CurrentCell.ColumnIndex == 3 &&
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) <=
+                        double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[1].Value.ToString())) {
+                        SssShowToolTip("Please enter a value higher than the starting range");
+                    }
+                    else if (
+                        SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
+                        SSSGRD.CurrentCell.ColumnIndex == 3 &&
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= double.Parse(SSSGRD
+                            .Rows[SSSGRD.CurrentCell.RowIndex + 1].Cells[1].Value.ToString())) {
+                        SssShowToolTip("Please enter a value lower than the next range");
+                    }
+                    else if (
+                        SSSGRD.CurrentCell.RowIndex != 0 &&
+                        !_currentval.Equals("00.00") &&
+                        SSSGRD.CurrentCell.ColumnIndex == 1 &&
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= double.Parse(SSSGRD
+                            .Rows[SSSGRD.CurrentCell.RowIndex - 1].Cells[3].Value.ToString())) {
+                        SssShowToolTip("Please enter a value higher than the previous range");
+                    }
+                    else if (
+                        SSSGRD.CurrentCell.ColumnIndex == 1 && !SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value
+                            .ToString().Equals("00.00") &&
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) >=
+                        double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value.ToString())) {
+                        SssShowToolTip("Please enter a value lower than the ending range");
+                    }
+                    else {
+                        var check = true;
+                        foreach (DataGridViewRow row in SSSGRD.Rows) {
+                            var start = double.Parse(row.Cells[1].Value.ToString());
+                            var end = double.Parse(row.Cells[3].Value.ToString());
+                            if (double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= start &&
+                                double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= end) check = false;
+                        }
+                        if (!check) {
+                            SssShowToolTip(
+                                "The value entered is already included in a range \nPlease adjust other ranges to continue");
+                        }
+                        else {
+                            SSSGRD.Sort(SSSGRD.Columns[0], ListSortDirection.Ascending);
+                            EditingMode(true);
+                        }
+                    }
+                }
             }
         }
+
+        private void SssShowToolTip(string text) {
+            SSSPopup.Show(text,
+                SSSGRD,
+                new Point(
+                    SSSGRD.GetCellDisplayRectangle(SSSGRD.CurrentCell.ColumnIndex,
+                        SSSGRD.CurrentCell.RowIndex,
+                        true).X + 30,
+                    SSSGRD.GetCellDisplayRectangle(SSSGRD.CurrentCell.ColumnIndex,
+                        SSSGRD.CurrentCell.RowIndex,
+                        true).Y + 20));
+            SSSGRD.CurrentCell.Value = _currentval;
+        }
+
         private void SSSGRD_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
             SssDataVal();
         }
@@ -222,7 +287,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SSSRemoveBTN_Click(object sender, EventArgs e) {
-            SSSGRD.Rows.RemoveAt(SSSGRD.CurrentRow.Index);
+            SSSGRD.Rows.Remove(SSSGRD.SelectedRows[0]);
             EditingMode(true);
         }
 
@@ -237,14 +302,11 @@ namespace MSAMISUserInterface {
             BasicPNL.Enabled = !mode;
             TaxPnl.Enabled = !mode;
             CloseBTN.Visible = !mode;
-            if (mode) SSSEditingPNL.FlowDirection = FlowDirection.LeftToRight;
-            else SSSEditingPNL.FlowDirection = FlowDirection.RightToLeft;
+            SSSEditingPNL.FlowDirection = mode ? FlowDirection.LeftToRight : FlowDirection.RightToLeft;
         }
 
-        private void SSSSaveBTN_Click(object sender, EventArgs e) {
+        private void SSSSaveBTN_Click(object sender, EventArgs e) { }
 
-        }
         #endregion
-
     }
 }

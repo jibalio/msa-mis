@@ -25,14 +25,14 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayrollConfigRates));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RatesPNL = new System.Windows.Forms.Panel();
             this.BasicPNL = new System.Windows.Forms.Panel();
             this.BasicCon = new System.Windows.Forms.Label();
@@ -63,6 +63,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.BasicPayGRD = new System.Windows.Forms.DataGridView();
             this.SSSPagePNL = new System.Windows.Forms.Panel();
+            this.SSSSaveBTN = new System.Windows.Forms.Button();
+            this.SSSReset = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.SSSGRD = new System.Windows.Forms.DataGridView();
             this.RID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,16 +73,14 @@
             this.RangeEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Space = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SSSEditingPNL = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SSSAddRange = new System.Windows.Forms.Button();
+            this.SSSRemoveBTN = new System.Windows.Forms.Button();
             this.WithPagePNL = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.InputTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.SSSPopup = new System.Windows.Forms.ToolTip(this.components);
-            this.SSSRemoveBTN = new System.Windows.Forms.Button();
-            this.SSSAddRange = new System.Windows.Forms.Button();
-            this.SSSReset = new System.Windows.Forms.Button();
-            this.SSSSaveBTN = new System.Windows.Forms.Button();
-            this.SSSEditingPNL = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.RatesPNL.SuspendLayout();
             this.BasicPNL.SuspendLayout();
             this.SSSPnl.SuspendLayout();
@@ -93,9 +93,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.BasicPayGRD)).BeginInit();
             this.SSSPagePNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSSGRD)).BeginInit();
-            this.WithPagePNL.SuspendLayout();
             this.SSSEditingPNL.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.WithPagePNL.SuspendLayout();
             this.SuspendLayout();
             // 
             // RatesPNL
@@ -478,37 +478,37 @@
             this.BasicPayGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BasicPayGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.BasicPayGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle41.NullValue = "-";
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BasicPayGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BasicPayGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.BasicPayGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle42.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BasicPayGRD.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BasicPayGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.BasicPayGRD.EnableHeadersVisualStyles = false;
             this.BasicPayGRD.Location = new System.Drawing.Point(8, 0);
             this.BasicPayGRD.MultiSelect = false;
             this.BasicPayGRD.Name = "BasicPayGRD";
             this.BasicPayGRD.ReadOnly = true;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BasicPayGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BasicPayGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.BasicPayGRD.RowHeadersVisible = false;
             this.BasicPayGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BasicPayGRD.ShowCellToolTips = false;
@@ -527,6 +527,48 @@
             this.SSSPagePNL.Size = new System.Drawing.Size(487, 524);
             this.SSSPagePNL.TabIndex = 283;
             this.SSSPagePNL.Visible = false;
+            // 
+            // SSSSaveBTN
+            // 
+            this.SSSSaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SSSSaveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SSSSaveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SSSSaveBTN.BackgroundImage")));
+            this.SSSSaveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SSSSaveBTN.FlatAppearance.BorderSize = 0;
+            this.SSSSaveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.SSSSaveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SSSSaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SSSSaveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.SSSSaveBTN.ForeColor = System.Drawing.Color.White;
+            this.SSSSaveBTN.Location = new System.Drawing.Point(288, 471);
+            this.SSSSaveBTN.Name = "SSSSaveBTN";
+            this.SSSSaveBTN.Size = new System.Drawing.Size(82, 25);
+            this.SSSSaveBTN.TabIndex = 291;
+            this.SSSSaveBTN.Text = "SAVE";
+            this.SSSSaveBTN.UseVisualStyleBackColor = false;
+            this.SSSSaveBTN.Visible = false;
+            this.SSSSaveBTN.Click += new System.EventHandler(this.SSSSaveBTN_Click);
+            // 
+            // SSSReset
+            // 
+            this.SSSReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SSSReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.SSSReset.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SSSReset.BackgroundImage")));
+            this.SSSReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SSSReset.FlatAppearance.BorderSize = 0;
+            this.SSSReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.SSSReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.SSSReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SSSReset.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.SSSReset.ForeColor = System.Drawing.Color.White;
+            this.SSSReset.Location = new System.Drawing.Point(376, 471);
+            this.SSSReset.Name = "SSSReset";
+            this.SSSReset.Size = new System.Drawing.Size(82, 25);
+            this.SSSReset.TabIndex = 290;
+            this.SSSReset.Text = "CANCEL";
+            this.SSSReset.UseVisualStyleBackColor = false;
+            this.SSSReset.Visible = false;
+            this.SSSReset.Click += new System.EventHandler(this.SSSReset_Click);
             // 
             // label6
             // 
@@ -550,15 +592,15 @@
             this.SSSGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SSSGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.SSSGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle44.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle44.NullValue = "-";
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SSSGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.NullValue = "-";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SSSGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.SSSGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SSSGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RID,
@@ -567,27 +609,27 @@
             this.RangeEnd,
             this.Space,
             this.Rate});
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle47.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SSSGRD.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SSSGRD.DefaultCellStyle = dataGridViewCellStyle7;
             this.SSSGRD.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.SSSGRD.EnableHeadersVisualStyles = false;
             this.SSSGRD.Location = new System.Drawing.Point(87, 36);
             this.SSSGRD.MultiSelect = false;
             this.SSSGRD.Name = "SSSGRD";
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SSSGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SSSGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.SSSGRD.RowHeadersVisible = false;
             this.SSSGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SSSGRD.ShowCellToolTips = false;
@@ -605,8 +647,8 @@
             // 
             // RateStart
             // 
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.RateStart.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.RateStart.DefaultCellStyle = dataGridViewCellStyle5;
             this.RateStart.HeaderText = "FROM";
             this.RateStart.Name = "RateStart";
             this.RateStart.Width = 80;
@@ -620,8 +662,8 @@
             // 
             // RangeEnd
             // 
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.RangeEnd.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.RangeEnd.DefaultCellStyle = dataGridViewCellStyle6;
             this.RangeEnd.HeaderText = "TO";
             this.RangeEnd.Name = "RangeEnd";
             this.RangeEnd.Width = 80;
@@ -638,6 +680,64 @@
             this.Rate.HeaderText = "RATE";
             this.Rate.Name = "Rate";
             this.Rate.Width = 80;
+            // 
+            // SSSEditingPNL
+            // 
+            this.SSSEditingPNL.Controls.Add(this.panel1);
+            this.SSSEditingPNL.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.SSSEditingPNL.Location = new System.Drawing.Point(27, 465);
+            this.SSSEditingPNL.Name = "SSSEditingPNL";
+            this.SSSEditingPNL.Size = new System.Drawing.Size(447, 31);
+            this.SSSEditingPNL.TabIndex = 292;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.SSSAddRange);
+            this.panel1.Controls.Add(this.SSSRemoveBTN);
+            this.panel1.Location = new System.Drawing.Point(254, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(190, 28);
+            this.panel1.TabIndex = 290;
+            // 
+            // SSSAddRange
+            // 
+            this.SSSAddRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SSSAddRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SSSAddRange.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SSSAddRange.BackgroundImage")));
+            this.SSSAddRange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SSSAddRange.FlatAppearance.BorderSize = 0;
+            this.SSSAddRange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.SSSAddRange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SSSAddRange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SSSAddRange.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.SSSAddRange.ForeColor = System.Drawing.Color.White;
+            this.SSSAddRange.Location = new System.Drawing.Point(7, 3);
+            this.SSSAddRange.Name = "SSSAddRange";
+            this.SSSAddRange.Size = new System.Drawing.Size(82, 25);
+            this.SSSAddRange.TabIndex = 288;
+            this.SSSAddRange.Text = "ADD";
+            this.SSSAddRange.UseVisualStyleBackColor = false;
+            this.SSSAddRange.Click += new System.EventHandler(this.SSSAddRange_Click);
+            // 
+            // SSSRemoveBTN
+            // 
+            this.SSSRemoveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SSSRemoveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.SSSRemoveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SSSRemoveBTN.BackgroundImage")));
+            this.SSSRemoveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SSSRemoveBTN.FlatAppearance.BorderSize = 0;
+            this.SSSRemoveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.SSSRemoveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.SSSRemoveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SSSRemoveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.SSSRemoveBTN.ForeColor = System.Drawing.Color.White;
+            this.SSSRemoveBTN.Location = new System.Drawing.Point(95, 3);
+            this.SSSRemoveBTN.Name = "SSSRemoveBTN";
+            this.SSSRemoveBTN.Size = new System.Drawing.Size(82, 25);
+            this.SSSRemoveBTN.TabIndex = 289;
+            this.SSSRemoveBTN.Text = "REMOVE";
+            this.SSSRemoveBTN.UseVisualStyleBackColor = false;
+            this.SSSRemoveBTN.Click += new System.EventHandler(this.SSSRemoveBTN_Click);
             // 
             // WithPagePNL
             // 
@@ -676,106 +776,6 @@
             this.SSSPopup.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.SSSPopup.ToolTipTitle = "Input Error";
             // 
-            // SSSRemoveBTN
-            // 
-            this.SSSRemoveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SSSRemoveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.SSSRemoveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SSSRemoveBTN.BackgroundImage")));
-            this.SSSRemoveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SSSRemoveBTN.FlatAppearance.BorderSize = 0;
-            this.SSSRemoveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.SSSRemoveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.SSSRemoveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SSSRemoveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.SSSRemoveBTN.ForeColor = System.Drawing.Color.White;
-            this.SSSRemoveBTN.Location = new System.Drawing.Point(95, 3);
-            this.SSSRemoveBTN.Name = "SSSRemoveBTN";
-            this.SSSRemoveBTN.Size = new System.Drawing.Size(82, 25);
-            this.SSSRemoveBTN.TabIndex = 289;
-            this.SSSRemoveBTN.Text = "REMOVE";
-            this.SSSRemoveBTN.UseVisualStyleBackColor = false;
-            this.SSSRemoveBTN.Click += new System.EventHandler(this.SSSRemoveBTN_Click);
-            // 
-            // SSSAddRange
-            // 
-            this.SSSAddRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SSSAddRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SSSAddRange.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SSSAddRange.BackgroundImage")));
-            this.SSSAddRange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SSSAddRange.FlatAppearance.BorderSize = 0;
-            this.SSSAddRange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.SSSAddRange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.SSSAddRange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SSSAddRange.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.SSSAddRange.ForeColor = System.Drawing.Color.White;
-            this.SSSAddRange.Location = new System.Drawing.Point(7, 3);
-            this.SSSAddRange.Name = "SSSAddRange";
-            this.SSSAddRange.Size = new System.Drawing.Size(82, 25);
-            this.SSSAddRange.TabIndex = 288;
-            this.SSSAddRange.Text = "ADD";
-            this.SSSAddRange.UseVisualStyleBackColor = false;
-            this.SSSAddRange.Click += new System.EventHandler(this.SSSAddRange_Click);
-            // 
-            // SSSReset
-            // 
-            this.SSSReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SSSReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.SSSReset.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SSSReset.BackgroundImage")));
-            this.SSSReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SSSReset.FlatAppearance.BorderSize = 0;
-            this.SSSReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.SSSReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.SSSReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SSSReset.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.SSSReset.ForeColor = System.Drawing.Color.White;
-            this.SSSReset.Location = new System.Drawing.Point(376, 471);
-            this.SSSReset.Name = "SSSReset";
-            this.SSSReset.Size = new System.Drawing.Size(82, 25);
-            this.SSSReset.TabIndex = 290;
-            this.SSSReset.Text = "RESET";
-            this.SSSReset.UseVisualStyleBackColor = false;
-            this.SSSReset.Visible = false;
-            this.SSSReset.Click += new System.EventHandler(this.SSSReset_Click);
-            // 
-            // SSSSaveBTN
-            // 
-            this.SSSSaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SSSSaveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SSSSaveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SSSSaveBTN.BackgroundImage")));
-            this.SSSSaveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SSSSaveBTN.FlatAppearance.BorderSize = 0;
-            this.SSSSaveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.SSSSaveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.SSSSaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SSSSaveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.SSSSaveBTN.ForeColor = System.Drawing.Color.White;
-            this.SSSSaveBTN.Location = new System.Drawing.Point(288, 471);
-            this.SSSSaveBTN.Name = "SSSSaveBTN";
-            this.SSSSaveBTN.Size = new System.Drawing.Size(82, 25);
-            this.SSSSaveBTN.TabIndex = 291;
-            this.SSSSaveBTN.Text = "SAVE";
-            this.SSSSaveBTN.UseVisualStyleBackColor = false;
-            this.SSSSaveBTN.Visible = false;
-            this.SSSSaveBTN.Click += new System.EventHandler(this.SSSSaveBTN_Click);
-            // 
-            // SSSEditingPNL
-            // 
-            this.SSSEditingPNL.Controls.Add(this.panel1);
-            this.SSSEditingPNL.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.SSSEditingPNL.Location = new System.Drawing.Point(27, 465);
-            this.SSSEditingPNL.Name = "SSSEditingPNL";
-            this.SSSEditingPNL.Size = new System.Drawing.Size(447, 31);
-            this.SSSEditingPNL.TabIndex = 292;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.SSSAddRange);
-            this.panel1.Controls.Add(this.SSSRemoveBTN);
-            this.panel1.Location = new System.Drawing.Point(254, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(190, 28);
-            this.panel1.TabIndex = 290;
-            // 
             // PayrollConfigRates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -808,9 +808,9 @@
             this.SSSPagePNL.ResumeLayout(false);
             this.SSSPagePNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSSGRD)).EndInit();
-            this.WithPagePNL.ResumeLayout(false);
             this.SSSEditingPNL.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.WithPagePNL.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

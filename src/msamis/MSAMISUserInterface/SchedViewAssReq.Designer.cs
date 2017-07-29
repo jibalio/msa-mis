@@ -66,7 +66,7 @@
             this.ClientLBL.Location = new System.Drawing.Point(0, 16);
             this.ClientLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ClientLBL.Name = "ClientLBL";
-            this.ClientLBL.Size = new System.Drawing.Size(549, 40);
+            this.ClientLBL.Size = new System.Drawing.Size(549, 67);
             this.ClientLBL.TabIndex = 120;
             this.ClientLBL.Text = "Laboriki Enterprises";
             this.ClientLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;

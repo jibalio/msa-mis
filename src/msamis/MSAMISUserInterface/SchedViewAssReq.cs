@@ -4,20 +4,20 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class SchedViewAssReq : Form {
-        public int Raid { get; set; }
-        public MainForm Reference;
-        public Shadow Refer;
-
         private int _numGuards;
+        public Shadow Refer;
+        public MainForm Reference;
 
         public SchedViewAssReq() {
             InitializeComponent();
             Opacity = 0;
         }
 
+        public int Raid { get; set; }
+
         private void FadeTMR_Tick(object sender, EventArgs e) {
             Opacity += 0.2;
-            if (Opacity >= 1) { FadeTMR.Stop(); }
+            if (Opacity >= 1) FadeTMR.Stop();
         }
 
         private void Sched_ViewAssReq_Load(object sender, EventArgs e) {
@@ -25,6 +25,7 @@ namespace MSAMISUserInterface {
             Location = new Point(Location.X + 175, Location.Y);
             FadeTMR.Start();
         }
+
         private void RefreshData() {
             var dt = Scheduling.GetAssignmentRequestDetails(Raid);
             ClientLBL.Text = dt.Rows[0]["name"].ToString();
@@ -36,22 +37,32 @@ namespace MSAMISUserInterface {
             if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Pending.ToString())) {
                 AssignBTN.Text = "APPROVE";
                 StatusLBL.Text = "Status: Pending";
-                if (Login.AccountType == 2) {AssignBTN.Visible = false; DeclineBTN.Visible = false; }
-            } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Approved.ToString())) {
+                if (Login.AccountType == 2) {
+                    AssignBTN.Visible = false;
+                    DeclineBTN.Visible = false;
+                }
+            }
+            else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Approved.ToString())) {
                 AssignBTN.Text = "ASSIGN";
                 StatusLBL.Text = "Status: Approved";
                 AssignBTN.Location = new Point(220, 411);
                 if (Login.AccountType == 2) AssignBTN.Visible = false;
                 DeclineBTN.Visible = false;
-            } else {
+            }
+            else {
                 AssignBTN.Visible = false;
                 AvailablePNL.Visible = false;
                 DeclineBTN.Visible = false;
-                if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Active.ToString())) StatusLBL.Text = "Status: Active";
-                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString())) StatusLBL.Text = "Status: Inctive";
-                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) StatusLBL.Text = "Status: Decline";
+                if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Active.ToString()))
+                    StatusLBL.Text = "Status: Active";
+                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString()))
+                    StatusLBL.Text = "Status: Inctive";
+                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString()))
+                    StatusLBL.Text = "Status: Decline";
             }
-            var b = (_numGuards > Scheduling.GetNumberOfUnassignedGuards()) ? NeededLBL.ForeColor = Color.Salmon : NeededLBL.ForeColor = Color.OliveDrab;
+            NeededLBL.ForeColor = _numGuards > Scheduling.GetNumberOfUnassignedGuards()
+                ? Color.Salmon
+                : Color.OliveDrab;
             NeededLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " available guards";
         }
 
@@ -66,18 +77,16 @@ namespace MSAMISUserInterface {
 
         private void AssignBTN_Click(object sender, EventArgs e) {
             if (AssignBTN.Text.Equals("ASSIGN")) {
-                try {
-                    var view = new SchedAssignGuards {
-                        Rid = Raid,
-                        NumberOfGuards = _numGuards,
-                        Refer = this,
-                        ClientName = ClientLBL.Text,
-                        Location = Location
-                    };
-                    view.ShowDialog();
-                }
-                catch (Exception) { }
-            } else {
+                var view = new SchedAssignGuards {
+                    Rid = Raid,
+                    NumberOfGuards = _numGuards,
+                    Refer = this,
+                    ClientName = ClientLBL.Text,
+                    Location = Location
+                };
+                view.ShowDialog();
+            }
+            else {
                 Scheduling.UpdateRequestStatus(Raid, Enumeration.RequestStatus.Approved);
                 AssignBTN.Text = "ASSIGN";
                 AssignBTN.Location = new Point(220, 411);
