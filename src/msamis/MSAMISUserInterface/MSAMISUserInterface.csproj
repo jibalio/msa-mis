@@ -90,6 +90,12 @@
     <Compile Include="GuardsEdit.Designer.cs">
       <DependentUpon>GuardsEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportsPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsPreview.Designer.cs">
+      <DependentUpon>ReportsPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hours.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GuardsEdit.resx">
       <DependentUpon>GuardsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsPreview.resx">
+      <DependentUpon>ReportsPreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

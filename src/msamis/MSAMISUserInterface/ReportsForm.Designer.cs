@@ -25,20 +25,20 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportsForm));
             this.ClientsReportPNL = new System.Windows.Forms.Panel();
+            this.CTotalActiveLBL = new System.Windows.Forms.Label();
+            this.CTotalLBL = new System.Windows.Forms.Label();
+            this.CSummaryDateLBL = new System.Windows.Forms.Label();
             this.ClientsSummaryTBL = new System.Windows.Forms.DataGridView();
             this.ExportClientsSummaryBTN = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
             this.GuardsReportPNL = new System.Windows.Forms.Panel();
+            this.GTotalActiveLBL = new System.Windows.Forms.Label();
+            this.GTotalLBL = new System.Windows.Forms.Label();
             this.GuardsSummaryTBL = new System.Windows.Forms.DataGridView();
             this.GSummaryDateLBL = new System.Windows.Forms.Label();
             this.ExportGuardsSummaryBTN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.GTotalLBL = new System.Windows.Forms.Label();
-            this.GTotalActiveLBL = new System.Windows.Forms.Label();
-            this.CTotalActiveLBL = new System.Windows.Forms.Label();
-            this.CTotalLBL = new System.Windows.Forms.Label();
-            this.CSummaryDateLBL = new System.Windows.Forms.Label();
             this.ClientsReportPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsSummaryTBL)).BeginInit();
             this.GuardsReportPNL.SuspendLayout();
@@ -57,6 +57,42 @@
             this.ClientsReportPNL.Name = "ClientsReportPNL";
             this.ClientsReportPNL.Size = new System.Drawing.Size(690, 640);
             this.ClientsReportPNL.TabIndex = 21;
+            // 
+            // CTotalActiveLBL
+            // 
+            this.CTotalActiveLBL.AutoSize = true;
+            this.CTotalActiveLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.CTotalActiveLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.CTotalActiveLBL.Location = new System.Drawing.Point(427, 90);
+            this.CTotalActiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CTotalActiveLBL.Name = "CTotalActiveLBL";
+            this.CTotalActiveLBL.Size = new System.Drawing.Size(124, 19);
+            this.CTotalActiveLBL.TabIndex = 21;
+            this.CTotalActiveLBL.Text = "Total Active Clients:";
+            // 
+            // CTotalLBL
+            // 
+            this.CTotalLBL.AutoSize = true;
+            this.CTotalLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.CTotalLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.CTotalLBL.Location = new System.Drawing.Point(427, 58);
+            this.CTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CTotalLBL.Name = "CTotalLBL";
+            this.CTotalLBL.Size = new System.Drawing.Size(84, 19);
+            this.CTotalLBL.TabIndex = 20;
+            this.CTotalLBL.Text = "Total Clients:";
+            // 
+            // CSummaryDateLBL
+            // 
+            this.CSummaryDateLBL.AutoSize = true;
+            this.CSummaryDateLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.CSummaryDateLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.CSummaryDateLBL.Location = new System.Drawing.Point(31, 58);
+            this.CSummaryDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CSummaryDateLBL.Name = "CSummaryDateLBL";
+            this.CSummaryDateLBL.Size = new System.Drawing.Size(165, 19);
+            this.CSummaryDateLBL.TabIndex = 19;
+            this.CSummaryDateLBL.Text = "Summary as of 01/01/2017";
             // 
             // ClientsSummaryTBL
             // 
@@ -113,6 +149,30 @@
             this.GuardsReportPNL.Size = new System.Drawing.Size(690, 640);
             this.GuardsReportPNL.TabIndex = 22;
             // 
+            // GTotalActiveLBL
+            // 
+            this.GTotalActiveLBL.AutoSize = true;
+            this.GTotalActiveLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GTotalActiveLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GTotalActiveLBL.Location = new System.Drawing.Point(427, 90);
+            this.GTotalActiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GTotalActiveLBL.Name = "GTotalActiveLBL";
+            this.GTotalActiveLBL.Size = new System.Drawing.Size(127, 19);
+            this.GTotalActiveLBL.TabIndex = 18;
+            this.GTotalActiveLBL.Text = "Total Active Guards:";
+            // 
+            // GTotalLBL
+            // 
+            this.GTotalLBL.AutoSize = true;
+            this.GTotalLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GTotalLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GTotalLBL.Location = new System.Drawing.Point(427, 58);
+            this.GTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GTotalLBL.Name = "GTotalLBL";
+            this.GTotalLBL.Size = new System.Drawing.Size(87, 19);
+            this.GTotalLBL.TabIndex = 17;
+            this.GTotalLBL.Text = "Total Guards:";
+            // 
             // GuardsSummaryTBL
             // 
             this.GuardsSummaryTBL.AllowUserToAddRows = false;
@@ -166,66 +226,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Guards Report";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // GTotalLBL
-            // 
-            this.GTotalLBL.AutoSize = true;
-            this.GTotalLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.GTotalLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GTotalLBL.Location = new System.Drawing.Point(427, 58);
-            this.GTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.GTotalLBL.Name = "GTotalLBL";
-            this.GTotalLBL.Size = new System.Drawing.Size(87, 19);
-            this.GTotalLBL.TabIndex = 17;
-            this.GTotalLBL.Text = "Total Guards:";
-            // 
-            // GTotalActiveLBL
-            // 
-            this.GTotalActiveLBL.AutoSize = true;
-            this.GTotalActiveLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.GTotalActiveLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GTotalActiveLBL.Location = new System.Drawing.Point(427, 90);
-            this.GTotalActiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.GTotalActiveLBL.Name = "GTotalActiveLBL";
-            this.GTotalActiveLBL.Size = new System.Drawing.Size(127, 19);
-            this.GTotalActiveLBL.TabIndex = 18;
-            this.GTotalActiveLBL.Text = "Total Active Guards:";
-            // 
-            // CTotalActiveLBL
-            // 
-            this.CTotalActiveLBL.AutoSize = true;
-            this.CTotalActiveLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.CTotalActiveLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CTotalActiveLBL.Location = new System.Drawing.Point(427, 90);
-            this.CTotalActiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.CTotalActiveLBL.Name = "CTotalActiveLBL";
-            this.CTotalActiveLBL.Size = new System.Drawing.Size(124, 19);
-            this.CTotalActiveLBL.TabIndex = 21;
-            this.CTotalActiveLBL.Text = "Total Active Clients:";
-            // 
-            // CTotalLBL
-            // 
-            this.CTotalLBL.AutoSize = true;
-            this.CTotalLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.CTotalLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CTotalLBL.Location = new System.Drawing.Point(427, 58);
-            this.CTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.CTotalLBL.Name = "CTotalLBL";
-            this.CTotalLBL.Size = new System.Drawing.Size(84, 19);
-            this.CTotalLBL.TabIndex = 20;
-            this.CTotalLBL.Text = "Total Clients:";
-            // 
-            // CSummaryDateLBL
-            // 
-            this.CSummaryDateLBL.AutoSize = true;
-            this.CSummaryDateLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.CSummaryDateLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CSummaryDateLBL.Location = new System.Drawing.Point(31, 58);
-            this.CSummaryDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.CSummaryDateLBL.Name = "CSummaryDateLBL";
-            this.CSummaryDateLBL.Size = new System.Drawing.Size(165, 19);
-            this.CSummaryDateLBL.TabIndex = 19;
-            this.CSummaryDateLBL.Text = "Summary as of 01/01/2017";
             // 
             // ReportsForm
             // 
