@@ -2,27 +2,29 @@
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class MainForm : Form {
+        private const string FilterText = "Search or filter";
+        private readonly Font _defaultFont = new Font("Segoe UI Semilight", 10);
+        private readonly Font _selectedFont = new Font("Segoe UI Semibold", 10);
+        private readonly Shadow _shadow = new Shadow();
+        private string _extraQueryParams = "";
+
+        private Point _newFormLocation;
+        private Button _scurrentBtn;
+        private Panel _scurrentPanel;
 
         //Only Paste Global Variable Here//
 
         public LoginForm Lf;
         public string User;
 
-        private Point _newFormLocation;
-        private readonly Shadow _shadow = new Shadow();
-        private readonly Font _selectedFont = new Font("Segoe UI Semibold", 10);
-        private readonly Font _defaultFont = new Font("Segoe UI Semilight", 10);
-        private Panel _scurrentPanel;
-        private Button _scurrentBtn;
-        private const string FilterText = "Search or filter";
-        private string _extraQueryParams = "";
-
         #region Form Initiation and load
+
         public MainForm() {
             InitializeComponent();
         }
@@ -73,17 +75,23 @@ namespace MSAMISUserInterface {
             if (DateTime.Now.Month == 7) {
                 DevBX.Visible = true;
                 HBDLBL.Visible = true;
-                if (DateTime.Now.Day == 1) DevBX.Text = "Jan Leryc V. Ibalio - MSAMIS Dev";
-                else if (DateTime.Now.Day == 18) DevBX.Text = "Anton John B. Pasigado - MSAMIS Dev";
+                if (DateTime.Now.Day == 1) {
+                    DevBX.Text = "Jan Leryc V. Ibalio - MSAMIS Dev";
+                }
+                else if (DateTime.Now.Day == 18) {
+                    DevBX.Text = "Anton John B. Pasigado - MSAMIS Dev";
+                }
                 else {
                     HBDLBL.Visible = false;
                     DevBX.Visible = false;
                 }
-            } else if (DateTime.Now.Month == 5 && DateTime.Now.Day == 5) {
+            }
+            else if (DateTime.Now.Month == 5 && DateTime.Now.Day == 5) {
                 DevBX.Text = "Rhyle Abram P. Regodon - MSAMIS Dev";
                 HBDLBL.Visible = true;
                 DevBX.Visible = true;
-            } else {
+            }
+            else {
                 HBDLBL.Visible = false;
                 DevBX.Visible = false;
             }
@@ -100,55 +108,76 @@ namespace MSAMISUserInterface {
             //Scheduling Tooltip Page Notification
 
             if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) {
-                ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN, 2000);
-                ClientRequestsTLTP.Show("You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests.", SchedBTN, 2000);
+                ClientRequestsTLTP.Show(
+                    "You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
+                    " pending requests.", SchedBTN, 2000);
+                ClientRequestsTLTP.Show(
+                    "You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
+                    " pending requests.", SchedBTN, 2000);
                 SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending);
-            } else SchedBTN.Text = String.Empty;
+            }
+            else {
+                SchedBTN.Text = string.Empty;
+            }
         }
+
         #endregion
 
         #region Form Features
 
         #region Enable Dragging of Form
+
         private bool _mouseDown;
         private Point _lastLocation;
 
         private void Form_MouseUp(object sender, MouseEventArgs e) {
             _mouseDown = false;
         }
+
         private void Form_MouseDown(object sender, MouseEventArgs e) {
             _mouseDown = true;
             _lastLocation = e.Location;
         }
+
         private void Form_MouseMove(object sender, MouseEventArgs e) {
             if (_mouseDown) {
-                Location = new Point((Location.X - _lastLocation.X) + e.X, (Location.Y - _lastLocation.Y) + e.Y);
+                Location = new Point(Location.X - _lastLocation.X + e.X, Location.Y - _lastLocation.Y + e.Y);
                 Update();
             }
         }
+
         #endregion
 
         #region Slide-Up Dashboard
+
         private void Dashboard_MouseUp(object sender, MouseEventArgs e) {
             _mouseDown = false;
             if (DashboardPage.Location.Y <= -300) {
-                if (DashboardPage.Location.Y <= -568) DashboardPage.Location = new Point(DashboardPage.Location.X, -628);
-                else if (DashboardPage.Location.Y <= -448) DashboardPage.Location = new Point(DashboardPage.Location.X, -508);
-                else if (DashboardPage.Location.Y <= -300) DashboardPage.Location = new Point(DashboardPage.Location.X, -328);
+                if (DashboardPage.Location.Y <= -568)
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, -628);
+                else if (DashboardPage.Location.Y <= -448)
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, -508);
+                else if (DashboardPage.Location.Y <= -300)
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, -328);
                 RecordsBTN.PerformClick();
-            } else {
+            }
+            else {
                 if (DashboardPage.Location.Y > -148) DashboardPage.Location = new Point(DashboardPage.Location.X, -28);
-                else if (DashboardPage.Location.Y > -208) DashboardPage.Location = new Point(DashboardPage.Location.X, -148);
+                else if (DashboardPage.Location.Y > -208)
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, -148);
                 else DashboardPage.Location = new Point(DashboardPage.Location.X, -268);
                 _dashboardToBeMinimized = false;
                 DashboardTMR.Start();
             }
         }
+
         private void Dashboard_MouseMove(object sender, MouseEventArgs e) {
             if (_mouseDown)
-                if (((DashboardPage.Location.Y - _lastLocation.Y) + e.Y) < 32)
-                    DashboardPage.Location = new Point((DashboardPage.Location.X), (DashboardPage.Location.Y - _lastLocation.Y) + e.Y);
+                if (DashboardPage.Location.Y - _lastLocation.Y + e.Y < 32)
+                    DashboardPage.Location = new Point(DashboardPage.Location.X,
+                        DashboardPage.Location.Y - _lastLocation.Y + e.Y);
         }
+
         #endregion
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -177,6 +206,7 @@ namespace MSAMISUserInterface {
             _newFormLocation = new Point(Location.X + 50, Location.Y + 66);
             _shadow.Location = Location;
         }
+
         #endregion
 
         #region Form Global Buttons and Events
@@ -198,6 +228,7 @@ namespace MSAMISUserInterface {
             _splitContainer = SamplePNL;
             SamplePNL.Show();
         }
+
         private void ChangePage(SplitContainer newP, Button button) {
             //Generic Function to switch the panels that are shown and hidden
             _extraQueryParams = "";
@@ -214,22 +245,27 @@ namespace MSAMISUserInterface {
             _scurrentPanel.Hide();
             _scurrentBtn.Font = _defaultFont;
         }
+
         private void RecordsBTN_Click(object sender, EventArgs e) {
             ChangePage(GuardsPage, RecordsBTN);
             GuardsLoadPage();
         }
+
         private void ClientBTN_Click(object sender, EventArgs e) {
             ChangePage(ClientsPage, ClientBTN);
             ClientsLoadPage();
         }
+
         private void SchedBTN_Click(object sender, EventArgs e) {
             ChangePage(SchedulesPage, SchedBTN);
             SchedLoadPage();
         }
+
         private void PayrollBTN_Click(object sender, EventArgs e) {
             ChangePage(PayrollPage, PayrollBTN);
             PayLoadPage();
         }
+
         private void SettingsBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new About {
@@ -244,22 +280,34 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
+
         private void DashboardTMR_Tick(object sender, EventArgs e) {
             //This event gives the dashboard its slide-up effect when changing panels
 
             if (_dashboardToBeMinimized) {
                 var defaultPoint = new Point(100, -865);
-                if (DashboardPage.Location.Y > defaultPoint.Y) DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y - 60);
-                else { DashboardTMR.Stop(); ControlBoxLBL.Visible = true; ControlBoxTimeLBL.Visible = true; ControlBoxPanel.BackColor = _primary; SettingsBTN.Visible = true; }
-            } else if (!_dashboardToBeMinimized) {
+                if (DashboardPage.Location.Y > defaultPoint.Y) {
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y - 60);
+                }
+                else {
+                    DashboardTMR.Stop();
+                    ControlBoxLBL.Visible = true;
+                    ControlBoxTimeLBL.Visible = true;
+                    ControlBoxPanel.BackColor = _primary;
+                    SettingsBTN.Visible = true;
+                }
+            }
+            else if (!_dashboardToBeMinimized) {
                 ControlBoxLBL.Visible = false;
                 ControlBoxTimeLBL.Visible = false;
                 SettingsBTN.Visible = false;
                 var defaultPoint = new Point(70, 32);
                 if (DashboardPage.Location.Y != defaultPoint.Y) {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y + 60);
-                } else {
-                    DashboardTMR.Stop(); ControlBoxPanel.BackColor = _dashboard;
+                }
+                else {
+                    DashboardTMR.Stop();
+                    ControlBoxPanel.BackColor = _dashboard;
                     GuardsPage.Hide();
                     SchedulesPage.Hide();
                     PayrollPage.Hide();
@@ -267,6 +315,7 @@ namespace MSAMISUserInterface {
                 }
             }
         }
+
         #endregion
 
         #region Dashboard Page Notifs
@@ -276,12 +325,16 @@ namespace MSAMISUserInterface {
         private void ArrangeNotif() {
             // This method is used to rearrange the Notifs Widgets when dismissing them
 
-            bool[] pnl = { DMonthlyDutyReportPNL.Visible, DClientSummaryPNL.Visible, DSalaryReportPNL.Visible };
-            Point loc1 = new Point(308, 208);
-            Point loc2 = new Point(308, 310);
+            bool[] pnl = {DMonthlyDutyReportPNL.Visible, DClientSummaryPNL.Visible, DSalaryReportPNL.Visible};
+            var loc1 = new Point(308, 208);
+            var loc2 = new Point(308, 310);
             if (pnl[0]) if (!pnl[1]) DSalaryReportPNL.Location = loc2;
-            if (pnl[1]) if (!pnl[0]) { DClientSummaryPNL.Location = loc1; DSalaryReportPNL.Location = loc2; }
-            if (pnl[2]) if (!pnl[0] && !pnl[1]) { DSalaryReportPNL.Location = loc1; }
+            if (pnl[1])
+                if (!pnl[0]) {
+                    DClientSummaryPNL.Location = loc1;
+                    DSalaryReportPNL.Location = loc2;
+                }
+            if (pnl[2]) if (!pnl[0] && !pnl[1]) DSalaryReportPNL.Location = loc1;
         }
 
         private void DMonthlyDutyReportPNL_MouseEnter(object sender, EventArgs e) {
@@ -337,6 +390,7 @@ namespace MSAMISUserInterface {
             PayrollBTN.PerformClick();
             PSalaryReportBTN.PerformClick();
         }
+
         #endregion
 
 
@@ -380,6 +434,7 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
+
         private void GChangePanel(Panel newP, Button newBtn) {
             _extraQueryParams = "";
 
@@ -393,17 +448,21 @@ namespace MSAMISUserInterface {
             _scurrentPanel = newP;
             _scurrentBtn = newBtn;
         }
+
         private void GArchivePageBTN_Click(object sender, EventArgs e) {
             GChangePanel(GArchivePNL, GArchivePageBTN);
             RefreshArchivedGuards();
         }
+
         private void GViewAllPageBTN_Click(object sender, EventArgs e) {
             GChangePanel(GViewAllPNL, GViewAllPageBTN);
             GViewAllViewByCMBX.SelectedIndex = 0;
         }
+
         private void GSummaryPageBTN_Click(object sender, EventArgs e) {
             GChangePanel(GSummaryPNL, GSummaryPageBTN);
         }
+
         #endregion
 
         #region GMS - View All
@@ -431,7 +490,8 @@ namespace MSAMISUserInterface {
 
                 GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[2].Width = 70;
-            } else {
+            }
+            else {
                 GAllGuardsGRD.Columns[0].Width = 0;
                 GAllGuardsGRD.Columns[1].Width = 240;
                 GAllGuardsGRD.Columns[2].Width = 300;
@@ -444,17 +504,19 @@ namespace MSAMISUserInterface {
 
             GActiveLBL.Text = SQLTools.GetNumberOfGuards("active") + " active guards";
             GInactiveLBL.Text = SQLTools.GetNumberOfGuards("inactive") + " inactive guards";
-
-
         }
 
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             try {
                 if (GAllGuardsGRD.SelectedRows.Count > 1) {
-                    rylui.RylMessageBox.ShowDialog("More than 1 guard is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                } else if (GAllGuardsGRD.SelectedRows.Count == 0) {
-                    rylui.RylMessageBox.ShowDialog("No guard is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                } else {
+                    RylMessageBox.ShowDialog("More than 1 guard is selected.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+                else if (GAllGuardsGRD.SelectedRows.Count == 0) {
+                    RylMessageBox.ShowDialog("No guard is selected.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+                else {
                     var view = new GuardsView {
                         Gid = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString()),
                         Reference = this,
@@ -471,23 +533,15 @@ namespace MSAMISUserInterface {
 
         private void GAllGuardsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (GAllGuardsGRD.SelectedRows.Count == 1) {
-                if (GAllGuardsGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Active")) {
-                    HideBtNs(true, false);
-                } else {
-                    if (Login.AccountType == 2) HideBtNs(true, false);
-                    else HideBtNs(true, true);
-                }
-            } else if (GAllGuardsGRD.SelectedRows.Count > 1) {
+                if (GAllGuardsGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Active")) HideBtNs(true, false);
+                else HideBtNs(true, Login.AccountType != 2);
+            }
+            else if (GAllGuardsGRD.SelectedRows.Count > 1) {
                 var ret = true;
-                foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows) {
+                foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows)
                     if (row.Cells[2].Value.ToString().Equals("Active")) ret = false;
-                }
-                if (ret) {
-                    if (Login.AccountType == 2) HideBtNs(false, false);
-                    else HideBtNs(false, true);
-                } else {
-                    HideBtNs(false, false);
-                }
+                if (ret) HideBtNs(false, Login.AccountType != 2);
+                else HideBtNs(false, false);
             }
         }
 
@@ -499,6 +553,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region GMS - View All - Search
+
         private void GViewAllSearchTXTBX_Enter(object sender, EventArgs e) {
             if (GViewAllSearchTXTBX.Text == FilterText) {
                 GViewAllSearchTXTBX.Text = string.Empty;
@@ -518,39 +573,37 @@ namespace MSAMISUserInterface {
 
         private void GViewAllSearchTXTBX_TextChanged(object sender, EventArgs e) {
             var temp = GViewAllSearchTXTBX.Text;
-            string kazoo;
-            if (GViewAllViewByCMBX.SelectedIndex == 0) {
-                kazoo = "concat(ln,', ',fn,' ',mn)";
-            } else {
-                kazoo = "concat(StreetNo,', ', Brgy,', ',Street, ', ', City)";
-            }
+            var kazoo = GViewAllViewByCMBX.SelectedIndex == 0
+                ? "concat(ln,', ',fn,' ',mn)"
+                : "concat(StreetNo,', ', Brgy,', ',Street, ', ', City)";
 
-            if (GViewAllSearchTXTBX.Text.Contains("\\")) {
-                temp = temp + "?";
-            }
-            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp + "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            if (GViewAllSearchTXTBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
             GuardsRefreshGuardsList();
         }
+
         #endregion
 
         #endregion
 
         #region GMS - Archive 
+
         private void ArchiveButton_Event(object sender, EventArgs e) {
             // Initialize archive connection.
-            var x = rylui.RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             //if (x == DialogResult.Yes) MoveGuardsToArchive(GuardsGID);
         }
-        private void RefreshArchivedGuards() {
 
-        }
+        private void RefreshArchivedGuards() { }
+
         #endregion
 
         #region GMS - Archive Search
+
         private void GArchiveSearchBX_Enter(object sender, EventArgs e) {
-            if (GArchiveSearchBX.Text.Equals("Search or filter")) {
-                GArchiveSearchBX.Text = "";
-            }
+            if (GArchiveSearchBX.Text.Equals("Search or filter")) GArchiveSearchBX.Text = "";
             GArchiveSearchLine.Visible = true;
         }
 
@@ -563,14 +616,14 @@ namespace MSAMISUserInterface {
             RefreshArchivedGuards();
             GArchiveSearchLine.Visible = false;
         }
+
         private void GArchiveSearchBX_TextChanged(object sender, EventArgs e) {
             var temp = GArchiveSearchBX.Text;
             const string kazoo = "name";
 
-            if (GViewAllSearchTXTBX.Text.Contains("\\")) {
-                temp = temp + "?";
-            }
-            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp + "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            if (GViewAllSearchTXTBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
             RefreshArchivedGuards();
         }
 
@@ -581,6 +634,7 @@ namespace MSAMISUserInterface {
         #region Clients Management Page
 
         #region CMS - Page Load and Side Panel
+
         public void ClientsLoadPage() {
             _scurrentBtn = CViewAllClientBTN;
             _scurrentPanel = CViewAllPNL;
@@ -618,6 +672,7 @@ namespace MSAMISUserInterface {
         private void CViewSummaryBTN_Click(object sender, EventArgs e) {
             CChangePanel(CSummaryPNL, CViewSummaryBTN);
         }
+
         #endregion
 
         #region View All
@@ -639,14 +694,18 @@ namespace MSAMISUserInterface {
 
             CClientListTBL.ClearSelection();
         }
+
         private void CClientListTBL_DoubleClick(object sender, EventArgs e) {
             CViewDetailsBTN.PerformClick();
         }
+
         private void CViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
                 if (CClientListTBL.SelectedRows.Count == 0) {
-                    rylui.RylMessageBox.ShowDialog("No client is selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                } else {
+                    RylMessageBox.ShowDialog("No client is selected.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+                else {
                     var view = new ClientsView {
                         Cid = int.Parse(CClientListTBL.SelectedRows[0].Cells[0].Value.ToString()),
                         Reference = this,
@@ -661,36 +720,31 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
 
-
         #endregion
 
         #region CMS - View All Search
+
         private void CViewAllSearchBX_Enter(object sender, EventArgs e) {
-            if (CViewAllSearchBX.Text.Equals("Search or filter")) {
-                CViewAllSearchBX.Text = "";
-            }
+            if (CViewAllSearchBX.Text.Equals("Search or filter")) CViewAllSearchBX.Text = "";
             CViewAllSearchLine.Visible = true;
         }
 
         private void CViewAllSearchBX_Leave(object sender, EventArgs e) {
-            if (CViewAllSearchBX.Text.Equals("")) {
-                CViewAllSearchBX.Text = "Search or filter";
-            }
+            if (CViewAllSearchBX.Text.Equals("")) CViewAllSearchBX.Text = "Search or filter";
             _extraQueryParams = "";
             CViewAllSearchLine.Visible = false;
             ClientsRefreshClientsList();
         }
+
         private void CViewAllSearchBX_TextChanged(object sender, EventArgs e) {
             var temp = CViewAllSearchBX.Text;
             const string kazoo = "name";
 
-            if (CViewAllSearchBX.Text.Contains("\\")) {
-                temp = temp + "?";
-            }
-            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp + "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            if (CViewAllSearchBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
             ClientsRefreshClientsList();
         }
-
 
         #endregion
 
@@ -701,6 +755,7 @@ namespace MSAMISUserInterface {
         #region Schedules Management System
 
         #region SMS - Page Load and Side Panel
+
         public void SchedLoadPage() {
             SchedLoadSidePnl();
 
@@ -711,12 +766,13 @@ namespace MSAMISUserInterface {
         }
 
         public void SchedLoadSidePnl() {
-            if (Login.AccountType == 1) { 
-            var b = (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) ?
-                SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) :
-                SchedBTN.Text = string.Empty;
-            } else SchedBTN.Text = string.Empty;
-            SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) + " pending requests";
+            if (Login.AccountType == 1)
+                SchedBTN.Text = !Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")
+                    ? Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending)
+                    : SchedBTN.Text = string.Empty;
+            else SchedBTN.Text = string.Empty;
+            SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
+                                      " pending requests";
             SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
             SAssignedGuardsLBL.Text = Scheduling.GetNumberOfAssignedGuards() + " assigned guards";
 
@@ -747,8 +803,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewReqBTN_Click(object sender, EventArgs e) {
-            if (Login.AccountType == 1) SChangePanel(SViewReqPNL, SViewReqBTN, false);
-            else SChangePanel(SViewReqPNL, SViewReqBTN, true);
+            SChangePanel(SViewReqPNL, SViewReqBTN, Login.AccountType != 1);
             SchedLoadRequestsPage();
         }
 
@@ -778,7 +833,7 @@ namespace MSAMISUserInterface {
                 var view = new SchedRequestGuard {
                     Reference = this,
                     Refer = _shadow,
-                    Location = _newFormLocation,
+                    Location = _newFormLocation
                 };
 
                 _shadow.Transparent();
@@ -787,12 +842,13 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
+
         private void SViewReqDisBTN_Click(object sender, EventArgs e) {
-            if (IsUnscheduled()) {
+            if (IsUnscheduled())
                 try {
                     var view = new SchedUnassignGuard {
                         Reference = this,
-                        Cid = int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID),
+                        Cid = int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID),
                         Refer = _shadow,
                         Guards = SViewAssGRD.SelectedRows,
                         Location = _newFormLocation
@@ -802,13 +858,16 @@ namespace MSAMISUserInterface {
                     _shadow.ShowDialog();
                 }
                 catch (Exception) { }
-            } else {
-                rylui.RylMessageBox.ShowDialog("You can't unassign a guard with an active assignment \nPlease dismiss the guards before unassigning them", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            else
+                RylMessageBox.ShowDialog(
+                    "You can't unassign a guard with an active assignment \nPlease dismiss the guards before unassigning them",
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         #endregion
 
         #region SMS - View Requests
+
         private int _rid;
         private bool _changeDate;
 
@@ -821,11 +880,13 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewReqFilterCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc"));
+            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
+                "name", "name asc"));
         }
 
         private void SViewReqDTPK_ValueChanged(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc", SViewReqDTPK.Value));
+            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
+                "name", "name asc", SViewReqDTPK.Value));
             _changeDate = true;
         }
 
@@ -844,8 +905,12 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewReqSearchTXTBX_TextChanged(object sender, EventArgs e) {
-            if (_changeDate) LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc", SViewReqDTPK.Value));
-            else LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc"));
+            if (_changeDate)
+                LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
+                    "name", "name asc", SViewReqDTPK.Value));
+            else
+                LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
+                    "name", "name asc"));
         }
 
         private void LoadViewReqTable(DataTable dv) {
@@ -866,6 +931,7 @@ namespace MSAMISUserInterface {
 
             SViewReqGRD.Sort(SViewReqGRD.Columns[2], ListSortDirection.Descending);
         }
+
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewReqSearchTXTBX.Text == FilterText) {
                 SViewReqSearchTXTBX.Text = string.Empty;
@@ -885,7 +951,7 @@ namespace MSAMISUserInterface {
 
         private void SViewReqViewBTN_Click(object sender, EventArgs e) {
             try {
-                if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment")) {
+                if (SViewReqGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Assignment"))
                     try {
                         var view = new SchedViewAssReq {
                             Reference = this,
@@ -898,7 +964,7 @@ namespace MSAMISUserInterface {
                         _shadow.ShowDialog();
                     }
                     catch (Exception) { }
-                } else {
+                else
                     try {
                         var view = new SchedViewDisReq {
                             Reference = this,
@@ -911,7 +977,6 @@ namespace MSAMISUserInterface {
                         _shadow.ShowDialog();
                     }
                     catch (Exception) { }
-                }
             }
             catch { }
         }
@@ -919,6 +984,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region SMS - View Assignment
+
         private void SchedLoadAssignmentPage() {
             SViewAssSearchClientCMBX.Items.Clear();
             SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem("All", "-1"));
@@ -932,17 +998,21 @@ namespace MSAMISUserInterface {
             dv.Sort = "name asc";
             var dt = dv.ToTable();
 
-            for (var i = 0; i < dt.Rows.Count; i++) SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+            for (var i = 0; i < dt.Rows.Count; i++)
+                SViewAssSearchClientCMBX.Items.Add(
+                    new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
         }
+
         private void SViewAssGRD_DoubleClick(object sender, EventArgs e) {
             if (SViewAssViewDetailsBTN.Visible) SViewAssViewDetailsBTN.PerformClick();
         }
 
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
             SViewAssCMBX.SelectedIndex = 0;
-            if (int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID) != -1) {
+            if (int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID) != -1) {
                 if (Login.AccountType == 1) SViewAssUnassignBTN.Visible = true;
-            } else {
+            }
+            else {
                 SViewAssUnassignBTN.Visible = false;
             }
             SchedRefreshAssignments();
@@ -950,11 +1020,17 @@ namespace MSAMISUserInterface {
             if (SViewAssGRD.Rows.Count == 0) {
                 SViewAssignmentErrorPNL.Visible = true;
                 SViewAssignmentErrorPNL.BringToFront();
-            } else SViewAssignmentErrorPNL.Visible = false;
+            }
+            else {
+                SViewAssignmentErrorPNL.Visible = false;
+            }
         }
 
         public void SchedRefreshAssignments() {
-            SViewAssGRD.DataSource = Scheduling.GetAssignmentsByClient(int.Parse(((ComboBoxItem)SViewAssSearchClientCMBX.SelectedItem).ItemID), SViewAssCMBX.SelectedIndex);
+            SViewAssGRD.DataSource =
+                Scheduling.GetAssignmentsByClient(
+                    int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID),
+                    SViewAssCMBX.SelectedIndex);
 
             if (SViewAssGRD.Rows.Count > 0) {
                 SViewAssGRD.Columns[0].Visible = false;
@@ -983,7 +1059,9 @@ namespace MSAMISUserInterface {
             if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Inactive")) {
                 SViewAssViewDetailsBTN.Visible = false;
                 SViewAssUnassignBTN.Visible = false;
-            } else if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Active") && Login.AccountType == 1) {
+            }
+            else if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Active") &&
+                     Login.AccountType == 1) {
                 SViewAssViewDetailsBTN.Visible = true;
                 if (SViewAssSearchClientCMBX.SelectedIndex != 0)
                     SViewAssUnassignBTN.Visible = true;
@@ -1008,9 +1086,10 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewAssViewDetailsBTN_Click(object sender, EventArgs e) {
-            if (SViewAssGRD.SelectedRows.Count > 1) {
-                rylui.RylMessageBox.ShowDialog("More than one assignment is selected", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else {
+            if (SViewAssGRD.SelectedRows.Count > 1)
+                RylMessageBox.ShowDialog("More than one assignment is selected", "Information", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            else
                 try {
                     var view = new SchedViewDutyDetails {
                         Reference = this,
@@ -1024,7 +1103,6 @@ namespace MSAMISUserInterface {
                     _shadow.ShowDialog();
                 }
                 catch (Exception) { }
-            }
         }
 
         private bool IsUnscheduled() {
@@ -1039,8 +1117,8 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region SMS - Archive
-        private void SCHEDRefreshArchive() {
-        }
+
+        private void SCHEDRefreshArchive() { }
 
         private void SArchiveSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SArchiveSearchTXTBX.Text == FilterText) {
@@ -1072,6 +1150,7 @@ namespace MSAMISUserInterface {
             SCHEDRefreshArchive();
             SArchiveSearchTXTBX.Visible = false;
         }
+
         #endregion
 
         #endregion
@@ -1079,6 +1158,7 @@ namespace MSAMISUserInterface {
         #region Payroll Management System
 
         #region PMS - Load/Side Panel
+
         private void PayLoadPage() {
             PayrollHideBtn();
             _scurrentPanel = PPayrollSummaryPage;
@@ -1120,6 +1200,7 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
+
         private void PConfigSSSBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new PayrollConfigRates {
@@ -1132,6 +1213,7 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
+
         private void PcHnagePanel(Panel newP, Button newBtn) {
             _scurrentPanel.Hide();
             newP.Show();
@@ -1161,6 +1243,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region PMS - Employee List 
+
         private void PayLoadEmployeeList() {
             PEmpListSortCMBX.SelectedIndex = 0;
             PEmpListGRD.DataSource = Payroll.GetGuardsPayrollMain();
@@ -1178,12 +1261,15 @@ namespace MSAMISUserInterface {
             PEmpListGRD.Sort(PEmpListGRD.Columns[1], ListSortDirection.Ascending);
             PEmpListViewBTN.Visible = false;
         }
+
         private void PEmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             PEmpListViewBTN.Visible = true;
         }
+
         private void PEmpListGRD_DoubleClick(object sender, EventArgs e) {
             PEmpListViewBTN.PerformClick();
         }
+
         private void PEmpListViewBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new PayrollEmployeeView {
@@ -1214,6 +1300,7 @@ namespace MSAMISUserInterface {
             }
             PEmpListSearchLine.Visible = false;
         }
+
         #endregion
 
         #endregion

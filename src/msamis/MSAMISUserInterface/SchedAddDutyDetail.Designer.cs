@@ -49,7 +49,7 @@
             this.SaBTN = new System.Windows.Forms.Button();
             this.DaysTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.HoursTLTP = new System.Windows.Forms.ToolTip(this.components);
-            this.label2 = new System.Windows.Forms.Label();
+            this.FormLBL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label20
@@ -534,26 +534,26 @@
             this.HoursTLTP.ReshowDelay = 100;
             this.HoursTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
-            // label2
+            // FormLBL
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(168, 68);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(223, 37);
-            this.label2.TabIndex = 141;
-            this.label2.Text = "Add Duty Detail";
+            this.FormLBL.AutoSize = true;
+            this.FormLBL.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.FormLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.FormLBL.Location = new System.Drawing.Point(168, 68);
+            this.FormLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FormLBL.Name = "FormLBL";
+            this.FormLBL.Size = new System.Drawing.Size(223, 37);
+            this.FormLBL.TabIndex = 141;
+            this.FormLBL.Text = "Add Duty Detail";
             // 
-            // Sched_AddDutyDetail
+            // SchedAddDutyDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(568, 598);
             this.ControlBox = false;
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.FormLBL);
             this.Controls.Add(this.SaBTN);
             this.Controls.Add(this.FBTN);
             this.Controls.Add(this.ThBTN);
@@ -576,7 +576,7 @@
             this.Controls.Add(this.HoursLBL);
             this.Controls.Add(this.label20);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Sched_AddDutyDetail";
+            this.Name = "SchedAddDutyDetail";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.Sched_AddDutyDetail_Load);
@@ -610,6 +610,6 @@
         private System.Windows.Forms.Button SaBTN;
         private System.Windows.Forms.ToolTip DaysTLTP;
         private System.Windows.Forms.ToolTip HoursTLTP;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label FormLBL;
     }
 }
