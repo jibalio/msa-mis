@@ -269,7 +269,6 @@ namespace MSAMISUserInterface {
         private void SettingsBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new About {
-                    Reference = this,
                     Username = User,
                     Refer = _shadow,
                     Location = _newFormLocation
