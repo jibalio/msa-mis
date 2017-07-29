@@ -94,7 +94,7 @@ namespace MSAMISUserInterface {
 
         #region Instance Fields
 
-        public List<Hours> hourlist = new List<Hours>();
+        public List<HourProcessor> hourlist = new List<HourProcessor>();
         public int AID;
         public Period period;
         private DataTable attendance_cached;
@@ -160,22 +160,24 @@ namespace MSAMISUserInterface {
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
                 DateTime to = GetDateTime_(f["TimeOut"].ToString());
-                Hours asx = GetHours(ti, to);
-                hourlist.Add(asx);
-                f["normal_day"] = asx.GetNormalDay();
-                f["normal_night"] = asx.GetNormalNight();
-                f["holiday_day"] = asx.GetHolidayDay();
-                f["holiday_night"] = asx.GetHolidayNight();
-                f["total"] = asx.GetTotal();
+                HourProcessor proc = new HourProcessor(ti, to, ti, to);
+                hourlist.Add(proc);
+                f["normal_day"] = proc.GetNormalDay();
+                f["normal_night"] = proc.GetNormalNight();
+                f["holiday_day"] = proc.GetHolidayDay();
+                f["holiday_night"] = proc.GetHolidayNight();
+                f["total"] = proc.GetTotal();
             }
-            attendance_cached = d;
             Hours h = new Hours();
-            foreach (Hours x in hourlist) {
-                h.holiday_day += x.holiday_day;
-                h.holiday_night += x.holiday_night;
-                h.normal_day += x.normal_day;
-                h.normal_night += x.normal_night;
-                h.total += x.total;
+            attendance_cached = d;
+            TimeSpan holiday_day, holiday_night, normal_day, normal_night, total;
+            holiday_day = holiday_night = normal_day = normal_night = total = new TimeSpan();
+            foreach (HourProcessor x in hourlist) {
+                h.holiday_day += x.GetHolidayDayTS();
+                h.holiday_night += x.GetHolidayNightTS();
+                h.normal_day += x.GetNormalDayTS();
+                h.normal_night += x.GetNormalNightTS(); ;
+                h.total += x.GetTotalTS();
             }
             return d;
         }
@@ -203,22 +205,24 @@ namespace MSAMISUserInterface {
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
                 DateTime to = GetDateTime_(f["TimeOut"].ToString());
-                MSAMISUserInterface.Hours asx = GetHours(ti, to);
-                hourlist.Add(asx);
-                f["normal_day"] = asx.GetNormalDay();
-                f["normal_night"] = asx.GetNormalNight();
-                f["holiday_day"] = asx.GetHolidayDay();
-                f["holiday_night"] = asx.GetHolidayNight();
-                f["total"] = asx.GetTotal();
+                HourProcessor proc = new HourProcessor(ti, to, ti, to);
+                hourlist.Add(proc);
+                f["normal_day"] = proc.GetNormalDay();
+                f["normal_night"] = proc.GetNormalNight();
+                f["holiday_day"] = proc.GetHolidayDay();
+                f["holiday_night"] = proc.GetHolidayNight();
+                f["total"] = proc.GetTotal();
             }
-            attendance_cached = d;
             Hours h = new Hours();
-            foreach (Hours x in hourlist) {
-                h.holiday_day += x.holiday_day;
-                h.holiday_night += x.holiday_night;
-                h.normal_day += x.normal_day;
-                h.normal_night += x.normal_night;
-                h.total += x.total;
+            attendance_cached = d;
+            TimeSpan holiday_day, holiday_night, normal_day, normal_night, total;
+            holiday_day = holiday_night = normal_day = normal_night = total = new TimeSpan();
+            foreach (HourProcessor x in hourlist) {
+                h.holiday_day += x.GetHolidayDayTS();
+                h.holiday_night += x.GetHolidayNightTS();
+                h.normal_day += x.GetNormalDayTS();
+                h.normal_night += x.GetNormalNightTS(); ;
+                h.total += x.GetTotalTS();
             }
             return h;
         }
