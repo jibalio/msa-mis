@@ -244,6 +244,76 @@ namespace MSAMISUserInterface {
             return returnValue;
         }
 
-        
+        public string GetNormalDay() {
+            TimeSpan e =
+                hp["nsu_proper_day_normal"] +
+                hp["nsu_overtime_day_normal"];
+            return e.ToString(@"hh\:mm");
+        }
+        public string GetNormalNight() {
+            TimeSpan e =
+                hp["nsu_proper_night_normal"] +
+                hp["sun_proper_day_normal"];
+            return e.ToString(@"hh\:mm");
+        }
+        public string GetHolidayDay() {
+            TimeSpan e =
+                hp["nsu_proper_day_special"] +
+                hp["sun_proper_day_special"] +
+                hp["nsu_proper_day_regular"] +
+                hp["sun_proper_day_regular"]
+                ;
+            return e.ToString(@"hh\:mm");
+        }
+        public string GetHolidayNight() {
+            TimeSpan e =
+                    hp["nsu_proper_night_special"] +
+                    hp["sun_proper_night_special"] +
+                    hp["nsu_proper_night_regular"] +
+                    hp["sun_proper_night_regular"]
+                ;
+            return e.ToString(@"hh\:mm");
+        }
+
+
+        public TimeSpan GetNormalDayTS() {
+            TimeSpan e =
+                hp["nsu_proper_day_normal"] +
+                hp["nsu_overtime_day_normal"];
+            return e;
+        }
+        public TimeSpan GetNormalNightTS() {
+            TimeSpan e =
+                hp["nsu_proper_night_normal"] +
+                hp["sun_proper_day_normal"];
+            return e;
+        }
+        public TimeSpan GetHolidayDayTS() {
+            TimeSpan e =
+                    hp["nsu_proper_day_special"] +
+                    hp["sun_proper_day_special"] +
+                    hp["nsu_proper_day_regular"] +
+                    hp["sun_proper_day_regular"]
+                ;
+            return e;
+        }
+        public TimeSpan GetHolidayNightTS() {
+            TimeSpan e =
+                    hp["nsu_proper_night_special"] +
+                    hp["sun_proper_night_special"] +
+                    hp["nsu_proper_night_regular"] +
+                    hp["sun_proper_night_regular"]
+                ;
+            return e;
+        }
+        public string GetTotal() {
+            TimeSpan e =  GetNormalDayTS() + GetNormalNightTS() + GetHolidayDayTS() + GetHolidayNightTS();
+            return e.ToString(@"hh\:mm");
+        }
+        public TimeSpan GetTotalTS() {
+            TimeSpan e = GetNormalDayTS() + GetNormalNightTS() + GetHolidayDayTS() + GetHolidayNightTS();
+            return e;
+        }
+
     }
 }
