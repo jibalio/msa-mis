@@ -15,7 +15,7 @@ namespace MSAMISUserInterface
         public String EmptyText = "";
         public static String ExtraQueryParams = "";
         public string summaryDate = "";
-
+        public DateTime now = DateTime.Now;
 
         #region Guards Report
 
@@ -35,6 +35,15 @@ namespace MSAMISUserInterface
             ews.Columns[5].columnwidth = 14;
             ews.Columns[6].columnwidth = 13;
             ews.Columns[7].columnwidth = 16;
+        }
+
+        private static String getGuardsQuery(char id)
+        {
+            if (id == 't')
+                return "SELECT COUNT(GStatus) FROM msadb.guards";
+            else if (id == 'a')
+                return "SELECT COUNT(GStatus) FROM msadb.guards WHERE GStatus = 1";
+            return "";
         }
 
         #endregion
@@ -59,6 +68,15 @@ namespace MSAMISUserInterface
             ews.Columns[6].columnwidth = 17;
         }
 
+        private static String getClientsQuery(char id)
+        {
+            if (id == 't')
+                return "SELECT COUNT(CStatus) FROM msadb.client";
+            else if (id == 'a')
+                return "SELECT COUNT(CStatus) FROM msadb.client WHERE CStatus = 1";
+            return "";
+        }
+
         #endregion
 
         #region Export
@@ -66,7 +84,7 @@ namespace MSAMISUserInterface
         public void ShowExportDialog(char formOrigin)
         {
             SaveFileDialog savefile = new SaveFileDialog();
-            savefile.FileName = "Book1";
+            savefile.FileName = formatFileName(formOrigin);
             savefile.Filter = "Excel Workbook (.xlsx)|*.xlsx|Excel 97-2003 Template (.xls)|*.xls";
 
             if (savefile.ShowDialog() == DialogResult.OK)
@@ -124,6 +142,31 @@ namespace MSAMISUserInterface
         }
 
         #endregion
+
+        public static int GetTotalGuards(char origin, char id)
+        {
+            if (origin == 'g')
+            {
+                DataTable dt = SQLTools.ExecuteQuery(getGuardsQuery(id));
+                return int.Parse(dt.Rows[0][0].ToString());
+            }
+            else if (origin == 'c')
+            {
+                DataTable dt = SQLTools.ExecuteQuery(getClientsQuery(id));
+                return int.Parse(dt.Rows[0][0].ToString());
+            }
+            return 0;
+        }
+
+        private String formatFileName(char origin)
+        {
+            if (origin == 'g')
+                return "GuardsSummaryReport_" + now.ToString("MMM-dd-yyyy");
+            else if (origin == 'c')
+                return "ClientSummaryReport_" + now.ToString("MMM-dd-yyyy");
+            return "";
+        }
+
 
     }
 }

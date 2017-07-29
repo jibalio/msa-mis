@@ -1,22 +1,14 @@
 ﻿using System.Data.SqlClient;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Data.OleDb;
 
 namespace MSAMISUserInterface
 {
     public partial class ReportsForm : Form
     {
         public SqlConnection conn;
-         
+        public DateTime now = DateTime.Now;
         public ReportsForm()
         {
             InitializeComponent();
@@ -104,9 +96,12 @@ namespace MSAMISUserInterface
 
         private void ReportsForm_Load (object sender, EventArgs e)
         {
-            DateTime now = DateTime.Now;
-            now.ToString("MM/dd/yyyy");
-
+            GSummaryDateLBL.Text = "Guards Summary as of " + now.ToString("MM/dd/yyyy");
+            CSummaryDateLBL.Text = "Clients Summary as of " + now.ToString("MM/dd/yyyy");
+            GTotalLBL.Text = "Total Guards: " + Reports.GetTotalGuards('g', 't');
+            GTotalActiveLBL.Text = "Total Active Guards: " + Reports.GetTotalGuards('g', 'a');
+            CTotalLBL.Text = "Total Clients: " + Reports.GetTotalGuards('c', 't');
+            CTotalActiveLBL.Text = "Total Active Clients: " + Reports.GetTotalGuards('c', 'a');
         }
 
         #endregion
