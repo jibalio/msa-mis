@@ -634,13 +634,18 @@ namespace MSAMISUserInterface {
         public void GuardsLoadReport() {
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));//Assuming Test is your Folder
             FileInfo[] files = d.GetFiles("GuardsSummaryReport*.xlsx"); //Getting Text files]
-            GSummaryFileList.Rows.Clear();
-            foreach (var file in files) GSummaryFileList.Rows.Add(file.Name.Split('_')[1].Split('.')[0], file.FullName);
-            GSummaryErrorPNL.Visible = GSummaryFileList.Rows.Count == 0;
-            GSummaryFileList.ClearSelection();
+
+            GSummaryFilesLST.Items.Clear();
+            foreach (var file in files) {
+                string[] row = { file.Name.Split('_')[1].Split('.')[0], file.FullName };
+                var listViewItem = new ListViewItem(row) { ImageIndex = 0 , };
+                GSummaryFilesLST.Items.Add(listViewItem);
+            }
+            
+            GSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
             GSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
-            GTotalLBL.Text = "Total Guards: " + Reports.GetTotalGuards('g', 't');
-            GTotalActiveLBL.Text = "Total Active Guards: " + Reports.GetTotalGuards('g', 'a');
+            GTotalLBL.Text = Reports.GetTotalGuards('g', 't') + " guards";
+            GTotalActiveLBL.Text = Reports.GetTotalGuards('g', 'a') + " guards";
         }
         private void GSummaryViewCurrent_Click(object sender, EventArgs e) {
             try {
@@ -657,18 +662,21 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
         private void GFileList_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            try {
-                System.Diagnostics.Process.Start(GSummaryFileList.SelectedRows[0].Cells[1].Value.ToString());
-            }
-        catch {
-            RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
-                "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
 }
         private void GSummaryExportBTN_Click(object sender, EventArgs e) {
             var r = new Reports();
             r.ShowExportDialog('g');
             GuardsLoadReport();
+        }
+        private void GSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
+            try {
+                System.Diagnostics.Process.Start(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+            }
+            catch {
+                RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                    "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GuardsLoadReport();
+            }
         }
         #endregion
 
@@ -797,16 +805,20 @@ namespace MSAMISUserInterface {
         #region CMS - Summary
 
         public void ClientsLoadSummary() {
-            CSummaryDateLBL.Text = GSummaryTimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            CSummaryDateLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
 
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));//Assuming Test is your Folder
             FileInfo[] files = d.GetFiles("ClientSummaryReport*.xlsx"); //Getting Text files]
-            CSummaryFileList.Rows.Clear();
-            foreach (var file in files) CSummaryFileList.Rows.Add(file.Name.Split('_')[1].Split('.')[0], file.FullName);
-            CSummaryErrorPNL.Visible = CSummaryFileList.Rows.Count == 0;
-            CSummaryFileList.ClearSelection();
-            CTotalLBL.Text = "Total Clients: " + Reports.GetTotalGuards('c', 't');
-            CTotalActiveLBL.Text = "Total Active Clients: " + Reports.GetTotalGuards('c', 'a');
+
+            CSummaryFileLST.Items.Clear();
+            foreach (var file in files) {
+                string[] row = { file.Name.Split('_')[1].Split('.')[0], file.FullName };
+                var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
+                CSummaryFileLST.Items.Add(listViewItem);
+            }
+
+            CTotalLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
+            CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
         }
         private void CSummaryExport_Click(object sender, EventArgs e) {
             var r = new Reports();
@@ -827,13 +839,14 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
-        private void CSummaryFileList_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+        private void CSummaryFileLST_DoubleClick(object sender, EventArgs e) {
             try {
-                System.Diagnostics.Process.Start(CSummaryFileList.SelectedRows[0].Cells[1].Value.ToString());
+                System.Diagnostics.Process.Start(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
             }
             catch {
                 RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
                     "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClientsLoadSummary();
             }
         }
         #endregion
@@ -1388,6 +1401,8 @@ namespace MSAMISUserInterface {
             }
             PEmpListSearchLine.Visible = false;
         }
+
+
 
 
 
