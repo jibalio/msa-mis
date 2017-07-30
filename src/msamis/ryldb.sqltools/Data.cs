@@ -10,7 +10,7 @@ namespace MSAMISUserInterface {
         
         
         public static void InitData() {
-            Payroll.BasicPay = 340.00;
+            
             initRates();
            
         }
