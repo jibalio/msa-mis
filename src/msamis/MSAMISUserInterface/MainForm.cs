@@ -637,7 +637,7 @@ namespace MSAMISUserInterface {
 
             GSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
-                string[] row = { file.Name.Split('_')[1].Split('.')[0], file.FullName };
+                string[] row = { file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName };
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0 , };
                 GSummaryFilesLST.Items.Add(listViewItem);
             }
@@ -661,12 +661,19 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
-        private void GFileList_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-}
         private void GSummaryExportBTN_Click(object sender, EventArgs e) {
-            var r = new Reports();
-            r.ShowExportDialog('g');
-            GuardsLoadReport();
+            try {
+                var view = new Exporting{
+                    Refer = _shadow,
+                    Main = this,
+                    Mode = 'g',
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();  
+            }
+            catch (Exception) { }
         }
         private void GSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
             try {
@@ -677,10 +684,6 @@ namespace MSAMISUserInterface {
                     "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 GuardsLoadReport();
             }
-        }
-        private void GSummaryDeleteBTN_Click(object sender, EventArgs e) {
-            File.Delete(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
-            GuardsLoadReport();
         }
         #endregion
 
@@ -826,9 +829,18 @@ namespace MSAMISUserInterface {
             CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
         }
         private void CSummaryExport_Click(object sender, EventArgs e) {
-            var r = new Reports();
-            r.ShowExportDialog('c');
-            ClientsLoadSummary();
+            try {
+                var view = new Exporting {
+                    Refer = _shadow,
+                    Main = this,
+                    Mode = 'c',
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
+            }
+            catch (Exception) { }
         }
         private void CSummaryPreview_Click(object sender, EventArgs e) {
             try {
@@ -853,10 +865,6 @@ namespace MSAMISUserInterface {
                     "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ClientsLoadSummary();
             }
-        }
-        private void CSummaryDeleteBTN_Click(object sender, EventArgs e) {
-            File.Delete(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
-            ClientsLoadSummary();
         }
         #endregion
 
