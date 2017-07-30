@@ -7,7 +7,7 @@ delete from request;
 delete from dutydetails;
 delete from sduty_assignment;
 delete from incidentreport;
-DELETE FROM `msadb`.`period`
+DELETE FROM `msadb`.`period`; 
 alter table period auto_increment=1;
 
 
