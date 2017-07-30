@@ -678,6 +678,10 @@ namespace MSAMISUserInterface {
                 GuardsLoadReport();
             }
         }
+        private void GSummaryDeleteBTN_Click(object sender, EventArgs e) {
+            File.Delete(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+            GuardsLoadReport();
+        }
         #endregion
 
         #endregion
@@ -817,6 +821,7 @@ namespace MSAMISUserInterface {
                 CSummaryFileLST.Items.Add(listViewItem);
             }
 
+            CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
             CTotalLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
             CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
         }
@@ -848,6 +853,10 @@ namespace MSAMISUserInterface {
                     "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ClientsLoadSummary();
             }
+        }
+        private void CSummaryDeleteBTN_Click(object sender, EventArgs e) {
+            File.Delete(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
+            ClientsLoadSummary();
         }
         #endregion
 
@@ -1412,10 +1421,12 @@ namespace MSAMISUserInterface {
 
 
 
-        #endregion
+
+
+
 
         #endregion
 
-
+        #endregion
     }
 }
