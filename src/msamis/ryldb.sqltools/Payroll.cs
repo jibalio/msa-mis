@@ -18,7 +18,7 @@ namespace MSAMISUserInterface {
         public static Dictionary<string, double> rates = new Dictionary<string, double> {
         };
         public HourProcessor totalhours = new HourProcessor();
-        public static double BasicPay = 340.00;
+        public double BasicPay = 340.00 / 8.00;
         public Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public static Hours total_old;
        
@@ -96,6 +96,7 @@ namespace MSAMISUserInterface {
             ComputeGrossPay(true);
         }
 
+        public HourProcessor totalhrs = new HourProcessor();
         public void ComputeHours() {
             DataTable HourIterationDataTable = SQLTools.ExecuteQuery(
                 String.Format(@"
@@ -327,13 +328,15 @@ namespace MSAMISUserInterface {
                     py.Add(new Payroll(this.GID, mm, 1, this.period.year));
                     py.Add(new Payroll(this.GID, mm, 2, this.period.year));
                 }
-                HourCostPair hce = new HourCostPair();
+                HourProcessor hce = new HourProcessor();
+                 double qwe = 0;
                 foreach (Payroll pypy in py) {
                     pypy.ComputeHours();
-                    pypy.ComputeGrossPay(false);
-                    hce += pypy.TotalSummary["total"];
                 }
-                return hce.cost / 12.00;
+                 foreach (Payroll pypy in py) {
+                    qwe += pypy.totalhours.GetTotalTS().TotalHours * BasicPay;
+                }
+                return qwe / 12.00;
         }
     }
 
