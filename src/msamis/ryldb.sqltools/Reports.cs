@@ -4,8 +4,6 @@ using System.Data;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
-
-
 namespace MSAMISUserInterface
 {
     public class Reports
