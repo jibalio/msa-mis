@@ -81,18 +81,5 @@ namespace MSAMISUserInterface {
             }
 
         }
-
-        private void button1_Click(object sender, EventArgs e) {
-            if (Mode == 1) {
-                var r = new Reports();
-                r.ShowExportDialog('g');
-                Main.GuardsLoadReport();
-            }
-            else {
-                var r = new Reports();
-                r.ShowExportDialog('c');
-                Main.ClientsLoadSummary();
-            }
-        }
     }
 }
