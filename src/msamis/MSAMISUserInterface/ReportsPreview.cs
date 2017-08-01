@@ -85,12 +85,12 @@ namespace MSAMISUserInterface {
         private void button1_Click(object sender, EventArgs e) {
             if (Mode == 1) {
                 var r = new Reports();
-                r.ShowExportDialog('g');
+                r.ExporttoExcel('g');
                 Main.GuardsLoadReport();
             }
             else {
                 var r = new Reports();
-                r.ShowExportDialog('c');
+                r.ExporttoExcel('c');
                 Main.ClientsLoadSummary();
             }
         }
