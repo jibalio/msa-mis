@@ -835,7 +835,6 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
                 CSummaryFileLST.Items.Add(listViewItem);
             }
-
             CSummarySaveToBTN.Visible = false;
             CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
             CTotalLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
@@ -1457,12 +1456,27 @@ namespace MSAMISUserInterface {
 
 
 
+
+
+
         #endregion
 
         #endregion
 
+        private void CSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
+            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
+        }
 
+        private void CSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
+            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+        }
 
+        private void GSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
+            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
+        }
 
+        private void GSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
+            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+        }
     }
 }
