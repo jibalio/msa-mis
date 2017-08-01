@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace MSAMISUserInterface
 {
@@ -79,20 +80,6 @@ namespace MSAMISUserInterface
 
         #region Export
 
-        public void ShowExportDialog(char formOrigin)
-        {
-            SaveFileDialog savefile = new SaveFileDialog();
-            savefile.FileName = formatFileName(formOrigin);
-            savefile.Filter = "Excel Workbook (.xlsx)|*.xlsx|Excel 97-2003 Template (.xls)|*.xls";
-
-            if (savefile.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = System.IO.Path.GetDirectoryName(savefile.FileName);
-                string fileName = System.IO.Path.GetFileName(savefile.FileName);
-                ExporttoExcel(filePath, fileName, formOrigin);
-            }
-        }
-
         public DataTable GetList(char formOrigin)
         {
             if (formOrigin == 'g')
@@ -103,8 +90,17 @@ namespace MSAMISUserInterface
                 return null;
         }
 
-        public void ExporttoExcel(String FilePath, String FileName, char formOrigin)
+        public void ExporttoExcel(char formOrigin)
         {
+            String fileName = formatFileName(formOrigin) + ".xls";
+            String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
+            bool exists = System.IO.Directory.Exists(filePath);
+            if (!exists)
+            {
+                DirectoryInfo dir = Directory.CreateDirectory(filePath);
+                dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+            }
+
             DataTable dtMainSQLData = GetList(formOrigin);
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
             Excel.Application ExcelApp = new Excel.Application();
@@ -134,7 +130,7 @@ namespace MSAMISUserInterface
             else if (formOrigin == 'c')
                 FormatClientsWorkSheet(ExcelWorkSheet);
 
-            ExcelApp.ActiveWorkbook.SaveAs(FilePath + "\\" + FileName);
+            ExcelApp.ActiveWorkbook.SaveAs(filePath + "\\" + fileName + ".xls");
             ExcelApp.ActiveWorkbook.Saved = true;
             ExcelApp.Quit();
         }

@@ -28,7 +28,7 @@ namespace MSAMISUserInterface {
 
         private void Exporting_Shown(object sender, System.EventArgs e) {
             var r = new Reports();
-            r.ShowExportDialog(Mode);
+            r.ExporttoExcel(Mode);
 
             if (Mode == 'g') Main.GuardsLoadReport();
             else Main.ClientsLoadSummary();
