@@ -23,10 +23,14 @@ namespace MSAMISUserInterface {
 
         private void FadeTMR_Tick(object sender, System.EventArgs e) {
             Opacity += 0.2;
-            if (Opacity >= 1) FadeTMR.Stop();
+            if (Opacity >= 1) { FadeTMR.Stop(); Export(); }
         }
 
         private void Exporting_Shown(object sender, System.EventArgs e) {
+            
+        }
+
+        private void Export() {
             var r = new Reports();
             r.ExporttoExcel(Mode);
 

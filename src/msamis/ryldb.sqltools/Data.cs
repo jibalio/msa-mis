@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace MSAMISUserInterface {
     public class Data {
@@ -12,7 +9,7 @@ namespace MSAMISUserInterface {
         public static void InitData() {
             
             initRates();
-           
+            InitReportsFolder();
         }
 
         private static void initHourCosts() {
@@ -48,6 +45,16 @@ namespace MSAMISUserInterface {
             Payroll.rates.Add("sun_overtime_night_normal", 1.859);
             Payroll.rates.Add("sun_overtime_night_special", 2.145);
             Payroll.rates.Add("sun_overtime_night_regular", 3.718);
+
+        }
+
+        public static void InitReportsFolder() {
+            String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
+            bool exists = Directory.Exists(filePath);
+            if (!exists) {
+                DirectoryInfo dir = Directory.CreateDirectory(filePath);
+                dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+            }
 
         }
     }

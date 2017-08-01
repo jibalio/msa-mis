@@ -415,7 +415,9 @@ namespace MSAMISUserInterface {
                     break;
                 default:
                     GAddGuardBTN.Visible = true;
-                    GArchivePageBTN.Visible = true;
+
+                    /// I CHANGE NI SA FUTURE TO "true"
+                    GArchivePageBTN.Visible = false;
                     break;
             }
         }
@@ -632,7 +634,7 @@ namespace MSAMISUserInterface {
         #region GMS - Summary
 
         public void GuardsLoadReport() {
-            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));//Assuming Test is your Folder
+            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
             FileInfo[] files = d.GetFiles("GuardsSummaryReport*.xlsx"); //Getting Text files]
 
             GSummaryFilesLST.Items.Clear();
@@ -696,6 +698,13 @@ namespace MSAMISUserInterface {
 
         private void GSummaryFilesLST_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
             GSummarySaveToBTN.Visible = true;
+        }
+        private void GSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
+            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
+        }
+
+        private void GSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
+            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
         }
         #endregion
 
@@ -826,7 +835,7 @@ namespace MSAMISUserInterface {
         public void ClientsLoadSummary() {
             CSummaryDateLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
 
-            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));//Assuming Test is your Folder
+            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
             FileInfo[] files = d.GetFiles("ClientSummaryReport*.xlsx"); //Getting Text files]
 
             CSummaryFileLST.Items.Clear();
@@ -888,6 +897,13 @@ namespace MSAMISUserInterface {
 
         private void CSummaryFileLST_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
             CSummarySaveToBTN.Visible = true;
+        }
+        private void CSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
+            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
+        }
+
+        private void CSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
+            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
         }
         #endregion
 
@@ -1463,20 +1479,8 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        private void CSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
-            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
-        }
 
-        private void CSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
-            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-        }
 
-        private void GSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
-            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
-        }
 
-        private void GSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
-            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-        }
     }
 }
