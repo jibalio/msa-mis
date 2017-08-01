@@ -88,9 +88,8 @@ namespace MSAMISUserInterface {
             bonuses = ComputeBonuses(checkthirteen);
             deductions = ComputeDeductions();
             NetPay = ComputeNet();
-            TaxableIncome = ComputeTaxableIncome();
-            Excess = GrossPay - TaxableIncome;
-            ComputeWithTax(TaxableIncome, Excess);
+            NetPay = NetPay;
+            
         }
         public void ComputeGrossPay() {
             ComputeGrossPay(true);
@@ -189,17 +188,14 @@ namespace MSAMISUserInterface {
         }
 
         public double NetPay;
-        
         public double sss;
         public double pagibig;
         public double philhealth;
         public double withtax;
         public double cashadv;
         public double cashbond;
-
         public double deductions;
         public double bonuses;
-
         public double GrossPay;
         public double TaxableIncome;
         public double Excess;
@@ -228,7 +224,10 @@ namespace MSAMISUserInterface {
             this.pagibig = ComputeHDMF();
             this.philhealth = ComputePHIC();
             this.cashadv = ComputeCashAdvance();
-            double e =  sss + pagibig + philhealth + cashadv;
+            this.TaxableIncome = ComputeTaxableIncome();
+            this.Excess = GrossPay - TaxableIncome;
+            this.withtax = ComputeWithTax(TaxableIncome, Excess);
+            double e =  sss + pagibig + philhealth + cashadv + withtax;
             return e;
         }
 
