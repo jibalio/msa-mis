@@ -92,14 +92,8 @@ namespace MSAMISUserInterface
 
         public void ExporttoExcel(char formOrigin)
         {
-            String fileName = formatFileName(formOrigin) + ".xls";
+            String fileName = formatFileName(formOrigin) + ".xlsx";
             String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
-            bool exists = System.IO.Directory.Exists(filePath);
-            if (!exists)
-            {
-                DirectoryInfo dir = Directory.CreateDirectory(filePath);
-                dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-            }
 
             DataTable dtMainSQLData = GetList(formOrigin);
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
@@ -130,7 +124,7 @@ namespace MSAMISUserInterface
             else if (formOrigin == 'c')
                 FormatClientsWorkSheet(ExcelWorkSheet);
 
-            ExcelApp.ActiveWorkbook.SaveAs(filePath + "\\" + fileName + ".xls");
+            ExcelApp.ActiveWorkbook.SaveAs(filePath + "\\" + fileName);
             ExcelApp.ActiveWorkbook.Saved = true;
             ExcelApp.Quit();
         }
