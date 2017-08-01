@@ -245,6 +245,13 @@ namespace MSAMISUserInterface {
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             LoadComputations();
+            if (PeriodCMBX.SelectedIndex == 0) {
+                BonusAddBTN.Visible = true;
+                ApproveBTN.Location = new Point(227, 388);
+            } else {
+                BonusAddBTN.Visible = false;
+                ApproveBTN.Location = new Point(186, 388);
+            }
         }
 
         private void WithHoldingLBL_MouseEnter(object sender, EventArgs e) {
@@ -316,5 +323,13 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private void SSSLBL_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(SSSPop, SSSLBL);
+        }
+
+        private void SSSLBL_MouseLeave(object sender, EventArgs e) {
+            HidePop(SSSPop);
+        }
     }
 }

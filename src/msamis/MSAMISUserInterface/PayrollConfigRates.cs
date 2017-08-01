@@ -212,38 +212,43 @@ namespace MSAMISUserInterface {
                 double value;
                 if (!double.TryParse(SSSGRD.CurrentCell.Value.ToString(), out value)) {
                     SssShowToolTip("Enter a valid number");
-                }
-                else {
+                } else {
                     SSSGRD.CurrentCell.Value = value.ToString("N2");
                     if (
                         SSSGRD.CurrentCell.ColumnIndex == 3 &&
                         double.Parse(SSSGRD.CurrentCell.Value.ToString()) <=
                         double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[1].Value.ToString())) {
                         SssShowToolTip("Please enter a value higher than the starting range");
-                    }
-                    else if (
-                        SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
-                        SSSGRD.CurrentCell.ColumnIndex == 3 &&
-                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= double.Parse(SSSGRD
-                            .Rows[SSSGRD.CurrentCell.RowIndex + 1].Cells[1].Value.ToString())) {
+                    } else if (
+                          SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
+                          SSSGRD.CurrentCell.ColumnIndex == 3 &&
+                          double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= double.Parse(SSSGRD
+                              .Rows[SSSGRD.CurrentCell.RowIndex + 1].Cells[1].Value.ToString())) {
                         SssShowToolTip("Please enter a value lower than the next range");
-                    }
-                    else if (
-                        SSSGRD.CurrentCell.RowIndex != 0 &&
-                        !_currentval.Equals("00.00") &&
-                        SSSGRD.CurrentCell.ColumnIndex == 1 &&
-                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= double.Parse(SSSGRD
-                            .Rows[SSSGRD.CurrentCell.RowIndex - 1].Cells[3].Value.ToString())) {
+                    } else if (
+                          SSSGRD.CurrentCell.RowIndex != 0 &&
+                          !_currentval.Equals("00.00") &&
+                          SSSGRD.CurrentCell.ColumnIndex == 1 &&
+                          double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= double.Parse(SSSGRD
+                              .Rows[SSSGRD.CurrentCell.RowIndex - 1].Cells[3].Value.ToString())) {
                         SssShowToolTip("Please enter a value higher than the previous range");
-                    }
-                    else if (
-                        SSSGRD.CurrentCell.ColumnIndex == 1 && !SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value
-                            .ToString().Equals("00.00") &&
-                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) >=
-                        double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value.ToString())) {
+                    } else if (
+                          SSSGRD.CurrentCell.ColumnIndex == 1 && !SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value
+                              .ToString().Equals("00.00") &&
+                          double.Parse(SSSGRD.CurrentCell.Value.ToString()) >=
+                          double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value.ToString())) {
                         SssShowToolTip("Please enter a value lower than the ending range");
-                    }
-                    else {
+                    } else if (
+                        SSSGRD.CurrentCell.ColumnIndex == 5 && SSSGRD.CurrentCell.RowIndex != 0 &&
+                            double.Parse(SSSGRD.CurrentCell.Value.ToString()) <=
+                            double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex - 1].Cells[5].Value.ToString())) {
+                        SssShowToolTip("Please enter a value higher than the previous amount");
+                    } else if (
+                    SSSGRD.CurrentCell.ColumnIndex == 5 && SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) >=
+                        double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex + 1].Cells[5].Value.ToString())) {
+                        SssShowToolTip("Please enter a value lower than the next amount");
+                    } else {
                         var check = true;
                         foreach (DataGridViewRow row in SSSGRD.Rows) {
                             var start = double.Parse(row.Cells[1].Value.ToString());
@@ -254,8 +259,7 @@ namespace MSAMISUserInterface {
                         if (!check) {
                             SssShowToolTip(
                                 "The value entered is already included in a range \nPlease adjust other ranges to continue");
-                        }
-                        else {
+                        } else {
                             SSSGRD.Sort(SSSGRD.Columns[0], ListSortDirection.Ascending);
                             EditingMode(true);
                         }
