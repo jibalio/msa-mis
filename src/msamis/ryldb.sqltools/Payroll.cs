@@ -290,9 +290,9 @@ namespace MSAMISUserInterface {
             wt.TaxbaseD = w.TaxbaseD;
             wt.excessfactor = w.excessfactor;
             wt.total = w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
-            wt.ExcessTax = ((double) w.excessfactor / 100);
+            wt.ExcessTax = Excess * ((double) w.excessfactor / 100);
 
-            return w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
+            return w.TaxbaseD + (Excess * ((double) w.excessfactor / 100));
         }
 
         public WithTax GetWithholdingTax() {
