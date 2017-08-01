@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using rylui;
 
 namespace MSAMISUserInterface
 {
@@ -123,6 +124,14 @@ namespace MSAMISUserInterface
                 FormatGuardsWorkSheet(ExcelWorkSheet);
             else if (formOrigin == 'c')
                 FormatClientsWorkSheet(ExcelWorkSheet);
+
+            if (!File.Exists(filePath + "\\" + fileName))
+            {
+                rylui.RylMessageBox.ShowDialog(fileName + " already exists.\nDo you want to replace it?", "" , MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                //kulang ni ug shit stuff
+            }
+
 
             ExcelApp.ActiveWorkbook.SaveAs(filePath + "\\" + fileName);
             ExcelApp.ActiveWorkbook.Saved = true;
