@@ -109,35 +109,38 @@ namespace MSAMISUserInterface
                 {
                     if (i == 1)
                     {
-                        ExcelApp.Cells[i, j] = dcCollection[j - 1].ToString();
+                        ExcelApp.Cells[i + 1, j] = dcCollection[j - 1].ToString();
                     }
                     else
                     {
-                        ExcelApp.Cells[i, j] = dtMainSQLData.Rows[i - 2][j - 1].ToString();
+                        ExcelApp.Cells[i + 1, j] = dtMainSQLData.Rows[i - 2][j - 1].ToString();
                     }
                 }
                 ExcelWorkSheet.Rows[i].rowheight = 19;
             }
-            ExcelWorkSheet.Rows[1].rowheight = 23;
-            ExcelWorkSheet.Cells[1, 1].EntireRow.Font.Size = 12;
-            ExcelWorkSheet.Cells[1, 1].EntireRow.Font.Bold = true;
+            ExcelWorkSheet.Rows[2].rowheight = 23;
+            ExcelWorkSheet.Cells[2, 1].EntireRow.Font.Size = 12;
+            ExcelWorkSheet.Cells[2, 1].EntireRow.Font.Bold = true;
             ExcelWorkSheet.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
             if (formOrigin == 'g')
                 FormatGuardsWorkSheet(ExcelWorkSheet);
             else if (formOrigin == 'c')
                 FormatClientsWorkSheet(ExcelWorkSheet);
 
-            if (!File.Exists(filePath + "\\" + fileName))
+            if (File.Exists(filePath + "\\" + fileName))
             {
-                rylui.RylMessageBox.ShowDialog(fileName + " already exists.\nDo you want to replace it?", "" , MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                //kulang ni ug shit stuff
+                DialogResult x = rylui.RylMessageBox.ShowDialog(fileName + " already exists.\nDo you want to replace it?", "" , MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (x == DialogResult.Yes)
+                {
+                    File.Delete(filePath + "\\" + fileName);
+                    ExcelApp.ActiveWorkbook.SaveAs(filePath + "\\" + fileName);
+                    ExcelApp.ActiveWorkbook.Saved = true;
+                    ExcelApp.Quit();
+                }
+                else
+                    ExcelApp.Quit();
             }
-
-
-            ExcelApp.ActiveWorkbook.SaveAs(filePath + "\\" + fileName);
-            ExcelApp.ActiveWorkbook.Saved = true;
-            ExcelApp.Quit();
+            
         }
 
         #endregion
