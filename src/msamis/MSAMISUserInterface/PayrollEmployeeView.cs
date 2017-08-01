@@ -162,13 +162,13 @@ namespace MSAMISUserInterface {
                 UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal",
                     "sun_overtime_night_normal", Sundays);
                 UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special",
-                    "nsu_overtime_night_special", RMond);
+                    "nsu_overtime_night_special", SMond);
                 UpdatePopUp("sun_proper_day_special", "sun_overtime_day_special", "sun_proper_night_special",
-                    "sun_overtime_night_special", RSunds);
+                    "sun_overtime_night_special", SSunds);
                 UpdatePopUp("nsu_proper_day_regular", "nsu_overtime_day_regular", "nsu_proper_night_regular",
-                    "nsu_overtime_night_regular", SMond);
+                    "nsu_overtime_night_regular", RMond);
                 UpdatePopUp("sun_proper_day_regular", "sun_overtime_day_regular", "sun_proper_night_regular",
-                    "sun_overtime_night_regular", SSunds);
+                    "sun_overtime_night_regular", RSunds);
                 UpdateLbl("normal_nsu", OMLBL);
                 UpdateLbl("normal_sun", OSLBL);
                 UpdateLbl("regular_nsu", RMLBL);
