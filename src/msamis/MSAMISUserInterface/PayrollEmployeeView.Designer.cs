@@ -279,6 +279,7 @@
             // CalcPNL
             // 
             this.CalcPNL.AutoScroll = true;
+            this.CalcPNL.Controls.Add(this.OSundays);
             this.CalcPNL.Controls.Add(this.DWithLBL);
             this.CalcPNL.Controls.Add(this.WithHoldingLBL);
             this.CalcPNL.Controls.Add(this.BAllowanceLBL);
@@ -307,7 +308,6 @@
             this.CalcPNL.Controls.Add(this.RMondays);
             this.CalcPNL.Controls.Add(this.RMLBL);
             this.CalcPNL.Controls.Add(this.OSLBL);
-            this.CalcPNL.Controls.Add(this.OSundays);
             this.CalcPNL.Controls.Add(this.label6);
             this.CalcPNL.Controls.Add(this.DSSSLBL);
             this.CalcPNL.Controls.Add(this.label27);
