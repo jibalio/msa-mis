@@ -641,7 +641,8 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0 , };
                 GSummaryFilesLST.Items.Add(listViewItem);
             }
-            
+
+            GSummarySaveToBTN.Visible = false;
             GSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
             GSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
             GTotalLBL.Text = Reports.GetTotalGuards('g', 't') + " guards";
@@ -684,6 +685,17 @@ namespace MSAMISUserInterface {
                     "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 GuardsLoadReport();
             }
+        }
+        private void GSummarySaveToBTN_Click(object sender, EventArgs e) {
+            var savefile = new SaveFileDialog {
+                FileName = "GuardsSummaryReport_" + GSummaryFilesLST.SelectedItems[0].SubItems[0].Text,
+                Filter = "Excel Workbook (.xlsx)|*.xlsx|Excel 97-2003 Template (.xls)|*.xls"
+            };
+            if (savefile.ShowDialog() == DialogResult.OK) File.Copy(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+        }
+
+        private void GSummaryFilesLST_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+            GSummarySaveToBTN.Visible = true;
         }
         #endregion
 
@@ -819,11 +831,11 @@ namespace MSAMISUserInterface {
 
             CSummaryFileLST.Items.Clear();
             foreach (var file in files) {
-                string[] row = { file.Name.Split('_')[1].Split('.')[0], file.FullName };
+                string[] row = { file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName };
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
                 CSummaryFileLST.Items.Add(listViewItem);
             }
-
+            CSummarySaveToBTN.Visible = false;
             CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
             CTotalLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
             CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
@@ -865,6 +877,17 @@ namespace MSAMISUserInterface {
                     "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ClientsLoadSummary();
             }
+        }
+        private void CSummarySaveToBTN_Click(object sender, EventArgs e) {
+            var savefile = new SaveFileDialog {
+                FileName = "ClientSummaryReport_" + CSummaryFileLST.SelectedItems[0].SubItems[0].Text,
+                Filter = "Excel Workbook (.xlsx)|*.xlsx|Excel 97-2003 Template (.xls)|*.xls"
+            };
+            if (savefile.ShowDialog() == DialogResult.OK) File.Copy(CSummaryFileLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+        }
+
+        private void CSummaryFileLST_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+            CSummarySaveToBTN.Visible = true;
         }
         #endregion
 
@@ -1433,8 +1456,27 @@ namespace MSAMISUserInterface {
 
 
 
+
+
+
         #endregion
 
         #endregion
+
+        private void CSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
+            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
+        }
+
+        private void CSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
+            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+        }
+
+        private void GSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
+            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
+        }
+
+        private void GSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
+            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+        }
     }
 }

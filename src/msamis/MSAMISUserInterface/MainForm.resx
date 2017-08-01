@@ -117,25 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="GSummaryExportBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAACpSURBVGhD7dAxEoMwDERRLpWe
-        M3D/uxBT4InWAjzG2eoXr7BGcvGXz7rt+D9Cm/SEPnbwLGtX3S3oR+iTtUxD6yHGhK7NoNADjAlddaDL
-        eIfQJmloXcIchDYhtAmhTQhtQmgTQpsQ2oTQJoQ2IbQJoU0IbUJokyY0seerbcOj0EW8cxn6oMsYE7o2
-        g0IPMCZ0bQY/9BB9spa3oU/6EXJZu+pxAXMQ2mLbv6SkQVtsf8z2AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="GSummaryViewCurrent.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAACpSURBVGhD7dAxEoMwDERRLpWe
-        M3D/uxBT4InWAjzG2eoXr7BGcvGXz7rt+D9Cm/SEPnbwLGtX3S3oR+iTtUxD6yHGhK7NoNADjAlddaDL
-        eIfQJmloXcIchDYhtAmhTQhtQmgTQpsQ2oTQJoQ2IbQJoU0IbUJokyY0seerbcOj0EW8cxn6oMsYE7o2
-        g0IPMCZ0bQY/9BB9spa3oU/6EXJZu+pxAXMQ2mLbv6SkQVtsf8z2AAAAAElFTkSuQmCC
-</value>
-  </data>
   <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>414, 17</value>
   </metadata>
@@ -144,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADG
-        EwAAAk1TRnQBSQFMAwEBAAEQAQABEAEAAWQBAAFkAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
+        EwAAAk1TRnQBSQFMAwEBAAEgAQABIAEAAWQBAAFkAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
         AZABAQIAAWQDAAEBAQABCAUAAUABnBgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
         AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
         AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
@@ -229,6 +210,25 @@
         Av8IAAEPAf8B8CcAAv8IAAEfAf8B8CcAAv8IAAF/Af8B8CcAAv8IAAL/AfAnAAL/CAAC/wHwJwAC/wcA
         AQMC/wHwJwAC/wcAAQcC/wHwJwAC/wcAAQ8C/wHwJwAC/wcAAR8C/wHwJwAC/wcAAT8C/wHwJwAC/wcA
         AX8C/wHwJwAM/wHwJwAM/wHwJwAM/wHwJwAL
+</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="GSummaryExportBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAACpSURBVGhD7dAxEoMwDERRLpWe
+        M3D/uxBT4InWAjzG2eoXr7BGcvGXz7rt+D9Cm/SEPnbwLGtX3S3oR+iTtUxD6yHGhK7NoNADjAlddaDL
+        eIfQJmloXcIchDYhtAmhTQhtQmgTQpsQ2oTQJoQ2IbQJoU0IbUJokyY0seerbcOj0EW8cxn6oMsYE7o2
+        g0IPMCZ0bQY/9BB9spa3oU/6EXJZu+pxAXMQ2mLbv6SkQVtsf8z2AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="GSummaryViewCurrent.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAACpSURBVGhD7dAxEoMwDERRLpWe
+        M3D/uxBT4InWAjzG2eoXr7BGcvGXz7rt+D9Cm/SEPnbwLGtX3S3oR+iTtUxD6yHGhK7NoNADjAlddaDL
+        eIfQJmloXcIchDYhtAmhTQhtQmgTQpsQ2oTQJoQ2IbQJoU0IbUJokyY0seerbcOj0EW8cxn6oMsYE7o2
+        g0IPMCZ0bQY/9BB9spa3oU/6EXJZu+pxAXMQ2mLbv6SkQVtsf8z2AAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="DashboardTMR.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -39,10 +39,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.LLBL = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ErrorLBL = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PassPic)).BeginInit();
             this.InfoPNL.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,7 @@
             this.UsernameBX.Name = "UsernameBX";
             this.UsernameBX.Size = new System.Drawing.Size(213, 22);
             this.UsernameBX.TabIndex = 1;
+            this.UsernameBX.Text = "root";
             this.UsernameBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.UsernameBX.Enter += new System.EventHandler(this.UsernameBX_Enter);
             this.UsernameBX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UsernameBX_KeyDown);
@@ -83,7 +84,7 @@
             this.PasswordBX.PasswordChar = '•';
             this.PasswordBX.Size = new System.Drawing.Size(210, 22);
             this.PasswordBX.TabIndex = 2;
-            this.PasswordBX.Text = "pass";
+            this.PasswordBX.Text = "root";
             this.PasswordBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PasswordBX.Enter += new System.EventHandler(this.PasswordBX_Enter);
             this.PasswordBX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordBX_KeyDown);
@@ -222,6 +223,18 @@
             this.LLBL.Text = "MSAMIS";
             this.LLBL.Click += new System.EventHandler(this.LLBL_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 160F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(120, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(428, 283);
+            this.label6.TabIndex = 239;
+            this.label6.Text = "\'97";
+            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
@@ -257,18 +270,6 @@
             this.ErrorLBL.TabIndex = 241;
             this.ErrorLBL.Text = "Credentials not found!";
             this.ErrorLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 160F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(120, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(428, 283);
-            this.label6.TabIndex = 239;
-            this.label6.Text = "\'97";
             // 
             // LoginForm
             // 
