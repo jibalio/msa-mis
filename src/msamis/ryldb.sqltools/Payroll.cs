@@ -77,19 +77,19 @@ namespace MSAMISUserInterface {
         }
         #endregion
         #region  Computationes
-        int hml = 0;
+
+ 
         public void ComputeGrossPay(bool checkthirteen) {
             int gid = GID;
-            hml++;
             foreach (string key in hc.Keys.ToList()) {
                 this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             }
             ComputeTotalSummary();
-            bonuses = ComputeBonuses(checkthirteen);
-            deductions = ComputeDeductions();
-            NetPay = ComputeNet();
-            NetPay = NetPay;
             
+            bonuses = ComputeBonuses(checkthirteen);
+            GrossPay = TotalSummary["total"].total + bonuses;
+            deductions = ComputeDeductions();
+            NetPay = GrossPay - deductions;
         }
         public void ComputeGrossPay() {
             ComputeGrossPay(true);
@@ -184,7 +184,6 @@ namespace MSAMISUserInterface {
                     hc["sun_overtime_night_special"];
             TotalSummary["total"] =
                 TotalSummary["special"] + TotalSummary["regular"] + TotalSummary["normal"];
-            GrossPay = NetPay = TotalSummary["total"].cost;
         }
 
         public double NetPay;
@@ -202,9 +201,9 @@ namespace MSAMISUserInterface {
 
 
         public double ComputeNet() {
-            double e = NetPay;
-            e +=(ComputeDeductions());
-            e += ComputeBonuses(false);
+            double e = GrossPay;
+            e -= deductions;
+            e += bonuses;
             return e;
         }
 
@@ -220,9 +219,16 @@ namespace MSAMISUserInterface {
 
         #region In Genera Calculations
         public double ComputeDeductions() {
-            this.sss = ComputeSSS();
-            this.pagibig = ComputeHDMF();
-            this.philhealth = ComputePHIC();
+            if (period.period==2) {
+                this.pagibig = ComputeHDMF();
+                this.philhealth = ComputePHIC();
+                this.sss = ComputeSSS();
+            } else {
+                this.pagibig = 0;
+                this.philhealth = 0;
+                this.sss = 0;
+            }
+            
             this.cashadv = ComputeCashAdvance();
             this.TaxableIncome = ComputeTaxableIncome();
             this.Excess = GrossPay - TaxableIncome;
