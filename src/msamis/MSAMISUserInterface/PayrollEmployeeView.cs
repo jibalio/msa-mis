@@ -186,10 +186,10 @@ namespace MSAMISUserInterface {
                 BColaLBL.Text = CurrencyFormat(_pay.cola);
                 BTotalLBL.Text = CurrencyFormat(_pay.ComputeBonuses());
 
-                DCashAdvanceLBL.Text = CurrencyFormatNegative(_pay.cashadv);
-                DPagIbigLBL.Text = CurrencyFormatNegative(_pay.pagibig);
-                DPhilHealthLBL.Text = CurrencyFormatNegative(_pay.philhealth);
-                DSSSLBL.Text = CurrencyFormatNegative(_pay.sss);
+                DCashAdvanceLBL.Text = CurrencyFormatNegative(_pay.CashAdv);
+                DPagIbigLBL.Text = CurrencyFormatNegative(_pay.PagIbig);
+                DPhilHealthLBL.Text = CurrencyFormatNegative(_pay.PhilHealth);
+                DSSSLBL.Text = CurrencyFormatNegative(_pay.Sss);
                 DTotalLBL.Text = CurrencyFormatNegative(_pay.ComputeDeductions());
 
                 NetPayLBL.Text = CurrencyFormat(_pay.NetPay);

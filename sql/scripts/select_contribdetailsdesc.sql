@@ -1,0 +1,1 @@
+SELECT * FROM msadb.contribdetails order by date_effective desc;

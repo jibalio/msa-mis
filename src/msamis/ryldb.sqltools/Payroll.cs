@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,14 +15,26 @@ namespace MSAMISUserInterface {
     public class Payroll {
 
         #region Fields Definition
+        public double bonuses;
+
+        public double NetPay;
         public int GID;
-        public static Dictionary<string, double> rates = new Dictionary<string, double> {
-        };
+        public double GrossPay;
+
+        // Deductions
+        public double deductions;
+        // PayrollData Containers
         public HourProcessor totalhours = new HourProcessor();
-        public double BasicPay = 340.00 / 8.00;
+        public static Dictionary<string, double> rates = new Dictionary<string, double>();
         public Attendance.Period period = Attendance.GetCurrentPayPeriod();
+        public double BasicPay = 340.00 / 8;
+        public double cashbond;
+        public double TaxableIncome;
+        public double Excess;
         public static Hours total_old;
-       
+        public double Sss, PagIbig, PhilHealth, Withtax, CashAdv;
+        public WithTax wt = new WithTax();
+
         public Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
             {"normal_nsu", new HourCostPair () },
@@ -94,8 +107,6 @@ namespace MSAMISUserInterface {
         public void ComputeGrossPay() {
             ComputeGrossPay(true);
         }
-
-        public HourProcessor totalhrs = new HourProcessor();
         public void ComputeHours() {
             DataTable HourIterationDataTable = SQLTools.ExecuteQuery(
                 String.Format(@"
@@ -185,21 +196,6 @@ namespace MSAMISUserInterface {
             TotalSummary["total"] =
                 TotalSummary["special"] + TotalSummary["regular"] + TotalSummary["normal"];
         }
-
-        public double NetPay;
-        public double sss;
-        public double pagibig;
-        public double philhealth;
-        public double withtax;
-        public double cashadv;
-        public double cashbond;
-        public double deductions;
-        public double bonuses;
-        public double GrossPay;
-        public double TaxableIncome;
-        public double Excess;
-
-
         public double ComputeNet() {
             double e = GrossPay;
             e -= deductions;
@@ -214,26 +210,26 @@ namespace MSAMISUserInterface {
                 Allowances and other benefits if any
                 Copy of the BIR Tax table 
              */
-            return GrossPay - sss - pagibig - philhealth;
+            return GrossPay - Sss - PagIbig - PhilHealth;
         }
 
         #region In Genera Calculations
         public double ComputeDeductions() {
             if (period.period==2) {
-                this.pagibig = ComputeHDMF();
-                this.philhealth = ComputePHIC();
-                this.sss = ComputeSSS();
+                this.PagIbig = ComputeHDMF();
+                this.PhilHealth = ComputePHIC();
+                this.Sss = ComputeSSS();
             } else {
-                this.pagibig = 0;
-                this.philhealth = 0;
-                this.sss = 0;
+                this.PagIbig = 0;
+                this.PhilHealth = 0;
+                this.Sss = 0;
             }
             
-            this.cashadv = ComputeCashAdvance();
+            this.CashAdv = ComputeCashAdvance();
             this.TaxableIncome = ComputeTaxableIncome();
             this.Excess = GrossPay - TaxableIncome;
-            this.withtax = ComputeWithTax(TaxableIncome, Excess);
-            double e =  sss + pagibig + philhealth + cashadv + withtax;
+            this.Withtax = ComputeWithTax(TaxableIncome, Excess);
+            double e =  Sss + PagIbig + PhilHealth + CashAdv + Withtax;
             return e;
         }
 
@@ -302,13 +298,9 @@ namespace MSAMISUserInterface {
         public class WithTax {
             public double TaxbaseD = 0.0;
             public int excessfactor = 0;
-            public double total = 0.0;
             public double ExcessTax = 0.0;
+            public double total = 0.0;
         }
-
-        public WithTax wt = new WithTax();
-        private int year;
-
         public double ComputeSSS() {
             DataTable ssscontrib = SQLTools.ExecuteQuery("select * from ssscontrib");
             foreach (DataRow dr in ssscontrib.Rows) {
@@ -358,8 +350,17 @@ namespace MSAMISUserInterface {
         #region Basic Pay Operations
 
         public static string GetCurrentBasicPay() {
-            return SQLTools.ExecuteSingleResult("select amount from basicpay where status = 1");
-           
+           return SQLTools.ExecuteSingleResult("select amount from basicpay where status = 1");
+        }
+
+        public double GetBasicPay(DateTime dt) {
+            String q = "select * from basicpay order by start desc";
+            DataTable d = SQLTools.ExecuteQuery((q));
+            foreach (DataRow dr in d.Rows) {
+                DateTime dstart = DateTime.ParseExact(dr["start"].ToString(),"yyyy-MM-dd", CultureInfo.InvariantCulture);
+                DateTime dend = DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                if (dstart < dt && dt < dend) { return Double.Parse(dr["amount"].ToString()); }
+            }
         }
 
         public static void AddBasicPay(DateTime start, double pay) {

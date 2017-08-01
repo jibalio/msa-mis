@@ -45,7 +45,7 @@ namespace MSAMISUserInterface {
             UpdateKeys("Cola", Pay.cola, ColaBX);
             UpdateKeys("Emergency", Pay.emerallowance, EmergencyBX);
             UpdateKeys("CashBonds", Pay.cashbond, BondsBX);
-            UpdateKeys("CashAdv", Pay.cashadv, AdvBX);
+            UpdateKeys("CashAdv", Pay.CashAdv, AdvBX);
         }
 
         private void UpdateKeys(string key, double value, NumericUpDown bx) {
