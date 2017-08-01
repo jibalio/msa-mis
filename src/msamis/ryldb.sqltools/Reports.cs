@@ -112,7 +112,9 @@ namespace MSAMISUserInterface
                         ExcelApp.Cells[i, j] = dcCollection[j - 1].ToString();
                     }
                     else
+                    {
                         ExcelApp.Cells[i, j] = dtMainSQLData.Rows[i - 2][j - 1].ToString();
+                    }
                 }
                 ExcelWorkSheet.Rows[i].rowheight = 19;
             }

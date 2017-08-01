@@ -361,6 +361,7 @@ namespace MSAMISUserInterface {
                 DateTime dend = DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
                 if (dstart < dt && dt < dend) { return Double.Parse(dr["amount"].ToString()); }
             }
+            return 0;
         }
 
         public static void AddBasicPay(DateTime start, double pay) {
