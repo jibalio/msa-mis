@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
 
     public class Payroll {
+
 
         #region Fields Definition
         public double bonuses;
@@ -90,8 +92,6 @@ namespace MSAMISUserInterface {
         }
         #endregion
         #region  Computationes
-
- 
         public void ComputeGrossPay(bool checkthirteen) {
             int gid = GID;
             foreach (string key in hc.Keys.ToList()) {
@@ -353,6 +353,11 @@ namespace MSAMISUserInterface {
            return SQLTools.ExecuteSingleResult("select amount from basicpay where status = 1");
         }
 
+        /// <summary>
+        /// Gets the basic pay during a certain date.
+        /// </summary>
+        /// <param name="dt">Date to search</param>
+        /// <returns></returns>
         public double GetBasicPay(DateTime dt) {
             String q = "select * from basicpay order by start desc";
             DataTable d = SQLTools.ExecuteQuery((q));
@@ -361,20 +366,46 @@ namespace MSAMISUserInterface {
                 DateTime dend = DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
                 if (dstart < dt && dt < dend) { return Double.Parse(dr["amount"].ToString()); }
             }
-            return 0;
+            return 0.00;
         }
 
+        /// <summary>
+        /// Overrides the current basic pay. Sets previous basic pay to Inactive if Date Effective
+        /// has already elapsed.
+        /// <param name="start">Date Effective (can be in the future)</param>
+        /// <param name="pay"></param>
+        /// </summary>
         public static void AddBasicPay(DateTime start, double pay) {
-            String paystring = pay.ToString("0000.##");
-            String q;
-            q = @"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{0}', '{1}', '{2}', '{3}');";
-            string status;
-            DateTime sta = new DateTime(start.Year, start.Month, start.Day);
-            DateTime end = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            // Case 1: If karon gamiton
-            if (sta < end) status = "0";
-            else status = "1";
-            q = String.Format(q, paystring, sta.ToString("yyyy-MM-dd"), "", status);
+            string ss = start.ToString("yyyy-MM-dd");
+            string spay = pay.ToString("#.##");
+            bool HasElapsed = DateTime.Now >= start;
+            if (HasElapsed) {
+                var q2 = $"select bpid from basicpay where status=1";
+                int bpid = SQLTools.GetInt(q2);
+                q2 = $"UPDATE `msadb`.`basicpay` SET `status`='0', `end`='{ss}' WHERE `BPID`='{bpid}'";
+                SQLTools.ExecuteNonQuery(q2);
+            }
+            var q = $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{-1}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
+            SQLTools.ExecuteNonQuery(q);
+        }
+
+        /// <summary>
+        /// Adds a basic pay for some historic point. 
+        /// This method simply inserts a
+        ///     basic pay value with start and end dates. 
+        /// This method does not override
+        ///     the current basic pay, and its status is set to 
+        ///     default 0 (inactive). 
+        /// Does not check for overlaps.
+        /// </summary>
+        /// <param name="start">Date Effective</param>
+        /// <param name="end">Date Terminated</param>
+        /// <param name="pay">Basic Pay Value (per shift)</param>
+        public static void AddBasicPay(DateTime start, DateTime end, double pay) {
+            string ss = start.ToString("yyyy-MM-dd");
+            string es = end.ToString("yyyy-MM-dd");
+            var q =
+                $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{pay:#.##}', '{ss}', '{es}', '0');";
             SQLTools.ExecuteNonQuery(q);
         }
 
