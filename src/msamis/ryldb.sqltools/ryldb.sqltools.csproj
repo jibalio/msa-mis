@@ -66,6 +66,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Enumeration.cs" />
+    <Compile Include="Ex.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="Holiday.cs" />
     <Compile Include="HourCostPair.cs" />
