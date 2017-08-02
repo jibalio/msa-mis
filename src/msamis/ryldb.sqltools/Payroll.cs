@@ -353,17 +353,22 @@ namespace MSAMISUserInterface {
            return SQLTools.ExecuteSingleResult("select amount from basicpay where status = 1");
         }
 
+       
         /// <summary>
         /// Gets the basic pay during a certain date.
+        /// Use for historical payroll viewing.
         /// </summary>
         /// <param name="dt">Date to search</param>
         /// <returns></returns>
-        public double GetBasicPay(DateTime dt) {
+        public static double GetBasicPay(DateTime dt) {
             String q = "select * from basicpay order by start desc";
             DataTable d = SQLTools.ExecuteQuery((q));
             foreach (DataRow dr in d.Rows) {
                 DateTime dstart = DateTime.ParseExact(dr["start"].ToString(),"yyyy-MM-dd", CultureInfo.InvariantCulture);
-                DateTime dend = DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                DateTime dend = 
+                    !dr["end"].ToString().Equals("-1")? 
+                    DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture): 
+                    new DateTime(9999, 12, 28);
                 if (dstart < dt && dt < dend) { return Double.Parse(dr["amount"].ToString()); }
             }
             return 0.00;
@@ -417,27 +422,65 @@ namespace MSAMISUserInterface {
         #endregion
         #region Accessor Functions Operations
 
-            #region + SSS Contribution CRUD Methods
+        #region + SSS Contribution CRUD Methods
+
+        #region SSS: For DataTable CRUD
+
         public static DataTable GetSssContribTable() {
             return SQLTools.ExecuteQuery("select * from ssscontrib;");
         }
-        public static void EditSSSContrib(int sssid, double rangeStart, double range_end, double ec) {
-            string q = @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='"+sssid+"';";
-            q = String.Format(q, rangeStart, range_end, ec);
+        public static void EditSSSContrib(int SssId, double RangeStart, double RangeEnd, double Value) {
+            string q = @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='"+SssId+"';";
+            q = String.Format(q, RangeStart, RangeEnd, Value);
             SQLTools.ExecuteNonQuery(q);
         }
-        public static void RemoveSSSContrib(int sssid) {
-            SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + sssid + "';");
+        public static void RemoveSSSContrib(int SssId) {
+            SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + SssId + "';");
         }
 
         
-        public static void AddSSSContrib(double range_start, double range_end, double ec) {
+        public static void AddSSSContrib(double RangeStart, double RangeEnd, double Value) {
             string q = String.Format(@"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`) VALUES ('{0}', '{1}','{2}');",
-                range_start, range_end, ec);
+                RangeStart, RangeEnd, Value);
             SQLTools.ExecuteNonQuery(q);
         }
+
+        #endregion For DataTable CRUD
+
+        #region SSS: For Computation CRUD
+
+        /*
+         * TODO: Now na naa na ko'y Get Contrib IDs, replace generic sss function with `where contrib_id=x` gg ez 😂😂😂
+         */
+        public static int GetSssContribId(DateTime date) {
+            return _GetContribId(date, Enumeration.ContribType.Sss.ToString());
+        }
+        public static int GetWithTaxContribId(DateTime date) {
+            return _GetContribId(date, Enumeration.ContribType.WithTax.ToString());
+        }
+        /// <summary>
+        /// Gets the `contrib_id` of contribution of a specific date.
+        /// Use this Id for further queries and calculations.
+        /// </summary>
+        /// <param name="date">Date</param>
+        /// <returns>Contrib Id.</returns>
+        private static int _GetContribId(DateTime date, string val) {
+            var q = $"select * from contribdetails where type={val}";
+            int contrib_id = 0;
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            foreach (DataRow dr in dt.Rows) {
+                DateTime ss = DateTime.Parse(dr["date_effective"].ToString());
+                DateTime es = DateTime.Parse(dr["date_dissolved"].ToString());
+                if (ss < date && date < es) { contrib_id = int.Parse(dr["contrib_id"].ToString()); }
+            }
+            return contrib_id;
+        }
+
+
         #endregion
-            #region + GetGuardsList Methods Min/Max
+
+        #endregion
+        #region + GetGuardsList Methods Min/Max
         public static DataTable GetGuardsPayrollMain() {
             return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
@@ -488,7 +531,7 @@ namespace MSAMISUserInterface {
             return totalhours;
         }
 
-        #endregion New Region
+        #endregion For DataTable CRUD
         #region Sub-classes
         
         #endregion

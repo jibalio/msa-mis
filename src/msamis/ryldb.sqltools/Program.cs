@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using MSAMISUserInterface;
 using System.Windows.Forms;
+using rylui;
 
 namespace ryldb.sqltools {
     class Program {
         static void Main(string[] args) {
             SQLTools.EnableConsoleDebugging = true;
-            Payroll.AddBasicPay(new DateTime(1970, 01, 01), new DateTime(1989, 07, 01), 89.00);
-            Payroll.AddBasicPay(new DateTime(1989, 07, 01), new DateTime(1990, 11, 21), 89.00);
+          
+            Message(Payroll.GetBasicPay(new DateTime(1998, 06, 23)).ToString());
+        }
+
+
+        public static void Message(string q) {
+            rylui.RylMessageBox.ShowDialog(q, @"Backend says", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
+
 }
