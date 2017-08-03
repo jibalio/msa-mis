@@ -48,6 +48,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_ConfigSSS_FormClosing(object sender, FormClosingEventArgs e) {
+            if ((!CloseBTN.Visible && rylui.RylMessageBox.ShowDialog("You are still editing. Any unsaved changes will be lost.\nAre you sure you want to close this page?", "Cancel Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) || CloseBTN.Visible)
             Refer.Close();
         }
 
@@ -149,8 +150,8 @@ namespace MSAMISUserInterface {
             BasicPayGRD.Size = new Size(475, 260);
             AdjustMBX.Text = "0 000.00";
             CloseBTN.Visible = false;
-            SSSPnl.Enabled = false;
-            TaxPnl.Enabled = false;
+            SSSPnl.Visible = false;
+            TaxPnl.Visible = false;
         }
 
         private void CancelBTN_Click(object sender, EventArgs e) {
@@ -159,8 +160,8 @@ namespace MSAMISUserInterface {
             BasicPayGRD.Size = new Size(475, 310);
 
             CloseBTN.Visible = true;
-            SSSPnl.Enabled = true;
-            TaxPnl.Enabled = true;
+            SSSPnl.Visible = true;
+            TaxPnl.Visible = true;
         }
 
         private void SaveBTN_Click(object sender, EventArgs e) {
@@ -307,25 +308,24 @@ namespace MSAMISUserInterface {
         }
 
         private void EditingMode(bool mode) {
-            SSSSaveBTN.Visible = mode;
-            SSSReset.Visible = mode;
-            BasicPNL.Enabled = !mode;
-            TaxPnl.Enabled = !mode;
+            BasicPNL.Visible = !mode;
+            TaxPnl.Visible = !mode;
             CloseBTN.Visible = !mode;
-            SSSDateLBL.Visible = mode;
-            SSSDateTimePKR.Visible = mode;
-            SSSEditingPNL.FlowDirection = mode ? FlowDirection.LeftToRight : FlowDirection.RightToLeft;
+
+            SSSEditPNL.Visible = mode;
+            SSSEffectivePNL.Visible = !mode;
+            SSSMainPNL.Size = mode ? new Size(478, 430): new Size(478, 470);
         }
 
         private void SSSSaveBTN_Click(object sender, EventArgs e) {
             Payroll.SaveSssContrib(SSSGRD, SSSDateTimePKR.Value);
             CancelBTN.PerformClick();
         }
-
+        private void SSSGRD_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {
+            EditingMode(true);
+        }
         #endregion
 
-        private void SSSGRD_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {
-            SSSAddEditPNL.Visible = true;
-        }
+
     }
 }

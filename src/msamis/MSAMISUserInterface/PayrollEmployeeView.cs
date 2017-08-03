@@ -266,7 +266,7 @@ namespace MSAMISUserInterface {
         #region Popups  
 
         private static void ShowPopup(ToolStripDropDown cms, Control cntrl) {
-            cms.Show(cntrl, new Point(cntrl.Size.Width * 2 / 3, 0));
+            cms.Show(cntrl, new Point(cntrl.Size.Width + 5, 0));
         }
 
         private static void HidePop(Control cms) {

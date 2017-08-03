@@ -308,7 +308,7 @@
             // RegularBTN
             // 
             this.RegularBTN.AutoSize = true;
-            this.RegularBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
+            this.RegularBTN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegularBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.RegularBTN.Location = new System.Drawing.Point(314, 197);
             this.RegularBTN.Name = "RegularBTN";
@@ -321,11 +321,11 @@
             // SpecialBTN
             // 
             this.SpecialBTN.AutoSize = true;
-            this.SpecialBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
+            this.SpecialBTN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpecialBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SpecialBTN.Location = new System.Drawing.Point(395, 197);
             this.SpecialBTN.Name = "SpecialBTN";
-            this.SpecialBTN.Size = new System.Drawing.Size(61, 19);
+            this.SpecialBTN.Size = new System.Drawing.Size(62, 19);
             this.SpecialBTN.TabIndex = 171;
             this.SpecialBTN.TabStop = true;
             this.SpecialBTN.Text = "Special";

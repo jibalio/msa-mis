@@ -59,7 +59,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(904, 139);
+            this.panel1.Size = new System.Drawing.Size(598, 139);
             this.panel1.TabIndex = 0;
             // 
             // label4
@@ -70,7 +70,7 @@
             this.label4.Location = new System.Drawing.Point(0, 83);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(904, 24);
+            this.label4.Size = new System.Drawing.Size(598, 24);
             this.label4.TabIndex = 121;
             this.label4.Text = "Management Information System";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -83,7 +83,7 @@
             this.NameLBL.Location = new System.Drawing.Point(0, 40);
             this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NameLBL.Name = "NameLBL";
-            this.NameLBL.Size = new System.Drawing.Size(904, 43);
+            this.NameLBL.Size = new System.Drawing.Size(598, 43);
             this.NameLBL.TabIndex = 120;
             this.NameLBL.Text = "Makabayan Security Agency";
             this.NameLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -96,19 +96,19 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(904, 40);
+            this.label1.Size = new System.Drawing.Size(598, 40);
             this.label1.TabIndex = 122;
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // UsersLBL
             // 
             this.UsersLBL.AutoSize = true;
-            this.UsersLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.UsersLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.UsersLBL.ForeColor = System.Drawing.Color.Gray;
-            this.UsersLBL.Location = new System.Drawing.Point(482, 152);
+            this.UsersLBL.Location = new System.Drawing.Point(333, 150);
             this.UsersLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.UsersLBL.Name = "UsersLBL";
-            this.UsersLBL.Size = new System.Drawing.Size(51, 21);
+            this.UsersLBL.Size = new System.Drawing.Size(58, 25);
             this.UsersLBL.TabIndex = 135;
             this.UsersLBL.Text = "Users";
             this.UsersLBL.Click += new System.EventHandler(this.UsersLBL_Click);
@@ -118,12 +118,12 @@
             // AboutLBL
             // 
             this.AboutLBL.AutoSize = true;
-            this.AboutLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.AboutLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.AboutLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AboutLBL.Location = new System.Drawing.Point(363, 152);
+            this.AboutLBL.Location = new System.Drawing.Point(214, 150);
             this.AboutLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AboutLBL.Name = "AboutLBL";
-            this.AboutLBL.Size = new System.Drawing.Size(57, 21);
+            this.AboutLBL.Size = new System.Drawing.Size(65, 25);
             this.AboutLBL.TabIndex = 134;
             this.AboutLBL.Text = "About";
             this.AboutLBL.Click += new System.EventHandler(this.AboutLBL_Click);
@@ -141,7 +141,7 @@
             this.CloseBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBTN.ForeColor = System.Drawing.Color.White;
-            this.CloseBTN.Location = new System.Drawing.Point(866, 0);
+            this.CloseBTN.Location = new System.Drawing.Point(566, 0);
             this.CloseBTN.Name = "CloseBTN";
             this.CloseBTN.Size = new System.Drawing.Size(32, 32);
             this.CloseBTN.TabIndex = 236;
@@ -161,9 +161,9 @@
             this.AboutPNL.Controls.Add(this.label6);
             this.AboutPNL.Controls.Add(this.label3);
             this.AboutPNL.Controls.Add(this.label2);
-            this.AboutPNL.Location = new System.Drawing.Point(107, 189);
+            this.AboutPNL.Location = new System.Drawing.Point(20, 189);
             this.AboutPNL.Name = "AboutPNL";
-            this.AboutPNL.Size = new System.Drawing.Size(713, 379);
+            this.AboutPNL.Size = new System.Drawing.Size(553, 379);
             this.AboutPNL.TabIndex = 237;
             // 
             // label10
@@ -172,7 +172,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(237, 318);
+            this.label10.Location = new System.Drawing.Point(177, 323);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(224, 19);
@@ -185,7 +185,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(157, 299);
+            this.label9.Location = new System.Drawing.Point(97, 304);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(385, 19);
@@ -198,7 +198,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(145, 280);
+            this.label8.Location = new System.Drawing.Point(85, 285);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(409, 19);
@@ -211,7 +211,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(142, 261);
+            this.label7.Location = new System.Drawing.Point(82, 266);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(415, 19);
@@ -224,7 +224,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(243, 154);
+            this.label5.Location = new System.Drawing.Point(183, 159);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(213, 21);
@@ -237,7 +237,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(306, 127);
+            this.label6.Location = new System.Drawing.Point(246, 132);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 19);
@@ -249,7 +249,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(306, 61);
+            this.label3.Location = new System.Drawing.Point(246, 66);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 21);
@@ -261,7 +261,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(209, 33);
+            this.label2.Location = new System.Drawing.Point(149, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(280, 19);
@@ -271,9 +271,9 @@
             // 
             // UsersPNL
             // 
-            this.UsersPNL.Location = new System.Drawing.Point(107, 189);
+            this.UsersPNL.Location = new System.Drawing.Point(20, 189);
             this.UsersPNL.Name = "UsersPNL";
-            this.UsersPNL.Size = new System.Drawing.Size(713, 379);
+            this.UsersPNL.Size = new System.Drawing.Size(553, 379);
             this.UsersPNL.TabIndex = 238;
             // 
             // About
@@ -281,7 +281,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(898, 598);
+            this.ClientSize = new System.Drawing.Size(598, 598);
             this.ControlBox = false;
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.UsersLBL);
