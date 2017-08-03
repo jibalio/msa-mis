@@ -415,6 +415,7 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery(q);
         }
 
+
         public static DataTable GetBasicPayHistory () {
             String q = @"select * from basicpay order by status desc";
             return SQLTools.ExecuteQuery(q);
@@ -471,7 +472,8 @@ namespace MSAMISUserInterface {
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow dr in dt.Rows) {
                 DateTime ss = DateTime.Parse(dr["date_effective"].ToString());
-                DateTime es = DateTime.Parse(dr["date_dissolved"].ToString());
+                DateTime es = dr["date_dissolved"].ToString().Equals("-1") ? 
+                    SQLTools.GetDateTime("9999-12-28"):DateTime.Parse(dr["date_dissolved"].ToString());
                 if (ss < date && date < es) { contrib_id = int.Parse(dr["contrib_id"].ToString()); }
             }
             return contrib_id;

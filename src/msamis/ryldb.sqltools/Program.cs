@@ -11,10 +11,13 @@ using rylui;
 namespace ryldb.sqltools {
     class Program {
         static void Main(string[] args) {
+
             SQLTools.EnableConsoleDebugging = true;
-          
-            Message(Payroll.GetBasicPay(new DateTime(1998, 06, 23)).ToString());
+
+
+
         }
+
 
 
         public static void Message(string q) {

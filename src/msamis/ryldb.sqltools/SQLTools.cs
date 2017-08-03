@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
@@ -169,6 +171,7 @@ namespace MSAMISUserInterface {
 
         public static bool EnableConsoleDebugging = false;
         public static void message (String query) {
+            
             if (EnableConsoleDebugging) Console.WriteLine(query);
         }
         public static void ExecuteNonQueryNoDB(string query) {
@@ -312,6 +315,10 @@ namespace MSAMISUserInterface {
 
         public static String getDateTime() {
             return DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
+        public static DateTime GetDateTime(string e) {
+            return DateTime.ParseExact(e, "yyyy-MM-dd", CultureInfo.InvariantCulture);
         }
 
         public static String getLastInsertedId (String table, String idcolumn) {
