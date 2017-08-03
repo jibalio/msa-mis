@@ -431,21 +431,29 @@ namespace MSAMISUserInterface {
         public static DataTable GetSssContribTable() {
             return SQLTools.ExecuteQuery("select * from ssscontrib;");
         }
-        public static void EditSSSContrib(int SssId, double RangeStart, double RangeEnd, double Value) {
+
+        public static void SaveSssContrib(DataTable dt) {
+                
+
+        }
+
+        #region SSS:old
+        private static void EditSSSContrib(int SssId, double RangeStart, double RangeEnd, double Value) {
             string q = @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='"+SssId+"';";
             q = String.Format(q, RangeStart, RangeEnd, Value);
             SQLTools.ExecuteNonQuery(q);
         }
-        public static void RemoveSSSContrib(int SssId) {
+        private static void RemoveSSSContrib(int SssId) {
             SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + SssId + "';");
         }
 
         
-        public static void AddSSSContrib(double RangeStart, double RangeEnd, double Value) {
+        private static void AddSSSContrib(double RangeStart, double RangeEnd, double Value) {
             string q = String.Format(@"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`) VALUES ('{0}', '{1}','{2}');",
                 RangeStart, RangeEnd, Value);
             SQLTools.ExecuteNonQuery(q);
         }
+        #endregion
 
         #endregion For DataTable CRUD
 
