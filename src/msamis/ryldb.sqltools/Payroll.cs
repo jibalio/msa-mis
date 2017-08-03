@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using MSAMISUserInterface;
 
 /*TODO: 
  Perform tests on colliding holidays from multiple years.
@@ -432,10 +433,21 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery("select * from ssscontrib;");
         }
 
-        public static void SaveSssContrib(DataGridView dt) {
-                
+        
+        
+        public static void SaveSssContrib(DataGridView dt, DateTime date_effective) {
+            string date_effectives = date_effective.ToString("yyyy-MM-dd");
 
+
+            foreach (DataGridViewRow dr in dt.Rows) {
+                string from = dr.Cells[1].Value.ToString();
+                string to = dr.Cells[3].Value.ToString();
+                string value = dr.Cells[5].Value.ToString();
+                
+            }
         }
+
+        
 
 
 
