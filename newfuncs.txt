@@ -1,4 +1,73 @@
-﻿+-------------+---------------------------------------------------------------------------------+
+﻿         XX XXXXXXXXX
+       XXXXXXXXXXXXXXX
+     XXXXXXX       XXXX
+   XXXXX XX         XXX                                 XXXXX
+XXXXX    XX          XXX                               XXXXXXXX
+        XXX           XX                              XXX    XXX
+        XXX          XXX                              XX     XXX
+         XX         XXXX                              XXX    XXX    XXXX    XXXXX
+         XX       XXXXX                               XXX    XXX    XX  XXX XX  X
+         XXXXXXXXXXXX               X         X X     XXXX   XX     XX    X XXXXXXX
+         XX XXXXXXX                 XX       XXXXX     XXX  XX      XX    X XX    X
+          XXXXXXXXXX               XXX       XXXXX      XX XX       XXX   X XX    X
+          X      XXXXX            XXXX      XXXXXXX     XXXX        XXXXXXX XXXXXXX
+          X       XXXXX          XXXXX     XXX XXXX      XXX
+          X        XXXXX        XXXXXXXXXXXXX   XXX     XXXXXXXXXXX
+          X           XXXXXXXXXXXXX XXXXXXX     XXX XXXXX   XXXXXX
+          X              XXXXXXXXX               XXXXXX
+          X                               XXXXXXXXXXX
+          X                             XXXXXXX  XXX
+                                        XXX     XXX
+                                        XXX   XXX
+                                         XXXXXXX
+
++-------------+---------------------------------------------------------------------------------+
+| NEW METHODS | August 03 2017                                                                  |
++-------------+---------------------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+| Sa Edit SSS GUI.                                                      |
+| Diba pede man ma->iew ang SSS'es na current and old.                  |
+| So... kani nga data ibutang sa combobox or something pang select.     |
+| +---------------------------------------------------------------------+
+| |**GetSssContribList();                                               |
+| |	Columns: contrib_id, date_effective, date_dissolved.                |
+| |	Display sa combobox kay "$date_effecti^e - $datedissol^ed",         |
+| +------------------------------------------+--------------------------+
+| Then pag i display to ang selected SSS sa list, use                   |
+| +---------------------------------------------------------------------+
+| |**GetSssContrib (int contrib_id)                                    ||
+| |	Use contrib_id from pre^ious query para sa combobox.               ||
+| +---------------------------------------------------------------------|
+| +---------------------------------------------------------------------+
+| |Another variant:                                                     |
+| |**GetSssContrib ()   <-- no params                                   |
+| +---------------------------------------------------------------------+
+|                                                                       |
++-----------------------------------------------------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
++-------------+---------------------------------------------------------------------------------+
 | NEW METHODS | August 02 2017                                                                  |
 +-------------+---------------------------------------------------------------------------------+
 | BASIC PAY METHODS                                                                             |
