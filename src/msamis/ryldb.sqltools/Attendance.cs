@@ -151,7 +151,7 @@ namespace MSAMISUserInterface {
                             on period.pid=attendance.pid
                             where period = '{1}'
                             and month = '{0}'
-                            and year = '{2}'
+                            and year = '{2}'    
                             and gid = '{3}'
                             order by date asc
                             ";
