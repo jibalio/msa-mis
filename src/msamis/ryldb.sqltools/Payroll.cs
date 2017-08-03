@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
 
     public class Payroll {
+
 
         #region Fields Definition
         public double bonuses;
@@ -90,8 +92,6 @@ namespace MSAMISUserInterface {
         }
         #endregion
         #region  Computationes
-
- 
         public void ComputeGrossPay(bool checkthirteen) {
             int gid = GID;
             foreach (string key in hc.Keys.ToList()) {
@@ -353,28 +353,64 @@ namespace MSAMISUserInterface {
            return SQLTools.ExecuteSingleResult("select amount from basicpay where status = 1");
         }
 
-        public double GetBasicPay(DateTime dt) {
+       
+        /// <summary>
+        /// Gets the basic pay during a certain date.
+        /// Use for historical payroll viewing.
+        /// </summary>
+        /// <param name="dt">Date to search</param>
+        /// <returns></returns>
+        public static double GetBasicPay(DateTime dt) {
             String q = "select * from basicpay order by start desc";
             DataTable d = SQLTools.ExecuteQuery((q));
             foreach (DataRow dr in d.Rows) {
                 DateTime dstart = DateTime.ParseExact(dr["start"].ToString(),"yyyy-MM-dd", CultureInfo.InvariantCulture);
-                DateTime dend = DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                DateTime dend = 
+                    !dr["end"].ToString().Equals("-1")? 
+                    DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture): 
+                    new DateTime(9999, 12, 28);
                 if (dstart < dt && dt < dend) { return Double.Parse(dr["amount"].ToString()); }
             }
-            return 0;
+            return 0.00;
         }
 
+        /// <summary>
+        /// Overrides the current basic pay. Sets previous basic pay to Inactive if Date Effective
+        /// has already elapsed.
+        /// <param name="start">Date Effective (can be in the future)</param>
+        /// <param name="pay"></param>
+        /// </summary>
         public static void AddBasicPay(DateTime start, double pay) {
-            String paystring = pay.ToString("0000.##");
-            String q;
-            q = @"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{0}', '{1}', '{2}', '{3}');";
-            string status;
-            DateTime sta = new DateTime(start.Year, start.Month, start.Day);
-            DateTime end = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            // Case 1: If karon gamiton
-            if (sta < end) status = "0";
-            else status = "1";
-            q = String.Format(q, paystring, sta.ToString("yyyy-MM-dd"), "", status);
+            string ss = start.ToString("yyyy-MM-dd");
+            string spay = pay.ToString("#.##");
+            bool HasElapsed = DateTime.Now >= start;
+            if (HasElapsed) {
+                var q2 = $"select bpid from basicpay where status=1";
+                int bpid = SQLTools.GetInt(q2);
+                q2 = $"UPDATE `msadb`.`basicpay` SET `status`='0', `end`='{ss}' WHERE `BPID`='{bpid}'";
+                SQLTools.ExecuteNonQuery(q2);
+            }
+            var q = $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{-1}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
+            SQLTools.ExecuteNonQuery(q);
+        }
+
+        /// <summary>
+        /// Adds a basic pay for some historic point. 
+        /// This method simply inserts a
+        ///     basic pay value with start and end dates. 
+        /// This method does not override
+        ///     the current basic pay, and its status is set to 
+        ///     default 0 (inactive). 
+        /// Does not check for overlaps.
+        /// </summary>
+        /// <param name="start">Date Effective</param>
+        /// <param name="end">Date Terminated</param>
+        /// <param name="pay">Basic Pay Value (per shift)</param>
+        public static void AddBasicPay(DateTime start, DateTime end, double pay) {
+            string ss = start.ToString("yyyy-MM-dd");
+            string es = end.ToString("yyyy-MM-dd");
+            var q =
+                $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{pay:#.##}', '{ss}', '{es}', '0');";
             SQLTools.ExecuteNonQuery(q);
         }
 
@@ -386,27 +422,65 @@ namespace MSAMISUserInterface {
         #endregion
         #region Accessor Functions Operations
 
-            #region + SSS Contribution CRUD Methods
+        #region + SSS Contribution CRUD Methods
+
+        #region SSS: For DataTable CRUD
+
         public static DataTable GetSssContribTable() {
             return SQLTools.ExecuteQuery("select * from ssscontrib;");
         }
-        public static void EditSSSContrib(int sssid, double rangeStart, double range_end, double ec) {
-            string q = @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='"+sssid+"';";
-            q = String.Format(q, rangeStart, range_end, ec);
+        public static void EditSSSContrib(int SssId, double RangeStart, double RangeEnd, double Value) {
+            string q = @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='"+SssId+"';";
+            q = String.Format(q, RangeStart, RangeEnd, Value);
             SQLTools.ExecuteNonQuery(q);
         }
-        public static void RemoveSSSContrib(int sssid) {
-            SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + sssid + "';");
+        public static void RemoveSSSContrib(int SssId) {
+            SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + SssId + "';");
         }
 
         
-        public static void AddSSSContrib(double range_start, double range_end, double ec) {
+        public static void AddSSSContrib(double RangeStart, double RangeEnd, double Value) {
             string q = String.Format(@"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`) VALUES ('{0}', '{1}','{2}');",
-                range_start, range_end, ec);
+                RangeStart, RangeEnd, Value);
             SQLTools.ExecuteNonQuery(q);
         }
+
+        #endregion For DataTable CRUD
+
+        #region SSS: For Computation CRUD
+
+        /*
+         * TODO: Now na naa na ko'y Get Contrib IDs, replace generic sss function with `where contrib_id=x` gg ez 😂😂😂
+         */
+        public static int GetSssContribId(DateTime date) {
+            return _GetContribId(date, Enumeration.ContribType.Sss.ToString());
+        }
+        public static int GetWithTaxContribId(DateTime date) {
+            return _GetContribId(date, Enumeration.ContribType.WithTax.ToString());
+        }
+        /// <summary>
+        /// Gets the `contrib_id` of contribution of a specific date.
+        /// Use this Id for further queries and calculations.
+        /// </summary>
+        /// <param name="date">Date</param>
+        /// <returns>Contrib Id.</returns>
+        private static int _GetContribId(DateTime date, string val) {
+            var q = $"select * from contribdetails where type={val}";
+            int contrib_id = 0;
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            foreach (DataRow dr in dt.Rows) {
+                DateTime ss = DateTime.Parse(dr["date_effective"].ToString());
+                DateTime es = DateTime.Parse(dr["date_dissolved"].ToString());
+                if (ss < date && date < es) { contrib_id = int.Parse(dr["contrib_id"].ToString()); }
+            }
+            return contrib_id;
+        }
+
+
         #endregion
-            #region + GetGuardsList Methods Min/Max
+
+        #endregion
+        #region + GetGuardsList Methods Min/Max
         public static DataTable GetGuardsPayrollMain() {
             return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
@@ -457,7 +531,7 @@ namespace MSAMISUserInterface {
             return totalhours;
         }
 
-        #endregion New Region
+        #endregion For DataTable CRUD
         #region Sub-classes
         
         #endregion

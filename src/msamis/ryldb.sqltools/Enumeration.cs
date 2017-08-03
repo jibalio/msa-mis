@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Office.Interop.Excel;
 
 namespace MSAMISUserInterface {
     public class Enumeration {
+
+        public class BasicPayStatus {
+            public static int Future = 2;
+            public static int Past = 0;
+            public static int Active = 1;
+        }
+
+
 
         public class ContribType {
             public static int Sss = 1;

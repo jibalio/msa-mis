@@ -1,4 +1,55 @@
-﻿########################################################################
+﻿+-------------+---------------------------------------------------------------------------------+
+| NEW METHODS | August 02 2017                                                                  |
++-------------+---------------------------------------------------------------------------------+
+| BASIC PAY METHODS                                                                             |
++-----------------------------------------------------------------------------------------------+
+|    AddBasicPay(DateTime start, double pay)                                                    |
+|       Overrides the current basic pay. Sets previous basic pay to Inactive if Date Effective  |
+|        has already elapsed.                                                                   |
++-----------------------------------------------------------------------------------------------+
+|    AddBasicPay(DateTime start, DateTime end, double pay)                                      |
+|       Adds a basic pay for some historic point.                                               |
+|       This method simply inserts aa                                                           |
+|          basic pay value with start and end dates.                                            |
+|       This method does not override                                                           |
+|          the current basic pay, and its status is set to                                      |
+|          default 0 (inacti^e).                                                                |
+|       Does not check for overlaps.                                                            |
++-----------------------------------------------------------------------------------------------+
+|     GetBasicPay(DateTime dt)                                                                  |
+|            Gets the basic pay during a certain date.                                          |
++-----------------------------------------------------------------------------------------------+
+|     GetCurrentBasicPay()                                                                      |
+|            Gets actife basic pay.                                                             |
++-----------------------------------------------------------------------------------------------+
+|  SSS CONTRIBUTIONS                                                                            |
+|     EditSSSContrib(int SssId, double RangeStart, double RangeEnd, double Value)               |
+|     RemoveSSSContrib(int SssId))                                                              |
+|     AddSSSContrib(double RangeStart, double RangeEnd, double Value)                           |
++-----------------------------------------------------------------------------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################################################################
 NEW FUNCTIONS
 July 25, 2017
 
