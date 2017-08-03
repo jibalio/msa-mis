@@ -76,13 +76,15 @@
             this.Space = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SSSEditingPNL = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.SSSAddEditPNL = new System.Windows.Forms.Panel();
             this.SSSAddRange = new System.Windows.Forms.Button();
             this.SSSRemoveBTN = new System.Windows.Forms.Button();
             this.WithPagePNL = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.InputTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.SSSPopup = new System.Windows.Forms.ToolTip(this.components);
+            this.SSSDateTimePKR = new System.Windows.Forms.DateTimePicker();
+            this.SSSDateLBL = new System.Windows.Forms.Label();
             this.RatesPNL.SuspendLayout();
             this.BasicPNL.SuspendLayout();
             this.SSSPnl.SuspendLayout();
@@ -96,7 +98,7 @@
             this.SSSPagePNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSSGRD)).BeginInit();
             this.SSSEditingPNL.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.SSSAddEditPNL.SuspendLayout();
             this.WithPagePNL.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -520,6 +522,8 @@
             // 
             // SSSPagePNL
             // 
+            this.SSSPagePNL.Controls.Add(this.SSSDateTimePKR);
+            this.SSSPagePNL.Controls.Add(this.SSSDateLBL);
             this.SSSPagePNL.Controls.Add(this.label7);
             this.SSSPagePNL.Controls.Add(this.PeriodCMBX);
             this.SSSPagePNL.Controls.Add(this.SSSSaveBTN);
@@ -541,9 +545,9 @@
             this.label7.Location = new System.Drawing.Point(22, 4);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(154, 19);
+            this.label7.Size = new System.Drawing.Size(128, 19);
             this.label7.TabIndex = 294;
-            this.label7.Text = "SSS Configuration Date:";
+            this.label7.Text = "SSS Effectivity Date:";
             // 
             // PeriodCMBX
             // 
@@ -552,11 +556,11 @@
             this.PeriodCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.PeriodCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.PeriodCMBX.FormattingEnabled = true;
-            this.PeriodCMBX.Location = new System.Drawing.Point(191, 2);
+            this.PeriodCMBX.Location = new System.Drawing.Point(162, 2);
             this.PeriodCMBX.Name = "PeriodCMBX";
-            this.PeriodCMBX.Size = new System.Drawing.Size(296, 25);
+            this.PeriodCMBX.Size = new System.Drawing.Size(325, 25);
             this.PeriodCMBX.TabIndex = 293;
-            this.PeriodCMBX.Text = "January 31, 2017";
+            this.PeriodCMBX.Text = "January 2017";
             // 
             // SSSSaveBTN
             // 
@@ -570,7 +574,7 @@
             this.SSSSaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SSSSaveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.SSSSaveBTN.ForeColor = System.Drawing.Color.White;
-            this.SSSSaveBTN.Location = new System.Drawing.Point(288, 471);
+            this.SSSSaveBTN.Location = new System.Drawing.Point(288, 488);
             this.SSSSaveBTN.Name = "SSSSaveBTN";
             this.SSSSaveBTN.Size = new System.Drawing.Size(82, 25);
             this.SSSSaveBTN.TabIndex = 291;
@@ -591,7 +595,7 @@
             this.SSSReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SSSReset.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.SSSReset.ForeColor = System.Drawing.Color.White;
-            this.SSSReset.Location = new System.Drawing.Point(376, 471);
+            this.SSSReset.Location = new System.Drawing.Point(376, 488);
             this.SSSReset.Name = "SSSReset";
             this.SSSReset.Size = new System.Drawing.Size(82, 25);
             this.SSSReset.TabIndex = 290;
@@ -663,8 +667,9 @@
             this.SSSGRD.RowHeadersVisible = false;
             this.SSSGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SSSGRD.ShowCellToolTips = false;
-            this.SSSGRD.Size = new System.Drawing.Size(400, 376);
+            this.SSSGRD.Size = new System.Drawing.Size(400, 356);
             this.SSSGRD.TabIndex = 282;
+            this.SSSGRD.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.SSSGRD_CellBeginEdit);
             this.SSSGRD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.SSSGRD_CellEndEdit);
             this.SSSGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SSSGRD_CellEnter);
             // 
@@ -713,21 +718,22 @@
             // 
             // SSSEditingPNL
             // 
-            this.SSSEditingPNL.Controls.Add(this.panel1);
+            this.SSSEditingPNL.Controls.Add(this.SSSAddEditPNL);
             this.SSSEditingPNL.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.SSSEditingPNL.Location = new System.Drawing.Point(27, 465);
+            this.SSSEditingPNL.Location = new System.Drawing.Point(27, 482);
             this.SSSEditingPNL.Name = "SSSEditingPNL";
             this.SSSEditingPNL.Size = new System.Drawing.Size(447, 31);
             this.SSSEditingPNL.TabIndex = 292;
             // 
-            // panel1
+            // SSSAddEditPNL
             // 
-            this.panel1.Controls.Add(this.SSSAddRange);
-            this.panel1.Controls.Add(this.SSSRemoveBTN);
-            this.panel1.Location = new System.Drawing.Point(254, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(190, 28);
-            this.panel1.TabIndex = 290;
+            this.SSSAddEditPNL.Controls.Add(this.SSSAddRange);
+            this.SSSAddEditPNL.Controls.Add(this.SSSRemoveBTN);
+            this.SSSAddEditPNL.Location = new System.Drawing.Point(254, 3);
+            this.SSSAddEditPNL.Name = "SSSAddEditPNL";
+            this.SSSAddEditPNL.Size = new System.Drawing.Size(190, 28);
+            this.SSSAddEditPNL.TabIndex = 290;
+            this.SSSAddEditPNL.Visible = false;
             // 
             // SSSAddRange
             // 
@@ -745,7 +751,7 @@
             this.SSSAddRange.Name = "SSSAddRange";
             this.SSSAddRange.Size = new System.Drawing.Size(82, 25);
             this.SSSAddRange.TabIndex = 288;
-            this.SSSAddRange.Text = "ADD";
+            this.SSSAddRange.Text = "ADD ROW";
             this.SSSAddRange.UseVisualStyleBackColor = false;
             this.SSSAddRange.Click += new System.EventHandler(this.SSSAddRange_Click);
             // 
@@ -765,7 +771,7 @@
             this.SSSRemoveBTN.Name = "SSSRemoveBTN";
             this.SSSRemoveBTN.Size = new System.Drawing.Size(82, 25);
             this.SSSRemoveBTN.TabIndex = 289;
-            this.SSSRemoveBTN.Text = "REMOVE";
+            this.SSSRemoveBTN.Text = "DELETE ROW";
             this.SSSRemoveBTN.UseVisualStyleBackColor = false;
             this.SSSRemoveBTN.Click += new System.EventHandler(this.SSSRemoveBTN_Click);
             // 
@@ -806,6 +812,29 @@
             this.SSSPopup.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.SSSPopup.ToolTipTitle = "Input Error";
             // 
+            // SSSDateTimePKR
+            // 
+            this.SSSDateTimePKR.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.SSSDateTimePKR.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.SSSDateTimePKR.Location = new System.Drawing.Point(248, 442);
+            this.SSSDateTimePKR.Name = "SSSDateTimePKR";
+            this.SSSDateTimePKR.Size = new System.Drawing.Size(125, 25);
+            this.SSSDateTimePKR.TabIndex = 295;
+            this.SSSDateTimePKR.Visible = false;
+            // 
+            // SSSDateLBL
+            // 
+            this.SSSDateLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.SSSDateLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SSSDateLBL.Location = new System.Drawing.Point(130, 445);
+            this.SSSDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SSSDateLBL.Name = "SSSDateLBL";
+            this.SSSDateLBL.Size = new System.Drawing.Size(113, 21);
+            this.SSSDateLBL.TabIndex = 296;
+            this.SSSDateLBL.Text = "Starting Date:";
+            this.SSSDateLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.SSSDateLBL.Visible = false;
+            // 
             // PayrollConfigRates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -839,7 +868,7 @@
             this.SSSPagePNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SSSGRD)).EndInit();
             this.SSSEditingPNL.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.SSSAddEditPNL.ResumeLayout(false);
             this.WithPagePNL.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -894,8 +923,10 @@
         private System.Windows.Forms.Button SSSReset;
         private System.Windows.Forms.Button SSSSaveBTN;
         private System.Windows.Forms.FlowLayoutPanel SSSEditingPNL;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel SSSAddEditPNL;
         private System.Windows.Forms.ComboBox PeriodCMBX;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker SSSDateTimePKR;
+        private System.Windows.Forms.Label SSSDateLBL;
     }
 }
