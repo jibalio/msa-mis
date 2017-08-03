@@ -432,10 +432,12 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery("select * from ssscontrib;");
         }
 
-        public static void SaveSssContrib(DataTable dt) {
+        public static void SaveSssContrib(DataGridView dt) {
                 
 
         }
+
+
 
         #region SSS:old
         private static void EditSSSContrib(int SssId, double RangeStart, double RangeEnd, double Value) {
