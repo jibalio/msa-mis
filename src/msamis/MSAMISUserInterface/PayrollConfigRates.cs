@@ -262,26 +262,18 @@ namespace MSAMISUserInterface {
         private bool InRange() {
             var ret = false;
 
-            if (SSSGRD.CurrentCell.ColumnIndex != 5) { 
-            foreach (DataGridViewRow row in SSSGRD.Rows) {
+            if (SSSGRD.CurrentCell.ColumnIndex != 5) 
+            foreach (DataGridViewRow row in SSSGRD.Rows) 
                 if (row.Index != SSSGRD.CurrentCell.RowIndex) { 
                     var start = double.Parse(row.Cells[1].Value.ToString());
                     var end = double.Parse(row.Cells[3].Value.ToString());
                         if (double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= start &&
                             double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= end) ret = true;
                         }
-                }
-            }
-            if (ret) {
-                SssShowToolTip(
-                    "The value entered is already included in a range \nPlease adjust other ranges to continue");
-            }
-
+            if (ret) SssShowToolTip("The value entered is already included in a range \nPlease adjust other ranges to continue");
             return ret;
         }
-
-
-
+        
         private void SssShowToolTip(string text) {
             SSSPopup.Show(text,
                 SSSGRD,
@@ -320,14 +312,19 @@ namespace MSAMISUserInterface {
             BasicPNL.Enabled = !mode;
             TaxPnl.Enabled = !mode;
             CloseBTN.Visible = !mode;
+            SSSDateLBL.Visible = mode;
+            SSSDateTimePKR.Visible = mode;
             SSSEditingPNL.FlowDirection = mode ? FlowDirection.LeftToRight : FlowDirection.RightToLeft;
         }
 
         private void SSSSaveBTN_Click(object sender, EventArgs e) {
-            Payroll.SaveSssContrib(SSSGRD, new DateTime()); 
+            Payroll.SaveSssContrib(SSSGRD, SSSDateTimePKR.Value);
         }
 
         #endregion
 
+        private void SSSGRD_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {
+            SSSAddEditPNL.Visible = true;
+        }
     }
 }
