@@ -170,7 +170,7 @@ namespace MSAMISUserInterface {
         private void DutyDetailsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (DutyDetailsGRD.SelectedRows.Count > 0) {
                 _did = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
-                if (Login.AccountType == 1) DismissBTN.Visible = true;
+                if (Login.AccountType != 2) DismissBTN.Visible = true;
                 EditDutyDetailsBTN.Visible = true;
             }
         }

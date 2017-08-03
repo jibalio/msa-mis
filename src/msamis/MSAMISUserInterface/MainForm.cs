@@ -1265,44 +1265,6 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
-
-        #region SMS - Archive
-
-        private void SCHEDRefreshArchive() { }
-
-        private void SArchiveSearchTXTBX_Enter(object sender, EventArgs e) {
-            if (SArchiveSearchTXTBX.Text == FilterText) {
-                SArchiveSearchTXTBX.Text = string.Empty;
-                _extraQueryParams = string.Empty;
-            }
-            SArchiveSearchLine.Visible = true;
-        }
-
-        private void SArchiveViewDetailsBTN_Click(object sender, EventArgs e) {
-            try {
-                var view = new SchedViewDutyDetails {
-                    Reference = this,
-                    Refer = _shadow,
-                    Location = _newFormLocation
-                };
-                _shadow.Transparent();
-                _shadow.Form = view;
-                _shadow.ShowDialog();
-            }
-            catch (Exception) { }
-        }
-
-        private void SArchiveSearchTXTBX_Leave(object sender, EventArgs e) {
-            if (SArchiveSearchTXTBX.Text == string.Empty) {
-                SArchiveSearchTXTBX.Text = FilterText;
-                _extraQueryParams = string.Empty;
-            }
-            SCHEDRefreshArchive();
-            SArchiveSearchTXTBX.Visible = false;
-        }
-
-        #endregion
-
         #endregion
 
         #region Payroll Management System
@@ -1312,6 +1274,9 @@ namespace MSAMISUserInterface {
         private void PayLoadPage() {
             PayrollHideBtn();
             PEmpListBTN.PerformClick();
+
+            PPeriodLBL.Text = "Period: " + (new DateTime(Attendance.GetCurrentPayPeriod().year, Attendance.GetCurrentPayPeriod().month, Attendance.GetCurrentPayPeriod().period)).ToString("MMMM yyyy, ");
+            PPeriodLBL.Text += Attendance.GetCurrentPayPeriod().period == 1 ? "First" : "Second";
             _scurrentPanel = PEmpListPage;
             _scurrentBtn = PEmpListBTN;
         }

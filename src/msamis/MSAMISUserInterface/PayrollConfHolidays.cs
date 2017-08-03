@@ -90,7 +90,8 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_ConfHolidays_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Hide();
+            if ((!CloseBTN.Visible && rylui.RylMessageBox.ShowDialog("You are still editing. Any unsaved changes will be lost.\nAre you sure you want to close this page?", "Cancel Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) || CloseBTN.Visible)
+                Refer.Close();
         }
 
         #region Form Properties and Load

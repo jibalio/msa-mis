@@ -185,6 +185,9 @@
             this.InfoPNL.Name = "InfoPNL";
             this.InfoPNL.Size = new System.Drawing.Size(431, 600);
             this.InfoPNL.TabIndex = 92;
+            this.InfoPNL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.InfoPNL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.InfoPNL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // label2
             // 
@@ -197,6 +200,9 @@
             this.label2.Size = new System.Drawing.Size(215, 19);
             this.label2.TabIndex = 238;
             this.label2.Text = "Management Information System";
+            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.label2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // label4
             // 
@@ -209,6 +215,9 @@
             this.label4.Size = new System.Drawing.Size(192, 45);
             this.label4.TabIndex = 236;
             this.label4.Text = "Welcome to";
+            this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.label4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // LLBL
             // 
@@ -234,6 +243,9 @@
             this.label6.Size = new System.Drawing.Size(428, 283);
             this.label6.TabIndex = 239;
             this.label6.Text = "\'97";
+            this.label6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.label6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.label6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // label3
             // 
@@ -246,6 +258,9 @@
             this.label3.TabIndex = 239;
             this.label3.Text = "Login";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.label3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.label3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // label7
             // 
@@ -258,6 +273,9 @@
             this.label7.TabIndex = 240;
             this.label7.Text = "Please enter your credentials";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.label7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.label7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // ErrorLBL
             // 
@@ -270,6 +288,9 @@
             this.ErrorLBL.TabIndex = 241;
             this.ErrorLBL.Text = "Credentials not found!";
             this.ErrorLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ErrorLBL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.ErrorLBL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.ErrorLBL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // LoginForm
             // 

@@ -357,7 +357,7 @@
             this.OSundays.Location = new System.Drawing.Point(43, 104);
             this.OSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.OSundays.Name = "OSundays";
-            this.OSundays.Size = new System.Drawing.Size(234, 21);
+            this.OSundays.Size = new System.Drawing.Size(84, 21);
             this.OSundays.TabIndex = 313;
             this.OSundays.Text = "Sundays ≡";
             this.OSundays.MouseEnter += new System.EventHandler(this.OSundays_MouseEnter);
@@ -383,7 +383,7 @@
             this.WithHoldingLBL.Location = new System.Drawing.Point(22, 692);
             this.WithHoldingLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.WithHoldingLBL.Name = "WithHoldingLBL";
-            this.WithHoldingLBL.Size = new System.Drawing.Size(255, 19);
+            this.WithHoldingLBL.Size = new System.Drawing.Size(126, 19);
             this.WithHoldingLBL.TabIndex = 339;
             this.WithHoldingLBL.Text = "Withholding Tax ≡";
             this.WithHoldingLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -573,7 +573,7 @@
             this.SSundays.Location = new System.Drawing.Point(43, 333);
             this.SSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SSundays.Name = "SSundays";
-            this.SSundays.Size = new System.Drawing.Size(234, 21);
+            this.SSundays.Size = new System.Drawing.Size(91, 21);
             this.SSundays.TabIndex = 325;
             this.SSundays.Text = "Sundays ≡";
             this.SSundays.MouseEnter += new System.EventHandler(this.SSundays_MouseEnter);
@@ -612,7 +612,7 @@
             this.SMondays.Location = new System.Drawing.Point(43, 308);
             this.SMondays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SMondays.Name = "SMondays";
-            this.SMondays.Size = new System.Drawing.Size(234, 21);
+            this.SMondays.Size = new System.Drawing.Size(162, 21);
             this.SMondays.TabIndex = 323;
             this.SMondays.Text = "Mondays to Saturday ≡";
             this.SMondays.MouseEnter += new System.EventHandler(this.SMondays_MouseEnter);
@@ -651,7 +651,7 @@
             this.RSundays.Location = new System.Drawing.Point(43, 219);
             this.RSundays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RSundays.Name = "RSundays";
-            this.RSundays.Size = new System.Drawing.Size(234, 21);
+            this.RSundays.Size = new System.Drawing.Size(91, 21);
             this.RSundays.TabIndex = 319;
             this.RSundays.Text = "Sundays ≡";
             this.RSundays.MouseEnter += new System.EventHandler(this.RSundays_MouseEnter);
@@ -690,7 +690,7 @@
             this.RMondays.Location = new System.Drawing.Point(43, 194);
             this.RMondays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RMondays.Name = "RMondays";
-            this.RMondays.Size = new System.Drawing.Size(234, 21);
+            this.RMondays.Size = new System.Drawing.Size(162, 21);
             this.RMondays.TabIndex = 317;
             this.RMondays.Text = "Mondays to Saturday ≡";
             this.RMondays.MouseEnter += new System.EventHandler(this.RMondays_MouseEnter);
@@ -755,7 +755,7 @@
             this.SSSLBL.Location = new System.Drawing.Point(21, 837);
             this.SSSLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SSSLBL.Name = "SSSLBL";
-            this.SSSLBL.Size = new System.Drawing.Size(256, 19);
+            this.SSSLBL.Size = new System.Drawing.Size(81, 19);
             this.SSSLBL.TabIndex = 309;
             this.SSSLBL.Text = "     - SSS ≡";
             this.SSSLBL.MouseEnter += new System.EventHandler(this.SSSLBL_MouseEnter);
@@ -988,7 +988,7 @@
             this.OMondaysLBL.Location = new System.Drawing.Point(43, 79);
             this.OMondaysLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.OMondaysLBL.Name = "OMondaysLBL";
-            this.OMondaysLBL.Size = new System.Drawing.Size(234, 21);
+            this.OMondaysLBL.Size = new System.Drawing.Size(162, 21);
             this.OMondaysLBL.TabIndex = 283;
             this.OMondaysLBL.Text = "Mondays to Saturday ≡";
             this.OMondaysLBL.MouseEnter += new System.EventHandler(this.MondaysLBL_MouseEnter);

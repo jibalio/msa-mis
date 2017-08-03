@@ -19,6 +19,7 @@ namespace MSAMISUserInterface {
 
 
         private void About_Load(object sender, EventArgs e) {
+            Location = new Point(Location.X + 150, Location.Y);
             FadeTMR.Start();
             _currentLbl = AboutLBL;
             _currentPnl = AboutPNL;
