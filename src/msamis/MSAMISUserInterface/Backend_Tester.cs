@@ -10,8 +10,10 @@ namespace MSAMISUserInterface {
         //String querydt = "select rid, name, dataentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid where dataentry='{0}";
         //DataTable dt = SQLTools.ExecuteQuery(q, "", "", "dataentry desc", new String[] {date.ToString("yyyy-MM-dd") });
 
-
+        public DataGridView dv;
         private void Backend_Tester_Load(object sender, EventArgs e) {
+
+            dgv.DataSource = dv.DataSource;
             //  dtq.Text = ;
             var p = Attendance.GetCurrentPayPeriod();
 
