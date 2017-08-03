@@ -218,7 +218,8 @@ namespace MSAMISUserInterface {
             if (period.period==2) {
                 this.PagIbig = ComputeHDMF();
                 this.PhilHealth = ComputePHIC();
-                this.Sss = ComputeSSS();
+                this.Sss = ComputeSSS(GetSssContribId(new DateTime(period.year, period.month,
+                    period.period == 1 ? 1 : 16)));
             } else {
                 this.PagIbig = 0;
                 this.PhilHealth = 0;
@@ -301,8 +302,8 @@ namespace MSAMISUserInterface {
             public double ExcessTax = 0.0;
             public double total = 0.0;
         }
-        public double ComputeSSS() {
-            DataTable ssscontrib = SQLTools.ExecuteQuery("select * from ssscontrib");
+        public double ComputeSSS(int contrib_id) {
+            DataTable ssscontrib = SQLTools.ExecuteQuery($"select * from ssscontrib where contrib_id='{contrib_id}'");
             foreach (DataRow dr in ssscontrib.Rows) {
                 if (double.Parse(dr["range_start"].ToString()) < GrossPay &&
                     GrossPay < double.Parse(dr["range_end"].ToString())) { return double.Parse(dr["ec"].ToString());}

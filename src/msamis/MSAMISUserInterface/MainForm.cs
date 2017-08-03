@@ -1318,9 +1318,9 @@ namespace MSAMISUserInterface {
 
         private void PayLoadPage() {
             PayrollHideBtn();
-            _scurrentPanel = PPayrollSummaryPage;
-            _scurrentBtn = PPayrollSummaryBTN;
-            PPayrollSummaryBTN.PerformClick();
+            PEmpListBTN.PerformClick();
+            _scurrentPanel = PEmpListPage;
+            _scurrentBtn = PEmpListBTN;
         }
 
         private void PayrollHideBtn() {
@@ -1383,10 +1383,6 @@ namespace MSAMISUserInterface {
         private void PEmpListBTN_Click(object sender, EventArgs e) {
             PcHnagePanel(PEmpListPage, PEmpListBTN);
             PayLoadEmployeeList();
-        }
-
-        private void PPayrollSummaryBTN_Click(object sender, EventArgs e) {
-            PcHnagePanel(PPayrollSummaryPage, PPayrollSummaryBTN);
         }
 
         private void PSalaryReportBTN_Click(object sender, EventArgs e) {
