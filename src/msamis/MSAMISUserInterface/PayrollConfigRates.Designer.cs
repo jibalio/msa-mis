@@ -63,6 +63,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.BasicPayGRD = new System.Windows.Forms.DataGridView();
             this.SSSPagePNL = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.PeriodCMBX = new System.Windows.Forms.ComboBox();
             this.SSSSaveBTN = new System.Windows.Forms.Button();
             this.SSSReset = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -81,8 +83,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.InputTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.SSSPopup = new System.Windows.Forms.ToolTip(this.components);
-            this.PeriodCMBX = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.RatesPNL.SuspendLayout();
             this.BasicPNL.SuspendLayout();
             this.SSSPnl.SuspendLayout();
@@ -307,7 +307,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 30);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(484, 402);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(484, 494);
             this.flowLayoutPanel1.TabIndex = 244;
             // 
             // CurrentPNL
@@ -467,7 +467,7 @@
             this.panel2.Controls.Add(this.BasicPayGRD);
             this.panel2.Location = new System.Drawing.Point(3, 328);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(484, 181);
+            this.panel2.Size = new System.Drawing.Size(484, 310);
             this.panel2.TabIndex = 245;
             // 
             // BasicPayGRD
@@ -499,7 +499,7 @@
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.BasicPayGRD.DefaultCellStyle = dataGridViewCellStyle10;
             this.BasicPayGRD.EnableHeadersVisualStyles = false;
-            this.BasicPayGRD.Location = new System.Drawing.Point(8, 0);
+            this.BasicPayGRD.Location = new System.Drawing.Point(3, -3);
             this.BasicPayGRD.MultiSelect = false;
             this.BasicPayGRD.Name = "BasicPayGRD";
             this.BasicPayGRD.ReadOnly = true;
@@ -512,9 +512,10 @@
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.BasicPayGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.BasicPayGRD.RowHeadersVisible = false;
+            this.BasicPayGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.BasicPayGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BasicPayGRD.ShowCellToolTips = false;
-            this.BasicPayGRD.Size = new System.Drawing.Size(476, 181);
+            this.BasicPayGRD.Size = new System.Drawing.Size(475, 310);
             this.BasicPayGRD.TabIndex = 241;
             // 
             // SSSPagePNL
@@ -531,6 +532,31 @@
             this.SSSPagePNL.Size = new System.Drawing.Size(487, 524);
             this.SSSPagePNL.TabIndex = 283;
             this.SSSPagePNL.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label7.Location = new System.Drawing.Point(22, 4);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(154, 19);
+            this.label7.TabIndex = 294;
+            this.label7.Text = "SSS Configuration Date:";
+            // 
+            // PeriodCMBX
+            // 
+            this.PeriodCMBX.BackColor = System.Drawing.Color.White;
+            this.PeriodCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PeriodCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.PeriodCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PeriodCMBX.FormattingEnabled = true;
+            this.PeriodCMBX.Location = new System.Drawing.Point(191, 2);
+            this.PeriodCMBX.Name = "PeriodCMBX";
+            this.PeriodCMBX.Size = new System.Drawing.Size(296, 25);
+            this.PeriodCMBX.TabIndex = 293;
+            this.PeriodCMBX.Text = "January 31, 2017";
             // 
             // SSSSaveBTN
             // 
@@ -779,31 +805,6 @@
             this.SSSPopup.ReshowDelay = 100;
             this.SSSPopup.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.SSSPopup.ToolTipTitle = "Input Error";
-            // 
-            // PeriodCMBX
-            // 
-            this.PeriodCMBX.BackColor = System.Drawing.Color.White;
-            this.PeriodCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PeriodCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.PeriodCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.PeriodCMBX.FormattingEnabled = true;
-            this.PeriodCMBX.Location = new System.Drawing.Point(191, 2);
-            this.PeriodCMBX.Name = "PeriodCMBX";
-            this.PeriodCMBX.Size = new System.Drawing.Size(280, 25);
-            this.PeriodCMBX.TabIndex = 293;
-            this.PeriodCMBX.Text = "January 31, 2017";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(22, 4);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(154, 19);
-            this.label7.TabIndex = 294;
-            this.label7.Text = "SSS Configuration Date:";
             // 
             // PayrollConfigRates
             // 

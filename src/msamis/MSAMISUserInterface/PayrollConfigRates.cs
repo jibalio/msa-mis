@@ -136,6 +136,8 @@ namespace MSAMISUserInterface {
             BasicPayGRD.Columns[4].HeaderText = "STATUS";
             BasicPayGRD.Columns[4].Width = 100;
 
+            BasicPayGRD.Sort(BasicPayGRD.Columns[2], ListSortDirection.Descending);
+
             if (Payroll.GetCurrentBasicPay().Length == 7)
                 CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
             else CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay();
@@ -144,7 +146,7 @@ namespace MSAMISUserInterface {
         private void AdjustBTN_Click(object sender, EventArgs e) {
             AdjustPNL.Visible = true;
             CurrentPNL.Visible = false;
-            BasicPayGRD.Size = new Size(500, 160);
+            BasicPayGRD.Size = new Size(475, 260);
             AdjustMBX.Text = "0 000.00";
             CloseBTN.Visible = false;
             SSSPnl.Enabled = false;
@@ -154,7 +156,7 @@ namespace MSAMISUserInterface {
         private void CancelBTN_Click(object sender, EventArgs e) {
             AdjustPNL.Visible = false;
             CurrentPNL.Visible = true;
-            BasicPayGRD.Size = new Size(500, 220);
+            BasicPayGRD.Size = new Size(475, 310);
 
             CloseBTN.Visible = true;
             SSSPnl.Enabled = true;
