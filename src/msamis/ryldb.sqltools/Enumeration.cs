@@ -14,7 +14,11 @@ namespace MSAMISUserInterface {
             public static int Active = 1;
         }
 
-
+        public class ContribStatus {
+            public static int Future = 2;
+            public static int Past = 0;
+            public static int Active = 1;
+        }
 
         public class ContribType {
             public static int Sss = 1;
