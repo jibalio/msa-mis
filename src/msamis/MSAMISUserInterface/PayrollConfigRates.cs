@@ -136,6 +136,8 @@ namespace MSAMISUserInterface {
             BasicPayGRD.Columns[4].HeaderText = "STATUS";
             BasicPayGRD.Columns[4].Width = 100;
 
+            BasicPayGRD.Sort(BasicPayGRD.Columns[2], ListSortDirection.Descending);
+
             if (Payroll.GetCurrentBasicPay().Length == 7)
                 CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
             else CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay();
@@ -144,7 +146,7 @@ namespace MSAMISUserInterface {
         private void AdjustBTN_Click(object sender, EventArgs e) {
             AdjustPNL.Visible = true;
             CurrentPNL.Visible = false;
-            BasicPayGRD.Size = new Size(500, 160);
+            BasicPayGRD.Size = new Size(475, 260);
             AdjustMBX.Text = "0 000.00";
             CloseBTN.Visible = false;
             SSSPnl.Enabled = false;
@@ -154,7 +156,7 @@ namespace MSAMISUserInterface {
         private void CancelBTN_Click(object sender, EventArgs e) {
             AdjustPNL.Visible = false;
             CurrentPNL.Visible = true;
-            BasicPayGRD.Size = new Size(500, 220);
+            BasicPayGRD.Size = new Size(475, 310);
 
             CloseBTN.Visible = true;
             SSSPnl.Enabled = true;
@@ -214,11 +216,12 @@ namespace MSAMISUserInterface {
                     SssShowToolTip("Enter a valid number");
                 } else {
                     SSSGRD.CurrentCell.Value = value.ToString("N2");
-                    if (
+                    if ( 
                         SSSGRD.CurrentCell.ColumnIndex == 3 &&
                         double.Parse(SSSGRD.CurrentCell.Value.ToString()) <=
                         double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[1].Value.ToString())) {
                         SssShowToolTip("Please enter a value higher than the starting range");
+
                     } else if (
                           SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
                           SSSGRD.CurrentCell.ColumnIndex == 3 &&
@@ -249,24 +252,35 @@ namespace MSAMISUserInterface {
                         double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex + 1].Cells[5].Value.ToString())) {
                         SssShowToolTip("Please enter a value lower than the next amount");
                     } else {
-                        var check = true;
-                        foreach (DataGridViewRow row in SSSGRD.Rows) {
-                            var start = double.Parse(row.Cells[1].Value.ToString());
-                            var end = double.Parse(row.Cells[3].Value.ToString());
-                            if (double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= start &&
-                                double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= end) check = false;
-                        }
-                        if (!check) {
-                            SssShowToolTip(
-                                "The value entered is already included in a range \nPlease adjust other ranges to continue");
-                        } else {
-                            SSSGRD.Sort(SSSGRD.Columns[0], ListSortDirection.Ascending);
-                            EditingMode(true);
-                        }
+                        if (!InRange())
+                        EditingMode(true);
                     }
                 }
             }
         }
+
+        private bool InRange() {
+            var ret = false;
+
+            if (SSSGRD.CurrentCell.ColumnIndex != 5) { 
+            foreach (DataGridViewRow row in SSSGRD.Rows) {
+                if (row.Index != SSSGRD.CurrentCell.RowIndex) { 
+                    var start = double.Parse(row.Cells[1].Value.ToString());
+                    var end = double.Parse(row.Cells[3].Value.ToString());
+                        if (double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= start &&
+                            double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= end) ret = true;
+                        }
+                }
+            }
+            if (ret) {
+                SssShowToolTip(
+                    "The value entered is already included in a range \nPlease adjust other ranges to continue");
+            }
+
+            return ret;
+        }
+
+
 
         private void SssShowToolTip(string text) {
             SSSPopup.Show(text,
@@ -314,5 +328,6 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
     }
 }
