@@ -362,7 +362,7 @@ namespace MSAMISUserInterface {
         /// <param name="dt">Date to search</param>
         /// <returns></returns>
         public static double GetBasicPay(DateTime dt) {
-            String q = "select * from basicpay order by start desc";
+            String q = "select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc";
             DataTable d = SQLTools.ExecuteQuery((q));
             foreach (DataRow dr in d.Rows) {
                 DateTime dstart = DateTime.ParseExact(dr["start"].ToString(),"yyyy-MM-dd", CultureInfo.InvariantCulture);
