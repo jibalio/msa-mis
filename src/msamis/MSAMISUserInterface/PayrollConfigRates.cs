@@ -324,7 +324,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SSSSaveBTN_Click(object sender, EventArgs e) {
-            Payroll.SaveSssContrib(SSSGRD);
+            Payroll.SaveSssContrib(SSSGRD, new DateTime()); 
         }
 
         #endregion

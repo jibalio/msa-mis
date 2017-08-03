@@ -63,6 +63,12 @@
   <ItemGroup>
     <Compile Include="Attendance.cs" />
     <Compile Include="AutoLoader.cs" />
+    <Compile Include="Backend_Tester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Backend_Tester.Designer.cs">
+      <DependentUpon>Backend_Tester.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Enumeration.cs" />
@@ -97,6 +103,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Backend_Tester.resx">
+      <DependentUpon>Backend_Tester.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoaderGUI.resx">
       <DependentUpon>LoaderGUI.cs</DependentUpon>
     </EmbeddedResource>

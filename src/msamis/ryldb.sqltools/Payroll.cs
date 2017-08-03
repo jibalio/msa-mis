@@ -437,13 +437,21 @@ namespace MSAMISUserInterface {
         
         public static void SaveSssContrib(DataGridView dt, DateTime date_effective) {
             string date_effectives = date_effective.ToString("yyyy-MM-dd");
+            bool HasElapsed = DateTime.Now >= date_effective;
+            // Create ContribDetails Table (main)
+            string q =
+                $"INSERT INTO `msadb`.`contribdetails` (`date_effective`, `date_dissolved`, `type`) VALUES ('{date_effectives}', '{-1}', '{1}');";
+            SQLTools.ExecuteNonQuery(q);
+            string lid = SQLTools.getLastInsertedId("contribdetails", "contrib_id");
 
 
+            // Create Actual SSS connections
             foreach (DataGridViewRow dr in dt.Rows) {
                 string from = dr.Cells[1].Value.ToString();
                 string to = dr.Cells[3].Value.ToString();
                 string value = dr.Cells[5].Value.ToString();
-                
+                string w =
+                    $"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`, `contrib_id`) VALUES ('{from}', '{to}', '{value}', '{lid}');";
             }
         }
 
