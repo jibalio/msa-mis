@@ -4,6 +4,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MSAMISUserInterface;
 
@@ -433,26 +434,58 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery("select * from ssscontrib;");
         }
 
+        public static DataTable GetSssContribTable (int contrib_id) {
+            return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
+            right join contribdetails
+            on contribdetails.contrib_id = ssscontrib.contrib_id
+            where contrib_id='{contrib_id}');");
+        }
+
+        public static DataTable GetSssContribList() {
+            return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
+            right join contribdetails
+            on contribdetails.contrib_id = ssscontrib.contrib_id
+            where status='{Enumeration.ContribStatus.Active}');");
+        }
+
         
         
         public static void SaveSssContrib(DataGridView dt, DateTime date_effective) {
             string date_effectives = date_effective.ToString("yyyy-MM-dd");
             bool HasElapsed = DateTime.Now >= date_effective;
-            // Create ContribDetails Table (main)
-            string q =
-                $"INSERT INTO `msadb`.`contribdetails` (`date_effective`, `date_dissolved`, `type`) VALUES ('{date_effectives}', '{-1}', '{1}');";
-            SQLTools.ExecuteNonQuery(q);
-            string lid = SQLTools.getLastInsertedId("contribdetails", "contrib_id");
 
+            // Create ContribDetails Table (main)
+
+            // if date has already elapsed (adding historical data)
+            if (HasElapsed) {
+                string q2 = $@"
+UPDATE `msadb`.`contribdetails` SET 
+`date_dissolved`='{date_effectives}'
+WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.Active}";
+                SQLTools.ExecuteNonQuery(q2);
+            } 
+
+            string q =
+                $@"INSERT INTO `msadb`.`contribdetails` (`date_effective`, `date_dissolved`, `type`, `status`) VALUES ('{date_effectives}', '{-1}', '{Enumeration.ContribType.Sss}', '{
+                   (HasElapsed ?  Enumeration.ContribStatus.Past : Enumeration.ContribStatus.Future)
+                    }');";
+            SQLTools.ExecuteNonQuery(q);
+            int contrib_id = SQLTools.GetInt("select LAST_INSERT_ID();");
+            
 
             // Create Actual SSS connections
             foreach (DataGridViewRow dr in dt.Rows) {
-                string from = dr.Cells[1].Value.ToString();
-                string to = dr.Cells[3].Value.ToString();
-                string value = dr.Cells[5].Value.ToString();
+                string from = _cleanstringmoney(dr.Cells[1].Value.ToString());
+                string to = _cleanstringmoney(dr.Cells[3].Value.ToString());
+                string value = _cleanstringmoney(dr.Cells[5].Value.ToString());
                 string w =
-                    $"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`, `contrib_id`) VALUES ('{from}', '{to}', '{value}', '{lid}');";
+                    $"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`, `contrib_id`) VALUES ('{from}', '{to}', '{value}', '{contrib_id}');";
+                SQLTools.ExecuteNonQuery(w);
             }
+        }
+
+        private static string _cleanstringmoney(string s) {
+            return Regex.Replace(s, @"[^0-9\-\.]", "");
         }
 
         
