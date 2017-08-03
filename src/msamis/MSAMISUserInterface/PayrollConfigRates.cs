@@ -309,7 +309,9 @@ namespace MSAMISUserInterface {
             SSSEditingPNL.FlowDirection = mode ? FlowDirection.LeftToRight : FlowDirection.RightToLeft;
         }
 
-        private void SSSSaveBTN_Click(object sender, EventArgs e) { }
+        private void SSSSaveBTN_Click(object sender, EventArgs e) {
+            Payroll.SaveSssContrib(SSSGRD);
+        }
 
         #endregion
     }

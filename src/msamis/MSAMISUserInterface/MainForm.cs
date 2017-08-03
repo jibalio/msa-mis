@@ -9,8 +9,8 @@ using rylui;
 namespace MSAMISUserInterface {
     public partial class MainForm : Form {
         private const string FilterText = "Search or filter";
-        private readonly Font _defaultFont = new Font("Segoe UI Semilight", 10);
-        private readonly Font _selectedFont = new Font("Segoe UI Semibold", 10);
+        private readonly Font _defaultFont = new Font("Segoe UI", 10);
+        private readonly Font _selectedFont = new Font("Segoe UI", 10, FontStyle.Bold);
         private readonly Shadow _shadow = new Shadow();
         private string _extraQueryParams = "";
 
@@ -936,15 +936,12 @@ namespace MSAMISUserInterface {
             switch (Login.AccountType) {
                 case 2:
                     SViewReqsAssBTN.Visible = true;
-                    SArchiveBTN.Visible = false;
                     break;
                 case 1:
                     SViewReqsAssBTN.Visible = false;
-                    SArchiveBTN.Visible = true;
                     break;
                 default:
                     SViewReqsAssBTN.Visible = true;
-                    SArchiveBTN.Visible = true;
                     break;
             }
         }
@@ -979,10 +976,6 @@ namespace MSAMISUserInterface {
 
         private void SIncidentBTN_Click(object sender, EventArgs e) {
             SChangePanel(SIncidentPNL, SIncidentBTN, false);
-        }
-
-        private void SArchiveBTN_Click(object sender, EventArgs e) {
-            SChangePanel(SArchivePNL, SArchiveBTN, false);
         }
 
         private void SViewReqAssBTN_Click(object sender, EventArgs e) {
@@ -1328,17 +1321,14 @@ namespace MSAMISUserInterface {
                 case 1:
                     PConfHoliday.Visible = true;
                     PConfigSSSBTN.Visible = true;
-                    PArchiveBTN.Visible = true;
                     break;
                 case 2:
                     PConfHoliday.Visible = false;
                     PConfigSSSBTN.Visible = false;
-                    PArchiveBTN.Visible = false;
                     break;
                 default:
                     PConfHoliday.Visible = true;
                     PConfigSSSBTN.Visible = true;
-                    PArchiveBTN.Visible = true;
                     break;
             }
         }
@@ -1387,10 +1377,6 @@ namespace MSAMISUserInterface {
 
         private void PSalaryReportBTN_Click(object sender, EventArgs e) {
             PcHnagePanel(PSalaryReportPage, PSalaryReportBTN);
-        }
-
-        private void PArchiveBTN_Click(object sender, EventArgs e) {
-            PcHnagePanel(PArchivePage, PArchiveBTN);
         }
 
         #endregion
