@@ -611,7 +611,7 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
         public static DataTable GetWithTaxHeaders(int contrib_id) {
             return SQLTools.ExecuteQuery($@"SELECT wid, value, excessmult, contribdetails.contrib_id FROM msadb.withtax_value 
 right join withtax_bracket on withtax_bracket.taxid=withtax_value.wid
-left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id where contribdetails.contrib_id='{contrib_id}';");
+left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id where contribdetails.contrib_id='{contrib_id}' group by wid;");
         }
 
         public static DataTable GetWithTaxBrackets(int contrib_id) {
