@@ -442,10 +442,7 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetSssContribList() {
-            return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec, status from ssscontrib
-            right join contribdetails
-            on contribdetails.contrib_id = ssscontrib.contrib_id
-            where status='{Enumeration.ContribStatus.Active}';");
+            return SQLTools.ExecuteQuery($@"select * from contribdetails where type='{Enumeration.ContribType.Sss} order by date_effective desc'");
         }
 
         
