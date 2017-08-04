@@ -433,6 +433,7 @@ namespace MSAMISUserInterface {
         public static DataTable GetSssContribTable() {
             return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
             right join contribdetails
+            on ssscontrib.contrib_id=contribdetails.contrib_id
             where status={Enumeration.ContribStatus.Active}");
         }
 
@@ -607,16 +608,21 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
 
         public static DataTable GetWithTaxHeaders(int contrib_id) {
             return SQLTools.ExecuteQuery($@"SELECT * FROM msadb.withtax_value where wid='{contrib_id}';");
-
         }
 
         public static DataTable GetWithTaxBrackets(int contrib_id) {
             string q = $@"select * from withtax_bracket where contrib_id={contrib_id};";
             return SQLTools.ExecuteQuery(q);
         }
-
+        
         public static DataTable GetWithTaxContribList() {
-            return SQLTools.ExecuteQuery($@"select * from contribdetails where type='{Enumeration.ContribType.WithTax}' order by date_effective desc");
+            return SQLTools.ExecuteQuery($@"    select contrib_id, date_effective, date_dissolved, case status 
+                                                when 1 then 'Active'
+                                                when 2 then 'Pending'
+                                                when 0 then 'Inactive'
+                                                end as `status`
+                                                from contribdetails 
+                                                where type='{Enumeration.ContribType.WithTax}' order by date_effective desc");
         }
         #endregion
 

@@ -21,6 +21,25 @@ XXXXX    XX          XXX                               XXXXXXXX
                                         XXX   XXX
                                          XXXXXXX
 
+
+
+
+New funcs: August 04 2017
+
+GetWithTaxHeaders(int contrib_id)
+GetWithTaxBrackets(int contrib_id)
+GetWithTaxContribList()
+	col: 	contrib_id
+			date_effective
+			date_dissolved
+			status
+
+
+
+
+
+
+
 +-------------+---------------------------------------------------------------------------------+
 | NEW METHODS | August 03 2017                                                                  |
 +-------------+---------------------------------------------------------------------------------+
