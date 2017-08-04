@@ -77,4 +77,27 @@ namespace MSAMISUserInterface {
             return displayValue;
         }
     }
+
+
+    internal class ComboBoxSss {
+
+            //Constructor
+            public ComboBoxSss(int m, string p, string y) {
+                Id = m;
+                Effective = p;
+                Dissolved = y;
+            }
+
+            //Accessor
+            public int Id { get; }
+
+            public string Effective { get; }
+
+            public string Dissolved { get; }
+
+            //Override ToString method
+            public override string ToString() {
+                return Effective + " - " + Dissolved;
+            }
+        }
 }
