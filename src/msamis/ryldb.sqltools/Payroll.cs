@@ -438,14 +438,14 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
             right join contribdetails
             on contribdetails.contrib_id = ssscontrib.contrib_id
-            where contrib_id='{contrib_id}');");
+            where contrib_id='{contrib_id}';");
         }
 
         public static DataTable GetSssContribList() {
             return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec, status from ssscontrib
             right join contribdetails
             on contribdetails.contrib_id = ssscontrib.contrib_id
-            where status='{Enumeration.ContribStatus.Active}');");
+            where status='{Enumeration.ContribStatus.Active}';");
         }
 
         
