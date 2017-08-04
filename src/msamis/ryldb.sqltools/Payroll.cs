@@ -431,14 +431,16 @@ namespace MSAMISUserInterface {
         #region SSS: For DataTable CRUD
 
         public static DataTable GetSssContribTable() {
-            return SQLTools.ExecuteQuery("select * from ssscontrib;");
+            return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
+            right join contribdetails
+            where status={Enumeration.ContribStatus.Active}");
         }
 
         public static DataTable GetSssContribTable (int contrib_id) {
             return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
             right join contribdetails
             on contribdetails.contrib_id = ssscontrib.contrib_id
-            where contrib_id='{contrib_id}';");
+            where ssscontrib.contrib_id='{contrib_id}';");
         }
 
         public static DataTable GetSssContribList() {
@@ -602,7 +604,10 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
         #region DB Operations
 
         #region WithTax: DB Ops
-        //public static void Save
+
+        public static void GetWithTaxTable() {
+            
+        }
         #endregion
 
 
