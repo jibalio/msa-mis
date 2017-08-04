@@ -447,10 +447,6 @@ namespace MSAMISUserInterface {
             TaxEditingMode(true);
         }
 
-
-
-        #endregion
-
         private void TaxAddExBTN_Click(object sender, EventArgs e) {
             TaxMainPNL.Visible = false;
             TaxEditingPNL.Visible = false;
@@ -465,10 +461,17 @@ namespace MSAMISUserInterface {
 
         private void TaxExSaveBTN_Click(object sender, EventArgs e) {
             TaxExemptionGRD.Rows.Add(0, TaxNewExemptBX.Value + "\n  " + TaxBracketMSTXTBX.Text);
-            for (var k = 0; k < TaxExemptionGRD.ColumnCount-2; k++) {
-                TaxExemptionGRD.Rows[TaxExemptionGRD.RowCount-1].Cells[k+2].Value = "00.00";
+            for (var k = 0; k < TaxExemptionGRD.ColumnCount - 2; k++) {
+                TaxExemptionGRD.Rows[TaxExemptionGRD.RowCount - 1].Cells[k + 2].Value = "00.00";
             }
             TaxExCancelBTN.PerformClick();
         }
+        private void TaxDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            LoadTaxTables();
+        }
+
+        #endregion
+
+
     }
 }
