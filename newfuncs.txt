@@ -27,9 +27,28 @@ XXXXX    XX          XXX                               XXXXXXXX
 New funcs: August 04 2017
 
 GetWithTaxHeaders(int contrib_id)
+	col:	0 wid
+				bracket id
+			1 value
+				decimal
+			2 excessmult
+				int ni sya, pero i display as percent.
+				"5"  --> "5%" (append lng)
+			3 INT   <-- wala ni pulos na field..
 GetWithTaxBrackets(int contrib_id)
+	col:	0 wbid
+			1 estatus
+				employee status:
+				e.g. s1me1: Single / Married with 1 dependent
+			2 bracket
+			3 bracket_end
+			4 taxid  
+				kani ang tax id pointing to PK of value
+				na kailangan niya bayaran (the header).
+				WBID ang pangalan sa other table, pero diri
+				taxid. too l8 to change na kay naa na daghan queries.
 GetWithTaxContribList()
-	col: 	contrib_id
+	col: 	contrib_id   <-- kani ang i feed sa two functions above.
 			date_effective
 			date_dissolved
 			status

@@ -215,17 +215,17 @@ namespace MSAMISUserInterface {
             return GrossPay - Sss - PagIbig - PhilHealth;
         }
 
+        public int contid = 0;
         #region In Genera Calculations
         public double ComputeDeductions() {
+            contid = GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16));
+            this.Sss = ComputeSSS(contid);
             if (period.period==2) {
                 this.PagIbig = ComputeHDMF();
                 this.PhilHealth = ComputePHIC();
-                this.Sss = ComputeSSS(GetSssContribId(new DateTime(period.year, period.month,
-                    period.period == 1 ? 1 : 16)));
             } else {
                 this.PagIbig = 0;
                 this.PhilHealth = 0;
-                this.Sss = 0;
             }
             
             this.CashAdv = ComputeCashAdvance();
@@ -288,9 +288,11 @@ namespace MSAMISUserInterface {
             }
             wt.TaxbaseD = w.TaxbaseD;
             wt.excessfactor = w.excessfactor;
+
+            double ___ = Excess * ((double) w.excessfactor / 100);
             wt.total = w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
             wt.ExcessTax = Excess * ((double) w.excessfactor / 100);
-
+            
             return w.TaxbaseD + (Excess * ((double) w.excessfactor / 100));
         }
 
@@ -642,7 +644,16 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
 
         #endregion For DataTable CRUD
         #region Sub-classes
-        
+
+        #endregion
+
+
+
+        #region Adjustement Operationen
+        public void GetAdjustments () {
+            
+        }
+
         #endregion
 
     }
