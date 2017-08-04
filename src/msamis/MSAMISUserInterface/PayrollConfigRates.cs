@@ -193,12 +193,28 @@ namespace MSAMISUserInterface {
         #region SSS Rates
 
         private void LoadSssPage() {
-            SSSGRD.Rows.Clear();
-            foreach (DataRow row in Payroll.GetSssContribTable().Rows)
-                SSSGRD.Rows.Add(double.Parse(row[0].ToString()).ToString("N2"),
-                    double.Parse(row[1].ToString()).ToString("N2"), "-", double.Parse(row[2].ToString()).ToString("N2"),
-                    "", double.Parse(row[3].ToString()).ToString("N2"));
-            SSSGRD.CurrentCell = SSSGRD.Rows[0].Cells[1];
+            SSSDateCMBX.Items.Clear();
+            foreach (DataRow row in Payroll.GetSssContribList().Rows) { 
+                var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
+                var dissolved = row["date_dissolved"].Equals("-1") ? "Current" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy") ;
+                SSSDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective  , dissolved));
+            }
+            if (SSSDateCMBX.Items.Count > 0) SSSDateCMBX.SelectedIndex = 0;
+            SssLoadTable();
+        }
+
+        private void SssLoadTable() {
+            if (SSSDateCMBX.Items.Count > 0) {
+                SSSGRD.Rows.Clear();
+                if (Payroll.GetSssContribTable(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id).Rows.Count > 0){
+                foreach (DataRow row in Payroll.GetSssContribTable(((ComboBoxSss)SSSDateCMBX.SelectedItem).Id).Rows)
+                    SSSGRD.Rows.Add(double.Parse(row[0].ToString()).ToString("N2"),
+                        double.Parse(row[1].ToString()).ToString("N2"), "-",
+                        double.Parse(row[2].ToString()).ToString("N2"),
+                        "", double.Parse(row[3].ToString()).ToString("N2"));
+                }
+                SSSGRD.CurrentCell = SSSGRD.Rows[0].Cells[1];
+            }
         }
 
         private string _currentval;
@@ -324,8 +340,11 @@ namespace MSAMISUserInterface {
         private void SSSGRD_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {
             EditingMode(true);
         }
+
         #endregion
 
-
+        private void SSSDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+           SssLoadTable();
+        }
     }
 }
