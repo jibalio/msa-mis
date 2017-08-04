@@ -605,9 +605,11 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
 
         #region WithTax: DB Ops
 
-        public static void GetWithTaxTable() {
-            
+        public static DataTable GetWithTaxHeaders(int contrib_id) {
+            return SQLTools.ExecuteQuery($@"SELECT * FROM msadb.withtax_value where wid='{contrib_id}';");
         }
+
+        //public static DataTable Get
         #endregion
 
 
