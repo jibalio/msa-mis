@@ -33,6 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RatesPNL = new System.Windows.Forms.Panel();
             this.BasicPNL = new System.Windows.Forms.Panel();
             this.BasicCon = new System.Windows.Forms.Label();
@@ -83,9 +87,31 @@
             this.SSSEffectiveLBL = new System.Windows.Forms.Label();
             this.SSSDateCMBX = new System.Windows.Forms.ComboBox();
             this.WithPagePNL = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.InputTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.SSSPopup = new System.Windows.Forms.ToolTip(this.components);
+            this.TaxEditingPNL = new System.Windows.Forms.Panel();
+            this.TaxAddExBTN = new System.Windows.Forms.Button();
+            this.TaxCancelBTN = new System.Windows.Forms.Button();
+            this.TaxRemoveExBTN = new System.Windows.Forms.Button();
+            this.TaxSaveBTN = new System.Windows.Forms.Button();
+            this.TaxDateDTPKR = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TaxMainPNL = new System.Windows.Forms.Panel();
+            this.TaxExemptionGRD = new System.Windows.Forms.DataGridView();
+            this.TaxDatePNL = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.TaxDateCMBX = new System.Windows.Forms.ComboBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Brackets = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaxEditBTN = new System.Windows.Forms.Button();
+            this.SSSEditBTN = new System.Windows.Forms.Button();
+            this.TaxExcemptPNL = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TaxExCancelBTN = new System.Windows.Forms.Button();
+            this.TaxExSaveBTN = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.TaxNewExemptBX = new System.Windows.Forms.NumericUpDown();
+            this.TaxBracketMSTXTBX = new System.Windows.Forms.MaskedTextBox();
             this.RatesPNL.SuspendLayout();
             this.BasicPNL.SuspendLayout();
             this.SSSPnl.SuspendLayout();
@@ -102,6 +128,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.SSSGRD)).BeginInit();
             this.SSSEffectivePNL.SuspendLayout();
             this.WithPagePNL.SuspendLayout();
+            this.TaxEditingPNL.SuspendLayout();
+            this.TaxMainPNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxExemptionGRD)).BeginInit();
+            this.TaxDatePNL.SuspendLayout();
+            this.TaxExcemptPNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxNewExemptBX)).BeginInit();
             this.SuspendLayout();
             // 
             // RatesPNL
@@ -773,6 +805,7 @@
             // 
             // SSSEffectivePNL
             // 
+            this.SSSEffectivePNL.Controls.Add(this.SSSEditBTN);
             this.SSSEffectivePNL.Controls.Add(this.SSSEffectiveLBL);
             this.SSSEffectivePNL.Controls.Add(this.SSSDateCMBX);
             this.SSSEffectivePNL.Dock = System.Windows.Forms.DockStyle.Top;
@@ -803,31 +836,21 @@
             this.SSSDateCMBX.FormattingEnabled = true;
             this.SSSDateCMBX.Location = new System.Drawing.Point(157, 1);
             this.SSSDateCMBX.Name = "SSSDateCMBX";
-            this.SSSDateCMBX.Size = new System.Drawing.Size(325, 25);
+            this.SSSDateCMBX.Size = new System.Drawing.Size(252, 25);
             this.SSSDateCMBX.TabIndex = 293;
             this.SSSDateCMBX.SelectedIndexChanged += new System.EventHandler(this.SSSDateCMBX_SelectedIndexChanged);
             // 
             // WithPagePNL
             // 
-            this.WithPagePNL.Controls.Add(this.label1);
+            this.WithPagePNL.Controls.Add(this.TaxExcemptPNL);
+            this.WithPagePNL.Controls.Add(this.TaxEditingPNL);
+            this.WithPagePNL.Controls.Add(this.TaxMainPNL);
+            this.WithPagePNL.Controls.Add(this.TaxDatePNL);
             this.WithPagePNL.Location = new System.Drawing.Point(383, 47);
             this.WithPagePNL.Name = "WithPagePNL";
             this.WithPagePNL.Size = new System.Drawing.Size(487, 524);
             this.WithPagePNL.TabIndex = 284;
             this.WithPagePNL.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(118, 252);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 20);
-            this.label1.TabIndex = 280;
-            this.label1.Text = "Configure Tax Rates";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // InputTLTP
             // 
@@ -844,6 +867,383 @@
             this.SSSPopup.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.SSSPopup.ToolTipTitle = "Input Error";
             // 
+            // TaxEditingPNL
+            // 
+            this.TaxEditingPNL.Controls.Add(this.TaxAddExBTN);
+            this.TaxEditingPNL.Controls.Add(this.TaxCancelBTN);
+            this.TaxEditingPNL.Controls.Add(this.TaxRemoveExBTN);
+            this.TaxEditingPNL.Controls.Add(this.TaxSaveBTN);
+            this.TaxEditingPNL.Controls.Add(this.TaxDateDTPKR);
+            this.TaxEditingPNL.Controls.Add(this.label1);
+            this.TaxEditingPNL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TaxEditingPNL.Location = new System.Drawing.Point(0, 525);
+            this.TaxEditingPNL.Name = "TaxEditingPNL";
+            this.TaxEditingPNL.Size = new System.Drawing.Size(487, 89);
+            this.TaxEditingPNL.TabIndex = 302;
+            // 
+            // TaxAddExBTN
+            // 
+            this.TaxAddExBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxAddExBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TaxAddExBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TaxAddExBTN.BackgroundImage")));
+            this.TaxAddExBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TaxAddExBTN.FlatAppearance.BorderSize = 0;
+            this.TaxAddExBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.TaxAddExBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.TaxAddExBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxAddExBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.TaxAddExBTN.ForeColor = System.Drawing.Color.White;
+            this.TaxAddExBTN.Location = new System.Drawing.Point(34, 49);
+            this.TaxAddExBTN.Name = "TaxAddExBTN";
+            this.TaxAddExBTN.Size = new System.Drawing.Size(82, 25);
+            this.TaxAddExBTN.TabIndex = 288;
+            this.TaxAddExBTN.Text = "ADD EX";
+            this.TaxAddExBTN.UseVisualStyleBackColor = false;
+            this.TaxAddExBTN.Click += new System.EventHandler(this.TaxAddExBTN_Click);
+            // 
+            // TaxCancelBTN
+            // 
+            this.TaxCancelBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxCancelBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.TaxCancelBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TaxCancelBTN.BackgroundImage")));
+            this.TaxCancelBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TaxCancelBTN.FlatAppearance.BorderSize = 0;
+            this.TaxCancelBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.TaxCancelBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.TaxCancelBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxCancelBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.TaxCancelBTN.ForeColor = System.Drawing.Color.White;
+            this.TaxCancelBTN.Location = new System.Drawing.Point(389, 49);
+            this.TaxCancelBTN.Name = "TaxCancelBTN";
+            this.TaxCancelBTN.Size = new System.Drawing.Size(82, 25);
+            this.TaxCancelBTN.TabIndex = 290;
+            this.TaxCancelBTN.Text = "CANCEL";
+            this.TaxCancelBTN.UseVisualStyleBackColor = false;
+            this.TaxCancelBTN.Click += new System.EventHandler(this.TaxCancelBTN_Click);
+            // 
+            // TaxRemoveExBTN
+            // 
+            this.TaxRemoveExBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxRemoveExBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.TaxRemoveExBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TaxRemoveExBTN.BackgroundImage")));
+            this.TaxRemoveExBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TaxRemoveExBTN.FlatAppearance.BorderSize = 0;
+            this.TaxRemoveExBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.TaxRemoveExBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.TaxRemoveExBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxRemoveExBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.TaxRemoveExBTN.ForeColor = System.Drawing.Color.White;
+            this.TaxRemoveExBTN.Location = new System.Drawing.Point(122, 49);
+            this.TaxRemoveExBTN.Name = "TaxRemoveExBTN";
+            this.TaxRemoveExBTN.Size = new System.Drawing.Size(82, 25);
+            this.TaxRemoveExBTN.TabIndex = 289;
+            this.TaxRemoveExBTN.Text = "REMOVE EX";
+            this.TaxRemoveExBTN.UseVisualStyleBackColor = false;
+            this.TaxRemoveExBTN.Click += new System.EventHandler(this.TaxRemoveExBTN_Click);
+            // 
+            // TaxSaveBTN
+            // 
+            this.TaxSaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxSaveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TaxSaveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TaxSaveBTN.BackgroundImage")));
+            this.TaxSaveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TaxSaveBTN.FlatAppearance.BorderSize = 0;
+            this.TaxSaveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.TaxSaveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.TaxSaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxSaveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.TaxSaveBTN.ForeColor = System.Drawing.Color.White;
+            this.TaxSaveBTN.Location = new System.Drawing.Point(301, 49);
+            this.TaxSaveBTN.Name = "TaxSaveBTN";
+            this.TaxSaveBTN.Size = new System.Drawing.Size(82, 25);
+            this.TaxSaveBTN.TabIndex = 291;
+            this.TaxSaveBTN.Text = "SAVE";
+            this.TaxSaveBTN.UseVisualStyleBackColor = false;
+            // 
+            // TaxDateDTPKR
+            // 
+            this.TaxDateDTPKR.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.TaxDateDTPKR.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.TaxDateDTPKR.Location = new System.Drawing.Point(242, 5);
+            this.TaxDateDTPKR.Name = "TaxDateDTPKR";
+            this.TaxDateDTPKR.Size = new System.Drawing.Size(125, 25);
+            this.TaxDateDTPKR.TabIndex = 295;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label1.Location = new System.Drawing.Point(135, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 21);
+            this.label1.TabIndex = 296;
+            this.label1.Text = "Date Effective:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // TaxMainPNL
+            // 
+            this.TaxMainPNL.Controls.Add(this.TaxExemptionGRD);
+            this.TaxMainPNL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TaxMainPNL.Location = new System.Drawing.Point(0, 50);
+            this.TaxMainPNL.Name = "TaxMainPNL";
+            this.TaxMainPNL.Size = new System.Drawing.Size(487, 475);
+            this.TaxMainPNL.TabIndex = 301;
+            // 
+            // TaxExemptionGRD
+            // 
+            this.TaxExemptionGRD.AllowUserToAddRows = false;
+            this.TaxExemptionGRD.AllowUserToDeleteRows = false;
+            this.TaxExemptionGRD.AllowUserToResizeColumns = false;
+            this.TaxExemptionGRD.AllowUserToResizeRows = false;
+            this.TaxExemptionGRD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.TaxExemptionGRD.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.TaxExemptionGRD.BackgroundColor = System.Drawing.Color.White;
+            this.TaxExemptionGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TaxExemptionGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.TaxExemptionGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle9.NullValue = "-";
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TaxExemptionGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.TaxExemptionGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TaxExemptionGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.Brackets});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TaxExemptionGRD.DefaultCellStyle = dataGridViewCellStyle11;
+            this.TaxExemptionGRD.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.TaxExemptionGRD.EnableHeadersVisualStyles = false;
+            this.TaxExemptionGRD.Location = new System.Drawing.Point(2, 6);
+            this.TaxExemptionGRD.MultiSelect = false;
+            this.TaxExemptionGRD.Name = "TaxExemptionGRD";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TaxExemptionGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.TaxExemptionGRD.RowHeadersVisible = false;
+            this.TaxExemptionGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TaxExemptionGRD.ShowCellToolTips = false;
+            this.TaxExemptionGRD.Size = new System.Drawing.Size(485, 463);
+            this.TaxExemptionGRD.TabIndex = 282;
+            this.TaxExemptionGRD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TaxExemptionGRD_CellEndEdit);
+            this.TaxExemptionGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.TaxExemptionGRD_CellEnter);
+            // 
+            // TaxDatePNL
+            // 
+            this.TaxDatePNL.Controls.Add(this.TaxEditBTN);
+            this.TaxDatePNL.Controls.Add(this.label7);
+            this.TaxDatePNL.Controls.Add(this.TaxDateCMBX);
+            this.TaxDatePNL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TaxDatePNL.Location = new System.Drawing.Point(0, 0);
+            this.TaxDatePNL.Name = "TaxDatePNL";
+            this.TaxDatePNL.Size = new System.Drawing.Size(487, 50);
+            this.TaxDatePNL.TabIndex = 300;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label7.Location = new System.Drawing.Point(17, 3);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(171, 19);
+            this.label7.TabIndex = 294;
+            this.label7.Text = "Withholding Tax Effectivity:";
+            // 
+            // TaxDateCMBX
+            // 
+            this.TaxDateCMBX.BackColor = System.Drawing.Color.White;
+            this.TaxDateCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TaxDateCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxDateCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.TaxDateCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TaxDateCMBX.FormattingEnabled = true;
+            this.TaxDateCMBX.Location = new System.Drawing.Point(204, 1);
+            this.TaxDateCMBX.Name = "TaxDateCMBX";
+            this.TaxDateCMBX.Size = new System.Drawing.Size(205, 25);
+            this.TaxDateCMBX.TabIndex = 293;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "RateID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // Brackets
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.Brackets.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Brackets.Frozen = true;
+            this.Brackets.HeaderText = "EXCEMPTION";
+            this.Brackets.Name = "Brackets";
+            this.Brackets.ReadOnly = true;
+            this.Brackets.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // TaxEditBTN
+            // 
+            this.TaxEditBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxEditBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TaxEditBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.TaxEditBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TaxEditBTN.FlatAppearance.BorderSize = 0;
+            this.TaxEditBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.TaxEditBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.TaxEditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxEditBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.TaxEditBTN.ForeColor = System.Drawing.Color.White;
+            this.TaxEditBTN.Location = new System.Drawing.Point(423, -2);
+            this.TaxEditBTN.Name = "TaxEditBTN";
+            this.TaxEditBTN.Size = new System.Drawing.Size(64, 29);
+            this.TaxEditBTN.TabIndex = 295;
+            this.TaxEditBTN.Text = "EDIT";
+            this.TaxEditBTN.UseVisualStyleBackColor = false;
+            this.TaxEditBTN.Click += new System.EventHandler(this.TaxEditBTN_Click);
+            // 
+            // SSSEditBTN
+            // 
+            this.SSSEditBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SSSEditBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SSSEditBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.SSSEditBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SSSEditBTN.FlatAppearance.BorderSize = 0;
+            this.SSSEditBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.SSSEditBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.SSSEditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SSSEditBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.SSSEditBTN.ForeColor = System.Drawing.Color.White;
+            this.SSSEditBTN.Location = new System.Drawing.Point(423, 0);
+            this.SSSEditBTN.Name = "SSSEditBTN";
+            this.SSSEditBTN.Size = new System.Drawing.Size(64, 29);
+            this.SSSEditBTN.TabIndex = 296;
+            this.SSSEditBTN.Text = "EDIT";
+            this.SSSEditBTN.UseVisualStyleBackColor = false;
+            this.SSSEditBTN.Click += new System.EventHandler(this.SSSEditBTN_Click);
+            // 
+            // TaxExcemptPNL
+            // 
+            this.TaxExcemptPNL.Controls.Add(this.TaxBracketMSTXTBX);
+            this.TaxExcemptPNL.Controls.Add(this.label20);
+            this.TaxExcemptPNL.Controls.Add(this.TaxNewExemptBX);
+            this.TaxExcemptPNL.Controls.Add(this.TaxExCancelBTN);
+            this.TaxExcemptPNL.Controls.Add(this.TaxExSaveBTN);
+            this.TaxExcemptPNL.Controls.Add(this.label6);
+            this.TaxExcemptPNL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TaxExcemptPNL.Location = new System.Drawing.Point(0, 614);
+            this.TaxExcemptPNL.Name = "TaxExcemptPNL";
+            this.TaxExcemptPNL.Size = new System.Drawing.Size(487, 272);
+            this.TaxExcemptPNL.TabIndex = 303;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(34, 57);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(437, 37);
+            this.label6.TabIndex = 280;
+            this.label6.Text = "Add new Exemption";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // TaxExCancelBTN
+            // 
+            this.TaxExCancelBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxExCancelBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.TaxExCancelBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TaxExCancelBTN.BackgroundImage")));
+            this.TaxExCancelBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TaxExCancelBTN.FlatAppearance.BorderSize = 0;
+            this.TaxExCancelBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.TaxExCancelBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.TaxExCancelBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxExCancelBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.TaxExCancelBTN.ForeColor = System.Drawing.Color.White;
+            this.TaxExCancelBTN.Location = new System.Drawing.Point(248, 221);
+            this.TaxExCancelBTN.Name = "TaxExCancelBTN";
+            this.TaxExCancelBTN.Size = new System.Drawing.Size(82, 25);
+            this.TaxExCancelBTN.TabIndex = 297;
+            this.TaxExCancelBTN.Text = "CANCEL";
+            this.TaxExCancelBTN.UseVisualStyleBackColor = false;
+            this.TaxExCancelBTN.Click += new System.EventHandler(this.TaxExCancelBTN_Click);
+            // 
+            // TaxExSaveBTN
+            // 
+            this.TaxExSaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxExSaveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TaxExSaveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TaxExSaveBTN.BackgroundImage")));
+            this.TaxExSaveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TaxExSaveBTN.FlatAppearance.BorderSize = 0;
+            this.TaxExSaveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.TaxExSaveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.TaxExSaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxExSaveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.TaxExSaveBTN.ForeColor = System.Drawing.Color.White;
+            this.TaxExSaveBTN.Location = new System.Drawing.Point(160, 221);
+            this.TaxExSaveBTN.Name = "TaxExSaveBTN";
+            this.TaxExSaveBTN.Size = new System.Drawing.Size(82, 25);
+            this.TaxExSaveBTN.TabIndex = 298;
+            this.TaxExSaveBTN.Text = "SAVE";
+            this.TaxExSaveBTN.UseVisualStyleBackColor = false;
+            this.TaxExSaveBTN.Click += new System.EventHandler(this.TaxExSaveBTN_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label20.Location = new System.Drawing.Point(177, 115);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(18, 20);
+            this.label20.TabIndex = 300;
+            this.label20.Text = "₱";
+            // 
+            // TaxNewExemptBX
+            // 
+            this.TaxNewExemptBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TaxNewExemptBX.DecimalPlaces = 2;
+            this.TaxNewExemptBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TaxNewExemptBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TaxNewExemptBX.Location = new System.Drawing.Point(204, 116);
+            this.TaxNewExemptBX.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.TaxNewExemptBX.Name = "TaxNewExemptBX";
+            this.TaxNewExemptBX.Size = new System.Drawing.Size(120, 21);
+            this.TaxNewExemptBX.TabIndex = 299;
+            this.TaxNewExemptBX.ThousandsSeparator = true;
+            // 
+            // TaxBracketMSTXTBX
+            // 
+            this.TaxBracketMSTXTBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TaxBracketMSTXTBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.TaxBracketMSTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TaxBracketMSTXTBX.Location = new System.Drawing.Point(219, 159);
+            this.TaxBracketMSTXTBX.Mask = "+ 99% over";
+            this.TaxBracketMSTXTBX.Name = "TaxBracketMSTXTBX";
+            this.TaxBracketMSTXTBX.Size = new System.Drawing.Size(100, 18);
+            this.TaxBracketMSTXTBX.TabIndex = 301;
+            // 
             // PayrollConfigRates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -853,9 +1253,9 @@
             this.ControlBox = false;
             this.Controls.Add(this.RatesPNL);
             this.Controls.Add(this.CloseBTN);
+            this.Controls.Add(this.WithPagePNL);
             this.Controls.Add(this.SSSPagePNL);
             this.Controls.Add(this.BasicPagePNL);
-            this.Controls.Add(this.WithPagePNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollConfigRates";
             this.ShowInTaskbar = false;
@@ -881,6 +1281,14 @@
             this.SSSEffectivePNL.ResumeLayout(false);
             this.SSSEffectivePNL.PerformLayout();
             this.WithPagePNL.ResumeLayout(false);
+            this.TaxEditingPNL.ResumeLayout(false);
+            this.TaxMainPNL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TaxExemptionGRD)).EndInit();
+            this.TaxDatePNL.ResumeLayout(false);
+            this.TaxDatePNL.PerformLayout();
+            this.TaxExcemptPNL.ResumeLayout(false);
+            this.TaxExcemptPNL.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxNewExemptBX)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -904,7 +1312,6 @@
         private System.Windows.Forms.Panel SSSPagePNL;
         private System.Windows.Forms.Panel WithPagePNL;
         private System.Windows.Forms.DataGridView SSSGRD;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel CurrentPNL;
@@ -940,5 +1347,28 @@
         private System.Windows.Forms.Panel SSSEditPNL;
         private System.Windows.Forms.Panel SSSMainPNL;
         private System.Windows.Forms.Panel SSSEffectivePNL;
+        private System.Windows.Forms.Panel TaxEditingPNL;
+        private System.Windows.Forms.Button TaxAddExBTN;
+        private System.Windows.Forms.Button TaxCancelBTN;
+        private System.Windows.Forms.Button TaxRemoveExBTN;
+        private System.Windows.Forms.Button TaxSaveBTN;
+        private System.Windows.Forms.DateTimePicker TaxDateDTPKR;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel TaxMainPNL;
+        private System.Windows.Forms.DataGridView TaxExemptionGRD;
+        private System.Windows.Forms.Panel TaxDatePNL;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox TaxDateCMBX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Brackets;
+        private System.Windows.Forms.Button TaxEditBTN;
+        private System.Windows.Forms.Button SSSEditBTN;
+        private System.Windows.Forms.Panel TaxExcemptPNL;
+        private System.Windows.Forms.Button TaxExCancelBTN;
+        private System.Windows.Forms.Button TaxExSaveBTN;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox TaxBracketMSTXTBX;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.NumericUpDown TaxNewExemptBX;
     }
 }

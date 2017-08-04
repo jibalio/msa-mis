@@ -119,6 +119,7 @@ namespace MSAMISUserInterface {
 
         private void TaxPnl_Click(object sender, EventArgs e) {
             ChangePage(WithPagePNL, TaxPnl, TaxLbl, TaxConLbl);
+            LoadTaxPage();
         }
 
         #endregion
@@ -341,10 +342,133 @@ namespace MSAMISUserInterface {
             EditingMode(true);
         }
 
+        private void SSSDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            SssLoadTable();
+        }
+        private void SSSEditBTN_Click(object sender, EventArgs e) {
+            EditingMode(true);
+        }
+
         #endregion
 
-        private void SSSDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-           SssLoadTable();
+        #region Withholding Tax
+
+        private void LoadTaxPage() {
+            TaxDateCMBX.Items.Clear();
+            foreach (DataRow row in Payroll.GetWithTaxContribList().Rows) {
+                var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
+                var dissolved = row["date_dissolved"].Equals("-1") ? "Current" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
+                TaxDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
+            }
+            if (TaxDateCMBX.Items.Count > 0) TaxDateCMBX.SelectedIndex = 0;
+            LoadTaxTables();
+        }
+
+        private void LoadTaxTables() {
+            TaxExemptionGRD.Rows.Clear();
+            TaxExemptionGRD.ColumnCount = 2;
+            foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id).Rows) {
+                TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
+            }
+            
+            var withTaxBrackets = Payroll.GetWithTaxBrackets(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id);
+            TaxExemptionGRD.ColumnCount += withTaxBrackets.Rows.Count / TaxExemptionGRD.Rows.Count;
+
+            var j = 0;
+            for (var i = 0;
+                i < withTaxBrackets.Rows.Count / TaxExemptionGRD.Rows.Count;
+                i++) {
+                TaxExemptionGRD.Columns[i+2].HeaderText = withTaxBrackets.Rows[j][1].ToString().ToUpper();
+                TaxExemptionGRD.Columns[i + 2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                j += TaxExemptionGRD.Rows.Count;
+            }
+            
+            j = 0;
+            for (var i = 0; i < TaxExemptionGRD.ColumnCount-2; i++) {
+                for (var k = 0; k < TaxExemptionGRD.Rows.Count; k++) {
+                    TaxExemptionGRD.Rows[k].Cells[i+2].Value = withTaxBrackets.Rows[j][2].ToString();
+                    j++;
+                }
+            }
+        }
+
+        private void TaxExemptionGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            _currentval = TaxExemptionGRD.CurrentCell.Value.ToString();
+        }
+
+        private void TaxDataVal() {
+            if (!_currentval.Equals(TaxExemptionGRD.CurrentCell.Value.ToString())) {
+                double value;
+                if (!double.TryParse(TaxExemptionGRD.CurrentCell.Value.ToString(), out value)) {
+                    TaxShowToolTip("Enter a valid number");
+                } else {
+                    TaxExemptionGRD.CurrentCell.Value = value.ToString("N2");
+                    TaxEditingMode(true);
+                }
+            }
+        }
+
+        private void TaxShowToolTip(string text) {
+            SSSPopup.Show(text,
+                TaxExemptionGRD,
+                new Point(
+                    TaxExemptionGRD.GetCellDisplayRectangle(TaxExemptionGRD.CurrentCell.ColumnIndex,
+                        TaxExemptionGRD.CurrentCell.RowIndex,
+                        true).X + 50,
+                    TaxExemptionGRD.GetCellDisplayRectangle(TaxExemptionGRD.CurrentCell.ColumnIndex,
+                        TaxExemptionGRD.CurrentCell.RowIndex,
+                        true).Y + 40), 1500);
+            TaxExemptionGRD.CurrentCell.Value = _currentval;
+        }
+
+        private void TaxEditingMode(bool mode) {
+            TaxDatePNL.Visible = !mode;
+            CloseBTN.Visible = !mode;
+            SSSPnl.Visible = !mode;
+            BasicPNL.Visible = !mode;
+            TaxMainPNL.Size = mode ? new Size(487, 385 + 50) : new Size(487, 475);
+        }
+
+        private void TaxCancelBTN_Click(object sender, EventArgs e) {
+            TaxEditingMode(false);
+            LoadTaxPage();
+        }
+
+        private void TaxRemoveExBTN_Click(object sender, EventArgs e) {
+            TaxExemptionGRD.Rows.RemoveAt(TaxExemptionGRD.SelectedRows[0].Index);
+            TaxExemptionGRD.ClearSelection();
+        }
+
+        private void TaxExemptionGRD_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            TaxDataVal();
+        }
+
+        private void TaxEditBTN_Click(object sender, EventArgs e) {
+            TaxEditingMode(true);
+        }
+
+
+
+        #endregion
+
+        private void TaxAddExBTN_Click(object sender, EventArgs e) {
+            TaxMainPNL.Visible = false;
+            TaxEditingPNL.Visible = false;
+            TaxExcemptPNL.Visible = true;
+        }
+
+        private void TaxExCancelBTN_Click(object sender, EventArgs e) {
+            TaxMainPNL.Visible = true;
+            TaxEditingPNL.Visible = true;
+            TaxExcemptPNL.Visible = false;
+        }
+
+        private void TaxExSaveBTN_Click(object sender, EventArgs e) {
+            TaxExemptionGRD.Rows.Add(0, TaxNewExemptBX.Value + "\n  " + TaxBracketMSTXTBX.Text);
+            for (var k = 0; k < TaxExemptionGRD.ColumnCount-2; k++) {
+                TaxExemptionGRD.Rows[TaxExemptionGRD.RowCount-1].Cells[k+2].Value = "00.00";
+            }
+            TaxExCancelBTN.PerformClick();
         }
     }
 }
