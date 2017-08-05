@@ -320,7 +320,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SSSReset_Click(object sender, EventArgs e) {
-            LoadSssPage();
+            SssLoadTable();
             EditingMode(false);
         }
 

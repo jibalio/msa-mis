@@ -51,11 +51,9 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.AvailablePNL = new System.Windows.Forms.Panel();
-            this.SArchiveSearchTXTBX = new System.Windows.Forms.TextBox();
-            this.SArchiveSearchLine = new System.Windows.Forms.Label();
-            this.AssignedPNL = new System.Windows.Forms.Panel();
             this.AvailableSearchBX = new System.Windows.Forms.TextBox();
             this.AvailableSearchLine = new System.Windows.Forms.Label();
+            this.AssignedPNL = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AvailableGRD)).BeginInit();
@@ -248,7 +246,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.AssignedGRD.DefaultCellStyle = dataGridViewCellStyle5;
             this.AssignedGRD.EnableHeadersVisualStyles = false;
-            this.AssignedGRD.Location = new System.Drawing.Point(62, 43);
+            this.AssignedGRD.Location = new System.Drawing.Point(62, 8);
             this.AssignedGRD.Name = "AssignedGRD";
             this.AssignedGRD.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -262,7 +260,7 @@
             this.AssignedGRD.RowHeadersVisible = false;
             this.AssignedGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AssignedGRD.Size = new System.Drawing.Size(420, 235);
+            this.AssignedGRD.Size = new System.Drawing.Size(420, 294);
             this.AssignedGRD.TabIndex = 142;
             // 
             // gid
@@ -371,8 +369,8 @@
             // AvailablePNL
             // 
             this.AvailablePNL.BackColor = System.Drawing.Color.White;
-            this.AvailablePNL.Controls.Add(this.SArchiveSearchTXTBX);
-            this.AvailablePNL.Controls.Add(this.SArchiveSearchLine);
+            this.AvailablePNL.Controls.Add(this.AvailableSearchBX);
+            this.AvailablePNL.Controls.Add(this.AvailableSearchLine);
             this.AvailablePNL.Controls.Add(this.AssignBTN);
             this.AvailablePNL.Controls.Add(this.AvailableGRD);
             this.AvailablePNL.Location = new System.Drawing.Point(0, 51);
@@ -380,55 +378,20 @@
             this.AvailablePNL.Size = new System.Drawing.Size(549, 352);
             this.AvailablePNL.TabIndex = 149;
             // 
-            // SArchiveSearchTXTBX
-            // 
-            this.SArchiveSearchTXTBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SArchiveSearchTXTBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SArchiveSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SArchiveSearchTXTBX.Location = new System.Drawing.Point(176, 3);
-            this.SArchiveSearchTXTBX.Name = "SArchiveSearchTXTBX";
-            this.SArchiveSearchTXTBX.Size = new System.Drawing.Size(199, 18);
-            this.SArchiveSearchTXTBX.TabIndex = 145;
-            this.SArchiveSearchTXTBX.Text = "Search or filter";
-            this.SArchiveSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // SArchiveSearchLine
-            // 
-            this.SArchiveSearchLine.AutoSize = true;
-            this.SArchiveSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.SArchiveSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SArchiveSearchLine.Location = new System.Drawing.Point(172, 8);
-            this.SArchiveSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SArchiveSearchLine.Name = "SArchiveSearchLine";
-            this.SArchiveSearchLine.Size = new System.Drawing.Size(207, 19);
-            this.SArchiveSearchLine.TabIndex = 146;
-            this.SArchiveSearchLine.Text = "_________________________________";
-            this.SArchiveSearchLine.Visible = false;
-            // 
-            // AssignedPNL
-            // 
-            this.AssignedPNL.BackColor = System.Drawing.Color.White;
-            this.AssignedPNL.Controls.Add(this.AvailableSearchBX);
-            this.AssignedPNL.Controls.Add(this.AvailableSearchLine);
-            this.AssignedPNL.Controls.Add(this.AssignedGRD);
-            this.AssignedPNL.Controls.Add(this.DeleteBTN);
-            this.AssignedPNL.Location = new System.Drawing.Point(0, 51);
-            this.AssignedPNL.Name = "AssignedPNL";
-            this.AssignedPNL.Size = new System.Drawing.Size(549, 352);
-            this.AssignedPNL.TabIndex = 150;
-            // 
             // AvailableSearchBX
             // 
-            this.AvailableSearchBX.BackColor = System.Drawing.Color.White;
             this.AvailableSearchBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AvailableSearchBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AvailableSearchBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.AvailableSearchBX.Location = new System.Drawing.Point(176, 3);
             this.AvailableSearchBX.Name = "AvailableSearchBX";
             this.AvailableSearchBX.Size = new System.Drawing.Size(199, 18);
-            this.AvailableSearchBX.TabIndex = 147;
+            this.AvailableSearchBX.TabIndex = 145;
             this.AvailableSearchBX.Text = "Search or filter";
             this.AvailableSearchBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AvailableSearchBX.TextChanged += new System.EventHandler(this.AvailableSearchBX_TextChanged);
+            this.AvailableSearchBX.Enter += new System.EventHandler(this.AvailableSearchBX_Enter);
+            this.AvailableSearchBX.Leave += new System.EventHandler(this.AvailableSearchBX_Leave);
             // 
             // AvailableSearchLine
             // 
@@ -439,9 +402,19 @@
             this.AvailableSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AvailableSearchLine.Name = "AvailableSearchLine";
             this.AvailableSearchLine.Size = new System.Drawing.Size(207, 19);
-            this.AvailableSearchLine.TabIndex = 148;
+            this.AvailableSearchLine.TabIndex = 146;
             this.AvailableSearchLine.Text = "_________________________________";
             this.AvailableSearchLine.Visible = false;
+            // 
+            // AssignedPNL
+            // 
+            this.AssignedPNL.BackColor = System.Drawing.Color.White;
+            this.AssignedPNL.Controls.Add(this.AssignedGRD);
+            this.AssignedPNL.Controls.Add(this.DeleteBTN);
+            this.AssignedPNL.Location = new System.Drawing.Point(0, 51);
+            this.AssignedPNL.Name = "AssignedPNL";
+            this.AssignedPNL.Size = new System.Drawing.Size(549, 352);
+            this.AssignedPNL.TabIndex = 150;
             // 
             // panel2
             // 
@@ -476,7 +449,6 @@
             this.AvailablePNL.ResumeLayout(false);
             this.AvailablePNL.PerformLayout();
             this.AssignedPNL.ResumeLayout(false);
-            this.AssignedPNL.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -503,8 +475,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn location;
         private System.Windows.Forms.Panel AvailablePNL;
         private System.Windows.Forms.Panel AssignedPNL;
-        private System.Windows.Forms.TextBox SArchiveSearchTXTBX;
-        private System.Windows.Forms.Label SArchiveSearchLine;
         private System.Windows.Forms.TextBox AvailableSearchBX;
         private System.Windows.Forms.Label AvailableSearchLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn nGID;
