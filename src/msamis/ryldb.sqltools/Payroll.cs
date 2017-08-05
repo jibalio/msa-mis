@@ -19,7 +19,8 @@ namespace MSAMISUserInterface {
 
 
         #region Fields Definition
-        public double bonuses;
+
+        public double Bonuses => thirteen + cola + emerallowance + cashbond;
 
         public double NetPay;
         public int GID;
@@ -101,8 +102,8 @@ namespace MSAMISUserInterface {
             }
             ComputeTotalSummary();
             
-            bonuses = ComputeBonuses(checkthirteen);
-            GrossPay = TotalSummary["total"].total + bonuses;
+            ComputeBonuses(checkthirteen);
+            GrossPay = TotalSummary["total"].total + Bonuses;
             deductions = ComputeDeductions();
             NetPay = GrossPay - deductions;
         }
@@ -201,7 +202,7 @@ namespace MSAMISUserInterface {
         public double ComputeNet() {
             double e = GrossPay;
             e -= deductions;
-            e += bonuses;
+            e += Bonuses;
             return e;
         }
 
@@ -239,7 +240,7 @@ namespace MSAMISUserInterface {
         public double thirteen;
         public double cola;
         public double emerallowance;
-        public double ComputeBonuses(bool ca) {
+        public void ComputeBonuses(bool ca) {
             if (ca) {
                 if (this.period.month == 12 && this.period.period == 2) { this.thirteen = ComputeThirteen(); }
             else { this.thirteen = 0; }}
@@ -248,11 +249,11 @@ namespace MSAMISUserInterface {
             this.cola = ComputeCola();
             this.emerallowance = ComputeEmer();
             this.cashbond = ComputeCashBond();
-            return thirteen + cola + emerallowance + cashbond;
+            
         }
 
-        public double ComputeBonuses() {
-            return ComputeBonuses(true);
+        public void ComputeBonuses() {
+            ComputeBonuses(true);
         }
         #endregion
 

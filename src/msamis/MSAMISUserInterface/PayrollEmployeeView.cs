@@ -184,7 +184,7 @@ namespace MSAMISUserInterface {
                 BAllowanceLBL.Text = CurrencyFormat(_pay.emerallowance);
                 BBondsLBL.Text = CurrencyFormat(_pay.cashbond);
                 BColaLBL.Text = CurrencyFormat(_pay.cola);
-                BTotalLBL.Text = CurrencyFormat(_pay.ComputeBonuses());
+                BTotalLBL.Text = CurrencyFormat(_pay.Bonuses);
 
                 DCashAdvanceLBL.Text = CurrencyFormatNegative(_pay.CashAdv);
                 DPagIbigLBL.Text = CurrencyFormatNegative(_pay.PagIbig);
