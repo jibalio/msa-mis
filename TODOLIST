@@ -1,7 +1,0 @@
-todo
-fix hour computation 
-replicate error
-output 16:00 RD
-expected 8
-input: 02:00P - 10:00p
-?????

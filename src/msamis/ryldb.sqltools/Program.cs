@@ -12,7 +12,7 @@ namespace ryldb.sqltools {
     class Program {
         static void Main(string[] args) {
 
-            SQLTools.EnableConsoleDebugging = true;
+ 
 
 
 

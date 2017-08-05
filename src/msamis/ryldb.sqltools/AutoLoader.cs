@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using ryldb.sqltools;
+using IniParser;
+using IniParser.Model;
 
 namespace MSAMISUserInterface {
 
@@ -26,7 +28,31 @@ namespace MSAMISUserInterface {
 
         static String[] checksum = new String[2];
         static bool[] hasNewVersion = new bool[2];
+
+
+        
+        public static void Do_Check() {
+            string initialini = @"
+[Debug]
+EnableConsoleDebugging = false
+
+[Reports]
+DefaultDirectory = C:\Docs";
+            if (!File.Exists(@"msamis.ini")) {
+                using (var writer = new StreamWriter(@"msamis.ini")) {
+                    writer.WriteLine(initialini);
+                }
+                
+            }
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("msamis.ini");
+            string useFullScreenStr = data["Debug"]["EnableConsoleDebugging"];
+            SQLTools.EnableConsoleDebugging = bool.Parse(useFullScreenStr);
+
+        }
+
         public static void AutoImportSql(bool db, bool dbarchive) {
+            Do_Check();
             if (!File.Exists(checksumfile)) {
                 using (var writer = new StreamWriter(@checksumfile)) {
                     writer.WriteLine("0");
