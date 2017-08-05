@@ -21,8 +21,6 @@ namespace MSAMISUserInterface {
         }
 
         public static void initRates () {
-            
-
         }
 
         public static void InitReportsFolder() {
@@ -32,7 +30,25 @@ namespace MSAMISUserInterface {
                 DirectoryInfo dir = Directory.CreateDirectory(filePath);
                 dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
             }
-
         }
+
+
+        public static string IniConntent =
+            @";MSA-MIS Configuration file
+[Debug]
+EnableConsoleDebugging = false
+AlwaysUpdateIni = true
+
+[Reports]
+DefaultDirectory = C:\Docs
+
+[Payroll]
+DefaultCashAdvance = 0.00
+DefaultPHIC = 100.00
+DefaultHDMF = 100.00
+DefaultCashBond = 150.00
+DefaultCola = 100.00
+DefaultEmer = 50.00
+";
     }
 }

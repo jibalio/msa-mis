@@ -32,22 +32,28 @@ namespace MSAMISUserInterface {
 
         
         public static void Do_Check() {
-            string initialini = @"
-[Debug]
-EnableConsoleDebugging = false
-
-[Reports]
-DefaultDirectory = C:\Docs";
+            string initialini = Data.IniConntent;
             if (!File.Exists(@"msamis.ini")) {
                 using (var writer = new StreamWriter(@"msamis.ini")) {
                     writer.WriteLine(initialini);
                 }
                 
             }
+
+
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile("msamis.ini");
             string useFullScreenStr = data["Debug"]["EnableConsoleDebugging"];
             SQLTools.EnableConsoleDebugging = bool.Parse(useFullScreenStr);
+            string aui = data["Debug"]["AlwaysUpdateIni"];
+            if (bool.Parse(aui)) {
+                using (var writer = new StreamWriter(@"msamis.ini")) {
+                    writer.WriteLine(initialini);
+                }
+            }
+            data = parser.ReadFile("msamis.ini");
+
+
 
         }
 

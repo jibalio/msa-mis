@@ -9,10 +9,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-/*TODO: 
-    
-*/
+
 namespace MSAMISUserInterface {
+    /// <summary>
+    /// Do not serialize objects when payroll is pending.
+    /// </summary>
     public class Payroll {
         #region Adjustement Operationen
 
@@ -22,6 +23,10 @@ namespace MSAMISUserInterface {
 
 
         #region Fields Definition
+
+        public double thirteen;
+        public double cola;
+        public double emerallowance;
 
         public double Bonuses => thirteen + cola + emerallowance + cashbond;
 
@@ -113,6 +118,8 @@ namespace MSAMISUserInterface {
             this.period.month = month;
             this.period.year = year;
             this._InitRates();
+
+            // TODO:
         }
         
         /// <summary>
@@ -128,6 +135,10 @@ namespace MSAMISUserInterface {
 
         #region  Computationes
 
+        public void Compute() {
+            Compute(true);
+        }
+
         public void Compute(bool checkthirteen) {
             foreach (var key in hc.Keys.ToList())
                 hc[key] = new HourCostPair(TotalHours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
@@ -135,12 +146,6 @@ namespace MSAMISUserInterface {
             ComputeBonuses(checkthirteen);
             ComputeDeductions();
             //MessageBox.Show(SQLTools.SerializeMe(hc));
-        }
-
-        public void Compute() {
-            Compute(true);
-            string a = (_SerializeHours());
-            MessageBox.Show(_DeserializeObject(a).ToString());
         }
 
         public void ComputeHours() {
@@ -253,54 +258,63 @@ namespace MSAMISUserInterface {
             return GrossPay - Sss - PagIbig - PhilHealth;
         }
 
-        public int contid;
-
-        #region In Genera Calculations
-
         public void ComputeDeductions() {
-            contid = GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16));
-            Sss = ComputeSSS(contid);
+            Sss = ComputeSSS(GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16)));
             if (period.period == 2) {
-                PagIbig = ComputeHDMF();
-                PhilHealth = ComputePHIC();
+                PagIbig = RetrieveHdmf();
+                PhilHealth = RetrievePhic();
             }
             else {
                 PagIbig = 0;
                 PhilHealth = 0;
             }
 
-            CashAdv = ComputeCashAdvance();
+            CashAdv = RetrieveCashAdvance();
             TaxableIncome = ComputeTaxableIncome();
             Excess = GrossPay - TaxableIncome;
             Withtax = ComputeWithTax(TaxableIncome, Excess);
         }
 
-        public double thirteen;
-        public double cola;
-        public double emerallowance;
+        #region Retrievables
+
+        public static double RetrieveCashAdvance() {
+            return 20;
+        }
+
+        public static double RetrievePhic() {
+            return 100;
+        }
+
+        public static double RetrieveHdmf() {
+            return 100;
+        }
+
+        public static double RetrieveCashBond() {
+            return 5000;
+        }
+
+        public static double RetrieveCola() {
+            return 50;
+        }
+
+        public static double RetrieveEmer() {
+            return 2500;
+        }
+
+        #endregion
+        #region Computables
 
         public void ComputeBonuses(bool ca) {
             if (ca)
                 if (period.month == 12 && period.period == 2) thirteen = ComputeThirteen();
                 else thirteen = 0;
-            cola = ComputeCola();
-            emerallowance = ComputeEmer();
-            cashbond = ComputeCashBond();
+            cola = RetrieveCola();
+            emerallowance = RetrieveEmer();
+            cashbond = RetrieveCashBond();
         }
 
         public void ComputeBonuses() {
             ComputeBonuses(true);
-        }
-
-        #endregion
-
-
-        public static double ComputeCashBond() {
-            return 5000;
-        }
-
-        public static double ComputeCashAdvance() {
-            return 20;
         }
 
         public double ComputeWithTax(double Taxable, double Excess) {
@@ -340,27 +354,12 @@ namespace MSAMISUserInterface {
             return wt;
         }
 
-        public class WithTax {
-            public int excessfactor;
-            public double ExcessTax;
-            public double TaxbaseD;
-            public double total;
-        }
-
         public double ComputeSSS(int contrib_id) {
             var ssscontrib = SQLTools.ExecuteQuery($"select * from ssscontrib where contrib_id='{contrib_id}'");
             foreach (DataRow dr in ssscontrib.Rows)
                 if (double.Parse(dr["range_start"].ToString()) < GrossPay &&
                     GrossPay < double.Parse(dr["range_end"].ToString())) return double.Parse(dr["ec"].ToString());
             return 50.00;
-        }
-
-        public static double ComputeHDMF() {
-            return 100;
-        }
-
-        public static double ComputePHIC() {
-            return 100;
         }
 
         public double ComputeThirteen() {
@@ -379,13 +378,7 @@ namespace MSAMISUserInterface {
             }
         }
 
-        public static double ComputeCola() {
-            return 50;
-        }
-
-        public static double ComputeEmer() {
-            return 2500;
-        }
+        #endregion
 
         #endregion
 
@@ -686,6 +679,13 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         #endregion For DataTable CRUD
 
         #region Sub-classes
+
+        public class WithTax {
+            public int excessfactor;
+            public double ExcessTax;
+            public double TaxbaseD;
+            public double total;
+        }
 
         #endregion
 
