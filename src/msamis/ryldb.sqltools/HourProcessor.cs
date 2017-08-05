@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MSAMISUserInterface {
+
+    [Serializable]
     public class HourProcessor {
         public Dictionary<string, TimeSpan> hp = new Dictionary<string, TimeSpan> { 
             #region + Keys Definition

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rylui", "rylui\rylui\rylui.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ryldb.sqltools", "ryldb.sqltools\ryldb.sqltools.csproj", "{C3A9BE5D-2DD9-41AB-87AA-F3754BB23187}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ryldb.sqltools.Tests", "ryldb.sqltools.Tests\ryldb.sqltools.Tests.csproj", "{83319B66-02B5-4FEE-B1A7-455021DD4D0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,23 +29,12 @@ Global
 		{C3A9BE5D-2DD9-41AB-87AA-F3754BB23187}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3A9BE5D-2DD9-41AB-87AA-F3754BB23187}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3A9BE5D-2DD9-41AB-87AA-F3754BB23187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83319B66-02B5-4FEE-B1A7-455021DD4D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83319B66-02B5-4FEE-B1A7-455021DD4D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83319B66-02B5-4FEE-B1A7-455021DD4D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83319B66-02B5-4FEE-B1A7-455021DD4D0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://ryldb.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = MSAMISUserInterface\\MSAMISUserInterface.csproj
-		SccProjectName1 = MSAMISUserInterface
-		SccLocalPath1 = MSAMISUserInterface
-		SccProjectUniqueName2 = rylui\\rylui\\rylui.csproj
-		SccProjectName2 = rylui/rylui
-		SccLocalPath2 = rylui\\rylui
-		SccProjectUniqueName3 = ryldb.sqltools\\ryldb.sqltools.csproj
-		SccProjectName3 = ryldb.sqltools
-		SccLocalPath3 = ryldb.sqltools
 	EndGlobalSection
 EndGlobal

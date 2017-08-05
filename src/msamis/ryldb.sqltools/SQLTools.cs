@@ -3,16 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 /* Leryc*/
 namespace MSAMISUserInterface {
-    public class SQLTools {
+    public static class SQLTools {
         public static string sqlversion = "5";
         public static String ArchiveName = "msadbarchive";
         public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
@@ -66,7 +68,13 @@ namespace MSAMISUserInterface {
 
         #region Generic Methods
 
-
+        public static string SerializeMe<T>(this T toSerialize) {
+            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
+            using (StringWriter textWriter = new StringWriter()) {
+                xmlSerializer.Serialize(textWriter, toSerialize);
+                return textWriter.ToString();
+            }
+        }
         public static String RemoveSemicolon(String q) {
             if (q.EndsWith(";")) {                  // Removes semicolon if it has one, so 
                 q = q.Substring(0, q.Length - 1);   // that filters can be added.

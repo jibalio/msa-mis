@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using MSAMISUserInterface;
 
 /*TODO: 
  Perform tests on colliding holidays from multiple years.
@@ -14,27 +12,31 @@ using MSAMISUserInterface;
  13th.
      */
 namespace MSAMISUserInterface {
-
     public class Payroll {
+        #region Adjustement Operationen
+
+        public void GetAdjustments() { }
+
+        #endregion
 
 
         #region Fields Definition
 
         public double Bonuses => thirteen + cola + emerallowance + cashbond;
 
-        public double NetPay;
-        public int GID;
-
-        public double GrossPay {
-            get { return TotalSummary["total"].total + Bonuses; }
-        }
-
         // Deductions
         public double Deductions => Sss + PagIbig + PhilHealth + CashAdv + Withtax;
 
+        public double GrossPay => TotalSummary["total"].total + Bonuses;
+
+        public double NetPay {
+            get { return GrossPay - Deductions; }
+        }
+        public int GID;
         // PayrollData Containers
-        public HourProcessor totalhours = new HourProcessor();
-        public static Dictionary<string, double> rates = new Dictionary<string, double>();
+        public HourProcessor TotalHours = new HourProcessor();
+
+        public Dictionary<string, double> rates = new Dictionary<string, double>();
         public Attendance.Period period = Attendance.GetCurrentPayPeriod();
         public double BasicPay = 340.00 / 8;
         public double cashbond;
@@ -46,20 +48,24 @@ namespace MSAMISUserInterface {
 
         public Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
-            {"normal_nsu", new HourCostPair () },
-            {"normal_sun", new HourCostPair () },
-            {"regular_nsu", new HourCostPair () },
-            {"regular_sun", new HourCostPair () },
-            {"special_nsu", new HourCostPair () },
-            {"special_sun", new HourCostPair () },
-            {"special", new HourCostPair () },
-            {"normal", new HourCostPair() },
-            {"regular", new HourCostPair() },
-            {"total", new HourCostPair() }
+
+            {"normal_nsu", new HourCostPair()},
+            {"normal_sun", new HourCostPair()},
+            {"regular_nsu", new HourCostPair()},
+            {"regular_sun", new HourCostPair()},
+            {"special_nsu", new HourCostPair()},
+            {"special_sun", new HourCostPair()},
+            {"special", new HourCostPair()},
+            {"normal", new HourCostPair()},
+            {"regular", new HourCostPair()},
+            {"total", new HourCostPair()}
+
             #endregion
         };
+
         public Dictionary<string, HourCostPair> hc = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
+
             {"nsu_proper_day_normal", new HourCostPair()},
             {"nsu_proper_day_special", new HourCostPair()},
             {"nsu_proper_day_regular", new HourCostPair()},
@@ -84,37 +90,82 @@ namespace MSAMISUserInterface {
             {"sun_overtime_night_normal", new HourCostPair()},
             {"sun_overtime_night_special", new HourCostPair()},
             {"sun_overtime_night_regular", new HourCostPair()},
+
             #endregion
         };
+
         #endregion Fields Definition
+
         #region Constructors
-        public Payroll(int GID) {
-            this.GID = GID;
-        }
+
+        /// <summary>
+        /// Creates a payroll object for a specified guard during a specific
+        /// date. Use this for manual creation / unapproved payrolls.
+        /// </summary>
+        /// <param name="GID">Guard ID</param>
+        /// <param name="month">Month of payroll</param>
+        /// <param name="period">Period of payroll [1/2]</param>
+        /// <param name="year">Year of payroll</param>
         public Payroll(int GID, int month, int period, int year) {
             this.GID = GID;
             this.period.period = period;
             this.period.month = month;
             this.period.year = year;
+            rates.Add("nsu_proper_day_normal", 1);
+            rates.Add("nsu_proper_day_special", 1.3);
+            rates.Add("nsu_proper_day_regular", 2);
+            rates.Add("nsu_proper_night_normal", 1.1);
+            rates.Add("nsu_proper_night_special", 1.43);
+            rates.Add("nsu_proper_night_regular", 2.2);
+            rates.Add("nsu_overtime_day_normal", 1.25);
+            rates.Add("nsu_overtime_day_special", 1.69);
+            rates.Add("nsu_overtime_day_regular", 2.6);
+            rates.Add("nsu_overtime_night_normal", 1.375);
+            rates.Add("nsu_overtime_night_special", 1.859);
+            rates.Add("nsu_overtime_night_regular", 2.86);
+            rates.Add("sun_proper_day_normal", 1.3);
+            rates.Add("sun_proper_day_special", 1.5);
+            rates.Add("sun_proper_day_regular", 2.6);
+            rates.Add("sun_proper_night_normal", 1.43);
+            rates.Add("sun_proper_night_special", 1.65);
+            rates.Add("sun_proper_night_regular", 2.86);
+            rates.Add("sun_overtime_day_normal", 1.625);
+            rates.Add("sun_overtime_day_special", 1.95);
+            rates.Add("sun_overtime_day_regular", 3.38);
+            rates.Add("sun_overtime_night_normal", 1.859);
+            rates.Add("sun_overtime_night_special", 2.145);
+            rates.Add("sun_overtime_night_regular", 3.718);
         }
+
+        /// <summary>
+        /// Creates a payroll object from a DataTable. Use this for already
+        /// approved payrolls stored in the database.
+        /// </summary>
+        /// <param name="dt">DataTable object from payroll query (MySql)</param>
+        public Payroll(DataTable dt) {
+            
+        }
+
         #endregion
+
         #region  Computationes
+
         public void Compute(bool checkthirteen) {
-            foreach (string key in hc.Keys.ToList()) {
-                this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
-            }
+            foreach (var key in hc.Keys.ToList())
+                hc[key] = new HourCostPair(TotalHours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             ComputeTotalSummary();
             ComputeBonuses(checkthirteen);
             ComputeDeductions();
-       
-            NetPay = GrossPay - Deductions;
+            //MessageBox.Show(SQLTools.SerializeMe(hc));
         }
+
         public void Compute() {
             Compute(true);
         }
+
         public void ComputeHours() {
-            DataTable HourIterationDataTable = SQLTools.ExecuteQuery(
-                String.Format(@"
+            var HourIterationDataTable = SQLTools.ExecuteQuery(
+                string.Format(@"
                     select dutydetails.did, atid, date, timein, timeout, 
                     ti_hh, ti_mm, ti_period, to_hh, to_mm, to_period
                     from attendance 
@@ -122,87 +173,91 @@ namespace MSAMISUserInterface {
                     left join dutydetails on attendance.did = dutydetails.did
                     left join sduty_assignment on sduty_assignment.aid = dutydetails.aid
                     left join guards on guards.gid=sduty_assignment.gid 
-                    where period.period = "+period.period+" and month="+period.month+" and year="+period.year+@" and guards.gid="+ GID +@"
+                    where period.period = " + period.period + " and month=" + period.month + " and year=" +
+                              period.year + @" and guards.gid=" + GID + @"
             ;", GID, period.period, period.year, period.month));
-            Hours HourIterationTotal = new Hours();
+            var HourIterationTotal = new Hours();
             foreach (DataRow dr in HourIterationDataTable.Rows) {
-                string ti = dr["date"].ToString().Substring(0, 11) + dr["TimeIn"].ToString();
-                string to = dr["date"].ToString().Substring(0, 10) + " " + dr["TimeOut"].ToString();
-                DateTime TimeInDateTime = DateTime.Parse(ti);
-                DateTime TimeOutDateTime = DateTime.Parse(to);
+                var ti = dr["date"].ToString().Substring(0, 11) + dr["TimeIn"];
+                var to = dr["date"].ToString().Substring(0, 10) + " " + dr["TimeOut"];
+                var TimeInDateTime = DateTime.Parse(ti);
+                var TimeOutDateTime = DateTime.Parse(to);
 
-                string StartDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["ti_hh"] + ":" + dr["ti_mm"] + " " + dr["ti_period"];
-                string EndDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["to_hh"] + ":" + dr["to_mm"] + " " + dr["to_period"];
-                DateTime DutyStart = DateTime.Parse(StartDutyString);
-                DateTime DutyEnd = DateTime.Parse(EndDutyString);
-                HourProcessor hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
-                totalhours.Add(hp);
+                var StartDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["ti_hh"] + ":" + dr["ti_mm"] +
+                                      " " + dr["ti_period"];
+                var EndDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["to_hh"] + ":" + dr["to_mm"] +
+                                    " " + dr["to_period"];
+                var DutyStart = DateTime.Parse(StartDutyString);
+                var DutyEnd = DateTime.Parse(EndDutyString);
+                var hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
+                TotalHours.Add(hp);
             }
         }
 
         private void ComputeTotalSummary() {
             TotalSummary["normal_nsu"] =
-                        hc["nsu_proper_day_normal"] +
-                        hc["nsu_overtime_day_normal"] +
-                        hc["nsu_proper_night_normal"] +
-                        hc["nsu_overtime_night_normal"];
+                hc["nsu_proper_day_normal"] +
+                hc["nsu_overtime_day_normal"] +
+                hc["nsu_proper_night_normal"] +
+                hc["nsu_overtime_night_normal"];
             TotalSummary["normal_sun"] =
-                        hc["sun_proper_day_normal"] +
-                        hc["sun_overtime_day_normal"] +
-                        hc["sun_proper_night_normal"] +
-                        hc["sun_overtime_night_normal"];
+                hc["sun_proper_day_normal"] +
+                hc["sun_overtime_day_normal"] +
+                hc["sun_proper_night_normal"] +
+                hc["sun_overtime_night_normal"];
             TotalSummary["regular_nsu"] =
-                        hc["nsu_proper_day_regular"] +
-                        hc["nsu_overtime_day_regular"] +
-                        hc["nsu_proper_night_regular"] +
-                        hc["nsu_overtime_night_regular"];
+                hc["nsu_proper_day_regular"] +
+                hc["nsu_overtime_day_regular"] +
+                hc["nsu_proper_night_regular"] +
+                hc["nsu_overtime_night_regular"];
             TotalSummary["regular_sun"] =
-                        hc["sun_proper_day_regular"] +
-                        hc["sun_overtime_day_regular"] +
-                        hc["sun_proper_night_regular"] +
-                        hc["sun_overtime_night_regular"];
+                hc["sun_proper_day_regular"] +
+                hc["sun_overtime_day_regular"] +
+                hc["sun_proper_night_regular"] +
+                hc["sun_overtime_night_regular"];
             TotalSummary["special_sun"] =
-                        hc["sun_proper_day_special"] +
-                        hc["sun_overtime_day_special"] +
-                        hc["sun_proper_night_special"] +
-                        hc["sun_overtime_night_special"];
+                hc["sun_proper_day_special"] +
+                hc["sun_overtime_day_special"] +
+                hc["sun_proper_night_special"] +
+                hc["sun_overtime_night_special"];
             TotalSummary["special_nsu"] =
-                        hc["nsu_proper_day_special"] +
-                        hc["nsu_overtime_day_special"] +
-                        hc["nsu_proper_night_special"] +
-                        hc["nsu_overtime_night_special"];
+                hc["nsu_proper_day_special"] +
+                hc["nsu_overtime_day_special"] +
+                hc["nsu_proper_night_special"] +
+                hc["nsu_overtime_night_special"];
             TotalSummary["normal"] =
-                        hc["nsu_proper_day_normal"] +
-                        hc["nsu_overtime_day_normal"] +
-                        hc["nsu_proper_night_normal"] +
-                        hc["nsu_overtime_night_normal"]+                
-                        hc["sun_proper_day_normal"] +   
-                        hc["sun_overtime_day_normal"] +  
-                        hc["sun_proper_night_normal"] +  
-                     hc["sun_overtime_night_normal"]; 
-            TotalSummary["regular"]=
-                 hc["nsu_proper_day_regular"] +
-                    hc["nsu_overtime_day_regular"] +
-                    hc["nsu_proper_night_regular"] +
-                    hc["nsu_overtime_night_regular"] +
-                    hc["sun_proper_day_regular"] +
-                    hc["sun_overtime_day_regular"] +
-                    hc["sun_proper_night_regular"] +
-                    hc["sun_overtime_night_regular"];
+                hc["nsu_proper_day_normal"] +
+                hc["nsu_overtime_day_normal"] +
+                hc["nsu_proper_night_normal"] +
+                hc["nsu_overtime_night_normal"] +
+                hc["sun_proper_day_normal"] +
+                hc["sun_overtime_day_normal"] +
+                hc["sun_proper_night_normal"] +
+                hc["sun_overtime_night_normal"];
+            TotalSummary["regular"] =
+                hc["nsu_proper_day_regular"] +
+                hc["nsu_overtime_day_regular"] +
+                hc["nsu_proper_night_regular"] +
+                hc["nsu_overtime_night_regular"] +
+                hc["sun_proper_day_regular"] +
+                hc["sun_overtime_day_regular"] +
+                hc["sun_proper_night_regular"] +
+                hc["sun_overtime_night_regular"];
             TotalSummary["special"] =
-                 hc["nsu_proper_day_special"] +
-                    hc["nsu_overtime_day_special"] +
-                    hc["nsu_proper_night_special"] +
-                    hc["nsu_overtime_night_special"] +
-                    hc["sun_proper_day_special"] +
-                    hc["sun_overtime_day_special"] +
-                    hc["sun_proper_night_special"] +
-                    hc["sun_overtime_night_special"];
+                hc["nsu_proper_day_special"] +
+                hc["nsu_overtime_day_special"] +
+                hc["nsu_proper_night_special"] +
+                hc["nsu_overtime_night_special"] +
+                hc["sun_proper_day_special"] +
+                hc["sun_overtime_day_special"] +
+                hc["sun_proper_night_special"] +
+                hc["sun_overtime_night_special"];
             TotalSummary["total"] =
                 TotalSummary["special"] + TotalSummary["regular"] + TotalSummary["normal"];
         }
+
         public double ComputeNet() {
-            double e = GrossPay;
+            var e = GrossPay;
             e -= Deductions;
             e += Bonuses;
             return e;
@@ -218,105 +273,109 @@ namespace MSAMISUserInterface {
             return GrossPay - Sss - PagIbig - PhilHealth;
         }
 
-        public int contid = 0;
+        public int contid;
+
         #region In Genera Calculations
+
         public void ComputeDeductions() {
             contid = GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16));
-            this.Sss = ComputeSSS(contid);
-            if (period.period==2) {
-                this.PagIbig = ComputeHDMF();
-                this.PhilHealth = ComputePHIC();
-            } else {
-                this.PagIbig = 0;
-                this.PhilHealth = 0;
+            Sss = ComputeSSS(contid);
+            if (period.period == 2) {
+                PagIbig = ComputeHDMF();
+                PhilHealth = ComputePHIC();
             }
-            
-            this.CashAdv = ComputeCashAdvance();
-            this.TaxableIncome = ComputeTaxableIncome();
-            this.Excess = GrossPay - TaxableIncome;
-            this.Withtax = ComputeWithTax(TaxableIncome, Excess);
-           
+            else {
+                PagIbig = 0;
+                PhilHealth = 0;
+            }
+
+            CashAdv = ComputeCashAdvance();
+            TaxableIncome = ComputeTaxableIncome();
+            Excess = GrossPay - TaxableIncome;
+            Withtax = ComputeWithTax(TaxableIncome, Excess);
         }
 
         public double thirteen;
         public double cola;
         public double emerallowance;
+
         public void ComputeBonuses(bool ca) {
-            if (ca) {
-                if (this.period.month == 12 && this.period.period == 2) { this.thirteen = ComputeThirteen(); }
-            else { this.thirteen = 0; }}
-            
-            
-            this.cola = ComputeCola();
-            this.emerallowance = ComputeEmer();
-            this.cashbond = ComputeCashBond();
-            
+            if (ca)
+                if (period.month == 12 && period.period == 2) thirteen = ComputeThirteen();
+                else thirteen = 0;
+            cola = ComputeCola();
+            emerallowance = ComputeEmer();
+            cashbond = ComputeCashBond();
         }
 
         public void ComputeBonuses() {
             ComputeBonuses(true);
         }
+
         #endregion
 
 
         public static double ComputeCashBond() {
             return 5000;
         }
+
         public static double ComputeCashAdvance() {
             return 20;
         }
+
         public double ComputeWithTax(double Taxable, double Excess) {
-            int NumDependents = Guard.GetNumberOfDependents(GID);
+            var NumDependents = Guard.GetNumberOfDependents(GID);
             if (NumDependents > 4)
                 NumDependents = 4;
-            string sm = "s" + NumDependents + "me" + NumDependents;
-            WithTax w = new WithTax();
+            var sm = "s" + NumDependents + "me" + NumDependents;
+            var w = new WithTax();
             // Start Paper code
-            int prevbracket = 0;
+            var prevbracket = 0;
             double prevtaxbracket = 0;
-            DataTable dt = SQLTools.ExecuteQuery("Select * from withtax_bracket where estatus='" + sm + "'");
-            foreach (DataRow dr in dt.Rows) {
+            var dt = SQLTools.ExecuteQuery("Select * from withtax_bracket where estatus='" + sm + "'");
+            foreach (DataRow dr in dt.Rows)
                 if (double.Parse(dr["bracket"].ToString()) > Taxable &&
                     Taxable > prevtaxbracket) {
+                    var dt2 = SQLTools.ExecuteQuery("select * from withtax_value where wid=" +
+                                                    (int.Parse(dr["taxid"].ToString()) - 1));
 
-                    DataTable dt2 = SQLTools.ExecuteQuery("select * from withtax_value where wid=" + (int.Parse(dr["taxid"].ToString())-1));
-                    
                     w.TaxbaseD = double.Parse(dt2.Rows[0]["value"].ToString());
                     w.excessfactor = int.Parse(dt2.Rows[0]["excessmult"].ToString());
-                } else {
+                }
+                else {
                     prevtaxbracket = double.Parse(dr["bracket"].ToString());
                     prevbracket++;
                 }
-            }
             wt.TaxbaseD = w.TaxbaseD;
             wt.excessfactor = w.excessfactor;
 
-            double ___ = Excess * ((double) w.excessfactor / 100);
+            var ___ = Excess * ((double) w.excessfactor / 100);
             wt.total = w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
             wt.ExcessTax = Excess * ((double) w.excessfactor / 100);
-            
-            return w.TaxbaseD + (Excess * ((double) w.excessfactor / 100));
+
+            return w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
         }
 
         public WithTax GetWithholdingTax() {
             return wt;
-        } 
+        }
 
         public class WithTax {
-            public double TaxbaseD = 0.0;
-            public int excessfactor = 0;
-            public double ExcessTax = 0.0;
-            public double total = 0.0;
+            public int excessfactor;
+            public double ExcessTax;
+            public double TaxbaseD;
+            public double total;
         }
+
         public double ComputeSSS(int contrib_id) {
-            DataTable ssscontrib = SQLTools.ExecuteQuery($"select * from ssscontrib where contrib_id='{contrib_id}'");
-            foreach (DataRow dr in ssscontrib.Rows) {
+            var ssscontrib = SQLTools.ExecuteQuery($"select * from ssscontrib where contrib_id='{contrib_id}'");
+            foreach (DataRow dr in ssscontrib.Rows)
                 if (double.Parse(dr["range_start"].ToString()) < GrossPay &&
-                    GrossPay < double.Parse(dr["range_end"].ToString())) { return double.Parse(dr["ec"].ToString());}
-            }
+                    GrossPay < double.Parse(dr["range_end"].ToString())) return double.Parse(dr["ec"].ToString());
             return 50.00;
         }
-        public static double ComputeHDMF () {
+
+        public static double ComputeHDMF() {
             return 100;
         }
 
@@ -325,26 +384,22 @@ namespace MSAMISUserInterface {
         }
 
         public double ComputeThirteen() {
-             { 
+            {
                 // TODO: Run this code only on every January 1-4
-                List<Payroll> py = new List<Payroll>();
-                for (int mm = 1; mm <= 12; mm++) {
-                    py.Add(new Payroll(this.GID, mm, 1, this.period.year));
-                    py.Add(new Payroll(this.GID, mm, 2, this.period.year));
+                var py = new List<Payroll>();
+                for (var mm = 1; mm <= 12; mm++) {
+                    py.Add(new Payroll(GID, mm, 1, period.year));
+                    py.Add(new Payroll(GID, mm, 2, period.year));
                 }
-                HourProcessor hce = new HourProcessor();
-                 double qwe = 0;
-                foreach (Payroll pypy in py) {
-                    pypy.ComputeHours();
-                }
-                 foreach (Payroll pypy in py) {
-                    qwe += pypy.totalhours.GetTotalTS().TotalHours * BasicPay;
-                }
+                var hce = new HourProcessor();
+                double qwe = 0;
+                foreach (var pypy in py) pypy.ComputeHours();
+                foreach (var pypy in py) qwe += pypy.TotalHours.GetTotalTS().TotalHours * BasicPay;
                 return qwe / 12.00;
+            }
         }
-    }
 
-        public static double ComputeCola () {
+        public static double ComputeCola() {
             return 50;
         }
 
@@ -352,82 +407,85 @@ namespace MSAMISUserInterface {
             return 2500;
         }
 
-        
         #endregion
+
         #region Basic Pay Operations
 
         public static string GetCurrentBasicPay() {
-           return SQLTools.ExecuteSingleResult("select amount from basicpay where status = 1");
+            return SQLTools.ExecuteSingleResult("select amount from basicpay where status = 1");
         }
 
-       
+
         /// <summary>
-        /// Gets the basic pay during a certain date.
-        /// Use for historical payroll viewing.
+        ///     Gets the basic pay during a certain date.
+        ///     Use for historical payroll viewing.
         /// </summary>
         /// <param name="dt">Date to search</param>
         /// <returns></returns>
         public static double GetBasicPay(DateTime dt) {
-            String q = "select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc";
-            DataTable d = SQLTools.ExecuteQuery((q));
+            var q =
+                "select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc";
+            var d = SQLTools.ExecuteQuery(q);
             foreach (DataRow dr in d.Rows) {
-                DateTime dstart = DateTime.ParseExact(dr["start"].ToString(),"yyyy-MM-dd", CultureInfo.InvariantCulture);
-                DateTime dend = 
-                    !dr["end"].ToString().Equals("-1")? 
-                    DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture): 
-                    new DateTime(9999, 12, 28);
-                if (dstart < dt && dt < dend) { return Double.Parse(dr["amount"].ToString()); }
+                var dstart = DateTime.ParseExact(dr["start"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                var dend =
+                    !dr["end"].ToString().Equals("-1")
+                        ? DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture)
+                        : new DateTime(9999, 12, 28);
+                if (dstart < dt && dt < dend) return double.Parse(dr["amount"].ToString());
             }
             return 0.00;
         }
 
         /// <summary>
-        /// Overrides the current basic pay. Sets previous basic pay to Inactive if Date Effective
-        /// has already elapsed.
-        /// <param name="start">Date Effective (can be in the future)</param>
-        /// <param name="pay"></param>
+        ///     Overrides the current basic pay. Sets previous basic pay to Inactive if Date Effective
+        ///     has already elapsed.
+        ///     <param name="start">Date Effective (can be in the future)</param>
+        ///     <param name="pay"></param>
         /// </summary>
         public static void AddBasicPay(DateTime start, double pay) {
-            string ss = start.ToString("yyyy-MM-dd");
-            string spay = pay.ToString("#.##");
-            bool HasElapsed = DateTime.Now >= start;
+            var ss = start.ToString("yyyy-MM-dd");
+            var spay = pay.ToString("#.##");
+            var HasElapsed = DateTime.Now >= start;
             if (HasElapsed) {
                 var q2 = $"select bpid from basicpay where status=1";
-                int bpid = SQLTools.GetInt(q2);
+                var bpid = SQLTools.GetInt(q2);
                 q2 = $"UPDATE `msadb`.`basicpay` SET `status`='0', `end`='{ss}' WHERE `BPID`='{bpid}'";
                 SQLTools.ExecuteNonQuery(q2);
             }
-            var q = $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{-1}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
+            var q =
+                $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{-1}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
             SQLTools.ExecuteNonQuery(q);
         }
 
         /// <summary>
-        /// Adds a basic pay for some historic point. 
-        /// This method simply inserts a
-        ///     basic pay value with start and end dates. 
-        /// This method does not override
-        ///     the current basic pay, and its status is set to 
-        ///     default 0 (inactive). 
-        /// Does not check for overlaps.
+        ///     Adds a basic pay for some historic point.
+        ///     This method simply inserts a
+        ///     basic pay value with start and end dates.
+        ///     This method does not override
+        ///     the current basic pay, and its status is set to
+        ///     default 0 (inactive).
+        ///     Does not check for overlaps.
         /// </summary>
         /// <param name="start">Date Effective</param>
         /// <param name="end">Date Terminated</param>
         /// <param name="pay">Basic Pay Value (per shift)</param>
         public static void AddBasicPay(DateTime start, DateTime end, double pay) {
-            string ss = start.ToString("yyyy-MM-dd");
-            string es = end.ToString("yyyy-MM-dd");
+            var ss = start.ToString("yyyy-MM-dd");
+            var es = end.ToString("yyyy-MM-dd");
             var q =
                 $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{pay:#.##}', '{ss}', '{es}', '0');";
             SQLTools.ExecuteNonQuery(q);
         }
 
 
-        public static DataTable GetBasicPayHistory () {
-            String q = @"select * from basicpay order by status desc";
+        public static DataTable GetBasicPayHistory() {
+            var q = @"select * from basicpay order by status desc";
             return SQLTools.ExecuteQuery(q);
         }
 
         #endregion
+
         #region Accessor Functions Operations
 
         #region + SSS Contribution CRUD Methods
@@ -441,7 +499,7 @@ namespace MSAMISUserInterface {
             where status={Enumeration.ContribStatus.Active}");
         }
 
-        public static DataTable GetSssContribTable (int contrib_id) {
+        public static DataTable GetSssContribTable(int contrib_id) {
             return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
             right join contribdetails
             on contribdetails.contrib_id = ssscontrib.contrib_id
@@ -449,33 +507,35 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetSssContribList() {
-            return SQLTools.ExecuteQuery($@"select * from contribdetails where type='{Enumeration.ContribType.Sss}' order by date_effective desc");
+            return SQLTools.ExecuteQuery(
+                $@"select * from contribdetails where type='{
+                        Enumeration.ContribType.Sss
+                    }' order by date_effective desc");
         }
-
-        
-        
- 
-
-        
-
 
 
         #region SSS:old
+
         private static void EditSSSContrib(int SssId, double RangeStart, double RangeEnd, double Value) {
-            string q = @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='"+SssId+"';";
-            q = String.Format(q, RangeStart, RangeEnd, Value);
+            var q =
+                @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='" +
+                SssId + "';";
+            q = string.Format(q, RangeStart, RangeEnd, Value);
             SQLTools.ExecuteNonQuery(q);
         }
+
         private static void RemoveSSSContrib(int SssId) {
             SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + SssId + "';");
         }
 
-        
+
         private static void AddSSSContrib(double RangeStart, double RangeEnd, double Value) {
-            string q = String.Format(@"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`) VALUES ('{0}', '{1}','{2}');",
+            var q = string.Format(
+                @"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`) VALUES ('{0}', '{1}','{2}');",
                 RangeStart, RangeEnd, Value);
             SQLTools.ExecuteNonQuery(q);
         }
+
         #endregion
 
         #endregion For DataTable CRUD
@@ -488,87 +548,82 @@ namespace MSAMISUserInterface {
         public static int GetSssContribId(DateTime date) {
             return _GetContribId(date, Enumeration.ContribType.Sss.ToString());
         }
+
         public static int GetWithTaxContribId(DateTime date) {
             return _GetContribId(date, Enumeration.ContribType.WithTax.ToString());
         }
+
         /// <summary>
-        /// Gets the `contrib_id` of contribution of a specific date.
-        /// Use this Id for further queries and calculations.
+        ///     Gets the `contrib_id` of contribution of a specific date.
+        ///     Use this Id for further queries and calculations.
         /// </summary>
         /// <param name="date">Date</param>
         /// <returns>Contrib Id.</returns>
         private static int _GetContribId(DateTime date, string val) {
             var q = $"select * from contribdetails where type={val}";
-            int contrib_id = 0;
-            DataTable dt = SQLTools.ExecuteQuery(q);
+            var contrib_id = 0;
+            var dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow dr in dt.Rows) {
-                DateTime ss = DateTime.Parse(dr["date_effective"].ToString());
-                DateTime es = dr["date_dissolved"].ToString().Equals("-1") ? 
-                    SQLTools.GetDateTime("9999-12-28"):DateTime.Parse(dr["date_dissolved"].ToString());
-                if (ss < date && date < es) { contrib_id = int.Parse(dr["contrib_id"].ToString()); }
+                var ss = DateTime.Parse(dr["date_effective"].ToString());
+                var es = dr["date_dissolved"].ToString().Equals("-1")
+                    ? SQLTools.GetDateTime("9999-12-28")
+                    : DateTime.Parse(dr["date_dissolved"].ToString());
+                if (ss < date && date < es) contrib_id = int.Parse(dr["contrib_id"].ToString());
             }
             return contrib_id;
         }
 
-
         #endregion
+
         #region SSS: DB Saving
-        public static void SaveSssContrib(DataGridView dt, DateTime date_effective)
-        {
-            string date_effectives = date_effective.ToString("yyyy-MM-dd");
-            bool HasElapsed = DateTime.Now >= date_effective;
+
+        public static void SaveSssContrib(DataGridView dt, DateTime date_effective) {
+            var date_effectives = date_effective.ToString("yyyy-MM-dd");
+            var HasElapsed = DateTime.Now >= date_effective;
 
             // Create ContribDetails Table (main)
 
             // if date has already elapsed (adding historical data)
-            if (HasElapsed)
-            {
-                string q2 = $@"
+            if (HasElapsed) {
+                var q2 = $@"
 UPDATE `msadb`.`contribdetails` SET 
 `date_dissolved`='{date_effectives}'
 WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.Active}";
                 SQLTools.ExecuteNonQuery(q2);
             }
 
-            string q =
-                $@"INSERT INTO `msadb`.`contribdetails` (`date_effective`, `date_dissolved`, `type`, `status`) VALUES ('{date_effectives}', '{-1}', '{Enumeration.ContribType.Sss}', '{
-                   (HasElapsed ? Enumeration.ContribStatus.Past : Enumeration.ContribStatus.Future)
+            var q =
+                $@"INSERT INTO `msadb`.`contribdetails` (`date_effective`, `date_dissolved`, `type`, `status`) VALUES ('{
+                        date_effectives
+                    }', '{-1}', '{Enumeration.ContribType.Sss}', '{
+                        (HasElapsed ? Enumeration.ContribStatus.Past : Enumeration.ContribStatus.Future)
                     }');";
             SQLTools.ExecuteNonQuery(q);
-            int contrib_id = SQLTools.GetInt("select LAST_INSERT_ID();");
+            var contrib_id = SQLTools.GetInt("select LAST_INSERT_ID();");
 
 
             // Create Actual SSS connections
-            foreach (DataGridViewRow dr in dt.Rows)
-            {
-                string from = _cleanstringmoney(dr.Cells[1].Value.ToString());
-                string to = _cleanstringmoney(dr.Cells[3].Value.ToString());
-                string value = _cleanstringmoney(dr.Cells[5].Value.ToString());
-                string w =
+            foreach (DataGridViewRow dr in dt.Rows) {
+                var from = _cleanstringmoney(dr.Cells[1].Value.ToString());
+                var to = _cleanstringmoney(dr.Cells[3].Value.ToString());
+                var value = _cleanstringmoney(dr.Cells[5].Value.ToString());
+                var w =
                     $"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`, `contrib_id`) VALUES ('{from}', '{to}', '{value}', '{contrib_id}');";
                 SQLTools.ExecuteNonQuery(w);
             }
         }
 
-        private static string _cleanstringmoney(string s)
-        {
+        private static string _cleanstringmoney(string s) {
             return Regex.Replace(s, @"[^0-9\-\.]", "");
         }
+
         #endregion
-
-
-
-
-
-
-
-
-
 
         #endregion
 
 
         #region + GetGuardsList Methods Min/Max
+
         public static DataTable GetGuardsPayrollMain() {
             return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
@@ -589,6 +644,7 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
                                                 group by guards.gid
                                                 ");
         }
+
         public static DataTable GetGuardsPayrollMinimal() {
             return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name
                                                 from request
@@ -602,8 +658,8 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
                                                 group by guards.gid
                                                 ");
         }
-        #endregion
 
+        #endregion
 
 
         #region DB Operations
@@ -611,16 +667,19 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
         #region WithTax: DB Ops
 
         public static DataTable GetWithTaxHeaders(int contrib_id) {
-            return SQLTools.ExecuteQuery($@"SELECT wid, value, excessmult, contribdetails.contrib_id FROM msadb.withtax_value 
+            return SQLTools.ExecuteQuery(
+                $@"SELECT wid, value, excessmult, contribdetails.contrib_id FROM msadb.withtax_value 
 right join withtax_bracket on withtax_bracket.taxid=withtax_value.wid
-left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id where contribdetails.contrib_id='{contrib_id}' group by wid;");
+left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id where contribdetails.contrib_id='{
+                        contrib_id
+                    }' group by wid;");
         }
 
         public static DataTable GetWithTaxBrackets(int contrib_id) {
-            string q = $@"select * from withtax_bracket where contrib_id={contrib_id};";
+            var q = $@"select * from withtax_bracket where contrib_id={contrib_id};";
             return SQLTools.ExecuteQuery(q);
         }
-        
+
         public static DataTable GetWithTaxContribList() {
             return SQLTools.ExecuteQuery($@"    select contrib_id, date_effective, date_dissolved, case status 
                                                 when 1 then 'Active'
@@ -628,38 +687,24 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
                                                 when 0 then 'Inactive'
                                                 end as `status`
                                                 from contribdetails 
-                                                where type='{Enumeration.ContribType.WithTax}' order by date_effective desc");
+                                                where type='{
+                    Enumeration.ContribType.WithTax
+                }' order by date_effective desc");
         }
-        #endregion
 
+        #endregion
 
         #endregion DB Operations
 
 
-
-
-
-
-
-
         public HourProcessor GetTotalHours() {
-            return totalhours;
+            return TotalHours;
         }
 
         #endregion For DataTable CRUD
+
         #region Sub-classes
 
         #endregion
-
-
-
-        #region Adjustement Operationen
-        public void GetAdjustments () {
-            
-        }
-
-        #endregion
-
     }
-
 }
