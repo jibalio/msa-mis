@@ -580,6 +580,7 @@ CREATE TABLE `rates` (
   `sunday_regular_holiday` decimal(3,2) DEFAULT NULL,
   `nightdifferential` decimal(3,2) DEFAULT NULL,
   `overtime` decimal(3,2) DEFAULT NULL,
+  `overtime_holiday` decimal(3,2) DEFAULT NULL,
   `contrib_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`rates_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -591,7 +592,7 @@ CREATE TABLE `rates` (
 
 LOCK TABLES `rates` WRITE;
 /*!40000 ALTER TABLE `rates` DISABLE KEYS */;
-INSERT INTO `rates` VALUES (1,1.00,1.30,2.00,1.30,1.50,2.60,1.10,1.25,NULL);
+INSERT INTO `rates` VALUES (1,1.00,1.30,2.00,1.30,1.50,2.60,1.10,1.25,1.25,12);
 /*!40000 ALTER TABLE `rates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -888,4 +889,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-06  0:33:48
+-- Dump completed on 2017-08-06  1:22:02
