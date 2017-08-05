@@ -49,10 +49,11 @@ namespace MSAMISUserInterface {
         }
 
         private void LoadClients() {
-            ClientGRD.DataSource = Scheduling.GetClients();
+            ClientGRD.DataSource = Client.GetAllClientDetails(_extraQueryParams);
             ClientGRD.Columns[0].Visible = false;
             ClientGRD.Columns[1].Width = 330;
             ClientGRD.ColumnHeadersVisible = false;
+            ClientGRD.Columns[2].Visible = false;
             ClientGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ClientGRD.ClearSelection();
         }
@@ -227,5 +228,15 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private void ClientSearchBX_TextChanged(object sender, EventArgs e) {
+            var temp = ClientSearchBX.Text;
+            const string kazoo = "name";
+
+            if (ClientSearchBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            LoadClients();
+        }
     }
 }

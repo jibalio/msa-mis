@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace rylui
 {
     public class RylMessageBox
     {
         
-        public static DialogResult ShowDialog (String text)
+        public static DialogResult ShowDialog (string text)
         {
-            Base form = new Base();
+            var form = new Base{};
             form.iconbox.Visible = false;
             form.btn3.Text = Property.ButtonText.OK;
             form.rt.Text = text;
@@ -23,9 +18,9 @@ namespace rylui
             form.btn1.BackColor = Property.Colors.ButtonBlue;
             return form.ShowDialog();
         }
-        public static DialogResult ShowDialog(String text, String title)
+        public static DialogResult ShowDialog(string text, string title)
         {
-            Base form = new Base();
+            var form = new Base{};
             form.btn3.Text = Property.ButtonText.OK;
             form.rt.Text = text;
             form.iconbox.Visible = false;
@@ -39,9 +34,8 @@ namespace rylui
             return form.ShowDialog(); 
         }
 
-        public static DialogResult ShowDialog(String text, String title, MessageBoxButtons mbutton)
-        {
-            Base form = new Base();
+        public static DialogResult ShowDialog(string text, string title, MessageBoxButtons mbutton) {
+            var form = new Base {};
             form.iconbox.Visible = false;
             form.btn1.Text = Property.ButtonText.OK;
             form.rt.Text = text;
@@ -49,12 +43,13 @@ namespace rylui
             form.Title.Text = title;
             form.rt.Size = Property.TextProperties.SizeNoIcon;
             form.rt.Location = Property.TextProperties.LocationNoIcon;
+
             switch (mbutton)
             {
                 case MessageBoxButtons.AbortRetryIgnore:
-                    form.btn1.Text = "Ignore";
-                    form.btn2.Text = "Retry";
-                    form.btn3.Text = "Abort";
+                    form.btn1.Text = "IGNORE";
+                    form.btn2.Text = "RETRY";
+                    form.btn3.Text = "ABORT";
                     break;
                 case MessageBoxButtons.OK:
                     form.btn3.Text = "OK";
@@ -62,24 +57,29 @@ namespace rylui
                     form.btn1.Visible = false;
                     break;
                 case MessageBoxButtons.OKCancel:
-                    form.btn1.Text = "Cancel";
+                    form.btn1.Text = "CANCEL";
                     form.btn2.Text = "OK";
                     form.btn3.Visible = false;
                     break;
                 case MessageBoxButtons.RetryCancel:
-                    form.btn1.Text = "Cancel";
-                    form.btn3.Text = "Retry";
+                    form.btn1.Text = "CANCEL";
+                    form.btn3.Text = "RETRY";
                     form.btn2.Visible = false;
                     break;
                 case MessageBoxButtons.YesNo:
-                    form.btn1.Text = "No";
-                    form.btn3.Text = "Yes";
+                    form.btn1.Text = "NO";
+                    form.btn3.Text = "YES";
                     form.btn2.Visible = false;
                     break;
                 case MessageBoxButtons.YesNoCancel:
-                    form.btn1.Text = "Cancel";
-                    form.btn2.Text = "No";
-                    form.btn3.Text = "Yes";
+                    form.btn1.Text = "CANCEL";
+                    form.btn2.Text = "NO";
+                    form.btn3.Text = "YES";
+                    break;
+                default:
+                    form.btn3.Text = "OK";
+                    form.btn2.Visible = false;
+                    form.btn1.Visible = false;
                     break;
 
             }
@@ -87,10 +87,10 @@ namespace rylui
         }
 
 
-        public static DialogResult ShowDialog(String text, String title, MessageBoxButtons mbutton, MessageBoxIcon micon)
+        public static DialogResult ShowDialog(string text, string title, MessageBoxButtons mbutton, MessageBoxIcon micon)
         {
             
-            Base form = new Base();
+            var form = new Base{};
             form.rt.Text = text;
             form.Title.Text = title;
             

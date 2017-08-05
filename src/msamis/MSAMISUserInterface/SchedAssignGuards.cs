@@ -15,6 +15,10 @@ namespace MSAMISUserInterface {
         private int[] _gidS = {-1};
         public string ClientName;
 
+        private const string FilterText = "Search or filter";
+        private const string EmptyText = "";
+        private string _extraQueryParams = "";
+
         public SchedAssignGuards() {
             InitializeComponent();
             Opacity = 0;
@@ -44,7 +48,7 @@ namespace MSAMISUserInterface {
 
         private void RefreshAvailable() {
             AvailableGRD.Rows.Clear();
-            var dt = Scheduling.GetUnassignedGuards("", "name asc");
+            var dt = Scheduling.GetUnassignedGuards(_extraQueryParams, "name asc");
             foreach (DataRow row in dt.Rows)
                 if (!_gidS.Contains(int.Parse(row[0].ToString()))) AvailableGRD.Rows.Add(row[0], row[1], row[2]);
             AvailableGRD.Columns[0].Visible = false;
@@ -88,12 +92,13 @@ namespace MSAMISUserInterface {
         private void AssignBTN_Click(object sender, EventArgs e) {
             AddGuards();
         }
-
+        
         private void AddGuards() {
-            for (var i = 0; i < AvailableGRD.SelectedRows.Count; i++)
+            for (var i = 0; i < AvailableGRD.SelectedRows.Count; i++) { 
                 AssignedGRD.Rows.Add(AvailableGRD.SelectedRows[i].Cells[0].Value.ToString(),
                     AvailableGRD.SelectedRows[i].Cells[1].Value.ToString(),
                     AvailableGRD.SelectedRows[i].Cells[2].Value.ToString());
+            }
             foreach (DataGridViewRow row in AvailableGRD.SelectedRows) AvailableGRD.Rows.Remove(row);
             UpdateNeeded();
         }
@@ -153,6 +158,28 @@ namespace MSAMISUserInterface {
             }
             RefreshAvailable();
             UpdateNeeded();
+        }
+
+        private void AvailableSearchBX_Enter(object sender, EventArgs e) {
+            if (AvailableSearchBX.Text == FilterText) {
+                AvailableSearchBX.Text = EmptyText;
+                _extraQueryParams = EmptyText;
+            }
+            AvailableSearchLine.Visible = true;
+        }
+
+        private void AvailableSearchBX_Leave(object sender, EventArgs e) {
+            if (AvailableSearchBX.Text == EmptyText) {
+                AvailableSearchBX.Text = FilterText;
+                _extraQueryParams = EmptyText;
+            }
+            RefreshAvailable();
+            AvailableSearchLine.Visible = false;
+        }
+
+        private void AvailableSearchBX_TextChanged(object sender, EventArgs e) {
+            _extraQueryParams = AvailableSearchBX.Text;
+            RefreshAvailable();
         }
     }
 }
