@@ -111,34 +111,7 @@ namespace MSAMISUserInterface {
             this.period.period = period;
             this.period.month = month;
             this.period.year = year;
-            // TODO: REPLACE WITH INITRATES.
-            #region _replace
-            rates.Add("nsu_proper_day_normal", 1);
-            rates.Add("nsu_proper_day_special", 1.3);
-            rates.Add("nsu_proper_day_regular", 2);
-            rates.Add("nsu_proper_night_normal", 1.1);
-            rates.Add("nsu_proper_night_special", 1.43);
-            rates.Add("nsu_proper_night_regular", 2.2);
-            rates.Add("nsu_overtime_day_normal", 1.25);
-            rates.Add("nsu_overtime_day_special", 1.69);
-            rates.Add("nsu_overtime_day_regular", 2.6);
-            rates.Add("nsu_overtime_night_normal", 1.375);
-            rates.Add("nsu_overtime_night_special", 1.859);
-            rates.Add("nsu_overtime_night_regular", 2.86);
-            rates.Add("sun_proper_day_normal", 1.3);
-            rates.Add("sun_proper_day_special", 1.5);
-            rates.Add("sun_proper_day_regular", 2.6);
-            rates.Add("sun_proper_night_normal", 1.43);
-            rates.Add("sun_proper_night_special", 1.65);
-            rates.Add("sun_proper_night_regular", 2.86);
-            rates.Add("sun_overtime_day_normal", 1.625);
-            rates.Add("sun_overtime_day_special", 1.95);
-            rates.Add("sun_overtime_day_regular", 3.38);
-            rates.Add("sun_overtime_night_normal", 1.859);
-            rates.Add("sun_overtime_night_special", 2.145);
-            rates.Add("sun_overtime_night_regular", 3.718);
-            #endregion
-            // _InitRates();
+            this._InitRates();
         }
         
         /// <summary>
@@ -714,10 +687,36 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         #endregion
 
 
-        private void InitRates() {
+        private void _InitRates() {
+            #region + string q = {long query}
             string q = $@"
-            // TODO: Place rhyle's query here
+            select
+            ordinary_day as nsu_proper_day_normal,
+            special_holiday as nsu_proper_day_special,
+            regular_holiday as nsu_proper_day_regular,
+            (ordinary_day * nightdifferential) as nsu_proper_night_normal,
+            (regular_holiday * nightdifferential) as nsu_proper_night_regular,
+            (ordinary_day * overtime) as nsu_overtime_day_normal,
+            (special_holiday * overtime_holiday) as nsu_overtime_day_special,
+            (regular_holiday * overtime_holiday) as nsu_overtime_day_regular,
+            (ordinary_day * overtime * nightdifferential) as nsu_overtime_night_normal,
+            (special_holiday * overtime_holiday * nightdifferential) as nsu_overtime_night_special,
+            (regular_holiday * overtime_holiday * nightdifferential) as nsu_overtime_night_regular,
+            sunday_ordinary_day as sun_proper_day_normal,
+            sunday_special_holiday as sun_proper_day_special,
+            sunday_regular_holiday as sun_proper_day_regular,
+            (sunday_ordinary_day * nightdifferential) as sun_proper_night_normal,
+            (sunday_special_holiday * nightdifferential) as sun_proper_night_special,
+            (sunday_regular_holiday * nightdifferential) as sun_proper_night_regular,
+            (sunday_ordinary_day * overtime) as sun_overtime_day_normal,
+            (sunday_special_holiday * overtime_holiday) as sun_overtime_day_special,
+            (sunday_regular_holiday * overtime_holiday) as sun_overtime_day_regular,
+            (sunday_ordinary_day * overtime * nightdifferential) as sun_overtime_night_normal,
+            (sunday_special_holiday * overtime_holiday * nightdifferential) as sun_overtime_night_special,
+            (sunday_regular_holiday * overtime_holiday * nightdifferential) as sun_overtime_night_regular
+            from rates
             ";
+            #endregion
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (string key in _rateKeys) {
                 this.rates.Add(key, double.Parse(dt.Rows[0][key].ToString())); 
