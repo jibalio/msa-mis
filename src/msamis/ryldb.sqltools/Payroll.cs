@@ -24,10 +24,14 @@ namespace MSAMISUserInterface {
 
         public double NetPay;
         public int GID;
-        public double GrossPay;
+
+        public double GrossPay {
+            get { return TotalSummary["total"].total + Bonuses; }
+        }
 
         // Deductions
-        public double deductions;
+        public double Deductions => Sss + PagIbig + PhilHealth + CashAdv + Withtax;
+
         // PayrollData Containers
         public HourProcessor totalhours = new HourProcessor();
         public static Dictionary<string, double> rates = new Dictionary<string, double>();
@@ -95,20 +99,18 @@ namespace MSAMISUserInterface {
         }
         #endregion
         #region  Computationes
-        public void ComputeGrossPay(bool checkthirteen) {
-            int gid = GID;
+        public void Compute(bool checkthirteen) {
             foreach (string key in hc.Keys.ToList()) {
                 this.hc[key] = new HourCostPair(totalhours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
             }
             ComputeTotalSummary();
-            
             ComputeBonuses(checkthirteen);
-            GrossPay = TotalSummary["total"].total + Bonuses;
-            deductions = ComputeDeductions();
-            NetPay = GrossPay - deductions;
+            ComputeDeductions();
+       
+            NetPay = GrossPay - Deductions;
         }
-        public void ComputeGrossPay() {
-            ComputeGrossPay(true);
+        public void Compute() {
+            Compute(true);
         }
         public void ComputeHours() {
             DataTable HourIterationDataTable = SQLTools.ExecuteQuery(
@@ -201,7 +203,7 @@ namespace MSAMISUserInterface {
         }
         public double ComputeNet() {
             double e = GrossPay;
-            e -= deductions;
+            e -= Deductions;
             e += Bonuses;
             return e;
         }
@@ -218,7 +220,7 @@ namespace MSAMISUserInterface {
 
         public int contid = 0;
         #region In Genera Calculations
-        public double ComputeDeductions() {
+        public void ComputeDeductions() {
             contid = GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16));
             this.Sss = ComputeSSS(contid);
             if (period.period==2) {
@@ -233,8 +235,7 @@ namespace MSAMISUserInterface {
             this.TaxableIncome = ComputeTaxableIncome();
             this.Excess = GrossPay - TaxableIncome;
             this.Withtax = ComputeWithTax(TaxableIncome, Excess);
-            double e =  Sss + PagIbig + PhilHealth + CashAdv + Withtax;
-            return e;
+           
         }
 
         public double thirteen;

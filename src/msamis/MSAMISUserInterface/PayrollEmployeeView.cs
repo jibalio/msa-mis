@@ -156,7 +156,7 @@ namespace MSAMISUserInterface {
                 _pay = new Payroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
                 _pay.ComputeHours();
-                _pay.ComputeGrossPay();
+                _pay.Compute();
                 UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal",
                     "nsu_overtime_night_normal", MondaySaturday);
                 UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal",
@@ -190,7 +190,7 @@ namespace MSAMISUserInterface {
                 DPagIbigLBL.Text = CurrencyFormatNegative(_pay.PagIbig);
                 DPhilHealthLBL.Text = CurrencyFormatNegative(_pay.PhilHealth);
                 DSSSLBL.Text = CurrencyFormatNegative(_pay.Sss);
-                DTotalLBL.Text = CurrencyFormatNegative(_pay.ComputeDeductions());
+                DTotalLBL.Text = CurrencyFormatNegative(_pay.Deductions);
 
                 NetPayLBL.Text = CurrencyFormat(_pay.NetPay);
 
