@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
+
 /* Leryc*/
 namespace MSAMISUserInterface {
     public static class SQLTools {
