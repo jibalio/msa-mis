@@ -111,6 +111,8 @@ namespace MSAMISUserInterface {
             this.period.period = period;
             this.period.month = month;
             this.period.year = year;
+            // TODO: REPLACE WITH INITRATES.
+            #region _replace
             rates.Add("nsu_proper_day_normal", 1);
             rates.Add("nsu_proper_day_special", 1.3);
             rates.Add("nsu_proper_day_regular", 2);
@@ -135,8 +137,10 @@ namespace MSAMISUserInterface {
             rates.Add("sun_overtime_night_normal", 1.859);
             rates.Add("sun_overtime_night_special", 2.145);
             rates.Add("sun_overtime_night_regular", 3.718);
+            #endregion
+            // _InitRates();
         }
-
+        
         /// <summary>
         /// Creates a payroll object from a DataTable. Use this for already
         /// approved payrolls stored in the database.
@@ -701,10 +705,37 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             return TotalHours;
         }
 
+
+
         #endregion For DataTable CRUD
 
         #region Sub-classes
 
         #endregion
+
+
+        private void InitRates() {
+            string q = $@"
+            // TODO: Place rhyle's query here
+            ";
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            foreach (string key in _rateKeys) {
+                this.rates.Add(key, double.Parse(dt.Rows[0][key].ToString())); 
+            }
+        }
+
+
+
+
+        private static readonly string[] _rateKeys = new string[] {
+            "nsu_proper_day_normal", "nsu_proper_day_special", "nsu_proper_day_regular", "nsu_proper_night_normal",
+            "nsu_proper_night_special", "nsu_proper_night_regular", "nsu_overtime_day_normal",
+            "nsu_overtime_day_special", "nsu_overtime_day_regular", "nsu_overtime_night_normal",
+            "nsu_overtime_night_special", "nsu_overtime_night_regular", "sun_proper_day_normal",
+            "sun_proper_day_special", "sun_proper_day_regular", "sun_proper_night_normal", "sun_proper_night_special",
+            "sun_proper_night_regular", "sun_overtime_day_normal", "sun_overtime_day_special",
+            "sun_overtime_day_regular", "sun_overtime_night_normal", "sun_overtime_night_special",
+            "sun_overtime_night_regular"
+        };
     }
 }
