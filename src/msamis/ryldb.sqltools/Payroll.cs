@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Text;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 /*TODO: 
- Perform tests on colliding holidays from multiple years.
- Pword hash
- 13th.
-     */
+    
+*/
 namespace MSAMISUserInterface {
     public class Payroll {
         #region Adjustement Operationen
@@ -138,6 +139,8 @@ namespace MSAMISUserInterface {
 
         public void Compute() {
             Compute(true);
+            string a = (_SerializeHours());
+            MessageBox.Show(_DeserializeObject(a).ToString());
         }
 
         public void ComputeHours() {
@@ -688,8 +691,9 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
 
         private void _InitRates() {
-            #region + string q = {long query}
-            string q = $@"
+            string q =
+                #region + string q = {long query}
+             $@"
             select
             ordinary_day as nsu_proper_day_normal,
             special_holiday as nsu_proper_day_special,
@@ -713,7 +717,8 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             (sunday_regular_holiday * overtime_holiday) as sun_overtime_day_regular,
             (sunday_ordinary_day * overtime * nightdifferential) as sun_overtime_night_normal,
             (sunday_special_holiday * overtime_holiday * nightdifferential) as sun_overtime_night_special,
-            (sunday_regular_holiday * overtime_holiday * nightdifferential) as sun_overtime_night_regular
+            (sunday_regular_holiday * overtime_holiday * nightdifferential) as sun_overtime_night_regular,
+            (ordinary_day * nightdifferential) as nsu_proper_night_special
             from rates
             ";
             #endregion
@@ -727,6 +732,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
 
         private static readonly string[] _rateKeys = new string[] {
+            #region +keys definition
             "nsu_proper_day_normal", "nsu_proper_day_special", "nsu_proper_day_regular", "nsu_proper_night_normal",
             "nsu_proper_night_special", "nsu_proper_night_regular", "nsu_overtime_day_normal",
             "nsu_overtime_day_special", "nsu_overtime_day_regular", "nsu_overtime_night_normal",
@@ -735,6 +741,21 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             "sun_proper_night_regular", "sun_overtime_day_normal", "sun_overtime_day_special",
             "sun_overtime_day_regular", "sun_overtime_night_normal", "sun_overtime_night_special",
             "sun_overtime_night_regular"
+            #endregion
         };
+
+        private string _SerializeHours() {
+            using (MemoryStream stream = new MemoryStream()) {
+                new BinaryFormatter().Serialize(stream, this.TotalHours);
+                return Convert.ToBase64String(stream.ToArray());
+            }
+        }
+        private static object _DeserializeObject(string str) {
+            byte[] bytes = Convert.FromBase64String(str);
+            using (MemoryStream stream = new MemoryStream(bytes)) {
+                return new BinaryFormatter().Deserialize(stream);
+            }
+        }
+
     }
 }

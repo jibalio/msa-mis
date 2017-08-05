@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Reports.cs" />
     <Compile Include="Scheduling.cs" />
+    <Compile Include="SerializableDictionary.cs" />
     <Compile Include="SQLTools.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>

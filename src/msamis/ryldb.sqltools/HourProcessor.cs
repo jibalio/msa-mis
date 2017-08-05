@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ryldb.sqltools;
 
 namespace MSAMISUserInterface {
 
     [Serializable]
     public class HourProcessor {
-        public Dictionary<string, TimeSpan> hp = new Dictionary<string, TimeSpan> { 
+        public SerializableDictionary <string, TimeSpan> hp = new SerializableDictionary<string, TimeSpan> { 
             #region + Keys Definition
             {"nsu_proper_day_normal", new TimeSpan(0,0,0)},
             {"nsu_proper_day_special", new TimeSpan(0,0,0)},
@@ -37,7 +38,7 @@ namespace MSAMISUserInterface {
             #endregion
         };
         TimeSpan total, totalday, totalnight;
-        public Dictionary<string, TimeSpan> GetHourDictionary() {
+        public SerializableDictionary<string, TimeSpan> GetHourDictionary() {
             return hp;
         }
         public HourProcessor(DateTime ti, DateTime to, DateTime startduty, DateTime endduty) {

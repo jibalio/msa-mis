@@ -310,6 +310,7 @@ namespace MSAMISUserInterface {
             return IsHolidayToday(e.AddDays(1));
         }
 
+        [Serializable]
         public class HE_internal {
             public bool isholiday;
             public int type;
