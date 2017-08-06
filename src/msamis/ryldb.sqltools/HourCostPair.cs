@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MSAMISUserInterface {
+
+    [Serializable]
     public class HourCostPair {
         public double hour;
         public double cost;

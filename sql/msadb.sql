@@ -119,7 +119,7 @@ CREATE TABLE `attendance` (
   UNIQUE KEY `unique_index` (`Date`,`DID`),
   KEY `Attendance-DutyDetails_idx` (`DID`),
   CONSTRAINT `Attendance-DutyDetails` FOREIGN KEY (`DID`) REFERENCES `dutydetails` (`DID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1472 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1349 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -458,31 +458,30 @@ DROP TABLE IF EXISTS `payroll`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payroll` (
-  `PID` int(11) NOT NULL,
+  `PID` int(11) NOT NULL AUTO_INCREMENT,
   `GID` int(11) DEFAULT NULL,
   `month` int(2) DEFAULT NULL,
-  `day` int(2) DEFAULT NULL,
+  `period` int(2) DEFAULT NULL,
   `year` int(4) DEFAULT NULL,
+  `rates_id` int(11) DEFAULT NULL,
   `cashbond` decimal(7,2) DEFAULT NULL,
-  `taxableincome` decimal(7,2) DEFAULT NULL,
-  `excess` decimal(7,2) DEFAULT NULL,
+  `thirteenth` decimal(7,2) DEFAULT NULL,
+  `cola` decimal(7,2) DEFAULT NULL,
   `sss` decimal(7,2) DEFAULT NULL,
   `pagibig` decimal(7,2) DEFAULT NULL,
   `philhealth` decimal(7,2) DEFAULT NULL,
   `withtax` decimal(7,2) DEFAULT NULL,
-  `totalhours_serializable` blob,
-  `rates_serializable` blob,
+  `cashadv` decimal(7,2) DEFAULT NULL,
+  `emergencyallowance` decimal(7,2) DEFAULT NULL,
   `totalsummary_serializable` blob,
   `hc_serializable` blob,
   `lastmodified` timestamp NULL DEFAULT NULL,
   `pstatus` int(1) DEFAULT NULL,
-  `thirteenth` decimal(7,2) DEFAULT NULL,
-  `cola` decimal(7,2) DEFAULT NULL,
-  `emergencyallowance` decimal(7,2) DEFAULT NULL,
   PRIMARY KEY (`PID`),
+  UNIQUE KEY `py_unq_idx` (`GID`,`year`,`month`,`period`),
   KEY `Payroll-Guards_idx` (`GID`),
   CONSTRAINT `Payroll-Guards` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -491,6 +490,7 @@ CREATE TABLE `payroll` (
 
 LOCK TABLES `payroll` WRITE;
 /*!40000 ALTER TABLE `payroll` DISABLE KEYS */;
+INSERT INTO `payroll` VALUES (1,1,7,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(7,117,8,2,2017,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0),(11,128,7,2,2017,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0),(19,117,8,1,2017,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0),(20,117,7,1,2017,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0),(58,168,8,2,2017,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0),(76,117,7,2,2017,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0),(77,117,5,2,2017,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0),(84,117,6,1,2017,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `payroll` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -510,7 +510,7 @@ CREATE TABLE `period` (
   `certby` varchar(120) DEFAULT '',
   PRIMARY KEY (`PID`),
   UNIQUE KEY `unq` (`month`,`GID`,`period`,`year`)
-) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -741,7 +741,7 @@ CREATE TABLE `withtax_bracket` (
   `taxid` varchar(45) DEFAULT NULL,
   `contrib_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`wbid`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -825,4 +825,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-06 14:27:07
+-- Dump completed on 2017-08-06 21:07:47

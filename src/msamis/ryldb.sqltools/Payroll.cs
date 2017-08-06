@@ -192,6 +192,7 @@ INSERT IGNORE INTO `msadb`.`payroll`
 VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.period.year}', 
 '{RetrieveCashBond()}', '{RetrieveHdmf()}', '{RetrievePhic()}', '{RetrieveCola()}', '{RetrieveEmer()}', '{Enumeration.PayrollStatus.Pending}');";
             SQLTools.ExecuteNonQuery(insertionquery);
+            //Approve();
         }
         
         /// <summary>
@@ -212,7 +213,14 @@ VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.peri
         }
 
         public void Approve() {
-            
+            string serialized_hours = _SerializeHours();
+            MessageBox.Show(_DeserializeObject(serialized_hours).ToString());
+            string q = $@"  "" 
+UPDATE `msadb`.`payroll` SET `rates_id`='{this.rates_id}', `thirteenth`='{this.ThirteenthMonthPay}', `withtax`='{this.Withtax}', 
+`cashadv`='{this.CashAdvance}', 
+sss = '{this.Sss}',
+WHERE `PID`='1';
+";
         }
 
         #endregion
@@ -420,6 +428,7 @@ VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.peri
 
                     w.TaxbaseD = double.Parse(dt2.Rows[0]["value"].ToString());
                     w.excessfactor = int.Parse(dt2.Rows[0]["excessmult"].ToString());
+                    break;
                 }
                 else {
                     prevtaxbracket = double.Parse(dr["bracket"].ToString());
@@ -443,7 +452,10 @@ VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.peri
             var ssscontrib = SQLTools.ExecuteQuery($"select * from ssscontrib where contrib_id='{contrib_id}'");
             foreach (DataRow dr in ssscontrib.Rows)
                 if (double.Parse(dr["range_start"].ToString()) < GrossPay &&
-                    GrossPay < double.Parse(dr["range_end"].ToString())) return double.Parse(dr["ec"].ToString());
+                    GrossPay < double.Parse(dr["range_end"].ToString())) {
+                    return double.Parse(dr["ec"].ToString());
+                    break;
+                }
             return 50.00;
         }
 
@@ -490,7 +502,10 @@ VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.peri
                     !dr["end"].ToString().Equals("-1")
                         ? DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture)
                         : new DateTime(9999, 12, 28);
-                if (dstart < dt && dt < dend) return double.Parse(dr["amount"].ToString());
+                if (dstart < dt && dt < dend) {
+                    return double.Parse(dr["amount"].ToString());
+                    break;
+                }
             }
             return 0.00;
         }
@@ -626,7 +641,10 @@ VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.peri
                 var es = dr["date_dissolved"].ToString().Equals("-1")
                     ? SQLTools.GetDateTime("9999-12-28")
                     : DateTime.Parse(dr["date_dissolved"].ToString());
-                if (ss < date && date < es) contrib_id = int.Parse(dr["contrib_id"].ToString());
+                if (ss < date && date < es) {
+                    contrib_id = int.Parse(dr["contrib_id"].ToString());
+                    break;
+                }
             }
             return contrib_id;
         }
@@ -776,9 +794,27 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
 
         private void _InitRates() {
+            int id = 0;
+            string w = $"select rates_id, date_effective, date_dissolved from rates";
+            DataTable dt = SQLTools.ExecuteQuery(w);
+            foreach (DataRow dr in dt.Rows) {
+                DateTime s = DateTime.Parse(dr["date_effective"].ToString());
+                DateTime e = DateTime.Parse(dr["date_dissolved"].ToString());
+                DateTime me = new DateTime(period.year, period.month,
+                    (period.period == 1 ? 1 : 16), 0,0,10);
+                if (s < me && me < e) {
+                    id = int.Parse(dr["rates_id"].ToString());
+                    this.rates_id = id;
+                    break;
+                }
+            }
+            _InitRates(id);
+        }
+
+        private void _InitRates(int id) {
             string q =
                 #region + string q = {long query}
-             $@"
+                $@"
             select
             ordinary_day as nsu_proper_day_normal,
             special_holiday as nsu_proper_day_special,
@@ -804,15 +840,15 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             (sunday_special_holiday * overtime_holiday * nightdifferential) as sun_overtime_night_special,
             (sunday_regular_holiday * overtime_holiday * nightdifferential) as sun_overtime_night_regular,
             (ordinary_day * nightdifferential) as nsu_proper_night_special
-            from rates
+            from rates where rates_id = {id}
             ";
             #endregion
-            DataTable dt = SQLTools.ExecuteQuery(q);
+            DataTable dt2 = SQLTools.ExecuteQuery(q);
             foreach (string key in _rateKeys) {
-                this._rates.Add(key, double.Parse(dt.Rows[0][key].ToString())); 
+                this._rates.Add(key, double.Parse(dt2.Rows[0][key].ToString()));
             }
         }
-
+        private int rates_id;
         #region Defaults Setter
 
         public static DataTable GetRatesList() {
@@ -849,7 +885,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
         private string _SerializeHours() {
             using (MemoryStream stream = new MemoryStream()) {
-                new BinaryFormatter().Serialize(stream, this.TotalHours);
+                new BinaryFormatter().Serialize(stream, this.hc);
                 return Convert.ToBase64String(stream.ToArray());
             }
         }
