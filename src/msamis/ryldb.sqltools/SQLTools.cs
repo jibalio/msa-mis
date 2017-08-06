@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using IniParser;
+using IniParser.Model;
 
 
 /* Leryc*/
@@ -68,6 +70,16 @@ namespace MSAMISUserInterface {
          */
 
         #region Generic Methods
+        private static FileIniDataParser parser = new FileIniDataParser();
+        private static IniData data = parser.ReadFile("msamis.ini");
+
+        public static bool IniGetBool(string category, string key) {
+            return bool.Parse(data[category][key]);
+        }
+        public static string IniGetString(string category, string key) {
+            return data[category][key];
+        }
+
 
         public static string SerializeMe<T>(this T toSerialize) {
             XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());

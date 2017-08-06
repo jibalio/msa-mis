@@ -10,8 +10,9 @@ MSA-MIS requires [MySql.Data 6.9.9](https://www.nuget.org/packages/MySql.Data/6.
 Go to `Tools > NuGet Package Manager > Package Manager Console`
 ```
 PM > Get-Project -All | Install-Package MySql.Data -version 6.9.9
-PM > Get-Project -ryldb.sqltools | Install-Package MySqlBackup.NET -Version 2.0.9.2 
-
+PM > Get-Project -ryldb.sqltools | Install-Package MySqlBackup.NET -Version 2.0.9.2
+PM> Get-Project ryldb.sqltools | Install-Package Microsoft.Office.Interop.Excel
+PM> Get-Project ryldb.sqltools | Install-Package BCrypt.Net-Next -Version 2.1.1
 ```
 
 ### Database 
