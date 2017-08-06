@@ -53,6 +53,7 @@ namespace MSAMISUserInterface {
         }
         
         public class PayrollStatus {
+            public static int Fresh = -1;
             public static int Pending = 0;
             public static int Calculated = 1;
             public static int Paid = 2;

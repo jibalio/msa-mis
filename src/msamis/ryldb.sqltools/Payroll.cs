@@ -82,6 +82,8 @@ namespace MSAMISUserInterface {
 
         public static Hours total_old;
 
+        private int _PayrollId;
+
         #endregion
 
         #region Derivables
@@ -100,7 +102,7 @@ namespace MSAMISUserInterface {
             get { return _emergencyallowance; }
             set {
                 _emergencyallowance = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `emergencyallowance`='{value}' WHERE `PID`='1';";
+                string query = $@"UPDATE `msadb`.`payroll` SET `emergencyallowance`='{value}' WHERE `PID`='{_PayrollId}';";
                 SQLTools.ExecuteNonQuery(query);
             }
         }
@@ -109,7 +111,7 @@ namespace MSAMISUserInterface {
             get { return _cashbond; }
             set {
                 _cashbond = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `cashbond`='{value}' WHERE `PID`='1';";
+                string query = $@"UPDATE `msadb`.`payroll` SET `cashbond`='{value}' WHERE `PID`='{_PayrollId}';";
                 SQLTools.ExecuteNonQuery(query);
             }
         }
@@ -118,7 +120,7 @@ namespace MSAMISUserInterface {
             get { return _cola; }
             set {
                 _cola = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `cola`='{value}' WHERE `PID`='1';";
+                string query = $@"UPDATE `msadb`.`payroll` SET `cola`='{value}' WHERE `PID`='{_PayrollId}';";
                 SQLTools.ExecuteNonQuery(query);
             }
         }
@@ -127,7 +129,7 @@ namespace MSAMISUserInterface {
             get { return _thirteen; }
             set {
                 _thirteen = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `thirteenth`='{value}' WHERE `PID`='1';";
+                string query = $@"UPDATE `msadb`.`payroll` SET `thirteenth`='{value}' WHERE `PID`='{_PayrollId}';";
                 SQLTools.ExecuteNonQuery(query);
             }
         }
@@ -139,7 +141,7 @@ namespace MSAMISUserInterface {
             get { return _cashadv; }
             set {
                 _cashadv = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `cashadv`='{value}' WHERE `PID`='1';";
+                string query = $@"UPDATE `msadb`.`payroll` SET `cashadv`='{value}' WHERE `PID`='{_PayrollId}';";
                 SQLTools.ExecuteNonQuery(query);
             }
         }
@@ -169,6 +171,7 @@ namespace MSAMISUserInterface {
 
         #region Constructors
 
+        private DataRow DbValues;
         /// <summary>
         /// Creates a payroll object for a specified guard during a specific
         /// date. Use this for manual creation / unapproved payrolls.
@@ -184,15 +187,30 @@ namespace MSAMISUserInterface {
             this.period.year = year;
             this._InitRates();
             this._BasicPayHourly = _GetMyBasicPays() / 8.00;
+            
+
+            // Create DataTable for future calls.
+            DataTable d =
+                SQLTools.ExecuteQuery(
+                    $@"select count(*) as `c` from payroll where gid={GID} AND month={month} AND period={period} AND year={year}");
+
+            // If record is not present yet (while object is created).
+            if (d.Rows[0][0].ToString()=="0") {
+                string insertionquery = $@"
+                    INSERT INTO `msadb`.`payroll`
+                    (`GID`, `month`, `period`, `year`, `cashbond`, `pagibig`, `philhealth`, `cola`, `emergencyallowance`, `pstatus`)
+                    VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.period.year}', 
+                    '{RetrieveDefaultCashBond()}', '{RetriveDefaultPagibig()}', '{RetrieveDefaultPhilhealth()}', '{RetrieveDefaultCola()}', '{RetrieveDefaultEmergency()}', '{Enumeration.PayrollStatus.Pending}');";
+                SQLTools.ExecuteNonQuery(insertionquery);
+            }
+
+            DbValues =
+                SQLTools.ExecuteQuery(
+                    $@"select * from payroll where gid={GID} AND month={month} AND period={period} AND year={year}").Rows[0];
+            this._PayrollId = int.Parse(DbValues["PID"].ToString());
+
             ComputeHours();
             Compute();
-            string insertionquery =  $@"
-INSERT IGNORE INTO `msadb`.`payroll`
-(`GID`, `month`, `period`, `year`, `cashbond`, `pagibig`, `philhealth`, `cola`, `emergencyallowance`, `pstatus`)
-VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.period.year}', 
-'{RetrieveCashBond()}', '{RetrieveHdmf()}', '{RetrievePhic()}', '{RetrieveCola()}', '{RetrieveEmer()}', '{Enumeration.PayrollStatus.Pending}');";
-            SQLTools.ExecuteNonQuery(insertionquery);
-            //Approve();
         }
         
         /// <summary>
@@ -219,7 +237,7 @@ VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.peri
 UPDATE `msadb`.`payroll` SET `rates_id`='{this.rates_id}', `thirteenth`='{this.ThirteenthMonthPay}', `withtax`='{this.Withtax}', 
 `cashadv`='{this.CashAdvance}', 
 sss = '{this.Sss}',
-WHERE `PID`='1';
+WHERE `PID`='{_PayrollId}';
 ";
         }
 
@@ -348,8 +366,8 @@ WHERE `PID`='1';
         public void ComputeDeductions() {
             Sss = ComputeSSS(GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16)));
             if (period.period == 2) {
-                PagIbig = RetrieveHdmf();
-                PhilHealth = RetrievePhic();
+                PagIbig = RetriveDefaultPagibig();
+                PhilHealth = RetrieveDefaultPhilhealth();
             }
             else {
                 PagIbig = 0;
@@ -365,32 +383,32 @@ WHERE `PID`='1';
         #region Retrievables
 
         public static double RetrieveCashAdvance() {
-            string w = SQLTools.IniGetString("Payroll", "DefaultCashAdvance");
+            string w = Data.PayrollIni["Payroll"]["DefaultCashAdvance"];
             return double.Parse(w);
         }
 
-        public static double RetrievePhic() {
-            string w = SQLTools.IniGetString("Payroll", "DefaultPHIC");
+        public static double RetrieveDefaultPhilhealth() {
+            string w = Data.PayrollIni["Payroll"]["DefaultPHIC"];
             return double.Parse(w);
         }
 
-        public static double RetrieveHdmf() {
-            string w = SQLTools.IniGetString("Payroll", "DefaultHDMF");
+        public static double RetriveDefaultPagibig() {
+            string w = Data.PayrollIni["Payroll"]["DefaultHDMF"];
             return double.Parse(w);
         }
 
-        public static double RetrieveCashBond() {
-            string w = SQLTools.IniGetString("Payroll", "DefaultCashBond");
+        public static double RetrieveDefaultCashBond() {
+            string w = Data.PayrollIni["Payroll"]["DefaultCashBond"];
             return double.Parse(w);
         }
 
-        public static double RetrieveCola() {
-            string w = SQLTools.IniGetString("Payroll", "DefaultCola");
+        public static double RetrieveDefaultCola() {
+            string w = Data.PayrollIni["Payroll"]["DefaultCola"];
             return double.Parse(w);
         }
 
-        public static double RetrieveEmer() {
-            string w = SQLTools.IniGetString("Payroll", "DefaultEmer");
+        public static double RetrieveDefaultEmergency() {
+            string w = Data.PayrollIni["Payroll"]["DefaultEmer"];
             return double.Parse(w);
         }
 
@@ -401,9 +419,9 @@ WHERE `PID`='1';
             if (ca)
                 if (period.month == 12 && period.period == 2) ThirteenthMonthPay = ComputeThirteen();
                 else ThirteenthMonthPay = 0;
-            Cola = RetrieveCola();
-            EmergencyAllowance = RetrieveEmer();
-            CashBond = RetrieveCashBond();
+            _cola = double.Parse(DbValues["cola"].ToString());
+            _emergencyallowance = double.Parse(DbValues["emergencyallowance"].ToString());
+            _cashbond = double.Parse(DbValues["cashbond"].ToString());
         }
 
         public void ComputeBonuses() {
@@ -864,8 +882,12 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
         public static void SetBonusDefaults(double philhealth, double pagibig, double cashbond, double cola,
             double emergencyallowance) {
-            // TODO: Function Body
+            
         }
+
+        
+
+
 
         #endregion
 
