@@ -155,8 +155,6 @@ namespace MSAMISUserInterface {
             if (PeriodCMBX.Items.Count > 0) {
                 _pay = new Payroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-                _pay.ComputeHours();
-                _pay.Compute();
                 UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal",
                     "nsu_overtime_night_normal", MondaySaturday);
                 UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal",

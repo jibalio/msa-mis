@@ -184,6 +184,8 @@ namespace MSAMISUserInterface {
             this.period.year = year;
             this._InitRates();
             this._BasicPayHourly = _GetMyBasicPays() / 8.00;
+            ComputeHours();
+            Compute();
             string insertionquery =  $@"
 INSERT IGNORE INTO `msadb`.`payroll`
 (`GID`, `month`, `period`, `year`, `cashbond`, `pagibig`, `philhealth`, `cola`, `emergencyallowance`, `pstatus`)
@@ -203,11 +205,19 @@ VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.peri
 
         #endregion
 
-        #region  Computationes
+        #region Methods
 
         public void Compute() {
             Compute(true);
         }
+
+        public void Approve() {
+            
+        }
+
+        #endregion
+
+        #region  Computationes
 
         private double _GetMyBasicPays() {
             return double.Parse(SQLTools.ExecuteSingleResult("select amount from basicpay where status=1"));
@@ -852,7 +862,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
 
 
-        #region Setters: Bonuses
+        #region
 
 
 
