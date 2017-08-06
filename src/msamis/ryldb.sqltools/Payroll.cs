@@ -799,7 +799,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             DataTable dt = SQLTools.ExecuteQuery(w);
             foreach (DataRow dr in dt.Rows) {
                 DateTime s = DateTime.Parse(dr["date_effective"].ToString());
-                DateTime e = DateTime.Parse(dr["date_dissolved"].ToString());
+                DateTime e = dr["date_dissolved"].ToString().Equals("-1") ? new DateTime(9999,12,28) : DateTime.Parse(dr["date_dissolved"].ToString());
                 DateTime me = new DateTime(period.year, period.month,
                     (period.period == 1 ? 1 : 16), 0,0,10);
                 if (s < me && me < e) {
