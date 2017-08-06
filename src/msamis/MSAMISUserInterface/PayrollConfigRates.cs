@@ -634,7 +634,7 @@ namespace MSAMISUserInterface {
             MultLoadValues();
         }
         private void MultLoadValues() {
-            foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss)TaxDateCMBX.SelectedItem).Id).Rows) {
+            foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id).Rows) {
                 //TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
             }
         }
