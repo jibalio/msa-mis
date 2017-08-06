@@ -21,22 +21,22 @@ namespace MSAMISUserInterface {
             var changeText = "Are you sure you want to change these values?";
             if (!_data["thirteen"].ToString("N2").Equals(ThirteenBX.Value.ToString("N2"))) {
                 changes[0] = true;
-                changeText += _data["thirteen"].ToString("N2") + " = " + ThirteenBX.Value.ToString("N2"); 
+                changeText += _data["thirteen"].ToString("N2") + " = " + ThirteenBX.Value.ToString("N2") + "\n"; 
             }
 
             if (!_data["Cola"].ToString("N2").Equals(ColaBX.Value.ToString("N2"))) {
                 changes[1] = true;
-                changeText += _data["Cola"].ToString("N2") + " = " + ColaBX.Value.ToString("N2");
+                changeText += _data["Cola"].ToString("N2") + " = " + ColaBX.Value.ToString("N2") + "\n";
             }
 
             if (!_data["Emergency"].ToString("N2").Equals(EmergencyBX.Value.ToString("N2"))) {
                 changes[2] = true;
-                changeText += _data["Emergency"].ToString("N2") + " = " + EmergencyBX.Value.ToString("N2");
+                changeText += _data["Emergency"].ToString("N2") + " = " + EmergencyBX.Value.ToString("N2") + "\n";
             }
 
             if (!_data["CashBonds"].ToString("N2").Equals(BondsBX.Value.ToString("N2"))) {
                 changes[3] = true;
-                changeText += _data["CashBonds"].ToString("N2") + " = " + BondsBX.Value.ToString("N2");
+                changeText += _data["CashBonds"].ToString("N2") + " = " + BondsBX.Value.ToString("N2") + "\n";
             }
 
             if (!_data["CashAdv"].ToString("N2").Equals(AdvBX.Value.ToString("N2"))) {
@@ -44,13 +44,17 @@ namespace MSAMISUserInterface {
                 changeText += _data["CashAdv"].ToString("N2") + " = " + AdvBX.Value.ToString("N2"); 
             }
             if (rylui.RylMessageBox.ShowDialog(changeText, "Confirm Chnages", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.Yes){ 
+                    MessageBoxIcon.Question) == DialogResult.Yes &&
+                !changeText.Equals("Are you sure you want to change these values?")) {
                 if (changes[0]) Pay.ThirteenthMonthPay = double.Parse(ThirteenBX.Value.ToString("N2"));
                 if (changes[1]) Pay.Cola = double.Parse(ColaBX.Value.ToString("N2"));
                 if (changes[2]) Pay.EmergencyAllowance = double.Parse(EmergencyBX.Value.ToString("N2"));
                 if (changes[3]) Pay.CashBond = double.Parse(BondsBX.Value.ToString("N2"));
                 if (changes[4]) Pay.CashAdvance = double.Parse(AdvBX.Value.ToString("N2"));
             }
+            else
+                rylui.RylMessageBox.ShowDialog("No Changes", "There are no changes to commit", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
         }
 
         #region Form Properties
