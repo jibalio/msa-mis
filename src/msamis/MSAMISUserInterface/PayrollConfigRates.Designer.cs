@@ -25,19 +25,25 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayrollConfigRates));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RatesPNL = new System.Windows.Forms.Panel();
+            this.GlobalPNL = new System.Windows.Forms.Panel();
+            this.GlobalCon = new System.Windows.Forms.Label();
+            this.GlobalLBL = new System.Windows.Forms.Label();
+            this.MultPNL = new System.Windows.Forms.Panel();
+            this.MultConLBL = new System.Windows.Forms.Label();
+            this.MultLBL = new System.Windows.Forms.Label();
             this.BasicPNL = new System.Windows.Forms.Panel();
             this.BasicCon = new System.Windows.Forms.Label();
             this.BasicLbl = new System.Windows.Forms.Label();
@@ -51,7 +57,6 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.BasicPagePNL = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.CurrentPNL = new System.Windows.Forms.Panel();
             this.AdjustBTN = new System.Windows.Forms.Button();
@@ -66,6 +71,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BasicPayGRD = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
             this.SSSPagePNL = new System.Windows.Forms.Panel();
             this.SSSEditPNL = new System.Windows.Forms.Panel();
             this.SSSAddRange = new System.Windows.Forms.Button();
@@ -112,15 +118,15 @@
             this.TaxDateCMBX = new System.Windows.Forms.ComboBox();
             this.InputTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.SSSPopup = new System.Windows.Forms.ToolTip(this.components);
-            this.MultPNL = new System.Windows.Forms.Panel();
-            this.MultConLBL = new System.Windows.Forms.Label();
-            this.MultLBL = new System.Windows.Forms.Label();
-            this.GlobalPNL = new System.Windows.Forms.Panel();
-            this.GlobalCon = new System.Windows.Forms.Label();
-            this.GlobalLBL = new System.Windows.Forms.Label();
             this.GlobalPagePNL = new System.Windows.Forms.Panel();
-            this.MultiplierPagePNL = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.AddBTN = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.EmergencyBX = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
@@ -133,52 +139,49 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.AddBTN = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.RatesT1 = new System.Windows.Forms.TrackBar();
-            this.RatesT2 = new System.Windows.Forms.TrackBar();
-            this.RatesT3 = new System.Windows.Forms.TrackBar();
-            this.RatesT4 = new System.Windows.Forms.TrackBar();
-            this.RatesT5 = new System.Windows.Forms.TrackBar();
-            this.RatesT6 = new System.Windows.Forms.TrackBar();
-            this.RatesT7 = new System.Windows.Forms.TrackBar();
-            this.RatesT8 = new System.Windows.Forms.TrackBar();
-            this.RatesT9 = new System.Windows.Forms.TrackBar();
-            this.RatesL1 = new System.Windows.Forms.NumericUpDown();
-            this.RatesL2 = new System.Windows.Forms.NumericUpDown();
-            this.RatesL3 = new System.Windows.Forms.NumericUpDown();
-            this.RatesL4 = new System.Windows.Forms.NumericUpDown();
-            this.RatesL5 = new System.Windows.Forms.NumericUpDown();
-            this.RatesL6 = new System.Windows.Forms.NumericUpDown();
-            this.RatesL7 = new System.Windows.Forms.NumericUpDown();
-            this.RatesL8 = new System.Windows.Forms.NumericUpDown();
-            this.RatesL9 = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
-            this.MultipliersDateCMBX = new System.Windows.Forms.ComboBox();
-            this.MultEditBTN = new System.Windows.Forms.Button();
-            this.MultDatePNL = new System.Windows.Forms.Panel();
-            this.MultMainPNL = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.MultiplierPagePNL = new System.Windows.Forms.Panel();
             this.MultEditPNL = new System.Windows.Forms.Panel();
             this.MultCancelBTN = new System.Windows.Forms.Button();
             this.MultSaveBTN = new System.Windows.Forms.Button();
             this.MultDTPKR = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
+            this.MultMainPNL = new System.Windows.Forms.Panel();
+            this.RatesL9 = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.RatesL8 = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            this.RatesL7 = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
+            this.RatesL6 = new System.Windows.Forms.NumericUpDown();
+            this.label28 = new System.Windows.Forms.Label();
+            this.RatesL5 = new System.Windows.Forms.NumericUpDown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.RatesL4 = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.RatesL3 = new System.Windows.Forms.NumericUpDown();
+            this.label38 = new System.Windows.Forms.Label();
+            this.RatesL2 = new System.Windows.Forms.NumericUpDown();
+            this.label37 = new System.Windows.Forms.Label();
+            this.RatesL1 = new System.Windows.Forms.NumericUpDown();
+            this.label36 = new System.Windows.Forms.Label();
+            this.RatesT9 = new System.Windows.Forms.TrackBar();
+            this.RatesT1 = new System.Windows.Forms.TrackBar();
+            this.RatesT8 = new System.Windows.Forms.TrackBar();
+            this.RatesT2 = new System.Windows.Forms.TrackBar();
+            this.RatesT7 = new System.Windows.Forms.TrackBar();
+            this.RatesT3 = new System.Windows.Forms.TrackBar();
+            this.RatesT6 = new System.Windows.Forms.TrackBar();
+            this.RatesT4 = new System.Windows.Forms.TrackBar();
+            this.RatesT5 = new System.Windows.Forms.TrackBar();
+            this.MultDatePNL = new System.Windows.Forms.Panel();
+            this.MultEditBTN = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.MultipliersDateCMBX = new System.Windows.Forms.ComboBox();
+            this.TaxTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.RatesPNL.SuspendLayout();
+            this.GlobalPNL.SuspendLayout();
+            this.MultPNL.SuspendLayout();
             this.BasicPNL.SuspendLayout();
             this.SSSPnl.SuspendLayout();
             this.TaxPnl.SuspendLayout();
@@ -200,37 +203,35 @@
             this.TaxMainPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaxExemptionGRD)).BeginInit();
             this.TaxDatePNL.SuspendLayout();
-            this.MultPNL.SuspendLayout();
-            this.GlobalPNL.SuspendLayout();
             this.GlobalPagePNL.SuspendLayout();
-            this.MultiplierPagePNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmergencyBX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BondsBX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ColaBX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThirteenBX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            this.MultiplierPagePNL.SuspendLayout();
+            this.MultEditPNL.SuspendLayout();
+            this.MultMainPNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatesT1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatesT2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatesT3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatesT4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatesT5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL9)).BeginInit();
             this.MultDatePNL.SuspendLayout();
-            this.MultMainPNL.SuspendLayout();
-            this.MultEditPNL.SuspendLayout();
             this.SuspendLayout();
             // 
             // RatesPNL
@@ -246,6 +247,90 @@
             this.RatesPNL.Name = "RatesPNL";
             this.RatesPNL.Size = new System.Drawing.Size(350, 600);
             this.RatesPNL.TabIndex = 170;
+            // 
+            // GlobalPNL
+            // 
+            this.GlobalPNL.Controls.Add(this.GlobalCon);
+            this.GlobalPNL.Controls.Add(this.GlobalLBL);
+            this.GlobalPNL.Location = new System.Drawing.Point(32, 472);
+            this.GlobalPNL.Name = "GlobalPNL";
+            this.GlobalPNL.Size = new System.Drawing.Size(318, 90);
+            this.GlobalPNL.TabIndex = 285;
+            this.GlobalPNL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GlobalPNL_MouseClick);
+            this.GlobalPNL.MouseEnter += new System.EventHandler(this.GlobalLBL_MouseEnter);
+            this.GlobalPNL.MouseLeave += new System.EventHandler(this.GlobalLBL_MouseLeave);
+            // 
+            // GlobalCon
+            // 
+            this.GlobalCon.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.GlobalCon.ForeColor = System.Drawing.Color.White;
+            this.GlobalCon.Location = new System.Drawing.Point(14, 46);
+            this.GlobalCon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GlobalCon.Name = "GlobalCon";
+            this.GlobalCon.Size = new System.Drawing.Size(251, 20);
+            this.GlobalCon.TabIndex = 279;
+            this.GlobalCon.Text = "Adjust Cola, Cash Bonds, and etc.";
+            this.GlobalCon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.GlobalCon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GlobalPNL_MouseClick);
+            this.GlobalCon.MouseEnter += new System.EventHandler(this.GlobalLBL_MouseEnter);
+            this.GlobalCon.MouseLeave += new System.EventHandler(this.GlobalLBL_MouseLeave);
+            // 
+            // GlobalLBL
+            // 
+            this.GlobalLBL.BackColor = System.Drawing.Color.Transparent;
+            this.GlobalLBL.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.GlobalLBL.ForeColor = System.Drawing.Color.White;
+            this.GlobalLBL.Location = new System.Drawing.Point(14, 21);
+            this.GlobalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GlobalLBL.Name = "GlobalLBL";
+            this.GlobalLBL.Size = new System.Drawing.Size(259, 37);
+            this.GlobalLBL.TabIndex = 157;
+            this.GlobalLBL.Text = "Global Rates";
+            this.GlobalLBL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GlobalPNL_MouseClick);
+            this.GlobalLBL.MouseEnter += new System.EventHandler(this.GlobalLBL_MouseEnter);
+            this.GlobalLBL.MouseLeave += new System.EventHandler(this.GlobalLBL_MouseLeave);
+            // 
+            // MultPNL
+            // 
+            this.MultPNL.Controls.Add(this.MultConLBL);
+            this.MultPNL.Controls.Add(this.MultLBL);
+            this.MultPNL.Location = new System.Drawing.Point(32, 206);
+            this.MultPNL.Name = "MultPNL";
+            this.MultPNL.Size = new System.Drawing.Size(318, 90);
+            this.MultPNL.TabIndex = 284;
+            this.MultPNL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MultPNL_MouseClick);
+            this.MultPNL.MouseEnter += new System.EventHandler(this.MultPNL_MouseEnter);
+            this.MultPNL.MouseLeave += new System.EventHandler(this.MultPNL_MouseLeave);
+            // 
+            // MultConLBL
+            // 
+            this.MultConLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.MultConLBL.ForeColor = System.Drawing.Color.White;
+            this.MultConLBL.Location = new System.Drawing.Point(14, 46);
+            this.MultConLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MultConLBL.Name = "MultConLBL";
+            this.MultConLBL.Size = new System.Drawing.Size(251, 20);
+            this.MultConLBL.TabIndex = 279;
+            this.MultConLBL.Text = "Adjust multipliers for holidays, and etc.";
+            this.MultConLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MultConLBL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MultPNL_MouseClick);
+            this.MultConLBL.MouseEnter += new System.EventHandler(this.MultPNL_MouseEnter);
+            this.MultConLBL.MouseLeave += new System.EventHandler(this.MultPNL_MouseLeave);
+            // 
+            // MultLBL
+            // 
+            this.MultLBL.BackColor = System.Drawing.Color.Transparent;
+            this.MultLBL.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.MultLBL.ForeColor = System.Drawing.Color.White;
+            this.MultLBL.Location = new System.Drawing.Point(14, 21);
+            this.MultLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MultLBL.Name = "MultLBL";
+            this.MultLBL.Size = new System.Drawing.Size(259, 37);
+            this.MultLBL.TabIndex = 157;
+            this.MultLBL.Text = "Rates Multipliers";
+            this.MultLBL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MultPNL_MouseClick);
+            this.MultLBL.MouseEnter += new System.EventHandler(this.MultPNL_MouseEnter);
+            this.MultLBL.MouseLeave += new System.EventHandler(this.MultPNL_MouseLeave);
             // 
             // BasicPNL
             // 
@@ -420,18 +505,6 @@
             this.BasicPagePNL.Name = "BasicPagePNL";
             this.BasicPagePNL.Size = new System.Drawing.Size(487, 524);
             this.BasicPagePNL.TabIndex = 282;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(-4, 1);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(491, 21);
-            this.label3.TabIndex = 243;
-            this.label3.Text = "Current Basic Pay";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // flowLayoutPanel1
             // 
@@ -615,43 +688,55 @@
             this.BasicPayGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BasicPayGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.BasicPayGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle13.NullValue = "-";
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BasicPayGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BasicPayGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.BasicPayGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BasicPayGRD.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BasicPayGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.BasicPayGRD.EnableHeadersVisualStyles = false;
             this.BasicPayGRD.Location = new System.Drawing.Point(3, -3);
             this.BasicPayGRD.MultiSelect = false;
             this.BasicPayGRD.Name = "BasicPayGRD";
             this.BasicPayGRD.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BasicPayGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BasicPayGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.BasicPayGRD.RowHeadersVisible = false;
             this.BasicPayGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.BasicPayGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BasicPayGRD.ShowCellToolTips = false;
             this.BasicPayGRD.Size = new System.Drawing.Size(475, 310);
             this.BasicPayGRD.TabIndex = 241;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(-4, 1);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(491, 21);
+            this.label3.TabIndex = 243;
+            this.label3.Text = "Current Basic Pay";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // SSSPagePNL
             // 
@@ -812,15 +897,15 @@
             this.SSSGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SSSGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.SSSGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle16.NullValue = "-";
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SSSGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.NullValue = "-";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SSSGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.SSSGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SSSGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RID,
@@ -829,27 +914,27 @@
             this.RangeEnd,
             this.Space,
             this.Rate});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SSSGRD.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SSSGRD.DefaultCellStyle = dataGridViewCellStyle7;
             this.SSSGRD.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.SSSGRD.EnableHeadersVisualStyles = false;
             this.SSSGRD.Location = new System.Drawing.Point(81, 20);
             this.SSSGRD.MultiSelect = false;
             this.SSSGRD.Name = "SSSGRD";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SSSGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SSSGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.SSSGRD.RowHeadersVisible = false;
             this.SSSGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SSSGRD.ShowCellToolTips = false;
@@ -868,8 +953,8 @@
             // 
             // RateStart
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.RateStart.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.RateStart.DefaultCellStyle = dataGridViewCellStyle5;
             this.RateStart.HeaderText = "FROM";
             this.RateStart.Name = "RateStart";
             this.RateStart.Width = 80;
@@ -883,8 +968,8 @@
             // 
             // RangeEnd
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.RangeEnd.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.RangeEnd.DefaultCellStyle = dataGridViewCellStyle6;
             this.RangeEnd.HeaderText = "TO";
             this.RangeEnd.Name = "RangeEnd";
             this.RangeEnd.Width = 80;
@@ -980,7 +1065,7 @@
             this.TaxExcemptPNL.Controls.Add(this.TaxExSaveBTN);
             this.TaxExcemptPNL.Controls.Add(this.label6);
             this.TaxExcemptPNL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TaxExcemptPNL.Location = new System.Drawing.Point(0, 614);
+            this.TaxExcemptPNL.Location = new System.Drawing.Point(0, 619);
             this.TaxExcemptPNL.Name = "TaxExcemptPNL";
             this.TaxExcemptPNL.Size = new System.Drawing.Size(487, 272);
             this.TaxExcemptPNL.TabIndex = 303;
@@ -1086,7 +1171,7 @@
             this.TaxEditingPNL.Controls.Add(this.TaxDateDTPKR);
             this.TaxEditingPNL.Controls.Add(this.label1);
             this.TaxEditingPNL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TaxEditingPNL.Location = new System.Drawing.Point(0, 525);
+            this.TaxEditingPNL.Location = new System.Drawing.Point(0, 530);
             this.TaxEditingPNL.Name = "TaxEditingPNL";
             this.TaxEditingPNL.Size = new System.Drawing.Size(487, 89);
             this.TaxEditingPNL.TabIndex = 302;
@@ -1197,7 +1282,7 @@
             this.TaxMainPNL.Dock = System.Windows.Forms.DockStyle.Top;
             this.TaxMainPNL.Location = new System.Drawing.Point(0, 50);
             this.TaxMainPNL.Name = "TaxMainPNL";
-            this.TaxMainPNL.Size = new System.Drawing.Size(487, 475);
+            this.TaxMainPNL.Size = new System.Drawing.Size(487, 480);
             this.TaxMainPNL.TabIndex = 301;
             // 
             // TaxExemptionGRD
@@ -1212,44 +1297,44 @@
             this.TaxExemptionGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TaxExemptionGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.TaxExemptionGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle21.NullValue = "-";
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TaxExemptionGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle9.NullValue = "-";
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TaxExemptionGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.TaxExemptionGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TaxExemptionGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Brackets});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TaxExemptionGRD.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TaxExemptionGRD.DefaultCellStyle = dataGridViewCellStyle11;
             this.TaxExemptionGRD.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.TaxExemptionGRD.EnableHeadersVisualStyles = false;
             this.TaxExemptionGRD.Location = new System.Drawing.Point(2, 6);
             this.TaxExemptionGRD.MultiSelect = false;
             this.TaxExemptionGRD.Name = "TaxExemptionGRD";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TaxExemptionGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TaxExemptionGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.TaxExemptionGRD.RowHeadersVisible = false;
             this.TaxExemptionGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TaxExemptionGRD.ShowCellToolTips = false;
-            this.TaxExemptionGRD.Size = new System.Drawing.Size(485, 463);
+            this.TaxExemptionGRD.Size = new System.Drawing.Size(485, 403);
             this.TaxExemptionGRD.TabIndex = 282;
             this.TaxExemptionGRD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TaxExemptionGRD_CellEndEdit);
             this.TaxExemptionGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.TaxExemptionGRD_CellEnter);
@@ -1263,9 +1348,9 @@
             // 
             // Brackets
             // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.Brackets.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.Brackets.DefaultCellStyle = dataGridViewCellStyle10;
             this.Brackets.Frozen = true;
             this.Brackets.HeaderText = "EXCEMPTION";
             this.Brackets.Name = "Brackets";
@@ -1344,90 +1429,6 @@
             this.SSSPopup.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.SSSPopup.ToolTipTitle = "Input Error";
             // 
-            // MultPNL
-            // 
-            this.MultPNL.Controls.Add(this.MultConLBL);
-            this.MultPNL.Controls.Add(this.MultLBL);
-            this.MultPNL.Location = new System.Drawing.Point(32, 206);
-            this.MultPNL.Name = "MultPNL";
-            this.MultPNL.Size = new System.Drawing.Size(318, 90);
-            this.MultPNL.TabIndex = 284;
-            this.MultPNL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MultPNL_MouseClick);
-            this.MultPNL.MouseEnter += new System.EventHandler(this.MultPNL_MouseEnter);
-            this.MultPNL.MouseLeave += new System.EventHandler(this.MultPNL_MouseLeave);
-            // 
-            // MultConLBL
-            // 
-            this.MultConLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.MultConLBL.ForeColor = System.Drawing.Color.White;
-            this.MultConLBL.Location = new System.Drawing.Point(14, 46);
-            this.MultConLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.MultConLBL.Name = "MultConLBL";
-            this.MultConLBL.Size = new System.Drawing.Size(251, 20);
-            this.MultConLBL.TabIndex = 279;
-            this.MultConLBL.Text = "Adjust multipliers for holidays, and etc.";
-            this.MultConLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MultConLBL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MultPNL_MouseClick);
-            this.MultConLBL.MouseEnter += new System.EventHandler(this.MultPNL_MouseEnter);
-            this.MultConLBL.MouseLeave += new System.EventHandler(this.MultPNL_MouseLeave);
-            // 
-            // MultLBL
-            // 
-            this.MultLBL.BackColor = System.Drawing.Color.Transparent;
-            this.MultLBL.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.MultLBL.ForeColor = System.Drawing.Color.White;
-            this.MultLBL.Location = new System.Drawing.Point(14, 21);
-            this.MultLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.MultLBL.Name = "MultLBL";
-            this.MultLBL.Size = new System.Drawing.Size(259, 37);
-            this.MultLBL.TabIndex = 157;
-            this.MultLBL.Text = "Rates Multipliers";
-            this.MultLBL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MultPNL_MouseClick);
-            this.MultLBL.MouseEnter += new System.EventHandler(this.MultPNL_MouseEnter);
-            this.MultLBL.MouseLeave += new System.EventHandler(this.MultPNL_MouseLeave);
-            // 
-            // GlobalPNL
-            // 
-            this.GlobalPNL.Controls.Add(this.GlobalCon);
-            this.GlobalPNL.Controls.Add(this.GlobalLBL);
-            this.GlobalPNL.Location = new System.Drawing.Point(32, 472);
-            this.GlobalPNL.Name = "GlobalPNL";
-            this.GlobalPNL.Size = new System.Drawing.Size(318, 90);
-            this.GlobalPNL.TabIndex = 285;
-            this.GlobalPNL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GlobalPNL_MouseClick);
-            this.GlobalPNL.MouseEnter += new System.EventHandler(this.GlobalLBL_MouseEnter);
-            this.GlobalPNL.MouseLeave += new System.EventHandler(this.GlobalLBL_MouseLeave);
-            // 
-            // GlobalCon
-            // 
-            this.GlobalCon.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.GlobalCon.ForeColor = System.Drawing.Color.White;
-            this.GlobalCon.Location = new System.Drawing.Point(14, 46);
-            this.GlobalCon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.GlobalCon.Name = "GlobalCon";
-            this.GlobalCon.Size = new System.Drawing.Size(251, 20);
-            this.GlobalCon.TabIndex = 279;
-            this.GlobalCon.Text = "Adjust Cola, Cash Bonds, and etc.";
-            this.GlobalCon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.GlobalCon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GlobalPNL_MouseClick);
-            this.GlobalCon.MouseEnter += new System.EventHandler(this.GlobalLBL_MouseEnter);
-            this.GlobalCon.MouseLeave += new System.EventHandler(this.GlobalLBL_MouseLeave);
-            // 
-            // GlobalLBL
-            // 
-            this.GlobalLBL.BackColor = System.Drawing.Color.Transparent;
-            this.GlobalLBL.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.GlobalLBL.ForeColor = System.Drawing.Color.White;
-            this.GlobalLBL.Location = new System.Drawing.Point(14, 21);
-            this.GlobalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.GlobalLBL.Name = "GlobalLBL";
-            this.GlobalLBL.Size = new System.Drawing.Size(259, 37);
-            this.GlobalLBL.TabIndex = 157;
-            this.GlobalLBL.Text = "Global Rates";
-            this.GlobalLBL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GlobalPNL_MouseClick);
-            this.GlobalLBL.MouseEnter += new System.EventHandler(this.GlobalLBL_MouseEnter);
-            this.GlobalLBL.MouseLeave += new System.EventHandler(this.GlobalLBL_MouseLeave);
-            // 
             // GlobalPagePNL
             // 
             this.GlobalPagePNL.Controls.Add(this.button1);
@@ -1456,29 +1457,121 @@
             this.GlobalPagePNL.Size = new System.Drawing.Size(487, 524);
             this.GlobalPagePNL.TabIndex = 300;
             // 
-            // MultiplierPagePNL
+            // button1
             // 
-            this.MultiplierPagePNL.Controls.Add(this.MultEditPNL);
-            this.MultiplierPagePNL.Controls.Add(this.MultMainPNL);
-            this.MultiplierPagePNL.Controls.Add(this.MultDatePNL);
-            this.MultiplierPagePNL.Location = new System.Drawing.Point(383, 47);
-            this.MultiplierPagePNL.Name = "MultiplierPagePNL";
-            this.MultiplierPagePNL.Size = new System.Drawing.Size(487, 524);
-            this.MultiplierPagePNL.TabIndex = 301;
-            this.MultiplierPagePNL.Visible = false;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(250, 413);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 29);
+            this.button1.TabIndex = 302;
+            this.button1.Text = "RESET";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // label8
+            // AddBTN
             // 
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(39, 39);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(408, 37);
-            this.label8.TabIndex = 280;
-            this.label8.Text = "Default Global Rates";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
+            this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddBTN.FlatAppearance.BorderSize = 0;
+            this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.AddBTN.ForeColor = System.Drawing.Color.White;
+            this.AddBTN.Location = new System.Drawing.Point(167, 413);
+            this.AddBTN.Name = "AddBTN";
+            this.AddBTN.Size = new System.Drawing.Size(80, 29);
+            this.AddBTN.TabIndex = 301;
+            this.AddBTN.Text = "SAVE";
+            this.AddBTN.UseVisualStyleBackColor = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label22.Location = new System.Drawing.Point(265, 308);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(18, 20);
+            this.label22.TabIndex = 300;
+            this.label22.Text = "₱";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label23.Location = new System.Drawing.Point(265, 270);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(18, 20);
+            this.label23.TabIndex = 299;
+            this.label23.Text = "₱";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown3.DecimalPlaces = 2;
+            this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown3.Location = new System.Drawing.Point(287, 308);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown3.TabIndex = 297;
+            this.numericUpDown3.ThousandsSeparator = true;
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown4.DecimalPlaces = 2;
+            this.numericUpDown4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.numericUpDown4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.numericUpDown4.Location = new System.Drawing.Point(287, 270);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown4.TabIndex = 296;
+            this.numericUpDown4.ThousandsSeparator = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label25.Location = new System.Drawing.Point(78, 270);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(39, 20);
+            this.label25.TabIndex = 293;
+            this.label25.Text = "Cola";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label26.Location = new System.Drawing.Point(78, 308);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(82, 20);
+            this.label26.TabIndex = 294;
+            this.label26.Text = "Emergency";
             // 
             // label9
             // 
@@ -1636,580 +1729,29 @@
             this.label16.TabIndex = 282;
             this.label16.Text = "PHIC";
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label22.Location = new System.Drawing.Point(265, 308);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(18, 20);
-            this.label22.TabIndex = 300;
-            this.label22.Text = "₱";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(265, 270);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(18, 20);
-            this.label23.TabIndex = 299;
-            this.label23.Text = "₱";
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown3.Location = new System.Drawing.Point(287, 308);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown3.TabIndex = 297;
-            this.numericUpDown3.ThousandsSeparator = true;
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown4.Location = new System.Drawing.Point(287, 270);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown4.TabIndex = 296;
-            this.numericUpDown4.ThousandsSeparator = true;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label25.Location = new System.Drawing.Point(78, 270);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(39, 20);
-            this.label25.TabIndex = 293;
-            this.label25.Text = "Cola";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label26.Location = new System.Drawing.Point(78, 308);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(82, 20);
-            this.label26.TabIndex = 294;
-            this.label26.Text = "Emergency";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(250, 413);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 29);
-            this.button1.TabIndex = 302;
-            this.button1.Text = "RESET";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // AddBTN
-            // 
-            this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
-            this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddBTN.FlatAppearance.BorderSize = 0;
-            this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(167, 413);
-            this.AddBTN.Name = "AddBTN";
-            this.AddBTN.Size = new System.Drawing.Size(80, 29);
-            this.AddBTN.TabIndex = 301;
-            this.AddBTN.Text = "SAVE";
-            this.AddBTN.UseVisualStyleBackColor = false;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label21.Location = new System.Drawing.Point(15, 201);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(157, 19);
-            this.label21.TabIndex = 316;
-            this.label21.Text = "Special Holiady (Sunday)";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label24.Location = new System.Drawing.Point(15, 246);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(162, 19);
-            this.label24.TabIndex = 317;
-            this.label24.Text = "Regular Holiady (Sunday)";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label28.Location = new System.Drawing.Point(14, 111);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(105, 19);
-            this.label28.TabIndex = 313;
-            this.label28.Text = "Regular Holiday";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label32.Location = new System.Drawing.Point(14, 156);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(54, 19);
-            this.label32.TabIndex = 306;
-            this.label32.Text = "Sunday";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label33.Location = new System.Drawing.Point(14, 19);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(91, 19);
-            this.label33.TabIndex = 304;
-            this.label33.Text = "Ordinary Day";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label34.Location = new System.Drawing.Point(14, 66);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(100, 19);
-            this.label34.TabIndex = 305;
-            this.label34.Text = "Special Holiday";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label36.Location = new System.Drawing.Point(16, 336);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(66, 19);
-            this.label36.TabIndex = 325;
-            this.label36.Text = "Overtime";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label37.Location = new System.Drawing.Point(16, 381);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(142, 19);
-            this.label37.TabIndex = 326;
-            this.label37.Text = "Overtime on Holidays";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label38.Location = new System.Drawing.Point(15, 291);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(113, 19);
-            this.label38.TabIndex = 324;
-            this.label38.Text = "Night Differential";
-            // 
-            // RatesT1
-            // 
-            this.RatesT1.Enabled = false;
-            this.RatesT1.Location = new System.Drawing.Point(213, 20);
-            this.RatesT1.Name = "RatesT1";
-            this.RatesT1.Size = new System.Drawing.Size(161, 45);
-            this.RatesT1.TabIndex = 327;
-            this.RatesT1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT1.Scroll += new System.EventHandler(this.RatesT1_Scroll);
-            this.RatesT1.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesT2
-            // 
-            this.RatesT2.Location = new System.Drawing.Point(213, 65);
-            this.RatesT2.Name = "RatesT2";
-            this.RatesT2.Size = new System.Drawing.Size(161, 45);
-            this.RatesT2.TabIndex = 328;
-            this.RatesT2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT2.Scroll += new System.EventHandler(this.RatesT2_Scroll);
-            this.RatesT2.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesT3
-            // 
-            this.RatesT3.Location = new System.Drawing.Point(213, 110);
-            this.RatesT3.Name = "RatesT3";
-            this.RatesT3.Size = new System.Drawing.Size(161, 45);
-            this.RatesT3.TabIndex = 329;
-            this.RatesT3.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT3.Scroll += new System.EventHandler(this.RatesT3_Scroll);
-            this.RatesT3.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesT4
-            // 
-            this.RatesT4.Location = new System.Drawing.Point(213, 155);
-            this.RatesT4.Name = "RatesT4";
-            this.RatesT4.Size = new System.Drawing.Size(161, 45);
-            this.RatesT4.TabIndex = 330;
-            this.RatesT4.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT4.Scroll += new System.EventHandler(this.RatesT4_Scroll);
-            this.RatesT4.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesT5
-            // 
-            this.RatesT5.Location = new System.Drawing.Point(213, 200);
-            this.RatesT5.Name = "RatesT5";
-            this.RatesT5.Size = new System.Drawing.Size(161, 45);
-            this.RatesT5.TabIndex = 331;
-            this.RatesT5.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT5.Scroll += new System.EventHandler(this.RatesT5_Scroll);
-            this.RatesT5.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesT6
-            // 
-            this.RatesT6.Location = new System.Drawing.Point(213, 245);
-            this.RatesT6.Name = "RatesT6";
-            this.RatesT6.Size = new System.Drawing.Size(161, 45);
-            this.RatesT6.TabIndex = 332;
-            this.RatesT6.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT6.Scroll += new System.EventHandler(this.RatesT6_Scroll);
-            this.RatesT6.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesT7
-            // 
-            this.RatesT7.Location = new System.Drawing.Point(213, 290);
-            this.RatesT7.Name = "RatesT7";
-            this.RatesT7.Size = new System.Drawing.Size(161, 45);
-            this.RatesT7.TabIndex = 333;
-            this.RatesT7.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT7.Scroll += new System.EventHandler(this.RatesT7_Scroll);
-            this.RatesT7.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesT8
-            // 
-            this.RatesT8.Location = new System.Drawing.Point(213, 335);
-            this.RatesT8.Name = "RatesT8";
-            this.RatesT8.Size = new System.Drawing.Size(161, 45);
-            this.RatesT8.TabIndex = 334;
-            this.RatesT8.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT8.Scroll += new System.EventHandler(this.RatesT8_Scroll);
-            this.RatesT8.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesT9
-            // 
-            this.RatesT9.Location = new System.Drawing.Point(213, 380);
-            this.RatesT9.Name = "RatesT9";
-            this.RatesT9.Size = new System.Drawing.Size(161, 45);
-            this.RatesT9.TabIndex = 335;
-            this.RatesT9.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RatesT9.Scroll += new System.EventHandler(this.RatesT9_Scroll);
-            this.RatesT9.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL1
-            // 
-            this.RatesL1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL1.DecimalPlaces = 2;
-            this.RatesL1.Enabled = false;
-            this.RatesL1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL1.Location = new System.Drawing.Point(427, 20);
-            this.RatesL1.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL1.Name = "RatesL1";
-            this.RatesL1.Size = new System.Drawing.Size(48, 21);
-            this.RatesL1.TabIndex = 346;
-            this.RatesL1.ThousandsSeparator = true;
-            this.RatesL1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.RatesL1.ValueChanged += new System.EventHandler(this.RatesL1_ValueChanged);
-            this.RatesL1.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL2
-            // 
-            this.RatesL2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL2.DecimalPlaces = 2;
-            this.RatesL2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL2.Location = new System.Drawing.Point(427, 65);
-            this.RatesL2.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL2.Name = "RatesL2";
-            this.RatesL2.Size = new System.Drawing.Size(48, 21);
-            this.RatesL2.TabIndex = 347;
-            this.RatesL2.ThousandsSeparator = true;
-            this.RatesL2.ValueChanged += new System.EventHandler(this.RatesL2_ValueChanged);
-            this.RatesL2.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL3
-            // 
-            this.RatesL3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL3.DecimalPlaces = 2;
-            this.RatesL3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL3.Location = new System.Drawing.Point(427, 110);
-            this.RatesL3.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL3.Name = "RatesL3";
-            this.RatesL3.Size = new System.Drawing.Size(48, 21);
-            this.RatesL3.TabIndex = 348;
-            this.RatesL3.ThousandsSeparator = true;
-            this.RatesL3.ValueChanged += new System.EventHandler(this.RatesL3_ValueChanged);
-            this.RatesL3.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL4
-            // 
-            this.RatesL4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL4.DecimalPlaces = 2;
-            this.RatesL4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL4.Location = new System.Drawing.Point(426, 155);
-            this.RatesL4.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL4.Name = "RatesL4";
-            this.RatesL4.Size = new System.Drawing.Size(48, 21);
-            this.RatesL4.TabIndex = 349;
-            this.RatesL4.ThousandsSeparator = true;
-            this.RatesL4.ValueChanged += new System.EventHandler(this.RatesL4_ValueChanged);
-            this.RatesL4.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL5
-            // 
-            this.RatesL5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL5.DecimalPlaces = 2;
-            this.RatesL5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL5.Location = new System.Drawing.Point(427, 200);
-            this.RatesL5.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL5.Name = "RatesL5";
-            this.RatesL5.Size = new System.Drawing.Size(48, 21);
-            this.RatesL5.TabIndex = 350;
-            this.RatesL5.ThousandsSeparator = true;
-            this.RatesL5.ValueChanged += new System.EventHandler(this.RatesL5_ValueChanged);
-            this.RatesL5.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL6
-            // 
-            this.RatesL6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL6.DecimalPlaces = 2;
-            this.RatesL6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL6.Location = new System.Drawing.Point(426, 245);
-            this.RatesL6.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL6.Name = "RatesL6";
-            this.RatesL6.Size = new System.Drawing.Size(48, 21);
-            this.RatesL6.TabIndex = 351;
-            this.RatesL6.ThousandsSeparator = true;
-            this.RatesL6.ValueChanged += new System.EventHandler(this.RatesL6_ValueChanged);
-            this.RatesL6.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL7
-            // 
-            this.RatesL7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL7.DecimalPlaces = 2;
-            this.RatesL7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL7.Location = new System.Drawing.Point(423, 290);
-            this.RatesL7.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL7.Name = "RatesL7";
-            this.RatesL7.Size = new System.Drawing.Size(48, 21);
-            this.RatesL7.TabIndex = 352;
-            this.RatesL7.ThousandsSeparator = true;
-            this.RatesL7.ValueChanged += new System.EventHandler(this.RatesL7_ValueChanged);
-            this.RatesL7.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL8
-            // 
-            this.RatesL8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL8.DecimalPlaces = 2;
-            this.RatesL8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL8.Location = new System.Drawing.Point(423, 335);
-            this.RatesL8.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL8.Name = "RatesL8";
-            this.RatesL8.Size = new System.Drawing.Size(48, 21);
-            this.RatesL8.TabIndex = 353;
-            this.RatesL8.ThousandsSeparator = true;
-            this.RatesL8.ValueChanged += new System.EventHandler(this.RatesL8_ValueChanged);
-            this.RatesL8.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // RatesL9
-            // 
-            this.RatesL9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RatesL9.DecimalPlaces = 2;
-            this.RatesL9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.RatesL9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RatesL9.Location = new System.Drawing.Point(423, 380);
-            this.RatesL9.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.RatesL9.Name = "RatesL9";
-            this.RatesL9.Size = new System.Drawing.Size(48, 21);
-            this.RatesL9.TabIndex = 354;
-            this.RatesL9.ThousandsSeparator = true;
-            this.RatesL9.ValueChanged += new System.EventHandler(this.RatesL9_ValueChanged);
-            this.RatesL9.Enter += new System.EventHandler(this.RatesL9_Enter);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label17.Location = new System.Drawing.Point(14, 13);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(130, 19);
-            this.label17.TabIndex = 356;
-            this.label17.Text = "Multipliers Effective:";
-            // 
-            // MultipliersDateCMBX
-            // 
-            this.MultipliersDateCMBX.BackColor = System.Drawing.Color.White;
-            this.MultipliersDateCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.MultipliersDateCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MultipliersDateCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.MultipliersDateCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.MultipliersDateCMBX.FormattingEnabled = true;
-            this.MultipliersDateCMBX.Location = new System.Drawing.Point(149, 10);
-            this.MultipliersDateCMBX.Name = "MultipliersDateCMBX";
-            this.MultipliersDateCMBX.Size = new System.Drawing.Size(256, 25);
-            this.MultipliersDateCMBX.TabIndex = 355;
-            this.MultipliersDateCMBX.SelectedIndexChanged += new System.EventHandler(this.MultipliersDateCMBX_SelectedIndexChanged);
-            // 
-            // MultEditBTN
-            // 
-            this.MultEditBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MultEditBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.MultEditBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.MultEditBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MultEditBTN.FlatAppearance.BorderSize = 0;
-            this.MultEditBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
-            this.MultEditBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
-            this.MultEditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MultEditBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.MultEditBTN.ForeColor = System.Drawing.Color.White;
-            this.MultEditBTN.Location = new System.Drawing.Point(415, 8);
-            this.MultEditBTN.Name = "MultEditBTN";
-            this.MultEditBTN.Size = new System.Drawing.Size(64, 29);
-            this.MultEditBTN.TabIndex = 357;
-            this.MultEditBTN.Text = "EDIT";
-            this.MultEditBTN.UseVisualStyleBackColor = false;
-            this.MultEditBTN.Click += new System.EventHandler(this.MultEditBTN_Click);
-            // 
-            // MultDatePNL
-            // 
-            this.MultDatePNL.Controls.Add(this.MultEditBTN);
-            this.MultDatePNL.Controls.Add(this.label17);
-            this.MultDatePNL.Controls.Add(this.MultipliersDateCMBX);
-            this.MultDatePNL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MultDatePNL.Location = new System.Drawing.Point(0, 0);
-            this.MultDatePNL.Name = "MultDatePNL";
-            this.MultDatePNL.Size = new System.Drawing.Size(487, 50);
-            this.MultDatePNL.TabIndex = 358;
-            // 
-            // MultMainPNL
-            // 
-            this.MultMainPNL.Controls.Add(this.RatesL9);
-            this.MultMainPNL.Controls.Add(this.label33);
-            this.MultMainPNL.Controls.Add(this.RatesL8);
-            this.MultMainPNL.Controls.Add(this.label34);
-            this.MultMainPNL.Controls.Add(this.RatesL7);
-            this.MultMainPNL.Controls.Add(this.label32);
-            this.MultMainPNL.Controls.Add(this.RatesL6);
-            this.MultMainPNL.Controls.Add(this.label28);
-            this.MultMainPNL.Controls.Add(this.RatesL5);
-            this.MultMainPNL.Controls.Add(this.label24);
-            this.MultMainPNL.Controls.Add(this.RatesL4);
-            this.MultMainPNL.Controls.Add(this.label21);
-            this.MultMainPNL.Controls.Add(this.RatesL3);
-            this.MultMainPNL.Controls.Add(this.label38);
-            this.MultMainPNL.Controls.Add(this.RatesL2);
-            this.MultMainPNL.Controls.Add(this.label37);
-            this.MultMainPNL.Controls.Add(this.RatesL1);
-            this.MultMainPNL.Controls.Add(this.label36);
-            this.MultMainPNL.Controls.Add(this.RatesT9);
-            this.MultMainPNL.Controls.Add(this.RatesT1);
-            this.MultMainPNL.Controls.Add(this.RatesT8);
-            this.MultMainPNL.Controls.Add(this.RatesT2);
-            this.MultMainPNL.Controls.Add(this.RatesT7);
-            this.MultMainPNL.Controls.Add(this.RatesT3);
-            this.MultMainPNL.Controls.Add(this.RatesT6);
-            this.MultMainPNL.Controls.Add(this.RatesT4);
-            this.MultMainPNL.Controls.Add(this.RatesT5);
-            this.MultMainPNL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MultMainPNL.Location = new System.Drawing.Point(0, 50);
-            this.MultMainPNL.Name = "MultMainPNL";
-            this.MultMainPNL.Size = new System.Drawing.Size(487, 432);
-            this.MultMainPNL.TabIndex = 359;
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label8.Location = new System.Drawing.Point(39, 39);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(408, 37);
+            this.label8.TabIndex = 280;
+            this.label8.Text = "Default Global Rates";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // MultiplierPagePNL
+            // 
+            this.MultiplierPagePNL.Controls.Add(this.MultEditPNL);
+            this.MultiplierPagePNL.Controls.Add(this.MultMainPNL);
+            this.MultiplierPagePNL.Controls.Add(this.MultDatePNL);
+            this.MultiplierPagePNL.Location = new System.Drawing.Point(383, 47);
+            this.MultiplierPagePNL.Name = "MultiplierPagePNL";
+            this.MultiplierPagePNL.Size = new System.Drawing.Size(487, 524);
+            this.MultiplierPagePNL.TabIndex = 301;
+            this.MultiplierPagePNL.Visible = false;
             // 
             // MultEditPNL
             // 
@@ -2285,6 +1827,473 @@
             this.label18.Text = "Date Effective:";
             this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // MultMainPNL
+            // 
+            this.MultMainPNL.Controls.Add(this.RatesL9);
+            this.MultMainPNL.Controls.Add(this.label33);
+            this.MultMainPNL.Controls.Add(this.RatesL8);
+            this.MultMainPNL.Controls.Add(this.label34);
+            this.MultMainPNL.Controls.Add(this.RatesL7);
+            this.MultMainPNL.Controls.Add(this.label32);
+            this.MultMainPNL.Controls.Add(this.RatesL6);
+            this.MultMainPNL.Controls.Add(this.label28);
+            this.MultMainPNL.Controls.Add(this.RatesL5);
+            this.MultMainPNL.Controls.Add(this.label24);
+            this.MultMainPNL.Controls.Add(this.RatesL4);
+            this.MultMainPNL.Controls.Add(this.label21);
+            this.MultMainPNL.Controls.Add(this.RatesL3);
+            this.MultMainPNL.Controls.Add(this.label38);
+            this.MultMainPNL.Controls.Add(this.RatesL2);
+            this.MultMainPNL.Controls.Add(this.label37);
+            this.MultMainPNL.Controls.Add(this.RatesL1);
+            this.MultMainPNL.Controls.Add(this.label36);
+            this.MultMainPNL.Controls.Add(this.RatesT9);
+            this.MultMainPNL.Controls.Add(this.RatesT1);
+            this.MultMainPNL.Controls.Add(this.RatesT8);
+            this.MultMainPNL.Controls.Add(this.RatesT2);
+            this.MultMainPNL.Controls.Add(this.RatesT7);
+            this.MultMainPNL.Controls.Add(this.RatesT3);
+            this.MultMainPNL.Controls.Add(this.RatesT6);
+            this.MultMainPNL.Controls.Add(this.RatesT4);
+            this.MultMainPNL.Controls.Add(this.RatesT5);
+            this.MultMainPNL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MultMainPNL.Location = new System.Drawing.Point(0, 50);
+            this.MultMainPNL.Name = "MultMainPNL";
+            this.MultMainPNL.Size = new System.Drawing.Size(487, 432);
+            this.MultMainPNL.TabIndex = 359;
+            // 
+            // RatesL9
+            // 
+            this.RatesL9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL9.DecimalPlaces = 2;
+            this.RatesL9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL9.Location = new System.Drawing.Point(423, 380);
+            this.RatesL9.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL9.Name = "RatesL9";
+            this.RatesL9.Size = new System.Drawing.Size(48, 21);
+            this.RatesL9.TabIndex = 354;
+            this.RatesL9.ThousandsSeparator = true;
+            this.RatesL9.ValueChanged += new System.EventHandler(this.RatesL9_ValueChanged);
+            this.RatesL9.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label33.Location = new System.Drawing.Point(14, 19);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(91, 19);
+            this.label33.TabIndex = 304;
+            this.label33.Text = "Ordinary Day";
+            // 
+            // RatesL8
+            // 
+            this.RatesL8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL8.DecimalPlaces = 2;
+            this.RatesL8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL8.Location = new System.Drawing.Point(423, 335);
+            this.RatesL8.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL8.Name = "RatesL8";
+            this.RatesL8.Size = new System.Drawing.Size(48, 21);
+            this.RatesL8.TabIndex = 353;
+            this.RatesL8.ThousandsSeparator = true;
+            this.RatesL8.ValueChanged += new System.EventHandler(this.RatesL8_ValueChanged);
+            this.RatesL8.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label34.Location = new System.Drawing.Point(14, 66);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(100, 19);
+            this.label34.TabIndex = 305;
+            this.label34.Text = "Special Holiday";
+            // 
+            // RatesL7
+            // 
+            this.RatesL7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL7.DecimalPlaces = 2;
+            this.RatesL7.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL7.Location = new System.Drawing.Point(423, 290);
+            this.RatesL7.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL7.Name = "RatesL7";
+            this.RatesL7.Size = new System.Drawing.Size(48, 21);
+            this.RatesL7.TabIndex = 352;
+            this.RatesL7.ThousandsSeparator = true;
+            this.RatesL7.ValueChanged += new System.EventHandler(this.RatesL7_ValueChanged);
+            this.RatesL7.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label32.Location = new System.Drawing.Point(14, 156);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(54, 19);
+            this.label32.TabIndex = 306;
+            this.label32.Text = "Sunday";
+            // 
+            // RatesL6
+            // 
+            this.RatesL6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL6.DecimalPlaces = 2;
+            this.RatesL6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL6.Location = new System.Drawing.Point(426, 245);
+            this.RatesL6.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL6.Name = "RatesL6";
+            this.RatesL6.Size = new System.Drawing.Size(48, 21);
+            this.RatesL6.TabIndex = 351;
+            this.RatesL6.ThousandsSeparator = true;
+            this.RatesL6.ValueChanged += new System.EventHandler(this.RatesL6_ValueChanged);
+            this.RatesL6.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label28.Location = new System.Drawing.Point(14, 111);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(105, 19);
+            this.label28.TabIndex = 313;
+            this.label28.Text = "Regular Holiday";
+            // 
+            // RatesL5
+            // 
+            this.RatesL5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL5.DecimalPlaces = 2;
+            this.RatesL5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL5.Location = new System.Drawing.Point(427, 200);
+            this.RatesL5.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL5.Name = "RatesL5";
+            this.RatesL5.Size = new System.Drawing.Size(48, 21);
+            this.RatesL5.TabIndex = 350;
+            this.RatesL5.ThousandsSeparator = true;
+            this.RatesL5.ValueChanged += new System.EventHandler(this.RatesL5_ValueChanged);
+            this.RatesL5.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label24.Location = new System.Drawing.Point(15, 246);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(162, 19);
+            this.label24.TabIndex = 317;
+            this.label24.Text = "Regular Holiady (Sunday)";
+            // 
+            // RatesL4
+            // 
+            this.RatesL4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL4.DecimalPlaces = 2;
+            this.RatesL4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL4.Location = new System.Drawing.Point(426, 155);
+            this.RatesL4.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL4.Name = "RatesL4";
+            this.RatesL4.Size = new System.Drawing.Size(48, 21);
+            this.RatesL4.TabIndex = 349;
+            this.RatesL4.ThousandsSeparator = true;
+            this.RatesL4.ValueChanged += new System.EventHandler(this.RatesL4_ValueChanged);
+            this.RatesL4.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label21.Location = new System.Drawing.Point(15, 201);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(157, 19);
+            this.label21.TabIndex = 316;
+            this.label21.Text = "Special Holiady (Sunday)";
+            // 
+            // RatesL3
+            // 
+            this.RatesL3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL3.DecimalPlaces = 2;
+            this.RatesL3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL3.Location = new System.Drawing.Point(427, 110);
+            this.RatesL3.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL3.Name = "RatesL3";
+            this.RatesL3.Size = new System.Drawing.Size(48, 21);
+            this.RatesL3.TabIndex = 348;
+            this.RatesL3.ThousandsSeparator = true;
+            this.RatesL3.ValueChanged += new System.EventHandler(this.RatesL3_ValueChanged);
+            this.RatesL3.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label38.Location = new System.Drawing.Point(15, 291);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(113, 19);
+            this.label38.TabIndex = 324;
+            this.label38.Text = "Night Differential";
+            // 
+            // RatesL2
+            // 
+            this.RatesL2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL2.DecimalPlaces = 2;
+            this.RatesL2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL2.Location = new System.Drawing.Point(427, 65);
+            this.RatesL2.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL2.Name = "RatesL2";
+            this.RatesL2.Size = new System.Drawing.Size(48, 21);
+            this.RatesL2.TabIndex = 347;
+            this.RatesL2.ThousandsSeparator = true;
+            this.RatesL2.ValueChanged += new System.EventHandler(this.RatesL2_ValueChanged);
+            this.RatesL2.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label37.Location = new System.Drawing.Point(16, 381);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(142, 19);
+            this.label37.TabIndex = 326;
+            this.label37.Text = "Overtime on Holidays";
+            // 
+            // RatesL1
+            // 
+            this.RatesL1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatesL1.DecimalPlaces = 2;
+            this.RatesL1.Enabled = false;
+            this.RatesL1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.RatesL1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RatesL1.Location = new System.Drawing.Point(427, 20);
+            this.RatesL1.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.RatesL1.Name = "RatesL1";
+            this.RatesL1.Size = new System.Drawing.Size(48, 21);
+            this.RatesL1.TabIndex = 346;
+            this.RatesL1.ThousandsSeparator = true;
+            this.RatesL1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RatesL1.ValueChanged += new System.EventHandler(this.RatesL1_ValueChanged);
+            this.RatesL1.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label36.Location = new System.Drawing.Point(16, 336);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(66, 19);
+            this.label36.TabIndex = 325;
+            this.label36.Text = "Overtime";
+            // 
+            // RatesT9
+            // 
+            this.RatesT9.Location = new System.Drawing.Point(213, 380);
+            this.RatesT9.Name = "RatesT9";
+            this.RatesT9.Size = new System.Drawing.Size(161, 45);
+            this.RatesT9.TabIndex = 335;
+            this.RatesT9.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT9.Scroll += new System.EventHandler(this.RatesT9_Scroll);
+            this.RatesT9.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // RatesT1
+            // 
+            this.RatesT1.Enabled = false;
+            this.RatesT1.Location = new System.Drawing.Point(213, 20);
+            this.RatesT1.Name = "RatesT1";
+            this.RatesT1.Size = new System.Drawing.Size(161, 45);
+            this.RatesT1.TabIndex = 327;
+            this.RatesT1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT1.Scroll += new System.EventHandler(this.RatesT1_Scroll);
+            this.RatesT1.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // RatesT8
+            // 
+            this.RatesT8.Location = new System.Drawing.Point(213, 335);
+            this.RatesT8.Name = "RatesT8";
+            this.RatesT8.Size = new System.Drawing.Size(161, 45);
+            this.RatesT8.TabIndex = 334;
+            this.RatesT8.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT8.Scroll += new System.EventHandler(this.RatesT8_Scroll);
+            this.RatesT8.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // RatesT2
+            // 
+            this.RatesT2.Location = new System.Drawing.Point(213, 65);
+            this.RatesT2.Name = "RatesT2";
+            this.RatesT2.Size = new System.Drawing.Size(161, 45);
+            this.RatesT2.TabIndex = 328;
+            this.RatesT2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT2.Scroll += new System.EventHandler(this.RatesT2_Scroll);
+            this.RatesT2.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // RatesT7
+            // 
+            this.RatesT7.Location = new System.Drawing.Point(213, 290);
+            this.RatesT7.Name = "RatesT7";
+            this.RatesT7.Size = new System.Drawing.Size(161, 45);
+            this.RatesT7.TabIndex = 333;
+            this.RatesT7.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT7.Scroll += new System.EventHandler(this.RatesT7_Scroll);
+            this.RatesT7.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // RatesT3
+            // 
+            this.RatesT3.Location = new System.Drawing.Point(213, 110);
+            this.RatesT3.Name = "RatesT3";
+            this.RatesT3.Size = new System.Drawing.Size(161, 45);
+            this.RatesT3.TabIndex = 329;
+            this.RatesT3.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT3.Scroll += new System.EventHandler(this.RatesT3_Scroll);
+            this.RatesT3.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // RatesT6
+            // 
+            this.RatesT6.Location = new System.Drawing.Point(213, 245);
+            this.RatesT6.Name = "RatesT6";
+            this.RatesT6.Size = new System.Drawing.Size(161, 45);
+            this.RatesT6.TabIndex = 332;
+            this.RatesT6.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT6.Scroll += new System.EventHandler(this.RatesT6_Scroll);
+            this.RatesT6.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // RatesT4
+            // 
+            this.RatesT4.Location = new System.Drawing.Point(213, 155);
+            this.RatesT4.Name = "RatesT4";
+            this.RatesT4.Size = new System.Drawing.Size(161, 45);
+            this.RatesT4.TabIndex = 330;
+            this.RatesT4.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT4.Scroll += new System.EventHandler(this.RatesT4_Scroll);
+            this.RatesT4.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // RatesT5
+            // 
+            this.RatesT5.Location = new System.Drawing.Point(213, 200);
+            this.RatesT5.Name = "RatesT5";
+            this.RatesT5.Size = new System.Drawing.Size(161, 45);
+            this.RatesT5.TabIndex = 331;
+            this.RatesT5.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RatesT5.Scroll += new System.EventHandler(this.RatesT5_Scroll);
+            this.RatesT5.Enter += new System.EventHandler(this.RatesL9_Enter);
+            // 
+            // MultDatePNL
+            // 
+            this.MultDatePNL.Controls.Add(this.MultEditBTN);
+            this.MultDatePNL.Controls.Add(this.label17);
+            this.MultDatePNL.Controls.Add(this.MultipliersDateCMBX);
+            this.MultDatePNL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MultDatePNL.Location = new System.Drawing.Point(0, 0);
+            this.MultDatePNL.Name = "MultDatePNL";
+            this.MultDatePNL.Size = new System.Drawing.Size(487, 50);
+            this.MultDatePNL.TabIndex = 358;
+            // 
+            // MultEditBTN
+            // 
+            this.MultEditBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MultEditBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.MultEditBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.MultEditBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MultEditBTN.FlatAppearance.BorderSize = 0;
+            this.MultEditBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.MultEditBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.MultEditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MultEditBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.MultEditBTN.ForeColor = System.Drawing.Color.White;
+            this.MultEditBTN.Location = new System.Drawing.Point(415, 8);
+            this.MultEditBTN.Name = "MultEditBTN";
+            this.MultEditBTN.Size = new System.Drawing.Size(64, 29);
+            this.MultEditBTN.TabIndex = 357;
+            this.MultEditBTN.Text = "EDIT";
+            this.MultEditBTN.UseVisualStyleBackColor = false;
+            this.MultEditBTN.Click += new System.EventHandler(this.MultEditBTN_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label17.Location = new System.Drawing.Point(14, 13);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(130, 19);
+            this.label17.TabIndex = 356;
+            this.label17.Text = "Multipliers Effective:";
+            // 
+            // MultipliersDateCMBX
+            // 
+            this.MultipliersDateCMBX.BackColor = System.Drawing.Color.White;
+            this.MultipliersDateCMBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MultipliersDateCMBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MultipliersDateCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.MultipliersDateCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.MultipliersDateCMBX.FormattingEnabled = true;
+            this.MultipliersDateCMBX.Location = new System.Drawing.Point(149, 10);
+            this.MultipliersDateCMBX.Name = "MultipliersDateCMBX";
+            this.MultipliersDateCMBX.Size = new System.Drawing.Size(256, 25);
+            this.MultipliersDateCMBX.TabIndex = 355;
+            this.MultipliersDateCMBX.SelectedIndexChanged += new System.EventHandler(this.MultipliersDateCMBX_SelectedIndexChanged);
+            // 
+            // TaxTLTP
+            // 
+            this.TaxTLTP.AutoPopDelay = 3000;
+            this.TaxTLTP.InitialDelay = 500;
+            this.TaxTLTP.ReshowDelay = 100;
+            this.TaxTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.TaxTLTP.ToolTipTitle = "Input Error";
+            // 
             // PayrollConfigRates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2294,11 +2303,11 @@
             this.ControlBox = false;
             this.Controls.Add(this.RatesPNL);
             this.Controls.Add(this.CloseBTN);
+            this.Controls.Add(this.WithPagePNL);
             this.Controls.Add(this.MultiplierPagePNL);
             this.Controls.Add(this.GlobalPagePNL);
             this.Controls.Add(this.SSSPagePNL);
             this.Controls.Add(this.BasicPagePNL);
-            this.Controls.Add(this.WithPagePNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollConfigRates";
             this.ShowInTaskbar = false;
@@ -2306,6 +2315,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payroll_ConfigSSS_FormClosing);
             this.Load += new System.EventHandler(this.Payroll_ConfigSSS_Load);
             this.RatesPNL.ResumeLayout(false);
+            this.GlobalPNL.ResumeLayout(false);
+            this.MultPNL.ResumeLayout(false);
             this.BasicPNL.ResumeLayout(false);
             this.SSSPnl.ResumeLayout(false);
             this.TaxPnl.ResumeLayout(false);
@@ -2332,40 +2343,38 @@
             ((System.ComponentModel.ISupportInitialize)(this.TaxExemptionGRD)).EndInit();
             this.TaxDatePNL.ResumeLayout(false);
             this.TaxDatePNL.PerformLayout();
-            this.MultPNL.ResumeLayout(false);
-            this.GlobalPNL.ResumeLayout(false);
             this.GlobalPagePNL.ResumeLayout(false);
             this.GlobalPagePNL.PerformLayout();
-            this.MultiplierPagePNL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmergencyBX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BondsBX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ColaBX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThirteenBX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesT9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatesL9)).EndInit();
-            this.MultDatePNL.ResumeLayout(false);
-            this.MultDatePNL.PerformLayout();
+            this.MultiplierPagePNL.ResumeLayout(false);
+            this.MultEditPNL.ResumeLayout(false);
             this.MultMainPNL.ResumeLayout(false);
             this.MultMainPNL.PerformLayout();
-            this.MultEditPNL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesL1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatesT5)).EndInit();
+            this.MultDatePNL.ResumeLayout(false);
+            this.MultDatePNL.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2513,5 +2522,6 @@
         private System.Windows.Forms.Panel MultMainPNL;
         private System.Windows.Forms.Panel MultDatePNL;
         private System.Windows.Forms.Button MultEditBTN;
+        private System.Windows.Forms.ToolTip TaxTLTP;
     }
 }

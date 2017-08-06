@@ -493,11 +493,19 @@ namespace MSAMISUserInterface {
         }
 
         private void TaxExSaveBTN_Click(object sender, EventArgs e) {
-            TaxExemptionGRD.Rows.Add(0, TaxNewExemptBX.Value + "\n  " + TaxBracketMSTXTBX.Text);
-            for (var k = 0; k < TaxExemptionGRD.ColumnCount - 2; k++) {
-                TaxExemptionGRD.Rows[TaxExemptionGRD.RowCount - 1].Cells[k + 2].Value = "00.00";
+            if (double.Parse(TaxNewExemptBX.Value.ToString("N2")).Equals(0.00)) {
+                TaxTLTP.ToolTipTitle = "Tax Exemption Value";
+                TaxTLTP.Show("Please indicate the value", TaxNewExemptBX);
+            } else if (TaxBracketMSTXTBX.Text.Equals("+   % over")) {
+                TaxTLTP.ToolTipTitle = "Tax Exemption Bracket";
+                TaxTLTP.Show("Please indicate the bracket", TaxBracketMSTXTBX);
+            } else { 
+                TaxExemptionGRD.Rows.Add(0, TaxNewExemptBX.Value + "\n  " + TaxBracketMSTXTBX.Text);
+                for (var k = 0; k < TaxExemptionGRD.ColumnCount - 2; k++) {
+                    TaxExemptionGRD.Rows[TaxExemptionGRD.RowCount - 1].Cells[k + 2].Value = "00.00";
+                }
+                TaxExCancelBTN.PerformClick();
             }
-            TaxExCancelBTN.PerformClick();
         }
         private void TaxDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             LoadTaxTables();
@@ -630,8 +638,7 @@ namespace MSAMISUserInterface {
                 //TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
             }
         }
+
         #endregion
-
-
     }
 }
