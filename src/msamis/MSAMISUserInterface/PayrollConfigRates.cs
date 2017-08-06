@@ -122,6 +122,31 @@ namespace MSAMISUserInterface {
             LoadTaxPage();
         }
 
+        private void MultPNL_MouseEnter(object sender, EventArgs e) {
+            SelectedColor(MultPNL, MultLBL, MultConLBL);
+        }
+
+        private void GlobalLBL_MouseEnter(object sender, EventArgs e) {
+            SelectedColor(GlobalPNL, GlobalLBL, GlobalCon);
+        }
+
+        private void GlobalLBL_MouseLeave(object sender, EventArgs e) {
+            if (!GlobalPagePNL.Visible) DefaultColor(GlobalPNL, GlobalLBL, GlobalCon);
+        }
+
+        private void MultPNL_MouseLeave(object sender, EventArgs e) {
+            if (!MultiplierPagePNL.Visible) DefaultColor(MultPNL, MultLBL, MultConLBL);
+
+        }
+
+        private void MultPNL_MouseClick(object sender, MouseEventArgs e) {
+            ChangePage(MultiplierPagePNL, MultPNL, MultLBL, MultConLBL);
+            LoadRatesMult();
+        }
+
+        private void GlobalPNL_MouseClick(object sender, MouseEventArgs e) {
+            ChangePage(GlobalPagePNL, GlobalPNL, GlobalLBL, GlobalCon);
+        }
         #endregion
 
         #region Basic Pay rates
@@ -153,6 +178,8 @@ namespace MSAMISUserInterface {
             CloseBTN.Visible = false;
             SSSPnl.Visible = false;
             TaxPnl.Visible = false;
+            RatesPNL.Visible = false;
+            GlobalPNL.Visible = false;
         }
 
         private void CancelBTN_Click(object sender, EventArgs e) {
@@ -163,6 +190,8 @@ namespace MSAMISUserInterface {
             CloseBTN.Visible = true;
             SSSPnl.Visible = true;
             TaxPnl.Visible = true;
+            RatesPNL.Visible = true;
+            GlobalPNL.Visible = true;
         }
 
         private void SaveBTN_Click(object sender, EventArgs e) {
@@ -328,6 +357,8 @@ namespace MSAMISUserInterface {
             BasicPNL.Visible = !mode;
             TaxPnl.Visible = !mode;
             CloseBTN.Visible = !mode;
+            RatesPNL.Visible = !mode;
+            GlobalPNL.Visible = !mode;
 
             SSSEditPNL.Visible = mode;
             SSSEffectivePNL.Visible = !mode;
@@ -426,6 +457,8 @@ namespace MSAMISUserInterface {
             CloseBTN.Visible = !mode;
             SSSPnl.Visible = !mode;
             BasicPNL.Visible = !mode;
+            RatesPNL.Visible = !mode;
+            GlobalPNL.Visible = !mode;
             TaxMainPNL.Size = mode ? new Size(487, 385 + 50) : new Size(487, 475);
         }
 
@@ -470,6 +503,133 @@ namespace MSAMISUserInterface {
             LoadTaxTables();
         }
 
+
+
+        #endregion
+
+        #region Rates Mult
+
+        #region Rates - GUI Components
+        private void RatesT1_Scroll(object sender, EventArgs e) {
+            RatesL1.Value = RatesT1.Value;
+        }
+
+        private void RatesT2_Scroll(object sender, EventArgs e) {
+            RatesL2.Value = RatesT2.Value;
+        }
+
+        private void RatesT3_Scroll(object sender, EventArgs e) {
+            RatesL3.Value = RatesT3.Value;
+        }
+
+        private void RatesT4_Scroll(object sender, EventArgs e) {
+            RatesL4.Value = RatesT4.Value;
+        }
+
+        private void RatesT5_Scroll(object sender, EventArgs e) {
+            RatesL5.Value = RatesT5.Value;
+        }
+
+        private void RatesT6_Scroll(object sender, EventArgs e) {
+            RatesL6.Value = RatesT6.Value;
+        }
+
+        private void RatesT7_Scroll(object sender, EventArgs e) {
+            RatesL7.Value = RatesT7.Value;
+        }
+
+        private void RatesT8_Scroll(object sender, EventArgs e) {
+            RatesL8.Value = RatesT8.Value;
+        }
+
+        private void RatesT9_Scroll(object sender, EventArgs e) {
+            RatesL9.Value = RatesT9.Value;
+        }
+
+        private void RatesL1_ValueChanged(object sender, EventArgs e) {
+            RatesT1.Value = (int)RatesL1.Value;
+        }
+
+        private void RatesL2_ValueChanged(object sender, EventArgs e) {
+            RatesT2.Value = (int)RatesL2.Value;
+        }
+
+        private void RatesL3_ValueChanged(object sender, EventArgs e) {
+            RatesT3.Value = (int)RatesL3.Value;
+        }
+
+        private void RatesL4_ValueChanged(object sender, EventArgs e) {
+            RatesT4.Value = (int)RatesL4.Value;
+        }
+
+        private void RatesL5_ValueChanged(object sender, EventArgs e) {
+            RatesT5.Value = (int)RatesL5.Value;
+        }
+
+        private void RatesL6_ValueChanged(object sender, EventArgs e) {
+            RatesT6.Value = (int)RatesL6.Value;
+        }
+
+        private void RatesL7_ValueChanged(object sender, EventArgs e) {
+            RatesT7.Value = (int)RatesL7.Value;
+        }
+
+        private void RatesL8_ValueChanged(object sender, EventArgs e) {
+            RatesT8.Value = (int)RatesL8.Value;
+        }
+
+        private void RatesL9_ValueChanged(object sender, EventArgs e) {
+            RatesT9.Value = (int)RatesL9.Value;
+        }
+        #endregion
+
+        private void LoadRatesMult() {
+            MultipliersDateCMBX.Items.Clear();
+            foreach (DataRow row in Payroll.GetRatesList().Rows) {
+                var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
+                var dissolved = row["date_dissolved"].Equals("-1") ? "Current" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
+                MultipliersDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["rates_id"].ToString()), effective, dissolved));
+            }
+            MultLoadValues();
+        }
+
+        private void MultEditBTN_Click(object sender, EventArgs e) {
+            MultEditMode(true);
+        }
+
+        private void MultEditMode(bool mode) {
+            BasicPNL.Visible = !mode;
+            SSSPnl.Visible = !mode;
+            TaxPnl.Visible = !mode;
+            GlobalPNL.Visible = !mode;
+            CloseBTN.Visible = !mode;
+
+            MultEditPNL.Visible = mode;
+            MultDatePNL.Visible = !mode;
+        }
+
+        private void MultCancelBTN_Click(object sender, EventArgs e) {
+            MultEditMode(false);
+            LoadRatesMult();
+        }
+
+        private void MultSaveBTN_Click(object sender, EventArgs e) {
+            Payroll.SetRates(MultDTPKR.Value, double.Parse(RatesL2.Value.ToString("N2")), double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")), double.Parse(RatesL5.Value.ToString("N2")),
+                double.Parse(RatesL6.Value.ToString("N2")), double.Parse(RatesL7.Value.ToString("N2")), double.Parse(RatesL8.Value.ToString("N2")), double.Parse(RatesL9.Value.ToString("N2")));
+        }
+
+        private void RatesL9_Enter(object sender, EventArgs e) {
+            MultEditMode(true);
+        }
+
+        private void MultipliersDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            MultLoadValues();
+        }
+        private void MultLoadValues() {
+            foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss)TaxDateCMBX.SelectedItem).Id).Rows) {
+                //TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
+            }
+        }
         #endregion
 
 
