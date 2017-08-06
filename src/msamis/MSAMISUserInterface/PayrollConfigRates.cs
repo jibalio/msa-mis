@@ -598,6 +598,7 @@ namespace MSAMISUserInterface {
                 var dissolved = row["date_dissolved"].Equals("-1") ? "Current" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
                 MultipliersDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["rates_id"].ToString()), effective, dissolved));
             }
+            MultipliersDateCMBX.SelectedIndex = 0;
             MultLoadValues();
         }
 
@@ -634,9 +635,9 @@ namespace MSAMISUserInterface {
             MultLoadValues();
         }
         private void MultLoadValues() {
-            foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id).Rows) {
+         //   foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id).Rows) {
                 //TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
-            }
+         //   }
         }
 
         #endregion
