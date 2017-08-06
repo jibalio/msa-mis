@@ -728,7 +728,25 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             }
         }
 
+        #region Defaults Setter
 
+        public static DataTable GetRatesList() {
+            return SQLTools.ExecuteQuery("SELECT * FROM msadb.rates;");
+        }
+
+
+        public static void SetRates(DateTime date_effective, double special_holiday, double regular_holiday,
+            double sunday_ordinary_day, double sunday_special_holiday, double sunday_regular_holiday,
+            double nightdifferential, double overtime, double overtime_holiday) {
+            // TODO: Function Body
+        }
+
+        public static void SetBonusDefaults(double philhealth, double pagibig, double cashbond, double cola,
+            double emergencyallowance) {
+            // TODO: Function Body
+        }
+
+        #endregion
 
 
         private static readonly string[] _rateKeys = new string[] {
