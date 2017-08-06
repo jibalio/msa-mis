@@ -1334,7 +1334,7 @@
             this.TaxExemptionGRD.RowHeadersVisible = false;
             this.TaxExemptionGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TaxExemptionGRD.ShowCellToolTips = false;
-            this.TaxExemptionGRD.Size = new System.Drawing.Size(485, 403);
+            this.TaxExemptionGRD.Size = new System.Drawing.Size(485, 468);
             this.TaxExemptionGRD.TabIndex = 282;
             this.TaxExemptionGRD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.TaxExemptionGRD_CellEndEdit);
             this.TaxExemptionGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.TaxExemptionGRD_CellEnter);
@@ -1456,6 +1456,7 @@
             this.GlobalPagePNL.Name = "GlobalPagePNL";
             this.GlobalPagePNL.Size = new System.Drawing.Size(487, 524);
             this.GlobalPagePNL.TabIndex = 300;
+            this.GlobalPagePNL.Visible = false;
             // 
             // button1
             // 
