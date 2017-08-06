@@ -203,16 +203,16 @@ namespace MSAMISUserInterface {
 
         private void UpdatePopUp(string day, string dayO, string night, string nightO, ToolStrip cms) {
             var e = _pay.hc[day];
-            cms.Items[1].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
+            cms.Items[1].Text = e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
 
             e = _pay.hc[dayO];
-            cms.Items[3].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
+            cms.Items[3].Text = e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
 
             e = _pay.hc[night];
-            cms.Items[5].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
+            cms.Items[5].Text = e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
 
             e = _pay.hc[nightO];
-            cms.Items[7].Text = CurrencyFormat(e.cost) + " x " + e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
+            cms.Items[7].Text = e.hour + " hr(s)" + " = " + CurrencyFormat(e.total);
         }
 
         private static string CurrencyFormat(double money) {

@@ -53,7 +53,7 @@ namespace MSAMISUserInterface {
             ControlBoxPanel.BackColor = _dashboard;
 
             //Variable Initialization
-            ControlBoxTimeLBL.Text = "Logged in as, " + User;
+            ControlBoxTimeLBL.Text = "Logged in as " + User;
             TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy").ToUpper();
             _scurrentPanel = GViewAllPNL;
             _scurrentBtn = GViewAllPageBTN;
@@ -415,9 +415,7 @@ namespace MSAMISUserInterface {
                     break;
                 default:
                     GAddGuardBTN.Visible = true;
-
-                    /// I CHANGE NI SA FUTURE TO "true"
-                    GArchivePageBTN.Visible = false;
+                    GArchivePageBTN.Visible = true;
                     break;
             }
         }
