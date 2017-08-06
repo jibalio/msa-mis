@@ -561,6 +561,9 @@ DROP TABLE IF EXISTS `rates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rates` (
   `rates_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_effective` varchar(45) DEFAULT NULL,
+  `date_dissolved` varchar(45) DEFAULT NULL,
+  `contrib_id` int(11) DEFAULT NULL,
   `ordinary_day` decimal(3,2) DEFAULT NULL,
   `special_holiday` decimal(3,2) DEFAULT NULL,
   `regular_holiday` decimal(3,2) DEFAULT NULL,
@@ -570,9 +573,8 @@ CREATE TABLE `rates` (
   `nightdifferential` decimal(3,2) DEFAULT NULL,
   `overtime` decimal(3,2) DEFAULT NULL,
   `overtime_holiday` decimal(3,2) DEFAULT NULL,
-  `contrib_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`rates_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -581,7 +583,7 @@ CREATE TABLE `rates` (
 
 LOCK TABLES `rates` WRITE;
 /*!40000 ALTER TABLE `rates` DISABLE KEYS */;
-INSERT INTO `rates` VALUES (1,1.00,1.30,2.00,1.30,1.50,2.60,1.10,1.25,1.25,12);
+INSERT INTO `rates` VALUES (1,'1970-01-01','2012-01-01',12,1.00,1.10,1.50,1.30,1.65,2.50,1.05,1.10,1.30),(2,'2012-01-01','-1',12,1.00,1.30,2.00,1.30,1.50,2.60,1.10,1.25,1.25);
 /*!40000 ALTER TABLE `rates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -823,4 +825,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-06  3:24:10
+-- Dump completed on 2017-08-06 13:51:26
