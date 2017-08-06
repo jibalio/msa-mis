@@ -180,13 +180,13 @@ namespace MSAMISUserInterface {
                 UpdateLbl("special", STLBL);
                 UpdateLbl("total", WorkTotalLBL);
 
-                B13LBL.Text = CurrencyFormat(_pay.thirteen);
-                BAllowanceLBL.Text = CurrencyFormat(_pay.emerallowance);
-                BBondsLBL.Text = CurrencyFormat(_pay.cashbond);
-                BColaLBL.Text = CurrencyFormat(_pay.cola);
+                B13LBL.Text = CurrencyFormat(_pay.ThirteenthMonthPay);
+                BAllowanceLBL.Text = CurrencyFormat(_pay.EmergencyAllowance);
+                BBondsLBL.Text = CurrencyFormat(_pay.CashBond);
+                BColaLBL.Text = CurrencyFormat(_pay.Cola);
                 BTotalLBL.Text = CurrencyFormat(_pay.Bonuses);
 
-                DCashAdvanceLBL.Text = CurrencyFormatNegative(_pay.CashAdv);
+                DCashAdvanceLBL.Text = CurrencyFormatNegative(_pay.CashAdvance);
                 DPagIbigLBL.Text = CurrencyFormatNegative(_pay.PagIbig);
                 DPhilHealthLBL.Text = CurrencyFormatNegative(_pay.PhilHealth);
                 DSSSLBL.Text = CurrencyFormatNegative(_pay.Sss);

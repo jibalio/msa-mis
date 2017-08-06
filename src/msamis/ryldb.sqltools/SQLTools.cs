@@ -79,6 +79,9 @@ namespace MSAMISUserInterface {
         public static string IniGetString(string category, string key) {
             return data[category][key];
         }
+        public static double IniGetDouble(string category, string key) {
+            return double.Parse(data[category][key]);
+        }
 
 
         public static string SerializeMe<T>(this T toSerialize) {

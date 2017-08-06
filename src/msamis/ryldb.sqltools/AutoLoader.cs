@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ryldb.sqltools;
 using IniParser;
 using IniParser.Model;
+using rylui;
 
 namespace MSAMISUserInterface {
 
@@ -58,6 +60,11 @@ namespace MSAMISUserInterface {
         }
 
         public static void AutoImportSql(bool db, bool dbarchive) {
+            try { SQLTools.conn.Open(); }
+            catch (Exception) {
+                RylMessageBox.ShowDialog("Server is offline.", "Connection Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            } finally { SQLTools.conn.Close();}
             Do_Check();
             if (!File.Exists(checksumfile)) {
                 using (var writer = new StreamWriter(@checksumfile)) {

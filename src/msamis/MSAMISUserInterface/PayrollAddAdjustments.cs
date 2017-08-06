@@ -41,11 +41,11 @@ namespace MSAMISUserInterface {
         }
 
         private void InitializeData() {
-            UpdateKeys("thirteen", Pay.thirteen, ThirteenBX);
-            UpdateKeys("Cola", Pay.cola, ColaBX);
-            UpdateKeys("Emergency", Pay.emerallowance, EmergencyBX);
-            UpdateKeys("CashBonds", Pay.cashbond, BondsBX);
-            UpdateKeys("CashAdv", Pay.CashAdv, AdvBX);
+            UpdateKeys("thirteen", Pay.ThirteenthMonthPay, ThirteenBX);
+            UpdateKeys("Cola", Pay.Cola, ColaBX);
+            UpdateKeys("Emergency", Pay.EmergencyAllowance, EmergencyBX);
+            UpdateKeys("CashBonds", Pay.CashBond, BondsBX);
+            UpdateKeys("CashAdv", Pay.CashAdvance, AdvBX);
         }
 
         private void UpdateKeys(string key, double value, NumericUpDown bx) {

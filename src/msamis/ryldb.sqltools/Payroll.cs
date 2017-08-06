@@ -24,33 +24,13 @@ namespace MSAMISUserInterface {
 
         #region Fields Definition
 
-        public double thirteen;
-        public double cola;
-        public double emerallowance;
+        #region Meta
 
-        public double Bonuses => thirteen + cola + emerallowance + cashbond;
-
-        // Deductions
-        public double Deductions => Sss + PagIbig + PhilHealth + CashAdv + Withtax;
-
-        public double GrossPay => TotalSummary["total"].total + Bonuses;
-
-        public double NetPay {
-            get { return GrossPay - Deductions; }
-        }
         public int GID;
-        // PayrollData Containers
         public HourProcessor TotalHours = new HourProcessor();
-
-        public Dictionary<string, double> rates = new Dictionary<string, double>();
         public Attendance.Period period = Attendance.GetCurrentPayPeriod();
-        public double BasicPay = 340.00 / 8;
-        public double cashbond;
-        public double TaxableIncome;
-        public double Excess;
-        public static Hours total_old;
-        public double Sss, PagIbig, PhilHealth, Withtax, CashAdv;
-        public WithTax wt = new WithTax();
+        private double _BasicPayHourly;
+        private Dictionary<string, double> _rates = new Dictionary<string, double>();
 
         public Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
             #region + Keys Definition
@@ -100,6 +80,91 @@ namespace MSAMISUserInterface {
             #endregion
         };
 
+        public static Hours total_old;
+
+        #endregion
+
+        #region Derivables
+        public double Bonuses => ThirteenthMonthPay + Cola + EmergencyAllowance + CashBond;
+        public double Deductions => Sss + PagIbig + PhilHealth + CashAdvance + Withtax;
+        public double GrossPay => TotalSummary["total"].total + Bonuses;
+        public double NetPay => GrossPay - Deductions;
+        public double TaxableIncome => GrossPay - Sss - PagIbig - PhilHealth;
+        public double Excess => GrossPay - TaxableIncome;
+
+        #endregion
+
+        #region Bonuses
+
+        public double EmergencyAllowance {
+            get { return _emergencyallowance; }
+            set {
+                _emergencyallowance = value;
+                string query = $@"UPDATE `msadb`.`payroll` SET `emergencyallowance`='{value}' WHERE `PID`='1';";
+                SQLTools.ExecuteNonQuery(query);
+            }
+        }
+
+        public double CashBond {
+            get { return _cashbond; }
+            set {
+                _cashbond = value;
+                string query = $@"UPDATE `msadb`.`payroll` SET `cashbond`='{value}' WHERE `PID`='1';";
+                SQLTools.ExecuteNonQuery(query);
+            }
+        }
+
+        public double Cola {
+            get { return _cola; }
+            set {
+                _cola = value;
+                string query = $@"UPDATE `msadb`.`payroll` SET `cola`='{value}' WHERE `PID`='1';";
+                SQLTools.ExecuteNonQuery(query);
+            }
+        }
+
+        public double ThirteenthMonthPay {
+            get { return _thirteen; }
+            set {
+                _thirteen = value;
+                string query = $@"UPDATE `msadb`.`payroll` SET `thirteenth`='{value}' WHERE `PID`='1';";
+                SQLTools.ExecuteNonQuery(query);
+            }
+        }
+
+        #endregion
+        #region Deductions
+
+        public double CashAdvance {
+            get { return _cashadv; }
+            set {
+                _cashadv = value;
+                string query = $@"UPDATE `msadb`.`payroll` SET `cashadv`='{value}' WHERE `PID`='1';";
+                SQLTools.ExecuteNonQuery(query);
+            }
+        }
+
+        public double PagIbig;
+        public double PhilHealth;
+        public double Sss;
+        public double Withtax;
+        public WithTax wt = new WithTax();
+
+        #endregion
+
+        // PayrollData Containers
+
+        #region Internals
+
+        private double _cashbond;
+        private double _cola;
+        private double _emergencyallowance;
+
+        private double _thirteen;
+        private double _cashadv;
+
+        #endregion
+
         #endregion Fields Definition
 
         #region Constructors
@@ -118,8 +183,13 @@ namespace MSAMISUserInterface {
             this.period.month = month;
             this.period.year = year;
             this._InitRates();
-
-            // TODO:
+            this._BasicPayHourly = _GetMyBasicPays() / 8.00;
+            string insertionquery =  $@"
+INSERT IGNORE INTO `msadb`.`payroll`
+(`GID`, `month`, `period`, `year`, `cashbond`, `pagibig`, `philhealth`, `cola`, `emergencyallowance`, `pstatus`)
+VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.period.year}', 
+'{RetrieveCashBond()}', '{RetrieveHdmf()}', '{RetrievePhic()}', '{RetrieveCola()}', '{RetrieveEmer()}', '{Enumeration.PayrollStatus.Pending}');";
+            SQLTools.ExecuteNonQuery(insertionquery);
         }
         
         /// <summary>
@@ -139,9 +209,16 @@ namespace MSAMISUserInterface {
             Compute(true);
         }
 
+        private double _GetMyBasicPays() {
+            return double.Parse(SQLTools.ExecuteSingleResult("select amount from basicpay where status=1"));
+        }
+        private double _GetMyBasicPays(int BPID) {
+            return double.Parse(SQLTools.ExecuteSingleResult($@"select amount from basicpay where bpid={BPID}"));
+        }
+
         public void Compute(bool checkthirteen) {
             foreach (var key in hc.Keys.ToList())
-                hc[key] = new HourCostPair(TotalHours.GetHourDictionary()[key].TotalHours, BasicPay * rates[key]);
+                hc[key] = new HourCostPair(TotalHours.GetHourDictionary()[key].TotalHours, _BasicPayHourly * _rates[key]);
             ComputeTotalSummary();
             ComputeBonuses(checkthirteen);
             ComputeDeductions();
@@ -248,15 +325,7 @@ namespace MSAMISUserInterface {
             return e;
         }
 
-        public double ComputeTaxableIncome() {
-            /*  Status
-                Do you have any dependents and how many?
-                How much is your SSS/Philhealth and PagIbig contributions
-                Allowances and other benefits if any
-                Copy of the BIR Tax table 
-             */
-            return GrossPay - Sss - PagIbig - PhilHealth;
-        }
+        
 
         public void ComputeDeductions() {
             Sss = ComputeSSS(GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16)));
@@ -269,36 +338,42 @@ namespace MSAMISUserInterface {
                 PhilHealth = 0;
             }
 
-            CashAdv = RetrieveCashAdvance();
-            TaxableIncome = ComputeTaxableIncome();
-            Excess = GrossPay - TaxableIncome;
-            Withtax = ComputeWithTax(TaxableIncome, Excess);
+            CashAdvance = RetrieveCashAdvance();
+            
+            
+            ComputeWithTax(TaxableIncome, Excess);
         }
 
         #region Retrievables
 
         public static double RetrieveCashAdvance() {
-            return 20;
+            string w = SQLTools.IniGetString("Payroll", "DefaultCashAdvance");
+            return double.Parse(w);
         }
 
         public static double RetrievePhic() {
-            return 100;
+            string w = SQLTools.IniGetString("Payroll", "DefaultPHIC");
+            return double.Parse(w);
         }
 
         public static double RetrieveHdmf() {
-            return 100;
+            string w = SQLTools.IniGetString("Payroll", "DefaultHDMF");
+            return double.Parse(w);
         }
 
         public static double RetrieveCashBond() {
-            return 5000;
+            string w = SQLTools.IniGetString("Payroll", "DefaultCashBond");
+            return double.Parse(w);
         }
 
         public static double RetrieveCola() {
-            return 50;
+            string w = SQLTools.IniGetString("Payroll", "DefaultCola");
+            return double.Parse(w);
         }
 
         public static double RetrieveEmer() {
-            return 2500;
+            string w = SQLTools.IniGetString("Payroll", "DefaultEmer");
+            return double.Parse(w);
         }
 
         #endregion
@@ -306,18 +381,18 @@ namespace MSAMISUserInterface {
 
         public void ComputeBonuses(bool ca) {
             if (ca)
-                if (period.month == 12 && period.period == 2) thirteen = ComputeThirteen();
-                else thirteen = 0;
-            cola = RetrieveCola();
-            emerallowance = RetrieveEmer();
-            cashbond = RetrieveCashBond();
+                if (period.month == 12 && period.period == 2) ThirteenthMonthPay = ComputeThirteen();
+                else ThirteenthMonthPay = 0;
+            Cola = RetrieveCola();
+            EmergencyAllowance = RetrieveEmer();
+            CashBond = RetrieveCashBond();
         }
 
         public void ComputeBonuses() {
             ComputeBonuses(true);
         }
 
-        public double ComputeWithTax(double Taxable, double Excess) {
+        public void ComputeWithTax(double Taxable, double Excess) {
             var NumDependents = Guard.GetNumberOfDependents(GID);
             if (NumDependents > 4)
                 NumDependents = 4;
@@ -347,7 +422,7 @@ namespace MSAMISUserInterface {
             wt.total = w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
             wt.ExcessTax = Excess * ((double) w.excessfactor / 100);
 
-            return w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
+            Withtax =  w.TaxbaseD + Excess * ((double) w.excessfactor / 100);
         }
 
         public WithTax GetWithholdingTax() {
@@ -373,7 +448,7 @@ namespace MSAMISUserInterface {
                 var hce = new HourProcessor();
                 double qwe = 0;
                 foreach (var pypy in py) pypy.ComputeHours();
-                foreach (var pypy in py) qwe += pypy.TotalHours.GetTotalTS().TotalHours * BasicPay;
+                foreach (var pypy in py) qwe += pypy.TotalHours.GetTotalTS().TotalHours * _BasicPayHourly;
                 return qwe / 12.00;
             }
         }
@@ -724,7 +799,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             #endregion
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (string key in _rateKeys) {
-                this.rates.Add(key, double.Parse(dt.Rows[0][key].ToString())); 
+                this._rates.Add(key, double.Parse(dt.Rows[0][key].ToString())); 
             }
         }
 
@@ -775,5 +850,12 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             }
         }
 
+
+
+        #region Setters: Bonuses
+
+
+
+        #endregion
     }
 }

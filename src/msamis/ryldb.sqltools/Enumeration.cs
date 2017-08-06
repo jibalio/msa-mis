@@ -53,9 +53,9 @@ namespace MSAMISUserInterface {
         }
         
         public class PayrollStatus {
-            public static int Uncalculated = 1;
-            public static int Calculated = 2;
-            public static int Paid = 3;
+            public static int Pending = 0;
+            public static int Calculated = 1;
+            public static int Paid = 2;
         }
 
         public class ReportType {
