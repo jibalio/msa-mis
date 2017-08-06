@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `accid` int(11) NOT NULL AUTO_INCREMENT,
   `uname` varchar(45) DEFAULT NULL,
-  `hash` varchar(256) DEFAULT NULL,
+  `hash` varchar(60) DEFAULT NULL,
   `type` int(1) DEFAULT NULL,
   PRIMARY KEY (`accid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
@@ -39,7 +39,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'admin','admin',1),(2,'clerk','clerk',2),(3,'root','root',0);
+INSERT INTO `account` VALUES (1,'admin','$2a$10$Z1R3EjdfdyL38Hi5sx6SNeouxq9LspdMSR1uIe5CT7//YhcHTDnyO',1),(2,'clerk','$2a$10$imp8QC1nEzOWieBu5MsFtOV94cAQdindJs/SvWHJPv4JRp32DZgHO',2),(3,'root','$2a$10$UrRQ9T/hHzOW09IrWgdG8OthmnXTR3rkGSn8BEdH/XBMa5zEaaDWK',0);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -825,4 +825,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-06 13:51:26
+-- Dump completed on 2017-08-06 14:27:07
