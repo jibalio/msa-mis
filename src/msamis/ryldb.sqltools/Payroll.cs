@@ -874,7 +874,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         }
 
 
-        public static void SetRates(DateTime date_effective, double special_holiday, double regular_holiday,
+        public static void SetRates(int rates_id, double special_holiday, double regular_holiday,
             double sunday_ordinary_day, double sunday_special_holiday, double sunday_regular_holiday,
             double nightdifferential, double overtime, double overtime_holiday) {
             // TODO: Function Body
@@ -882,10 +882,21 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
         public static void SetBonusDefaults(double philhealth, double pagibig, double cashbond, double cola,
             double emergencyallowance) {
-            
+            //Data.PayrollIni["Payroll"]["DefaultCashAdvance"] = cashadv.ToString(CultureInfo.InvariantCulture);
+            Data.PayrollIni["Payroll"]["DefaultPHIC"] = philhealth.ToString("N2");
+            Data.PayrollIni["Payroll"]["DefaultHDMF"] = pagibig.ToString("N2");
+            Data.PayrollIni["Payroll"]["DefaultCashBond"] = cashbond.ToString("N2"); ;
+            Data.PayrollIni["Payroll"]["DefaultCola"] = cola.ToString("N2");
+            Data.PayrollIni["Payroll"]["DefaultEmer"] = emergencyallowance.ToString("N2");
+            Data.iniparser.WriteFile(Data.PayrollIniLocation,Data.PayrollIni);
+            Data.InitPayrollConfig();
+
         }
 
+
+
         
+
 
 
 
