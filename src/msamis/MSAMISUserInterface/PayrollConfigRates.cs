@@ -637,9 +637,15 @@ namespace MSAMISUserInterface {
             MultLoadValues();
         }
         private void MultLoadValues() {
-         //   foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id).Rows) {
-                //TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
-         //   }
+            var row = Payroll.GetRates(((ComboBoxSss) MultipliersDateCMBX.SelectedItem).Id).Rows[0];
+            RatesL2.Value = decimal.Parse(row[5].ToString());
+            RatesL3.Value = decimal.Parse(row[6].ToString());
+            RatesL4.Value = decimal.Parse(row[7].ToString());
+            RatesL5.Value = decimal.Parse(row[8].ToString());
+            RatesL6.Value = decimal.Parse(row[9].ToString());
+            RatesL7.Value = decimal.Parse(row[10].ToString());
+            RatesL8.Value = decimal.Parse(row[11].ToString());
+            RatesL9.Value = decimal.Parse(row[12].ToString());
         }
 
         #endregion
