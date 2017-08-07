@@ -64,7 +64,7 @@ namespace MSAMISUserInterface {
             catch (Exception) {
                 RylMessageBox.ShowDialog("Server is offline.", "Connection Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-            } finally { SQLTools.conn.Close();}
+            } finally {SQLTools.conn.Close();}
             Do_Check();
             if (!File.Exists(checksumfile)) {
                 using (var writer = new StreamWriter(@checksumfile)) {

@@ -2,6 +2,11 @@
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.IO;
+using System.Data;
+using System.Reflection;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace MSAMISUserInterface
 {
@@ -105,5 +110,45 @@ namespace MSAMISUserInterface
         }
 
         #endregion
+
+        private void CExportToPDFBTN_Click(object sender, EventArgs e)
+        {
+            DataTable testDT = Reports.GetClientsList();
+            PdfPTable pdfTable = new PdfPTable(ClientsSummaryTBL.ColumnCount);
+            pdfTable.DefaultCell.Padding = 3;
+            pdfTable.WidthPercentage = 30;
+            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable.DefaultCell.BorderWidth = 1;
+
+            foreach (DataGridViewColumn column in ClientsSummaryTBL.Columns)
+            {
+                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                pdfTable.AddCell(cell);
+            }
+
+            //Adding DataRow
+            foreach (DataGridViewRow row in ClientsSummaryTBL.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    pdfTable.AddCell(cell.Value.ToString());
+                }
+            }
+
+            string folderPath = Environment.SpecialFolder.MyDocuments + "\\" + "MSAMIS Reports";
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            using (FileStream stream = new FileStream(folderPath + "ExportPDF_Test.pdf", FileMode.Create))
+            {
+                Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(pdfTable);
+                pdfDoc.Close();
+                stream.Close();
+            }
+        }
     }
 }
