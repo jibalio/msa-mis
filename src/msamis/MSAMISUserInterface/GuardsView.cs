@@ -84,13 +84,15 @@ namespace MSAMISUserInterface {
         private void RViewEmployees_Load(object sender, EventArgs e) {
             RefreshData();
             FadeTMR.Start();
-            _panel = PersonalPNL;
+            if (Name.Equals("Archived")) GEditDetailsBTN.Visible = false;
+                _panel = PersonalPNL;
             _label = PersonalLBL;
+
             PersonalPNL.Visible = true;
         }
 
         private void RViewEmployees_FormClosing(object sender, FormClosingEventArgs e) {
-            Shadow.Close();
+            if (!Name.Equals("Archived")) Shadow.Close();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {

@@ -94,6 +94,12 @@
     <Compile Include="Exporting.Designer.cs">
       <DependentUpon>Exporting.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuardsArchive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuardsArchive.Designer.cs">
+      <DependentUpon>GuardsArchive.cs</DependentUpon>
+    </Compile>
     <Compile Include="GuardsEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exporting.resx">
       <DependentUpon>Exporting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuardsArchive.resx">
+      <DependentUpon>GuardsArchive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GuardsEdit.resx">
       <DependentUpon>GuardsEdit.cs</DependentUpon>
@@ -374,6 +383,9 @@
     <None Include="Resources\notif.png" />
     <None Include="Resources\eYE.png" />
     <None Include="Resources\Logout.png" />
+    <None Include="Resources\ViewInfo.png" />
+    <None Include="Resources\ViewAss.png" />
+    <None Include="Resources\ViewPay.png" />
     <Content Include="Untitled-1.ico" />
   </ItemGroup>
   <ItemGroup>

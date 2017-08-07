@@ -22,7 +22,16 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
-            LoadPage();
+
+            if (Name.Equals("Archived")) {
+                AddDutyDetailsBTN.Visible = false;
+                EditDaysBTN.Visible = false;
+                PeriodCMBX.Size = new Size(352, 25);
+            }
+            else {
+                LoadPage();
+            }
+            FadeTMR.Start();
             if (Login.AccountType == 2) DismissBTN.Visible = false;
         }
 
@@ -33,7 +42,6 @@ namespace MSAMISUserInterface {
             RefreshCurrent();
             RefreshData();
             RefreshAttendance();
-            FadeTMR.Start();
         }
 
         public void RefreshData() {
@@ -128,12 +136,17 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            Reference.SchedRefreshAssignments();
+            if (!Name.Equals("Archived")) {
+                Reference.SchedRefreshAssignments();
+            }
             Close();
         }
 
         private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Hide();
+            if (!Name.Equals("Archived")) {
+                Refer.Hide();
+            }
+            
         }
 
         private void EditDutyDetailsBTN_Click(object sender, EventArgs e) {
@@ -172,6 +185,12 @@ namespace MSAMISUserInterface {
                 _did = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
                 if (Login.AccountType != 2) DismissBTN.Visible = true;
                 EditDutyDetailsBTN.Visible = true;
+
+                if (Name.Equals("Archived")) {
+                    AddDutyDetailsBTN.Visible = false;
+                    DismissBTN.Visible = false;
+                    EditDutyDetailsBTN.Visible = false;
+                }
             }
         }
 
@@ -203,6 +222,11 @@ namespace MSAMISUserInterface {
                 PeriodCMBX.Size = new Size(257, 25);
             }
             else if (PeriodCMBX.SelectedIndex > 0) {
+                EditDaysBTN.Visible = false;
+                PeriodCMBX.Size = new Size(352, 25);
+            }
+
+            if (Name.Equals("Archived")) {
                 EditDaysBTN.Visible = false;
                 PeriodCMBX.Size = new Size(352, 25);
             }

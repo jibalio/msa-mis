@@ -2071,7 +2071,7 @@
             this.SSSPop.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.SSSPop.Name = "contextMenuStrip1";
             this.SSSPop.ShowImageMargin = false;
-            this.SSSPop.Size = new System.Drawing.Size(166, 144);
+            this.SSSPop.Size = new System.Drawing.Size(276, 144);
             this.SSSPop.Text = "Mondays to Saturdays";
             // 
             // toolStripTextBox47
@@ -2083,7 +2083,7 @@
             this.toolStripTextBox47.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox47.Name = "toolStripTextBox47";
             this.toolStripTextBox47.ReadOnly = true;
-            this.toolStripTextBox47.Size = new System.Drawing.Size(130, 15);
+            this.toolStripTextBox47.Size = new System.Drawing.Size(160, 15);
             this.toolStripTextBox47.Text = "CONFIGURATION DATE";
             // 
             // toolStripTextBox48
@@ -2095,8 +2095,8 @@
             this.toolStripTextBox48.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox48.Name = "toolStripTextBox48";
             this.toolStripTextBox48.ReadOnly = true;
-            this.toolStripTextBox48.Size = new System.Drawing.Size(130, 18);
-            this.toolStripTextBox48.Text = "December 31, 2017";
+            this.toolStripTextBox48.Size = new System.Drawing.Size(240, 18);
+            this.toolStripTextBox48.Text = "December 31, 2017 - December 31, 2017";
             // 
             // toolStripTextBox49
             // 
@@ -2107,7 +2107,7 @@
             this.toolStripTextBox49.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox49.Name = "toolStripTextBox49";
             this.toolStripTextBox49.ReadOnly = true;
-            this.toolStripTextBox49.Size = new System.Drawing.Size(130, 15);
+            this.toolStripTextBox49.Size = new System.Drawing.Size(160, 15);
             this.toolStripTextBox49.Text = "SSS RANGE";
             // 
             // toolStripTextBox50
@@ -2118,7 +2118,7 @@
             this.toolStripTextBox50.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox50.Name = "toolStripTextBox50";
             this.toolStripTextBox50.ReadOnly = true;
-            this.toolStripTextBox50.Size = new System.Drawing.Size(130, 16);
+            this.toolStripTextBox50.Size = new System.Drawing.Size(160, 16);
             this.toolStripTextBox50.Text = "3400 - 3500";
             // 
             // toolStripTextBox51
@@ -2130,7 +2130,7 @@
             this.toolStripTextBox51.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.toolStripTextBox51.Name = "toolStripTextBox51";
             this.toolStripTextBox51.ReadOnly = true;
-            this.toolStripTextBox51.Size = new System.Drawing.Size(130, 15);
+            this.toolStripTextBox51.Size = new System.Drawing.Size(160, 15);
             this.toolStripTextBox51.Text = "AMOUNT";
             // 
             // toolStripTextBox52
@@ -2141,7 +2141,7 @@
             this.toolStripTextBox52.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
             this.toolStripTextBox52.Name = "toolStripTextBox52";
             this.toolStripTextBox52.ReadOnly = true;
-            this.toolStripTextBox52.Size = new System.Drawing.Size(130, 16);
+            this.toolStripTextBox52.Size = new System.Drawing.Size(160, 16);
             this.toolStripTextBox52.Text = "3200";
             // 
             // PayrollEmployeeView

@@ -29,9 +29,9 @@ namespace MSAMISUserInterface {
             AdjPNL.Visible = false;
             OverviewPNL.Visible = true;
 
-            RefreshPayrollList();
+            if (!Name.Equals("Archived")) RefreshPayrollList();
 
-            if (Login.AccountType == 2) {
+            if (Login.AccountType == 2 || Name.Equals("Archived")) {
                 BonusAddBTN.Visible = false;
                 ApproveBTN.Visible = false;
             }
@@ -71,7 +71,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_EmployeeView_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Hide();
+            if (!Name.Equals("Archived")) Refer.Hide();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -253,6 +253,11 @@ namespace MSAMISUserInterface {
             } else {
                 BonusAddBTN.Visible = false;
                 ApproveBTN.Location = new Point(186, 388);
+            }
+
+            if (Name.Equals("Archived")) {
+                BonusAddBTN.Visible = false;
+                ApproveBTN.Visible = false;
             }
         }
 

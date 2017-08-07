@@ -594,6 +594,18 @@ namespace MSAMISUserInterface {
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             //if (x == DialogResult.Yes) MoveGuardsToArchive(GuardsGID);
         }
+        private void GArchiveViewDetailsBTN_Click(object sender, EventArgs e) {
+            try {
+                var view = new GuardsArchive() {
+                    Shadow = _shadow,
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
 
         private void RefreshArchivedGuards() { }
 
@@ -1411,11 +1423,12 @@ namespace MSAMISUserInterface {
 
 
 
-        #endregion
+
+
 
         #endregion
 
-
+        #endregion
 
 
     }
