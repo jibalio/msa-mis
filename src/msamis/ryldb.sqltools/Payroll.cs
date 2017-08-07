@@ -877,7 +877,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         public static void SetRates(DateTime date_effective, double special_holiday, double regular_holiday,
             double sunday_ordinary_day, double sunday_special_holiday, double sunday_regular_holiday,
             double nightdifferential, double overtime, double overtime_holiday) {
-            var st = date_effective.ToString("yyyy-MM-dd");
+            /*var st = date_effective.ToString("yyyy-MM-dd");
 
             var HasElapsed = DateTime.Now >= date_effective;
             if (HasElapsed) {
@@ -889,7 +889,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             var q =
                 $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{-1}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
             SQLTools.ExecuteNonQuery(q);
-
+            */
 
         }
 
