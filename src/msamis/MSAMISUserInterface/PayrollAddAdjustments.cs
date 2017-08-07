@@ -13,7 +13,7 @@ namespace MSAMISUserInterface {
         };
 
         public Payroll Pay;
-        public PayrollEmployeeView refer;
+        public PayrollEmployeeView Refer;
         public string Period;
         public int Pid { get; set; }
 
@@ -73,7 +73,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_AddAdjustments_FormClosing(object sender, FormClosingEventArgs e) {
-            refer.LoadComputations();
+            Refer.LoadComputations();
         }
 
         private void Payroll_AddAdjustments_Load(object sender, EventArgs e) {

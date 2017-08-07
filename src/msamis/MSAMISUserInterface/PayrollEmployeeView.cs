@@ -115,7 +115,7 @@ namespace MSAMISUserInterface {
                 Pid = Gid,
                 Location = new Point(Location.X + 350, Location.Y),
                 Pay = _pay,
-                refer = this,
+                Refer = this,
                 Period = "for " + PeriodCMBX.Text
             };
             view.ShowDialog();
