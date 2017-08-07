@@ -146,6 +146,7 @@ namespace MSAMISUserInterface {
 
         private void GlobalPNL_MouseClick(object sender, MouseEventArgs e) {
             ChangePage(GlobalPagePNL, GlobalPNL, GlobalLBL, GlobalCon);
+            LoadGlobalPage();
         }
         #endregion
 
@@ -641,5 +642,41 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        #region Global Rates Page
+   
+        private void LoadGlobalPage() {
+            GlobalPHICBX.Value = 2;
+            GlobalHDMFBX.Value = 2;
+            GlobalCashBondBX.Value = 2;
+            GlobalColaBX.Value = 2;
+            GlobalEmergencyBX.Value = 2;
+        }
+
+        private void AddBTN_Click(object sender, EventArgs e) {
+            Payroll.SetBonusDefaults(double.Parse(GlobalPHICBX.Value.ToString("N2")), double.Parse(GlobalHDMFBX.Value.ToString("N2")), double.Parse(GlobalCashBondBX.Value.ToString("N2")), double.Parse(GlobalColaBX.Value.ToString("N2")), double.Parse(GlobalEmergencyBX.Value.ToString("N2")));
+        }
+
+        private void GlobalEditingMode(bool mode) {
+            BasicPNL.Visible = !mode;
+            SSSPnl.Visible = !mode;
+            TaxPnl.Visible = !mode;
+            MultPNL.Visible = !mode;
+            CloseBTN.Visible = !mode;
+
+            GlobalSaveBTN.Visible = mode;
+            GlobalCancelBTN.Visible = mode;
+        }
+
+        private void GlobalPHICBX_Enter(object sender, EventArgs e) {
+            GlobalEditingMode(true);
+        }
+
+        private void GlobalCancelBTN_Click(object sender, EventArgs e) {
+            GlobalEditingMode(false);
+        }
+        #endregion
+
+
     }
 }

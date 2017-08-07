@@ -119,25 +119,22 @@
             this.InputTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.SSSPopup = new System.Windows.Forms.ToolTip(this.components);
             this.GlobalPagePNL = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.AddBTN = new System.Windows.Forms.Button();
+            this.GlobalCancelBTN = new System.Windows.Forms.Button();
+            this.GlobalSaveBTN = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.GlobalEmergencyBX = new System.Windows.Forms.NumericUpDown();
+            this.GlobalColaBX = new System.Windows.Forms.NumericUpDown();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.EmergencyBX = new System.Windows.Forms.NumericUpDown();
+            this.GlobalHDMFBX = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.BondsBX = new System.Windows.Forms.NumericUpDown();
-            this.ColaBX = new System.Windows.Forms.NumericUpDown();
-            this.ThirteenBX = new System.Windows.Forms.NumericUpDown();
+            this.GlobalCashBondBX = new System.Windows.Forms.NumericUpDown();
+            this.GlobalPHICBX = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.MultiplierPagePNL = new System.Windows.Forms.Panel();
@@ -204,12 +201,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.TaxExemptionGRD)).BeginInit();
             this.TaxDatePNL.SuspendLayout();
             this.GlobalPagePNL.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmergencyBX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BondsBX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ColaBX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ThirteenBX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalEmergencyBX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalColaBX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalHDMFBX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalCashBondBX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalPHICBX)).BeginInit();
             this.MultiplierPagePNL.SuspendLayout();
             this.MultEditPNL.SuspendLayout();
             this.MultMainPNL.SuspendLayout();
@@ -1431,25 +1427,22 @@
             // 
             // GlobalPagePNL
             // 
-            this.GlobalPagePNL.Controls.Add(this.button1);
-            this.GlobalPagePNL.Controls.Add(this.AddBTN);
+            this.GlobalPagePNL.Controls.Add(this.GlobalCancelBTN);
+            this.GlobalPagePNL.Controls.Add(this.GlobalSaveBTN);
             this.GlobalPagePNL.Controls.Add(this.label22);
             this.GlobalPagePNL.Controls.Add(this.label23);
-            this.GlobalPagePNL.Controls.Add(this.numericUpDown3);
-            this.GlobalPagePNL.Controls.Add(this.numericUpDown4);
+            this.GlobalPagePNL.Controls.Add(this.GlobalEmergencyBX);
+            this.GlobalPagePNL.Controls.Add(this.GlobalColaBX);
             this.GlobalPagePNL.Controls.Add(this.label25);
             this.GlobalPagePNL.Controls.Add(this.label26);
             this.GlobalPagePNL.Controls.Add(this.label9);
-            this.GlobalPagePNL.Controls.Add(this.EmergencyBX);
+            this.GlobalPagePNL.Controls.Add(this.GlobalHDMFBX);
             this.GlobalPagePNL.Controls.Add(this.label10);
             this.GlobalPagePNL.Controls.Add(this.label11);
             this.GlobalPagePNL.Controls.Add(this.label14);
-            this.GlobalPagePNL.Controls.Add(this.label13);
-            this.GlobalPagePNL.Controls.Add(this.BondsBX);
-            this.GlobalPagePNL.Controls.Add(this.ColaBX);
-            this.GlobalPagePNL.Controls.Add(this.ThirteenBX);
+            this.GlobalPagePNL.Controls.Add(this.GlobalCashBondBX);
+            this.GlobalPagePNL.Controls.Add(this.GlobalPHICBX);
             this.GlobalPagePNL.Controls.Add(this.label12);
-            this.GlobalPagePNL.Controls.Add(this.label15);
             this.GlobalPagePNL.Controls.Add(this.label16);
             this.GlobalPagePNL.Controls.Add(this.label8);
             this.GlobalPagePNL.Location = new System.Drawing.Point(383, 47);
@@ -1458,50 +1451,54 @@
             this.GlobalPagePNL.TabIndex = 300;
             this.GlobalPagePNL.Visible = false;
             // 
-            // button1
+            // GlobalCancelBTN
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(250, 413);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 29);
-            this.button1.TabIndex = 302;
-            this.button1.Text = "RESET";
-            this.button1.UseVisualStyleBackColor = false;
+            this.GlobalCancelBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GlobalCancelBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.GlobalCancelBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GlobalCancelBTN.BackgroundImage")));
+            this.GlobalCancelBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GlobalCancelBTN.FlatAppearance.BorderSize = 0;
+            this.GlobalCancelBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.GlobalCancelBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.GlobalCancelBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GlobalCancelBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.GlobalCancelBTN.ForeColor = System.Drawing.Color.White;
+            this.GlobalCancelBTN.Location = new System.Drawing.Point(250, 413);
+            this.GlobalCancelBTN.Name = "GlobalCancelBTN";
+            this.GlobalCancelBTN.Size = new System.Drawing.Size(80, 29);
+            this.GlobalCancelBTN.TabIndex = 302;
+            this.GlobalCancelBTN.Text = "CANCEL";
+            this.GlobalCancelBTN.UseVisualStyleBackColor = false;
+            this.GlobalCancelBTN.Visible = false;
+            this.GlobalCancelBTN.Click += new System.EventHandler(this.GlobalCancelBTN_Click);
             // 
-            // AddBTN
+            // GlobalSaveBTN
             // 
-            this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
-            this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddBTN.FlatAppearance.BorderSize = 0;
-            this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(167, 413);
-            this.AddBTN.Name = "AddBTN";
-            this.AddBTN.Size = new System.Drawing.Size(80, 29);
-            this.AddBTN.TabIndex = 301;
-            this.AddBTN.Text = "SAVE";
-            this.AddBTN.UseVisualStyleBackColor = false;
+            this.GlobalSaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GlobalSaveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GlobalSaveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GlobalSaveBTN.BackgroundImage")));
+            this.GlobalSaveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GlobalSaveBTN.FlatAppearance.BorderSize = 0;
+            this.GlobalSaveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.GlobalSaveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.GlobalSaveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GlobalSaveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.GlobalSaveBTN.ForeColor = System.Drawing.Color.White;
+            this.GlobalSaveBTN.Location = new System.Drawing.Point(167, 413);
+            this.GlobalSaveBTN.Name = "GlobalSaveBTN";
+            this.GlobalSaveBTN.Size = new System.Drawing.Size(80, 29);
+            this.GlobalSaveBTN.TabIndex = 301;
+            this.GlobalSaveBTN.Text = "SAVE";
+            this.GlobalSaveBTN.UseVisualStyleBackColor = false;
+            this.GlobalSaveBTN.Visible = false;
+            this.GlobalSaveBTN.Click += new System.EventHandler(this.AddBTN_Click);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label22.Location = new System.Drawing.Point(265, 308);
+            this.label22.Location = new System.Drawing.Point(265, 305);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(18, 20);
             this.label22.TabIndex = 300;
@@ -1512,52 +1509,54 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(265, 270);
+            this.label23.Location = new System.Drawing.Point(265, 259);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(18, 20);
             this.label23.TabIndex = 299;
             this.label23.Text = "₱";
             // 
-            // numericUpDown3
+            // GlobalEmergencyBX
             // 
-            this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown3.Location = new System.Drawing.Point(287, 308);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.GlobalEmergencyBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GlobalEmergencyBX.DecimalPlaces = 2;
+            this.GlobalEmergencyBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GlobalEmergencyBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GlobalEmergencyBX.Location = new System.Drawing.Point(287, 305);
+            this.GlobalEmergencyBX.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown3.TabIndex = 297;
-            this.numericUpDown3.ThousandsSeparator = true;
+            this.GlobalEmergencyBX.Name = "GlobalEmergencyBX";
+            this.GlobalEmergencyBX.Size = new System.Drawing.Size(120, 21);
+            this.GlobalEmergencyBX.TabIndex = 297;
+            this.GlobalEmergencyBX.ThousandsSeparator = true;
+            this.GlobalEmergencyBX.Enter += new System.EventHandler(this.GlobalPHICBX_Enter);
             // 
-            // numericUpDown4
+            // GlobalColaBX
             // 
-            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.numericUpDown4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.numericUpDown4.Location = new System.Drawing.Point(287, 270);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.GlobalColaBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GlobalColaBX.DecimalPlaces = 2;
+            this.GlobalColaBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GlobalColaBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GlobalColaBX.Location = new System.Drawing.Point(287, 259);
+            this.GlobalColaBX.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown4.TabIndex = 296;
-            this.numericUpDown4.ThousandsSeparator = true;
+            this.GlobalColaBX.Name = "GlobalColaBX";
+            this.GlobalColaBX.Size = new System.Drawing.Size(120, 21);
+            this.GlobalColaBX.TabIndex = 296;
+            this.GlobalColaBX.ThousandsSeparator = true;
+            this.GlobalColaBX.Enter += new System.EventHandler(this.GlobalPHICBX_Enter);
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label25.Location = new System.Drawing.Point(78, 270);
+            this.label25.Location = new System.Drawing.Point(78, 259);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(39, 20);
             this.label25.TabIndex = 293;
@@ -1568,7 +1567,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label26.Location = new System.Drawing.Point(78, 308);
+            this.label26.Location = new System.Drawing.Point(78, 305);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(82, 20);
             this.label26.TabIndex = 294;
@@ -1579,35 +1578,36 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(264, 192);
+            this.label9.Location = new System.Drawing.Point(264, 167);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(18, 20);
             this.label9.TabIndex = 292;
             this.label9.Text = "₱";
             // 
-            // EmergencyBX
+            // GlobalHDMFBX
             // 
-            this.EmergencyBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.EmergencyBX.DecimalPlaces = 2;
-            this.EmergencyBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.EmergencyBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.EmergencyBX.Location = new System.Drawing.Point(285, 192);
-            this.EmergencyBX.Maximum = new decimal(new int[] {
+            this.GlobalHDMFBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GlobalHDMFBX.DecimalPlaces = 2;
+            this.GlobalHDMFBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GlobalHDMFBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GlobalHDMFBX.Location = new System.Drawing.Point(285, 167);
+            this.GlobalHDMFBX.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.EmergencyBX.Name = "EmergencyBX";
-            this.EmergencyBX.Size = new System.Drawing.Size(120, 21);
-            this.EmergencyBX.TabIndex = 291;
-            this.EmergencyBX.ThousandsSeparator = true;
+            this.GlobalHDMFBX.Name = "GlobalHDMFBX";
+            this.GlobalHDMFBX.Size = new System.Drawing.Size(120, 21);
+            this.GlobalHDMFBX.TabIndex = 291;
+            this.GlobalHDMFBX.ThousandsSeparator = true;
+            this.GlobalHDMFBX.Enter += new System.EventHandler(this.GlobalPHICBX_Enter);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(77, 192);
+            this.label10.Location = new System.Drawing.Point(77, 167);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(51, 20);
             this.label10.TabIndex = 290;
@@ -1618,7 +1618,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label11.Location = new System.Drawing.Point(264, 231);
+            this.label11.Location = new System.Drawing.Point(264, 213);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(18, 20);
             this.label11.TabIndex = 289;
@@ -1629,102 +1629,65 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label14.Location = new System.Drawing.Point(264, 154);
+            this.label14.Location = new System.Drawing.Point(264, 121);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(18, 20);
             this.label14.TabIndex = 288;
             this.label14.Text = "₱";
             // 
-            // label13
+            // GlobalCashBondBX
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label13.Location = new System.Drawing.Point(264, 116);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(18, 20);
-            this.label13.TabIndex = 287;
-            this.label13.Text = "₱";
-            // 
-            // BondsBX
-            // 
-            this.BondsBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BondsBX.DecimalPlaces = 2;
-            this.BondsBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.BondsBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.BondsBX.Location = new System.Drawing.Point(285, 231);
-            this.BondsBX.Maximum = new decimal(new int[] {
+            this.GlobalCashBondBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GlobalCashBondBX.DecimalPlaces = 2;
+            this.GlobalCashBondBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GlobalCashBondBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GlobalCashBondBX.Location = new System.Drawing.Point(285, 213);
+            this.GlobalCashBondBX.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.BondsBX.Name = "BondsBX";
-            this.BondsBX.Size = new System.Drawing.Size(120, 21);
-            this.BondsBX.TabIndex = 286;
-            this.BondsBX.ThousandsSeparator = true;
+            this.GlobalCashBondBX.Name = "GlobalCashBondBX";
+            this.GlobalCashBondBX.Size = new System.Drawing.Size(120, 21);
+            this.GlobalCashBondBX.TabIndex = 286;
+            this.GlobalCashBondBX.ThousandsSeparator = true;
+            this.GlobalCashBondBX.Enter += new System.EventHandler(this.GlobalPHICBX_Enter);
             // 
-            // ColaBX
+            // GlobalPHICBX
             // 
-            this.ColaBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ColaBX.DecimalPlaces = 2;
-            this.ColaBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.ColaBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ColaBX.Location = new System.Drawing.Point(286, 154);
-            this.ColaBX.Maximum = new decimal(new int[] {
+            this.GlobalPHICBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GlobalPHICBX.DecimalPlaces = 2;
+            this.GlobalPHICBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GlobalPHICBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GlobalPHICBX.Location = new System.Drawing.Point(286, 121);
+            this.GlobalPHICBX.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.ColaBX.Name = "ColaBX";
-            this.ColaBX.Size = new System.Drawing.Size(120, 21);
-            this.ColaBX.TabIndex = 285;
-            this.ColaBX.ThousandsSeparator = true;
-            // 
-            // ThirteenBX
-            // 
-            this.ThirteenBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ThirteenBX.DecimalPlaces = 2;
-            this.ThirteenBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.ThirteenBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ThirteenBX.Location = new System.Drawing.Point(286, 116);
-            this.ThirteenBX.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.ThirteenBX.Name = "ThirteenBX";
-            this.ThirteenBX.Size = new System.Drawing.Size(120, 21);
-            this.ThirteenBX.TabIndex = 284;
-            this.ThirteenBX.ThousandsSeparator = true;
+            this.GlobalPHICBX.Name = "GlobalPHICBX";
+            this.GlobalPHICBX.Size = new System.Drawing.Size(120, 21);
+            this.GlobalPHICBX.TabIndex = 285;
+            this.GlobalPHICBX.ThousandsSeparator = true;
+            this.GlobalPHICBX.Enter += new System.EventHandler(this.GlobalPHICBX_Enter);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label12.Location = new System.Drawing.Point(77, 231);
+            this.label12.Location = new System.Drawing.Point(77, 213);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 20);
             this.label12.TabIndex = 283;
             this.label12.Text = "Cash Bond";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label15.Location = new System.Drawing.Point(77, 116);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(101, 20);
-            this.label15.TabIndex = 281;
-            this.label15.Text = "Cash Advance";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label16.Location = new System.Drawing.Point(77, 154);
+            this.label16.Location = new System.Drawing.Point(77, 121);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 20);
             this.label16.TabIndex = 282;
@@ -2304,11 +2267,11 @@
             this.ControlBox = false;
             this.Controls.Add(this.RatesPNL);
             this.Controls.Add(this.CloseBTN);
-            this.Controls.Add(this.WithPagePNL);
-            this.Controls.Add(this.MultiplierPagePNL);
             this.Controls.Add(this.GlobalPagePNL);
             this.Controls.Add(this.SSSPagePNL);
             this.Controls.Add(this.BasicPagePNL);
+            this.Controls.Add(this.WithPagePNL);
+            this.Controls.Add(this.MultiplierPagePNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollConfigRates";
             this.ShowInTaskbar = false;
@@ -2346,12 +2309,11 @@
             this.TaxDatePNL.PerformLayout();
             this.GlobalPagePNL.ResumeLayout(false);
             this.GlobalPagePNL.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmergencyBX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BondsBX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ColaBX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ThirteenBX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalEmergencyBX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalColaBX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalHDMFBX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalCashBondBX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GlobalPHICBX)).EndInit();
             this.MultiplierPagePNL.ResumeLayout(false);
             this.MultEditPNL.ResumeLayout(false);
             this.MultMainPNL.ResumeLayout(false);
@@ -2468,24 +2430,21 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown GlobalEmergencyBX;
+        private System.Windows.Forms.NumericUpDown GlobalColaBX;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown EmergencyBX;
+        private System.Windows.Forms.NumericUpDown GlobalHDMFBX;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown BondsBX;
-        private System.Windows.Forms.NumericUpDown ColaBX;
-        private System.Windows.Forms.NumericUpDown ThirteenBX;
+        private System.Windows.Forms.NumericUpDown GlobalCashBondBX;
+        private System.Windows.Forms.NumericUpDown GlobalPHICBX;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button AddBTN;
+        private System.Windows.Forms.Button GlobalCancelBTN;
+        private System.Windows.Forms.Button GlobalSaveBTN;
         private System.Windows.Forms.TrackBar RatesT9;
         private System.Windows.Forms.TrackBar RatesT8;
         private System.Windows.Forms.TrackBar RatesT7;
