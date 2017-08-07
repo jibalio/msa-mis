@@ -39,6 +39,7 @@
             this.ExportGuardsSummaryBTN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.CExportToPDFBTN = new System.Windows.Forms.Button();
             this.ClientsReportPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsSummaryTBL)).BeginInit();
             this.GuardsReportPNL.SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             // ClientsReportPNL
             // 
+            this.ClientsReportPNL.Controls.Add(this.CExportToPDFBTN);
             this.ClientsReportPNL.Controls.Add(this.CTotalActiveLBL);
             this.ClientsReportPNL.Controls.Add(this.CTotalLBL);
             this.ClientsReportPNL.Controls.Add(this.CSummaryDateLBL);
@@ -227,13 +229,31 @@
             this.label2.Text = "Guards Report";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // CExportToPDFBTN
+            // 
+            this.CExportToPDFBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.CExportToPDFBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.CExportToPDFBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CExportToPDFBTN.FlatAppearance.BorderSize = 0;
+            this.CExportToPDFBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.CExportToPDFBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CExportToPDFBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CExportToPDFBTN.ForeColor = System.Drawing.Color.White;
+            this.CExportToPDFBTN.Location = new System.Drawing.Point(548, 591);
+            this.CExportToPDFBTN.Name = "CExportToPDFBTN";
+            this.CExportToPDFBTN.Size = new System.Drawing.Size(112, 46);
+            this.CExportToPDFBTN.TabIndex = 22;
+            this.CExportToPDFBTN.Text = "EXPORT TO PDF";
+            this.CExportToPDFBTN.UseVisualStyleBackColor = false;
+            this.CExportToPDFBTN.Click += new System.EventHandler(this.CExportToPDFBTN_Click);
+            // 
             // ReportsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 669);
-            this.Controls.Add(this.GuardsReportPNL);
             this.Controls.Add(this.ClientsReportPNL);
+            this.Controls.Add(this.GuardsReportPNL);
             this.Name = "ReportsForm";
             this.Text = resources.GetString("$this.Text");
             this.Load += new System.EventHandler(this.ReportsForm_Load);
@@ -264,5 +284,6 @@
         private System.Windows.Forms.Label CTotalActiveLBL;
         private System.Windows.Forms.Label CTotalLBL;
         private System.Windows.Forms.Label CSummaryDateLBL;
+        private System.Windows.Forms.Button CExportToPDFBTN;
     }
 }
