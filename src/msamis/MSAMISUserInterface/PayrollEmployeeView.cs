@@ -115,6 +115,7 @@ namespace MSAMISUserInterface {
                 Pid = Gid,
                 Location = new Point(Location.X + 350, Location.Y),
                 Pay = _pay,
+                refer = this,
                 Period = "for " + PeriodCMBX.Text
             };
             view.ShowDialog();
@@ -151,7 +152,7 @@ namespace MSAMISUserInterface {
             if (OverviewPNL.Visible == false) ChangePanel(OverviewLBL, OverviewPNL);
         }
 
-        private void LoadComputations() {
+        public void LoadComputations() {
             if (PeriodCMBX.Items.Count > 0) {
                 _pay = new Payroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
