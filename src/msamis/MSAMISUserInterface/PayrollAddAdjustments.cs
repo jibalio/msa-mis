@@ -13,6 +13,7 @@ namespace MSAMISUserInterface {
         };
 
         public Payroll Pay;
+        public PayrollEmployeeView Refer;
         public string Period;
         public int Pid { get; set; }
 
@@ -52,6 +53,7 @@ namespace MSAMISUserInterface {
                 if (changes[3]) Pay.CashBond = double.Parse(BondsBX.Value.ToString("N2"));
                 if (changes[4]) Pay.CashAdvance = double.Parse(AdvBX.Value.ToString("N2"));
                 }
+                Close();
             }
             else
                 rylui.RylMessageBox.ShowDialog("No Changes", "There are no changes to commit", MessageBoxButtons.OK,
@@ -70,7 +72,9 @@ namespace MSAMISUserInterface {
             if (Opacity >= 1) FadeTMR.Stop();
         }
 
-        private void Payroll_AddAdjustments_FormClosing(object sender, FormClosingEventArgs e) { }
+        private void Payroll_AddAdjustments_FormClosing(object sender, FormClosingEventArgs e) {
+            Refer.LoadComputations();
+        }
 
         private void Payroll_AddAdjustments_Load(object sender, EventArgs e) {
             FadeTMR.Start();

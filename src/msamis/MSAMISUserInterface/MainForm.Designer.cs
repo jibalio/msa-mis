@@ -130,9 +130,7 @@
             this.SViewAssBTN = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.label50 = new System.Windows.Forms.Label();
-            this.SMonthlyDutyBTN = new System.Windows.Forms.Button();
             this.SDutyDetailsBTN = new System.Windows.Forms.Button();
-            this.SIncidentBTN = new System.Windows.Forms.Button();
             this.SClientRequestsLBL = new System.Windows.Forms.Label();
             this.SUnassignedGuardsLBL = new System.Windows.Forms.Label();
             this.SAssignedGuardsLBL = new System.Windows.Forms.Label();
@@ -178,42 +176,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label67 = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
-            this.SMonthlyDutyPNL = new System.Windows.Forms.Panel();
-            this.label33 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label73 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label74 = new System.Windows.Forms.Label();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label77 = new System.Windows.Forms.Label();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label78 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
-            this.SIncidentPNL = new System.Windows.Forms.Panel();
-            this.label25 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.label81 = new System.Windows.Forms.Label();
-            this.label82 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label84 = new System.Windows.Forms.Label();
-            this.label85 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.label86 = new System.Windows.Forms.Label();
-            this.listView4 = new System.Windows.Forms.ListView();
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label87 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
             this.PayrollPage = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.label44 = new System.Windows.Forms.Label();
@@ -328,12 +290,6 @@
             this.SDutyDetailsPNL.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.SMonthlyDutyPNL.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.SIncidentPNL.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PayrollPage)).BeginInit();
             this.PayrollPage.Panel1.SuspendLayout();
             this.PayrollPage.Panel2.SuspendLayout();
@@ -1614,8 +1570,6 @@
             this.SchedulesPage.Panel2.Controls.Add(this.SViewAssPNL);
             this.SchedulesPage.Panel2.Controls.Add(this.SViewReqPNL);
             this.SchedulesPage.Panel2.Controls.Add(this.SDutyDetailsPNL);
-            this.SchedulesPage.Panel2.Controls.Add(this.SMonthlyDutyPNL);
-            this.SchedulesPage.Panel2.Controls.Add(this.SIncidentPNL);
             this.SchedulesPage.Size = new System.Drawing.Size(930, 668);
             this.SchedulesPage.SplitterDistance = 206;
             this.SchedulesPage.SplitterWidth = 3;
@@ -1642,9 +1596,7 @@
             this.flowLayoutPanel2.Controls.Add(this.SViewAssBTN);
             this.flowLayoutPanel2.Controls.Add(this.button11);
             this.flowLayoutPanel2.Controls.Add(this.label50);
-            this.flowLayoutPanel2.Controls.Add(this.SMonthlyDutyBTN);
             this.flowLayoutPanel2.Controls.Add(this.SDutyDetailsBTN);
-            this.flowLayoutPanel2.Controls.Add(this.SIncidentBTN);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(15, 225);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
@@ -1739,29 +1691,13 @@
             this.label50.Text = " REPORTS";
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // SMonthlyDutyBTN
-            // 
-            this.SMonthlyDutyBTN.FlatAppearance.BorderSize = 0;
-            this.SMonthlyDutyBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SMonthlyDutyBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SMonthlyDutyBTN.ForeColor = System.Drawing.Color.White;
-            this.SMonthlyDutyBTN.Location = new System.Drawing.Point(2, 178);
-            this.SMonthlyDutyBTN.Margin = new System.Windows.Forms.Padding(2);
-            this.SMonthlyDutyBTN.Name = "SMonthlyDutyBTN";
-            this.SMonthlyDutyBTN.Size = new System.Drawing.Size(172, 26);
-            this.SMonthlyDutyBTN.TabIndex = 12;
-            this.SMonthlyDutyBTN.Text = "Monthly Duty";
-            this.SMonthlyDutyBTN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SMonthlyDutyBTN.UseVisualStyleBackColor = true;
-            this.SMonthlyDutyBTN.Click += new System.EventHandler(this.SMonthlyDutyBTN_Click);
-            // 
             // SDutyDetailsBTN
             // 
             this.SDutyDetailsBTN.FlatAppearance.BorderSize = 0;
             this.SDutyDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SDutyDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SDutyDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.SDutyDetailsBTN.Location = new System.Drawing.Point(2, 208);
+            this.SDutyDetailsBTN.Location = new System.Drawing.Point(2, 178);
             this.SDutyDetailsBTN.Margin = new System.Windows.Forms.Padding(2);
             this.SDutyDetailsBTN.Name = "SDutyDetailsBTN";
             this.SDutyDetailsBTN.Size = new System.Drawing.Size(172, 26);
@@ -1770,22 +1706,6 @@
             this.SDutyDetailsBTN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SDutyDetailsBTN.UseVisualStyleBackColor = true;
             this.SDutyDetailsBTN.Click += new System.EventHandler(this.SDutyDetailsBTN_Click);
-            // 
-            // SIncidentBTN
-            // 
-            this.SIncidentBTN.FlatAppearance.BorderSize = 0;
-            this.SIncidentBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SIncidentBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SIncidentBTN.ForeColor = System.Drawing.Color.White;
-            this.SIncidentBTN.Location = new System.Drawing.Point(2, 238);
-            this.SIncidentBTN.Margin = new System.Windows.Forms.Padding(2);
-            this.SIncidentBTN.Name = "SIncidentBTN";
-            this.SIncidentBTN.Size = new System.Drawing.Size(172, 26);
-            this.SIncidentBTN.TabIndex = 20;
-            this.SIncidentBTN.Text = "Incident";
-            this.SIncidentBTN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SIncidentBTN.UseVisualStyleBackColor = true;
-            this.SIncidentBTN.Click += new System.EventHandler(this.SIncidentBTN_Click);
             // 
             // SClientRequestsLBL
             // 
@@ -1851,7 +1771,7 @@
             this.SViewAssPNL.Controls.Add(this.SViewAssignmentErrorPNL);
             this.SViewAssPNL.Location = new System.Drawing.Point(15, 14);
             this.SViewAssPNL.Name = "SViewAssPNL";
-            this.SViewAssPNL.Size = new System.Drawing.Size(695, 640);
+            this.SViewAssPNL.Size = new System.Drawing.Size(697, 640);
             this.SViewAssPNL.TabIndex = 13;
             this.SViewAssPNL.Visible = false;
             // 
@@ -1938,7 +1858,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(507, 23);
+            this.label10.Location = new System.Drawing.Point(509, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 19);
@@ -1957,7 +1877,7 @@
             "All",
             "Scheduled",
             "Unscheduled"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(559, 20);
+            this.SViewAssCMBX.Location = new System.Drawing.Point(561, 20);
             this.SViewAssCMBX.Name = "SViewAssCMBX";
             this.SViewAssCMBX.Size = new System.Drawing.Size(119, 25);
             this.SViewAssCMBX.Sorted = true;
@@ -1973,7 +1893,7 @@
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssSearchTXTBX.Location = new System.Drawing.Point(220, 71);
             this.SViewAssSearchTXTBX.Name = "SViewAssSearchTXTBX";
-            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(260, 18);
+            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(262, 18);
             this.SViewAssSearchTXTBX.TabIndex = 8;
             this.SViewAssSearchTXTBX.Text = "Search or filter";
             this.SViewAssSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2025,7 +1945,7 @@
             this.SViewAssGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.SViewAssGRD.RowHeadersVisible = false;
             this.SViewAssGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SViewAssGRD.Size = new System.Drawing.Size(656, 458);
+            this.SViewAssGRD.Size = new System.Drawing.Size(658, 458);
             this.SViewAssGRD.TabIndex = 5;
             this.SViewAssGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewAssGRD_CellEnter);
             this.SViewAssGRD.DoubleClick += new System.EventHandler(this.SViewAssGRD_DoubleClick);
@@ -2036,7 +1956,7 @@
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SViewAssSearchLine.Location = new System.Drawing.Point(248, 76);
+            this.SViewAssSearchLine.Location = new System.Drawing.Point(250, 76);
             this.SViewAssSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SViewAssSearchLine.Name = "SViewAssSearchLine";
             this.SViewAssSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -2470,454 +2390,6 @@
             this.label70.TabIndex = 32;
             this.label70.Text = "Exported Reports";
             this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // SMonthlyDutyPNL
-            // 
-            this.SMonthlyDutyPNL.Controls.Add(this.label33);
-            this.SMonthlyDutyPNL.Controls.Add(this.panel8);
-            this.SMonthlyDutyPNL.Controls.Add(this.panel9);
-            this.SMonthlyDutyPNL.Controls.Add(this.listView3);
-            this.SMonthlyDutyPNL.Controls.Add(this.label78);
-            this.SMonthlyDutyPNL.Controls.Add(this.label79);
-            this.SMonthlyDutyPNL.Location = new System.Drawing.Point(15, 14);
-            this.SMonthlyDutyPNL.Name = "SMonthlyDutyPNL";
-            this.SMonthlyDutyPNL.Size = new System.Drawing.Size(690, 640);
-            this.SMonthlyDutyPNL.TabIndex = 17;
-            this.SMonthlyDutyPNL.Visible = false;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label33.Location = new System.Drawing.Point(598, 381);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(58, 15);
-            this.label33.TabIndex = 37;
-            this.label33.Text = "Save to...";
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.label35);
-            this.panel8.Controls.Add(this.label71);
-            this.panel8.Location = new System.Drawing.Point(25, 412);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(645, 200);
-            this.panel8.TabIndex = 36;
-            // 
-            // label35
-            // 
-            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label35.Location = new System.Drawing.Point(-1, 93);
-            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(648, 19);
-            this.label35.TabIndex = 30;
-            this.label35.Text = "Click \"Export\" to get started";
-            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label71
-            // 
-            this.label71.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label71.Location = new System.Drawing.Point(0, 70);
-            this.label71.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(649, 19);
-            this.label71.TabIndex = 29;
-            this.label71.Text = "No Guard Report Found";
-            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.panel9.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Payroll;
-            this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel9.Controls.Add(this.label72);
-            this.panel9.Controls.Add(this.label73);
-            this.panel9.Controls.Add(this.button6);
-            this.panel9.Controls.Add(this.label74);
-            this.panel9.Controls.Add(this.label75);
-            this.panel9.Controls.Add(this.label76);
-            this.panel9.Controls.Add(this.button7);
-            this.panel9.Controls.Add(this.label77);
-            this.panel9.Location = new System.Drawing.Point(20, 28);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(648, 236);
-            this.panel9.TabIndex = 35;
-            // 
-            // label72
-            // 
-            this.label72.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label72.ForeColor = System.Drawing.Color.White;
-            this.label72.Location = new System.Drawing.Point(33, 100);
-            this.label72.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(294, 19);
-            this.label72.TabIndex = 27;
-            this.label72.Text = "Total Active Guards:";
-            this.label72.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label73
-            // 
-            this.label73.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label73.ForeColor = System.Drawing.Color.White;
-            this.label73.Location = new System.Drawing.Point(331, 100);
-            this.label73.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(286, 19);
-            this.label73.TabIndex = 26;
-            this.label73.Text = "Total Guards:";
-            this.label73.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(332, 178);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 31);
-            this.button6.TabIndex = 25;
-            this.button6.Text = "EXPORT";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // label74
-            // 
-            this.label74.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label74.ForeColor = System.Drawing.Color.White;
-            this.label74.Location = new System.Drawing.Point(33, 126);
-            this.label74.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(294, 23);
-            this.label74.TabIndex = 24;
-            this.label74.Text = "33 guards";
-            this.label74.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label75
-            // 
-            this.label75.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label75.ForeColor = System.Drawing.Color.White;
-            this.label75.Location = new System.Drawing.Point(28, 21);
-            this.label75.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(592, 39);
-            this.label75.TabIndex = 21;
-            this.label75.Text = "Monthly Duty Reports";
-            this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label76
-            // 
-            this.label76.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label76.ForeColor = System.Drawing.Color.White;
-            this.label76.Location = new System.Drawing.Point(331, 127);
-            this.label76.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(286, 35);
-            this.label76.TabIndex = 23;
-            this.label76.Text = "200 guards";
-            this.label76.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(222, 178);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(105, 31);
-            this.button7.TabIndex = 19;
-            this.button7.Text = "PREVIEW";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // label77
-            // 
-            this.label77.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label77.ForeColor = System.Drawing.Color.White;
-            this.label77.Location = new System.Drawing.Point(33, 60);
-            this.label77.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(587, 19);
-            this.label77.TabIndex = 22;
-            this.label77.Text = "Sunday, July 30 2017";
-            this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listView3
-            // 
-            this.listView3.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.listView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5});
-            this.listView3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.listView3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.listView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView3.LargeImageList = this.ImageList;
-            this.listView3.Location = new System.Drawing.Point(57, 421);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(583, 187);
-            this.listView3.SmallImageList = this.ImageList;
-            this.listView3.TabIndex = 33;
-            this.listView3.TileSize = new System.Drawing.Size(200, 50);
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            // 
-            // label78
-            // 
-            this.label78.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label78.Location = new System.Drawing.Point(25, 345);
-            this.label78.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(645, 19);
-            this.label78.TabIndex = 34;
-            this.label78.Text = "Double-click to open";
-            this.label78.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label79
-            // 
-            this.label79.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label79.Location = new System.Drawing.Point(25, 309);
-            this.label79.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(643, 39);
-            this.label79.TabIndex = 32;
-            this.label79.Text = "Exported Reports";
-            this.label79.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // SIncidentPNL
-            // 
-            this.SIncidentPNL.Controls.Add(this.label25);
-            this.SIncidentPNL.Controls.Add(this.panel10);
-            this.SIncidentPNL.Controls.Add(this.panel11);
-            this.SIncidentPNL.Controls.Add(this.listView4);
-            this.SIncidentPNL.Controls.Add(this.label87);
-            this.SIncidentPNL.Controls.Add(this.label88);
-            this.SIncidentPNL.Location = new System.Drawing.Point(15, 14);
-            this.SIncidentPNL.Name = "SIncidentPNL";
-            this.SIncidentPNL.Size = new System.Drawing.Size(690, 640);
-            this.SIncidentPNL.TabIndex = 16;
-            this.SIncidentPNL.Visible = false;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label25.Location = new System.Drawing.Point(598, 381);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(58, 15);
-            this.label25.TabIndex = 37;
-            this.label25.Text = "Save to...";
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.label32);
-            this.panel10.Controls.Add(this.label80);
-            this.panel10.Location = new System.Drawing.Point(25, 412);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(645, 200);
-            this.panel10.TabIndex = 36;
-            // 
-            // label32
-            // 
-            this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label32.Location = new System.Drawing.Point(-1, 93);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(648, 19);
-            this.label32.TabIndex = 30;
-            this.label32.Text = "Click \"Export\" to get started";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label80
-            // 
-            this.label80.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label80.Location = new System.Drawing.Point(0, 70);
-            this.label80.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(649, 19);
-            this.label80.TabIndex = 29;
-            this.label80.Text = "No Guard Report Found";
-            this.label80.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.panel11.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Payroll;
-            this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel11.Controls.Add(this.label81);
-            this.panel11.Controls.Add(this.label82);
-            this.panel11.Controls.Add(this.button8);
-            this.panel11.Controls.Add(this.label83);
-            this.panel11.Controls.Add(this.label84);
-            this.panel11.Controls.Add(this.label85);
-            this.panel11.Controls.Add(this.button9);
-            this.panel11.Controls.Add(this.label86);
-            this.panel11.Location = new System.Drawing.Point(20, 28);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(648, 236);
-            this.panel11.TabIndex = 35;
-            // 
-            // label81
-            // 
-            this.label81.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label81.ForeColor = System.Drawing.Color.White;
-            this.label81.Location = new System.Drawing.Point(33, 100);
-            this.label81.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(294, 19);
-            this.label81.TabIndex = 27;
-            this.label81.Text = "Total Active Guards:";
-            this.label81.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label82
-            // 
-            this.label82.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label82.ForeColor = System.Drawing.Color.White;
-            this.label82.Location = new System.Drawing.Point(331, 100);
-            this.label82.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(286, 19);
-            this.label82.TabIndex = 26;
-            this.label82.Text = "Total Guards:";
-            this.label82.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(332, 178);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(105, 31);
-            this.button8.TabIndex = 25;
-            this.button8.Text = "EXPORT";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // label83
-            // 
-            this.label83.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label83.ForeColor = System.Drawing.Color.White;
-            this.label83.Location = new System.Drawing.Point(33, 126);
-            this.label83.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(294, 23);
-            this.label83.TabIndex = 24;
-            this.label83.Text = "33 guards";
-            this.label83.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label84
-            // 
-            this.label84.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label84.ForeColor = System.Drawing.Color.White;
-            this.label84.Location = new System.Drawing.Point(28, 21);
-            this.label84.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(592, 39);
-            this.label84.TabIndex = 21;
-            this.label84.Text = "Incident Reports";
-            this.label84.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label85
-            // 
-            this.label85.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label85.ForeColor = System.Drawing.Color.White;
-            this.label85.Location = new System.Drawing.Point(331, 127);
-            this.label85.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(286, 35);
-            this.label85.TabIndex = 23;
-            this.label85.Text = "200 guards";
-            this.label85.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(222, 178);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(105, 31);
-            this.button9.TabIndex = 19;
-            this.button9.Text = "PREVIEW";
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // label86
-            // 
-            this.label86.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label86.ForeColor = System.Drawing.Color.White;
-            this.label86.Location = new System.Drawing.Point(33, 60);
-            this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(587, 19);
-            this.label86.TabIndex = 22;
-            this.label86.Text = "Sunday, July 30 2017";
-            this.label86.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listView4
-            // 
-            this.listView4.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.listView4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader6});
-            this.listView4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.listView4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.listView4.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView4.LargeImageList = this.ImageList;
-            this.listView4.Location = new System.Drawing.Point(57, 421);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(583, 187);
-            this.listView4.SmallImageList = this.ImageList;
-            this.listView4.TabIndex = 33;
-            this.listView4.TileSize = new System.Drawing.Size(200, 50);
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            // 
-            // label87
-            // 
-            this.label87.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label87.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label87.Location = new System.Drawing.Point(25, 345);
-            this.label87.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(645, 19);
-            this.label87.TabIndex = 34;
-            this.label87.Text = "Double-click to open";
-            this.label87.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label88
-            // 
-            this.label88.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label88.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label88.Location = new System.Drawing.Point(25, 309);
-            this.label88.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(643, 39);
-            this.label88.TabIndex = 32;
-            this.label88.Text = "Exported Reports";
-            this.label88.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PayrollPage
             // 
@@ -4132,14 +3604,6 @@
             this.SDutyDetailsPNL.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.SMonthlyDutyPNL.ResumeLayout(false);
-            this.SMonthlyDutyPNL.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.SIncidentPNL.ResumeLayout(false);
-            this.SIncidentPNL.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
             this.PayrollPage.Panel1.ResumeLayout(false);
             this.PayrollPage.Panel1.PerformLayout();
             this.PayrollPage.Panel2.ResumeLayout(false);
@@ -4214,7 +3678,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button SViewAssBTN;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button SMonthlyDutyBTN;
         private System.Windows.Forms.Button SDutyDetailsBTN;
         private System.Windows.Forms.Label SClientRequestsLBL;
         private System.Windows.Forms.Label SUnassignedGuardsLBL;
@@ -4264,7 +3727,6 @@
         private System.Windows.Forms.ComboBox GViewAllViewByCMBX;
         private System.Windows.Forms.Button SViewReqBTN;
         private System.Windows.Forms.Button SViewReqsAssBTN;
-        private System.Windows.Forms.Button SIncidentBTN;
         private System.Windows.Forms.Panel SViewAssPNL;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox SViewAssCMBX;
@@ -4278,8 +3740,6 @@
         private System.Windows.Forms.DataGridView SViewReqGRD;
         private System.Windows.Forms.Label SViewReqSearchLine;
         private System.Windows.Forms.Panel SDutyDetailsPNL;
-        private System.Windows.Forms.Panel SMonthlyDutyPNL;
-        private System.Windows.Forms.Panel SIncidentPNL;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox SViewAssSearchClientCMBX;
         private System.Windows.Forms.Button SViewAssViewDetailsBTN;
@@ -4376,40 +3836,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.Label label76;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.Label label79;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.Label label82;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Label label83;
-        private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.ListView listView4;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.Label label87;
-        private System.Windows.Forms.Label label88;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label28;

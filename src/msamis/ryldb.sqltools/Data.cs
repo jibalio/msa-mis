@@ -8,9 +8,9 @@ namespace MSAMISUserInterface {
 
         public static FileIniDataParser iniparser = new FileIniDataParser();
         public static IniData PayrollIni;
-        private static readonly string PayrollIniLocation = $@"Configuration\\payroll.ini";
+        public static readonly string PayrollIniLocation = $@"Configuration\\payroll.ini";
 
-        private static readonly string PayrollIniContent =
+        public static readonly string PayrollIniContent =
             #region + string definition
             $@"[Payroll]
 DefaultCashAdvance = 0.00
@@ -21,12 +21,12 @@ DefaultCola = 100.00
 DefaultEmer = 50.00";
         #endregion
         public static void InitData() {
-            _InitInis();
+            InitPayrollConfig();
             initRates();
             InitReportsFolder();
         }
 
-        private static void _InitInis() {
+        public static void InitPayrollConfig() {
             FileInfo fi = new FileInfo(PayrollIniLocation);
             if (!fi.Directory.Exists) {
                 System.IO.Directory.CreateDirectory(fi.DirectoryName);
