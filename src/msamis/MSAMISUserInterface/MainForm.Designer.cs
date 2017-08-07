@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -82,6 +82,20 @@
             this.GInactiveLBL = new System.Windows.Forms.Label();
             this.GActiveLBL = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.GViewAllPNL = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.GArchiveBTN = new System.Windows.Forms.Button();
+            this.GEditDetailsBTN = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.GViewAllViewByCMBX = new System.Windows.Forms.ComboBox();
+            this.GViewAllSearchTXTBX = new System.Windows.Forms.TextBox();
+            this.GAllGuardsGRD = new System.Windows.Forms.DataGridView();
+            this.GViewAllSearchLine = new System.Windows.Forms.Label();
+            this.GArchivePNL = new System.Windows.Forms.Panel();
+            this.GArchiveSearchBX = new System.Windows.Forms.TextBox();
+            this.button37 = new System.Windows.Forms.Button();
+            this.GArchivedGuardsGRD = new System.Windows.Forms.DataGridView();
+            this.GArchiveSearchLine = new System.Windows.Forms.Label();
             this.GSummaryPNL = new System.Windows.Forms.Panel();
             this.GSummarySaveToBTN = new System.Windows.Forms.Label();
             this.GSummaryErrorPNL = new System.Windows.Forms.Panel();
@@ -101,20 +115,6 @@
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.GSummaryTimeLBL = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.GViewAllPNL = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.GArchiveBTN = new System.Windows.Forms.Button();
-            this.GEditDetailsBTN = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.GViewAllViewByCMBX = new System.Windows.Forms.ComboBox();
-            this.GViewAllSearchTXTBX = new System.Windows.Forms.TextBox();
-            this.GAllGuardsGRD = new System.Windows.Forms.DataGridView();
-            this.GViewAllSearchLine = new System.Windows.Forms.Label();
-            this.GArchivePNL = new System.Windows.Forms.Panel();
-            this.GArchiveSearchBX = new System.Windows.Forms.TextBox();
-            this.button37 = new System.Windows.Forms.Button();
-            this.GArchivedGuardsGRD = new System.Windows.Forms.DataGridView();
-            this.GArchiveSearchLine = new System.Windows.Forms.Label();
             this.DashboardTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientBTN = new System.Windows.Forms.Button();
@@ -305,14 +305,14 @@
             this.GuardsPage.Panel2.SuspendLayout();
             this.GuardsPage.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.GSummaryPNL.SuspendLayout();
-            this.GSummaryErrorPNL.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.GViewAllPNL.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GAllGuardsGRD)).BeginInit();
             this.GArchivePNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GArchivedGuardsGRD)).BeginInit();
+            this.GSummaryPNL.SuspendLayout();
+            this.GSummaryErrorPNL.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SchedulesPage)).BeginInit();
             this.SchedulesPage.Panel1.SuspendLayout();
@@ -981,243 +981,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Guards";
             // 
-            // GSummaryPNL
-            // 
-            this.GSummaryPNL.Controls.Add(this.GSummarySaveToBTN);
-            this.GSummaryPNL.Controls.Add(this.GSummaryErrorPNL);
-            this.GSummaryPNL.Controls.Add(this.panel5);
-            this.GSummaryPNL.Controls.Add(this.GSummaryFilesLST);
-            this.GSummaryPNL.Controls.Add(this.GSummaryTimeLBL);
-            this.GSummaryPNL.Controls.Add(this.label9);
-            this.GSummaryPNL.Location = new System.Drawing.Point(17, 10);
-            this.GSummaryPNL.Name = "GSummaryPNL";
-            this.GSummaryPNL.Size = new System.Drawing.Size(690, 640);
-            this.GSummaryPNL.TabIndex = 13;
-            this.GSummaryPNL.Visible = false;
-            // 
-            // GSummarySaveToBTN
-            // 
-            this.GSummarySaveToBTN.AutoSize = true;
-            this.GSummarySaveToBTN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.GSummarySaveToBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GSummarySaveToBTN.Location = new System.Drawing.Point(594, 375);
-            this.GSummarySaveToBTN.Name = "GSummarySaveToBTN";
-            this.GSummarySaveToBTN.Size = new System.Drawing.Size(58, 15);
-            this.GSummarySaveToBTN.TabIndex = 31;
-            this.GSummarySaveToBTN.Text = "Save to...";
-            this.GSummarySaveToBTN.Click += new System.EventHandler(this.GSummarySaveToBTN_Click);
-            this.GSummarySaveToBTN.MouseEnter += new System.EventHandler(this.GSummarySaveToBTN_MouseEnter);
-            this.GSummarySaveToBTN.MouseLeave += new System.EventHandler(this.GSummarySaveToBTN_MouseLeave);
-            // 
-            // GSummaryErrorPNL
-            // 
-            this.GSummaryErrorPNL.Controls.Add(this.label8);
-            this.GSummaryErrorPNL.Controls.Add(this.label58);
-            this.GSummaryErrorPNL.Location = new System.Drawing.Point(21, 406);
-            this.GSummaryErrorPNL.Name = "GSummaryErrorPNL";
-            this.GSummaryErrorPNL.Size = new System.Drawing.Size(645, 200);
-            this.GSummaryErrorPNL.TabIndex = 26;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(-1, 93);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(648, 19);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Click \"Export\" to get started";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label58
-            // 
-            this.label58.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label58.Location = new System.Drawing.Point(0, 70);
-            this.label58.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(649, 19);
-            this.label58.TabIndex = 29;
-            this.label58.Text = "No Guard Report Found";
-            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.panel5.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Payroll;
-            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Controls.Add(this.label60);
-            this.panel5.Controls.Add(this.label61);
-            this.panel5.Controls.Add(this.GSummaryExportBTN);
-            this.panel5.Controls.Add(this.GTotalActiveLBL);
-            this.panel5.Controls.Add(this.label26);
-            this.panel5.Controls.Add(this.GTotalLBL);
-            this.panel5.Controls.Add(this.GSummaryViewCurrent);
-            this.panel5.Controls.Add(this.GSummaryDateLBL);
-            this.panel5.Location = new System.Drawing.Point(16, 22);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(648, 236);
-            this.panel5.TabIndex = 25;
-            // 
-            // label60
-            // 
-            this.label60.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label60.ForeColor = System.Drawing.Color.White;
-            this.label60.Location = new System.Drawing.Point(33, 100);
-            this.label60.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(294, 19);
-            this.label60.TabIndex = 27;
-            this.label60.Text = "Total Active Guards:";
-            this.label60.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label61
-            // 
-            this.label61.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label61.ForeColor = System.Drawing.Color.White;
-            this.label61.Location = new System.Drawing.Point(331, 100);
-            this.label61.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(286, 19);
-            this.label61.TabIndex = 26;
-            this.label61.Text = "Total Guards:";
-            this.label61.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // GSummaryExportBTN
-            // 
-            this.GSummaryExportBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.GSummaryExportBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GSummaryExportBTN.BackgroundImage")));
-            this.GSummaryExportBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GSummaryExportBTN.FlatAppearance.BorderSize = 0;
-            this.GSummaryExportBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.GSummaryExportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GSummaryExportBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GSummaryExportBTN.ForeColor = System.Drawing.Color.White;
-            this.GSummaryExportBTN.Location = new System.Drawing.Point(332, 178);
-            this.GSummaryExportBTN.Name = "GSummaryExportBTN";
-            this.GSummaryExportBTN.Size = new System.Drawing.Size(105, 31);
-            this.GSummaryExportBTN.TabIndex = 25;
-            this.GSummaryExportBTN.Text = "EXPORT";
-            this.GSummaryExportBTN.UseVisualStyleBackColor = false;
-            this.GSummaryExportBTN.Click += new System.EventHandler(this.GSummaryExportBTN_Click);
-            // 
-            // GTotalActiveLBL
-            // 
-            this.GTotalActiveLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.GTotalActiveLBL.ForeColor = System.Drawing.Color.White;
-            this.GTotalActiveLBL.Location = new System.Drawing.Point(33, 126);
-            this.GTotalActiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.GTotalActiveLBL.Name = "GTotalActiveLBL";
-            this.GTotalActiveLBL.Size = new System.Drawing.Size(294, 23);
-            this.GTotalActiveLBL.TabIndex = 24;
-            this.GTotalActiveLBL.Text = "33 guards";
-            this.GTotalActiveLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label26
-            // 
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(28, 21);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(592, 39);
-            this.label26.TabIndex = 21;
-            this.label26.Text = "Current Summary";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // GTotalLBL
-            // 
-            this.GTotalLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.GTotalLBL.ForeColor = System.Drawing.Color.White;
-            this.GTotalLBL.Location = new System.Drawing.Point(331, 127);
-            this.GTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.GTotalLBL.Name = "GTotalLBL";
-            this.GTotalLBL.Size = new System.Drawing.Size(286, 35);
-            this.GTotalLBL.TabIndex = 23;
-            this.GTotalLBL.Text = "200 guards";
-            this.GTotalLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // GSummaryViewCurrent
-            // 
-            this.GSummaryViewCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.GSummaryViewCurrent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GSummaryViewCurrent.BackgroundImage")));
-            this.GSummaryViewCurrent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GSummaryViewCurrent.FlatAppearance.BorderSize = 0;
-            this.GSummaryViewCurrent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.GSummaryViewCurrent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GSummaryViewCurrent.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GSummaryViewCurrent.ForeColor = System.Drawing.Color.White;
-            this.GSummaryViewCurrent.Location = new System.Drawing.Point(222, 178);
-            this.GSummaryViewCurrent.Name = "GSummaryViewCurrent";
-            this.GSummaryViewCurrent.Size = new System.Drawing.Size(105, 31);
-            this.GSummaryViewCurrent.TabIndex = 19;
-            this.GSummaryViewCurrent.Text = "PREVIEW";
-            this.GSummaryViewCurrent.UseVisualStyleBackColor = false;
-            this.GSummaryViewCurrent.Click += new System.EventHandler(this.GSummaryViewCurrent_Click);
-            // 
-            // GSummaryDateLBL
-            // 
-            this.GSummaryDateLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.GSummaryDateLBL.ForeColor = System.Drawing.Color.White;
-            this.GSummaryDateLBL.Location = new System.Drawing.Point(33, 60);
-            this.GSummaryDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.GSummaryDateLBL.Name = "GSummaryDateLBL";
-            this.GSummaryDateLBL.Size = new System.Drawing.Size(587, 19);
-            this.GSummaryDateLBL.TabIndex = 22;
-            this.GSummaryDateLBL.Text = "Sunday, July 30 2017";
-            this.GSummaryDateLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // GSummaryFilesLST
-            // 
-            this.GSummaryFilesLST.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.GSummaryFilesLST.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GSummaryFilesLST.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.GSummaryFilesLST.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.GSummaryFilesLST.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GSummaryFilesLST.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.GSummaryFilesLST.LargeImageList = this.ImageList;
-            this.GSummaryFilesLST.Location = new System.Drawing.Point(53, 415);
-            this.GSummaryFilesLST.Name = "GSummaryFilesLST";
-            this.GSummaryFilesLST.Size = new System.Drawing.Size(583, 187);
-            this.GSummaryFilesLST.SmallImageList = this.ImageList;
-            this.GSummaryFilesLST.TabIndex = 14;
-            this.GSummaryFilesLST.TileSize = new System.Drawing.Size(200, 50);
-            this.GSummaryFilesLST.UseCompatibleStateImageBehavior = false;
-            this.GSummaryFilesLST.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.GSummaryFilesLST_ItemSelectionChanged);
-            this.GSummaryFilesLST.DoubleClick += new System.EventHandler(this.GSummaryFilesLST_DoubleClick);
-            // 
-            // ImageList
-            // 
-            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
-            this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.ImageList.Images.SetKeyName(0, "Excel-Icon.png");
-            // 
-            // GSummaryTimeLBL
-            // 
-            this.GSummaryTimeLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.GSummaryTimeLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GSummaryTimeLBL.Location = new System.Drawing.Point(21, 339);
-            this.GSummaryTimeLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.GSummaryTimeLBL.Name = "GSummaryTimeLBL";
-            this.GSummaryTimeLBL.Size = new System.Drawing.Size(645, 19);
-            this.GSummaryTimeLBL.TabIndex = 15;
-            this.GSummaryTimeLBL.Text = "Double-click to open";
-            this.GSummaryTimeLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(21, 303);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(643, 39);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Exported Reports";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // GViewAllPNL
             // 
             this.GViewAllPNL.Controls.Add(this.flowLayoutPanel5);
@@ -1486,6 +1249,243 @@
             this.GArchiveSearchLine.TabIndex = 11;
             this.GArchiveSearchLine.Text = "_________________________________";
             this.GArchiveSearchLine.Visible = false;
+            // 
+            // GSummaryPNL
+            // 
+            this.GSummaryPNL.Controls.Add(this.GSummarySaveToBTN);
+            this.GSummaryPNL.Controls.Add(this.GSummaryErrorPNL);
+            this.GSummaryPNL.Controls.Add(this.panel5);
+            this.GSummaryPNL.Controls.Add(this.GSummaryFilesLST);
+            this.GSummaryPNL.Controls.Add(this.GSummaryTimeLBL);
+            this.GSummaryPNL.Controls.Add(this.label9);
+            this.GSummaryPNL.Location = new System.Drawing.Point(17, 10);
+            this.GSummaryPNL.Name = "GSummaryPNL";
+            this.GSummaryPNL.Size = new System.Drawing.Size(690, 640);
+            this.GSummaryPNL.TabIndex = 13;
+            this.GSummaryPNL.Visible = false;
+            // 
+            // GSummarySaveToBTN
+            // 
+            this.GSummarySaveToBTN.AutoSize = true;
+            this.GSummarySaveToBTN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.GSummarySaveToBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GSummarySaveToBTN.Location = new System.Drawing.Point(594, 375);
+            this.GSummarySaveToBTN.Name = "GSummarySaveToBTN";
+            this.GSummarySaveToBTN.Size = new System.Drawing.Size(58, 15);
+            this.GSummarySaveToBTN.TabIndex = 31;
+            this.GSummarySaveToBTN.Text = "Save to...";
+            this.GSummarySaveToBTN.Click += new System.EventHandler(this.GSummarySaveToBTN_Click);
+            this.GSummarySaveToBTN.MouseEnter += new System.EventHandler(this.GSummarySaveToBTN_MouseEnter);
+            this.GSummarySaveToBTN.MouseLeave += new System.EventHandler(this.GSummarySaveToBTN_MouseLeave);
+            // 
+            // GSummaryErrorPNL
+            // 
+            this.GSummaryErrorPNL.Controls.Add(this.label8);
+            this.GSummaryErrorPNL.Controls.Add(this.label58);
+            this.GSummaryErrorPNL.Location = new System.Drawing.Point(21, 406);
+            this.GSummaryErrorPNL.Name = "GSummaryErrorPNL";
+            this.GSummaryErrorPNL.Size = new System.Drawing.Size(645, 200);
+            this.GSummaryErrorPNL.TabIndex = 26;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label8.Location = new System.Drawing.Point(-1, 93);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(648, 19);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Click \"Export\" to get started";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label58
+            // 
+            this.label58.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label58.Location = new System.Drawing.Point(0, 70);
+            this.label58.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(649, 19);
+            this.label58.TabIndex = 29;
+            this.label58.Text = "No Guard Report Found";
+            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.panel5.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Payroll;
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel5.Controls.Add(this.label60);
+            this.panel5.Controls.Add(this.label61);
+            this.panel5.Controls.Add(this.GSummaryExportBTN);
+            this.panel5.Controls.Add(this.GTotalActiveLBL);
+            this.panel5.Controls.Add(this.label26);
+            this.panel5.Controls.Add(this.GTotalLBL);
+            this.panel5.Controls.Add(this.GSummaryViewCurrent);
+            this.panel5.Controls.Add(this.GSummaryDateLBL);
+            this.panel5.Location = new System.Drawing.Point(16, 22);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(648, 236);
+            this.panel5.TabIndex = 25;
+            // 
+            // label60
+            // 
+            this.label60.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label60.ForeColor = System.Drawing.Color.White;
+            this.label60.Location = new System.Drawing.Point(33, 100);
+            this.label60.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(294, 19);
+            this.label60.TabIndex = 27;
+            this.label60.Text = "Total Active Guards:";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label61
+            // 
+            this.label61.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label61.ForeColor = System.Drawing.Color.White;
+            this.label61.Location = new System.Drawing.Point(331, 100);
+            this.label61.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(286, 19);
+            this.label61.TabIndex = 26;
+            this.label61.Text = "Total Guards:";
+            this.label61.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // GSummaryExportBTN
+            // 
+            this.GSummaryExportBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.GSummaryExportBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GSummaryExportBTN.BackgroundImage")));
+            this.GSummaryExportBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GSummaryExportBTN.FlatAppearance.BorderSize = 0;
+            this.GSummaryExportBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.GSummaryExportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GSummaryExportBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GSummaryExportBTN.ForeColor = System.Drawing.Color.White;
+            this.GSummaryExportBTN.Location = new System.Drawing.Point(332, 178);
+            this.GSummaryExportBTN.Name = "GSummaryExportBTN";
+            this.GSummaryExportBTN.Size = new System.Drawing.Size(105, 31);
+            this.GSummaryExportBTN.TabIndex = 25;
+            this.GSummaryExportBTN.Text = "EXPORT";
+            this.GSummaryExportBTN.UseVisualStyleBackColor = false;
+            this.GSummaryExportBTN.Click += new System.EventHandler(this.GSummaryExportBTN_Click);
+            // 
+            // GTotalActiveLBL
+            // 
+            this.GTotalActiveLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.GTotalActiveLBL.ForeColor = System.Drawing.Color.White;
+            this.GTotalActiveLBL.Location = new System.Drawing.Point(33, 126);
+            this.GTotalActiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GTotalActiveLBL.Name = "GTotalActiveLBL";
+            this.GTotalActiveLBL.Size = new System.Drawing.Size(294, 23);
+            this.GTotalActiveLBL.TabIndex = 24;
+            this.GTotalActiveLBL.Text = "33 guards";
+            this.GTotalActiveLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label26
+            // 
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(28, 21);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(592, 39);
+            this.label26.TabIndex = 21;
+            this.label26.Text = "Current Summary";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // GTotalLBL
+            // 
+            this.GTotalLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.GTotalLBL.ForeColor = System.Drawing.Color.White;
+            this.GTotalLBL.Location = new System.Drawing.Point(331, 127);
+            this.GTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GTotalLBL.Name = "GTotalLBL";
+            this.GTotalLBL.Size = new System.Drawing.Size(286, 35);
+            this.GTotalLBL.TabIndex = 23;
+            this.GTotalLBL.Text = "200 guards";
+            this.GTotalLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // GSummaryViewCurrent
+            // 
+            this.GSummaryViewCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.GSummaryViewCurrent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GSummaryViewCurrent.BackgroundImage")));
+            this.GSummaryViewCurrent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GSummaryViewCurrent.FlatAppearance.BorderSize = 0;
+            this.GSummaryViewCurrent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.GSummaryViewCurrent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GSummaryViewCurrent.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GSummaryViewCurrent.ForeColor = System.Drawing.Color.White;
+            this.GSummaryViewCurrent.Location = new System.Drawing.Point(222, 178);
+            this.GSummaryViewCurrent.Name = "GSummaryViewCurrent";
+            this.GSummaryViewCurrent.Size = new System.Drawing.Size(105, 31);
+            this.GSummaryViewCurrent.TabIndex = 19;
+            this.GSummaryViewCurrent.Text = "PREVIEW";
+            this.GSummaryViewCurrent.UseVisualStyleBackColor = false;
+            this.GSummaryViewCurrent.Click += new System.EventHandler(this.GSummaryViewCurrent_Click);
+            // 
+            // GSummaryDateLBL
+            // 
+            this.GSummaryDateLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GSummaryDateLBL.ForeColor = System.Drawing.Color.White;
+            this.GSummaryDateLBL.Location = new System.Drawing.Point(33, 60);
+            this.GSummaryDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GSummaryDateLBL.Name = "GSummaryDateLBL";
+            this.GSummaryDateLBL.Size = new System.Drawing.Size(587, 19);
+            this.GSummaryDateLBL.TabIndex = 22;
+            this.GSummaryDateLBL.Text = "Sunday, July 30 2017";
+            this.GSummaryDateLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // GSummaryFilesLST
+            // 
+            this.GSummaryFilesLST.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.GSummaryFilesLST.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GSummaryFilesLST.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.GSummaryFilesLST.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.GSummaryFilesLST.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GSummaryFilesLST.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.GSummaryFilesLST.LargeImageList = this.ImageList;
+            this.GSummaryFilesLST.Location = new System.Drawing.Point(53, 415);
+            this.GSummaryFilesLST.Name = "GSummaryFilesLST";
+            this.GSummaryFilesLST.Size = new System.Drawing.Size(583, 187);
+            this.GSummaryFilesLST.SmallImageList = this.ImageList;
+            this.GSummaryFilesLST.TabIndex = 14;
+            this.GSummaryFilesLST.TileSize = new System.Drawing.Size(200, 50);
+            this.GSummaryFilesLST.UseCompatibleStateImageBehavior = false;
+            this.GSummaryFilesLST.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.GSummaryFilesLST_ItemSelectionChanged);
+            this.GSummaryFilesLST.DoubleClick += new System.EventHandler(this.GSummaryFilesLST_DoubleClick);
+            // 
+            // ImageList
+            // 
+            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImageList.Images.SetKeyName(0, "Excel-Icon.png");
+            // 
+            // GSummaryTimeLBL
+            // 
+            this.GSummaryTimeLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.GSummaryTimeLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GSummaryTimeLBL.Location = new System.Drawing.Point(21, 339);
+            this.GSummaryTimeLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GSummaryTimeLBL.Name = "GSummaryTimeLBL";
+            this.GSummaryTimeLBL.Size = new System.Drawing.Size(645, 19);
+            this.GSummaryTimeLBL.TabIndex = 15;
+            this.GSummaryTimeLBL.Text = "Double-click to open";
+            this.GSummaryTimeLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label9.Location = new System.Drawing.Point(21, 303);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(643, 39);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Exported Reports";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DashboardTMR
             // 
@@ -1851,7 +1851,7 @@
             this.SViewAssPNL.Controls.Add(this.SViewAssignmentErrorPNL);
             this.SViewAssPNL.Location = new System.Drawing.Point(15, 14);
             this.SViewAssPNL.Name = "SViewAssPNL";
-            this.SViewAssPNL.Size = new System.Drawing.Size(694, 640);
+            this.SViewAssPNL.Size = new System.Drawing.Size(695, 640);
             this.SViewAssPNL.TabIndex = 13;
             this.SViewAssPNL.Visible = false;
             // 
@@ -1938,7 +1938,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(506, 23);
+            this.label10.Location = new System.Drawing.Point(507, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 19);
@@ -1957,7 +1957,7 @@
             "All",
             "Scheduled",
             "Unscheduled"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(558, 20);
+            this.SViewAssCMBX.Location = new System.Drawing.Point(559, 20);
             this.SViewAssCMBX.Name = "SViewAssCMBX";
             this.SViewAssCMBX.Size = new System.Drawing.Size(119, 25);
             this.SViewAssCMBX.Sorted = true;
@@ -1973,7 +1973,7 @@
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssSearchTXTBX.Location = new System.Drawing.Point(220, 71);
             this.SViewAssSearchTXTBX.Name = "SViewAssSearchTXTBX";
-            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(259, 18);
+            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(260, 18);
             this.SViewAssSearchTXTBX.TabIndex = 8;
             this.SViewAssSearchTXTBX.Text = "Search or filter";
             this.SViewAssSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2025,7 +2025,7 @@
             this.SViewAssGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.SViewAssGRD.RowHeadersVisible = false;
             this.SViewAssGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SViewAssGRD.Size = new System.Drawing.Size(655, 458);
+            this.SViewAssGRD.Size = new System.Drawing.Size(656, 458);
             this.SViewAssGRD.TabIndex = 5;
             this.SViewAssGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewAssGRD_CellEnter);
             this.SViewAssGRD.DoubleClick += new System.EventHandler(this.SViewAssGRD_DoubleClick);
@@ -2036,7 +2036,7 @@
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SViewAssSearchLine.Location = new System.Drawing.Point(247, 76);
+            this.SViewAssSearchLine.Location = new System.Drawing.Point(248, 76);
             this.SViewAssSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SViewAssSearchLine.Name = "SViewAssSearchLine";
             this.SViewAssSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -4068,12 +4068,12 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ControlBoxPanel);
+            this.Controls.Add(this.SchedulesPage);
+            this.Controls.Add(this.DashboardPage);
             this.Controls.Add(this.GuardsPage);
             this.Controls.Add(this.ClientsPage);
             this.Controls.Add(this.SamplePNL);
             this.Controls.Add(this.PayrollPage);
-            this.Controls.Add(this.SchedulesPage);
-            this.Controls.Add(this.DashboardPage);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -4102,10 +4102,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GuardsPage)).EndInit();
             this.GuardsPage.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.GSummaryPNL.ResumeLayout(false);
-            this.GSummaryPNL.PerformLayout();
-            this.GSummaryErrorPNL.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.GViewAllPNL.ResumeLayout(false);
             this.GViewAllPNL.PerformLayout();
             this.flowLayoutPanel5.ResumeLayout(false);
@@ -4113,6 +4109,10 @@
             this.GArchivePNL.ResumeLayout(false);
             this.GArchivePNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GArchivedGuardsGRD)).EndInit();
+            this.GSummaryPNL.ResumeLayout(false);
+            this.GSummaryPNL.PerformLayout();
+            this.GSummaryErrorPNL.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.SchedulesPage.Panel1.ResumeLayout(false);
             this.SchedulesPage.Panel1.PerformLayout();

@@ -178,7 +178,7 @@ namespace MSAMISUserInterface {
             CloseBTN.Visible = false;
             SSSPnl.Visible = false;
             TaxPnl.Visible = false;
-            RatesPNL.Visible = false;
+            MultPNL.Visible = false;
             GlobalPNL.Visible = false;
         }
 
@@ -190,7 +190,7 @@ namespace MSAMISUserInterface {
             CloseBTN.Visible = true;
             SSSPnl.Visible = true;
             TaxPnl.Visible = true;
-            RatesPNL.Visible = true;
+            MultPNL.Visible = true;
             GlobalPNL.Visible = true;
         }
 
@@ -357,7 +357,7 @@ namespace MSAMISUserInterface {
             BasicPNL.Visible = !mode;
             TaxPnl.Visible = !mode;
             CloseBTN.Visible = !mode;
-            RatesPNL.Visible = !mode;
+            MultPNL.Visible = !mode;
             GlobalPNL.Visible = !mode;
 
             SSSEditPNL.Visible = mode;
@@ -457,7 +457,7 @@ namespace MSAMISUserInterface {
             CloseBTN.Visible = !mode;
             SSSPnl.Visible = !mode;
             BasicPNL.Visible = !mode;
-            RatesPNL.Visible = !mode;
+            MultPNL.Visible = !mode;
             GlobalPNL.Visible = !mode;
             TaxMainPNL.Size = mode ? new Size(487, 385 + 50) : new Size(487, 475);
         }
