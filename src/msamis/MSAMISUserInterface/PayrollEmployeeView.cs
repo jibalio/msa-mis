@@ -198,6 +198,9 @@ namespace MSAMISUserInterface {
                 TaxPop.Items[3].Text = CurrencyFormat(wt.ExcessTax);
                 TaxPop.Items[5].Text = CurrencyFormat(wt.total);
 
+                SSSPop.Items[1].Text = _pay.GetSSSDetails()[0];
+                SSSPop.Items[3].Text = _pay.GetSSSDetails()[1];
+                SSSPop.Items[5].Text = _pay.GetSSSDetails()[2];
                 DWithLBL.Text = CurrencyFormatNegative(wt.total);
             }
         }
