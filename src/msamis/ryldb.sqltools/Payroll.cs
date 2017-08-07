@@ -874,10 +874,27 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         }
 
 
-        public static void SetRates(int rates_id, double special_holiday, double regular_holiday,
+        public static void SetRates(DateTime date_effective, double special_holiday, double regular_holiday,
             double sunday_ordinary_day, double sunday_special_holiday, double sunday_regular_holiday,
             double nightdifferential, double overtime, double overtime_holiday) {
-            // TODO: Function Body
+            var st = date_effective.ToString("yyyy-MM-dd");
+
+            var HasElapsed = DateTime.Now >= date_effective;
+            if (HasElapsed) {
+                var q2 = $"select bpid from basicpay where status=1";
+                var bpid = SQLTools.GetInt(q2);
+                q2 = $"UPDATE `msadb`.`basicpay` SET `status`='0', `end`='{ss}' WHERE `BPID`='{bpid}'";
+                SQLTools.ExecuteNonQuery(q2);
+            }
+            var q =
+                $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{-1}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
+            SQLTools.ExecuteNonQuery(q);
+
+
+        }
+
+        public static DataTable GetRates(int rates_id) {
+            return SQLTools.ExecuteQuery($"select * from rates where rates_id = {rates_id}");
         }
 
         public static void SetBonusDefaults(double philhealth, double pagibig, double cashbond, double cola,
@@ -890,7 +907,6 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             Data.PayrollIni["Payroll"]["DefaultEmer"] = emergencyallowance.ToString("N2");
             Data.iniparser.WriteFile(Data.PayrollIniLocation,Data.PayrollIni);
             Data.InitPayrollConfig();
-
         }
 
 
