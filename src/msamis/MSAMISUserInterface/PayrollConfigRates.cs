@@ -624,7 +624,7 @@ namespace MSAMISUserInterface {
         }
 
         private void MultSaveBTN_Click(object sender, EventArgs e) {
-            Payroll.SetRates(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id, double.Parse(RatesL2.Value.ToString("N2")), double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")), double.Parse(RatesL5.Value.ToString("N2")),
+            Payroll.SetRates(MultDTPKR.Value, double.Parse(RatesL2.Value.ToString("N2")), double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")), double.Parse(RatesL5.Value.ToString("N2")),
                 double.Parse(RatesL6.Value.ToString("N2")), double.Parse(RatesL7.Value.ToString("N2")), double.Parse(RatesL8.Value.ToString("N2")), double.Parse(RatesL9.Value.ToString("N2")));
             MultCancelBTN.PerformClick();
         }
@@ -647,11 +647,11 @@ namespace MSAMISUserInterface {
         #region Global Rates Page
    
         private void LoadGlobalPage() {
-            GlobalPHICBX.Value = 2;
-            GlobalHDMFBX.Value = 2;
-            GlobalCashBondBX.Value = 2;
-            GlobalColaBX.Value = 2;
-            GlobalEmergencyBX.Value = 2;
+            GlobalPHICBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultPHIC"]);
+            GlobalHDMFBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultHDMF"]);
+            GlobalCashBondBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultCashBond"]);
+            GlobalColaBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultCola"]);
+            GlobalEmergencyBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultEmer"]);
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
