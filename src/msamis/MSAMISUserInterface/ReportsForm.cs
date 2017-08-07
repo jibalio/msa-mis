@@ -113,18 +113,20 @@ namespace MSAMISUserInterface
 
         private void CExportToPDFBTN_Click(object sender, EventArgs e)
         {
-            DataTable testDT = Reports.GetClientsList();
             PdfPTable pdfTable = new PdfPTable(ClientsSummaryTBL.ColumnCount);
             pdfTable.DefaultCell.Padding = 3;
             pdfTable.WidthPercentage = 30;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.BorderWidth = 1;
 
+            //Adding Header row
+            /*
             foreach (DataGridViewColumn column in ClientsSummaryTBL.Columns)
             {
                 PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
                 pdfTable.AddCell(cell);
             }
+            */
 
             //Adding DataRow
             foreach (DataGridViewRow row in ClientsSummaryTBL.Rows)
@@ -135,20 +137,31 @@ namespace MSAMISUserInterface
                 }
             }
 
-            string folderPath = Environment.SpecialFolder.MyDocuments + "\\" + "MSAMIS Reports";
+            //Exporting to PDF
+            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
-            using (FileStream stream = new FileStream(folderPath + "ExportPDF_Test.pdf", FileMode.Create))
+
+            if (File.Exists(folderPath + "\\" + "DataGridViewExport.pdf"))
             {
-                Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
-                PdfWriter.GetInstance(pdfDoc, stream);
-                pdfDoc.Open();
-                pdfDoc.Add(pdfTable);
-                pdfDoc.Close();
-                stream.Close();
+                DialogResult x = rylui.RylMessageBox.ShowDialog("DataGridViewExport.pdf" + " already exists.\nDo you want to replace it?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (x == DialogResult.Yes)
+                {
+                    File.Delete(folderPath + "\\" + "DataGridViewExport.pdf");
+                }
             }
+            using (FileStream stream = new FileStream(folderPath + "\\" + "DataGridViewExport.pdf", FileMode.Create))
+                    {
+                        Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
+                        PdfWriter.GetInstance(pdfDoc, stream);
+                        pdfDoc.Open();
+                        pdfDoc.Add(pdfTable);
+                        pdfDoc.Close();
+                        stream.Close();
+                    }
         }
+
     }
 }
