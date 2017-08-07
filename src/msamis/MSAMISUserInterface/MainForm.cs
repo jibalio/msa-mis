@@ -377,7 +377,6 @@ namespace MSAMISUserInterface {
 
         private void DMonthlyDutyReportPNL_Click(object sender, EventArgs e) {
             SchedBTN.PerformClick();
-            SMonthlyDutyBTN.PerformClick();
         }
 
         private void DClientSummaryPNL_Click(object sender, EventArgs e) {
@@ -964,16 +963,8 @@ namespace MSAMISUserInterface {
             SchedLoadAssignmentPage();
         }
 
-        private void SMonthlyDutyBTN_Click(object sender, EventArgs e) {
-            SChangePanel(SMonthlyDutyPNL, SMonthlyDutyBTN, false);
-        }
-
         private void SDutyDetailsBTN_Click(object sender, EventArgs e) {
             SChangePanel(SDutyDetailsPNL, SDutyDetailsBTN, false);
-        }
-
-        private void SIncidentBTN_Click(object sender, EventArgs e) {
-            SChangePanel(SIncidentPNL, SIncidentBTN, false);
         }
 
         private void SViewReqAssBTN_Click(object sender, EventArgs e) {

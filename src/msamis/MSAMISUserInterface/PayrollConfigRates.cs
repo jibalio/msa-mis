@@ -624,8 +624,9 @@ namespace MSAMISUserInterface {
         }
 
         private void MultSaveBTN_Click(object sender, EventArgs e) {
-            Payroll.SetRates(MultDTPKR.Value, double.Parse(RatesL2.Value.ToString("N2")), double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")), double.Parse(RatesL5.Value.ToString("N2")),
+            Payroll.SetRates(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id, double.Parse(RatesL2.Value.ToString("N2")), double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")), double.Parse(RatesL5.Value.ToString("N2")),
                 double.Parse(RatesL6.Value.ToString("N2")), double.Parse(RatesL7.Value.ToString("N2")), double.Parse(RatesL8.Value.ToString("N2")), double.Parse(RatesL9.Value.ToString("N2")));
+            MultCancelBTN.PerformClick();
         }
 
         private void RatesL9_Enter(object sender, EventArgs e) {
@@ -655,6 +656,7 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             Payroll.SetBonusDefaults(double.Parse(GlobalPHICBX.Value.ToString("N2")), double.Parse(GlobalHDMFBX.Value.ToString("N2")), double.Parse(GlobalCashBondBX.Value.ToString("N2")), double.Parse(GlobalColaBX.Value.ToString("N2")), double.Parse(GlobalEmergencyBX.Value.ToString("N2")));
+            GlobalCancelBTN.PerformClick();
         }
 
         private void GlobalEditingMode(bool mode) {
