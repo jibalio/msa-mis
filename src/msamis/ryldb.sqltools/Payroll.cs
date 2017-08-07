@@ -911,7 +911,11 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
 
 
-        
+        public string[] GetSSSDetails() {
+            return new string[] {
+                "December 27, 2014 - January 10, 1970", "3340.00 - 5500.00", "281"
+            };
+        }
 
 
 
