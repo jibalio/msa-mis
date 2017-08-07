@@ -23,6 +23,7 @@ namespace MSAMISUserInterface {
         public class ContribType {
             public static int Sss = 1;
             public static int WithTax = 2;
+            public static int Rates = 3;
         }
 
         public class HolidayType {

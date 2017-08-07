@@ -877,20 +877,25 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         public static void SetRates(DateTime date_effective, double special_holiday, double regular_holiday,
             double sunday_ordinary_day, double sunday_special_holiday, double sunday_regular_holiday,
             double nightdifferential, double overtime, double overtime_holiday) {
-            /*var st = date_effective.ToString("yyyy-MM-dd");
-
+            var ss = date_effective.ToString("yyyy-MM-dd");
             var HasElapsed = DateTime.Now >= date_effective;
             if (HasElapsed) {
-                var q2 = $"select bpid from basicpay where status=1";
-                var bpid = SQLTools.GetInt(q2);
-                q2 = $"UPDATE `msadb`.`basicpay` SET `status`='0', `end`='{ss}' WHERE `BPID`='{bpid}'";
+                var q2 = $"select rates_id from rates where status=1";
+                var rates_id = SQLTools.GetInt(q2);
+                q2 = $"UPDATE `msadb`.`rates` SET `status`='0', `end`='{ss}' WHERE `BPID`='{rates_id}'";
                 SQLTools.ExecuteNonQuery(q2);
             }
-            var q =
-                $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{-1}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
-            SQLTools.ExecuteNonQuery(q);
-            */
-
+            var kwiri =
+                $@"INSERT INTO `msadb`.`rates` 
+                (`date_effective`, `date_dissolved`, `ordinary_day`, `special_holiday`, 
+                `regular_holiday`, `sunday_ordinary_day`, `sunday_special_holiday`, `sunday_regular_holiday`,
+                `nightdifferential`, `overtime`, `overtime_holiday`, `status`) 
+                VALUES ('{ss}', '{-1}', '{1.00}', '{special_holiday.ToString("N2")}', 
+                '{regular_holiday.ToString("N2")}', '{sunday_ordinary_day.ToString("N2")}', '{sunday_special_holiday.ToString("N2")}', '{sunday_regular_holiday.ToString("N2")}', 
+                '{nightdifferential.ToString("N2")}', '{overtime.ToString("N2")}', '{overtime_holiday.ToString("N2")}', '{
+                        (HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)
+                    }');";
+            SQLTools.ExecuteNonQuery(kwiri);
         }
 
         public static DataTable GetRates(int rates_id) {
