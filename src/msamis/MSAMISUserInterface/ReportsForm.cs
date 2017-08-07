@@ -114,29 +114,32 @@ namespace MSAMISUserInterface
         private void CExportToPDFBTN_Click(object sender, EventArgs e)
         {
             PdfPTable pdfTable = new PdfPTable(ClientsSummaryTBL.ColumnCount);
+            float[] widths = new float[] { 120f, 50f, 200f, 150f, 150f, 90f };
+            pdfTable.SetWidths(widths);
             pdfTable.DefaultCell.Padding = 3;
             pdfTable.WidthPercentage = 30;
-            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.BorderWidth = 1;
+            var myfont = FontFactory.GetFont("Papyrus", 12);
 
-            //Adding Header row
-            /*
-            foreach (DataGridViewColumn column in ClientsSummaryTBL.Columns)
-            {
-                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                pdfTable.AddCell(cell);
-            }
-            */
+
+            //Add Headers Here
+
 
             //Adding DataRow
             foreach (DataGridViewRow row in ClientsSummaryTBL.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    pdfTable.AddCell(cell.Value.ToString());
+                    PdfPCell newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont));
+                    pdfTable.AddCell(newcell);
                 }
             }
 
+            pdfTable.HorizontalAlignment = 1;
+            pdfTable.TotalWidth = 700f;
+            pdfTable.LockedWidth = true;
             //Exporting to PDF
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             if (!Directory.Exists(folderPath))
@@ -153,15 +156,27 @@ namespace MSAMISUserInterface
                 }
             }
             using (FileStream stream = new FileStream(folderPath + "\\" + "DataGridViewExport.pdf", FileMode.Create))
-                    {
-                        Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
-                        PdfWriter.GetInstance(pdfDoc, stream);
-                        pdfDoc.Open();
-                        pdfDoc.Add(pdfTable);
-                        pdfDoc.Close();
-                        stream.Close();
-                    }
+            {
+                Document pdfDoc = new Document(PageSize.A4.Rotate(), 10f, 10f, 10f, 0f);
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(pdfTable);
+                pdfDoc.Close();
+                stream.Close();
+            }
         }
 
     }
 }
+
+/*------------------PROGRESS BLOCK-----------------
+ * !!KNOW PROPER PDF DIMENSIONS!!
+
+ * Fix font size formatting
+ * adjust pdf borders
+ * Segregate and clean method
+ * Add Headers
+ * Separate into Methods
+ * 
+ * 
+ */
