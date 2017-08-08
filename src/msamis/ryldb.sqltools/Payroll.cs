@@ -574,7 +574,11 @@ select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pen
 
 
         public static DataTable GetBasicPayHistory() {
-            var q = @"select * from basicpay order by status desc";
+            var q = @"select bpid, amount, start, end, case status
+            when 1 then 'Active'
+            when 0 then 'Inactive'
+            end as status
+            from basicpay order by status desc";
             return SQLTools.ExecuteQuery(q);
         }
 
