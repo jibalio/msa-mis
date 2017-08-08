@@ -302,7 +302,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
         #region View Assignments    ✔Done
 
-        public static DataTable GetAssignmentsByClient(int cid, int filter) {
+        public static DataTable GetAssignmentsByClient(int cid, int filter, string searchkeyword) {
             String q = @"select 
                         guards.gid, d.did, sduty_assignment.aid,
                         concat(ln,', ',fn,' ',mn) as name,
@@ -323,15 +323,12 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND days is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
-                q += " AND days is null";
-            q += "  group by guards.gid";
-            
-
-            DataTable dt = SQLTools.ExecuteQuery(q);
-           // foreach (DataRow e in dt.Rows) {
+                q += " AND days is null ";
+            DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " group by guards.gid order by name asc");
+            // foreach (DataRow e in dt.Rows) {
             //    String[] x = e["Schedule"].ToString().Split(' ');
             //    if (x[0] != "Unscheduled") e.SetField("Schedule", (x[0] + " " + ParseDays(x[1])));
-           // }
+            // }
             return dt;
         }
 

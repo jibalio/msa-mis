@@ -725,8 +725,10 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
 
         #region + GetGuardsList Methods Min/Max
 
-        public static DataTable GetGuardsPayrollMain() {
-            return SQLTools.ExecuteQuery(@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
+        public static DataTable GetGuardsPayrollMain(string search, int status) {
+            string q;
+            if (status == -1) {
+                q = @"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
                                                             WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL)
                                                             THEN 'Yes'
@@ -741,9 +743,30 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
                                                 left join period on guards.gid=period.gid
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
-                                                where RequestType = 1 
-                                                group by guards.gid
-                                                ");
+                                                where RequestType = 1 " + search + " group by guards.gid ";
+            }
+            else {
+                q = @"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
+                                                        CASE 
+                                                            WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL)
+                                                            THEN 'Yes'
+                                                            ELSE 'No Attendance Details Found'
+                                                        END
+                                                      ) AS attendance, pstatus
+                                                from request
+                                                left join client on client.cid=request.cid
+                                                left join request_assign on request_assign.rid=request.rid
+                                                left join sduty_assignment on sduty_assignment.raid=request_assign.raid
+                                                left join guards on guards.gid=sduty_assignment.gid
+                                                left join period on guards.gid=period.gid
+												left join dutydetails on dutydetails.aid=sduty_assignment.aid
+												left join payroll on guards.gid=payroll.gid
+                                                where RequestType = 1 " + search + " AND pstatus = '" + status +
+                    "' group by guards.gid ";
+
+
+            }
+            return SQLTools.ExecuteQuery(q);
         }
 
         public static DataTable GetGuardsPayrollMinimal() {

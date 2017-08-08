@@ -1181,7 +1181,7 @@ namespace MSAMISUserInterface {
             SViewAssGRD.DataSource =
                 Scheduling.GetAssignmentsByClient(
                     int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID),
-                    SViewAssCMBX.SelectedIndex);
+                    SViewAssCMBX.SelectedIndex, _extraQueryParams);
 
             if (SViewAssGRD.Rows.Count > 0) {
                 SViewAssGRD.Columns[0].Visible = false;
@@ -1200,6 +1200,16 @@ namespace MSAMISUserInterface {
                 SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
                 SViewAssGRD.ClearSelection();
             }
+        }
+
+        private void SViewAssSearchTXTBX_TextChanged(object sender, EventArgs e) {
+            var temp = SViewAssSearchTXTBX.Text;
+            var kazoo = "concat(ln,', ',fn,' ',mn)";
+
+            if (SViewAssSearchTXTBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " AND (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            SchedRefreshAssignments();
         }
 
         private void SViewAssCMBX_SelectedIndexChanged(object sender, EventArgs e) {
@@ -1266,6 +1276,7 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
         #endregion
 
         #region Payroll Management System
@@ -1276,8 +1287,9 @@ namespace MSAMISUserInterface {
             PayrollHideBtn();
             PEmpListBTN.PerformClick();
 
-            PPeriodLBL.Text = "Period: " + (new DateTime(Attendance.GetCurrentPayPeriod().year, Attendance.GetCurrentPayPeriod().month, Attendance.GetCurrentPayPeriod().period)).ToString("MMMM yyyy, ");
+            PPeriodLBL.Text = "Period: " + new DateTime(Attendance.GetCurrentPayPeriod().year, Attendance.GetCurrentPayPeriod().month, Attendance.GetCurrentPayPeriod().period).ToString("MMMM yyyy, ");
             PPeriodLBL.Text += Attendance.GetCurrentPayPeriod().period == 1 ? "First" : "Second";
+            PPayLBL.Text = "Pay: " + Payroll.GetNextPayday().ToString("MMMM dd, yyyy");
             _scurrentPanel = PEmpListPage;
             _scurrentBtn = PEmpListBTN;
         }
@@ -1351,7 +1363,11 @@ namespace MSAMISUserInterface {
 
         private void PayLoadEmployeeList() {
             PEmpListSortCMBX.SelectedIndex = 0;
-            PEmpListGRD.DataSource = Payroll.GetGuardsPayrollMain();
+            PayLoadTable();
+        }
+
+        private void PayLoadTable() {
+            PEmpListGRD.DataSource = Payroll.GetGuardsPayrollMain(_extraQueryParams, PEmpListSortCMBX.SelectedIndex - 1);
             PEmpListGRD.Columns[0].Visible = false;
             PEmpListGRD.Columns[1].HeaderText = "GUARD'S NAME";
             PEmpListGRD.Columns[2].HeaderText = "ASSIGNED TO";
@@ -1365,6 +1381,16 @@ namespace MSAMISUserInterface {
 
             PEmpListGRD.Sort(PEmpListGRD.Columns[1], ListSortDirection.Ascending);
             PEmpListViewBTN.Visible = false;
+
+        }
+        private void PEmpListSearchBX_TextChanged(object sender, EventArgs e) {
+            var temp = PEmpListSearchBX.Text;
+            var kazoo = "concat(ln,', ',fn,' ',mn)";
+
+            if (PEmpListSearchBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " AND (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            PayLoadTable();
         }
 
         private void PEmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
@@ -1403,29 +1429,12 @@ namespace MSAMISUserInterface {
                 PEmpListSearchBX.Text = FilterText;
                 _extraQueryParams = string.Empty;
             }
+            PayLoadTable();
             PEmpListSearchLine.Visible = false;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private void PEmpListSortCMBX_SelectedIndexChanged(object sender, EventArgs e) {
+            PayLoadTable();
+        }
         #endregion
 
         #endregion

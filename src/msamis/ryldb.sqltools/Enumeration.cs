@@ -57,7 +57,7 @@ namespace MSAMISUserInterface {
             public static int Fresh = -1;
             public static int Pending = 0;
             public static int Calculated = 1;
-            public static int Paid = 2;
+            public static int Approved = 2;
         }
 
         public class ReportType {
