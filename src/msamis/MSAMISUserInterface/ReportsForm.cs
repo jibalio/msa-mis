@@ -114,15 +114,14 @@ namespace MSAMISUserInterface
         private void CExportToPDFBTN_Click(object sender, EventArgs e)
         {
             PdfPTable pdfTable = new PdfPTable(ClientsSummaryTBL.ColumnCount);
-            float[] widths = new float[] { 120f, 50f, 200f, 150f, 150f, 90f };
+            float[] widths = new float[] { 120f, 50f, 250f, 135f, 135f, 80f };
             pdfTable.SetWidths(widths);
             pdfTable.DefaultCell.Padding = 3;
             pdfTable.WidthPercentage = 30;
             pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.BorderWidth = 1;
-            var myfont = FontFactory.GetFont("Papyrus", 12);
-
+            Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
 
             //Add Headers Here
 
@@ -133,12 +132,14 @@ namespace MSAMISUserInterface
                 foreach (DataGridViewCell cell in row.Cells)
                 {
                     PdfPCell newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont));
+                    newcell.PaddingTop = 5f;
+                    newcell.PaddingBottom = 8f;
                     pdfTable.AddCell(newcell);
                 }
             }
 
             pdfTable.HorizontalAlignment = 1;
-            pdfTable.TotalWidth = 700f;
+            pdfTable.TotalWidth = 900f;
             pdfTable.LockedWidth = true;
             //Exporting to PDF
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
@@ -157,7 +158,7 @@ namespace MSAMISUserInterface
             }
             using (FileStream stream = new FileStream(folderPath + "\\" + "DataGridViewExport.pdf", FileMode.Create))
             {
-                Document pdfDoc = new Document(PageSize.A4.Rotate(), 10f, 10f, 10f, 0f);
+                Document pdfDoc = new Document(PageSize.LEGAL.Rotate(), 10f, 10f, 10f, 0f);
                 PdfWriter.GetInstance(pdfDoc, stream);
                 pdfDoc.Open();
                 pdfDoc.Add(pdfTable);
@@ -170,10 +171,6 @@ namespace MSAMISUserInterface
 }
 
 /*------------------PROGRESS BLOCK-----------------
- * !!KNOW PROPER PDF DIMENSIONS!!
-
- * Fix font size formatting
- * adjust pdf borders
  * Segregate and clean method
  * Add Headers
  * Separate into Methods
