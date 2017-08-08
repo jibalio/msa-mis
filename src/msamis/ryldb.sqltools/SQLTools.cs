@@ -134,6 +134,7 @@ namespace MSAMISUserInterface {
         public static DataTable ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword, String orderby) {
             return ExecuteQuery(query, ColumnToFilterByKeyword, keyword, orderby, null);
         }
+
         public static DataTable ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters) {
             query = AppendType(query, filters);
             query = AppendFilters(query, ColumnToFilterByKeyword, keyword, orderby);
