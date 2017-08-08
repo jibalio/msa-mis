@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Org.BouncyCastle.Asn1.X509;
 
 
 namespace MSAMISUserInterface {
@@ -868,6 +869,18 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         }
         private int rates_id;
         #region Defaults Setter
+
+        public static DateTime GetNextPayday() {
+            var p = DateTime.Now;
+            if (5 <= p.Day && p.Day <19) 
+                return  new DateTime(p.Year,p.Month,20);
+            else if ((1<=p.Day && p.Day < 5)) return new DateTime(p.Year, p.Month, 5);
+            else if (20 <= p.Day && p.Day <= 31) {
+                p.AddMonths(1);
+                return new DateTime(p.Year, p.Month, 5);
+            } 
+            return new DateTime(0,0,0);
+        }
 
         public static DataTable GetRatesList() {
             return SQLTools.ExecuteQuery("SELECT * FROM msadb.rates;");
