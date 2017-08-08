@@ -17,7 +17,7 @@ namespace MSAMISUserInterface
         public string summaryDate = "";
         public DateTime now = DateTime.Now;
 
-        #region Guards Report
+        #region Guards Report Excel
 
         public static DataTable GetGuardsList()
         {
@@ -48,14 +48,16 @@ namespace MSAMISUserInterface
 
         #endregion
 
-        #region Client Report
-
+        #region Clients Export PDF
         public static DataTable GetClientsList()
         {
             ExtraQueryParams = " ORDER BY Name asc";
             String q = "SELECT Name as 'Name', CASE WHEN CStatus = 1 THEN 'Active' WHEN CStatus = 2 THEN 'Inactive' END as Status, concat(ClientStreetNo,' ', ClientStreet, ', ', ClientBrgy, ', ', ClientCity) as Address, Manager, ContactPerson as 'Contact Person', ContactNo as 'Contact Number' FROM msadb.client" + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
+        #endregion
+
+        #region Client Report Excel
 
 
         private void FormatClientsWorkSheet(Excel.Worksheet ews)
