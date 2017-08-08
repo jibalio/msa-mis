@@ -876,7 +876,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
                 return  new DateTime(p.Year,p.Month,20);
             else if ((1<=p.Day && p.Day < 5)) return new DateTime(p.Year, p.Month, 5);
             else if (20 <= p.Day && p.Day <= 31) {
-                p.AddMonths(1);
+                p = p.AddMonths(1);
                 return new DateTime(p.Year, p.Month, 5);
             } 
             return new DateTime(0,0,0);
