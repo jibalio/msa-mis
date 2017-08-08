@@ -513,7 +513,9 @@ WHERE `PID`='{_PayrollId}';
         /// <returns></returns>
         public static double GetBasicPay(DateTime dt) {
             var q =
-                "select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc";
+                $@"
+select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc
+";
             var d = SQLTools.ExecuteQuery(q);
             foreach (DataRow dr in d.Rows) {
                 var dstart = DateTime.ParseExact(dr["start"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
@@ -912,7 +914,16 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         }
 
         public static DataTable GetRates(int rates_id) {
-            return SQLTools.ExecuteQuery($"select * from rates where rates_id = {rates_id}");
+            return SQLTools.ExecuteQuery($@"
+SELECT rates_id, date_effective, date_dissolved, contrib_id, ordinary_day, special_holiday, regular_holiday, sunday_ordinary_day, sunday_special_holiday, sunday_regular_holiday, nightdifferential, overtime, overtime_holiday,
+case status 
+when {Enumeration.ContribStatus.Active} then 'Active'
+when {Enumeration.ContribStatus.Future} then 'Pending'
+when {Enumeration.ContribStatus.Past} then 'Inactive'
+end as status
+ FROM msadb.rates
+where rates_id={rates_id};
+");
         }
 
         public static void SetBonusDefaults(double philhealth, double pagibig, double cashbond, double cola,
