@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `msadb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `msadb`;
--- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: msadb
+-- Host: localhost    Database: msadb
 -- ------------------------------------------------------
 -- Server version	5.7.13-log
 
@@ -89,7 +89,7 @@ CREATE TABLE `adjustment_log` (
   `Value` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`AdjID`),
   KEY `Adj-Payroll_idx` (`PID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,36 @@ CREATE TABLE `adjustment_log` (
 
 LOCK TABLES `adjustment_log` WRITE;
 /*!40000 ALTER TABLE `adjustment_log` DISABLE KEYS */;
+INSERT INTO `adjustment_log` VALUES (24,1444,1,'2017-08-09 09:34:29','150.00'),(25,1444,2,'2017-08-09 09:34:29','100.00'),(26,1444,3,'2017-08-09 09:34:29','100.00'),(27,1444,4,'2017-08-09 09:34:29','0.00'),(28,1444,5,'2017-08-09 09:34:29','50.00');
 /*!40000 ALTER TABLE `adjustment_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `adjustments`
+--
+
+DROP TABLE IF EXISTS `adjustments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adjustments` (
+  `AdjID` int(11) NOT NULL AUTO_INCREMENT,
+  `PID` int(11) DEFAULT NULL,
+  `AdjType` int(11) DEFAULT NULL,
+  `AdjDate` varchar(45) DEFAULT NULL,
+  `Value` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`AdjID`),
+  KEY `Adj-Payroll_idx` (`PID`),
+  CONSTRAINT `Adj-Payroll` FOREIGN KEY (`PID`) REFERENCES `payroll` (`PID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adjustments`
+--
+
+LOCK TABLES `adjustments` WRITE;
+/*!40000 ALTER TABLE `adjustments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `adjustments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -412,6 +441,31 @@ LOCK TABLES `incidentreport` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `loginhistory`
+--
+
+DROP TABLE IF EXISTS `loginhistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `loginhistory` (
+  `lid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `logintime` datetime DEFAULT NULL,
+  PRIMARY KEY (`lid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `loginhistory`
+--
+
+LOCK TABLES `loginhistory` WRITE;
+/*!40000 ALTER TABLE `loginhistory` DISABLE KEYS */;
+INSERT INTO `loginhistory` VALUES (1,3,'2017-08-09 16:55:42'),(2,3,'2017-08-09 17:23:24');
+/*!40000 ALTER TABLE `loginhistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `meta`
 --
 
@@ -471,7 +525,7 @@ CREATE TABLE `payroll` (
   `pagibig` decimal(7,2) DEFAULT NULL,
   `philhealth` decimal(7,2) DEFAULT NULL,
   `withtax` decimal(7,2) DEFAULT NULL,
-  `cashadv` decimal(7,2) DEFAULT NULL,
+  `cashadv` decimal(7,2) DEFAULT '0.00',
   `emergencyallowance` decimal(7,2) DEFAULT NULL,
   `totalsummary_serializable` blob,
   `hc_serializable` blob,
@@ -481,7 +535,7 @@ CREATE TABLE `payroll` (
   UNIQUE KEY `py_unq_idx` (`GID`,`year`,`month`,`period`),
   KEY `Payroll-Guards_idx` (`GID`),
   CONSTRAINT `Payroll-Guards` FOREIGN KEY (`GID`) REFERENCES `guards` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1441 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1445 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -490,9 +544,83 @@ CREATE TABLE `payroll` (
 
 LOCK TABLES `payroll` WRITE;
 /*!40000 ALTER TABLE `payroll` DISABLE KEYS */;
-INSERT INTO `payroll` VALUES (1406,117,8,2,2017,NULL,5000.00,0.00,5000.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1407,168,8,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1408,117,8,1,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1409,117,7,1,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1410,117,7,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1411,117,6,1,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1412,117,6,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1413,117,4,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1414,117,3,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1415,117,12,2,2016,NULL,150.00,NULL,100.00,NULL,100.00,100.00,NULL,NULL,50.00,NULL,NULL,NULL,0),(1416,117,1,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1417,117,1,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1418,117,2,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1419,117,2,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1420,117,3,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1421,117,3,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1422,117,4,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1423,117,4,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1424,117,5,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1425,117,5,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1426,117,6,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1427,117,6,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1428,117,7,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1429,117,7,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1430,117,8,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1431,117,8,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1432,117,9,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1433,117,9,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1434,117,10,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1435,117,10,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1436,117,11,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1437,117,11,2,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1438,117,12,1,2016,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1439,117,5,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0),(1440,128,7,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0);
+INSERT INTO `payroll` VALUES (1444,117,8,2,2017,NULL,150.00,0.00,100.00,NULL,100.00,100.00,NULL,0.00,50.00,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `payroll` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `msadb`.`payroll_AFTER_INSERT` AFTER INSERT ON `payroll` FOR EACH ROW
+BEGIN
+
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 1, NOW(), NEW.cashbond);
+
+
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 2, NOW(), NEW.cola);
+
+
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 3, NOW(), NEW.cola); 
+
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 4, NOW(), NEW.cashadv);	
+
+
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 5, NOW(), NEW.emergencyallowance);    
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `msadb`.`payroll_BEFORE_UPDATE` 
+BEFORE UPDATE ON `payroll` 
+FOR EACH ROW
+BEGIN
+	IF NEW.cashbond <> OLD.cashbond THEN
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 1, NOW(), NEW.cashbond);
+        END IF;
+	IF NEW.cola <> OLD.cola THEN
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 2, NOW(), NEW.cola);
+        END IF;
+	IF NEW.thirteenth <> OLD.thirteenth THEN
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 3, NOW(), NEW.thirteenth); 
+        END IF;
+	IF NEW.cashadv <> OLD.cashadv THEN
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 4, NOW(), NEW.cashadv);	
+        END IF;
+	IF NEW.emergencyallowance <> OLD.emergencyallowance THEN
+		INSERT INTO `msadb`.`adjustment_log` (`PID`, `AdjType`, `AdjDate`, `Value`) 
+        VALUES (NEW.pid, 5, NOW(), NEW.emergencyallowance);    
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `period`
@@ -647,6 +775,29 @@ INSERT INTO `request_assign` VALUES (1,1,'2017-07-28 00:00:00','2017-07-28 00:00
 UNLOCK TABLES;
 
 --
+-- Table structure for table `request_dismiss`
+--
+
+DROP TABLE IF EXISTS `request_dismiss`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `request_dismiss` (
+  `RDID` int(11) NOT NULL AUTO_INCREMENT,
+  `RID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`RDID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `request_dismiss`
+--
+
+LOCK TABLES `request_dismiss` WRITE;
+/*!40000 ALTER TABLE `request_dismiss` DISABLE KEYS */;
+/*!40000 ALTER TABLE `request_dismiss` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `request_unassign`
 --
 
@@ -698,6 +849,31 @@ LOCK TABLES `sduty_assignment` WRITE;
 /*!40000 ALTER TABLE `sduty_assignment` DISABLE KEYS */;
 INSERT INTO `sduty_assignment` VALUES (1,117,1,1),(2,128,2,1),(3,168,3,1);
 /*!40000 ALTER TABLE `sduty_assignment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sduty_dismissal`
+--
+
+DROP TABLE IF EXISTS `sduty_dismissal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sduty_dismissal` (
+  `DisID` int(11) NOT NULL AUTO_INCREMENT,
+  `DID` int(11) DEFAULT NULL,
+  `RDID` int(11) DEFAULT NULL,
+  `DisStatus` int(11) DEFAULT NULL,
+  PRIMARY KEY (`DisID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sduty_dismissal`
+--
+
+LOCK TABLES `sduty_dismissal` WRITE;
+/*!40000 ALTER TABLE `sduty_dismissal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sduty_dismissal` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -826,4 +1002,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-07 17:37:21
+-- Dump completed on 2017-08-09 17:39:59
