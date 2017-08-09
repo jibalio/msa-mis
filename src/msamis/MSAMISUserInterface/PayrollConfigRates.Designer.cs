@@ -2267,11 +2267,11 @@
             this.ControlBox = false;
             this.Controls.Add(this.RatesPNL);
             this.Controls.Add(this.CloseBTN);
+            this.Controls.Add(this.BasicPagePNL);
             this.Controls.Add(this.WithPagePNL);
             this.Controls.Add(this.MultiplierPagePNL);
             this.Controls.Add(this.GlobalPagePNL);
             this.Controls.Add(this.SSSPagePNL);
-            this.Controls.Add(this.BasicPagePNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollConfigRates";
             this.ShowInTaskbar = false;

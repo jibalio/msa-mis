@@ -63,7 +63,8 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            Close();
+            if (RylMessageBox.ShowDialog("Stop Editing?", "Are you sure you want to stop editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                Close();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {

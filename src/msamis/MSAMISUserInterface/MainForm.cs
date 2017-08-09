@@ -99,7 +99,9 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             //For the Logout Button on the Control Box
-            Close();
+
+            if (RylMessageBox.ShowDialog("Are you sure you want to Logout?", "Logout?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Close();
         }
 
         private void LoadNotifications() {
@@ -1161,7 +1163,7 @@ namespace MSAMISUserInterface {
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
             SViewAssCMBX.SelectedIndex = 0;
             if (int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID) != -1) {
-                if (Login.AccountType == 1) SViewAssUnassignBTN.Visible = true;
+                if (Login.AccountType != 1) SViewAssUnassignBTN.Visible = true;
             }
             else {
                 SViewAssUnassignBTN.Visible = false;
@@ -1274,6 +1276,25 @@ namespace MSAMISUserInterface {
                 if (!row.Cells[5].Value.ToString().Equals("Unscheduled")) ret = false;
             return ret;
         }
+
+        #endregion
+
+        #region SMS - Reports
+        private void SDutyDetailsPreviewBTN_Click(object sender, EventArgs e) {
+            try {
+                var view = new ReportsPreview {
+                    Refer = _shadow,
+                    Location = _newFormLocation,
+                    Main = this,
+                    Mode = 3
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+
 
         #endregion
 
@@ -1435,9 +1456,31 @@ namespace MSAMISUserInterface {
         private void PEmpListSortCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             PayLoadTable();
         }
+
+        #endregion
+
+        #region PMS - View Reports
+        private void PSalaryReportsPreviewBTN_Click(object sender, EventArgs e) {
+            try {
+                var view = new ReportsPreview {
+                    Refer = _shadow,
+                    Location = _newFormLocation,
+                    Main = this,
+                    Mode = 4
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+
+
         #endregion
 
         #endregion
+
+
 
 
     }

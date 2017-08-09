@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class SchedAddDutyDays : Form {
@@ -27,7 +28,8 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            Close();
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                Close();
         }
 
         private void LoadPage() {
