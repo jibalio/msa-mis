@@ -169,7 +169,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion Fields Definition
-        int PID;
+        
         #region Constructors
 
         private DataRow DbValues;
@@ -232,15 +232,22 @@ namespace MSAMISUserInterface {
         }
 
         public void Approve() {
-            string serialized_hours = _SerializeHours();
-            MessageBox.Show(_DeserializeObject(serialized_hours).ToString());
-            string q = $@"  "" 
-UPDATE `msadb`.`payroll` SET `rates_id`='{this.rates_id}', `thirteenth`='{this.ThirteenthMonthPay}', `withtax`='{this.Withtax}', 
-`cashadv`='{this.CashAdvance}', 
-sss = '{this.Sss}',
-WHERE `PID`='{_PayrollId}';
-";
+            // Create serialized dictionary objects
+            // Why? There are too many fields in this dictionary.
+            string serialized_totalsummary = SerializeTotalSummary();
+            string serialized_hc = SerializeHc();
+
+            // Finally, insert these values to the database, saved the 'Always Updating' fields 
+            // (Those with auto-properties)
+            string q = $@" 
+                UPDATE `msadb`.`payroll` SET `rates_id`='{this.rates_id}', `withtax`='{this.Withtax}', `sss`={this.Sss},
+                `totalsummary_serializable`={serialized_totalsummary}, `hc_serializable`={serialized_hc},
+                `pstatus`={Enumeration.PayrollStatus.Approved}
+                WHERE `PID`='{_PayrollId}';";
+
         }
+
+        
 
         #endregion
 
@@ -848,7 +855,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
         #endregion
 
-
+        #region This.Rates initializers
         private void _InitRates() {
             int id = 0;
             string w = $"select rates_id, date_effective, date_dissolved from rates";
@@ -905,19 +912,33 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             }
         }
         private int rates_id;
-        #region Defaults Setter
 
+        #endregion
         public static DateTime GetNextPayday() {
             var p = DateTime.Now;
-            if (5 <= p.Day && p.Day <19) 
-                return  new DateTime(p.Year,p.Month,20);
-            else if ((1<=p.Day && p.Day < 5)) return new DateTime(p.Year, p.Month, 5);
+            if (5 <= p.Day && p.Day < 19)
+                return new DateTime(p.Year, p.Month, 20);
+            else if ((1 <= p.Day && p.Day < 5)) return new DateTime(p.Year, p.Month, 5);
             else if (20 <= p.Day && p.Day <= 31) {
                 p = p.AddMonths(1);
                 return new DateTime(p.Year, p.Month, 5);
-            } 
-            return new DateTime(0,0,0);
+            }
+            return new DateTime(0, 0, 0);
         }
+        #region Defaults Setter
+        private static readonly string[] _rateKeys = new string[] {
+            #region +keys definition
+            "nsu_proper_day_normal", "nsu_proper_day_special", "nsu_proper_day_regular", "nsu_proper_night_normal",
+            "nsu_proper_night_special", "nsu_proper_night_regular", "nsu_overtime_day_normal",
+            "nsu_overtime_day_special", "nsu_overtime_day_regular", "nsu_overtime_night_normal",
+            "nsu_overtime_night_special", "nsu_overtime_night_regular", "sun_proper_day_normal",
+            "sun_proper_day_special", "sun_proper_day_regular", "sun_proper_night_normal", "sun_proper_night_special",
+            "sun_proper_night_regular", "sun_overtime_day_normal", "sun_overtime_day_special",
+            "sun_overtime_day_regular", "sun_overtime_night_normal", "sun_overtime_night_special",
+            "sun_overtime_night_regular"
+            #endregion
+        };
+        
 
         public static DataTable GetRatesList() {
             return SQLTools.ExecuteQuery("SELECT * FROM msadb.rates;");
@@ -987,22 +1008,19 @@ where rates_id={rates_id};
         #endregion
 
 
-        private static readonly string[] _rateKeys = new string[] {
-            #region +keys definition
-            "nsu_proper_day_normal", "nsu_proper_day_special", "nsu_proper_day_regular", "nsu_proper_night_normal",
-            "nsu_proper_night_special", "nsu_proper_night_regular", "nsu_overtime_day_normal",
-            "nsu_overtime_day_special", "nsu_overtime_day_regular", "nsu_overtime_night_normal",
-            "nsu_overtime_night_special", "nsu_overtime_night_regular", "sun_proper_day_normal",
-            "sun_proper_day_special", "sun_proper_day_regular", "sun_proper_night_normal", "sun_proper_night_special",
-            "sun_proper_night_regular", "sun_overtime_day_normal", "sun_overtime_day_special",
-            "sun_overtime_day_regular", "sun_overtime_night_normal", "sun_overtime_night_special",
-            "sun_overtime_night_regular"
-            #endregion
-        };
+       
 
-        private string _SerializeHours() {
+
+
+        private string SerializeHc() {
             using (MemoryStream stream = new MemoryStream()) {
                 new BinaryFormatter().Serialize(stream, this.hc);
+                return Convert.ToBase64String(stream.ToArray());
+            }
+        }
+        private string SerializeTotalSummary() {
+            using (MemoryStream stream = new MemoryStream()) {
+                new BinaryFormatter().Serialize(stream, this.TotalSummary);
                 return Convert.ToBase64String(stream.ToArray());
             }
         }
@@ -1015,11 +1033,7 @@ where rates_id={rates_id};
 
 
 
-        #region
-
-
-
-        #endregion
+       
 
         public DataTable GetAdjustmentHistory() {
             var w = $@"
