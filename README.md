@@ -30,8 +30,6 @@ Nvm ok na.
 * Duty Scheduling Module
 * Payroll Module
 
-![](sss-contribution-table-2017.png)
-![](revised-withholding-tax-tables.jpg)
 
 <br>
 <br>
@@ -46,86 +44,33 @@ Nvm ok na.
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 **U shouldn't be in here, go scroll back up.**
 
-## Docs
+## Benchmark: Payroll object serialization
 
 ```
-/*GENERIC METHODS
-* ExecuteQuery(query)      :   DataTable
-         * ExecuteReader(query)     :   MySqlDataReader
-         * ExecuteNonQuery(query)   :   void
-         * ExecuteSingleResult(query)  :   String
-         * ExecuteQuery (String query)
-         * ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword)
-         * ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword, String orderby)
-         * ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
-         */
+Manual Calculation Method: 0.046613  		46.613ms
+Done
+Manual Calculation Method: 0.0135579		13.5579ms
+Exception thrown: 'System.NullReferenceException' in MSAMISUserInterface.exe
+Done
+Manual Calculation Method: 0.0157274		15.7274ms
+Done
+Manual Calculation Method: 0.0128501		12.8501
 
-        /*
-         *  HOW TO USE ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
-         *  
-         *  Package:    ryldb.sqltools
-         *  Class:      SQLTools
-         *  Method:     ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
-         *  
-         *  @return DataTable with specified filters applied
-         *  @param query:     Base query
-         *                   e.g. select * from clients
-         *  @param ColumnToFilterByKeyword:    column to sortby
-         *                  e.g. AssignmentID
-         *  @param keyword: filter column with keyword
-         *  @param orderby:  format:  "<ColumnToSort> <ASC/DESC>"
-         *  
-         *  @param filters[]: THE TRICKY PART: pay close attention boi 👀👀
-         *  In order for this to work, query must be formatted such that it is compatible with
-         *  C#'s String.format(). 
-         *  TL;DR: Use placeholders {0} {1} .... {n}
-         *  Example: 
-         *      select * from guards where lastname='{0}' and firstname='{1}'
-         *  then, in the filters[] parameter, create a string array containing the corresponding placeholder values.
-         *  
-         *  Example usage:
-         *  String q = "select ln, fn, mn from guards where status={0} and birthyear={1}";
-         *  ryldb.sqltools.SqlTools.ExecuteQuery( q, "ln", "Regodon", "ln asc", new String ("Active", "1998");
-         * 
-         * 
-         *  OTHER VARIANTS THO
-         *  ExecuteQuery (String query)
-         *  ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword)
-         *  ExecuteQuery (String query, String ColumnToFilterByKeyword, String keyword, String orderby)
-         *  ExecuteQuery(String query, String ColumnToFilterByKeyword, String keyword, String orderby, String[] filters)
-         */
 
+Object Deserialization Method: 0.0044557	4.4557ms  (10.4614314249164x faster)
+Exception thrown: 'System.NullReferenceException' in MSAMISUserInterface.exe
+Done
+Object Deserialization Method: 0.0029781	2.9781ms (4.552533494509922x faster)
+Done
+Object Deserialization Method: 0.0035875	3.5875ms 
+Done
+Object Deserialization Method: 0.0041089	4.1089ms
 ```
 
+
+
+**Conclusion:** Use object serialization in (uneditable data).
 

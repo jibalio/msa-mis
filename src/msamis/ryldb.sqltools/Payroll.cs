@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing.Text;
 using System.Globalization;
 using System.IO;
@@ -103,8 +104,10 @@ namespace MSAMISUserInterface {
             get { return _emergencyallowance; }
             set {
                 _emergencyallowance = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `emergencyallowance`='{value}' WHERE `PID`='{_PayrollId}';";
-                SQLTools.ExecuteNonQuery(query);
+                if (_viewmode==0) {
+                    string query = $@"UPDATE `msadb`.`payroll` SET `emergencyallowance`='{value}' WHERE `PID`='{_PayrollId}';";
+                    SQLTools.ExecuteNonQuery(query); 
+                }
             }
         }
 
@@ -112,8 +115,10 @@ namespace MSAMISUserInterface {
             get { return _cashbond; }
             set {
                 _cashbond = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `cashbond`='{value}' WHERE `PID`='{_PayrollId}';";
-                SQLTools.ExecuteNonQuery(query);
+                if (_viewmode == 0) {
+                    string query = $@"UPDATE `msadb`.`payroll` SET `cashbond`='{value}' WHERE `PID`='{_PayrollId}';";
+                    SQLTools.ExecuteNonQuery(query); 
+                }
             }
         }
 
@@ -121,8 +126,10 @@ namespace MSAMISUserInterface {
             get { return _cola; }
             set {
                 _cola = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `cola`='{value}' WHERE `PID`='{_PayrollId}';";
-                SQLTools.ExecuteNonQuery(query);
+                if (_viewmode == 0) {
+                    string query = $@"UPDATE `msadb`.`payroll` SET `cola`='{value}' WHERE `PID`='{_PayrollId}';";
+                    SQLTools.ExecuteNonQuery(query); 
+                }
             }
         }
 
@@ -130,8 +137,10 @@ namespace MSAMISUserInterface {
             get { return _thirteen; }
             set {
                 _thirteen = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `thirteenth`='{value}' WHERE `PID`='{_PayrollId}';";
-                SQLTools.ExecuteNonQuery(query);
+                if (_viewmode == 0) {
+                    string query = $@"UPDATE `msadb`.`payroll` SET `thirteenth`='{value}' WHERE `PID`='{_PayrollId}';";
+                    SQLTools.ExecuteNonQuery(query); 
+                }
             }
         }
 
@@ -182,26 +191,24 @@ namespace MSAMISUserInterface {
         /// <param name="period">Period of payroll [1/2]</param>
         /// <param name="year">Year of payroll</param>
         public Payroll(int GID, int month, int period, int year) {
+            sw.Start();
             this.GID = GID;
             this.period.period = period;
             this.period.month = month;
             this.period.year = year;
-            this._InitRates();
-            this._BasicPayHourly = _GetMyBasicPays() / 8.00;
-            
-
             // Create DataTable for future calls.
             DataTable d =
                 SQLTools.ExecuteQuery(
                     $@"select count(*) as `c` from payroll where gid={GID} AND month={month} AND period={period} AND year={year}");
-
+            this._BasicPayHourly = _GetMyBasicPays() / 8.00;
             // If record is not present yet (while object is created).
-            if (d.Rows[0][0].ToString()=="0") {
+            if (d.Rows[0][0].ToString() == "0") {
                 string insertionquery = $@"
                     INSERT INTO `msadb`.`payroll`
                     (`GID`, `month`, `period`, `year`, `cashbond`, `pagibig`, `philhealth`, `cola`, `emergencyallowance`, `pstatus`)
                     VALUES ('{this.GID}', '{this.period.month}', '{this.period.period}', '{this.period.year}', 
-                    '{RetrieveDefaultCashBond()}', '{RetriveDefaultPagibig()}', '{RetrieveDefaultPhilhealth()}', '{RetrieveDefaultCola()}', '{RetrieveDefaultEmergency()}', '{Enumeration.PayrollStatus.Pending}');";
+                    '{RetrieveDefaultCashBond()}', '{RetriveDefaultPagibig()}', '{RetrieveDefaultPhilhealth()}', 
+                    '{RetrieveDefaultCola()}', '{RetrieveDefaultEmergency()}', '{Enumeration.PayrollStatus.Pending}');";
                 SQLTools.ExecuteNonQuery(insertionquery);
             }
 
@@ -209,18 +216,47 @@ namespace MSAMISUserInterface {
                 SQLTools.ExecuteQuery(
                     $@"select * from payroll where gid={GID} AND month={month} AND period={period} AND year={year}").Rows[0];
             this._PayrollId = int.Parse(DbValues["PID"].ToString());
+            if (DbValues["pstatus"].ToString() == Enumeration.PayrollStatus.Approved.ToString()) {
+                _InitMeApproved();
+            }
+            else  _InitMeSoftly(month, year);
+            
 
+            
+        }
+        private Stopwatch sw = new Stopwatch();
+        private int _viewmode;
+        private void _InitMeApproved() {
+            this._viewmode = 1;
+            this.GID = int.Parse(DbValues["GID"].ToString());
+            // Set the derivables
+            this.EmergencyAllowance = double.Parse(DbValues["emergencyallowance"].ToString());
+            this.CashBond = double.Parse(DbValues["cashbond"].ToString());
+            this.Cola = double.Parse(DbValues["cola"].ToString());
+            this.ThirteenthMonthPay = double.Parse(DbValues["thirteenth"].ToString());
+            this.CashAdvance = double.Parse(DbValues["cashadv"].ToString());
+            // Set the primitives
+            this.PagIbig = double.Parse(DbValues["pagibig"].ToString());
+            this.PhilHealth = double.Parse(DbValues["philhealth"].ToString());
+            this.Sss = double.Parse(DbValues["sss"].ToString());
+            this.Withtax =  double.Parse(DbValues["withtax"].ToString());
+            this.hc = (Dictionary<string, HourCostPair>) _DeserializeObject(
+                System.Text.Encoding.Default.GetString((byte[])DbValues["hc_serializable"])
+                );
+            this.TotalSummary = (Dictionary<string, HourCostPair>)_DeserializeObject(
+                System.Text.Encoding.Default.GetString((byte[])DbValues["totalsummary_serializable"])
+                );
+            sw.Stop();
+            Console.WriteLine("Done\nObject Deserialization Method: {0}", sw.Elapsed.TotalSeconds);
+        }
+
+        private void _InitMeSoftly(int month, int year) {
+            this._viewmode = 0;
+            this._InitRates();
             ComputeHours();
             Compute();
-        }
-        
-        /// <summary>
-        /// Creates a payroll object from a DataTable. Use this for already
-        /// approved payrolls stored in the database.
-        /// </summary>
-        /// <param name="dt">DataTable object from payroll query (MySql)</param>
-        public Payroll(DataTable dt) {
-            
+            sw.Stop();
+            Console.WriteLine("Done\nManual Calculation Method: {0}", sw.Elapsed.TotalSeconds);
         }
 
         #endregion
@@ -241,9 +277,10 @@ namespace MSAMISUserInterface {
             // (Those with auto-properties)
             string q = $@" 
                 UPDATE `msadb`.`payroll` SET `rates_id`='{this.rates_id}', `withtax`='{this.Withtax}', `sss`={this.Sss},
-                `totalsummary_serializable`={serialized_totalsummary}, `hc_serializable`={serialized_hc},
-                `pstatus`={Enumeration.PayrollStatus.Approved}
+                `totalsummary_serializable`='{serialized_totalsummary}', `hc_serializable`='{serialized_hc}',
+                `pstatus`={Enumeration.PayrollStatus.Approved}, `basicpayhourly`={_BasicPayHourly}
                 WHERE `PID`='{_PayrollId}';";
+            SQLTools.ExecuteQuery(q);
 
         }
 
