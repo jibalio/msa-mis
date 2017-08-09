@@ -338,5 +338,9 @@ namespace MSAMISUserInterface {
         private void SSSLBL_MouseLeave(object sender, EventArgs e) {
             HidePop(SSSPop);
         }
+
+        private void ApproveBTN_Click(object sender, EventArgs e) {
+            _pay.Approve();
+        }
     }
 }

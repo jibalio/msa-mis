@@ -239,6 +239,7 @@
             this.ApproveBTN.TabIndex = 255;
             this.ApproveBTN.Text = "APPROVE";
             this.ApproveBTN.UseVisualStyleBackColor = false;
+            this.ApproveBTN.Click += new System.EventHandler(this.ApproveBTN_Click);
             // 
             // NetPayLBL
             // 
