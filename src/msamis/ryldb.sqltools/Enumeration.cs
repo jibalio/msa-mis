@@ -8,6 +8,16 @@ using Microsoft.Office.Interop.Excel;
 namespace MSAMISUserInterface {
     public class Enumeration {
 
+        public class AdjTypes
+        {
+            public static int CashBond = 1;
+            public static int Cola = 2;
+            public static int Thirteenth = 3;
+            public static int CashAdvance = 4;
+            public static int EmergencyAllowance = 5;
+        }
+
+
         public class BasicPayStatus {
             public static int Future = 2;
             public static int Past = 0;

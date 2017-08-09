@@ -169,7 +169,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion Fields Definition
-
+        int PID;
         #region Constructors
 
         private DataRow DbValues;
@@ -574,11 +574,11 @@ select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pen
 
 
         public static DataTable GetBasicPayHistory() {
-            var q = @"select bpid, amount, start, end, case status
-            when 1 then 'Active'
-            when 0 then 'Inactive'
-            end as status
-            from basicpay order by status desc";
+            var q = @"use msadb;
+select bpid, amount,start,case `end`
+when '-1' then 'Pending' 
+when end then end
+end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc";
             return SQLTools.ExecuteQuery(q);
         }
 
@@ -728,13 +728,21 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
         public static DataTable GetGuardsPayrollMain(string search, int status) {
             string q;
             if (status == -1) {
-                q = @"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
+                q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
                                                             WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL)
                                                             THEN 'Yes'
                                                             ELSE 'No Attendance Details Found'
                                                         END
-                                                      ) AS attendance, pstatus
+                                                      ) AS attendance, 
+
+                case pstatus
+            when {Enumeration.PayrollStatus.Approved} then 'Approved'
+            when {Enumeration.PayrollStatus.Calculated} then 'Calculated'
+            when {Enumeration.PayrollStatus.Pending} then 'Pending'
+            end as pstatus
+
+ 
                                                 from request
                                                 left join client on client.cid=request.cid
                                                 left join request_assign on request_assign.rid=request.rid
@@ -1012,5 +1020,21 @@ where rates_id={rates_id};
 
 
         #endregion
+
+        public DataTable GetAdjustmentHistory() {
+            var w = $@"
+            SELECT case AdjType 
+            when {Enumeration.AdjTypes.CashAdvance} then 'Cash Adv.'
+            when {Enumeration.AdjTypes.CashBond} then 'Cash Bond'
+            when {Enumeration.AdjTypes.Cola} then 'Cola'
+            when {Enumeration.AdjTypes.EmergencyAllowance} then 'Emer. Allowance'
+            when {Enumeration.AdjTypes.Thirteenth} then '13th Month'
+            end as adjtype,
+            adjdate as addedon,
+            value 
+            FROM msadb.adjustment_log where PID='{this._PayrollId}'";
+            return SQLTools.ExecuteQuery(w);
+        }
+
     }
 }
