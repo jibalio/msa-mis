@@ -24,6 +24,31 @@ DefaultEmer = 50.00";
             InitPayrollConfig();
             initRates();
             InitReportsFolder();
+            //InitGuardStatuses();
+        }
+
+        public static void InitGuardStatuses() {
+            var w = $@"
+               update
+	                request_assign 
+                    left join sduty_assignment on sduty_assignment.RAID=request_assign.RAID 
+                    left join guards on guards.gid = sduty_assignment.GID
+                set
+	                gstatus=1
+                where
+	                contractstart<now() AND ContractEnd>now() and gstatus=0";
+            SQLTools.ExecuteQuery(w);
+            w = $@"
+            update
+	            request_assign 
+                left join sduty_assignment on sduty_assignment.RAID=request_assign.RAID 
+                left join guards on guards.gid = sduty_assignment.GID
+            set
+	            gstatus=0
+            where
+	            ContractEnd<now() and gstatus = 1
+            ";
+            SQLTools.ExecuteQuery(w);
         }
 
         public static void InitPayrollConfig() {
