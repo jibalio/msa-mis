@@ -1590,8 +1590,7 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
                 PSummaryFilesLST.Items.Add(listViewItem);
             }
-
-            PSummarySaveToBTN.Visible = false;
+            
             PSummaryErrorPNL.Visible = PSummaryFilesLST.Items.Count == 0;
             PSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
         }
