@@ -442,7 +442,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SchedAssignGuards";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SchedAssignGuards_FormClosing);
             this.Load += new System.EventHandler(this.Sched_AssignGuards_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AvailableGRD)).EndInit();
