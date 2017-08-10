@@ -1293,7 +1293,7 @@ namespace MSAMISUserInterface {
             }
 
             SSummarySaveToBTN.Visible = false;
-            SSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
+            SSummaryErrorPNL.Visible = SSummaryFilesLST.Items.Count == 0;
             SSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
         }
 
@@ -1406,6 +1406,7 @@ namespace MSAMISUserInterface {
 
         private void PSalaryReportBTN_Click(object sender, EventArgs e) {
             PcHnagePanel(PSalaryReportPage, PSalaryReportBTN);
+            PayLoadReport();
         }
 
         #endregion
@@ -1505,11 +1506,6 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
 
-
-        #endregion
-
-        #endregion
-
         private void PSalaryReportsExportBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new Exporting {
@@ -1527,19 +1523,25 @@ namespace MSAMISUserInterface {
 
         public void PayLoadReport() {
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
-            FileInfo[] files = d.GetFiles("SchedSummaryReport*.xlsx"); //Getting Text files]
+            FileInfo[] files = d.GetFiles("PaySummaryReport*.xlsx"); //Getting Text files]
 
-            SSummaryFilesLST.Items.Clear();
+            PSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
                 string[] row = { file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName };
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
-                SSummaryFilesLST.Items.Add(listViewItem);
+                PSummaryFilesLST.Items.Add(listViewItem);
             }
 
-            SSummarySaveToBTN.Visible = false;
-            SSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
-            SSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            PSummarySaveToBTN.Visible = false;
+            PSummaryErrorPNL.Visible = PSummaryFilesLST.Items.Count == 0;
+            PSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
         }
+
+        #endregion
+
+        #endregion
+
+
 
 
     }

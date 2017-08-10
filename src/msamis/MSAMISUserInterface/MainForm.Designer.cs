@@ -189,8 +189,8 @@
             this.PPeriodLBL = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.PSalaryReportPage = new System.Windows.Forms.Panel();
-            this.label27 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.PSummarySaveToBTN = new System.Windows.Forms.Label();
+            this.PSummaryErrorPNL = new System.Windows.Forms.Panel();
             this.label28 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -201,8 +201,8 @@
             this.label45 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.PSalaryReportsPreviewBTN = new System.Windows.Forms.Button();
-            this.label48 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.PSummaryDateLBL = new System.Windows.Forms.Label();
+            this.PSummaryFilesLST = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label51 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
@@ -296,7 +296,7 @@
             this.PayrollPage.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.PSalaryReportPage.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.PSummaryErrorPNL.SuspendLayout();
             this.panel3.SuspendLayout();
             this.PEmpListPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PEmpListGRD)).BeginInit();
@@ -2577,37 +2577,37 @@
             // 
             // PSalaryReportPage
             // 
-            this.PSalaryReportPage.Controls.Add(this.label27);
-            this.PSalaryReportPage.Controls.Add(this.panel2);
+            this.PSalaryReportPage.Controls.Add(this.PSummarySaveToBTN);
             this.PSalaryReportPage.Controls.Add(this.panel3);
-            this.PSalaryReportPage.Controls.Add(this.listView1);
+            this.PSalaryReportPage.Controls.Add(this.PSummaryFilesLST);
             this.PSalaryReportPage.Controls.Add(this.label51);
             this.PSalaryReportPage.Controls.Add(this.label53);
+            this.PSalaryReportPage.Controls.Add(this.PSummaryErrorPNL);
             this.PSalaryReportPage.Location = new System.Drawing.Point(15, 14);
             this.PSalaryReportPage.Name = "PSalaryReportPage";
             this.PSalaryReportPage.Size = new System.Drawing.Size(690, 640);
             this.PSalaryReportPage.TabIndex = 20;
             this.PSalaryReportPage.Visible = false;
             // 
-            // label27
+            // PSummarySaveToBTN
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label27.Location = new System.Drawing.Point(598, 381);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(58, 15);
-            this.label27.TabIndex = 37;
-            this.label27.Text = "Save to...";
+            this.PSummarySaveToBTN.AutoSize = true;
+            this.PSummarySaveToBTN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.PSummarySaveToBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PSummarySaveToBTN.Location = new System.Drawing.Point(598, 381);
+            this.PSummarySaveToBTN.Name = "PSummarySaveToBTN";
+            this.PSummarySaveToBTN.Size = new System.Drawing.Size(58, 15);
+            this.PSummarySaveToBTN.TabIndex = 37;
+            this.PSummarySaveToBTN.Text = "Save to...";
             // 
-            // panel2
+            // PSummaryErrorPNL
             // 
-            this.panel2.Controls.Add(this.label28);
-            this.panel2.Controls.Add(this.label40);
-            this.panel2.Location = new System.Drawing.Point(25, 412);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(645, 200);
-            this.panel2.TabIndex = 36;
+            this.PSummaryErrorPNL.Controls.Add(this.label28);
+            this.PSummaryErrorPNL.Controls.Add(this.label40);
+            this.PSummaryErrorPNL.Location = new System.Drawing.Point(25, 412);
+            this.PSummaryErrorPNL.Name = "PSummaryErrorPNL";
+            this.PSummaryErrorPNL.Size = new System.Drawing.Size(645, 200);
+            this.PSummaryErrorPNL.TabIndex = 36;
             // 
             // label28
             // 
@@ -2645,7 +2645,7 @@
             this.panel3.Controls.Add(this.label45);
             this.panel3.Controls.Add(this.label47);
             this.panel3.Controls.Add(this.PSalaryReportsPreviewBTN);
-            this.panel3.Controls.Add(this.label48);
+            this.panel3.Controls.Add(this.PSummaryDateLBL);
             this.panel3.Location = new System.Drawing.Point(20, 28);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(648, 236);
@@ -2747,35 +2747,35 @@
             this.PSalaryReportsPreviewBTN.UseVisualStyleBackColor = false;
             this.PSalaryReportsPreviewBTN.Click += new System.EventHandler(this.PSalaryReportsPreviewBTN_Click);
             // 
-            // label48
+            // PSummaryDateLBL
             // 
-            this.label48.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label48.ForeColor = System.Drawing.Color.White;
-            this.label48.Location = new System.Drawing.Point(33, 60);
-            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(587, 19);
-            this.label48.TabIndex = 22;
-            this.label48.Text = "Sunday, July 30 2017";
-            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PSummaryDateLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.PSummaryDateLBL.ForeColor = System.Drawing.Color.White;
+            this.PSummaryDateLBL.Location = new System.Drawing.Point(33, 60);
+            this.PSummaryDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PSummaryDateLBL.Name = "PSummaryDateLBL";
+            this.PSummaryDateLBL.Size = new System.Drawing.Size(587, 19);
+            this.PSummaryDateLBL.TabIndex = 22;
+            this.PSummaryDateLBL.Text = "Sunday, July 30 2017";
+            this.PSummaryDateLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listView1
+            // PSummaryFilesLST
             // 
-            this.listView1.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.PSummaryFilesLST.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.PSummaryFilesLST.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PSummaryFilesLST.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3});
-            this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.listView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView1.LargeImageList = this.ImageList;
-            this.listView1.Location = new System.Drawing.Point(57, 421);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(583, 187);
-            this.listView1.SmallImageList = this.ImageList;
-            this.listView1.TabIndex = 33;
-            this.listView1.TileSize = new System.Drawing.Size(200, 50);
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.PSummaryFilesLST.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.PSummaryFilesLST.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PSummaryFilesLST.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.PSummaryFilesLST.LargeImageList = this.ImageList;
+            this.PSummaryFilesLST.Location = new System.Drawing.Point(57, 421);
+            this.PSummaryFilesLST.Name = "PSummaryFilesLST";
+            this.PSummaryFilesLST.Size = new System.Drawing.Size(583, 187);
+            this.PSummaryFilesLST.SmallImageList = this.ImageList;
+            this.PSummaryFilesLST.TabIndex = 33;
+            this.PSummaryFilesLST.TileSize = new System.Drawing.Size(200, 50);
+            this.PSummaryFilesLST.UseCompatibleStateImageBehavior = false;
             // 
             // label51
             // 
@@ -3550,12 +3550,12 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ControlBoxPanel);
+            this.Controls.Add(this.PayrollPage);
             this.Controls.Add(this.SchedulesPage);
             this.Controls.Add(this.DashboardPage);
             this.Controls.Add(this.GuardsPage);
             this.Controls.Add(this.ClientsPage);
             this.Controls.Add(this.SamplePNL);
-            this.Controls.Add(this.PayrollPage);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -3622,7 +3622,7 @@
             this.flowLayoutPanel3.ResumeLayout(false);
             this.PSalaryReportPage.ResumeLayout(false);
             this.PSalaryReportPage.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.PSummaryErrorPNL.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.PEmpListPage.ResumeLayout(false);
             this.PEmpListPage.PerformLayout();
@@ -3846,8 +3846,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label PSummarySaveToBTN;
+        private System.Windows.Forms.Panel PSummaryErrorPNL;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Panel panel3;
@@ -3858,8 +3858,8 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Button PSalaryReportsPreviewBTN;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label PSummaryDateLBL;
+        private System.Windows.Forms.ListView PSummaryFilesLST;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label53;
