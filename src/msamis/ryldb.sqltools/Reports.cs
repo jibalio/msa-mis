@@ -162,11 +162,11 @@ namespace MSAMISUserInterface
             return 0;
         }
 
-        private String formatFileName(char origin)
+        private String formatFileName(char o)
         {
-            if (origin == 'g')
+            if (o == 'g')
                 return "GuardsSummaryReport_" + now.ToString("MMM-dd-yyyy");
-            else if (origin == 'c')
+            else if (o == 'c')
                 return "ClientSummaryReport_" + now.ToString("MMM-dd-yyyy");
             return "";
         }

@@ -13,13 +13,15 @@ namespace MSAMISUserInterface
     public partial class ReportsForm : Form
     {
         public SqlConnection conn;
-        public DateTime now = DateTime.Now;
+        public DateTime dateToday = DateTime.Now;
         public ReportsForm()
         {
             InitializeComponent();
             RefreshGuardsSummaryList();
             RefreshClientsSummaryList();
         }
+
+        #region Excel Reports
 
         #region Guards Summary
 
@@ -55,7 +57,7 @@ namespace MSAMISUserInterface
             ClientsSummaryTBL.Columns["Status"].HeaderText = "STATUS";
             ClientsSummaryTBL.Columns["Address"].HeaderText = "ADDRESS";
             ClientsSummaryTBL.Columns["Manager"].HeaderText = "MANAGER";
-           ClientsSummaryTBL.Columns["Contact Person"].HeaderText = "CONTACT PERSON";
+            ClientsSummaryTBL.Columns["Contact Person"].HeaderText = "CONTACT PERSON";
             ClientsSummaryTBL.Columns["Contact Number"].HeaderText = "CONTACT NUMBER";
 
             #region Format Table
@@ -70,6 +72,8 @@ namespace MSAMISUserInterface
             #endregion
 
         }
+
+        #endregion
 
         #endregion
 
@@ -101,8 +105,8 @@ namespace MSAMISUserInterface
 
         private void ReportsForm_Load (object sender, EventArgs e)
         {
-            GSummaryDateLBL.Text = "Guards Summary as of " + now.ToString("MM/dd/yyyy");
-            CSummaryDateLBL.Text = "Clients Summary as of " + now.ToString("MM/dd/yyyy");
+            GSummaryDateLBL.Text = "Guards Summary as of " + DateTime.Now.ToString("MM/dd/yyyy");
+            CSummaryDateLBL.Text = "Clients Summary as of " + DateTime.Now.ToString("MM/dd/yyyy");
             GTotalLBL.Text = "Total Guards: " + Reports.GetTotalGuards('g', 't');
             GTotalActiveLBL.Text = "Total Active Guards: " + Reports.GetTotalGuards('g', 'a');
             CTotalLBL.Text = "Total Clients: " + Reports.GetTotalGuards('c', 't');
@@ -111,24 +115,81 @@ namespace MSAMISUserInterface
 
         #endregion
 
+        #region PDF Reports
+
+        #region Client Report
+
+
+        #endregion
+
+
+        #region Client Report
+
+
+        #endregion
+
+
+        #endregion
+
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------
+
+
+
+
+
         private void CExportToPDFBTN_Click(object sender, EventArgs e)
         {
-            PdfPTable pdfTable = new PdfPTable(ClientsSummaryTBL.ColumnCount);
-            float[] widths = new float[] { 120f, 50f, 250f, 135f, 135f, 80f };
-            pdfTable.SetWidths(widths);
-            pdfTable.DefaultCell.Padding = 3;
-            pdfTable.WidthPercentage = 30;
+            Reports1.ExportToPDF(FormatPDF('c'), 'c');
+        }
+
+        public DataGridView GetDataGridViewData(char o)
+        {
+            if (o == 'c')
+            return ClientsSummaryTBL;
+            if (o == 'g')
+                return GuardsSummaryTBL;
+            return null;
+        }
+
+        private PdfPTable FormatPDF(char formOrigin)
+        {
+            //Default PDF Format
+            Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
+            Font headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
+            PdfPTable pdfTable = new PdfPTable(GetDataGridViewData(formOrigin).ColumnCount);
+            pdfTable.SetWidths(Reports1.GetPDFFormat(formOrigin));
             pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable.DefaultCell.Padding = 3;
+            pdfTable.WidthPercentage = 30;
             pdfTable.DefaultCell.BorderWidth = 1;
-            Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
+            pdfTable.HorizontalAlignment = 1;
+            pdfTable.TotalWidth = 900f;
+            pdfTable.LockedWidth = true;
 
             //Add Headers Here
+            pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfTable.AddCell(new Phrase("Client Name", headerfont));
+            pdfTable.AddCell(new Phrase("Status", headerfont));
+            pdfTable.AddCell(new Phrase("Client Address", headerfont));
+            pdfTable.AddCell(new Phrase("Manager", headerfont));
+            pdfTable.AddCell(new Phrase("Contact Person", headerfont));
+            pdfTable.AddCell(new Phrase("Contact Number", headerfont));
 
 
-            //Adding DataRow
-            foreach (DataGridViewRow row in ClientsSummaryTBL.Rows)
+            //Add Data to PDF
+            foreach (DataGridViewRow row in GetDataGridViewData(formOrigin).Rows)
             {
+
                 foreach (DataGridViewCell cell in row.Cells)
                 {
                     PdfPCell newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont));
@@ -137,35 +198,9 @@ namespace MSAMISUserInterface
                     pdfTable.AddCell(newcell);
                 }
             }
-
-            pdfTable.HorizontalAlignment = 1;
-            pdfTable.TotalWidth = 900f;
-            pdfTable.LockedWidth = true;
-            //Exporting to PDF
-            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-
-            if (File.Exists(folderPath + "\\" + "DataGridViewExport.pdf"))
-            {
-                DialogResult x = rylui.RylMessageBox.ShowDialog("DataGridViewExport.pdf" + " already exists.\nDo you want to replace it?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (x == DialogResult.Yes)
-                {
-                    File.Delete(folderPath + "\\" + "DataGridViewExport.pdf");
-                }
-            }
-            using (FileStream stream = new FileStream(folderPath + "\\" + "DataGridViewExport.pdf", FileMode.Create))
-            {
-                Document pdfDoc = new Document(PageSize.LEGAL.Rotate(), 10f, 10f, 10f, 0f);
-                PdfWriter.GetInstance(pdfDoc, stream);
-                pdfDoc.Open();
-                pdfDoc.Add(pdfTable);
-                pdfDoc.Close();
-                stream.Close();
-            }
+            return pdfTable;
         }
+
 
     }
 }

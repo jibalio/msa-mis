@@ -1,7 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.SqlClient;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.IO;
+using System.Data;
+using System.Reflection;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+
 
 namespace MSAMISUserInterface {
     public partial class ReportsPreview : Form {
@@ -100,13 +106,71 @@ namespace MSAMISUserInterface {
         private void button1_Click(object sender, EventArgs e) {
             if (Mode == 1) {
                 var r = new Reports();
-                r.ExporttoExcel('g');
+                FormatPDF('g');
                 Main.GuardsLoadReport();
             } else if (Mode == 2) {
                 var r = new Reports();
-                r.ExporttoExcel('c');
+                FormatPDF('c');
                 Main.ClientsLoadSummary();
             }
         }
+
+
+        #region RylBlock
+
+        private void CExportToPDFBTN_Click(object sender, EventArgs e)
+        {
+            Reports1.ExportToPDF(FormatPDF('c'), 'c');
+        }
+
+
+        private PdfPTable FormatPDF(char formOrigin)
+        {
+            //Default PDF Format
+            Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
+            Font headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
+            PdfPTable pdfTable = new PdfPTable(GReportGRD.ColumnCount);
+            pdfTable.SetWidths(Reports1.GetPDFFormat(formOrigin));
+            pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable.DefaultCell.Padding = 3;
+            pdfTable.WidthPercentage = 30;
+            pdfTable.DefaultCell.BorderWidth = 1;
+            pdfTable.HorizontalAlignment = 1;
+            pdfTable.TotalWidth = 900f;
+            pdfTable.LockedWidth = true;
+
+            //Add Headers Here
+            pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfTable.AddCell(new Phrase("Client Name", headerfont));
+            pdfTable.AddCell(new Phrase("Status", headerfont));
+            pdfTable.AddCell(new Phrase("Client Address", headerfont));
+            pdfTable.AddCell(new Phrase("Manager", headerfont));
+            pdfTable.AddCell(new Phrase("Contact Person", headerfont));
+            pdfTable.AddCell(new Phrase("Contact Number", headerfont));
+
+
+            //Add Data to PDF
+            foreach (DataGridViewRow row in GReportGRD.Rows)
+            {
+
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    PdfPCell newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont));
+                    newcell.PaddingTop = 5f;
+                    newcell.PaddingBottom = 8f;
+                    pdfTable.AddCell(newcell);
+                }
+            }
+            return pdfTable;
+        }
+
+
+        #endregion
+
+
+
+
+
     }
 }
