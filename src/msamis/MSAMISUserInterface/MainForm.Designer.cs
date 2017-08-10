@@ -143,7 +143,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SDutyDetailsExportBTN = new System.Windows.Forms.Button();
             this.label57 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
@@ -188,13 +188,6 @@
             this.PPayLBL = new System.Windows.Forms.Label();
             this.PPeriodLBL = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.PEmpListPage = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.PEmpListSortCMBX = new System.Windows.Forms.ComboBox();
-            this.PEmpListSearchBX = new System.Windows.Forms.TextBox();
-            this.PEmpListViewBTN = new System.Windows.Forms.Button();
-            this.PEmpListGRD = new System.Windows.Forms.DataGridView();
-            this.PEmpListSearchLine = new System.Windows.Forms.Label();
             this.PSalaryReportPage = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -203,7 +196,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.PSalaryReportsExportBTN = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
@@ -213,6 +206,13 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label51 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
+            this.PEmpListPage = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.PEmpListSortCMBX = new System.Windows.Forms.ComboBox();
+            this.PEmpListSearchBX = new System.Windows.Forms.TextBox();
+            this.PEmpListViewBTN = new System.Windows.Forms.Button();
+            this.PEmpListGRD = new System.Windows.Forms.DataGridView();
+            this.PEmpListSearchLine = new System.Windows.Forms.Label();
             this.ClientsPage = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label34 = new System.Windows.Forms.Label();
@@ -295,11 +295,11 @@
             this.PayrollPage.Panel2.SuspendLayout();
             this.PayrollPage.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.PEmpListPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PEmpListGRD)).BeginInit();
             this.PSalaryReportPage.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.PEmpListPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PEmpListGRD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsPage)).BeginInit();
             this.ClientsPage.Panel1.SuspendLayout();
             this.ClientsPage.Panel2.SuspendLayout();
@@ -1821,7 +1821,7 @@
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel7.Controls.Add(this.label37);
             this.panel7.Controls.Add(this.label55);
-            this.panel7.Controls.Add(this.button3);
+            this.panel7.Controls.Add(this.SDutyDetailsExportBTN);
             this.panel7.Controls.Add(this.label57);
             this.panel7.Controls.Add(this.label59);
             this.panel7.Controls.Add(this.label64);
@@ -1856,22 +1856,23 @@
             this.label55.Text = "Total Guards:";
             this.label55.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button3
+            // SDutyDetailsExportBTN
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(332, 178);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 31);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "EXPORT";
-            this.button3.UseVisualStyleBackColor = false;
+            this.SDutyDetailsExportBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.SDutyDetailsExportBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SDutyDetailsExportBTN.BackgroundImage")));
+            this.SDutyDetailsExportBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SDutyDetailsExportBTN.FlatAppearance.BorderSize = 0;
+            this.SDutyDetailsExportBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.SDutyDetailsExportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SDutyDetailsExportBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SDutyDetailsExportBTN.ForeColor = System.Drawing.Color.White;
+            this.SDutyDetailsExportBTN.Location = new System.Drawing.Point(332, 178);
+            this.SDutyDetailsExportBTN.Name = "SDutyDetailsExportBTN";
+            this.SDutyDetailsExportBTN.Size = new System.Drawing.Size(105, 31);
+            this.SDutyDetailsExportBTN.TabIndex = 25;
+            this.SDutyDetailsExportBTN.Text = "EXPORT";
+            this.SDutyDetailsExportBTN.UseVisualStyleBackColor = false;
+            this.SDutyDetailsExportBTN.Click += new System.EventHandler(this.SDutyDetailsExportBTN_Click);
             // 
             // label57
             // 
@@ -1997,7 +1998,7 @@
             this.SViewAssPNL.Controls.Add(this.SViewAssignmentErrorPNL);
             this.SViewAssPNL.Location = new System.Drawing.Point(15, 14);
             this.SViewAssPNL.Name = "SViewAssPNL";
-            this.SViewAssPNL.Size = new System.Drawing.Size(702, 640);
+            this.SViewAssPNL.Size = new System.Drawing.Size(703, 640);
             this.SViewAssPNL.TabIndex = 13;
             this.SViewAssPNL.Visible = false;
             // 
@@ -2084,7 +2085,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(514, 23);
+            this.label10.Location = new System.Drawing.Point(515, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 19);
@@ -2103,7 +2104,7 @@
             "All",
             "Scheduled",
             "Unscheduled"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(566, 20);
+            this.SViewAssCMBX.Location = new System.Drawing.Point(567, 20);
             this.SViewAssCMBX.Name = "SViewAssCMBX";
             this.SViewAssCMBX.Size = new System.Drawing.Size(119, 25);
             this.SViewAssCMBX.Sorted = true;
@@ -2119,7 +2120,7 @@
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssSearchTXTBX.Location = new System.Drawing.Point(220, 71);
             this.SViewAssSearchTXTBX.Name = "SViewAssSearchTXTBX";
-            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(267, 18);
+            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(268, 18);
             this.SViewAssSearchTXTBX.TabIndex = 8;
             this.SViewAssSearchTXTBX.Text = "Search or filter";
             this.SViewAssSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2172,7 +2173,7 @@
             this.SViewAssGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.SViewAssGRD.RowHeadersVisible = false;
             this.SViewAssGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SViewAssGRD.Size = new System.Drawing.Size(663, 458);
+            this.SViewAssGRD.Size = new System.Drawing.Size(664, 458);
             this.SViewAssGRD.TabIndex = 5;
             this.SViewAssGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewAssGRD_CellEnter);
             this.SViewAssGRD.DoubleClick += new System.EventHandler(this.SViewAssGRD_DoubleClick);
@@ -2183,7 +2184,7 @@
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SViewAssSearchLine.Location = new System.Drawing.Point(255, 76);
+            this.SViewAssSearchLine.Location = new System.Drawing.Point(256, 76);
             this.SViewAssSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SViewAssSearchLine.Name = "SViewAssSearchLine";
             this.SViewAssSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -2574,6 +2575,232 @@
             this.label29.TabIndex = 0;
             this.label29.Text = "Payroll";
             // 
+            // PSalaryReportPage
+            // 
+            this.PSalaryReportPage.Controls.Add(this.label27);
+            this.PSalaryReportPage.Controls.Add(this.panel2);
+            this.PSalaryReportPage.Controls.Add(this.panel3);
+            this.PSalaryReportPage.Controls.Add(this.listView1);
+            this.PSalaryReportPage.Controls.Add(this.label51);
+            this.PSalaryReportPage.Controls.Add(this.label53);
+            this.PSalaryReportPage.Location = new System.Drawing.Point(15, 14);
+            this.PSalaryReportPage.Name = "PSalaryReportPage";
+            this.PSalaryReportPage.Size = new System.Drawing.Size(690, 640);
+            this.PSalaryReportPage.TabIndex = 20;
+            this.PSalaryReportPage.Visible = false;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label27.Location = new System.Drawing.Point(598, 381);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(58, 15);
+            this.label27.TabIndex = 37;
+            this.label27.Text = "Save to...";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label28);
+            this.panel2.Controls.Add(this.label40);
+            this.panel2.Location = new System.Drawing.Point(25, 412);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(645, 200);
+            this.panel2.TabIndex = 36;
+            // 
+            // label28
+            // 
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label28.Location = new System.Drawing.Point(-1, 93);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(648, 19);
+            this.label28.TabIndex = 30;
+            this.label28.Text = "Click \"Export\" to get started";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label40
+            // 
+            this.label40.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label40.Location = new System.Drawing.Point(0, 70);
+            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(649, 19);
+            this.label40.TabIndex = 29;
+            this.label40.Text = "No Guard Report Found";
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.panel3.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Payroll;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel3.Controls.Add(this.label41);
+            this.panel3.Controls.Add(this.label42);
+            this.panel3.Controls.Add(this.PSalaryReportsExportBTN);
+            this.panel3.Controls.Add(this.label43);
+            this.panel3.Controls.Add(this.label45);
+            this.panel3.Controls.Add(this.label47);
+            this.panel3.Controls.Add(this.PSalaryReportsPreviewBTN);
+            this.panel3.Controls.Add(this.label48);
+            this.panel3.Location = new System.Drawing.Point(20, 28);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(648, 236);
+            this.panel3.TabIndex = 35;
+            // 
+            // label41
+            // 
+            this.label41.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label41.ForeColor = System.Drawing.Color.White;
+            this.label41.Location = new System.Drawing.Point(33, 100);
+            this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(294, 19);
+            this.label41.TabIndex = 27;
+            this.label41.Text = "Total Active Guards:";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label42
+            // 
+            this.label42.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label42.ForeColor = System.Drawing.Color.White;
+            this.label42.Location = new System.Drawing.Point(331, 100);
+            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(286, 19);
+            this.label42.TabIndex = 26;
+            this.label42.Text = "Total Guards:";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // PSalaryReportsExportBTN
+            // 
+            this.PSalaryReportsExportBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.PSalaryReportsExportBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PSalaryReportsExportBTN.BackgroundImage")));
+            this.PSalaryReportsExportBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PSalaryReportsExportBTN.FlatAppearance.BorderSize = 0;
+            this.PSalaryReportsExportBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.PSalaryReportsExportBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PSalaryReportsExportBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PSalaryReportsExportBTN.ForeColor = System.Drawing.Color.White;
+            this.PSalaryReportsExportBTN.Location = new System.Drawing.Point(332, 178);
+            this.PSalaryReportsExportBTN.Name = "PSalaryReportsExportBTN";
+            this.PSalaryReportsExportBTN.Size = new System.Drawing.Size(105, 31);
+            this.PSalaryReportsExportBTN.TabIndex = 25;
+            this.PSalaryReportsExportBTN.Text = "EXPORT";
+            this.PSalaryReportsExportBTN.UseVisualStyleBackColor = false;
+            this.PSalaryReportsExportBTN.Click += new System.EventHandler(this.PSalaryReportsExportBTN_Click);
+            // 
+            // label43
+            // 
+            this.label43.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label43.ForeColor = System.Drawing.Color.White;
+            this.label43.Location = new System.Drawing.Point(33, 126);
+            this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(294, 23);
+            this.label43.TabIndex = 24;
+            this.label43.Text = "33 guards";
+            this.label43.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label45
+            // 
+            this.label45.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label45.ForeColor = System.Drawing.Color.White;
+            this.label45.Location = new System.Drawing.Point(28, 21);
+            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(592, 39);
+            this.label45.TabIndex = 21;
+            this.label45.Text = "Current Summary";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label47
+            // 
+            this.label47.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label47.ForeColor = System.Drawing.Color.White;
+            this.label47.Location = new System.Drawing.Point(331, 127);
+            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(286, 35);
+            this.label47.TabIndex = 23;
+            this.label47.Text = "200 guards";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // PSalaryReportsPreviewBTN
+            // 
+            this.PSalaryReportsPreviewBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.PSalaryReportsPreviewBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PSalaryReportsPreviewBTN.BackgroundImage")));
+            this.PSalaryReportsPreviewBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PSalaryReportsPreviewBTN.FlatAppearance.BorderSize = 0;
+            this.PSalaryReportsPreviewBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.PSalaryReportsPreviewBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PSalaryReportsPreviewBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PSalaryReportsPreviewBTN.ForeColor = System.Drawing.Color.White;
+            this.PSalaryReportsPreviewBTN.Location = new System.Drawing.Point(222, 178);
+            this.PSalaryReportsPreviewBTN.Name = "PSalaryReportsPreviewBTN";
+            this.PSalaryReportsPreviewBTN.Size = new System.Drawing.Size(105, 31);
+            this.PSalaryReportsPreviewBTN.TabIndex = 19;
+            this.PSalaryReportsPreviewBTN.Text = "PREVIEW";
+            this.PSalaryReportsPreviewBTN.UseVisualStyleBackColor = false;
+            this.PSalaryReportsPreviewBTN.Click += new System.EventHandler(this.PSalaryReportsPreviewBTN_Click);
+            // 
+            // label48
+            // 
+            this.label48.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label48.ForeColor = System.Drawing.Color.White;
+            this.label48.Location = new System.Drawing.Point(33, 60);
+            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(587, 19);
+            this.label48.TabIndex = 22;
+            this.label48.Text = "Sunday, July 30 2017";
+            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // listView1
+            // 
+            this.listView1.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3});
+            this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.listView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listView1.LargeImageList = this.ImageList;
+            this.listView1.Location = new System.Drawing.Point(57, 421);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(583, 187);
+            this.listView1.SmallImageList = this.ImageList;
+            this.listView1.TabIndex = 33;
+            this.listView1.TileSize = new System.Drawing.Size(200, 50);
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // label51
+            // 
+            this.label51.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label51.Location = new System.Drawing.Point(25, 345);
+            this.label51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(645, 19);
+            this.label51.TabIndex = 34;
+            this.label51.Text = "Double-click to open";
+            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label53
+            // 
+            this.label53.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label53.Location = new System.Drawing.Point(25, 309);
+            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(643, 39);
+            this.label53.TabIndex = 32;
+            this.label53.Text = "Exported Reports";
+            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // PEmpListPage
             // 
             this.PEmpListPage.Controls.Add(this.label23);
@@ -2712,231 +2939,6 @@
             this.PEmpListSearchLine.TabIndex = 13;
             this.PEmpListSearchLine.Text = "_________________________________";
             this.PEmpListSearchLine.Visible = false;
-            // 
-            // PSalaryReportPage
-            // 
-            this.PSalaryReportPage.Controls.Add(this.label27);
-            this.PSalaryReportPage.Controls.Add(this.panel2);
-            this.PSalaryReportPage.Controls.Add(this.panel3);
-            this.PSalaryReportPage.Controls.Add(this.listView1);
-            this.PSalaryReportPage.Controls.Add(this.label51);
-            this.PSalaryReportPage.Controls.Add(this.label53);
-            this.PSalaryReportPage.Location = new System.Drawing.Point(15, 14);
-            this.PSalaryReportPage.Name = "PSalaryReportPage";
-            this.PSalaryReportPage.Size = new System.Drawing.Size(690, 640);
-            this.PSalaryReportPage.TabIndex = 20;
-            this.PSalaryReportPage.Visible = false;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label27.Location = new System.Drawing.Point(598, 381);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(58, 15);
-            this.label27.TabIndex = 37;
-            this.label27.Text = "Save to...";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label28);
-            this.panel2.Controls.Add(this.label40);
-            this.panel2.Location = new System.Drawing.Point(25, 412);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(645, 200);
-            this.panel2.TabIndex = 36;
-            // 
-            // label28
-            // 
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label28.Location = new System.Drawing.Point(-1, 93);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(648, 19);
-            this.label28.TabIndex = 30;
-            this.label28.Text = "Click \"Export\" to get started";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label40
-            // 
-            this.label40.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label40.Location = new System.Drawing.Point(0, 70);
-            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(649, 19);
-            this.label40.TabIndex = 29;
-            this.label40.Text = "No Guard Report Found";
-            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.panel3.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Payroll;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Controls.Add(this.label41);
-            this.panel3.Controls.Add(this.label42);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.label43);
-            this.panel3.Controls.Add(this.label45);
-            this.panel3.Controls.Add(this.label47);
-            this.panel3.Controls.Add(this.PSalaryReportsPreviewBTN);
-            this.panel3.Controls.Add(this.label48);
-            this.panel3.Location = new System.Drawing.Point(20, 28);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(648, 236);
-            this.panel3.TabIndex = 35;
-            // 
-            // label41
-            // 
-            this.label41.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label41.ForeColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(33, 100);
-            this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(294, 19);
-            this.label41.TabIndex = 27;
-            this.label41.Text = "Total Active Guards:";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label42
-            // 
-            this.label42.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label42.ForeColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(331, 100);
-            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(286, 19);
-            this.label42.TabIndex = 26;
-            this.label42.Text = "Total Guards:";
-            this.label42.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(332, 178);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 31);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "EXPORT";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // label43
-            // 
-            this.label43.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label43.ForeColor = System.Drawing.Color.White;
-            this.label43.Location = new System.Drawing.Point(33, 126);
-            this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(294, 23);
-            this.label43.TabIndex = 24;
-            this.label43.Text = "33 guards";
-            this.label43.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label45
-            // 
-            this.label45.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label45.ForeColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(28, 21);
-            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(592, 39);
-            this.label45.TabIndex = 21;
-            this.label45.Text = "Current Summary";
-            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label47
-            // 
-            this.label47.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label47.ForeColor = System.Drawing.Color.White;
-            this.label47.Location = new System.Drawing.Point(331, 127);
-            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(286, 35);
-            this.label47.TabIndex = 23;
-            this.label47.Text = "200 guards";
-            this.label47.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // PSalaryReportsPreviewBTN
-            // 
-            this.PSalaryReportsPreviewBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.PSalaryReportsPreviewBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PSalaryReportsPreviewBTN.BackgroundImage")));
-            this.PSalaryReportsPreviewBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PSalaryReportsPreviewBTN.FlatAppearance.BorderSize = 0;
-            this.PSalaryReportsPreviewBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.PSalaryReportsPreviewBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PSalaryReportsPreviewBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PSalaryReportsPreviewBTN.ForeColor = System.Drawing.Color.White;
-            this.PSalaryReportsPreviewBTN.Location = new System.Drawing.Point(222, 178);
-            this.PSalaryReportsPreviewBTN.Name = "PSalaryReportsPreviewBTN";
-            this.PSalaryReportsPreviewBTN.Size = new System.Drawing.Size(105, 31);
-            this.PSalaryReportsPreviewBTN.TabIndex = 19;
-            this.PSalaryReportsPreviewBTN.Text = "PREVIEW";
-            this.PSalaryReportsPreviewBTN.UseVisualStyleBackColor = false;
-            this.PSalaryReportsPreviewBTN.Click += new System.EventHandler(this.PSalaryReportsPreviewBTN_Click);
-            // 
-            // label48
-            // 
-            this.label48.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label48.ForeColor = System.Drawing.Color.White;
-            this.label48.Location = new System.Drawing.Point(33, 60);
-            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(587, 19);
-            this.label48.TabIndex = 22;
-            this.label48.Text = "Sunday, July 30 2017";
-            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listView1
-            // 
-            this.listView1.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3});
-            this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.listView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView1.LargeImageList = this.ImageList;
-            this.listView1.Location = new System.Drawing.Point(57, 421);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(583, 187);
-            this.listView1.SmallImageList = this.ImageList;
-            this.listView1.TabIndex = 33;
-            this.listView1.TileSize = new System.Drawing.Size(200, 50);
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // label51
-            // 
-            this.label51.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label51.Location = new System.Drawing.Point(25, 345);
-            this.label51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(645, 19);
-            this.label51.TabIndex = 34;
-            this.label51.Text = "Double-click to open";
-            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label53
-            // 
-            this.label53.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label53.Location = new System.Drawing.Point(25, 309);
-            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(643, 39);
-            this.label53.TabIndex = 32;
-            this.label53.Text = "Exported Reports";
-            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ClientsPage
             // 
@@ -3548,12 +3550,12 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ControlBoxPanel);
-            this.Controls.Add(this.PayrollPage);
             this.Controls.Add(this.SchedulesPage);
             this.Controls.Add(this.DashboardPage);
             this.Controls.Add(this.GuardsPage);
             this.Controls.Add(this.ClientsPage);
             this.Controls.Add(this.SamplePNL);
+            this.Controls.Add(this.PayrollPage);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -3618,13 +3620,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.PayrollPage)).EndInit();
             this.PayrollPage.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
-            this.PEmpListPage.ResumeLayout(false);
-            this.PEmpListPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PEmpListGRD)).EndInit();
             this.PSalaryReportPage.ResumeLayout(false);
             this.PSalaryReportPage.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.PEmpListPage.ResumeLayout(false);
+            this.PEmpListPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PEmpListGRD)).EndInit();
             this.ClientsPage.Panel1.ResumeLayout(false);
             this.ClientsPage.Panel1.PerformLayout();
             this.ClientsPage.Panel2.ResumeLayout(false);
@@ -3834,7 +3836,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button SDutyDetailsExportBTN;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label64;
@@ -3851,7 +3853,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button PSalaryReportsExportBTN;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label47;

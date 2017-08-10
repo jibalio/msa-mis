@@ -1480,5 +1480,34 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        private void PSalaryReportsExportBTN_Click(object sender, EventArgs e) {
+            try {
+                var view = new Exporting {
+                    Refer = _shadow,
+                    Main = this,
+                    Mode = 's',
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
+
+        private void SDutyDetailsExportBTN_Click(object sender, EventArgs e) {
+            try {
+                var view = new Exporting {
+                    Refer = _shadow,
+                    Main = this,
+                    Mode = 'd',
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
     }
 }
