@@ -83,7 +83,7 @@ namespace MSAMISUserInterface {
             LoadAjustments();
         }
 
-        private void LoadAjustments() {
+        public void LoadAjustments() {
             _pay.GetAdjustmentHistory();
         }
 
