@@ -120,6 +120,25 @@
   <metadata name="ControlsTLTP.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>518, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="GSummaryExportBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAACpSURBVGhD7dAxEoMwDERRLpWe
+        M3D/uxBT4InWAjzG2eoXr7BGcvGXz7rt+D9Cm/SEPnbwLGtX3S3oR+iTtUxD6yHGhK7NoNADjAlddaDL
+        eIfQJmloXcIchDYhtAmhTQhtQmgTQpsQ2oTQJoQ2IbQJoU0IbUJokyY0seerbcOj0EW8cxn6oMsYE7o2
+        g0IPMCZ0bQY/9BB9spa3oU/6EXJZu+pxAXMQ2mLbv6SkQVtsf8z2AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="GSummaryViewCurrent.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAACpSURBVGhD7dAxEoMwDERRLpWe
+        M3D/uxBT4InWAjzG2eoXr7BGcvGXz7rt+D9Cm/SEPnbwLGtX3S3oR+iTtUxD6yHGhK7NoNADjAlddaDL
+        eIfQJmloXcIchDYhtAmhTQhtQmgTQpsQ2oTQJoQ2IbQJoU0IbUJokyY0seerbcOj0EW8cxn6oMsYE7o2
+        g0IPMCZ0bQY/9BB9spa3oU/6EXJZu+pxAXMQ2mLbv6SkQVtsf8z2AAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>414, 17</value>
   </metadata>
@@ -205,25 +224,6 @@
         Af8BwAYAAQED/wHwJwAB/wHABgABAwP/AfAnAAH/AcAGAAEHA/8B8CcAAf8BwAYAAQ8D/wHwJwAB/wHA
         BgABPwP/AfAnAAH/AeAGAAF/A/8B8CcAAf8B4AYABP8B8CcAAf8B+AUAAQEE/wHwJwAM/wHwJwAM/wHw
         JwAL
-</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="GSummaryExportBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAACpSURBVGhD7dAxEoMwDERRLpWe
-        M3D/uxBT4InWAjzG2eoXr7BGcvGXz7rt+D9Cm/SEPnbwLGtX3S3oR+iTtUxD6yHGhK7NoNADjAlddaDL
-        eIfQJmloXcIchDYhtAmhTQhtQmgTQpsQ2oTQJoQ2IbQJoU0IbUJokyY0seerbcOj0EW8cxn6oMsYE7o2
-        g0IPMCZ0bQY/9BB9spa3oU/6EXJZu+pxAXMQ2mLbv6SkQVtsf8z2AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="GSummaryViewCurrent.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAALiMAAC4jAXilP3YAAACpSURBVGhD7dAxEoMwDERRLpWe
-        M3D/uxBT4InWAjzG2eoXr7BGcvGXz7rt+D9Cm/SEPnbwLGtX3S3oR+iTtUxD6yHGhK7NoNADjAlddaDL
-        eIfQJmloXcIchDYhtAmhTQhtQmgTQpsQ2oTQJoQ2IbQJoU0IbUJokyY0seerbcOj0EW8cxn6oMsYE7o2
-        g0IPMCZ0bQY/9BB9spa3oU/6EXJZu+pxAXMQ2mLbv6SkQVtsf8z2AAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="DashboardTMR.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
