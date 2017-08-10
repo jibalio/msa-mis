@@ -579,7 +579,6 @@
             this.Name = "SchedAddDutyDetail";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SchedAddDutyDetail_FormClosing);
             this.Load += new System.EventHandler(this.Sched_AddDutyDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

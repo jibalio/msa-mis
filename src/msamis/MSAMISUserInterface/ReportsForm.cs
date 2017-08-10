@@ -82,13 +82,13 @@ namespace MSAMISUserInterface
         private void ExportGuardsSummaryBTN_Click(object sender, EventArgs e)
         {
             Reports r = new Reports();
-            r.ExporttoExcel('g');
+            //r.ExporttoExcel('g');
         }
 
         private void ExportClientsSummaryBTN_Click(object sender, EventArgs e)
         {
             Reports r = new Reports();
-            r.ExporttoExcel('c');
+            //r.ExporttoExcel('c');
         }
 
         private void label43_Click(object sender, EventArgs e)
