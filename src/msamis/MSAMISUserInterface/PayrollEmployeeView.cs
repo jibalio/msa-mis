@@ -80,6 +80,11 @@ namespace MSAMISUserInterface {
 
         private void BonusesLBL_Click(object sender, EventArgs e) {
             ChangePanel(AdjustmentsLBL, AdjPNL);
+            LoadAjustments();
+        }
+
+        private void LoadAjustments() {
+            _pay.GetAdjustmentHistory();
         }
 
         private void AdjLBL_Click(object sender, EventArgs e) {

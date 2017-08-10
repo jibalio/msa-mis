@@ -98,7 +98,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PeriodCMBX = new System.Windows.Forms.ComboBox();
             this.AdjPNL = new System.Windows.Forms.Panel();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.AdjGRD = new System.Windows.Forms.DataGridView();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.NoPayrollPNL = new System.Windows.Forms.Panel();
@@ -177,7 +177,7 @@
             this.OverviewPNL.SuspendLayout();
             this.CalcPNL.SuspendLayout();
             this.AdjPNL.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AdjGRD)).BeginInit();
             this.panel3.SuspendLayout();
             this.NoPayrollPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmpListGRD)).BeginInit();
@@ -1131,22 +1131,22 @@
             // 
             // AdjPNL
             // 
-            this.AdjPNL.Controls.Add(this.dataGridView3);
+            this.AdjPNL.Controls.Add(this.AdjGRD);
             this.AdjPNL.Location = new System.Drawing.Point(53, 148);
             this.AdjPNL.Name = "AdjPNL";
             this.AdjPNL.Size = new System.Drawing.Size(465, 431);
             this.AdjPNL.TabIndex = 239;
             // 
-            // dataGridView3
+            // AdjGRD
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AllowUserToResizeColumns = false;
-            this.dataGridView3.AllowUserToResizeRows = false;
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.AdjGRD.AllowUserToAddRows = false;
+            this.AdjGRD.AllowUserToDeleteRows = false;
+            this.AdjGRD.AllowUserToResizeColumns = false;
+            this.AdjGRD.AllowUserToResizeRows = false;
+            this.AdjGRD.BackgroundColor = System.Drawing.Color.White;
+            this.AdjGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AdjGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.AdjGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1154,8 +1154,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AdjGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.AdjGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
@@ -1163,12 +1163,12 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView3.EnableHeadersVisualStyles = false;
-            this.dataGridView3.Location = new System.Drawing.Point(25, 17);
-            this.dataGridView3.MultiSelect = false;
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
+            this.AdjGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            this.AdjGRD.EnableHeadersVisualStyles = false;
+            this.AdjGRD.Location = new System.Drawing.Point(25, 17);
+            this.AdjGRD.MultiSelect = false;
+            this.AdjGRD.Name = "AdjGRD";
+            this.AdjGRD.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1176,11 +1176,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(417, 375);
-            this.dataGridView3.TabIndex = 265;
+            this.AdjGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.AdjGRD.RowHeadersVisible = false;
+            this.AdjGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.AdjGRD.Size = new System.Drawing.Size(417, 375);
+            this.AdjGRD.TabIndex = 265;
             // 
             // CloseBTN
             // 
@@ -1211,9 +1211,9 @@
             this.panel3.Controls.Add(this.PeriodCMBX);
             this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Controls.Add(this.AdjustmentsLBL);
-            this.panel3.Controls.Add(this.OverviewPNL);
             this.panel3.Controls.Add(this.AdjPNL);
             this.panel3.Controls.Add(this.NoPayrollPNL);
+            this.panel3.Controls.Add(this.OverviewPNL);
             this.panel3.Location = new System.Drawing.Point(349, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 600);
@@ -2168,7 +2168,7 @@
             this.CalcPNL.ResumeLayout(false);
             this.CalcPNL.PerformLayout();
             this.AdjPNL.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AdjGRD)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.NoPayrollPNL.ResumeLayout(false);
@@ -2240,7 +2240,7 @@
         private System.Windows.Forms.Label DPagIbigLBL;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView EmpListGRD;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView AdjGRD;
         private System.Windows.Forms.Label LLBL;
         private System.Windows.Forms.ContextMenuStrip MondaySaturday;
         private System.Windows.Forms.ToolStripTextBox Day;
