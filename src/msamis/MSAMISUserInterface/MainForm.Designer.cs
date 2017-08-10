@@ -136,8 +136,8 @@
             this.SAssignedGuardsLBL = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.SDutyDetailsPNL = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.SSummarySaveToBTN = new System.Windows.Forms.Label();
+            this.SSummaryErrorPNL = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -148,8 +148,8 @@
             this.label59 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
             this.SDutyDetailsPreviewBTN = new System.Windows.Forms.Button();
-            this.label66 = new System.Windows.Forms.Label();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.SSummaryDateLBL = new System.Windows.Forms.Label();
+            this.SSummaryFilesLST = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label67 = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
@@ -282,7 +282,7 @@
             this.SchedulesPage.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SDutyDetailsPNL.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.SSummaryErrorPNL.SuspendLayout();
             this.panel7.SuspendLayout();
             this.SViewAssPNL.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
@@ -1758,10 +1758,10 @@
             // 
             // SDutyDetailsPNL
             // 
-            this.SDutyDetailsPNL.Controls.Add(this.label6);
-            this.SDutyDetailsPNL.Controls.Add(this.panel4);
+            this.SDutyDetailsPNL.Controls.Add(this.SSummaryErrorPNL);
+            this.SDutyDetailsPNL.Controls.Add(this.SSummarySaveToBTN);
             this.SDutyDetailsPNL.Controls.Add(this.panel7);
-            this.SDutyDetailsPNL.Controls.Add(this.listView2);
+            this.SDutyDetailsPNL.Controls.Add(this.SSummaryFilesLST);
             this.SDutyDetailsPNL.Controls.Add(this.label67);
             this.SDutyDetailsPNL.Controls.Add(this.label70);
             this.SDutyDetailsPNL.Location = new System.Drawing.Point(15, 14);
@@ -1770,25 +1770,25 @@
             this.SDutyDetailsPNL.TabIndex = 18;
             this.SDutyDetailsPNL.Visible = false;
             // 
-            // label6
+            // SSummarySaveToBTN
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(598, 381);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 15);
-            this.label6.TabIndex = 37;
-            this.label6.Text = "Save to...";
+            this.SSummarySaveToBTN.AutoSize = true;
+            this.SSummarySaveToBTN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.SSummarySaveToBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SSummarySaveToBTN.Location = new System.Drawing.Point(598, 381);
+            this.SSummarySaveToBTN.Name = "SSummarySaveToBTN";
+            this.SSummarySaveToBTN.Size = new System.Drawing.Size(58, 15);
+            this.SSummarySaveToBTN.TabIndex = 37;
+            this.SSummarySaveToBTN.Text = "Save to...";
             // 
-            // panel4
+            // SSummaryErrorPNL
             // 
-            this.panel4.Controls.Add(this.label17);
-            this.panel4.Controls.Add(this.label36);
-            this.panel4.Location = new System.Drawing.Point(25, 412);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(645, 200);
-            this.panel4.TabIndex = 36;
+            this.SSummaryErrorPNL.Controls.Add(this.label17);
+            this.SSummaryErrorPNL.Controls.Add(this.label36);
+            this.SSummaryErrorPNL.Location = new System.Drawing.Point(25, 412);
+            this.SSummaryErrorPNL.Name = "SSummaryErrorPNL";
+            this.SSummaryErrorPNL.Size = new System.Drawing.Size(645, 200);
+            this.SSummaryErrorPNL.TabIndex = 36;
             // 
             // label17
             // 
@@ -1826,7 +1826,7 @@
             this.panel7.Controls.Add(this.label59);
             this.panel7.Controls.Add(this.label64);
             this.panel7.Controls.Add(this.SDutyDetailsPreviewBTN);
-            this.panel7.Controls.Add(this.label66);
+            this.panel7.Controls.Add(this.SSummaryDateLBL);
             this.panel7.Location = new System.Drawing.Point(20, 28);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(648, 236);
@@ -1928,35 +1928,35 @@
             this.SDutyDetailsPreviewBTN.UseVisualStyleBackColor = false;
             this.SDutyDetailsPreviewBTN.Click += new System.EventHandler(this.SDutyDetailsPreviewBTN_Click);
             // 
-            // label66
+            // SSummaryDateLBL
             // 
-            this.label66.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label66.ForeColor = System.Drawing.Color.White;
-            this.label66.Location = new System.Drawing.Point(33, 60);
-            this.label66.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(587, 19);
-            this.label66.TabIndex = 22;
-            this.label66.Text = "Sunday, July 30 2017";
-            this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSummaryDateLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.SSummaryDateLBL.ForeColor = System.Drawing.Color.White;
+            this.SSummaryDateLBL.Location = new System.Drawing.Point(33, 60);
+            this.SSummaryDateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SSummaryDateLBL.Name = "SSummaryDateLBL";
+            this.SSummaryDateLBL.Size = new System.Drawing.Size(587, 19);
+            this.SSummaryDateLBL.TabIndex = 22;
+            this.SSummaryDateLBL.Text = "Sunday, July 30 2017";
+            this.SSummaryDateLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listView2
+            // SSummaryFilesLST
             // 
-            this.listView2.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.listView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SSummaryFilesLST.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.SSummaryFilesLST.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SSummaryFilesLST.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4});
-            this.listView2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.listView2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView2.LargeImageList = this.ImageList;
-            this.listView2.Location = new System.Drawing.Point(57, 421);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(583, 187);
-            this.listView2.SmallImageList = this.ImageList;
-            this.listView2.TabIndex = 33;
-            this.listView2.TileSize = new System.Drawing.Size(200, 50);
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.SSummaryFilesLST.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.SSummaryFilesLST.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.SSummaryFilesLST.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.SSummaryFilesLST.LargeImageList = this.ImageList;
+            this.SSummaryFilesLST.Location = new System.Drawing.Point(57, 421);
+            this.SSummaryFilesLST.Name = "SSummaryFilesLST";
+            this.SSummaryFilesLST.Size = new System.Drawing.Size(583, 187);
+            this.SSummaryFilesLST.SmallImageList = this.ImageList;
+            this.SSummaryFilesLST.TabIndex = 33;
+            this.SSummaryFilesLST.TileSize = new System.Drawing.Size(200, 50);
+            this.SSummaryFilesLST.UseCompatibleStateImageBehavior = false;
             // 
             // label67
             // 
@@ -3604,7 +3604,7 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.SDutyDetailsPNL.ResumeLayout(false);
             this.SDutyDetailsPNL.PerformLayout();
-            this.panel4.ResumeLayout(false);
+            this.SSummaryErrorPNL.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.SViewAssPNL.ResumeLayout(false);
             this.SViewAssPNL.PerformLayout();
@@ -3829,8 +3829,8 @@
         private System.Windows.Forms.Label GSummarySaveToBTN;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolTip ControlsTLTP;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label SSummarySaveToBTN;
+        private System.Windows.Forms.Panel SSummaryErrorPNL;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Panel panel7;
@@ -3841,8 +3841,8 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Button SDutyDetailsPreviewBTN;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.Label SSummaryDateLBL;
+        private System.Windows.Forms.ListView SSummaryFilesLST;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label70;

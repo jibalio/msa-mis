@@ -979,6 +979,7 @@ namespace MSAMISUserInterface {
 
         private void SDutyDetailsBTN_Click(object sender, EventArgs e) {
             SChangePanel(SDutyDetailsPNL, SDutyDetailsBTN, false);
+            SchedLoadReport();
         }
 
         private void SViewReqAssBTN_Click(object sender, EventArgs e) {
@@ -1280,6 +1281,22 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region SMS - Reports
+        public void SchedLoadReport() {
+            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
+            FileInfo[] files = d.GetFiles("SchedSummaryReport*.xlsx"); //Getting Text files]
+
+            SSummaryFilesLST.Items.Clear();
+            foreach (var file in files) {
+                string[] row = { file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName };
+                var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
+                SSummaryFilesLST.Items.Add(listViewItem);
+            }
+
+            SSummarySaveToBTN.Visible = false;
+            SSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
+            SSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+        }
+
         private void SDutyDetailsPreviewBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new ReportsPreview {
@@ -1294,7 +1311,20 @@ namespace MSAMISUserInterface {
             }
             catch (Exception) { }
         }
-
+        private void SDutyDetailsExportBTN_Click(object sender, EventArgs e) {
+            try {
+                var view = new Exporting {
+                    Refer = _shadow,
+                    Main = this,
+                    Mode = 'd',
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
+            }
+            catch (Exception) { }
+        }
 
         #endregion
 
@@ -1495,19 +1525,22 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
 
-        private void SDutyDetailsExportBTN_Click(object sender, EventArgs e) {
-            try {
-                var view = new Exporting {
-                    Refer = _shadow,
-                    Main = this,
-                    Mode = 'd',
-                    Location = _newFormLocation
-                };
-                _shadow.Transparent();
-                _shadow.Form = view;
-                _shadow.ShowDialog();
+        public void PayLoadReport() {
+            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
+            FileInfo[] files = d.GetFiles("SchedSummaryReport*.xlsx"); //Getting Text files]
+
+            SSummaryFilesLST.Items.Clear();
+            foreach (var file in files) {
+                string[] row = { file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName };
+                var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
+                SSummaryFilesLST.Items.Add(listViewItem);
             }
-            catch (Exception) { }
+
+            SSummarySaveToBTN.Visible = false;
+            SSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
+            SSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
         }
+
+
     }
 }

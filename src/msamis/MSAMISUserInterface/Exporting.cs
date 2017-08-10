@@ -35,7 +35,9 @@ namespace MSAMISUserInterface {
             r.ExporttoExcel(Mode);
 
             if (Mode == 'g') Main.GuardsLoadReport();
-            else Main.ClientsLoadSummary();
+            else if (Mode == 'c') Main.ClientsLoadSummary();
+            else if (Mode == 'd') Main.SchedLoadReport();
+            else if (Mode == 's') Main.PayLoadReport();
             Close();
         }
     }
