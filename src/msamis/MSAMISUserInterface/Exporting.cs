@@ -1,5 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+
 
 namespace MSAMISUserInterface {
     public partial class Exporting : Form {
@@ -31,8 +34,9 @@ namespace MSAMISUserInterface {
         }
 
         private void Export() {
+            var rp = new ReportsPreview();
             var r = new Reports();
-            r.ExporttoExcel(Mode);
+            r.ExportToPDF(rp.FormatPDF(Mode, Mode), Mode);
 
             if (Mode == 'g') Main.GuardsLoadReport();
             else if (Mode == 'c') Main.ClientsLoadSummary();

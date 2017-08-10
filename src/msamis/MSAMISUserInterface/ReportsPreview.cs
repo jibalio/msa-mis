@@ -103,30 +103,13 @@ namespace MSAMISUserInterface {
 
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            if (Mode == 1) {
-                var r = new Reports();
-                FormatPDF('g');
-                Main.GuardsLoadReport();
-            } else if (Mode == 2) {
-                var r = new Reports();
-                FormatPDF('c');
-                Main.ClientsLoadSummary();
-            }
-        }
-
 
         #region RylBlock
 
-        private void CExportToPDFBTN_Click(object sender, EventArgs e)
-        {
-            Reports1.ExportToPDF(FormatPDF('c'), 'c');
-        }
-
-
-        private PdfPTable FormatPDF(char formOrigin)
+        public PdfPTable FormatPDF(char formOrigin, char Mode)
         {
             //Default PDF Format
+            GReportGRD.DataSource = Reports.GetList(Mode);
             Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
             Font headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
             PdfPTable pdfTable = new PdfPTable(GReportGRD.ColumnCount);
