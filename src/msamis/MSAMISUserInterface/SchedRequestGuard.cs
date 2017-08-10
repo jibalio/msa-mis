@@ -59,12 +59,13 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_RequestGuard_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Hide();
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                e.Cancel = true;
+            else Refer.Close();
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                Close();
+            Close();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {

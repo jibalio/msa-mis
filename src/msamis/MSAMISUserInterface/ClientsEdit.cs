@@ -43,14 +43,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (IsEmpty() == false) {
-                var rs = RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.",
-                    "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (rs == DialogResult.Yes) Close();
-            }
-            else {
-                Close();
-            }
+             Close();
         }
 
         private void Clients_Edit_Load(object sender, EventArgs e) {
@@ -66,15 +59,9 @@ namespace MSAMISUserInterface {
         }
 
         private void Clients_Edit_FormClosing(object sender, FormClosingEventArgs e) {
-            if (Button.Equals("ADD")) {
-                Console.WriteLine("[Guard_Edit] Closing Event");
-                Reference.Opacity = 1;
-                Console.WriteLine("[Guard_Edit] Setting Opacity to 100");
-                Reference.Enabled = true;
-
-                Refer.Hide();
-                Console.WriteLine("[Guard_Edit] Setting reference.Enable to true");
-            }
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                e.Cancel = true;
+            else Refer.Close();
         }
 
         #endregion

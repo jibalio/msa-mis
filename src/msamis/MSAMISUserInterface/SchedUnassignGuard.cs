@@ -93,12 +93,13 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                Close();
+            Close();
         }
 
         private void Sched_DismissGuard_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Hide();
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                e.Cancel = true;
+            else Refer.Close();
         }
 
         private void RemoveBTN_Click(object sender, EventArgs e) {

@@ -74,7 +74,12 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_AddAdjustments_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.LoadComputations();
+            if (rylui.RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                e.Cancel = true;
+            else {
+                Refer.Close();
+                Refer.LoadComputations();
+            }
         }
 
         private void Payroll_AddAdjustments_Load(object sender, EventArgs e) {

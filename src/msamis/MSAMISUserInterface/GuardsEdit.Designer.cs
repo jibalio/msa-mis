@@ -2595,12 +2595,11 @@
             this.panel3.Size = new System.Drawing.Size(550, 600);
             this.panel3.TabIndex = 234;
             // 
-            // Guards_Edit
+            // GuardsEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CancelButton = this.CloseBTN;
             this.ClientSize = new System.Drawing.Size(898, 598);
             this.ControlBox = false;
             this.Controls.Add(this.AddLBL);
@@ -2626,7 +2625,7 @@
             this.Controls.Add(this.label41);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Guards_Edit";
+            this.Name = "GuardsEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Guards_EditEmployees_FormClosing);

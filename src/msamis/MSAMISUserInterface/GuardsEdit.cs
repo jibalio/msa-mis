@@ -141,9 +141,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            var rs = RylMessageBox.ShowDialog("Cancel Chnages? \nAny unsaved changes will be lost.", "Stop Editing?",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rs == DialogResult.Yes) Close();
+            Close();
         }
 
         private void Guards_EditEmployees_Load(object sender, EventArgs e) {
@@ -160,14 +158,9 @@ namespace MSAMISUserInterface {
         }
 
         private void Guards_EditEmployees_FormClosing(object sender, FormClosingEventArgs e) {
-            if (Button.Equals("ADD")) {
-                Console.WriteLine("[Guard_Edit] Closing Event");
-                Reference.Opacity = 1;
-                Console.WriteLine("[Guard_Edit] Setting Opacity to 100");
-                Reference.Enabled = true;
-                Console.WriteLine("[Guard_Edit] Setting reference.Enable to true");
-                Refer.Hide();
-            }
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                e.Cancel = true;
+            else Refer.Close();
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
