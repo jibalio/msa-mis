@@ -23,7 +23,23 @@ namespace MSAMISUserInterface {
             FadeTMR.Start();
             LoadTable();
 
-            NameLBL.Text = Mode == 1 ? "Guards Summary" : "Client Summary";
+            switch (Mode) {
+                case 1:
+                    NameLBL.Text = "Guards Summary";
+                    break;
+                case 2:
+                    NameLBL.Text = "Clients Summary";
+                    break;
+                case 3:
+                    NameLBL.Text = "Duty Details Summary";
+                    break;
+                case 4:
+                    NameLBL.Text = "Salary Report";
+                    break;
+                default:
+                    NameLBL.Text = "Summary Report";
+                    break;
+            }
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -57,8 +73,7 @@ namespace MSAMISUserInterface {
                 GReportGRD.Sort(GReportGRD.Columns[1], ListSortDirection.Ascending);
 
                 #endregion
-            }
-            else {
+            } else if (Mode == 2) {
                 GReportGRD.DataSource = Reports.GetClientsList();
 
                 GReportGRD.Columns[0].HeaderText = "NAME";
@@ -87,8 +102,7 @@ namespace MSAMISUserInterface {
                 var r = new Reports();
                 r.ExporttoExcel('g');
                 Main.GuardsLoadReport();
-            }
-            else {
+            } else if (Mode == 2) {
                 var r = new Reports();
                 r.ExporttoExcel('c');
                 Main.ClientsLoadSummary();

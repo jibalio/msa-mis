@@ -1382,7 +1382,7 @@ namespace MSAMISUserInterface {
 
         #region PMS - Employee List 
 
-        private void PayLoadEmployeeList() {
+        public void PayLoadEmployeeList() {
             PEmpListSortCMBX.SelectedIndex = 0;
             PayLoadTable();
         }
@@ -1479,9 +1479,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-
-
-
 
     }
 }

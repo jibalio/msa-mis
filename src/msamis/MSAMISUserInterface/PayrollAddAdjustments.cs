@@ -19,10 +19,10 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             bool[] changes =  {false, false, false, false, false};
-            var changeText = "Are you sure you want to change these values?";
+            var changeText = "Are you sure you want to change these values?\n";
             if (!_data["thirteen"].ToString("N2").Equals(ThirteenBX.Value.ToString("N2"))) {
                 changes[0] = true;
-                changeText += "\nThirteenth Month Pay: " + _data["thirteen"].ToString("N2") + " to " + ThirteenBX.Value.ToString("N2") + "\n"; 
+                changeText += "Thirteenth Month Pay: " + _data["thirteen"].ToString("N2") + " to " + ThirteenBX.Value.ToString("N2") + "\n"; 
             }
 
             if (!_data["Cola"].ToString("N2").Equals(ColaBX.Value.ToString("N2"))) {

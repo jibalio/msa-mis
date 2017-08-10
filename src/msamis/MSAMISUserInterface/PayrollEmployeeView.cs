@@ -84,7 +84,19 @@ namespace MSAMISUserInterface {
         }
 
         public void LoadAjustments() {
-            _pay.GetAdjustmentHistory();
+            AdjGRD.DataSource =  _pay.GetAdjustmentHistory();
+            AdjGRD.Columns[0].HeaderText = "TYPE";
+            AdjGRD.Columns[1].HeaderText = "DATE / TIME";
+            AdjGRD.Columns[2].HeaderText = "VALUE";
+
+            AdjGRD.Columns[0].Width = 100;
+            AdjGRD.Columns[1].Width = 200;
+
+            AdjGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            AdjGRD.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AdjGRD.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AdjGRD.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         private void AdjLBL_Click(object sender, EventArgs e) {
@@ -139,6 +151,8 @@ namespace MSAMISUserInterface {
             LoadDetails();
             LoadComputations();
             CalcPNL.AutoScrollPosition = new Point(0, 0);
+
+
         }
 
         private void LoadDetails() {
@@ -264,6 +278,11 @@ namespace MSAMISUserInterface {
                 BonusAddBTN.Visible = false;
                 ApproveBTN.Visible = false;
             }
+            if (_pay.PayrollStatus == Enumeration.PayrollStatus.Approved) {
+                BonusAddBTN.Visible = false;
+                ApproveBTN.Location = new Point(186, 388);
+                ApproveBTN.Text = "PAYSLIP";
+            }
         }
 
         private void WithHoldingLBL_MouseEnter(object sender, EventArgs e) {
@@ -334,8 +353,6 @@ namespace MSAMISUserInterface {
             HidePop(SSunds);
         }
 
-        #endregion
-
         private void SSSLBL_MouseEnter(object sender, EventArgs e) {
             ShowPopup(SSSPop, SSSLBL);
         }
@@ -344,8 +361,13 @@ namespace MSAMISUserInterface {
             HidePop(SSSPop);
         }
 
+        #endregion
+
+
+
         private void ApproveBTN_Click(object sender, EventArgs e) {
             _pay.Approve();
+            Reference.PayLoadEmployeeList();
         }
     }
 }
