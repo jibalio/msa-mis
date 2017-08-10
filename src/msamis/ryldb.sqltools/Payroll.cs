@@ -110,7 +110,7 @@ namespace MSAMISUserInterface {
                 }
             }
         }
-
+        public int _viewmode;
         public double CashBond {
             get { return _cashbond; }
             set {
@@ -225,7 +225,12 @@ namespace MSAMISUserInterface {
             
         }
         private Stopwatch sw = new Stopwatch();
-        public int _viewmode;
+        public int PayrollStatus {
+            get {
+                return int.Parse(DbValues["pstatus"].ToString());
+            }
+        }
+
         private void _InitMeApproved() {
             this._viewmode = 1;
             this.GID = int.Parse(DbValues["GID"].ToString());
