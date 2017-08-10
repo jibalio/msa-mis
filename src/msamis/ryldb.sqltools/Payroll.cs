@@ -225,7 +225,7 @@ namespace MSAMISUserInterface {
             
         }
         private Stopwatch sw = new Stopwatch();
-        private int _viewmode;
+        public int _viewmode;
         private void _InitMeApproved() {
             this._viewmode = 1;
             this.GID = int.Parse(DbValues["GID"].ToString());
