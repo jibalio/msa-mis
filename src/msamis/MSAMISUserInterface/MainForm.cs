@@ -317,6 +317,13 @@ namespace MSAMISUserInterface {
             }
         }
 
+        private void RightClickStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+            if (_splitContainer == GuardsPage) GuardsSummaryRightClick(e.ClickedItem.Text);
+            else if (_splitContainer == ClientsPage) ClientsSummaryRightClick(e.ClickedItem.Text);
+            else if (_splitContainer == PayrollPage) PaySummaryRightClick(e.ClickedItem.Text);
+            else if (_splitContainer == SchedulesPage) SchedSummaryRightClick(e.ClickedItem.Text);
+        }
+
         #endregion
 
         #region Dashboard Page Notifs
@@ -646,7 +653,7 @@ namespace MSAMISUserInterface {
 
         public void GuardsLoadReport() {
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
-            FileInfo[] files = d.GetFiles("GuardsSummaryReport*.xlsx"); //Getting Text files]
+            FileInfo[] files = d.GetFiles("GuardsSummaryReport*.pdf"); //Getting Text files]
 
             GSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
@@ -654,8 +661,7 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0 , };
                 GSummaryFilesLST.Items.Add(listViewItem);
             }
-
-            GSummarySaveToBTN.Visible = false;
+            
             GSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
             GSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
             GTotalLBL.Text = Reports.GetTotalGuards('g', 't') + " guards";
@@ -699,23 +705,35 @@ namespace MSAMISUserInterface {
                 GuardsLoadReport();
             }
         }
-        private void GSummarySaveToBTN_Click(object sender, EventArgs e) {
-            var savefile = new SaveFileDialog {
-                FileName = "GuardsSummaryReport_" + GSummaryFilesLST.SelectedItems[0].SubItems[0].Text,
-                Filter = "Excel Workbook (.xlsx)|*.xlsx|Excel 97-2003 Template (.xls)|*.xls"
-            };
-            if (savefile.ShowDialog() == DialogResult.OK) File.Copy(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
-        }
 
-        private void GSummaryFilesLST_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
-            GSummarySaveToBTN.Visible = true;
+        private void GSummaryFilesLST_MouseClick(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Right) {
+                if (GSummaryFilesLST.FocusedItem.Bounds.Contains(e.Location)) {
+                    RightClickStrip.Show(Cursor.Position);
+                }
+            }
         }
-        private void GSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
-            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
-        }
-
-        private void GSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
-            GSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+        private void GuardsSummaryRightClick(string text) {
+            RightClickStrip.Hide();
+            if (text.Equals("Open")) {
+                try {
+                    System.Diagnostics.Process.Start(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    GuardsLoadReport();
+                }
+            } else if (text.Equals("Save to...")) {
+                var savefile = new SaveFileDialog {
+                    FileName = "GuardsSummaryReport_" + GSummaryFilesLST.SelectedItems[0].SubItems[0].Text,
+                    Filter = "Portable Document Format (.pdf)|*.pdf"
+                };
+                if (savefile.ShowDialog() == DialogResult.OK) File.Copy(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+            } else {
+                File.Delete(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                GuardsLoadReport();
+            }
         }
         #endregion
 
@@ -847,7 +865,7 @@ namespace MSAMISUserInterface {
             CSummaryDateLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
 
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
-            FileInfo[] files = d.GetFiles("ClientSummaryReport*.xlsx"); //Getting Text files]
+            FileInfo[] files = d.GetFiles("ClientsSummaryReport*.pdf"); //Getting Text files]
 
             CSummaryFileLST.Items.Clear();
             foreach (var file in files) {
@@ -855,7 +873,6 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
                 CSummaryFileLST.Items.Add(listViewItem);
             }
-            CSummarySaveToBTN.Visible = false;
             CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
             CTotalLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
             CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
@@ -898,23 +915,35 @@ namespace MSAMISUserInterface {
                 ClientsLoadSummary();
             }
         }
-        private void CSummarySaveToBTN_Click(object sender, EventArgs e) {
-            var savefile = new SaveFileDialog {
-                FileName = "ClientSummaryReport_" + CSummaryFileLST.SelectedItems[0].SubItems[0].Text,
-                Filter = "Excel Workbook (.xlsx)|*.xlsx|Excel 97-2003 Template (.xls)|*.xls"
-            };
-            if (savefile.ShowDialog() == DialogResult.OK) File.Copy(CSummaryFileLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+        private void ClientsSummaryRightClick(string text) {
+            RightClickStrip.Hide();
+            if (text.Equals("Open")) {
+                try {
+                    System.Diagnostics.Process.Start(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ClientsLoadSummary();
+                }
+            } else if (text.Equals("Save to...")) {
+                var savefile = new SaveFileDialog {
+                    FileName = "ClientSummaryReport_" + CSummaryFileLST.SelectedItems[0].SubItems[0].Text,
+                    Filter = "Portable Document Format (.pdf)|*.pdf"
+                };
+                if (savefile.ShowDialog() == DialogResult.OK)
+                    File.Copy(CSummaryFileLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+            } else {
+                File.Delete(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
+                ClientsLoadSummary();
+            }
         }
-
-        private void CSummaryFileLST_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
-            CSummarySaveToBTN.Visible = true;
-        }
-        private void CSummarySaveToBTN_MouseEnter(object sender, EventArgs e) {
-            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Underline | FontStyle.Bold);
-        }
-
-        private void CSummarySaveToBTN_MouseLeave(object sender, EventArgs e) {
-            CSummarySaveToBTN.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+        private void CSummaryFileLST_MouseClick(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Right) {
+                if (CSummaryFileLST.FocusedItem.Bounds.Contains(e.Location)) {
+                    RightClickStrip.Show(Cursor.Position);
+                }
+            }
         }
         #endregion
 
@@ -1291,8 +1320,7 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
                 SSummaryFilesLST.Items.Add(listViewItem);
             }
-
-            SSummarySaveToBTN.Visible = false;
+            
             SSummaryErrorPNL.Visible = SSummaryFilesLST.Items.Count == 0;
             SSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
         }
@@ -1326,6 +1354,37 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
 
+
+        private void SSummaryFilesLST_MouseClick(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Right) {
+                if (SSummaryFilesLST.FocusedItem.Bounds.Contains(e.Location)) {
+                    RightClickStrip.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void SchedSummaryRightClick(string text) {
+            RightClickStrip.Hide();
+            if (text.Equals("Open")) {
+                try {
+                    System.Diagnostics.Process.Start(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SchedLoadReport();
+                }
+            } else if (text.Equals("Save to...")) {
+                var savefile = new SaveFileDialog {
+                    FileName = "SchedSummaryReport_" + SSummaryFilesLST.SelectedItems[0].SubItems[0].Text,
+                    Filter = "Portable Document Format (.pdf)|*.pdf"
+                };
+                if (savefile.ShowDialog() == DialogResult.OK) File.Copy(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+            } else {
+                File.Delete(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                SchedLoadReport();
+            }
+        }
         #endregion
 
         #endregion
@@ -1537,9 +1596,55 @@ namespace MSAMISUserInterface {
             PSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
         }
 
+        private void PSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
+            try {
+                System.Diagnostics.Process.Start(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+            }
+            catch {
+                RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                    "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                PayLoadReport();
+            }
+        }
+
+        private void PSummaryFilesLST_MouseClick(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Right) {
+                if (PSummaryFilesLST.FocusedItem.Bounds.Contains(e.Location)) {
+                    RightClickStrip.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void PaySummaryRightClick(string text) {
+            RightClickStrip.Hide();
+            if (text.Equals("Open")) {
+                try {
+                    System.Diagnostics.Process.Start(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    PayLoadReport();
+                }
+            } else if (text.Equals("Save to...")) {
+                var savefile = new SaveFileDialog {
+                    FileName = "PaySummaryReport_" + PSummaryFilesLST.SelectedItems[0].SubItems[0].Text,
+                    Filter = "Portable Document Format (.pdf)|*.pdf"
+                };
+                if (savefile.ShowDialog() == DialogResult.OK) File.Copy(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+            } else {
+                File.Delete(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                PayLoadReport();
+            }
+        }
+
+
         #endregion
 
         #endregion
+
+
+
 
 
 
