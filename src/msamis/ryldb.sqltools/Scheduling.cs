@@ -208,19 +208,43 @@ namespace MSAMISUserInterface {
         public static void AddAssignment(int rid, int[] gid) {
             // First check if rid is type assignment.
             if (SQLTools.ExecuteSingleResult("select requesttype from request where rid=" + rid) == Enumeration.RequestType.Assignment.ToString()) {
-                String raid = SQLTools.ExecuteSingleResult("select raid from request_assign where rid=" + rid);
+                
+                // FUNCTION BODY
+                DataRow dtl = SQLTools.ExecuteQuery($@"
+                    select * from request 
+				    left join request_assign on request_assign.RID = request.RID
+				    left join sduty_assignment on sduty_assignment.RAID=request_assign.RAID where request_assign.rid={rid};
+                ").Rows[0];
+                
+                // Get RID of guard.
+                String raid = dtl["RAID"].ToString();
                 foreach (int g in gid) {
-                    // Add assignment in assignment table/
-                   String q = String.Format("INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`) VALUES ('{0}', '{1}', '{2}');",
-                   g, raid, Enumeration.Schedule.Active);
+                    // Add assignment in assignment table
+                   String q =$"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Active}');";
+                    DateTime consta = DateTime.Parse(dtl["contractstart"].ToString());
+                    DateTime conend = DateTime.Parse(dtl["contractend"].ToString());
+
+                    /*/ Then create a trigger to execute on contract start.
+                    string eventddl_cs = $@"
+                        CREATE EVENT 
+	                    consta_g{g}_r{dtl["RID"].ToString()} on schedule at '{consta.ToString("yyyy-MM-dd hh:mm:ss")}'
+	                    do
+		                UPDATE `msadb`.`guards` SET `GStatus`='{Enumeration.GuardStatus.Active}' WHERE `GID`='{g}';
+                    ";
+                    
+                    string eventddl_ce = $@"
+                        CREATE EVENT 
+	                    conend_g{g}_r{dtl["RID"].ToString()} on schedule at '{conend.ToString("yyyy-MM-dd hh:mm:ss")}'
+	                    do
+		                    UPDATE `msadb`.`guards` SET `GStatus`='{Enumeration.GuardStatus.Inactive}' WHERE `GID`='{g}';
+                    ";*/
                     SQLTools.ExecuteNonQuery(q);
-                    // Set status to active.
-                    q = @"UPDATE `msadb`.`guards` SET `GStatus`='" + Enumeration.GuardStatus.Active + "' WHERE `GID`='" + g + "'";
-                    SQLTools.ExecuteNonQuery(q);
+                   // SQLTools.ExecuteNonQuery(eventddl_cs);      // contract start trigger
+                   // SQLTools.ExecuteNonQuery(eventddl_ce);      // contract end trigger
                 }
                 UpdateRequestStatus(rid, Enumeration.RequestStatus.Active);
-            } else
-                MessageBox.Show("Request is not an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Data.InitGuardStatuses();
+            } else MessageBox.Show("Request is not an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 
