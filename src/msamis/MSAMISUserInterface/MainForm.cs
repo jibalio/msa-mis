@@ -1128,6 +1128,8 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns[4].Width = 100;
 
             SViewReqGRD.Sort(SViewReqGRD.Columns[2], ListSortDirection.Descending);
+
+            SViewReqGRD.ClearSelection();
         }
 
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {

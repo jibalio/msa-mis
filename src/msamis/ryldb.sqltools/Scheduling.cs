@@ -331,9 +331,9 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         where  city is not null " +
                         (cid == -1 ? "" : " AND cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
-                q += " AND days is not null";
+                q += " AND ti_hh is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
-                q += " AND days is null ";
+                q += " AND ti_hh is null ";
             DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " group by guards.gid order by name asc");
             // foreach (DataRow e in dt.Rows) {
             //    String[] x = e["Schedule"].ToString().Split(' ');
