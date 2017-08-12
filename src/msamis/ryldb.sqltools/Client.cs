@@ -13,7 +13,7 @@ namespace MSAMISUserInterface {
 
         public static DataTable GetAllClientDetails(String searchKeyWords) {
             searchKeyWords = CleanSearch(searchKeyWords);
-            var q = "SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno FROM client" + searchKeyWords;
+            var q = "SELECT cid, name, CONCAT(Clientstreetno,' ',Clientstreet,', ', Clientbrgy,', ',Clientcity) AS contactno, case cstatus when 1 then 'Active' when 2 then 'Inactive' end as status FROM client" + searchKeyWords;
             return SQLTools.ExecuteQuery(q);
         }
 

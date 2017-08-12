@@ -1,11 +1,7 @@
 ﻿using MySql.Data;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -29,7 +25,7 @@ namespace MSAMISUserInterface {
             String q = @"select rid, name, dateentry, 
                         case requesttype 
                         when 1 then 'Assignment'
-                        when 2 then 'Dismissal' 
+                        when 2 then 'Unassignment' 
                         end as type,
                         case rstatus
                         when 1 then 'Pending'
@@ -48,7 +44,7 @@ namespace MSAMISUserInterface {
 
         public static DataTable GetRequests(String searchkeyword, int ClientFilter, int TypeFilter, String ColumnToSortByAscDesc, String orderby) {
             String q = @"select rid, name, dateentry, 
-                        case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type,
+                        case requesttype when 1 then 'Assignment' when 2 then 'Unassignment' end as type,
                         case rstatus
                         when 1 then 'Pending'
                         when 2 then 'Approved'
