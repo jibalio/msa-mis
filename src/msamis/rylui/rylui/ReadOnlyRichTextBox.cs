@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
@@ -9,24 +8,23 @@ public class ReadOnlyRichTextBox : System.Windows.Forms.RichTextBox
     [DllImport("user32.dll")]
     private static extern int HideCaret(IntPtr hwnd);
 
-    public ReadOnlyRichTextBox()
-    {
-        this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ReadOnlyRichTextBox_Mouse);
-        this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ReadOnlyRichTextBox_Mouse);
+    public ReadOnlyRichTextBox() {
+        MouseDown += ReadOnlyRichTextBox_Mouse;
+        MouseUp += ReadOnlyRichTextBox_Mouse;
         base.ReadOnly = true;
         base.TabStop = false;
-        HideCaret(this.Handle);
+        HideCaret(Handle);
     }
 
 
     protected override void OnGotFocus(EventArgs e)
     {
-        HideCaret(this.Handle);
+        HideCaret(Handle);
     }
 
     protected override void OnEnter(EventArgs e)
     {
-        HideCaret(this.Handle);
+        HideCaret(Handle);
     }
 
     [DefaultValue(true)]
@@ -45,7 +43,7 @@ public class ReadOnlyRichTextBox : System.Windows.Forms.RichTextBox
 
     private void ReadOnlyRichTextBox_Mouse(object sender, System.Windows.Forms.MouseEventArgs e)
     {
-        HideCaret(this.Handle);
+        HideCaret(Handle);
     }
 
     private void InitializeComponent()
@@ -53,13 +51,13 @@ public class ReadOnlyRichTextBox : System.Windows.Forms.RichTextBox
         //
         // ReadOnlyRichTextBox
         //
-        this.Resize += new System.EventHandler(this.ReadOnlyRichTextBox_Resize);
+        Resize += new EventHandler(ReadOnlyRichTextBox_Resize);
 
     }
 
-    private void ReadOnlyRichTextBox_Resize(object sender, System.EventArgs e)
+    private void ReadOnlyRichTextBox_Resize(object sender, EventArgs e)
     {
-        HideCaret(this.Handle);
+        HideCaret(Handle);
 
     }
 }

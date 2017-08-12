@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace rylui
@@ -61,7 +53,7 @@ namespace rylui
         public DialogResult ShowDialog(MessageBoxButtons m)
         {
             DialogType = m;
-            return this.ShowDialog();
+            return ShowDialog();
         }
 
         private const int CS_DROPSHADOW = 0x20000;
@@ -108,8 +100,8 @@ namespace rylui
                 case MessageBoxButtons.YesNoCancel:
                     rtype = DialogResult.Cancel; break;
             }
-            this.DialogResult = rtype;
-            this.Close();
+            DialogResult = rtype;
+            Close();
         }
 
         private void btn2_Click(object sender, EventArgs e)
@@ -128,8 +120,8 @@ namespace rylui
                 case MessageBoxButtons.YesNoCancel:
                     rtype = DialogResult.No; break;
             }
-            this.DialogResult = rtype;
-            this.Close();
+            DialogResult = rtype;
+            Close();
         }
 
         private void btn3_Click(object sender, EventArgs e)
@@ -142,8 +134,8 @@ namespace rylui
                 case MessageBoxButtons.YesNoCancel:
                     rtype = DialogResult.Yes; break;
             }
-            this.DialogResult = rtype;
-            this.Close();
+            DialogResult = rtype;
+            Close();
         }
     }
 }
