@@ -44,7 +44,7 @@ namespace MSAMISUserInterface {
         public class Schedule {
             public static int Active = 1;
             public static int Dismissed = 2;
-            public static int Inactive = 3;
+            public static int Pending = 3;
         }
 
         public class RequestType {
@@ -91,6 +91,7 @@ namespace MSAMISUserInterface {
         public class AssignmentStatus {
             public static int Active = 1;
             public static int Inactive = 2;
+            public static int Pending = 3;
         }
    
         public class ScheduleStatus {

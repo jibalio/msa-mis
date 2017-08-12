@@ -14,7 +14,7 @@ alter table payroll auto_increment=1;
 DELETE FROM `msadb`.`period`; 
 alter table period auto_increment=1;
 delete from mysql.event;
-
+update guards set gstatus=2;
 alter table request_assign auto_increment=1;
 alter table request_unassign auto_increment=1;
 alter table request auto_increment=1;

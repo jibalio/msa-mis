@@ -12,10 +12,10 @@ namespace MSAMISUserInterface {
         private static void Main() {
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
-            Data.InitData();
+            
             AutoLoader.AutoImportSql(true, true);
 
-            //Data.InitData();
+            Data.InitData();
             Application.EnableVisualStyles();
             try {
                 Application.SetCompatibleTextRenderingDefault(false);
