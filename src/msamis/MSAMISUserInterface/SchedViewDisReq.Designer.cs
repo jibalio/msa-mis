@@ -86,13 +86,12 @@
             // 
             // NameLBL
             // 
-            this.NameLBL.AutoSize = true;
             this.NameLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.NameLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NameLBL.Location = new System.Drawing.Point(172, 20);
+            this.NameLBL.Location = new System.Drawing.Point(0, 20);
             this.NameLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NameLBL.Name = "NameLBL";
-            this.NameLBL.Size = new System.Drawing.Size(201, 21);
+            this.NameLBL.Size = new System.Drawing.Size(548, 21);
             this.NameLBL.TabIndex = 145;
             this.NameLBL.Text = "Guards to be unassigned:";
             this.NameLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -140,7 +139,7 @@
             this.AssignedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.AssignedGRD.RowHeadersVisible = false;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AssignedGRD.Size = new System.Drawing.Size(400, 305);
+            this.AssignedGRD.Size = new System.Drawing.Size(400, 299);
             this.AssignedGRD.TabIndex = 144;
             // 
             // CloseBTN
@@ -235,7 +234,6 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

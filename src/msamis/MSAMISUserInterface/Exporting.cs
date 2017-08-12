@@ -1,7 +1,5 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
 
 
 namespace MSAMISUserInterface {
@@ -16,7 +14,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Exporting_Load(object sender, System.EventArgs e) {
-            this.Location = new Point(this.Location.X + 430, this.Location.Y + 210);
+            Location = new Point(Location.X + 430, Location.Y + 210);
             FadeTMR.Start();
         }
 

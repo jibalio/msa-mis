@@ -54,6 +54,7 @@ namespace MSAMISUserInterface {
             ClientGRD.Columns[1].Width = 330;
             ClientGRD.ColumnHeadersVisible = false;
             ClientGRD.Columns[2].Visible = false;
+            ClientGRD.Columns[3].Visible = false;
             ClientGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ClientGRD.ClearSelection();
         }

@@ -1,10 +1,6 @@
-﻿using System.Data.SqlClient;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.IO;
-using System.Data;
-using System.Reflection;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 
@@ -106,10 +102,10 @@ namespace MSAMISUserInterface {
 
         #region RylBlock
 
-        public PdfPTable FormatPDF(char formOrigin, char Mode)
+        public PdfPTable FormatPDF(char formOrigin, char modes)
         {
             //Default PDF Format
-            GReportGRD.DataSource = Reports.GetList(Mode);
+            GReportGRD.DataSource = Reports.GetList(modes);
             Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
             Font headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
             PdfPTable pdfTable = new PdfPTable(GReportGRD.ColumnCount);
@@ -139,9 +135,10 @@ namespace MSAMISUserInterface {
 
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    PdfPCell newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont));
-                    newcell.PaddingTop = 5f;
-                    newcell.PaddingBottom = 8f;
+                    var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont)) {
+                        PaddingTop = 5f,
+                        PaddingBottom = 8f
+                };
                     pdfTable.AddCell(newcell);
                 }
             }

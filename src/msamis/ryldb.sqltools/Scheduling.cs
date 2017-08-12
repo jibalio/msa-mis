@@ -1,11 +1,7 @@
 ﻿using MySql.Data;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -29,7 +25,7 @@ namespace MSAMISUserInterface {
             String q = @"select rid, name, dateentry, 
                         case requesttype 
                         when 1 then 'Assignment'
-                        when 2 then 'Dismissal' 
+                        when 2 then 'Unassignment' 
                         end as type,
                         case rstatus
                         when 1 then 'Pending'
@@ -48,7 +44,7 @@ namespace MSAMISUserInterface {
 
         public static DataTable GetRequests(String searchkeyword, int ClientFilter, int TypeFilter, String ColumnToSortByAscDesc, String orderby) {
             String q = @"select rid, name, dateentry, 
-                        case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type,
+                        case requesttype when 1 then 'Assignment' when 2 then 'Unassignment' end as type,
                         case rstatus
                         when 1 then 'Pending'
                         when 2 then 'Approved'
@@ -177,7 +173,11 @@ namespace MSAMISUserInterface {
 
 
         public static DataTable GetIncidentReport(int rid) {
-            throw new NotImplementedException();
+            var q = @"select incidentreport.*  from request_unassign
+                        left join request on request_unassign.RID = request.RID
+                        left join client on request.CID=client.CID
+                        left join incidentreport on request_unassign.IID = incidentreport.IID where request.RID = " + rid;
+            return SQLTools.ExecuteQuery(q);
         }
 
 
@@ -335,9 +335,9 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         where  city is not null " +
                         (cid == -1 ? "" : " AND cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
-                q += " AND days is not null";
+                q += " AND ti_hh is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
-                q += " AND days is null ";
+                q += " AND ti_hh is null ";
             DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " group by guards.gid order by name asc");
             // foreach (DataRow e in dt.Rows) {
             //    String[] x = e["Schedule"].ToString().Split(' ');
@@ -420,7 +420,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         /// <param name="RID"></param>
         /// <returns></returns>
         public static DataTable GetUnassignmentRequestDetails (int RID) {
-            String q = @"select name,
+            String q = @"select name, incidentreport.*,
                          case rstatus
                                                 when 1 then 'Pending'
                                                 when 2 then 'Approved'
@@ -428,7 +428,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                                                 when 4 then 'Declined'
                                                 end as status from request_unassign
                         left join request on request_unassign.RID = request.RID
-                        left join client on request.CID=client.CID where request.RID = "+RID;
+                        left join client on request.CID=client.CID where request.RID = " + RID;
             return SQLTools.ExecuteQuery(q);
         }
 

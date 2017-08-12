@@ -93,14 +93,14 @@ namespace MSAMISUserInterface
 
         private void label43_Click(object sender, EventArgs e)
         {
-            this.ClientsReportPNL.Hide();
-            this.GuardsReportPNL.Show();
+            ClientsReportPNL.Hide();
+            GuardsReportPNL.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-            this.GuardsReportPNL.Hide();
-            this.ClientsReportPNL.Show();
+            GuardsReportPNL.Hide();
+            ClientsReportPNL.Show();
         }
 
         private void ReportsForm_Load (object sender, EventArgs e)

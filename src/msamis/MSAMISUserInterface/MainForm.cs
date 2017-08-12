@@ -61,6 +61,7 @@ namespace MSAMISUserInterface {
             //Initial Methods
             DailyQuote();
             FadeTMR.Start();
+            NotifTMR.Start();
         }
 
         private void DailyQuote() {
@@ -209,6 +210,15 @@ namespace MSAMISUserInterface {
             _shadow.Location = Location;
         }
 
+        private const int CsDropshadow = 0x20000;
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         #endregion
 
         #region Form Global Buttons and Events
@@ -333,7 +343,7 @@ namespace MSAMISUserInterface {
         private void ArrangeNotif() {
             // This method is used to rearrange the Notifs Widgets when dismissing them
 
-            bool[] pnl = {DMonthlyDutyReportPNL.Visible, DClientSummaryPNL.Visible, DSalaryReportPNL.Visible};
+            bool[] pnl = {DPaydayNotifPNL.Visible, DClientSummaryPNL.Visible, DSalaryReportPNL.Visible};
             var loc1 = new Point(308, 208);
             var loc2 = new Point(308, 310);
             if (pnl[0]) if (!pnl[1]) DSalaryReportPNL.Location = loc2;
@@ -345,12 +355,23 @@ namespace MSAMISUserInterface {
             if (pnl[2]) if (!pnl[0] && !pnl[1]) DSalaryReportPNL.Location = loc1;
         }
 
+        private void NotifTMR_Tick(object sender, EventArgs e) {
+            if (DateTime.Now.Day == Payroll.GetNextPayday().Day &&
+                DateTime.Now.Month == Payroll.GetNextPayday().Month &&
+                DateTime.Now.Year == Payroll.GetNextPayday().Year && !DPaydayNotifPNL.Visible) {
+                DPaydayNotifPNL.Visible = true;
+                ArrangeNotif();
+                DPayDayNotifLBL.Text = "for the month of " + Payroll.GetNextPayday().Month + " " +
+                                       Payroll.GetNextPayday().Year;
+            }
+        }
+
         private void DMonthlyDutyReportPNL_MouseEnter(object sender, EventArgs e) {
-            DMonthlyDutyReportPNL.BackColor = _dashboardHover;
+            DPaydayNotifPNL.BackColor = _dashboardHover;
         }
 
         private void DMonthlyDutyReportPNL_MouseLeave(object sender, EventArgs e) {
-            DMonthlyDutyReportPNL.BackColor = _accent;
+            DPaydayNotifPNL.BackColor = _accent;
         }
 
         private void DClientSummaryPNL_MouseEnter(object sender, EventArgs e) {
@@ -370,7 +391,7 @@ namespace MSAMISUserInterface {
         }
 
         private void DMonthlyX_Click(object sender, EventArgs e) {
-            DMonthlyDutyReportPNL.Visible = false;
+            DPaydayNotifPNL.Visible = false;
             ArrangeNotif();
         }
 
@@ -385,7 +406,7 @@ namespace MSAMISUserInterface {
         }
 
         private void DMonthlyDutyReportPNL_Click(object sender, EventArgs e) {
-            SchedBTN.PerformClick();
+            PayrollBTN.PerformClick();
         }
 
         private void DClientSummaryPNL_Click(object sender, EventArgs e) {
@@ -793,9 +814,12 @@ namespace MSAMISUserInterface {
             CClientListTBL.Columns[0].HeaderText = "ID";
             CClientListTBL.Columns[0].Visible = false;
             CClientListTBL.Columns[1].HeaderText = "NAME";
-            CClientListTBL.Columns[1].Width = 300;
+            CClientListTBL.Columns[1].Width = 230;
             CClientListTBL.Columns[2].HeaderText = "LOCATION";
             CClientListTBL.Columns[2].Width = 300;
+            CClientListTBL.Columns[3].HeaderText = "STATUS";
+            CClientListTBL.Columns[3].Width = 70;
+            CClientListTBL.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
 
             CActiveClientLBL.Text = Client.GetNumberOfActiveClients() + " active clients";
@@ -1113,6 +1137,8 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns[4].Width = 100;
 
             SViewReqGRD.Sort(SViewReqGRD.Columns[2], ListSortDirection.Descending);
+
+            SViewReqGRD.ClearSelection();
         }
 
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
@@ -1253,10 +1279,10 @@ namespace MSAMISUserInterface {
                 SViewAssViewDetailsBTN.Visible = false;
                 SViewAssUnassignBTN.Visible = false;
             }
-            else if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Active") &&
-                     Login.AccountType == 1) {
+            else if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Active")) {
                 SViewAssViewDetailsBTN.Visible = true;
-                if (SViewAssSearchClientCMBX.SelectedIndex != 0)
+                if (SViewAssSearchClientCMBX.SelectedIndex != 0 &&
+                Login.AccountType != 2)
                     SViewAssUnassignBTN.Visible = true;
             }
         }
@@ -1638,12 +1664,15 @@ namespace MSAMISUserInterface {
         }
 
 
-        #endregion
+
+
+
+
+
 
         #endregion
 
-
-
+        #endregion
 
 
 

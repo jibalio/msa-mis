@@ -803,13 +803,17 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
                                                 where RequestType = 1 " + search + " group by guards.gid ";
             }
             else {
-                q = @"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
+                q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
                                                             WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL)
                                                             THEN 'Yes'
                                                             ELSE 'No Attendance Details Found'
                                                         END
-                                                      ) AS attendance, pstatus
+                                                      ) AS attendance,  case pstatus
+            when {Enumeration.PayrollStatus.Approved} then 'Approved'
+            when {Enumeration.PayrollStatus.Calculated} then 'Calculated'
+            when {Enumeration.PayrollStatus.Pending} then 'Pending'
+            end as pstatus
                                                 from request
                                                 left join client on client.cid=request.cid
                                                 left join request_assign on request_assign.rid=request.rid
@@ -983,7 +987,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         
 
         public static DataTable GetRatesList() {
-            return SQLTools.ExecuteQuery("SELECT * FROM msadb.rates;");
+            return SQLTools.ExecuteQuery("SELECT * FROM msadb.rates order by date_effective DESC;");
         }
 
 

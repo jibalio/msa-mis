@@ -182,9 +182,5 @@ namespace MSAMISUserInterface {
             _extraQueryParams = AvailableSearchBX.Text;
             RefreshAvailable();
         }
-
-        private void SchedAssignGuards_FormClosing(object sender, FormClosingEventArgs e) {
-           
-        }
     }
 }
