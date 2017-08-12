@@ -73,6 +73,10 @@ DefaultEmer = 50.00";
             // This checks for new and outdated rates.
             // (incl. basic pay)
             // Basic Pay Portion
+            SQLTools.ExecuteNonQuery("call init_checkdate_basicpay()");
+
+            // ContribID portions
+            
 
         }
 
