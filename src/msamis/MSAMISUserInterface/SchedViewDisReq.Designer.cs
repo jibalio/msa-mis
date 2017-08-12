@@ -139,7 +139,7 @@
             this.AssignedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.AssignedGRD.RowHeadersVisible = false;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AssignedGRD.Size = new System.Drawing.Size(400, 305);
+            this.AssignedGRD.Size = new System.Drawing.Size(400, 299);
             this.AssignedGRD.TabIndex = 144;
             // 
             // CloseBTN

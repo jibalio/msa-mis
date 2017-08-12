@@ -25,7 +25,7 @@ namespace MSAMISUserInterface {
                 var giDs = new int[GuardsGRD.RowCount];
                 for (var i = 0; i < GuardsGRD.RowCount; i++)
                     giDs[i] = int.Parse(GuardsGRD.Rows[i].Cells[0].Value.ToString());
-                Scheduling.AddUnassignmentRequest(Cid, giDs, IncidentTypeCMBX.SelectedIndex, "Admin", DateDTPKR.Value,
+                Scheduling.AddUnassignmentRequest(Cid, giDs, IncidentTypeCMBX.SelectedIndex, Login.UserName, DateDTPKR.Value,
                     LocationBX.Text, DescriptionBX.Text);
                 Reference.SchedLoadSidePnl();
                 Close();
