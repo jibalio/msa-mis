@@ -428,8 +428,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                                                 when 4 then 'Declined'
                                                 end as status from request_unassign
                         left join request on request_unassign.RID = request.RID
-                        left join client on request.CID=client.CID
-                        left join incidentreport on request_unassign.IID = incidentreport.IID where request.RID = " + RID;
+                        left join client on request.CID=client.CID where request.RID = " + RID;
             return SQLTools.ExecuteQuery(q);
         }
 
