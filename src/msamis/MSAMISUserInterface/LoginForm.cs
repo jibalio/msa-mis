@@ -132,6 +132,16 @@ namespace MSAMISUserInterface {
             if (e.KeyValue.ToString().Equals("13")) Logins();
         }
 
+        private const int CsDropshadow = 0x20000;
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
         #endregion
+
+
     }
 }

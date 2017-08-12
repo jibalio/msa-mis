@@ -210,6 +210,15 @@ namespace MSAMISUserInterface {
             _shadow.Location = Location;
         }
 
+        private const int CsDropshadow = 0x20000;
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         #endregion
 
         #region Form Global Buttons and Events
@@ -1664,6 +1673,8 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
+
+
 
 
     }
