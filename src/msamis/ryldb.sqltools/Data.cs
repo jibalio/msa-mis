@@ -22,21 +22,23 @@ DefaultEmer = 50.00";
         #endregion
         public static void InitData() {
             InitPayrollConfig();
-            initRates();
+            InitRates();
             InitReportsFolder();
-            //InitGuardStatuses();
+            InitGuardStatusAndDutyAssignments();
         }
 
-        public static void InitGuardStatuses() {
+        public static void InitGuardStatusAndDutyAssignments() {
+            // If duty starts now, and not yet activated..
             var w = $@"
                update
 	                request_assign 
                     left join sduty_assignment on sduty_assignment.RAID=request_assign.RAID 
                     left join guards on guards.gid = sduty_assignment.GID
                 set
-	                gstatus=1
+	                gstatus=1,
+                    astatus={Enumeration.AssignmentStatus.Active}
                 where
-	                contractstart<now() AND ContractEnd>now() and gstatus=0";
+	                contractstart<now() AND ContractEnd>now() and gstatus={Enumeration.GuardStatus.Inactive}";
             SQLTools.ExecuteQuery(w);
             w = $@"
             update
@@ -44,9 +46,10 @@ DefaultEmer = 50.00";
                 left join sduty_assignment on sduty_assignment.RAID=request_assign.RAID 
                 left join guards on guards.gid = sduty_assignment.GID
             set
-	            gstatus=0
+	            gstatus=0,
+                astatus={Enumeration.AssignmentStatus.Inactive}
             where
-	            ContractEnd<now() and gstatus = 1
+	            ContractEnd<now() and gstatus = {Enumeration.GuardStatus.Active}
             ";
             SQLTools.ExecuteQuery(w);
         }
@@ -66,7 +69,11 @@ DefaultEmer = 50.00";
             PayrollIni = iniparser.ReadFile(PayrollIniLocation);
         }
 
-        public static void initRates () {
+        public static void InitRates () {
+            // This checks for new and outdated rates.
+            // (incl. basic pay)
+            // Basic Pay Portion
+
         }
 
         public static void InitReportsFolder() {

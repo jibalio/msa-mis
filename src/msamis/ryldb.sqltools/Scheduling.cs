@@ -170,7 +170,11 @@ namespace MSAMISUserInterface {
             }
             
         }
-        
+
+
+        public static DataTable GetIncidentReport(int rid) {
+            throw new NotImplementedException();
+        }
 
 
 
@@ -216,30 +220,16 @@ namespace MSAMISUserInterface {
                 String raid = dtl["RAID"].ToString();
                 foreach (int g in gid) {
                     // Add assignment in assignment table
-                   String q =$"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Active}');";
+                   String q =$"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}');";
                     DateTime consta = DateTime.Parse(dtl["contractstart"].ToString());
                     DateTime conend = DateTime.Parse(dtl["contractend"].ToString());
-
-                    /*/ Then create a trigger to execute on contract start.
-                    string eventddl_cs = $@"
-                        CREATE EVENT 
-	                    consta_g{g}_r{dtl["RID"].ToString()} on schedule at '{consta.ToString("yyyy-MM-dd hh:mm:ss")}'
-	                    do
-		                UPDATE `msadb`.`guards` SET `GStatus`='{Enumeration.GuardStatus.Active}' WHERE `GID`='{g}';
-                    ";
                     
-                    string eventddl_ce = $@"
-                        CREATE EVENT 
-	                    conend_g{g}_r{dtl["RID"].ToString()} on schedule at '{conend.ToString("yyyy-MM-dd hh:mm:ss")}'
-	                    do
-		                    UPDATE `msadb`.`guards` SET `GStatus`='{Enumeration.GuardStatus.Inactive}' WHERE `GID`='{g}';
-                    ";*/
                     SQLTools.ExecuteNonQuery(q);
                    // SQLTools.ExecuteNonQuery(eventddl_cs);      // contract start trigger
                    // SQLTools.ExecuteNonQuery(eventddl_ce);      // contract end trigger
                 }
                 UpdateRequestStatus(rid, Enumeration.RequestStatus.Active);
-                //Data.InitGuardStatuses();
+                Data.InitGuardStatusAndDutyAssignments();
             } else MessageBox.Show("Request is not an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -332,7 +322,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                             when ti_hh is not null then 'Scheduled'
                             end as schedule,
 						case astatus
-                        when 1 then 'Active' when 2 then 'Inactive' end as Status
+                        when 1 then 'Active' when 2 then 'Inactive' when 3 then 'Approved' end as Status
                          from guards 
                         left join sduty_assignment on sduty_assignment.gid=guards.gid
                         left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
