@@ -520,6 +520,7 @@ namespace MSAMISUserInterface {
                       RatesSaver.AddToWithTaxQuery(bracket, TaxExemptionGRD.Columns[i].HeaderText, double.Parse(row.Cells[i].Value.ToString()));
                 }
             }
+            RatesSaver.ExecuteWithTaxQuery();
         }
 
         #endregion
