@@ -15,13 +15,13 @@ namespace MSAMISUserInterface {
             var insert_contribdetail =
                 $@"INSERT INTO `msadb`.`contribdetails` 
                     (`date_effective`, `date_dissolved`, `type`, `status`) 
-                    VALUES (`{date_effective.ToString("yyyy-MM-dd")}`, `{"9999-12-31"}`, `{2}`, `{2}`);";
+                    VALUES ('{date_effective.ToString("yyyy-MM-dd")}', '{"9999-12-31"}', '{2}', '{2}');";
             SQLTools.ExecuteQuery(insert_contribdetail);
             contrib_id = SQLTools.GetInt("select last_insert_id()");
         }
 
         public static int CreateWithTaxBracket(double value, int excessmult) {
-            var isnert_query = $@"INSERT INTO `msadb`.`withtax_value` (`{value}`, `{excessmult}`) VALUES ('131', '23');";
+            var isnert_query = $@"INSERT INTO `msadb`.`withtax_value` (`value`, `excessmult`) VALUES ('{value}', '{excessmult}');";
             SQLTools.ExecuteQuery(isnert_query);
             return SQLTools.GetInt("select last_insert_id()");
         }
