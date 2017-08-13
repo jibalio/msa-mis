@@ -60,7 +60,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Clients_Edit_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Close();
+            if (Button.Equals("ADD")) Refer.Close();
         }
 
         #endregion

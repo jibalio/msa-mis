@@ -27,7 +27,6 @@ namespace rylui
         private void Form_Load(object sender, EventArgs e)
         {
             FadeTMR.Start();
-            rt.BackColor = Property.Colors.BackColor;
            
         }
 

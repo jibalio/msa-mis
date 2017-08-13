@@ -90,7 +90,7 @@
             this.ContactBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactBX.Location = new System.Drawing.Point(243, 150);
+            this.ContactBX.Location = new System.Drawing.Point(250, 150);
             this.ContactBX.Name = "ContactBX";
             this.ContactBX.Size = new System.Drawing.Size(132, 18);
             this.ContactBX.TabIndex = 66;
@@ -157,7 +157,7 @@
             this.ContactNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactNoBX.Location = new System.Drawing.Point(243, 189);
+            this.ContactNoBX.Location = new System.Drawing.Point(250, 189);
             this.ContactNoBX.Name = "ContactNoBX";
             this.ContactNoBX.Size = new System.Drawing.Size(131, 18);
             this.ContactNoBX.TabIndex = 67;
