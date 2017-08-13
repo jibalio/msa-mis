@@ -512,7 +512,15 @@ namespace MSAMISUserInterface {
             LoadTaxTables();
         }
 
-
+        private void TaxSaveBTN_Click(object sender, EventArgs e) {
+            RatesSaver.CreateWithTaxQuery(TaxDateDTPKR.Value);
+            foreach (DataGridViewRow row in TaxExemptionGRD.Rows) {
+                var bracket = RatesSaver.CreateWithTaxBracket(double.Parse(row.Cells[1].Value.ToString().Split('+')[0].Trim(' ')), int.Parse(row.Cells[1].Value.ToString().Split('+')[1].Trim(' ').Split('%')[0]));
+                for (var i = 2; i < TaxExemptionGRD.ColumnCount; i++) {
+                      RatesSaver.AddToWithTaxQuery(bracket, TaxExemptionGRD.Columns[i].HeaderText, double.Parse(row.Cells[i].Value.ToString()));
+                }
+            }
+        }
 
         #endregion
 
@@ -683,6 +691,7 @@ namespace MSAMISUserInterface {
         private void GlobalCancelBTN_Click(object sender, EventArgs e) {
             GlobalEditingMode(false);
         }
+
         #endregion
 
 

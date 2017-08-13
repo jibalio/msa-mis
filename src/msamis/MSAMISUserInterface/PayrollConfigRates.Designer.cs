@@ -1250,6 +1250,7 @@
             this.TaxSaveBTN.TabIndex = 291;
             this.TaxSaveBTN.Text = "SAVE";
             this.TaxSaveBTN.UseVisualStyleBackColor = false;
+            this.TaxSaveBTN.Click += new System.EventHandler(this.TaxSaveBTN_Click);
             // 
             // TaxDateDTPKR
             // 
@@ -2265,13 +2266,13 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(898, 598);
             this.ControlBox = false;
+            this.Controls.Add(this.WithPagePNL);
             this.Controls.Add(this.RatesPNL);
             this.Controls.Add(this.CloseBTN);
             this.Controls.Add(this.MultiplierPagePNL);
             this.Controls.Add(this.GlobalPagePNL);
             this.Controls.Add(this.SSSPagePNL);
             this.Controls.Add(this.BasicPagePNL);
-            this.Controls.Add(this.WithPagePNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollConfigRates";
             this.ShowInTaskbar = false;
