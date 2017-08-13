@@ -14,7 +14,7 @@ namespace MSAMISUserInterface {
             try {
                 String q = @"select * from account where uname='" + uname + "'";
                 DataTable dt = SQLTools.ExecuteQuery_(q);
-                Console.WriteLine(Crypt.HashPassword("clerk"));
+                //Console.WriteLine(Crypt.HashPassword("clerk"));
                 string db_hash = dt.Rows[0]["hash"].ToString();
                 if (Crypt.Verify(pword, db_hash)) {
                     UserName = dt.Rows[0]["uname"].ToString();
