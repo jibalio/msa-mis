@@ -173,11 +173,19 @@ namespace MSAMISUserInterface {
 
 
         public static DataTable GetIncidentReport(int rid) {
-            var q = @"select incidentreport.*  from request_unassign
+            var q = @"select case  incidentreport.ReportType when 1 then 'Injury' when 2 then 'Accident' when 3 then 'Complaint' end as Type, 
+                        incidentreport.EventDate as EventDate, incidentreport.EventLocation as Location, 
+                        incidentreport.Description as Description, 
+                        concat (ln, ', ',  fn, ' ', mn) as name, 
+                        case InvolvementType when 1 then 'Involved' when 2 then 'Witness' end as InvType from request_unassign
                         left join request on request_unassign.RID = request.RID
-                        left join client on request.CID=client.CID
-                        left join incidentreport on request_unassign.IID = incidentreport.IID where request.RID = " + rid;
+                        left join incidentreport on request_unassign.IID = incidentreport.IID 
+                        left join personsinvolved on incidentreport.IID = personsinvolved.IID where request.RID = " + rid;
             return SQLTools.ExecuteQuery(q);
+        }
+
+        public static void AddIncidentReportInvolvement(int Iid, int type, string First, string Middle, string Last) {
+            SQLTools.ExecuteNonQuery("INSERT INTO PersonsInvolved (InvolvementType, IID, FN, MN, LN) VALUES ('" + type + "','" + Iid + "','" + First + "','" + Middle + "','" + Last + "')");
         }
 
 
@@ -420,7 +428,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         /// <param name="RID"></param>
         /// <returns></returns>
         public static DataTable GetUnassignmentRequestDetails (int RID) {
-            String q = @"select name, incidentreport.*,
+            String q = @"select name,
                          case rstatus
                                                 when 1 then 'Pending'
                                                 when 2 then 'Approved'

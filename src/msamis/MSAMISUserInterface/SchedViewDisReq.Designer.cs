@@ -35,9 +35,10 @@
             this.NameLBL = new System.Windows.Forms.Label();
             this.AssignedGRD = new System.Windows.Forms.DataGridView();
             this.CloseBTN = new System.Windows.Forms.Button();
-            this.ApproveBTN = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ViewIncidentLBL = new System.Windows.Forms.Label();
             this.DeclineBTN = new System.Windows.Forms.Button();
+            this.ApproveBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).BeginInit();
             this.panel2.SuspendLayout();
@@ -139,7 +140,7 @@
             this.AssignedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.AssignedGRD.RowHeadersVisible = false;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AssignedGRD.Size = new System.Drawing.Size(400, 299);
+            this.AssignedGRD.Size = new System.Drawing.Size(400, 267);
             this.AssignedGRD.TabIndex = 144;
             // 
             // CloseBTN
@@ -161,38 +162,32 @@
             this.CloseBTN.UseVisualStyleBackColor = false;
             this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
             // 
-            // ApproveBTN
-            // 
-            this.ApproveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ApproveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ApproveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ApproveBTN.BackgroundImage")));
-            this.ApproveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ApproveBTN.FlatAppearance.BorderSize = 0;
-            this.ApproveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
-            this.ApproveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
-            this.ApproveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ApproveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApproveBTN.ForeColor = System.Drawing.Color.White;
-            this.ApproveBTN.Location = new System.Drawing.Point(175, 381);
-            this.ApproveBTN.Name = "ApproveBTN";
-            this.ApproveBTN.Size = new System.Drawing.Size(105, 32);
-            this.ApproveBTN.TabIndex = 146;
-            this.ApproveBTN.Text = "APPROVE";
-            this.ApproveBTN.UseVisualStyleBackColor = false;
-            this.ApproveBTN.Visible = false;
-            this.ApproveBTN.Click += new System.EventHandler(this.ApproveBTN_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.ViewIncidentLBL);
             this.panel2.Controls.Add(this.DeclineBTN);
             this.panel2.Controls.Add(this.ApproveBTN);
             this.panel2.Controls.Add(this.NameLBL);
             this.panel2.Controls.Add(this.AssignedGRD);
             this.panel2.Location = new System.Drawing.Point(0, 155);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(557, 445);
+            this.panel2.Size = new System.Drawing.Size(548, 445);
             this.panel2.TabIndex = 148;
+            // 
+            // ViewIncidentLBL
+            // 
+            this.ViewIncidentLBL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ViewIncidentLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ViewIncidentLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ViewIncidentLBL.Location = new System.Drawing.Point(2, 337);
+            this.ViewIncidentLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ViewIncidentLBL.Name = "ViewIncidentLBL";
+            this.ViewIncidentLBL.Size = new System.Drawing.Size(548, 21);
+            this.ViewIncidentLBL.TabIndex = 148;
+            this.ViewIncidentLBL.Text = "View Incident Report";
+            this.ViewIncidentLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ViewIncidentLBL.Click += new System.EventHandler(this.ViewIncidentLBL_Click);
             // 
             // DeclineBTN
             // 
@@ -206,7 +201,7 @@
             this.DeclineBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeclineBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.DeclineBTN.ForeColor = System.Drawing.Color.White;
-            this.DeclineBTN.Location = new System.Drawing.Point(286, 381);
+            this.DeclineBTN.Location = new System.Drawing.Point(277, 381);
             this.DeclineBTN.Name = "DeclineBTN";
             this.DeclineBTN.Size = new System.Drawing.Size(105, 32);
             this.DeclineBTN.TabIndex = 147;
@@ -214,6 +209,27 @@
             this.DeclineBTN.UseVisualStyleBackColor = false;
             this.DeclineBTN.Visible = false;
             this.DeclineBTN.Click += new System.EventHandler(this.DeclineBTN_Click);
+            // 
+            // ApproveBTN
+            // 
+            this.ApproveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ApproveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ApproveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ApproveBTN.BackgroundImage")));
+            this.ApproveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ApproveBTN.FlatAppearance.BorderSize = 0;
+            this.ApproveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.ApproveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.ApproveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ApproveBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ApproveBTN.ForeColor = System.Drawing.Color.White;
+            this.ApproveBTN.Location = new System.Drawing.Point(166, 381);
+            this.ApproveBTN.Name = "ApproveBTN";
+            this.ApproveBTN.Size = new System.Drawing.Size(105, 32);
+            this.ApproveBTN.TabIndex = 146;
+            this.ApproveBTN.Text = "APPROVE";
+            this.ApproveBTN.UseVisualStyleBackColor = false;
+            this.ApproveBTN.Visible = false;
+            this.ApproveBTN.Click += new System.EventHandler(this.ApproveBTN_Click);
             // 
             // SchedViewDisReq
             // 
@@ -250,5 +266,6 @@
         private System.Windows.Forms.Button ApproveBTN;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button DeclineBTN;
+        private System.Windows.Forms.Label ViewIncidentLBL;
     }
 }

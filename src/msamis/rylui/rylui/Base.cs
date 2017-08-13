@@ -21,11 +21,12 @@ namespace rylui
         public Base()
         {
             InitializeComponent();
-            
+            Opacity = 0;
         }
 
         private void Form_Load(object sender, EventArgs e)
         {
+            FadeTMR.Start();
             rt.BackColor = Property.Colors.BackColor;
            
         }
@@ -136,6 +137,11 @@ namespace rylui
             }
             DialogResult = rtype;
             Close();
+        }
+
+        private void FadeTMR_Tick(object sender, EventArgs e) {
+            Opacity += 0.2;
+            if (Opacity >= 1) FadeTMR.Stop();
         }
     }
 }
