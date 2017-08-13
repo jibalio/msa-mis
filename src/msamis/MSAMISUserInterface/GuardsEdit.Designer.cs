@@ -2585,11 +2585,11 @@
             this.panel3.Controls.Add(this.WorkLBL);
             this.panel3.Controls.Add(this.PersonalLBL);
             this.panel3.Controls.Add(this.FamilyLBL);
-            this.panel3.Controls.Add(this.PersonalPNL);
             this.panel3.Controls.Add(this.FamilyPNL);
             this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Controls.Add(this.GEditDetailsBTN);
             this.panel3.Controls.Add(this.WorkPNL);
+            this.panel3.Controls.Add(this.PersonalPNL);
             this.panel3.Location = new System.Drawing.Point(348, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 600);

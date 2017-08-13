@@ -211,6 +211,12 @@
     <Compile Include="SchedViewDutyDetails.Designer.cs">
       <DependentUpon>SchedViewDutyDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="SchedViewIncidentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SchedViewIncidentReport.Designer.cs">
+      <DependentUpon>SchedViewIncidentReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shadow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SchedViewDutyDetails.resx">
       <DependentUpon>SchedViewDutyDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SchedViewIncidentReport.resx">
+      <DependentUpon>SchedViewIncidentReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Shadow.resx">
       <DependentUpon>Shadow.cs</DependentUpon>

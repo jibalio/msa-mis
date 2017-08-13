@@ -70,5 +70,17 @@ namespace MSAMISUserInterface {
             DeclineBTN.Visible = false;
             Reference.SchedRefreshRequests();
         }
+
+        private void ViewIncidentLBL_Click(object sender, EventArgs e) {
+            try {
+                var view = new SchedViewIncidentReport {
+                    Rid = Rid,
+                    Client = ClientLBL.Text,
+                    Location = Location
+                };
+                view.ShowDialog();
+            }
+            catch (Exception) { }
+        }
     }
 }

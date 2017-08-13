@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Base));
             this.TitleBar = new System.Windows.Forms.Panel();
             this.Title = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.rt = new ReadOnlyRichTextBox();
-            this.btn2 = new System.Windows.Forms.Button();
             this.btn1 = new System.Windows.Forms.Button();
+            this.btn2 = new System.Windows.Forms.Button();
             this.btn3 = new System.Windows.Forms.Button();
+            this.rt = new ReadOnlyRichTextBox();
             this.iconbox = new System.Windows.Forms.PictureBox();
+            this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.TitleBar.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconbox)).BeginInit();
@@ -74,38 +76,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(300, 40);
             this.flowLayoutPanel1.TabIndex = 15;
             // 
-            // rt
-            // 
-            this.rt.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.rt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rt.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.rt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rt.Location = new System.Drawing.Point(114, 52);
-            this.rt.Name = "rt";
-            this.rt.Size = new System.Drawing.Size(318, 112);
-            this.rt.TabIndex = 1;
-            this.rt.Text = "";
-            // 
-            // btn2
-            // 
-            this.btn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.btn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn2.BackgroundImage")));
-            this.btn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn2.FlatAppearance.BorderSize = 0;
-            this.btn2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.btn2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.btn2.ForeColor = System.Drawing.Color.White;
-            this.btn2.Location = new System.Drawing.Point(131, 3);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(80, 29);
-            this.btn2.TabIndex = 12;
-            this.btn2.Text = "CLOSE";
-            this.btn2.UseVisualStyleBackColor = false;
-            this.btn2.Click += new System.EventHandler(this.btn2_Click);
-            // 
             // btn1
             // 
             this.btn1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -127,6 +97,26 @@
             this.btn1.UseVisualStyleBackColor = false;
             this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
+            // btn2
+            // 
+            this.btn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.btn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn2.BackgroundImage")));
+            this.btn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn2.FlatAppearance.BorderSize = 0;
+            this.btn2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.btn2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.btn2.ForeColor = System.Drawing.Color.White;
+            this.btn2.Location = new System.Drawing.Point(131, 3);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(80, 29);
+            this.btn2.TabIndex = 12;
+            this.btn2.Text = "CLOSE";
+            this.btn2.UseVisualStyleBackColor = false;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            // 
             // btn3
             // 
             this.btn3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -147,6 +137,18 @@
             this.btn3.UseVisualStyleBackColor = false;
             this.btn3.Click += new System.EventHandler(this.btn3_Click);
             // 
+            // rt
+            // 
+            this.rt.BackColor = System.Drawing.Color.White;
+            this.rt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rt.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.rt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rt.Location = new System.Drawing.Point(114, 52);
+            this.rt.Name = "rt";
+            this.rt.Size = new System.Drawing.Size(318, 112);
+            this.rt.TabIndex = 1;
+            this.rt.Text = "";
+            // 
             // iconbox
             // 
             this.iconbox.BackgroundImage = global::rylui.Properties.Resources.Question;
@@ -157,12 +159,17 @@
             this.iconbox.TabIndex = 14;
             this.iconbox.TabStop = false;
             // 
+            // FadeTMR
+            // 
+            this.FadeTMR.Interval = 1;
+            this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
+            // 
             // Base
             // 
             this.AcceptButton = this.btn2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btn1;
             this.ClientSize = new System.Drawing.Size(462, 225);
             this.ControlBox = false;
@@ -193,6 +200,7 @@
         public System.Windows.Forms.Button btn2;
         public System.Windows.Forms.Button btn3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Timer FadeTMR;
     }
 }
 

@@ -281,15 +281,18 @@
             // 
             // Dependent5RBX
             // 
+            this.Dependent5RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Dependent5RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Dependent5RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent5RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent5RBX.FormattingEnabled = true;
             this.Dependent5RBX.Items.AddRange(new object[] {
             "",
             "Involved",
             "Witness"});
-            this.Dependent5RBX.Location = new System.Drawing.Point(348, 304);
+            this.Dependent5RBX.Location = new System.Drawing.Point(348, 299);
             this.Dependent5RBX.Name = "Dependent5RBX";
-            this.Dependent5RBX.Size = new System.Drawing.Size(108, 21);
+            this.Dependent5RBX.Size = new System.Drawing.Size(108, 25);
             this.Dependent5RBX.TabIndex = 208;
             // 
             // Dependent5LastBX
@@ -303,6 +306,8 @@
             this.Dependent5LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent5LastBX.TabIndex = 207;
             this.Dependent5LastBX.Text = "Last";
+            this.Dependent5LastBX.Enter += new System.EventHandler(this.Dependent5LastBX_Enter);
+            this.Dependent5LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // Dependent5MiddleBX
             // 
@@ -315,6 +320,8 @@
             this.Dependent5MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent5MiddleBX.TabIndex = 206;
             this.Dependent5MiddleBX.Text = "Middle";
+            this.Dependent5MiddleBX.Enter += new System.EventHandler(this.Dependent5MiddleBX_Enter);
+            this.Dependent5MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // Dependent5FirstBX
             // 
@@ -327,6 +334,8 @@
             this.Dependent5FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent5FirstBX.TabIndex = 205;
             this.Dependent5FirstBX.Text = "First";
+            this.Dependent5FirstBX.Enter += new System.EventHandler(this.Dependent5FirstBX_Enter);
+            this.Dependent5FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label65
             // 
@@ -375,15 +384,18 @@
             // 
             // Dependent4RBX
             // 
+            this.Dependent4RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Dependent4RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Dependent4RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent4RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent4RBX.FormattingEnabled = true;
             this.Dependent4RBX.Items.AddRange(new object[] {
             "",
             "Involved",
             "Witness"});
-            this.Dependent4RBX.Location = new System.Drawing.Point(348, 273);
+            this.Dependent4RBX.Location = new System.Drawing.Point(348, 268);
             this.Dependent4RBX.Name = "Dependent4RBX";
-            this.Dependent4RBX.Size = new System.Drawing.Size(108, 21);
+            this.Dependent4RBX.Size = new System.Drawing.Size(108, 25);
             this.Dependent4RBX.TabIndex = 204;
             // 
             // Dependent4LastBX
@@ -397,6 +409,8 @@
             this.Dependent4LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent4LastBX.TabIndex = 203;
             this.Dependent4LastBX.Text = "Last";
+            this.Dependent4LastBX.Enter += new System.EventHandler(this.Dependent4LastBX_Enter);
+            this.Dependent4LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // Dependent4MiddleBX
             // 
@@ -409,6 +423,8 @@
             this.Dependent4MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent4MiddleBX.TabIndex = 202;
             this.Dependent4MiddleBX.Text = "Middle";
+            this.Dependent4MiddleBX.Enter += new System.EventHandler(this.Dependent4MiddleBX_Enter);
+            this.Dependent4MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // Dependent4FirstBX
             // 
@@ -421,6 +437,8 @@
             this.Dependent4FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent4FirstBX.TabIndex = 201;
             this.Dependent4FirstBX.Text = "First";
+            this.Dependent4FirstBX.Enter += new System.EventHandler(this.Dependent4FirstBX_Enter);
+            this.Dependent4FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label61
             // 
@@ -469,15 +487,18 @@
             // 
             // Dependent3RBX
             // 
+            this.Dependent3RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Dependent3RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Dependent3RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent3RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent3RBX.FormattingEnabled = true;
             this.Dependent3RBX.Items.AddRange(new object[] {
             "",
             "Involved",
             "Witness"});
-            this.Dependent3RBX.Location = new System.Drawing.Point(348, 242);
+            this.Dependent3RBX.Location = new System.Drawing.Point(348, 237);
             this.Dependent3RBX.Name = "Dependent3RBX";
-            this.Dependent3RBX.Size = new System.Drawing.Size(108, 21);
+            this.Dependent3RBX.Size = new System.Drawing.Size(108, 25);
             this.Dependent3RBX.TabIndex = 200;
             // 
             // Dependent3LastBX
@@ -491,6 +512,8 @@
             this.Dependent3LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent3LastBX.TabIndex = 199;
             this.Dependent3LastBX.Text = "Last";
+            this.Dependent3LastBX.Enter += new System.EventHandler(this.Dependent3LastBX_Enter);
+            this.Dependent3LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // Dependent3MiddleBX
             // 
@@ -503,6 +526,8 @@
             this.Dependent3MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent3MiddleBX.TabIndex = 198;
             this.Dependent3MiddleBX.Text = "Middle";
+            this.Dependent3MiddleBX.Enter += new System.EventHandler(this.Dependent3MiddleBX_Enter);
+            this.Dependent3MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // Dependent3FirstBX
             // 
@@ -515,6 +540,8 @@
             this.Dependent3FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent3FirstBX.TabIndex = 197;
             this.Dependent3FirstBX.Text = "First";
+            this.Dependent3FirstBX.Enter += new System.EventHandler(this.Dependent3FirstBX_Enter);
+            this.Dependent3FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label57
             // 
@@ -563,15 +590,18 @@
             // 
             // Dependent2RBX
             // 
+            this.Dependent2RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Dependent2RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Dependent2RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent2RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent2RBX.FormattingEnabled = true;
             this.Dependent2RBX.Items.AddRange(new object[] {
             "",
             "Involved",
             "Witness"});
-            this.Dependent2RBX.Location = new System.Drawing.Point(348, 211);
+            this.Dependent2RBX.Location = new System.Drawing.Point(348, 206);
             this.Dependent2RBX.Name = "Dependent2RBX";
-            this.Dependent2RBX.Size = new System.Drawing.Size(108, 21);
+            this.Dependent2RBX.Size = new System.Drawing.Size(108, 25);
             this.Dependent2RBX.TabIndex = 196;
             // 
             // Dependent2LastBX
@@ -585,6 +615,8 @@
             this.Dependent2LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent2LastBX.TabIndex = 195;
             this.Dependent2LastBX.Text = "Last";
+            this.Dependent2LastBX.Enter += new System.EventHandler(this.Dependent2LastBX_Enter);
+            this.Dependent2LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // Dependent2MiddleBX
             // 
@@ -597,6 +629,8 @@
             this.Dependent2MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent2MiddleBX.TabIndex = 194;
             this.Dependent2MiddleBX.Text = "Middle";
+            this.Dependent2MiddleBX.Enter += new System.EventHandler(this.Dependent2MiddleBX_Enter);
+            this.Dependent2MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // Dependent2FirstBX
             // 
@@ -609,6 +643,8 @@
             this.Dependent2FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent2FirstBX.TabIndex = 193;
             this.Dependent2FirstBX.Text = "First";
+            this.Dependent2FirstBX.Enter += new System.EventHandler(this.Dependent2FirstBX_Enter);
+            this.Dependent2FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label48
             // 
@@ -657,15 +693,18 @@
             // 
             // Dependent1RBX
             // 
+            this.Dependent1RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Dependent1RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Dependent1RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent1RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent1RBX.FormattingEnabled = true;
             this.Dependent1RBX.Items.AddRange(new object[] {
             "",
             "Involved",
             "Witness"});
-            this.Dependent1RBX.Location = new System.Drawing.Point(348, 179);
+            this.Dependent1RBX.Location = new System.Drawing.Point(348, 174);
             this.Dependent1RBX.Name = "Dependent1RBX";
-            this.Dependent1RBX.Size = new System.Drawing.Size(108, 21);
+            this.Dependent1RBX.Size = new System.Drawing.Size(108, 25);
             this.Dependent1RBX.TabIndex = 192;
             // 
             // Dependent1LastBX
@@ -679,6 +718,8 @@
             this.Dependent1LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent1LastBX.TabIndex = 191;
             this.Dependent1LastBX.Text = "Last";
+            this.Dependent1LastBX.Enter += new System.EventHandler(this.Dependent1LastBX_Enter);
+            this.Dependent1LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // Dependent1MiddleBX
             // 
@@ -691,6 +732,8 @@
             this.Dependent1MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent1MiddleBX.TabIndex = 190;
             this.Dependent1MiddleBX.Text = "Middle";
+            this.Dependent1MiddleBX.Enter += new System.EventHandler(this.Dependent1MiddleBX_Enter);
+            this.Dependent1MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // Dependent1FirstBX
             // 
@@ -703,6 +746,8 @@
             this.Dependent1FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent1FirstBX.TabIndex = 189;
             this.Dependent1FirstBX.Text = "First";
+            this.Dependent1FirstBX.Enter += new System.EventHandler(this.Dependent1FirstBX_Enter);
+            this.Dependent1FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
             // 
             // label52
             // 

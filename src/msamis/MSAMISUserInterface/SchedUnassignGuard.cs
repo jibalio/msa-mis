@@ -11,6 +11,8 @@ namespace MSAMISUserInterface {
         public Shadow Refer;
         public MainForm Reference;
 
+        private int _iid;
+
         public SchedUnassignGuard() {
             InitializeComponent();
             Opacity = 0;
@@ -27,9 +29,38 @@ namespace MSAMISUserInterface {
                     giDs[i] = int.Parse(GuardsGRD.Rows[i].Cells[0].Value.ToString());
                 Scheduling.AddUnassignmentRequest(Cid, giDs, IncidentTypeCMBX.SelectedIndex, Login.UserName, DateDTPKR.Value,
                     LocationBX.Text, DescriptionBX.Text);
+
+                try {
+                    _iid = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "IID"));
+                } catch { }
+                try {
+                    if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
+                        InsertDependent(Dependent1RBX.SelectedIndex, Dependent1FirstBX.Text,
+                            Dependent1MiddleBX.Text, Dependent1LastBX.Text);
+                    if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
+                        InsertDependent(Dependent2RBX.SelectedIndex, Dependent2FirstBX.Text,
+                            Dependent2MiddleBX.Text, Dependent2LastBX.Text);
+                    if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
+                        InsertDependent(Dependent3RBX.SelectedIndex, Dependent3FirstBX.Text,
+                            Dependent3MiddleBX.Text, Dependent3LastBX.Text);
+                    if (!CheckName(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX))
+                        InsertDependent(Dependent4RBX.SelectedIndex, Dependent4FirstBX.Text,
+                            Dependent4MiddleBX.Text, Dependent4LastBX.Text);
+                    if (!CheckName(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX))
+                        InsertDependent(Dependent5RBX.SelectedIndex, Dependent5FirstBX.Text,
+                            Dependent5MiddleBX.Text, Dependent5LastBX.Text);
+                }
+                catch { }
+
+                RylMessageBox.ShowDialog("Your Request has been added", "Request Added", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 Reference.SchedLoadSidePnl();
                 Close();
             }
+        }
+
+        private void InsertDependent(int type, string first, string middle, string last) {
+            Scheduling.AddIncidentReportInvolvement(_iid, type, first, middle, last);
         }
 
 
@@ -188,5 +219,86 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private static void ClearBox(TextBoxBase textBoxBase) {
+            if (textBoxBase.Text.Equals("Last")) textBoxBase.Clear();
+            else if (textBoxBase.Text.Equals("Middle")) textBoxBase.Clear();
+            else if (textBoxBase.Text.Equals("First")) textBoxBase.Clear();
+        }
+
+        private void Dependent1FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent1FirstBX);
+        }
+
+        private void Dependent1MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent1MiddleBX);
+        }
+
+        private void Dependent1LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent1LastBX);
+        }
+
+        private void Dependent2FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent2FirstBX);
+        }
+
+        private void Dependent2MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent2MiddleBX);
+        }
+
+        private void Dependent2LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent2LastBX);
+        }
+
+        private void Dependent3FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent3FirstBX);
+        }
+
+        private void Dependent3MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent3MiddleBX);
+        }
+
+        private void Dependent3LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent3LastBX);
+        }
+
+        private void Dependent4FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent4FirstBX);
+        }
+
+        private void Dependent4MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent4MiddleBX);
+        }
+
+        private void Dependent4LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent4LastBX);
+        }
+
+        private void Dependent5FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent5FirstBX);
+        }
+
+        private void Dependent5MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent5MiddleBX);
+        }
+
+        private void Dependent5LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent5LastBX);
+        }
+
+        private void LastNameBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
+        }
+
+        private void FirstNameBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "First";
+        }
+
+        private void MiddleNameBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Middle";
+        }
     }
 }

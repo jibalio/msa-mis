@@ -141,8 +141,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                Close();
+            Close();
         }
 
         private void Guards_EditEmployees_Load(object sender, EventArgs e) {
@@ -159,7 +158,10 @@ namespace MSAMISUserInterface {
         }
 
         private void Guards_EditEmployees_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Close();
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                e.Cancel = true;
+            else Refer.Close();
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
@@ -357,15 +359,17 @@ namespace MSAMISUserInterface {
 
         private void LastNameBX_Leave(object sender, EventArgs e) {
             var lastbx = sender as TextBox;
-            if (LastNameBX.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
         }
 
         private void FirstNameBX_Leave(object sender, EventArgs e) {
-            if (FirstNameBX.Text.Trim(' ').Length == 0) FirstNameBX.Text = "First";
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "First";
         }
 
         private void MiddleNameBX_Leave(object sender, EventArgs e) {
-            if (MiddleNameBX.Text.Trim(' ').Length == 0) MiddleNameBX.Text = "Middle";
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Middle";
         }
 
         private void StreetNoBX_Leave(object sender, EventArgs e) {
