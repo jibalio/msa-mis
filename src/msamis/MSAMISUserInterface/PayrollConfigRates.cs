@@ -367,7 +367,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SSSSaveBTN_Click(object sender, EventArgs e) {
-            Payroll.SaveSssContrib(SSSGRD, SSSDateTimePKR.Value);
+            Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
             CancelBTN.PerformClick();
         }
         private void SSSGRD_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {

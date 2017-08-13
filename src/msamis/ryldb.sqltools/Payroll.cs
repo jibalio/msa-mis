@@ -17,168 +17,16 @@ namespace MSAMISUserInterface {
     /// Do not serialize objects when payroll is pending.
     /// </summary>
     public class Payroll {
+
+
+
+
         #region Adjustement Operationen
 
         public void GetAdjustments() { }
 
         #endregion
 
-
-        #region Fields Definition
-
-        #region Meta
-
-        public int GID;
-        public HourProcessor TotalHours = new HourProcessor();
-        public Attendance.Period period = Attendance.GetCurrentPayPeriod();
-        private double _BasicPayHourly;
-        private Dictionary<string, double> _rates = new Dictionary<string, double>();
-
-        public Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
-            #region + Keys Definition
-
-            {"normal_nsu", new HourCostPair()},
-            {"normal_sun", new HourCostPair()},
-            {"regular_nsu", new HourCostPair()},
-            {"regular_sun", new HourCostPair()},
-            {"special_nsu", new HourCostPair()},
-            {"special_sun", new HourCostPair()},
-            {"special", new HourCostPair()},
-            {"normal", new HourCostPair()},
-            {"regular", new HourCostPair()},
-            {"total", new HourCostPair()}
-
-            #endregion
-        };
-
-        public Dictionary<string, HourCostPair> hc = new Dictionary<string, HourCostPair> {
-            #region + Keys Definition
-
-            {"nsu_proper_day_normal", new HourCostPair()},
-            {"nsu_proper_day_special", new HourCostPair()},
-            {"nsu_proper_day_regular", new HourCostPair()},
-            {"nsu_proper_night_normal", new HourCostPair()},
-            {"nsu_proper_night_special", new HourCostPair()},
-            {"nsu_proper_night_regular", new HourCostPair()},
-            {"nsu_overtime_day_normal", new HourCostPair()},
-            {"nsu_overtime_day_special", new HourCostPair()},
-            {"nsu_overtime_day_regular", new HourCostPair()},
-            {"nsu_overtime_night_normal", new HourCostPair()},
-            {"nsu_overtime_night_special", new HourCostPair()},
-            {"nsu_overtime_night_regular", new HourCostPair()},
-            {"sun_proper_day_normal", new HourCostPair()},
-            {"sun_proper_day_special", new HourCostPair()},
-            {"sun_proper_day_regular", new HourCostPair()},
-            {"sun_proper_night_normal", new HourCostPair()},
-            {"sun_proper_night_special", new HourCostPair()},
-            {"sun_proper_night_regular", new HourCostPair()},
-            {"sun_overtime_day_normal", new HourCostPair()},
-            {"sun_overtime_day_special", new HourCostPair()},
-            {"sun_overtime_day_regular", new HourCostPair()},
-            {"sun_overtime_night_normal", new HourCostPair()},
-            {"sun_overtime_night_special", new HourCostPair()},
-            {"sun_overtime_night_regular", new HourCostPair()},
-
-            #endregion
-        };
-
-        public static Hours total_old;
-
-        private int _PayrollId;
-
-        #endregion
-
-        #region Derivables
-        public double Bonuses => ThirteenthMonthPay + Cola + EmergencyAllowance + CashBond;
-        public double Deductions => Sss + PagIbig + PhilHealth + CashAdvance + Withtax;
-        public double GrossPay => TotalSummary["total"].total + Bonuses;
-        public double NetPay => GrossPay - Deductions;
-        public double TaxableIncome => GrossPay - Sss - PagIbig - PhilHealth;
-        public double Excess => GrossPay - TaxableIncome;
-
-        #endregion
-
-        #region Bonuses
-
-        public double EmergencyAllowance {
-            get { return _emergencyallowance; }
-            set {
-                _emergencyallowance = value;
-                if (_viewmode==0) {
-                    string query = $@"UPDATE `msadb`.`payroll` SET `emergencyallowance`='{value}' WHERE `PID`='{_PayrollId}';";
-                    SQLTools.ExecuteNonQuery(query); 
-                }
-            }
-        }
-        public int _viewmode;
-        public double CashBond {
-            get { return _cashbond; }
-            set {
-                _cashbond = value;
-                if (_viewmode == 0) {
-                    string query = $@"UPDATE `msadb`.`payroll` SET `cashbond`='{value}' WHERE `PID`='{_PayrollId}';";
-                    SQLTools.ExecuteNonQuery(query); 
-                }
-            }
-        }
-
-        public double Cola {
-            get { return _cola; }
-            set {
-                _cola = value;
-                if (_viewmode == 0) {
-                    string query = $@"UPDATE `msadb`.`payroll` SET `cola`='{value}' WHERE `PID`='{_PayrollId}';";
-                    SQLTools.ExecuteNonQuery(query); 
-                }
-            }
-        }
-
-        public double ThirteenthMonthPay {
-            get { return _thirteen; }
-            set {
-                _thirteen = value;
-                if (_viewmode == 0) {
-                    string query = $@"UPDATE `msadb`.`payroll` SET `thirteenth`='{value}' WHERE `PID`='{_PayrollId}';";
-                    SQLTools.ExecuteNonQuery(query); 
-                }
-            }
-        }
-
-        #endregion
-        #region Deductions
-
-        public double CashAdvance {
-            get { return _cashadv; }
-            set {
-                _cashadv = value;
-                string query = $@"UPDATE `msadb`.`payroll` SET `cashadv`='{value}' WHERE `PID`='{_PayrollId}';";
-                SQLTools.ExecuteNonQuery(query);
-            }
-        }
-
-        public double PagIbig;
-        public double PhilHealth;
-        public double Sss;
-        public double Withtax;
-        public WithTax wt = new WithTax();
-
-        #endregion
-
-        // PayrollData Containers
-
-        #region Internals
-
-        private double _cashbond;
-        private double _cola;
-        private double _emergencyallowance;
-
-        private double _thirteen;
-        private double _cashadv;
-
-        #endregion
-
-        #endregion Fields Definition
-        
         #region Constructors
 
         private DataRow DbValues;
@@ -247,10 +95,10 @@ namespace MSAMISUserInterface {
             this.Withtax =  double.Parse(DbValues["withtax"].ToString());
             this.hc = (Dictionary<string, HourCostPair>) _DeserializeObject(
                 System.Text.Encoding.Default.GetString((byte[])DbValues["hc_serializable"])
-                );
+            );
             this.TotalSummary = (Dictionary<string, HourCostPair>)_DeserializeObject(
                 System.Text.Encoding.Default.GetString((byte[])DbValues["totalsummary_serializable"])
-                );
+            );
             sw.Stop();
             Console.WriteLine("Done\nObject Deserialization Method: {0}", sw.Elapsed.TotalSeconds);
         }
@@ -266,7 +114,176 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        #region Methods
+
+        #region Fields Definition
+
+        #region Meta
+
+        public int GID;
+        public HourProcessor TotalHours = new HourProcessor();
+        public Attendance.Period period = Attendance.GetCurrentPayPeriod();
+
+        public Dictionary<string, HourCostPair> TotalSummary = new Dictionary<string, HourCostPair> {
+            #region + Keys Definition
+
+            {"normal_nsu", new HourCostPair()},
+            {"normal_sun", new HourCostPair()},
+            {"regular_nsu", new HourCostPair()},
+            {"regular_sun", new HourCostPair()},
+            {"special_nsu", new HourCostPair()},
+            {"special_sun", new HourCostPair()},
+            {"special", new HourCostPair()},
+            {"normal", new HourCostPair()},
+            {"regular", new HourCostPair()},
+            {"total", new HourCostPair()}
+
+            #endregion
+        };
+
+        public Dictionary<string, HourCostPair> hc = new Dictionary<string, HourCostPair> {
+            #region + Keys Definition
+
+            {"nsu_proper_day_normal", new HourCostPair()},
+            {"nsu_proper_day_special", new HourCostPair()},
+            {"nsu_proper_day_regular", new HourCostPair()},
+            {"nsu_proper_night_normal", new HourCostPair()},
+            {"nsu_proper_night_special", new HourCostPair()},
+            {"nsu_proper_night_regular", new HourCostPair()},
+            {"nsu_overtime_day_normal", new HourCostPair()},
+            {"nsu_overtime_day_special", new HourCostPair()},
+            {"nsu_overtime_day_regular", new HourCostPair()},
+            {"nsu_overtime_night_normal", new HourCostPair()},
+            {"nsu_overtime_night_special", new HourCostPair()},
+            {"nsu_overtime_night_regular", new HourCostPair()},
+            {"sun_proper_day_normal", new HourCostPair()},
+            {"sun_proper_day_special", new HourCostPair()},
+            {"sun_proper_day_regular", new HourCostPair()},
+            {"sun_proper_night_normal", new HourCostPair()},
+            {"sun_proper_night_special", new HourCostPair()},
+            {"sun_proper_night_regular", new HourCostPair()},
+            {"sun_overtime_day_normal", new HourCostPair()},
+            {"sun_overtime_day_special", new HourCostPair()},
+            {"sun_overtime_day_regular", new HourCostPair()},
+            {"sun_overtime_night_normal", new HourCostPair()},
+            {"sun_overtime_night_special", new HourCostPair()},
+            {"sun_overtime_night_regular", new HourCostPair()},
+
+            #endregion
+        };
+
+        internal static Hours total_old;
+        private int _PayrollId;
+        private int _viewmode;
+        private Dictionary<string, double> _rates = new Dictionary<string, double>();
+        private double _BasicPayHourly;
+
+        #endregion
+
+        #region Derivables
+        public double Bonuses => ThirteenthMonthPay + Cola + EmergencyAllowance + CashBond;
+        public double Deductions => Sss + PagIbig + PhilHealth + CashAdvance + Withtax;
+        public double GrossPay => TotalSummary["total"].total + Bonuses;
+        public double NetPay => GrossPay - Deductions;
+        public double TaxableIncome => GrossPay - Sss - PagIbig - PhilHealth;
+        public double Excess => GrossPay - TaxableIncome;
+
+        #endregion
+
+        #region Bonuses
+
+        public double EmergencyAllowance {
+            get { return _emergencyallowance; }
+            set {
+                _emergencyallowance = value;
+                if (_viewmode==0) {
+                    string query = $@"UPDATE `msadb`.`payroll` SET `emergencyallowance`='{value}' WHERE `PID`='{_PayrollId}';";
+                    SQLTools.ExecuteNonQuery(query); 
+                }
+            }
+        }
+
+        public double CashBond {
+            get { return _cashbond; }
+            set {
+                _cashbond = value;
+                if (_viewmode == 0) {
+                    string query = $@"UPDATE `msadb`.`payroll` SET `cashbond`='{value}' WHERE `PID`='{_PayrollId}';";
+                    SQLTools.ExecuteNonQuery(query); 
+                }
+            }
+        }
+
+        public double Cola {
+            get { return _cola; }
+            set {
+                _cola = value;
+                if (_viewmode == 0) {
+                    string query = $@"UPDATE `msadb`.`payroll` SET `cola`='{value}' WHERE `PID`='{_PayrollId}';";
+                    SQLTools.ExecuteNonQuery(query); 
+                }
+            }
+        }
+
+        public double ThirteenthMonthPay {
+            get { return _thirteen; }
+            set {
+                _thirteen = value;
+                if (_viewmode == 0) {
+                    string query = $@"UPDATE `msadb`.`payroll` SET `thirteenth`='{value}' WHERE `PID`='{_PayrollId}';";
+                    SQLTools.ExecuteNonQuery(query); 
+                }
+            }
+        }
+
+        #endregion
+        #region Deductions
+
+        public double CashAdvance {
+            get { return _cashadv; }
+            set {
+                _cashadv = value;
+                string query = $@"UPDATE `msadb`.`payroll` SET `cashadv`='{value}' WHERE `PID`='{_PayrollId}';";
+                SQLTools.ExecuteNonQuery(query);
+            }
+        }
+
+        public double PagIbig;
+        public double PhilHealth;
+        public double Sss;
+        public double Withtax;
+        public WithTax wt = new WithTax();
+
+        #endregion
+
+        // PayrollData Containers
+
+        #region Internals
+
+        private static readonly string[] _rateKeys = new string[] {
+            #region +keys definition
+            "nsu_proper_day_normal", "nsu_proper_day_special", "nsu_proper_day_regular", "nsu_proper_night_normal",
+            "nsu_proper_night_special", "nsu_proper_night_regular", "nsu_overtime_day_normal",
+            "nsu_overtime_day_special", "nsu_overtime_day_regular", "nsu_overtime_night_normal",
+            "nsu_overtime_night_special", "nsu_overtime_night_regular", "sun_proper_day_normal",
+            "sun_proper_day_special", "sun_proper_day_regular", "sun_proper_night_normal", "sun_proper_night_special",
+            "sun_proper_night_regular", "sun_overtime_day_normal", "sun_overtime_day_special",
+            "sun_overtime_day_regular", "sun_overtime_night_normal", "sun_overtime_night_special",
+            "sun_overtime_night_regular"
+            #endregion
+        };
+
+        private double _cashbond;
+        private double _cola;
+        private double _emergencyallowance;
+
+        private double _thirteen;
+        private double _cashadv;
+
+        #endregion
+
+        #endregion Fields Definition
+
+        #region Public Methods
 
         public void Compute() {
             Compute(true);
@@ -298,11 +315,8 @@ namespace MSAMISUserInterface {
         private double _GetMyBasicPays() {
             return double.Parse(SQLTools.ExecuteSingleResult("select amount from basicpay where status=1"));
         }
-        private double _GetMyBasicPays(int BPID) {
-            return double.Parse(SQLTools.ExecuteSingleResult($@"select amount from basicpay where bpid={BPID}"));
-        }
 
-        public void Compute(bool checkthirteen) {
+        private void Compute(bool checkthirteen) {
             foreach (var key in hc.Keys.ToList())
                 hc[key] = new HourCostPair(TotalHours.GetHourDictionary()[key].TotalHours, _BasicPayHourly * _rates[key]);
             ComputeTotalSummary();
@@ -311,7 +325,7 @@ namespace MSAMISUserInterface {
             //MessageBox.Show(SQLTools.SerializeMe(hc));
         }
 
-        public void ComputeHours() {
+        private void ComputeHours() {
             var HourIterationDataTable = SQLTools.ExecuteQuery(
                 string.Format(@"
                     select dutydetails.did, atid, date, timein, timeout, 
@@ -404,16 +418,7 @@ namespace MSAMISUserInterface {
                 TotalSummary["special"] + TotalSummary["regular"] + TotalSummary["normal"];
         }
 
-        public double ComputeNet() {
-            var e = GrossPay;
-            e -= Deductions;
-            e += Bonuses;
-            return e;
-        }
-
-        
-
-        public void ComputeDeductions() {
+        private void ComputeDeductions() {
             Sss = ComputeSSS(GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16)));
             if (period.period == 2) {
                 PagIbig = RetriveDefaultPagibig();
@@ -423,10 +428,7 @@ namespace MSAMISUserInterface {
                 PagIbig = 0;
                 PhilHealth = 0;
             }
-
             CashAdvance = RetrieveCashAdvance();
-            
-            
             ComputeWithTax(TaxableIncome, Excess);
         }
 
@@ -639,13 +641,6 @@ end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then
 
         #region SSS: For DataTable CRUD
 
-        public static DataTable GetSssContribTable() {
-            return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
-            right join contribdetails
-            on ssscontrib.contrib_id=contribdetails.contrib_id
-            where status={Enumeration.ContribStatus.Active}");
-        }
-
         public static DataTable GetSssContribTable(int contrib_id) {
             return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
             right join contribdetails
@@ -660,31 +655,7 @@ end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then
                     }' order by date_effective desc");
         }
 
-
-        #region SSS:old
-
-        private static void EditSSSContrib(int SssId, double RangeStart, double RangeEnd, double Value) {
-            var q =
-                @"UPDATE `msadb`.`ssscontrib` SET `range_start`='{0}', `range_end`='{1}', `ec`='{2}' WHERE `sssid`='" +
-                SssId + "';";
-            q = string.Format(q, RangeStart, RangeEnd, Value);
-            SQLTools.ExecuteNonQuery(q);
-        }
-
-        private static void RemoveSSSContrib(int SssId) {
-            SQLTools.ExecuteNonQuery("delete from ssscontrib WHERE `sssid`='" + SssId + "';");
-        }
-
-
-        private static void AddSSSContrib(double RangeStart, double RangeEnd, double Value) {
-            var q = string.Format(
-                @"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`) VALUES ('{0}', '{1}','{2}');",
-                RangeStart, RangeEnd, Value);
-            SQLTools.ExecuteNonQuery(q);
-        }
-
-        #endregion
-
+        
         #endregion For DataTable CRUD
 
         #region SSS: For Computation CRUD
@@ -721,50 +692,6 @@ end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then
                 }
             }
             return contrib_id;
-        }
-
-        #endregion
-
-        #region SSS: DB Saving
-
-        public static void SaveSssContrib(DataGridView dt, DateTime date_effective) {
-            var date_effectives = date_effective.ToString("yyyy-MM-dd");
-            var HasElapsed = DateTime.Now >= date_effective;
-
-            // Create ContribDetails Table (main)
-
-            // if date has already elapsed (adding historical data)
-            if (HasElapsed) {
-                var q2 = $@"
-UPDATE `msadb`.`contribdetails` SET 
-`date_dissolved`='{date_effectives}'
-WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.Active}";
-                SQLTools.ExecuteNonQuery(q2);
-            }
-
-            var q =
-                $@"INSERT INTO `msadb`.`contribdetails` (`date_effective`, `date_dissolved`, `type`, `status`) VALUES ('{
-                        date_effectives
-                    }', '{-1}', '{Enumeration.ContribType.Sss}', '{
-                        (HasElapsed ? Enumeration.ContribStatus.Past : Enumeration.ContribStatus.Future)
-                    }');";
-            SQLTools.ExecuteNonQuery(q);
-            var contrib_id = SQLTools.GetInt("select LAST_INSERT_ID();");
-
-
-            // Create Actual SSS connections
-            foreach (DataGridViewRow dr in dt.Rows) {
-                var from = _cleanstringmoney(dr.Cells[1].Value.ToString());
-                var to = _cleanstringmoney(dr.Cells[3].Value.ToString());
-                var value = _cleanstringmoney(dr.Cells[5].Value.ToString());
-                var w =
-                    $"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`, `contrib_id`) VALUES ('{from}', '{to}', '{value}', '{contrib_id}');";
-                SQLTools.ExecuteNonQuery(w);
-            }
-        }
-
-        private static string _cleanstringmoney(string s) {
-            return Regex.Replace(s, @"[^0-9\-\.]", "");
         }
 
         #endregion
@@ -847,41 +774,6 @@ WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.
         #endregion
 
 
-        #region DB Operations
-
-        #region WithTax: DB Ops
-
-        public static DataTable GetWithTaxHeaders(int contrib_id) {
-            return SQLTools.ExecuteQuery(
-                $@"SELECT wid, value, excessmult, contribdetails.contrib_id FROM msadb.withtax_value 
-right join withtax_bracket on withtax_bracket.taxid=withtax_value.wid
-left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id where contribdetails.contrib_id='{
-                        contrib_id
-                    }' group by wid;");
-        }
-
-        public static DataTable GetWithTaxBrackets(int contrib_id) {
-            var q = $@"select * from withtax_bracket where contrib_id={contrib_id};";
-            return SQLTools.ExecuteQuery(q);
-        }
-
-        public static DataTable GetWithTaxContribList() {
-            return SQLTools.ExecuteQuery($@"    select contrib_id, date_effective, date_dissolved, case status 
-                                                when 1 then 'Active'
-                                                when 2 then 'Pending'
-                                                when 0 then 'Inactive'
-                                                end as `status`
-                                                from contribdetails 
-                                                where type='{
-                    Enumeration.ContribType.WithTax
-                }' order by date_effective desc");
-        }
-
-        #endregion
-
-        #endregion DB Operations
-
-
         public HourProcessor GetTotalHours() {
             return TotalHours;
         }
@@ -900,6 +792,10 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         }
 
         #endregion
+
+        private static string _cleanstringmoney(string s) {
+            return Regex.Replace(s, @"[^0-9\-\.]", "");
+        }
 
         #region This.Rates initializers
         private void _InitRates() {
@@ -972,22 +868,33 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             return new DateTime(0, 0, 0);
         }
         #region Defaults Setter
-        private static readonly string[] _rateKeys = new string[] {
-            #region +keys definition
-            "nsu_proper_day_normal", "nsu_proper_day_special", "nsu_proper_day_regular", "nsu_proper_night_normal",
-            "nsu_proper_night_special", "nsu_proper_night_regular", "nsu_overtime_day_normal",
-            "nsu_overtime_day_special", "nsu_overtime_day_regular", "nsu_overtime_night_normal",
-            "nsu_overtime_night_special", "nsu_overtime_night_regular", "sun_proper_day_normal",
-            "sun_proper_day_special", "sun_proper_day_regular", "sun_proper_night_normal", "sun_proper_night_special",
-            "sun_proper_night_regular", "sun_overtime_day_normal", "sun_overtime_day_special",
-            "sun_overtime_day_regular", "sun_overtime_night_normal", "sun_overtime_night_special",
-            "sun_overtime_night_regular"
-            #endregion
-        };
-        
+        public static void SetBonusDefaults(double philhealth, double pagibig, double cashbond, double cola,
+            double emergencyallowance) {
+            //Data.PayrollIni["Payroll"]["DefaultCashAdvance"] = cashadv.ToString(CultureInfo.InvariantCulture);
+            Data.PayrollIni["Payroll"]["DefaultPHIC"] = philhealth.ToString("N2");
+            Data.PayrollIni["Payroll"]["DefaultHDMF"] = pagibig.ToString("N2");
+            Data.PayrollIni["Payroll"]["DefaultCashBond"] = cashbond.ToString("N2"); ;
+            Data.PayrollIni["Payroll"]["DefaultCola"] = cola.ToString("N2");
+            Data.PayrollIni["Payroll"]["DefaultEmer"] = emergencyallowance.ToString("N2");
+            Data.iniparser.WriteFile(Data.PayrollIniLocation, Data.PayrollIni);
+            Data.InitPayrollConfig();
+        }
 
         public static DataTable GetRatesList() {
             return SQLTools.ExecuteQuery("SELECT * FROM msadb.rates order by date_effective DESC;");
+        }
+
+        public static DataTable GetRates(int rates_id) {
+            return SQLTools.ExecuteQuery($@"
+SELECT rates_id, date_effective, date_dissolved, contrib_id, ordinary_day, special_holiday, regular_holiday, sunday_ordinary_day, sunday_special_holiday, sunday_regular_holiday, nightdifferential, overtime, overtime_holiday,
+case status 
+when {Enumeration.ContribStatus.Active} then 'Active'
+when {Enumeration.ContribStatus.Future} then 'Pending'
+when {Enumeration.ContribStatus.Past} then 'Inactive'
+end as status
+ FROM msadb.rates
+where rates_id={rates_id};
+");
         }
 
 
@@ -1009,47 +916,77 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
                 `nightdifferential`, `overtime`, `overtime_holiday`, `status`) 
                 VALUES ('{ss}', '{-1}', '{1.00}', '{special_holiday.ToString("N2")}', 
                 '{regular_holiday.ToString("N2")}', '{sunday_ordinary_day.ToString("N2")}', '{sunday_special_holiday.ToString("N2")}', '{sunday_regular_holiday.ToString("N2")}', 
-                '{nightdifferential.ToString("N2")}', '{overtime.ToString("N2")}', '{overtime_holiday.ToString("N2")}', '{
-                        (HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)
-                    }');";
+                '{nightdifferential.ToString("N2")}', '{overtime.ToString("N2")}', '{overtime_holiday.ToString("N2")}', '{Enumeration.BasicPayStatus.Future}');";
             SQLTools.ExecuteNonQuery(kwiri);
+            SQLTools.ExecuteNonQuery("call init_checkdate_rates()");
         }
-
-        public static DataTable GetRates(int rates_id) {
-            return SQLTools.ExecuteQuery($@"
-SELECT rates_id, date_effective, date_dissolved, contrib_id, ordinary_day, special_holiday, regular_holiday, sunday_ordinary_day, sunday_special_holiday, sunday_regular_holiday, nightdifferential, overtime, overtime_holiday,
-case status 
-when {Enumeration.ContribStatus.Active} then 'Active'
-when {Enumeration.ContribStatus.Future} then 'Pending'
-when {Enumeration.ContribStatus.Past} then 'Inactive'
-end as status
- FROM msadb.rates
-where rates_id={rates_id};
-");
-        }
-
-        public static void SetBonusDefaults(double philhealth, double pagibig, double cashbond, double cola,
-            double emergencyallowance) {
-            //Data.PayrollIni["Payroll"]["DefaultCashAdvance"] = cashadv.ToString(CultureInfo.InvariantCulture);
-            Data.PayrollIni["Payroll"]["DefaultPHIC"] = philhealth.ToString("N2");
-            Data.PayrollIni["Payroll"]["DefaultHDMF"] = pagibig.ToString("N2");
-            Data.PayrollIni["Payroll"]["DefaultCashBond"] = cashbond.ToString("N2"); ;
-            Data.PayrollIni["Payroll"]["DefaultCola"] = cola.ToString("N2");
-            Data.PayrollIni["Payroll"]["DefaultEmer"] = emergencyallowance.ToString("N2");
-            Data.iniparser.WriteFile(Data.PayrollIniLocation,Data.PayrollIni);
-            Data.InitPayrollConfig();
-        }
-
-
-
         public string[] GetSSSDetails() {
             return new string[] {
                 "December 27, 2014 - January 10, 1970", "3340.00 - 5500.00", "281"
             };
         }
 
+        public static void SetSssContrib(DataGridView dt, DateTime date_effective) {
+            var date_effectives = date_effective.ToString("yyyy-MM-dd");
+            var HasElapsed = DateTime.Now >= date_effective;
+
+            // Create ContribDetails Table (main)
+
+            // if date has already elapsed (adding historical data)
+            if (HasElapsed) {
+                var q2 = $@"
+                    UPDATE `msadb`.`contribdetails` SET 
+                    `date_dissolved`='{date_effectives}'
+                    WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.Active}";
+                SQLTools.ExecuteNonQuery(q2);
+            }
+
+            var q =
+                $@"INSERT INTO `msadb`.`contribdetails` (`date_effective`, `date_dissolved`, `type`, `status`) VALUES ('{
+                        date_effectives
+                    }', '{-1}', '{Enumeration.ContribType.Sss}', '{Enumeration.ContribStatus.Future}');";
+            SQLTools.ExecuteNonQuery(q);
+            SQLTools.ExecuteNonQuery("call init_checkdate_contribs()");
+            var contrib_id = SQLTools.GetInt("select LAST_INSERT_ID();");
 
 
+            // Create Actual SSS connections
+            foreach (DataGridViewRow dr in dt.Rows) {
+                var from = _cleanstringmoney(dr.Cells[1].Value.ToString());
+                var to = _cleanstringmoney(dr.Cells[3].Value.ToString());
+                var value = _cleanstringmoney(dr.Cells[5].Value.ToString());
+                var w =
+                    $"INSERT INTO `msadb`.`ssscontrib` (`range_start`, `range_end`, `ec`, `contrib_id`) VALUES ('{@from}', '{to}', '{value}', '{contrib_id}');";
+                SQLTools.ExecuteNonQuery(w);
+            }
+            SQLTools.ExecuteNonQuery("call init_checkdate_contribs()");
+        }
+
+        public static DataTable GetWithTaxHeaders(int contrib_id) {
+            return SQLTools.ExecuteQuery(
+                $@"SELECT wid, value, excessmult, contribdetails.contrib_id FROM msadb.withtax_value 
+right join withtax_bracket on withtax_bracket.taxid=withtax_value.wid
+left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id where contribdetails.contrib_id='{
+                        contrib_id
+                    }' group by wid;");
+        }
+
+        public static DataTable GetWithTaxBrackets(int contrib_id) {
+            var q = $@"select * from withtax_bracket where contrib_id={contrib_id};";
+            return SQLTools.ExecuteQuery(q);
+        }
+
+        public static DataTable GetWithTaxContribList() {
+            return SQLTools.ExecuteQuery($@"    select contrib_id, date_effective, date_dissolved, case status 
+                                                when 1 then 'Active'
+                                                when 2 then 'Pending'
+                                                when 0 then 'Inactive'
+                                                end as `status`
+                                                from contribdetails 
+                                                where type='{
+                    Enumeration.ContribType.WithTax
+                }' order by date_effective desc");
+        }
 
         #endregion
 
@@ -1096,5 +1033,13 @@ where rates_id={rates_id};
             return SQLTools.ExecuteQuery(w);
         }
 
+
+
+
+
+        #region Rates Region
+
+
+        #endregion
     }
 }

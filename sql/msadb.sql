@@ -639,8 +639,8 @@ DROP TABLE IF EXISTS `rates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rates` (
   `rates_id` int(11) NOT NULL AUTO_INCREMENT,
-  `date_effective` varchar(45) DEFAULT NULL,
-  `date_dissolved` varchar(45) DEFAULT NULL,
+  `date_effective` datetime DEFAULT NULL,
+  `date_dissolved` datetime DEFAULT NULL,
   `contrib_id` int(11) DEFAULT NULL,
   `ordinary_day` decimal(3,2) DEFAULT NULL,
   `special_holiday` decimal(3,2) DEFAULT NULL,
@@ -653,7 +653,7 @@ CREATE TABLE `rates` (
   `overtime_holiday` decimal(3,2) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
   PRIMARY KEY (`rates_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -662,7 +662,7 @@ CREATE TABLE `rates` (
 
 LOCK TABLES `rates` WRITE;
 /*!40000 ALTER TABLE `rates` DISABLE KEYS */;
-INSERT INTO `rates` VALUES (1,'1970-01-01','2012-01-01',12,1.00,1.10,1.50,1.30,1.65,2.50,1.05,1.10,1.30,NULL),(2,'2012-01-01','-1',12,1.00,1.30,2.00,1.30,1.50,2.60,1.10,1.25,1.25,NULL);
+INSERT INTO `rates` VALUES (1,'1970-01-01 00:00:00','2012-01-01 00:00:00',12,1.00,1.10,1.50,1.30,1.65,2.50,1.05,1.10,1.30,0),(2,'2012-01-01 00:00:00','2017-08-13 00:00:00',12,1.00,1.30,2.00,1.30,1.50,2.60,1.10,1.25,1.25,0),(3,'2017-08-13 00:00:00','9999-12-31 00:00:00',12,1.00,1.30,2.15,1.30,1.50,2.60,1.10,1.25,1.25,1);
 /*!40000 ALTER TABLE `rates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -910,6 +910,27 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'msadb'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `init_checkdate_all` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `init_checkdate_all`()
+BEGIN
+	call init_checkdate_basicpay();
+    call init_checkdate_contribs();
+    call init_checkdate_rates();
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `init_checkdate_basicpay` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1019,53 +1040,18 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `init_checkdate_rates`()
 BEGIN
-	SET @t1 = (select count(*) from contribdetails where date_effective<NOW() and `date_dissolved`>NOW() and type=1);
-	SET @t2 = (select count(*) from contribdetails where date_effective<NOW() and `date_dissolved`>NOW() and type=2);
-	SET @t3 = (select count(*) from contribdetails where date_effective<NOW() and `date_dissolved`>NOW() and type=3);
-
-	-- get ONLY the next pending basic pay
-			SET @de1 = (select date_effective from contribdetails where date_effective < NOW() and `date_dissolved`> NOW() and status = 2 and type = 1 order by date_effective desc limit 1);
-			SET @de2 = (select date_effective from contribdetails where date_effective < NOW() and `date_dissolved`> NOW() and status = 2 and type = 2 order by date_effective desc limit 1);
-			SET @de3 = (select date_effective from contribdetails where date_effective < NOW() and `date_dissolved`> NOW() and status = 2 and type = 3 order by date_effective desc limit 1);
-
-	UPDATE msadb.contribdetails
-			set `date_dissolved` = (case 
-				-- Type 1
-					when (status=1 and @t1>1 and type=1) then (@de1)
-					when (status=2 and @t1>1 and type=1) then date_dissolved
-					when (status=1 and @t1=1 and type=1) then date_dissolved
-					when (status=2 and @t1=1 and type=1) then date_dissolved
-					
-				-- Type 2
-					when(status = 1 and @t2 > 1 and type = 2) then(@de2)      
-					when(status = 2 and @t2 > 1 and type = 2) then `date_dissolved` 
-					when(status = 1 and @t2 = 1 and type = 2) then `date_dissolved`
-					when(status = 2 and @t2 = 1 and type = 2) then `date_dissolved` 
-					when(status = 0 and @t1 = 1 and type=2) then `date_dissolved`
-			-- Type 3
-					when(status = 1 and @t3 > 1 and type = 3) then(@de3)                 
-					when(status = 2 and @t3 > 1 and type = 3) then `date_dissolved` 
-					when(status = 1 and @t3 = 1 and type = 3) then `date_dissolved`
-					when(status = 2 and @t3 = 1 and type = 3) then `date_dissolved`    
-					when(status = 0 and @t3 = 1 and type = 3) then `date_dissolved`     
-			end),
-			
-			status = (case 	
-					when (status=1 and (@t1)>1 and type=1) then 0 
-					when (status=2 and (@t1)>1 and type=1) then 1 
-					when (status=1 and (@t1)=1 and type=1) then status
-					when (status=2 and (@t1)=1 and type=1) then status 
-					
-					when (status=1 and (@t2)>1 and type = 2) then 0 
-					when (status=2 and (@t2)>1 and type = 2) then 1 
-					when (status=1 and (@t2)=1 and type = 2) then status
-					when (status=2 and (@t2)=1 and type = 2) then status 
-					
-					when (status=1 and (@t3)>1 and type = 3) then 0 
-					when (status=2 and (@t3)>1 and type = 3) then 1 
-					when (status=1 and (@t3)=1 and type = 3) then status
-					when (status=2 and (@t3)=1 and type = 3) then status 
-					end)
+		SET @cw = (select count(*) from rates where date_effective<NOW() and `date_dissolved`>NOW());
+-- get ONLY the next pending basic pay
+SET @de = (select date_effective from rates where date_effective<NOW() and `date_dissolved`>NOW() and status=2 order by date_effective desc limit 1);
+	UPDATE msadb.rates
+	set `date_dissolved` = (case when (status=1 and @cw>1) then (@de)
+    when (status=2 and @cw>1) then `date_dissolved` 
+    when (status=1 and @cw=1) then `date_dissolved`
+    when (status=2 and @cw=1) then `date_dissolved` end),
+    status = (case 	when (status=1 and (@cw)>1) then 0 
+						when (status=2 and (@cw)>1) then 1 
+                        when (status=1 and (@cw)=1) then status
+						when (status=2 and (@cw)=1) then status end)
 	where date_effective<NOW() and `date_dissolved`>NOW();
 END ;;
 DELIMITER ;
@@ -1119,4 +1105,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-13  2:55:20
+-- Dump completed on 2017-08-13 16:16:41
