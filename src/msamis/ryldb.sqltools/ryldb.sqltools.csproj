@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts.cs" />
     <Compile Include="Attendance.cs" />
     <Compile Include="AutoLoader.cs" />
     <Compile Include="Backend_Tester.cs">
