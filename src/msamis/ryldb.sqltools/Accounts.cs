@@ -12,7 +12,7 @@ namespace MSAMISUserInterface {
  
         
 
-        public void ChangeUsername(int accid, string NewUname) {
+        public static void ChangeUsername(int accid, string NewUname) {
             var q = $@"
                             UPDATE `msadb`.`account` SET 
                             `uname`='{NewUname}' 
