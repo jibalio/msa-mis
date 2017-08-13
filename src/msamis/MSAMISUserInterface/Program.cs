@@ -12,8 +12,10 @@ namespace MSAMISUserInterface {
         private static void Main() {
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
-            
-            AutoLoader.AutoImportSql(true, true);
+            var q = Payroll.GetNextPayday().ToString();
+            rylui.RylMessageBox.ShowDialog(q, @"Backend says", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            AutoLoader.AutoImportSql(false, false);
 
             Data.InitData();
             Application.EnableVisualStyles();

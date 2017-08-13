@@ -867,6 +867,7 @@ end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then
             }
             return new DateTime(0, 0, 0);
         }
+
         #region Defaults Setter
         public static void SetBonusDefaults(double philhealth, double pagibig, double cashbond, double cola,
             double emergencyallowance) {

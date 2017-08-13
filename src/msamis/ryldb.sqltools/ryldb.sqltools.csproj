@@ -105,6 +105,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RatesSaver.cs" />
     <Compile Include="Reports.cs" />
     <Compile Include="Reports1.cs" />
     <Compile Include="Scheduling.cs" />

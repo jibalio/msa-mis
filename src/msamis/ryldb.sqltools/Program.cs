@@ -13,16 +13,14 @@ namespace ryldb.sqltools {
         static void Main(string[] args) {
 
  
-
-
+           var q =  Payroll.GetNextPayday().ToString();
+            MessageBox.Show(q, @"Backend says", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
 
 
-        public static void Message(string q) {
-            rylui.RylMessageBox.ShowDialog(q, @"Backend says", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+       
     }
 
 }

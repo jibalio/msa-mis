@@ -98,7 +98,7 @@ namespace MSAMISUserInterface {
             }
 
 
-            if (hasNewVersion[0] || hasNewVersion[1]) {
+            if ((hasNewVersion[0] || hasNewVersion[1]) && db) {
                 LoaderGUI e = new LoaderGUI();
                 e.Show();
 
@@ -116,7 +116,7 @@ namespace MSAMISUserInterface {
                     }
                 }
 
-                if (hasNewVersion[1]) {
+                if (hasNewVersion[1] && dbarchive) {
                     using (MySqlConnection conn = SQLTools.nodb) {
                         using (MySqlCommand cmd = new MySqlCommand()) {
                             using (MySqlBackup mb = new MySqlBackup(cmd)) {
