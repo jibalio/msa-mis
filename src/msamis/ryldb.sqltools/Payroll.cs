@@ -625,11 +625,12 @@ select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pen
 
 
         public static DataTable GetBasicPayHistory() {
-            var q = @"use msadb;
-select bpid, amount,start,case `end`
-when '-1' then 'Pending' 
+            var q = @"
+select bpid, amount,start,case
+when (`end`='9999-12-31' and status=2) then 'Pending' 
+when (`end`='9999-12-31' and status=1) then 'Current' 
 when end then end
-end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc";
+end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc;";
             return SQLTools.ExecuteQuery(q);
         }
 
