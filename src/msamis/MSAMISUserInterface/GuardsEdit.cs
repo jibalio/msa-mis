@@ -161,7 +161,7 @@ namespace MSAMISUserInterface {
             if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                 e.Cancel = true;
-            else Refer.Close();
+            else if (Button.Equals("ADD")) Refer.Close();
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
