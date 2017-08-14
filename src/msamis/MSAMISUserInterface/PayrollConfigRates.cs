@@ -390,7 +390,8 @@ namespace MSAMISUserInterface {
             TaxDateCMBX.Items.Clear();
             foreach (DataRow row in Payroll.GetWithTaxContribList().Rows) {
                 var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var dissolved = row["date_dissolved"].Equals("9999-12-31 00:00:00") ? "Current" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
+                var dissolved = row["date_dissolved"].Equals("Current") ? "Current" : 
+                                (row["date_dissolved"].Equals("Active")  ? "Active" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
                 TaxDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
             }
             if (TaxDateCMBX.Items.Count > 0) TaxDateCMBX.SelectedIndex = 0;
@@ -606,7 +607,9 @@ namespace MSAMISUserInterface {
             MultipliersDateCMBX.Items.Clear();
             foreach (DataRow row in Payroll.GetRatesList().Rows) {
                 var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var dissolved = row["date_dissolved"].Equals("-1") ? "Current" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
+                var dissolved = row["date_dissolved"].ToString().Equals("Current") ? "Current" :
+                    (row["date_dissolved"].ToString().Equals("Pending") ? "Pending" : 
+                    DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
                 MultipliersDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["rates_id"].ToString()), effective, dissolved));
             }
             MultipliersDateCMBX.SelectedIndex = 0;

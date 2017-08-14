@@ -570,13 +570,9 @@ select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pen
             var d = SQLTools.ExecuteQuery(q);
             foreach (DataRow dr in d.Rows) {
                 var dstart = DateTime.ParseExact(dr["start"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                var dend =
-                    !dr["end"].ToString().Equals("-1")
-                        ? DateTime.ParseExact(dr["end"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture)
-                        : new DateTime(9999, 12, 28);
+                var dend = DateTime.Parse(dr["end"].ToString());
                 if (dstart < dt && dt < dend) {
                     return double.Parse(dr["amount"].ToString());
-                    break;
                 }
             }
             return 0.00;
@@ -599,8 +595,10 @@ select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pen
                 SQLTools.ExecuteNonQuery(q2);
             }
             var q =
-                $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{-1}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
+                $"INSERT INTO `msadb`.`basicpay` (`amount`, `start`, `end`, `status`) VALUES ('{spay}', '{ss}', '{"9999-12-31"}', '{(HasElapsed ? Enumeration.BasicPayStatus.Active : Enumeration.BasicPayStatus.Future)}');";
             SQLTools.ExecuteNonQuery(q);
+            var up = "call init_checkdate_all()";
+            SQLTools.ExecuteQuery(up);
         }
 
         /// <summary>
@@ -625,6 +623,8 @@ select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pen
 
 
         public static DataTable GetBasicPayHistory() {
+            var up = "call init_checkdate_all()";
+            SQLTools.ExecuteQuery(up);
             var q = @"
 select bpid, amount,start,case
 when (`end`='9999-12-31' and status=2) then 'Pending' 
@@ -643,6 +643,8 @@ end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then
         #region SSS: For DataTable CRUD
 
         public static DataTable GetSssContribTable(int contrib_id) {
+            var up = "call init_checkdate_all()";
+            SQLTools.ExecuteQuery(up);
             return SQLTools.ExecuteQuery($@"select sssid, range_start, range_end, ec from ssscontrib
             right join contribdetails
             on contribdetails.contrib_id = ssscontrib.contrib_id
@@ -686,9 +688,7 @@ else date_dissolved  end as date_dissolved from contribdetails where type='{
             var dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow dr in dt.Rows) {
                 var ss = DateTime.Parse(dr["date_effective"].ToString());
-                var es = dr["date_dissolved"].ToString().Equals("-1")
-                    ? SQLTools.GetDateTime("9999-12-28")
-                    : DateTime.Parse(dr["date_dissolved"].ToString());
+                var es = DateTime.Parse(dr["date_dissolved"].ToString());
                 if (ss < date && date < es) {
                     contrib_id = int.Parse(dr["contrib_id"].ToString());
                     break;
@@ -807,7 +807,7 @@ else date_dissolved  end as date_dissolved from contribdetails where type='{
             DataTable dt = SQLTools.ExecuteQuery(w);
             foreach (DataRow dr in dt.Rows) {
                 DateTime s = DateTime.Parse(dr["date_effective"].ToString());
-                DateTime e = dr["date_dissolved"].ToString().Equals("-1") ? new DateTime(9999,12,28) : DateTime.Parse(dr["date_dissolved"].ToString());
+                DateTime e = DateTime.Parse(dr["date_dissolved"].ToString());
                 DateTime me = new DateTime(period.year, period.month,
                     (period.period == 1 ? 1 : 16), 0,0,10);
                 if (s < me && me < e) {
@@ -899,7 +899,10 @@ else date_dissolved  end as date_dissolved from contribdetails where type='{
         }
 
         public static DataTable GetRatesList() {
-            return SQLTools.ExecuteQuery("SELECT * FROM msadb.rates order by date_effective DESC;");
+            return SQLTools.ExecuteQuery($@"SELECT rates_id, date_effective, case 
+when (date_dissolved = '9999-12-31 00:00:00' and status=1) then 'Current'
+when (date_dissolved = '9999-12-31 00:00:00' and status=2) then 'Pending'
+else date_dissolved end as date_dissolved FROM msadb.rates order by date_effective DESC;");
         }
 
         public static DataTable GetRates(int rates_id) {
@@ -932,7 +935,7 @@ where rates_id={rates_id};
                 (`date_effective`, `date_dissolved`, `ordinary_day`, `special_holiday`, 
                 `regular_holiday`, `sunday_ordinary_day`, `sunday_special_holiday`, `sunday_regular_holiday`,
                 `nightdifferential`, `overtime`, `overtime_holiday`, `status`) 
-                VALUES ('{ss}', '{-1}', '{1.00}', '{special_holiday.ToString("N2")}', 
+                VALUES ('{ss}', '{"9999-12-31"}', '{1.00}', '{special_holiday.ToString("N2")}', 
                 '{regular_holiday.ToString("N2")}', '{sunday_ordinary_day.ToString("N2")}', '{sunday_special_holiday.ToString("N2")}', '{sunday_regular_holiday.ToString("N2")}', 
                 '{nightdifferential.ToString("N2")}', '{overtime.ToString("N2")}', '{overtime_holiday.ToString("N2")}', '{Enumeration.BasicPayStatus.Future}');";
             SQLTools.ExecuteNonQuery(kwiri);
@@ -962,7 +965,7 @@ where rates_id={rates_id};
             var q =
                 $@"INSERT INTO `msadb`.`contribdetails` (`date_effective`, `date_dissolved`, `type`, `status`) VALUES ('{
                         date_effectives
-                    }', '{-1}', '{Enumeration.ContribType.Sss}', '{Enumeration.ContribStatus.Future}');";
+                    }', '{"9999-12-31"}', '{Enumeration.ContribType.Sss}', '{Enumeration.ContribStatus.Future}');";
             SQLTools.ExecuteNonQuery(q);
             SQLTools.ExecuteNonQuery("call init_checkdate_contribs()");
             var contrib_id = SQLTools.GetInt("select LAST_INSERT_ID();");
@@ -995,7 +998,11 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         }
 
         public static DataTable GetWithTaxContribList() {
-            return SQLTools.ExecuteQuery($@"    select contrib_id, date_effective, date_dissolved, case status 
+            return SQLTools.ExecuteQuery($@"    select contrib_id, date_effective, case
+                                                when date_dissolved='9999-12-31' AND status = 1 then 'Current'
+                                                when date_dissolved='9999-12-31' AND status=2 then 'Pending'
+                                                else date_dissolved
+                                                end as date_dissolved , case status 
                                                 when 1 then 'Active'
                                                 when 2 then 'Pending'
                                                 when 0 then 'Inactive'

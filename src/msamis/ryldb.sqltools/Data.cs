@@ -9,17 +9,7 @@ namespace MSAMISUserInterface {
         public static FileIniDataParser iniparser = new FileIniDataParser();
         public static IniData PayrollIni;
         public static readonly string PayrollIniLocation = $@"Configuration\\payroll.ini";
-
-        public static readonly string PayrollIniContent =
-            #region + string definition
-            $@"[Payroll]
-DefaultCashAdvance = 0.00
-DefaultPHIC = 100.00
-DefaultHDMF = 100.00
-DefaultCashBond = 150.00
-DefaultCola = 100.00
-DefaultEmer = 50.00";
-        #endregion
+        
         public static void InitData() {
             InitPayrollConfig();
             InitRates();
@@ -83,6 +73,11 @@ DefaultEmer = 50.00";
         }
 
 
+
+
+
+
+
         public static string IniConntent =
             @";MSA-MIS Configuration file
 [Debug]
@@ -92,5 +87,17 @@ AlwaysUpdateIni = true
 [Reports]
 DefaultDirectory = C:\Docs
 ";
+
+
+        public static readonly string PayrollIniContent =
+            #region + string definition
+            $@"[Payroll]
+DefaultCashAdvance = 0.00
+DefaultPHIC = 100.00
+DefaultHDMF = 100.00
+DefaultCashBond = 150.00
+DefaultCola = 100.00
+DefaultEmer = 50.00";
+#endregion
     }
 }
