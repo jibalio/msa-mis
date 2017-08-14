@@ -9,8 +9,12 @@ using Crypt = BCrypt.Net.BCrypt;
 
 namespace MSAMISUserInterface {
     public class Account {
- 
-        
+
+        public static void CreateUser(string Uname, string Pword, int AccountType) {
+            SQLTools.ExecuteNonQuery($@"INSERT INTO `msadb`.`account` 
+                                        (`uname`, `hash`, `type`) 
+                                        VALUES ('{Uname}', '{Crypt.HashPassword(Pword)}', '{AccountType}');");
+        }
 
         public void ChangeUsername(int accid, string NewUname) {
             var q = $@"
