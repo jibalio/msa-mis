@@ -175,7 +175,7 @@ namespace MSAMISUserInterface {
             AdjustPNL.Visible = true;
             CurrentPNL.Visible = false;
             BasicPayGRD.Size = new Size(475, 260);
-            AdjustMBX.Text = "0 000.00";
+            AdjustMBX.Clear();
             CloseBTN.Visible = false;
             SSSPnl.Visible = false;
             TaxPnl.Visible = false;
@@ -217,6 +217,9 @@ namespace MSAMISUserInterface {
 
         private void AdjustMBX_TextChanged(object sender, EventArgs e) {
             InputTLTP.Hide(AdjustMBX);
+        }
+        private void AdjustMBX_Enter(object sender, EventArgs e) {
+            BeginInvoke((MethodInvoker)delegate { AdjustMBX.Select(0,0); });
         }
 
         #endregion
@@ -692,6 +695,7 @@ namespace MSAMISUserInterface {
         private void GlobalCancelBTN_Click(object sender, EventArgs e) {
             GlobalEditingMode(false);
         }
+
 
         #endregion
 
