@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class About : Form {
@@ -99,7 +100,19 @@ namespace MSAMISUserInterface {
         }
 
         private void SaveBTN_Click(object sender, EventArgs e) {
-            CancelBTN.PerformClick();
+            Account.ChangeUsername(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), UsernameBX.Text);
+            if (Account.ChangePassword(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), NewBX.Text,
+                CurrentBX.Text)) {
+                CancelBTN.PerformClick();
+                RylMessageBox.ShowDialog("Current Password changed", "Passoword Changed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else {
+                RylMessageBox.ShowDialog("Current Password is incorrect", "Error Changing Passoword",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NewBX.Clear();
+                CurrentBX.Clear();
+            }
         }
 
         private void CancelBTN_Click(object sender, EventArgs e) {

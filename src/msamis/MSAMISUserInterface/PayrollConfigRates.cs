@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class PayrollConfigRates : Form {
@@ -175,7 +176,7 @@ namespace MSAMISUserInterface {
             AdjustPNL.Visible = true;
             CurrentPNL.Visible = false;
             BasicPayGRD.Size = new Size(475, 260);
-            AdjustMBX.Text = "0 000.00";
+            AdjustMBX.Clear();
             CloseBTN.Visible = false;
             SSSPnl.Visible = false;
             TaxPnl.Visible = false;
@@ -218,6 +219,9 @@ namespace MSAMISUserInterface {
         private void AdjustMBX_TextChanged(object sender, EventArgs e) {
             InputTLTP.Hide(AdjustMBX);
         }
+        private void AdjustMBX_Enter(object sender, EventArgs e) {
+            BeginInvoke((MethodInvoker)delegate { AdjustMBX.Select(0,0); });
+        }
 
         #endregion
 
@@ -244,7 +248,7 @@ namespace MSAMISUserInterface {
                         double.Parse(row[2].ToString()).ToString("N2"),
                         "", double.Parse(row[3].ToString()).ToString("N2"));
                 }
-                var f = 1 + 1;
+                if (SSSGRD.Rows.Count > 0)
                 SSSGRD.CurrentCell = SSSGRD.Rows[0].Cells[1];
             }
         }
@@ -351,8 +355,12 @@ namespace MSAMISUserInterface {
         }
 
         private void SSSReset_Click(object sender, EventArgs e) {
-            SssLoadTable();
-            EditingMode(false);
+            if (RylMessageBox.ShowDialog(
+                    "Are you sure you want to cancel the adjustments on the current SSS Contribution rates?",
+                    "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                LoadSssPage();
+                EditingMode(false);
+            }
         }
 
         private void EditingMode(bool mode) {
@@ -368,8 +376,17 @@ namespace MSAMISUserInterface {
         }
 
         private void SSSSaveBTN_Click(object sender, EventArgs e) {
-            Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
-            CancelBTN.PerformClick();
+            if (SSSGRD.Rows.Count == 0) {
+                RylMessageBox.ShowDialog("You don't have any rates configured",
+                    "SSS Contribution", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else { 
+                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates?",
+                        "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
+                    LoadSssPage();
+                    EditingMode(false);
+                }
+            }
         }
         private void SSSGRD_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {
             EditingMode(true);
@@ -466,8 +483,11 @@ namespace MSAMISUserInterface {
         }
 
         private void TaxCancelBTN_Click(object sender, EventArgs e) {
-            TaxEditingMode(false);
-            LoadTaxPage();
+            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the adjustment?",
+                    "Withholding Tax Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                TaxEditingMode(false);
+                LoadTaxPage();
+            }
         }
 
         private void TaxRemoveExBTN_Click(object sender, EventArgs e) {
@@ -515,14 +535,23 @@ namespace MSAMISUserInterface {
         }
 
         private void TaxSaveBTN_Click(object sender, EventArgs e) {
-            RatesSaver.CreateWithTaxQuery(TaxDateDTPKR.Value);
-            foreach (DataGridViewRow row in TaxExemptionGRD.Rows) {
-                var bracket = RatesSaver.CreateWithTaxBracket(double.Parse(row.Cells[1].Value.ToString().Split('+')[0].Trim(' ')), int.Parse(row.Cells[1].Value.ToString().Split('+')[1].Trim(' ').Split('%')[0]));
-                for (var i = 2; i < TaxExemptionGRD.ColumnCount; i++) {
-                      RatesSaver.AddToWithTaxQuery(bracket, TaxExemptionGRD.Columns[i].HeaderText, double.Parse(row.Cells[i].Value.ToString()));
+            if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current Tax rates?",
+                    "Withholding Tax Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                RatesSaver.CreateWithTaxQuery(TaxDateDTPKR.Value);
+                foreach (DataGridViewRow row in TaxExemptionGRD.Rows) {
+                    var bracket =
+                        RatesSaver.CreateWithTaxBracket(
+                            double.Parse(row.Cells[1].Value.ToString().Split('+')[0].Trim(' ')),
+                            int.Parse(row.Cells[1].Value.ToString().Split('+')[1].Trim(' ').Split('%')[0]));
+                    for (var i = 2; i < TaxExemptionGRD.ColumnCount; i++) {
+                        RatesSaver.AddToWithTaxQuery(bracket, TaxExemptionGRD.Columns[i].HeaderText,
+                            double.Parse(row.Cells[i].Value.ToString()));
+                    }
                 }
+                RatesSaver.ExecuteWithTaxQuery();
+                TaxEditingMode(false);
+                LoadTaxPage();
             }
-            RatesSaver.ExecuteWithTaxQuery();
         }
 
         #endregion
@@ -632,14 +661,24 @@ namespace MSAMISUserInterface {
         }
 
         private void MultCancelBTN_Click(object sender, EventArgs e) {
-            MultEditMode(false);
-            LoadRatesMult();
+            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the adjustment?",
+                    "Rates Multipliers", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                MultEditMode(false);
+                LoadRatesMult();
+            }
         }
 
         private void MultSaveBTN_Click(object sender, EventArgs e) {
-            Payroll.SetRates(MultDTPKR.Value, double.Parse(RatesL2.Value.ToString("N2")), double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")), double.Parse(RatesL5.Value.ToString("N2")),
-                double.Parse(RatesL6.Value.ToString("N2")), double.Parse(RatesL7.Value.ToString("N2")), double.Parse(RatesL8.Value.ToString("N2")), double.Parse(RatesL9.Value.ToString("N2")));
-            MultCancelBTN.PerformClick();
+            if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current rates multipliers?",
+                    "Rates Multipliers", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                Payroll.SetRates(MultDTPKR.Value, double.Parse(RatesL2.Value.ToString("N2")),
+                    double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")),
+                    double.Parse(RatesL5.Value.ToString("N2")),
+                    double.Parse(RatesL6.Value.ToString("N2")), double.Parse(RatesL7.Value.ToString("N2")),
+                    double.Parse(RatesL8.Value.ToString("N2")), double.Parse(RatesL9.Value.ToString("N2")));
+                MultEditMode(false);
+                LoadRatesMult();
+            }
         }
 
         private void RatesL9_Enter(object sender, EventArgs e) {
@@ -674,8 +713,15 @@ namespace MSAMISUserInterface {
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
-            Payroll.SetBonusDefaults(double.Parse(GlobalPHICBX.Value.ToString("N2")), double.Parse(GlobalHDMFBX.Value.ToString("N2")), double.Parse(GlobalCashBondBX.Value.ToString("N2")), double.Parse(GlobalColaBX.Value.ToString("N2")), double.Parse(GlobalEmergencyBX.Value.ToString("N2")));
-            GlobalCancelBTN.PerformClick();
+            if (RylMessageBox.ShowDialog("Are you sure you want to adjust the default rates?",
+                    "Default Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                Payroll.SetBonusDefaults(double.Parse(GlobalPHICBX.Value.ToString("N2")),
+                    double.Parse(GlobalHDMFBX.Value.ToString("N2")),
+                    double.Parse(GlobalCashBondBX.Value.ToString("N2")),
+                    double.Parse(GlobalColaBX.Value.ToString("N2")),
+                    double.Parse(GlobalEmergencyBX.Value.ToString("N2")));
+                GlobalCancelBTN.PerformClick();
+            }
         }
 
         private void GlobalEditingMode(bool mode) {
@@ -695,7 +741,9 @@ namespace MSAMISUserInterface {
 
         private void GlobalCancelBTN_Click(object sender, EventArgs e) {
             GlobalEditingMode(false);
+            LoadGlobalPage();
         }
+
 
         #endregion
 

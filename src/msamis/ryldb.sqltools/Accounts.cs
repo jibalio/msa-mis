@@ -16,7 +16,7 @@ namespace MSAMISUserInterface {
                                         VALUES ('{Uname}', '{Crypt.HashPassword(Pword)}', '{AccountType}');");
         }
 
-        public void ChangeUsername(int accid, string NewUname) {
+        public static void ChangeUsername(int accid, string NewUname) {
             var q = $@"
                             UPDATE `msadb`.`account` SET 
                             `uname`='{NewUname}' 

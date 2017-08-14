@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,13 +46,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.UsersPNL = new System.Windows.Forms.Panel();
+            this.UsersGRDPNL = new System.Windows.Forms.Panel();
             this.UsersGRD = new System.Windows.Forms.DataGridView();
             this.RemoveBTN = new System.Windows.Forms.Button();
             this.EditBTN = new System.Windows.Forms.Button();
-            this.UsersGRDPNL = new System.Windows.Forms.Panel();
             this.EditUserPNL = new System.Windows.Forms.Panel();
-            this.CancelBTN = new System.Windows.Forms.Button();
-            this.SaveBTN = new System.Windows.Forms.Button();
             this.label86 = new System.Windows.Forms.Label();
             this.CurrentBX = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -62,11 +60,13 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
+            this.CancelBTN = new System.Windows.Forms.Button();
+            this.SaveBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.AboutPNL.SuspendLayout();
             this.UsersPNL.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).BeginInit();
             this.UsersGRDPNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).BeginInit();
             this.EditUserPNL.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -295,12 +295,22 @@
             // 
             // UsersPNL
             // 
-            this.UsersPNL.Controls.Add(this.UsersGRDPNL);
             this.UsersPNL.Controls.Add(this.EditUserPNL);
+            this.UsersPNL.Controls.Add(this.UsersGRDPNL);
             this.UsersPNL.Location = new System.Drawing.Point(20, 189);
             this.UsersPNL.Name = "UsersPNL";
             this.UsersPNL.Size = new System.Drawing.Size(553, 379);
             this.UsersPNL.TabIndex = 238;
+            // 
+            // UsersGRDPNL
+            // 
+            this.UsersGRDPNL.Controls.Add(this.UsersGRD);
+            this.UsersGRDPNL.Controls.Add(this.RemoveBTN);
+            this.UsersGRDPNL.Controls.Add(this.EditBTN);
+            this.UsersGRDPNL.Location = new System.Drawing.Point(100, 0);
+            this.UsersGRDPNL.Name = "UsersGRDPNL";
+            this.UsersGRDPNL.Size = new System.Drawing.Size(373, 378);
+            this.UsersGRDPNL.TabIndex = 172;
             // 
             // UsersGRD
             // 
@@ -312,37 +322,37 @@
             this.UsersGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UsersGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.UsersGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UsersGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.NullValue = "-";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UsersGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.UsersGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UsersGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UsersGRD.DefaultCellStyle = dataGridViewCellStyle5;
             this.UsersGRD.EnableHeadersVisualStyles = false;
             this.UsersGRD.Location = new System.Drawing.Point(20, 18);
             this.UsersGRD.MultiSelect = false;
             this.UsersGRD.Name = "UsersGRD";
             this.UsersGRD.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UsersGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UsersGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.UsersGRD.RowHeadersVisible = false;
             this.UsersGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.UsersGRD.Size = new System.Drawing.Size(328, 305);
@@ -387,16 +397,6 @@
             this.EditBTN.UseVisualStyleBackColor = false;
             this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
             // 
-            // UsersGRDPNL
-            // 
-            this.UsersGRDPNL.Controls.Add(this.UsersGRD);
-            this.UsersGRDPNL.Controls.Add(this.RemoveBTN);
-            this.UsersGRDPNL.Controls.Add(this.EditBTN);
-            this.UsersGRDPNL.Location = new System.Drawing.Point(100, 0);
-            this.UsersGRDPNL.Name = "UsersGRDPNL";
-            this.UsersGRDPNL.Size = new System.Drawing.Size(373, 378);
-            this.UsersGRDPNL.TabIndex = 172;
-            // 
             // EditUserPNL
             // 
             this.EditUserPNL.Controls.Add(this.label86);
@@ -415,6 +415,111 @@
             this.EditUserPNL.Size = new System.Drawing.Size(373, 378);
             this.EditUserPNL.TabIndex = 173;
             this.EditUserPNL.Visible = false;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label86.Location = new System.Drawing.Point(25, 104);
+            this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(120, 19);
+            this.label86.TabIndex = 225;
+            this.label86.Text = "Current Password:";
+            // 
+            // CurrentBX
+            // 
+            this.CurrentBX.BackColor = System.Drawing.Color.White;
+            this.CurrentBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CurrentBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.CurrentBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.CurrentBX.Location = new System.Drawing.Point(154, 106);
+            this.CurrentBX.Name = "CurrentBX";
+            this.CurrentBX.PasswordChar = '•';
+            this.CurrentBX.Size = new System.Drawing.Size(132, 18);
+            this.CurrentBX.TabIndex = 220;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label23.Location = new System.Drawing.Point(43, 145);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(101, 19);
+            this.label23.TabIndex = 222;
+            this.label23.Text = "New Password:";
+            // 
+            // NewBX
+            // 
+            this.NewBX.BackColor = System.Drawing.Color.White;
+            this.NewBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NewBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.NewBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NewBX.Location = new System.Drawing.Point(154, 145);
+            this.NewBX.Name = "NewBX";
+            this.NewBX.PasswordChar = '•';
+            this.NewBX.Size = new System.Drawing.Size(131, 18);
+            this.NewBX.TabIndex = 221;
+            // 
+            // UsernameBX
+            // 
+            this.UsernameBX.BackColor = System.Drawing.Color.White;
+            this.UsernameBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UsernameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.UsernameBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.UsernameBX.Location = new System.Drawing.Point(154, 65);
+            this.UsernameBX.Name = "UsernameBX";
+            this.UsernameBX.Size = new System.Drawing.Size(121, 18);
+            this.UsernameBX.TabIndex = 219;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.White;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label11.Location = new System.Drawing.Point(70, 65);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(73, 19);
+            this.label11.TabIndex = 218;
+            this.label11.Text = "Username:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.White;
+            this.label34.ForeColor = System.Drawing.Color.LightGray;
+            this.label34.Location = new System.Drawing.Point(149, 72);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(139, 13);
+            this.label34.TabIndex = 223;
+            this.label34.Text = "______________________";
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.BackColor = System.Drawing.Color.White;
+            this.label87.ForeColor = System.Drawing.Color.LightGray;
+            this.label87.Location = new System.Drawing.Point(146, 113);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(145, 13);
+            this.label87.TabIndex = 226;
+            this.label87.Text = "_______________________";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.White;
+            this.label41.ForeColor = System.Drawing.Color.Silver;
+            this.label41.Location = new System.Drawing.Point(145, 152);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(145, 13);
+            this.label41.TabIndex = 224;
+            this.label41.Text = "_______________________";
             // 
             // CancelBTN
             // 
@@ -456,111 +561,6 @@
             this.SaveBTN.UseVisualStyleBackColor = false;
             this.SaveBTN.Click += new System.EventHandler(this.SaveBTN_Click);
             // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label86.Location = new System.Drawing.Point(25, 138);
-            this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(120, 19);
-            this.label86.TabIndex = 225;
-            this.label86.Text = "Current Password:";
-            // 
-            // CurrentBX
-            // 
-            this.CurrentBX.BackColor = System.Drawing.Color.White;
-            this.CurrentBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CurrentBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.CurrentBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CurrentBX.Location = new System.Drawing.Point(154, 140);
-            this.CurrentBX.Name = "CurrentBX";
-            this.CurrentBX.PasswordChar = '•';
-            this.CurrentBX.Size = new System.Drawing.Size(132, 18);
-            this.CurrentBX.TabIndex = 220;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(43, 179);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(101, 19);
-            this.label23.TabIndex = 222;
-            this.label23.Text = "New Password:";
-            // 
-            // NewBX
-            // 
-            this.NewBX.BackColor = System.Drawing.Color.White;
-            this.NewBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NewBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.NewBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NewBX.Location = new System.Drawing.Point(154, 179);
-            this.NewBX.Name = "NewBX";
-            this.NewBX.PasswordChar = '•';
-            this.NewBX.Size = new System.Drawing.Size(131, 18);
-            this.NewBX.TabIndex = 221;
-            // 
-            // UsernameBX
-            // 
-            this.UsernameBX.BackColor = System.Drawing.Color.White;
-            this.UsernameBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UsernameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.UsernameBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.UsernameBX.Location = new System.Drawing.Point(154, 99);
-            this.UsernameBX.Name = "UsernameBX";
-            this.UsernameBX.Size = new System.Drawing.Size(121, 18);
-            this.UsernameBX.TabIndex = 219;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label11.Location = new System.Drawing.Point(70, 99);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 19);
-            this.label11.TabIndex = 218;
-            this.label11.Text = "Username:";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.White;
-            this.label34.ForeColor = System.Drawing.Color.LightGray;
-            this.label34.Location = new System.Drawing.Point(149, 106);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(139, 13);
-            this.label34.TabIndex = 223;
-            this.label34.Text = "______________________";
-            // 
-            // label87
-            // 
-            this.label87.AutoSize = true;
-            this.label87.BackColor = System.Drawing.Color.White;
-            this.label87.ForeColor = System.Drawing.Color.LightGray;
-            this.label87.Location = new System.Drawing.Point(146, 147);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(145, 13);
-            this.label87.TabIndex = 226;
-            this.label87.Text = "_______________________";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.White;
-            this.label41.ForeColor = System.Drawing.Color.Silver;
-            this.label41.Location = new System.Drawing.Point(145, 186);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(145, 13);
-            this.label41.TabIndex = 224;
-            this.label41.Text = "_______________________";
-            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,8 +585,8 @@
             this.AboutPNL.ResumeLayout(false);
             this.AboutPNL.PerformLayout();
             this.UsersPNL.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).EndInit();
             this.UsersGRDPNL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).EndInit();
             this.EditUserPNL.ResumeLayout(false);
             this.EditUserPNL.PerformLayout();
             this.ResumeLayout(false);
