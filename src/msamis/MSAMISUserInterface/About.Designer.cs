@@ -47,6 +47,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.UsersPNL = new System.Windows.Forms.Panel();
             this.EditUserPNL = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ClerkRDBTN = new System.Windows.Forms.RadioButton();
+            this.AdminRDBTN = new System.Windows.Forms.RadioButton();
             this.label86 = new System.Windows.Forms.Label();
             this.CurrentBX = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -59,13 +62,10 @@
             this.CancelBTN = new System.Windows.Forms.Button();
             this.SaveBTN = new System.Windows.Forms.Button();
             this.UsersGRDPNL = new System.Windows.Forms.Panel();
+            this.AddBTN = new System.Windows.Forms.Button();
             this.UsersGRD = new System.Windows.Forms.DataGridView();
             this.RemoveBTN = new System.Windows.Forms.Button();
             this.EditBTN = new System.Windows.Forms.Button();
-            this.AddBTN = new System.Windows.Forms.Button();
-            this.ClerkRDBTN = new System.Windows.Forms.RadioButton();
-            this.AdminRDBTN = new System.Windows.Forms.RadioButton();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.AboutPNL.SuspendLayout();
             this.UsersPNL.SuspendLayout();
@@ -328,6 +328,46 @@
             this.EditUserPNL.TabIndex = 173;
             this.EditUserPNL.Visible = false;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label12.Location = new System.Drawing.Point(50, 186);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 19);
+            this.label12.TabIndex = 229;
+            this.label12.Text = "Account Type:";
+            // 
+            // ClerkRDBTN
+            // 
+            this.ClerkRDBTN.AutoSize = true;
+            this.ClerkRDBTN.BackColor = System.Drawing.Color.White;
+            this.ClerkRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.ClerkRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ClerkRDBTN.Location = new System.Drawing.Point(250, 185);
+            this.ClerkRDBTN.Name = "ClerkRDBTN";
+            this.ClerkRDBTN.Size = new System.Drawing.Size(58, 23);
+            this.ClerkRDBTN.TabIndex = 228;
+            this.ClerkRDBTN.TabStop = true;
+            this.ClerkRDBTN.Text = "Clerk";
+            this.ClerkRDBTN.UseVisualStyleBackColor = false;
+            // 
+            // AdminRDBTN
+            // 
+            this.AdminRDBTN.AutoSize = true;
+            this.AdminRDBTN.BackColor = System.Drawing.Color.White;
+            this.AdminRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.AdminRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AdminRDBTN.Location = new System.Drawing.Point(152, 185);
+            this.AdminRDBTN.Name = "AdminRDBTN";
+            this.AdminRDBTN.Size = new System.Drawing.Size(81, 23);
+            this.AdminRDBTN.TabIndex = 227;
+            this.AdminRDBTN.TabStop = true;
+            this.AdminRDBTN.Text = "Manager";
+            this.AdminRDBTN.UseVisualStyleBackColor = false;
+            // 
             // label86
             // 
             this.label86.AutoSize = true;
@@ -484,6 +524,26 @@
             this.UsersGRDPNL.Size = new System.Drawing.Size(373, 378);
             this.UsersGRDPNL.TabIndex = 172;
             // 
+            // AddBTN
+            // 
+            this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
+            this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddBTN.FlatAppearance.BorderSize = 0;
+            this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.AddBTN.ForeColor = System.Drawing.Color.White;
+            this.AddBTN.Location = new System.Drawing.Point(63, 339);
+            this.AddBTN.Name = "AddBTN";
+            this.AddBTN.Size = new System.Drawing.Size(80, 29);
+            this.AddBTN.TabIndex = 172;
+            this.AddBTN.Text = "ADD";
+            this.AddBTN.UseVisualStyleBackColor = false;
+            this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
+            // 
             // UsersGRD
             // 
             this.UsersGRD.AllowUserToAddRows = false;
@@ -569,66 +629,6 @@
             this.EditBTN.Text = "EDIT";
             this.EditBTN.UseVisualStyleBackColor = false;
             this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
-            // 
-            // AddBTN
-            // 
-            this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
-            this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddBTN.FlatAppearance.BorderSize = 0;
-            this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(63, 339);
-            this.AddBTN.Name = "AddBTN";
-            this.AddBTN.Size = new System.Drawing.Size(80, 29);
-            this.AddBTN.TabIndex = 172;
-            this.AddBTN.Text = "ADD";
-            this.AddBTN.UseVisualStyleBackColor = false;
-            this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
-            // 
-            // ClerkRDBTN
-            // 
-            this.ClerkRDBTN.AutoSize = true;
-            this.ClerkRDBTN.BackColor = System.Drawing.Color.White;
-            this.ClerkRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.ClerkRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ClerkRDBTN.Location = new System.Drawing.Point(232, 185);
-            this.ClerkRDBTN.Name = "ClerkRDBTN";
-            this.ClerkRDBTN.Size = new System.Drawing.Size(58, 23);
-            this.ClerkRDBTN.TabIndex = 228;
-            this.ClerkRDBTN.TabStop = true;
-            this.ClerkRDBTN.Text = "Clerk";
-            this.ClerkRDBTN.UseVisualStyleBackColor = false;
-            // 
-            // AdminRDBTN
-            // 
-            this.AdminRDBTN.AutoSize = true;
-            this.AdminRDBTN.BackColor = System.Drawing.Color.White;
-            this.AdminRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.AdminRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AdminRDBTN.Location = new System.Drawing.Point(152, 185);
-            this.AdminRDBTN.Name = "AdminRDBTN";
-            this.AdminRDBTN.Size = new System.Drawing.Size(67, 23);
-            this.AdminRDBTN.TabIndex = 227;
-            this.AdminRDBTN.TabStop = true;
-            this.AdminRDBTN.Text = "Admin";
-            this.AdminRDBTN.UseVisualStyleBackColor = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label12.Location = new System.Drawing.Point(50, 186);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 19);
-            this.label12.TabIndex = 229;
-            this.label12.Text = "Account Type:";
             // 
             // About
             // 

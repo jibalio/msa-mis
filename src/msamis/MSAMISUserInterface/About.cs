@@ -97,6 +97,7 @@ namespace MSAMISUserInterface {
             UsersGRDPNL.Visible = false;
             EditUserPNL.Visible = true;
             CloseBTN.Visible = false;
+            AdminRDBTN.Checked = UsersGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Manager");
             AdminRDBTN.Enabled = false;
             ClerkRDBTN.Enabled = false;
             SaveBTN.Text = "SAVE";
