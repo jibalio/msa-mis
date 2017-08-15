@@ -111,6 +111,7 @@
             this.AssBrgyBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssBrgyBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.AssBrgyBX.Location = new System.Drawing.Point(343, 36);
+            this.AssBrgyBX.MaxLength = 60;
             this.AssBrgyBX.Name = "AssBrgyBX";
             this.AssBrgyBX.Size = new System.Drawing.Size(77, 18);
             this.AssBrgyBX.TabIndex = 82;
@@ -125,6 +126,7 @@
             this.AssCityBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssCityBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.AssCityBX.Location = new System.Drawing.Point(419, 36);
+            this.AssCityBX.MaxLength = 45;
             this.AssCityBX.Name = "AssCityBX";
             this.AssCityBX.Size = new System.Drawing.Size(77, 18);
             this.AssCityBX.TabIndex = 83;
@@ -139,6 +141,7 @@
             this.AssStreetNameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssStreetNameBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.AssStreetNameBX.Location = new System.Drawing.Point(241, 36);
+            this.AssStreetNameBX.MaxLength = 45;
             this.AssStreetNameBX.Name = "AssStreetNameBX";
             this.AssStreetNameBX.Size = new System.Drawing.Size(90, 18);
             this.AssStreetNameBX.TabIndex = 81;
@@ -153,6 +156,7 @@
             this.AssStreetNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AssStreetNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.AssStreetNoBX.Location = new System.Drawing.Point(200, 36);
+            this.AssStreetNoBX.MaxLength = 11;
             this.AssStreetNoBX.Name = "AssStreetNoBX";
             this.AssStreetNoBX.Size = new System.Drawing.Size(38, 18);
             this.AssStreetNoBX.TabIndex = 80;
@@ -418,9 +422,15 @@
             this.NeededBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.NeededBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.NeededBX.Location = new System.Drawing.Point(199, 169);
+            this.NeededBX.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.NeededBX.Name = "NeededBX";
             this.NeededBX.Size = new System.Drawing.Size(102, 21);
             this.NeededBX.TabIndex = 110;
+            this.NeededBX.ThousandsSeparator = true;
             // 
             // RequestPNL
             // 
@@ -495,8 +505,8 @@
             this.Controls.Add(this.RequestLBL);
             this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.PickPNL);
             this.Controls.Add(this.RequestPNL);
+            this.Controls.Add(this.PickPNL);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SchedRequestGuard";

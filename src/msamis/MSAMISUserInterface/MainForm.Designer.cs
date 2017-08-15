@@ -1759,7 +1759,7 @@
             this.SViewAssPNL.Controls.Add(this.SViewAssignmentErrorPNL);
             this.SViewAssPNL.Location = new System.Drawing.Point(15, 14);
             this.SViewAssPNL.Name = "SViewAssPNL";
-            this.SViewAssPNL.Size = new System.Drawing.Size(690, 640);
+            this.SViewAssPNL.Size = new System.Drawing.Size(691, 640);
             this.SViewAssPNL.TabIndex = 13;
             this.SViewAssPNL.Visible = false;
             // 
@@ -1846,7 +1846,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(502, 23);
+            this.label10.Location = new System.Drawing.Point(503, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 19);
@@ -1865,7 +1865,7 @@
             "All",
             "Scheduled",
             "Unscheduled"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(554, 20);
+            this.SViewAssCMBX.Location = new System.Drawing.Point(555, 20);
             this.SViewAssCMBX.Name = "SViewAssCMBX";
             this.SViewAssCMBX.Size = new System.Drawing.Size(119, 25);
             this.SViewAssCMBX.Sorted = true;
@@ -1881,7 +1881,7 @@
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssSearchTXTBX.Location = new System.Drawing.Point(220, 71);
             this.SViewAssSearchTXTBX.Name = "SViewAssSearchTXTBX";
-            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(255, 18);
+            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(256, 18);
             this.SViewAssSearchTXTBX.TabIndex = 8;
             this.SViewAssSearchTXTBX.Text = "Search or filter";
             this.SViewAssSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1934,7 +1934,7 @@
             this.SViewAssGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.SViewAssGRD.RowHeadersVisible = false;
             this.SViewAssGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SViewAssGRD.Size = new System.Drawing.Size(651, 458);
+            this.SViewAssGRD.Size = new System.Drawing.Size(652, 458);
             this.SViewAssGRD.TabIndex = 5;
             this.SViewAssGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewAssGRD_CellEnter);
             this.SViewAssGRD.DoubleClick += new System.EventHandler(this.SViewAssGRD_DoubleClick);
@@ -1945,7 +1945,7 @@
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SViewAssSearchLine.Location = new System.Drawing.Point(243, 76);
+            this.SViewAssSearchLine.Location = new System.Drawing.Point(244, 76);
             this.SViewAssSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SViewAssSearchLine.Name = "SViewAssSearchLine";
             this.SViewAssSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -2520,19 +2520,19 @@
             this.PPayLBL.AutoSize = true;
             this.PPayLBL.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.PPayLBL.ForeColor = System.Drawing.Color.White;
-            this.PPayLBL.Location = new System.Drawing.Point(21, 100);
+            this.PPayLBL.Location = new System.Drawing.Point(18, 100);
             this.PPayLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PPayLBL.Name = "PPayLBL";
-            this.PPayLBL.Size = new System.Drawing.Size(148, 17);
+            this.PPayLBL.Size = new System.Drawing.Size(179, 17);
             this.PPayLBL.TabIndex = 2;
-            this.PPayLBL.Text = "Pay: December 27, 2017";
+            this.PPayLBL.Text = "Next Pay: December 27, 2017";
             // 
             // PPeriodLBL
             // 
             this.PPeriodLBL.AutoSize = true;
             this.PPeriodLBL.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.PPeriodLBL.ForeColor = System.Drawing.Color.White;
-            this.PPeriodLBL.Location = new System.Drawing.Point(21, 70);
+            this.PPeriodLBL.Location = new System.Drawing.Point(18, 70);
             this.PPeriodLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PPeriodLBL.Name = "PPeriodLBL";
             this.PPeriodLBL.Size = new System.Drawing.Size(156, 17);

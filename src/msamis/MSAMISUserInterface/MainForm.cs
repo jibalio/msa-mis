@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -61,6 +62,7 @@ namespace MSAMISUserInterface {
             //Initial Methods
             DailyQuote();
             FadeTMR.Start();
+            CheckPayday();
             NotifTMR.Start();
         }
 
@@ -356,13 +358,17 @@ namespace MSAMISUserInterface {
         }
 
         private void NotifTMR_Tick(object sender, EventArgs e) {
-            if (DateTime.Now.Day == Payroll.GetNextPayday().Day &&
-                DateTime.Now.Month == Payroll.GetNextPayday().Month &&
-                DateTime.Now.Year == Payroll.GetNextPayday().Year && !DPaydayNotifPNL.Visible) {
+            CheckPayday();
+        }
+
+        private void CheckPayday() {
+            var payday = Payroll.GetPreviousPayDay();
+            if (DateTime.Now.Day == payday.Day &&
+                DateTime.Now.Month == payday.Month &&
+                DateTime.Now.Year == payday.Year && !DPaydayNotifPNL.Visible) {
                 DPaydayNotifPNL.Visible = true;
                 ArrangeNotif();
-                DPayDayNotifLBL.Text = "for the month of " + Payroll.GetNextPayday().Month + " " +
-                                       Payroll.GetNextPayday().Year;
+                DPayDayNotifLBL.Text = "for the month of " + payday.ToString("MMMM yyyy");
             }
         }
 
@@ -682,7 +688,7 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0 , };
                 GSummaryFilesLST.Items.Add(listViewItem);
             }
-            
+            GSummaryFilesLST.Sorting = SortOrder.Descending;
             GSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
             GSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
             GTotalLBL.Text = Reports.GetTotalGuards('g', 't') + " guards";
@@ -890,13 +896,15 @@ namespace MSAMISUserInterface {
 
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
             FileInfo[] files = d.GetFiles("ClientsSummaryReport*.pdf"); //Getting Text files]
-
+            
             CSummaryFileLST.Items.Clear();
             foreach (var file in files) {
                 string[] row = { file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName };
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
                 CSummaryFileLST.Items.Add(listViewItem);
             }
+            CSummaryFileLST.Sorting = SortOrder.Descending;
+            
             CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
             CTotalLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
             CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
@@ -1346,7 +1354,7 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
                 SSummaryFilesLST.Items.Add(listViewItem);
             }
-            
+            SSummaryFilesLST.Sorting = SortOrder.Descending;
             SSummaryErrorPNL.Visible = SSummaryFilesLST.Items.Count == 0;
             SSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
         }
@@ -1425,7 +1433,7 @@ namespace MSAMISUserInterface {
 
             PPeriodLBL.Text = "Period: " + new DateTime(Attendance.GetCurrentPayPeriod().year, Attendance.GetCurrentPayPeriod().month, Attendance.GetCurrentPayPeriod().period).ToString("MMMM yyyy, ");
             PPeriodLBL.Text += Attendance.GetCurrentPayPeriod().period == 1 ? "First" : "Second";
-            PPayLBL.Text = "Pay: " + Payroll.GetNextPayday().ToString("MMMM dd, yyyy");
+            PPayLBL.Text = "Next Pay: " + Payroll.GetNextPayday().ToString("MMMM dd, yyyy");
             _scurrentPanel = PEmpListPage;
             _scurrentBtn = PEmpListBTN;
         }
@@ -1616,7 +1624,7 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) { ImageIndex = 0, };
                 PSummaryFilesLST.Items.Add(listViewItem);
             }
-            
+            PSummaryFilesLST.Sorting = SortOrder.Descending;
             PSummaryErrorPNL.Visible = PSummaryFilesLST.Items.Count == 0;
             PSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
         }

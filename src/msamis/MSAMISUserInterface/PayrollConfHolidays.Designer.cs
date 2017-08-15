@@ -138,6 +138,7 @@
             this.DescBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DescBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.DescBX.Location = new System.Drawing.Point(313, 249);
+            this.DescBX.MaxLength = 120;
             this.DescBX.Name = "DescBX";
             this.DescBX.Size = new System.Drawing.Size(170, 18);
             this.DescBX.TabIndex = 160;
