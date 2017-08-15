@@ -408,7 +408,7 @@ namespace MSAMISUserInterface {
             foreach (DataRow row in Payroll.GetWithTaxContribList().Rows) {
                 var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
                 var dissolved = row["date_dissolved"].Equals("Current") ? "Current" : 
-                                (row["date_dissolved"].Equals("Active")  ? "Active" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
+                                (row["date_dissolved"].Equals("Pending")  ? "Pending" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
                 TaxDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
             }
             if (TaxDateCMBX.Items.Count > 0) TaxDateCMBX.SelectedIndex = 0;
