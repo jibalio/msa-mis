@@ -1,10 +1,5 @@
-﻿using BCrypt.Net;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Crypt = BCrypt.Net.BCrypt;
 
 namespace MSAMISUserInterface {
@@ -37,6 +32,10 @@ namespace MSAMISUserInterface {
                     SQLTools.ExecuteNonQuery(q);
                     return true;
                 } else return false;
+        }
+
+        public static void DeleteUser(int accid) {
+            SQLTools.ExecuteNonQuery("delete from account where accid = '" + accid + "'");
         }
 
 

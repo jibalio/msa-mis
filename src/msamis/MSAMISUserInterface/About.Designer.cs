@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,10 +46,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.UsersPNL = new System.Windows.Forms.Panel();
-            this.UsersGRDPNL = new System.Windows.Forms.Panel();
-            this.UsersGRD = new System.Windows.Forms.DataGridView();
-            this.RemoveBTN = new System.Windows.Forms.Button();
-            this.EditBTN = new System.Windows.Forms.Button();
             this.EditUserPNL = new System.Windows.Forms.Panel();
             this.label86 = new System.Windows.Forms.Label();
             this.CurrentBX = new System.Windows.Forms.TextBox();
@@ -62,12 +58,20 @@
             this.label41 = new System.Windows.Forms.Label();
             this.CancelBTN = new System.Windows.Forms.Button();
             this.SaveBTN = new System.Windows.Forms.Button();
+            this.UsersGRDPNL = new System.Windows.Forms.Panel();
+            this.UsersGRD = new System.Windows.Forms.DataGridView();
+            this.RemoveBTN = new System.Windows.Forms.Button();
+            this.EditBTN = new System.Windows.Forms.Button();
+            this.AddBTN = new System.Windows.Forms.Button();
+            this.ClerkRDBTN = new System.Windows.Forms.RadioButton();
+            this.AdminRDBTN = new System.Windows.Forms.RadioButton();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.AboutPNL.SuspendLayout();
             this.UsersPNL.SuspendLayout();
+            this.EditUserPNL.SuspendLayout();
             this.UsersGRDPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).BeginInit();
-            this.EditUserPNL.SuspendLayout();
             this.SuspendLayout();
             // 
             // FadeTMR
@@ -302,103 +306,11 @@
             this.UsersPNL.Size = new System.Drawing.Size(553, 379);
             this.UsersPNL.TabIndex = 238;
             // 
-            // UsersGRDPNL
-            // 
-            this.UsersGRDPNL.Controls.Add(this.UsersGRD);
-            this.UsersGRDPNL.Controls.Add(this.RemoveBTN);
-            this.UsersGRDPNL.Controls.Add(this.EditBTN);
-            this.UsersGRDPNL.Location = new System.Drawing.Point(100, 0);
-            this.UsersGRDPNL.Name = "UsersGRDPNL";
-            this.UsersGRDPNL.Size = new System.Drawing.Size(373, 378);
-            this.UsersGRDPNL.TabIndex = 172;
-            // 
-            // UsersGRD
-            // 
-            this.UsersGRD.AllowUserToAddRows = false;
-            this.UsersGRD.AllowUserToDeleteRows = false;
-            this.UsersGRD.AllowUserToResizeColumns = false;
-            this.UsersGRD.AllowUserToResizeRows = false;
-            this.UsersGRD.BackgroundColor = System.Drawing.Color.White;
-            this.UsersGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UsersGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.UsersGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle4.NullValue = "-";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UsersGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.UsersGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UsersGRD.DefaultCellStyle = dataGridViewCellStyle5;
-            this.UsersGRD.EnableHeadersVisualStyles = false;
-            this.UsersGRD.Location = new System.Drawing.Point(20, 18);
-            this.UsersGRD.MultiSelect = false;
-            this.UsersGRD.Name = "UsersGRD";
-            this.UsersGRD.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UsersGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.UsersGRD.RowHeadersVisible = false;
-            this.UsersGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.UsersGRD.Size = new System.Drawing.Size(328, 305);
-            this.UsersGRD.TabIndex = 6;
-            // 
-            // RemoveBTN
-            // 
-            this.RemoveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.RemoveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RemoveBTN.BackgroundImage")));
-            this.RemoveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.RemoveBTN.FlatAppearance.BorderSize = 0;
-            this.RemoveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.RemoveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.RemoveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.RemoveBTN.ForeColor = System.Drawing.Color.White;
-            this.RemoveBTN.Location = new System.Drawing.Point(196, 339);
-            this.RemoveBTN.Name = "RemoveBTN";
-            this.RemoveBTN.Size = new System.Drawing.Size(80, 29);
-            this.RemoveBTN.TabIndex = 171;
-            this.RemoveBTN.Text = "REMOVE";
-            this.RemoveBTN.UseVisualStyleBackColor = false;
-            // 
-            // EditBTN
-            // 
-            this.EditBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.EditBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditBTN.BackgroundImage")));
-            this.EditBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.EditBTN.FlatAppearance.BorderSize = 0;
-            this.EditBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.EditBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.EditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.EditBTN.ForeColor = System.Drawing.Color.White;
-            this.EditBTN.Location = new System.Drawing.Point(109, 339);
-            this.EditBTN.Name = "EditBTN";
-            this.EditBTN.Size = new System.Drawing.Size(80, 29);
-            this.EditBTN.TabIndex = 170;
-            this.EditBTN.Text = "EDIT";
-            this.EditBTN.UseVisualStyleBackColor = false;
-            this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
-            // 
             // EditUserPNL
             // 
+            this.EditUserPNL.Controls.Add(this.label12);
+            this.EditUserPNL.Controls.Add(this.ClerkRDBTN);
+            this.EditUserPNL.Controls.Add(this.AdminRDBTN);
             this.EditUserPNL.Controls.Add(this.label86);
             this.EditUserPNL.Controls.Add(this.CurrentBX);
             this.EditUserPNL.Controls.Add(this.label23);
@@ -561,6 +473,163 @@
             this.SaveBTN.UseVisualStyleBackColor = false;
             this.SaveBTN.Click += new System.EventHandler(this.SaveBTN_Click);
             // 
+            // UsersGRDPNL
+            // 
+            this.UsersGRDPNL.Controls.Add(this.AddBTN);
+            this.UsersGRDPNL.Controls.Add(this.UsersGRD);
+            this.UsersGRDPNL.Controls.Add(this.RemoveBTN);
+            this.UsersGRDPNL.Controls.Add(this.EditBTN);
+            this.UsersGRDPNL.Location = new System.Drawing.Point(100, 0);
+            this.UsersGRDPNL.Name = "UsersGRDPNL";
+            this.UsersGRDPNL.Size = new System.Drawing.Size(373, 378);
+            this.UsersGRDPNL.TabIndex = 172;
+            // 
+            // UsersGRD
+            // 
+            this.UsersGRD.AllowUserToAddRows = false;
+            this.UsersGRD.AllowUserToDeleteRows = false;
+            this.UsersGRD.AllowUserToResizeColumns = false;
+            this.UsersGRD.AllowUserToResizeRows = false;
+            this.UsersGRD.BackgroundColor = System.Drawing.Color.White;
+            this.UsersGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UsersGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.UsersGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UsersGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.UsersGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UsersGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            this.UsersGRD.EnableHeadersVisualStyles = false;
+            this.UsersGRD.Location = new System.Drawing.Point(20, 18);
+            this.UsersGRD.MultiSelect = false;
+            this.UsersGRD.Name = "UsersGRD";
+            this.UsersGRD.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UsersGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.UsersGRD.RowHeadersVisible = false;
+            this.UsersGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.UsersGRD.Size = new System.Drawing.Size(328, 305);
+            this.UsersGRD.TabIndex = 6;
+            // 
+            // RemoveBTN
+            // 
+            this.RemoveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemoveBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.RemoveBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RemoveBTN.BackgroundImage")));
+            this.RemoveBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RemoveBTN.FlatAppearance.BorderSize = 0;
+            this.RemoveBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.RemoveBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.RemoveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.RemoveBTN.ForeColor = System.Drawing.Color.White;
+            this.RemoveBTN.Location = new System.Drawing.Point(236, 339);
+            this.RemoveBTN.Name = "RemoveBTN";
+            this.RemoveBTN.Size = new System.Drawing.Size(80, 29);
+            this.RemoveBTN.TabIndex = 171;
+            this.RemoveBTN.Text = "REMOVE";
+            this.RemoveBTN.UseVisualStyleBackColor = false;
+            this.RemoveBTN.Click += new System.EventHandler(this.RemoveBTN_Click);
+            // 
+            // EditBTN
+            // 
+            this.EditBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.EditBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditBTN.BackgroundImage")));
+            this.EditBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditBTN.FlatAppearance.BorderSize = 0;
+            this.EditBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.EditBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.EditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.EditBTN.ForeColor = System.Drawing.Color.White;
+            this.EditBTN.Location = new System.Drawing.Point(149, 339);
+            this.EditBTN.Name = "EditBTN";
+            this.EditBTN.Size = new System.Drawing.Size(80, 29);
+            this.EditBTN.TabIndex = 170;
+            this.EditBTN.Text = "EDIT";
+            this.EditBTN.UseVisualStyleBackColor = false;
+            this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
+            // 
+            // AddBTN
+            // 
+            this.AddBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddBTN.BackgroundImage")));
+            this.AddBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddBTN.FlatAppearance.BorderSize = 0;
+            this.AddBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AddBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.AddBTN.ForeColor = System.Drawing.Color.White;
+            this.AddBTN.Location = new System.Drawing.Point(63, 339);
+            this.AddBTN.Name = "AddBTN";
+            this.AddBTN.Size = new System.Drawing.Size(80, 29);
+            this.AddBTN.TabIndex = 172;
+            this.AddBTN.Text = "ADD";
+            this.AddBTN.UseVisualStyleBackColor = false;
+            this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
+            // 
+            // ClerkRDBTN
+            // 
+            this.ClerkRDBTN.AutoSize = true;
+            this.ClerkRDBTN.BackColor = System.Drawing.Color.White;
+            this.ClerkRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.ClerkRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ClerkRDBTN.Location = new System.Drawing.Point(232, 185);
+            this.ClerkRDBTN.Name = "ClerkRDBTN";
+            this.ClerkRDBTN.Size = new System.Drawing.Size(58, 23);
+            this.ClerkRDBTN.TabIndex = 228;
+            this.ClerkRDBTN.TabStop = true;
+            this.ClerkRDBTN.Text = "Clerk";
+            this.ClerkRDBTN.UseVisualStyleBackColor = false;
+            // 
+            // AdminRDBTN
+            // 
+            this.AdminRDBTN.AutoSize = true;
+            this.AdminRDBTN.BackColor = System.Drawing.Color.White;
+            this.AdminRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.AdminRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AdminRDBTN.Location = new System.Drawing.Point(152, 185);
+            this.AdminRDBTN.Name = "AdminRDBTN";
+            this.AdminRDBTN.Size = new System.Drawing.Size(67, 23);
+            this.AdminRDBTN.TabIndex = 227;
+            this.AdminRDBTN.TabStop = true;
+            this.AdminRDBTN.Text = "Admin";
+            this.AdminRDBTN.UseVisualStyleBackColor = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label12.Location = new System.Drawing.Point(50, 186);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 19);
+            this.label12.TabIndex = 229;
+            this.label12.Text = "Account Type:";
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,10 +654,10 @@
             this.AboutPNL.ResumeLayout(false);
             this.AboutPNL.PerformLayout();
             this.UsersPNL.ResumeLayout(false);
-            this.UsersGRDPNL.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).EndInit();
             this.EditUserPNL.ResumeLayout(false);
             this.EditUserPNL.PerformLayout();
+            this.UsersGRDPNL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -630,5 +699,9 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label87;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Button AddBTN;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.RadioButton ClerkRDBTN;
+        private System.Windows.Forms.RadioButton AdminRDBTN;
     }
 }

@@ -97,21 +97,33 @@ namespace MSAMISUserInterface {
             UsersGRDPNL.Visible = false;
             EditUserPNL.Visible = true;
             CloseBTN.Visible = false;
+            AdminRDBTN.Enabled = false;
+            ClerkRDBTN.Enabled = false;
+            SaveBTN.Text = "SAVE";
         }
 
         private void SaveBTN_Click(object sender, EventArgs e) {
-            Account.ChangeUsername(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), UsernameBX.Text);
-            if (Account.ChangePassword(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), NewBX.Text,
-                CurrentBX.Text)) {
-                CancelBTN.PerformClick();
-                RylMessageBox.ShowDialog("Current Password changed", "Passoword Changed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (SaveBTN.Text.Equals("SAVE")) {
+                Account.ChangeUsername(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), UsernameBX.Text);
+                if (Account.ChangePassword(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), NewBX.Text,
+                    CurrentBX.Text)) {
+                    CancelBTN.PerformClick();
+                    RylMessageBox.ShowDialog("Current Password changed", "Passoword Changed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else {
+                    RylMessageBox.ShowDialog("Current Password is incorrect", "Error Changing Passoword",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    NewBX.Clear();
+                    CurrentBX.Clear();
+                }
             }
             else {
-                RylMessageBox.ShowDialog("Current Password is incorrect", "Error Changing Passoword",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                NewBX.Clear();
-                CurrentBX.Clear();
+                Account.CreateUser(UsernameBX.Text, NewBX.Text, AdminRDBTN.Checked ? 1 : 2 );
+                CancelBTN.PerformClick();
+                RylMessageBox.ShowDialog("User was added", "Users",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
         }
 
@@ -119,6 +131,26 @@ namespace MSAMISUserInterface {
             UsersGRDPNL.Visible = true;
             EditUserPNL.Visible = false;
             CloseBTN.Visible = true;
+        }
+
+        private void RemoveBTN_Click(object sender, EventArgs e) {
+            if (RylMessageBox.ShowDialog("Are your sure you want to delete this user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) { 
+                Account.DeleteUser(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()));
+                LoadUsers();
+            }
+        }
+
+        private void AddBTN_Click(object sender, EventArgs e) {
+            UsernameBX.Clear();
+            CurrentBX.Clear();
+            NewBX.Clear();
+            CurrentBX.Enabled = false;
+            UsersGRDPNL.Visible = false;
+            EditUserPNL.Visible = true;
+            CloseBTN.Visible = false;
+            AdminRDBTN.Enabled = true;
+            ClerkRDBTN.Enabled = true;
+            SaveBTN.Text = "ADD";
         }
     }
 }
