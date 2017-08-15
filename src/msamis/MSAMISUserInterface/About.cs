@@ -93,11 +93,13 @@ namespace MSAMISUserInterface {
         private void EditBTN_Click(object sender, EventArgs e) {
             UsernameBX.Text = UsersGRD.SelectedRows[0].Cells[1].Value.ToString();
             CurrentBX.Clear();
+            CurrentBX.Enabled = true;
             NewBX.Clear();
             UsersGRDPNL.Visible = false;
             EditUserPNL.Visible = true;
             CloseBTN.Visible = false;
             AdminRDBTN.Checked = UsersGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Manager");
+            ClerkRDBTN.Checked = UsersGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Clerk");
             AdminRDBTN.Enabled = false;
             ClerkRDBTN.Enabled = false;
             SaveBTN.Text = "SAVE";
@@ -105,15 +107,16 @@ namespace MSAMISUserInterface {
 
         private void SaveBTN_Click(object sender, EventArgs e) {
             if (SaveBTN.Text.Equals("SAVE")) {
-                Account.ChangeUsername(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), UsernameBX.Text);
                 if (Account.ChangePassword(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), NewBX.Text,
                     CurrentBX.Text)) {
+                    Account.ChangeUsername(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), UsernameBX.Text);
+                    LoadUsers();
                     CancelBTN.PerformClick();
-                    RylMessageBox.ShowDialog("Current Password changed", "Passoword Changed",
+                    RylMessageBox.ShowDialog("Account Details Changed", "Accounts Details",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else {
-                    RylMessageBox.ShowDialog("Current Password is incorrect", "Error Changing Passoword",
+                    RylMessageBox.ShowDialog("Current Password is incorrect", "Accounts Details",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     NewBX.Clear();
                     CurrentBX.Clear();
@@ -121,6 +124,7 @@ namespace MSAMISUserInterface {
             }
             else {
                 Account.CreateUser(UsernameBX.Text, NewBX.Text, AdminRDBTN.Checked ? 1 : 2 );
+                LoadUsers();
                 CancelBTN.PerformClick();
                 RylMessageBox.ShowDialog("User was added", "Users",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
