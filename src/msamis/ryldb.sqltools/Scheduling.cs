@@ -232,7 +232,7 @@ namespace MSAMISUserInterface {
                 String raid = dtl["RAID"].ToString();
                 foreach (int g in gid) {
                     // Add assignment in assignment table
-                   String q =$"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}');";
+                   String q =$"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`, `AssignedOn) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}');";
                     DateTime consta = DateTime.Parse(dtl["contractstart"].ToString());
                     DateTime conend = DateTime.Parse(dtl["contractend"].ToString());
                     
@@ -340,7 +340,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
-                        where  city is not null " +
+                        where  city is not null AND astatus = 1 " +
                         (cid == -1 ? "" : " AND cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND ti_hh is not null";

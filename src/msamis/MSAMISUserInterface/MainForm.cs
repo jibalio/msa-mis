@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -988,8 +987,9 @@ namespace MSAMISUserInterface {
         public void SchedLoadPage() {
             SchedLoadSidePnl();
 
+            SViewReqPNL.Visible = true;
             _scurrentBtn = SViewReqBTN;
-            _scurrentPanel = SViewReqPNL;
+            _scurrentPanel = SViewAssPNL;
 
             SViewReqBTN.PerformClick();
         }
@@ -1019,13 +1019,16 @@ namespace MSAMISUserInterface {
         }
 
         private void SChangePanel(Panel newP, Button newBtn, bool req) {
-            _scurrentPanel.Hide();
+            if (newP != _scurrentPanel) { 
             newP.Show();
+            _scurrentPanel.Hide();
             _scurrentBtn.Font = _defaultFont;
             newBtn.Font = _selectedFont;
             _scurrentBtn = newBtn;
             _scurrentPanel = newP;
             SViewReqsAssBTN.Visible = req;
+            SViewAssHistoryBTN.Visible = !req && SViewAssPNL.Visible;
+            }
         }
 
         private void SViewReqBTN_Click(object sender, EventArgs e) {
@@ -1144,7 +1147,7 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns[3].Width = 120;
             SViewReqGRD.Columns[4].Width = 100;
 
-            SViewReqGRD.Sort(SViewReqGRD.Columns[2], ListSortDirection.Descending);
+            SViewReqGRD.Sort(SViewReqGRD.Columns[0], ListSortDirection.Descending);
 
             SViewReqGRD.ClearSelection();
         }
@@ -1256,10 +1259,10 @@ namespace MSAMISUserInterface {
                 SViewAssGRD.Columns[3].HeaderText = "NAME";
                 SViewAssGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
                 SViewAssGRD.Columns[5].HeaderText = "SCHEDULE";
-                SViewAssGRD.Columns[6].HeaderText = "STATUS";
+                SViewAssGRD.Columns[6].Visible = false;
 
-                SViewAssGRD.Columns[3].Width = 200;
-                SViewAssGRD.Columns[4].Width = 210;
+                SViewAssGRD.Columns[3].Width = 230;
+                SViewAssGRD.Columns[4].Width = 280;
                 SViewAssGRD.Columns[5].Width = 100;
                 SViewAssGRD.Columns[5].Width = 100;
 

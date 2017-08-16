@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accounts.cs" />
+    <Compile Include="Archiver.cs" />
     <Compile Include="Attendance.cs" />
     <Compile Include="AutoLoader.cs" />
     <Compile Include="Backend_Tester.cs">
