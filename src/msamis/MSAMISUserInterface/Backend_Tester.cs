@@ -13,11 +13,9 @@ namespace MSAMISUserInterface {
         public DataGridView dv;
         private void Backend_Tester_Load(object sender, EventArgs e) {
 
-            dgv.DataSource = dv.DataSource;
+            dgv.DataSource = Archiver.GetAllGuards("","name asc");
             //  dtq.Text = ;
-            var p = Attendance.GetCurrentPayPeriod();
-
-            var a = new Attendance(1, p.month, p.period, p.year);
+            
             // dgv.DataSource = a.GetAttendance();
             // Attendance.Hours asd = a.GetAttendanceSummary();
             //  asd = asd;

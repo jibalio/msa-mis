@@ -3,14 +3,19 @@ using System.Data;
 
 namespace MSAMISUserInterface {
     public class Guard {
+
+        public static DataTable GetAssignmentHistory(int GuardId) {
+            throw new NotImplementedException();
+        }
+
         public static int GetNumberOfDependents(int GID) {
             String q = @"SELECT count(DeID) FROM msadb.dependents where GID={0};";
-            q = String.Format(q, GID);
+            q = string.Format(q, GID);
             return SQLTools.GetInt(q)-2;
         }
 
         public static int GetCivilStatus(int GID) {
-            String q = @"SELECT CivilStatus from msadb.guards where GID=" + GID;
+            string q = @"SELECT CivilStatus from msadb.guards where GID=" + GID;
             return SQLTools.GetInt(q);
         }
 

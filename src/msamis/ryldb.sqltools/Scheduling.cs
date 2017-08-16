@@ -232,7 +232,7 @@ namespace MSAMISUserInterface {
                 String raid = dtl["RAID"].ToString();
                 foreach (int g in gid) {
                     // Add assignment in assignment table
-                   String q =$"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}');";
+                   String q =$"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`, `AssignedOn) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}');";
                     DateTime consta = DateTime.Parse(dtl["contractstart"].ToString());
                     DateTime conend = DateTime.Parse(dtl["contractend"].ToString());
                     
