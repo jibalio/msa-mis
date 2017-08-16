@@ -16,7 +16,7 @@ namespace MSAMISUserInterface
         public static String ExtraQueryParams = "";
         public string summaryDate = "";
 
-        #region Guards Report Excel
+        #region Guards Report
 
         public static DataTable GetGuardsList()
         {
@@ -36,16 +36,13 @@ namespace MSAMISUserInterface
 
         #endregion
 
-        #region Clients Export PDF
+        #region Clients Export
         public static DataTable GetClientsList()
         {
             ExtraQueryParams = " ORDER BY Name asc";
             String q = "SELECT Name as 'Name', CASE WHEN CStatus = 1 THEN 'Active' WHEN CStatus = 2 THEN 'Inactive' END as Status, concat(ClientStreetNo,' ', ClientStreet, ', ', ClientBrgy, ', ', ClientCity) as Address, Manager, ContactPerson as 'Contact Person', ContactNo as 'Contact Number' FROM msadb.client" + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
-        #endregion
-
-        #region Client Report Excel
 
         private static String getClientsQuery(char id)
         {
@@ -86,15 +83,6 @@ namespace MSAMISUserInterface
             return 0;
         }
 
-        private String formatFileName(char o)
-        {
-            if (o == 'g')
-                return "GuardsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy");
-            else if (o == 'c')
-                return "ClientSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy");
-            return "";
-        }
-
             public void ExportToPDF(PdfPTable pdfTable, char formOrigin)
             {
 
@@ -124,12 +112,12 @@ namespace MSAMISUserInterface
                 }
             }
 
-
+        
             public static String GetFileName(char o)
             {
                 if (o == 'c')
                     return "ClientsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
-                if (o == 'g')
+                else if (o == 'g')
                     return "GuardsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
                 return null;
             }

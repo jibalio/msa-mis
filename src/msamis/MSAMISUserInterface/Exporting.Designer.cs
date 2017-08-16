@@ -50,7 +50,7 @@
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(295, 39);
             this.label69.TabIndex = 35;
-            this.label69.Text = "Exporting to Excel";
+            this.label69.Text = "Exporting to PDF";
             this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FadeTMR

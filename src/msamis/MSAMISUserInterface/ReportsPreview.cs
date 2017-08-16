@@ -57,12 +57,12 @@ namespace MSAMISUserInterface {
             TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
             if (Mode == 1) {
                 GReportGRD.DataSource = Reports.GetGuardsList();
-                GReportGRD.Columns[0].HeaderText = "NAME";
-                GReportGRD.Columns[1].HeaderText = "STATUS";
-                GReportGRD.Columns[2].HeaderText = "CONTACT NUMBER";
-                GReportGRD.Columns[3].HeaderText = "LICENSE NUMBER";
+                GReportGRD.Columns[0].HeaderText = "Name";
+                GReportGRD.Columns[1].HeaderText = "Status";
+                GReportGRD.Columns[2].HeaderText = "Contact Number";
+                GReportGRD.Columns[3].HeaderText = "License Number";
                 GReportGRD.Columns[4].HeaderText = "SSS";
-                GReportGRD.Columns[5].HeaderText = "TIN NO";
+                GReportGRD.Columns[5].HeaderText = "TIN Number";
                 GReportGRD.Columns[6].HeaderText = "PHIC";
 
                 #region Format Table
@@ -78,12 +78,12 @@ namespace MSAMISUserInterface {
             } else if (Mode == 2) {
                 GReportGRD.DataSource = Reports.GetClientsList();
 
-                GReportGRD.Columns[0].HeaderText = "NAME";
-                GReportGRD.Columns[1].HeaderText = "STATUS";
-                GReportGRD.Columns[2].HeaderText = "ADDRESS";
-                GReportGRD.Columns[3].HeaderText = "MANAGER";
-                GReportGRD.Columns[4].HeaderText = "CONTACT PERSON";
-                GReportGRD.Columns[5].HeaderText = "CONTACT NUMBER";
+                GReportGRD.Columns[0].HeaderText = "Client Name";
+                GReportGRD.Columns[1].HeaderText = "Status";
+                GReportGRD.Columns[2].HeaderText = "Address";
+                GReportGRD.Columns[3].HeaderText = "Manager";
+                GReportGRD.Columns[4].HeaderText = "Contact Person";
+                GReportGRD.Columns[5].HeaderText = "Contact Number";
 
                 #region Format Table
                 GReportGRD.Columns[0].Width = 200;
@@ -102,14 +102,13 @@ namespace MSAMISUserInterface {
 
         #region RylBlock
 
-        public PdfPTable FormatPDF(char formOrigin, char modes)
+        public void FormatPDF(char formOrigin)
         {
             //Default PDF Format
-            GReportGRD.DataSource = Reports.GetList(modes);
+            GReportGRD.DataSource = Reports.GetList(formOrigin);
             Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
-            Font headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
             PdfPTable pdfTable = new PdfPTable(GReportGRD.ColumnCount);
-            pdfTable.SetWidths(Reports1.GetPDFFormat(formOrigin));
+            pdfTable.SetWidths(Reports.GetPDFFormat(formOrigin));
             pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.Padding = 3;
@@ -121,12 +120,7 @@ namespace MSAMISUserInterface {
 
             //Add Headers Here
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pdfTable.AddCell(new Phrase("Client Name", headerfont));
-            pdfTable.AddCell(new Phrase("Status", headerfont));
-            pdfTable.AddCell(new Phrase("Client Address", headerfont));
-            pdfTable.AddCell(new Phrase("Manager", headerfont));
-            pdfTable.AddCell(new Phrase("Contact Person", headerfont));
-            pdfTable.AddCell(new Phrase("Contact Number", headerfont));
+            pdfTable = AddHeaders(pdfTable, formOrigin);
 
 
             //Add Data to PDF
@@ -135,16 +129,44 @@ namespace MSAMISUserInterface {
 
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont)) {
+                    var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont))
+                    {
                         PaddingTop = 5f,
                         PaddingBottom = 8f
-                };
+                    };
                     pdfTable.AddCell(newcell);
                 }
             }
-            return pdfTable;
+            Reports r = new Reports();
+            r.ExportToPDF(pdfTable, formOrigin);
         }
 
+        public PdfPTable AddHeaders(PdfPTable pdfTable, char o)
+        {
+            Font headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
+            if (o == 'g')
+            {
+                pdfTable.AddCell(new Phrase("Name", headerfont));
+                pdfTable.AddCell(new Phrase("Status", headerfont));
+                pdfTable.AddCell(new Phrase("Contact Number", headerfont));
+                pdfTable.AddCell(new Phrase("License Number", headerfont));
+                pdfTable.AddCell(new Phrase("SSS", headerfont));
+                pdfTable.AddCell(new Phrase("TIN Number", headerfont));
+                pdfTable.AddCell(new Phrase("PHIC", headerfont));
+            }
+
+            else if (o == 'c')
+            {
+                pdfTable.AddCell(new Phrase("Client Name", headerfont));
+                pdfTable.AddCell(new Phrase("Status", headerfont));
+                pdfTable.AddCell(new Phrase("Client Address", headerfont));
+                pdfTable.AddCell(new Phrase("Manager", headerfont));
+                pdfTable.AddCell(new Phrase("Contact Person", headerfont));
+                pdfTable.AddCell(new Phrase("Contact Number", headerfont));
+            }
+            return pdfTable;
+               
+        }
 
         #endregion
 
