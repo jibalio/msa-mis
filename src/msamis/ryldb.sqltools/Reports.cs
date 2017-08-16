@@ -127,9 +127,8 @@ namespace MSAMISUserInterface
                 if (formOrigin == 'c')
                     return new float[] { 120f, 50f, 250f, 135f, 135f, 80f };
                 else if (formOrigin == 'g')
-                    //return guards format
-                    return null;
-                return null;
+                    return new float[] { 120f, 50f, 90f, 80f, 90f, 90f, 90f };
+            return null;
         }
     }
 }

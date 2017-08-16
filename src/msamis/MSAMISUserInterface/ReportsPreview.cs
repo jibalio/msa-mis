@@ -121,12 +121,11 @@ namespace MSAMISUserInterface {
             //Add Headers Here
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfTable = AddHeaders(pdfTable, formOrigin);
-
+            int i = 0;
 
             //Add Data to PDF
             foreach (DataGridViewRow row in GReportGRD.Rows)
             {
-
                 foreach (DataGridViewCell cell in row.Cells)
                 {
                     var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont))
