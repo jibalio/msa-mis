@@ -31,6 +31,7 @@ namespace MSAMISUserInterface {
 
             try {
                 try {
+                    if (!data.Rows[0][5].ToString().Equals("")) { 
                     Dependent1LBL.Text = AddRelationship(data.Rows[0][5].ToString(),
                         data.Rows[0][4].ToString());
                     Dependent2LBL.Text = AddRelationship(data.Rows[1][5].ToString(),
@@ -41,6 +42,7 @@ namespace MSAMISUserInterface {
                         data.Rows[3][4].ToString());
                     Dependent5LBL.Text = AddRelationship(data.Rows[4][5].ToString(),
                         data.Rows[4][4].ToString());
+                    }
                 }
                 catch { }
             }
