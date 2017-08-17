@@ -350,11 +350,32 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 q += " AND ti_hh is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
                 q += " AND ti_hh is null ";
-            DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " group by guards.gid order by name asc");
+            DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " order by name asc");
             // foreach (DataRow e in dt.Rows) {
             //    String[] x = e["Schedule"].ToString().Split(' ');
             //    if (x[0] != "Unscheduled") e.SetField("Schedule", (x[0] + " " + ParseDays(x[1])));
             // }
+            return dt;
+        }
+
+        public static DataTable GetGuardsWithAssignment(string searchkeyword) {
+            String q = @"select 
+                        guards.gid, d.did, sduty_assignment.aid,
+                        concat(ln,', ',fn,' ',mn) as name,
+                        concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,
+                        case 
+	                        when ti_hh is null then 'Unscheduled'
+                            when ti_hh is not null then 'Scheduled'
+                            end as schedule,
+						case astatus
+                        when 1 then 'Active' when 2 then 'Inactive' when 3 then 'Approved' end as Status
+                         from guards 
+                        left join sduty_assignment on sduty_assignment.gid=guards.gid
+                        left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
+                        left join request_assign on request_assign.raid=sduty_assignment.raid
+                        left join request on request_assign.rid=request.rid
+                        where  city is not null AND astatus = 1 ";
+            DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " group by guards.gid order by name asc");
             return dt;
         }
 
