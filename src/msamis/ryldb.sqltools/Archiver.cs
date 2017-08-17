@@ -44,11 +44,15 @@ namespace MSAMISUserInterface {
         //======================================================================
 
 
+
         public static void ArchiveGuard(int GuardId) {
                 SQLTools.ExecuteNonQuery($"call archive_guard({GuardId});");
-            }
+        }
 
-            
+        public static DataTable GetAssignmentHistory(int GID) {
+            return SQLTools.ExecuteQuery($"select * from msadbarchive.sduty_assignment where gid = {GID};");
+        }
+        
 
 
 
@@ -70,10 +74,5 @@ namespace MSAMISUserInterface {
         }
 
 
-   
-
-        public static DataTable GetAssignmentHistory(int GuardId) {
-            throw  new NotImplementedException();
-        }
     }
 }

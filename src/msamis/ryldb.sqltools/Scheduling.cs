@@ -7,6 +7,9 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
     public class Scheduling {
 
+        public static DataTable GetAssignmentHistory(int gid) {
+            return SQLTools.ExecuteQuery($"select * from sduty_assignment where gid={gid}");
+        }
 
         static String empty = "Search or filter";
         #region Request Retrieval (DataTable)  -- General View    ✔Done
@@ -238,8 +241,7 @@ namespace MSAMISUserInterface {
                     DateTime conend = DateTime.Parse(dtl["contractend"].ToString());
                     // Add assignment in assignment table
                     String q =$@"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`, `AssignedOn`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}', 
-                                {consta:
-                                yyyy-MM-dd});";
+                                '{consta.ToString("yyyy-MM-dd")}');";
                     SQLTools.ExecuteNonQuery(q);
                    // SQLTools.ExecuteNonQuery(eventddl_cs);      // contract start trigger
                    // SQLTools.ExecuteNonQuery(eventddl_ce);      // contract end trigger
@@ -344,7 +346,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
-                        where  city is not null AND astatus = 1 " +
+                        where  city is not null AND astatus<>2 " +
                         (cid == -1 ? "" : " AND cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND ti_hh is not null";
@@ -509,7 +511,8 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         /// <param name="AID">Assignment ID</param>
         /// <returns>Columns: ["did", "TimeIn", "TimeOut", "Days"]</returns>
         public static DataTable GetDutyDetailsSummary (int AID) {
-            DataTable dt = SQLTools.ExecuteQuery(@"
+            DataTable dt = 
+                SQLTools.ExecuteQuery(@"
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_hh,':',to_mm,' ',to_period) as TimeOut,
                     'days_columnMTWThFSSu' as days from 
