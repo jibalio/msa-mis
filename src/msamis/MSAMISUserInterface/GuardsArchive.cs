@@ -19,7 +19,18 @@ namespace MSAMISUserInterface {
 
         private void GuardsArchive_Load(object sender, EventArgs e) {
             FadeTMR.Start();
-           // RefreshData();
+            RefreshData();
+        }
+
+        private void RefreshData() {
+            var dataTable = Archiver.GetGuardsBasicData(Gid);
+            GIDLBL.Text = Gid.ToString();
+            LNLBL.Text = dataTable.Rows[0]["fn"] + " " + dataTable.Rows[0]["mn"];
+            LLBL.Text = dataTable.Rows[0]["ln"] + ", ";
+            ContactNoLBL.Text = dataTable.Rows[0]["CellNo"].ToString();
+            TelNoLBL.Text = dataTable.Rows[0]["TelNo"].ToString();
+            ContactLBL.Text = dataTable.Rows[0]["EmergencyContact"].ToString();
+            EmergencyLBL.Text = dataTable.Rows[0]["EmergencyNo"].ToString();
         }
 
         private void GuardsArchive_FormClosing(object sender, FormClosingEventArgs e) {
@@ -39,21 +50,17 @@ namespace MSAMISUserInterface {
         }
 
         private void ViewInfoBTN_Click(object sender, EventArgs e) {
-            try {
-                    var view = new GuardsView {
-                        Gid = 0,
-                        Location = Location,
-                        Name = "Archived"
-                    };
-                view.ShowDialog();
-            }
-            catch (Exception) { }
+            var view = new GuardsView {
+                Gid = Gid,
+                Location = Location,
+                Name = "Archived"
+            };
+            view.ShowDialog();
         }
 
         private void ViewAssBTN_Click(object sender, EventArgs e) {
             var view = new SchedViewDutyDetails {
-                Aid = 1,
-                Gid = 1,
+                Gid = Gid,
                 Location = Location,
                 Name = "Archived"
             };
@@ -62,7 +69,7 @@ namespace MSAMISUserInterface {
 
         private void ViewPayBTN_Click(object sender, EventArgs e) {
             var view = new PayrollEmployeeView {
-                Gid = 0,
+                Gid = Gid,
                 Location = Location,
                 Name = "Archived"
             };

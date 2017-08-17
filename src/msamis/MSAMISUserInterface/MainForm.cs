@@ -635,10 +635,10 @@ namespace MSAMISUserInterface {
         }
         private void GArchiveViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
-                var view = new GuardsArchive() {
+                var view = new GuardsArchive {
                     Shadow = _shadow,
                     Location = _newFormLocation,
-                    Gid = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString())
+                    Gid = int.Parse(GArchivedGuardsGRD.SelectedRows[0].Cells[0].Value.ToString())
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -657,6 +657,7 @@ namespace MSAMISUserInterface {
             GArchivedGuardsGRD.Columns[3].Visible = false;
             GArchivedGuardsGRD.Columns[4].Width = 150;
             GArchivedGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            GArchivedGuardsGRD.ClearSelection();
         }
 
         private void GArchivedGuardsGRD_DoubleClick(object sender, EventArgs e) {
