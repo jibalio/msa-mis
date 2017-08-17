@@ -158,12 +158,12 @@ namespace MSAMISUserInterface {
             // 2a: Get last inserted Incident Report (link this)
             int ernational_love = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "iid"));
             // 2b: Insert request
-            q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`) VALUES ('{0}', '{1}', '{2}','{3}')";
-            q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime(),Enumeration.RequestStatus.Pending, ernational_love );
+            q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`, `dateeffective`) VALUES ('{0}', '{1}', '{2}','{3}', '{4}')";
+            q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime(),Enumeration.RequestStatus.Pending, ernational_love, DateEffective.ToString("yyyy-MM-dd"));
             SQLTools.ExecuteNonQuery(q);
             String lid = SQLTools.getLastInsertedId("request", "rid");
             for (int c = 0; c < gid.Length; c++) {  
-                q = "INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `iid`) VALUES ('" + lid.ToString() + "', '" + gid[c] + "', '"+ernational_love+"');";
+                q = $@"INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `iid`, `DateEffective') VALUES ('{lid.ToString()}', '{ gid[c]}', '{ernational_love}', '{DateEffective:yyyy-MM-dd}');";
                 SQLTools.ExecuteNonQuery(q);
             }
             
@@ -187,7 +187,11 @@ namespace MSAMISUserInterface {
         }
 
 
-        public static void ApproveUnassignment(int RequestId, DateTime DateEffective) {
+        public static void ApproveUnassignment(int RequestId) {
+            DataTable de = SQLTools.ExecuteQuery($@"select * from request
+                                                        left join request_unassign on request_unassign.RID = request.RID
+                                                        where request.rid={RequestId};");
+            DateTime DateEffective = DateTime.Parse(de.Rows[0]["dateeffective"].ToString());
             // 1.) Get all GIDs of guards in RID
             DataTable GuardsToBeDismissed = SQLTools.ExecuteQuery(@"select guards.gid as gid, sduty_assignment.aid as aid from guards 
                                             left join sduty_assignment on sduty_assignment.GID = guards.gid
@@ -211,10 +215,7 @@ namespace MSAMISUserInterface {
         }
 
 
-
-        public static void ApproveUnassignment(int RequestId) {
-            ApproveUnassignment(RequestId, DateTime.Now.AddDays(1));
-        }
+        
 
         #endregion
 
