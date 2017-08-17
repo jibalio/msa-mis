@@ -625,15 +625,20 @@ namespace MSAMISUserInterface {
 
         private void ArchiveButton_Event(object sender, EventArgs e) {
             // Initialize archive connection.
-            RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            //if (x == DialogResult.Yes) MoveGuardsToArchive(GuardsGID);
+            if (RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                Archiver.ArchiveGuard(int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString()));
+                RylMessageBox.ShowDialog("Successfully archived Guard(s)", "Archive", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                GuardsRefreshGuardsList();
+            }
         }
         private void GArchiveViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new GuardsArchive() {
                     Shadow = _shadow,
-                    Location = _newFormLocation
+                    Location = _newFormLocation,
+                    Gid = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString())
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -642,7 +647,21 @@ namespace MSAMISUserInterface {
             catch (Exception) { }
         }
 
-        private void RefreshArchivedGuards() { }
+        private void RefreshArchivedGuards() {
+            GArchivedGuardsGRD.DataSource = Archiver.GetAllGuards(_extraQueryParams, "name asc");
+            GArchivedGuardsGRD.Columns[0].Visible = false;
+            GArchivedGuardsGRD.Columns[1].Width = 260;
+            GArchivedGuardsGRD.Columns[1].HeaderText = "NAME";
+            GArchivedGuardsGRD.Columns[2].Width = 70;
+            GArchivedGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            GArchivedGuardsGRD.Columns[3].Visible = false;
+            GArchivedGuardsGRD.Columns[4].Width = 150;
+            GArchivedGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void GArchivedGuardsGRD_DoubleClick(object sender, EventArgs e) {
+            if (GArchivedGuardsGRD.SelectedRows.Count > 0) GArchiveViewDetailsBTN.PerformClick();
+        }
 
         #endregion
 
@@ -665,11 +684,8 @@ namespace MSAMISUserInterface {
 
         private void GArchiveSearchBX_TextChanged(object sender, EventArgs e) {
             var temp = GArchiveSearchBX.Text;
-            const string kazoo = "name";
-
-            if (GViewAllSearchTXTBX.Text.Contains("\\")) temp = temp + "?";
-            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
-                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            if (GViewAllSearchTXTBX.Text.Contains("\\")) temp = "";
+            _extraQueryParams = temp;
             RefreshArchivedGuards();
         }
 
@@ -1681,12 +1697,11 @@ namespace MSAMISUserInterface {
 
 
 
+
+
+
         #endregion
 
         #endregion
-
-
-
-
     }
 }

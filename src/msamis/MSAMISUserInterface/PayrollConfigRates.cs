@@ -49,7 +49,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_ConfigSSS_FormClosing(object sender, FormClosingEventArgs e) {
-            if ((!CloseBTN.Visible && rylui.RylMessageBox.ShowDialog("You are still editing. Any unsaved changes will be lost.\nAre you sure you want to close this page?", "Cancel Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) || CloseBTN.Visible)
+            if ((!CloseBTN.Visible && RylMessageBox.ShowDialog("You are still editing. Any unsaved changes will be lost.\nAre you sure you want to close this page?", "Cancel Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) || CloseBTN.Visible)
             Refer.Close();
         }
 
@@ -387,9 +387,6 @@ namespace MSAMISUserInterface {
                     EditingMode(false);
                 }
             }
-        }
-        private void SSSGRD_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {
-            EditingMode(true);
         }
 
         private void SSSDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {

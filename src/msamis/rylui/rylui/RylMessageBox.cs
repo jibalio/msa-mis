@@ -99,9 +99,9 @@ namespace rylui
             switch (mbutton)
             {
                 case MessageBoxButtons.AbortRetryIgnore:
-                    form.btn1.Text = "Ignore";
-                    form.btn2.Text = "Retry";
-                    form.btn3.Text = "Abort";
+                    form.btn1.Text = "IGNORE";
+                    form.btn2.Text = "RETRY";
+                    form.btn3.Text = "ABORT";
                     form.btn3.BackColor = Property.Colors.ButtonRed;
                     break;
                 case MessageBoxButtons.OK:
@@ -110,26 +110,26 @@ namespace rylui
                     form.btn3.Visible = false;
                     break;
                 case MessageBoxButtons.OKCancel:
-                    form.btn1.Text = "Cancel";
+                    form.btn1.Text = "CANCEL";
                     form.btn2.Text = "OK";
                     form.btn3.Visible = false;
                     form.btn1.BackColor = Property.Colors.ButtonRed;
                     break;
                 case MessageBoxButtons.RetryCancel:
-                    form.btn1.Text = "Cancel";
-                    form.btn2.Text = "Retry";
+                    form.btn1.Text = "CANCEL";
+                    form.btn2.Text = "RETRY";
                     form.btn3.Visible = false;
                     form.btn1.BackColor = Property.Colors.ButtonRed;
                     break;
                 case MessageBoxButtons.YesNo:
-                    form.btn1.Text = "No";
-                    form.btn2.Text = "Yes";
+                    form.btn1.Text = "NO";
+                    form.btn2.Text = "YES";
                     form.btn3.Visible = false;
                     break;
                 case MessageBoxButtons.YesNoCancel:
-                    form.btn2.Text = "Cancel";
-                    form.btn1.Text = "No";
-                    form.btn3.Text = "Yes";
+                    form.btn2.Text = "CANCEL";
+                    form.btn1.Text = "NO";
+                    form.btn3.Text = "YES";
                     form.btn1.BackColor = Property.Colors.ButtonRed;
                     break;
 

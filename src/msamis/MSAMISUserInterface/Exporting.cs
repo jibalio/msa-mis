@@ -33,8 +33,7 @@ namespace MSAMISUserInterface {
 
         private void Export() {
             var rp = new ReportsPreview();
-            var r = new Reports();
-            r.ExportToPDF(rp.FormatPDF(Mode, Mode), Mode);
+            rp.FormatPDF(Mode);
 
             if (Mode == 'g') Main.GuardsLoadReport();
             else if (Mode == 'c') Main.ClientsLoadSummary();

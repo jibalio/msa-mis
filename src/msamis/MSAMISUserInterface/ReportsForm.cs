@@ -148,7 +148,6 @@ namespace MSAMISUserInterface
 
         private void CExportToPDFBTN_Click(object sender, EventArgs e)
         {
-            Reports1.ExportToPDF(FormatPDF('c'), 'c');
         }
 
         public DataGridView GetDataGridViewData(char o)
@@ -166,7 +165,7 @@ namespace MSAMISUserInterface
             Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
             Font headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
             PdfPTable pdfTable = new PdfPTable(GetDataGridViewData(formOrigin).ColumnCount);
-            pdfTable.SetWidths(Reports1.GetPDFFormat(formOrigin));
+            pdfTable.SetWidths(Reports.GetPDFFormat(formOrigin));
             pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.Padding = 3;
