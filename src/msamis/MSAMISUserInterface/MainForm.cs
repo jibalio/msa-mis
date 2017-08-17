@@ -1044,7 +1044,7 @@ namespace MSAMISUserInterface {
             _scurrentBtn = newBtn;
             _scurrentPanel = newP;
             SViewReqsAssBTN.Visible = req;
-            SViewAssHistoryBTN.Visible = !req && (SViewAssPNL.Visible || SGuardHistoryPNL.V);
+            SViewAssHistoryBTN.Visible = !req && (SViewAssPNL.Visible || SGuardHistoryPNL.Visible);
             }
         }
 
