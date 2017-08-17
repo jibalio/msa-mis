@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -19,7 +20,18 @@ namespace MSAMISUserInterface {
 
         private void GuardsArchive_Load(object sender, EventArgs e) {
             FadeTMR.Start();
-           // RefreshData();
+            RefreshData();
+        }
+
+        private void RefreshData() {
+            DataTable dataTable = Archiver.GetGuardsBasicData(Gid);
+            GIDLBL.Text = Gid.ToString();
+            LNLBL.Text = dataTable.Rows[0]["fn"] + " " + dataTable.Rows[0]["mn"];
+            LLBL.Text = dataTable.Rows[0]["ln"] + ", ";
+            ContactNoLBL.Text = dataTable.Rows[0]["CellNo"].ToString();
+            TelNoLBL.Text = dataTable.Rows[0]["TelNo"].ToString();
+            ContactLBL.Text = dataTable.Rows[0]["EmergencyContact"].ToString();
+            EmergencyLBL.Text = dataTable.Rows[0]["EmergencyNo"].ToString();
         }
 
         private void GuardsArchive_FormClosing(object sender, FormClosingEventArgs e) {

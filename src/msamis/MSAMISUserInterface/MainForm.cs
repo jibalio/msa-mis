@@ -657,6 +657,7 @@ namespace MSAMISUserInterface {
             GArchivedGuardsGRD.Columns[3].Visible = false;
             GArchivedGuardsGRD.Columns[4].Width = 150;
             GArchivedGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            GArchivedGuardsGRD.ClearSelection();
         }
 
         private void GArchivedGuardsGRD_DoubleClick(object sender, EventArgs e) {
