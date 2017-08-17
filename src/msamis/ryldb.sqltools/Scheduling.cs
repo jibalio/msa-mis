@@ -145,7 +145,7 @@ namespace MSAMISUserInterface {
         /// <param name="location">Brief location description</param>
         /// <param name="description">Brief description of incident.</param>
         public static void AddUnassignmentRequest(int cid, int[] gid, int ReportType, String pcompleting, DateTime EventDate,
-            String location, String description) {
+            String location, String description, DateTime DateEffective) {
 
             // 1.) Add Incident Report
             String q = String.Format(@"INSERT INTO `msadb`.`incidentreport` 
