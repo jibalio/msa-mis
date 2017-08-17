@@ -50,7 +50,9 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetAssignmentHistory(int GID) {
-            return SQLTools.ExecuteQuery($"select * from msadbarchive.sduty_assignment where gid = {GID};");
+            return SQLTools.ExecuteQuery($@"select * from msadbarchive.sduty_assignment 
+                                            left join msadb.client on msadb.client.cid = msadbarchive.sduty_assignment.cid
+                                            where gid = {GID};");
         }
         
 

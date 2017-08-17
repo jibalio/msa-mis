@@ -8,7 +8,10 @@ namespace MSAMISUserInterface {
     public class Scheduling {
 
         public static DataTable GetAssignmentHistory(int gid) {
-            return SQLTools.ExecuteQuery($"select * from sduty_assignment where gid={gid}");
+            return SQLTools.ExecuteQuery($@"select aid, client.name, assignedon, unassignedon from sduty_assignment
+            left join request_assign on request_assign.raid = sduty_assignment.raid
+            left join request on request.rid = request_assign.rid
+            left join client on client.cid = request.cid where gid={gid}");
         }
 
         static String empty = "Search or filter";
