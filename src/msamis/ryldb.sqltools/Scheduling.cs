@@ -9,9 +9,7 @@ namespace MSAMISUserInterface {
 
 
         static String empty = "Search or filter";
-
         #region Request Retrieval (DataTable)  -- General View    ✔Done
-
 
         
 
@@ -189,29 +187,33 @@ namespace MSAMISUserInterface {
         }
 
 
-
-
-
-
-        public static void ApproveUnassignment(int rid) {
+        public static void ApproveUnassignment(int RequestId, DateTime DateEffective) {
             // 1.) Get all GIDs of guards in RID
             DataTable GuardsToBeDismissed = SQLTools.ExecuteQuery(@"select guards.gid as gid, sduty_assignment.aid as aid from guards 
                                             left join sduty_assignment on sduty_assignment.GID = guards.gid
                                             left join request_unassign on request_unassign.gid = guards.gid
-                                            where rid = " + rid + ";");
+                                            where rid = " + RequestId + ";");
             foreach (DataRow e in GuardsToBeDismissed.Rows) {
                 // 1A) Set scheds to inactive
-                String q = @"UPDATE `msadb`.`dutydetails` SET `DStatus`='"+Enumeration.DutyDetailStatus.Inactive+"' WHERE `AID`='"+e["aid"]+"';";
+                String q = @"UPDATE `msadb`.`dutydetails` SET `DStatus`='" + Enumeration.DutyDetailStatus.Inactive + "' WHERE `AID`='" + e["aid"] + "';";
                 SQLTools.ExecuteNonQuery(q);
                 // 2.) Set assignment to dismissed (IF they have schedules active)
-                 q = @"UPDATE `msadb`.`sduty_assignment` SET `AStatus`='"+Enumeration.AssignmentStatus.Inactive+"' WHERE `gid`='" + e["gid"] + "';";
+                q = $@"UPDATE `msadb`.`sduty_assignment` SET `AStatus`='{
+                        Enumeration.AssignmentStatus.Inactive
+                    }', UnassignedOn='{DateEffective:yyyy-MM-dd}' WHERE `gid`='{e["gid"]}';";
                 SQLTools.ExecuteNonQuery(q);
                 // 3.) Set guard to Inactive (BUT NOT DISMISSED)
-                q = @"UPDATE `msadb`.`guards` SET `GStatus`='"+Enumeration.GuardStatus.Inactive+"' WHERE `GID`='" + e[0] + "'";
+                q = @"UPDATE `msadb`.`guards` SET `GStatus`='" + Enumeration.GuardStatus.Inactive + "' WHERE `GID`='" + e[0] + "'";
                 SQLTools.ExecuteNonQuery(q);
             }
             // Step 4
-            UpdateRequestStatus(rid, Enumeration.RequestStatus.Approved);
+            UpdateRequestStatus(RequestId, Enumeration.RequestStatus.Approved);
+        }
+
+
+
+        public static void ApproveUnassignment(int RequestId) {
+            ApproveUnassignment(RequestId, DateTime.Now.AddDays(1));
         }
 
         #endregion
@@ -231,11 +233,12 @@ namespace MSAMISUserInterface {
                 // Get RID of guard.
                 String raid = dtl["RAID"].ToString();
                 foreach (int g in gid) {
-                    // Add assignment in assignment table
-                   String q =$"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`, `AssignedOn) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}');";
                     DateTime consta = DateTime.Parse(dtl["contractstart"].ToString());
                     DateTime conend = DateTime.Parse(dtl["contractend"].ToString());
-                    
+                    // Add assignment in assignment table
+                    String q =$@"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`, `AssignedOn`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}', 
+                                {consta:
+                                yyyy-MM-dd});";
                     SQLTools.ExecuteNonQuery(q);
                    // SQLTools.ExecuteNonQuery(eventddl_cs);      // contract start trigger
                    // SQLTools.ExecuteNonQuery(eventddl_ce);      // contract end trigger
