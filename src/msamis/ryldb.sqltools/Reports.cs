@@ -55,6 +55,16 @@ namespace MSAMISUserInterface
 
         #endregion
 
+        #region Duty Detail Export
+        public static DataTable GetDutyDetailList()
+        {
+            ExtraQueryParams = " ORDER BY Client.Name asc";
+            String q = "SELECT  client.Name as 'Client Name' , concat(guards.ln,', ',guards.fn,' ',guards.mn) AS 'Guards Assigned', concat(request_assign.streetno, ' ', request_assign.streetname, ', ' ,request_assign.brgy, ', ', request_assign.city) as 'Assignment Address' FROM sduty_assignment JOIN guards ON sduty_assignment.GID = guards.GID JOIN request_assign ON sduty_assignment.RAID = request_assign.RAID JOIN request ON request_assign.RID = request.RID JOIN client ON request.CID = client.CID" + ExtraQueryParams;
+            return SQLTools.ExecuteQuery(q);
+        }
+
+        #endregion
+
         #region Export
 
         public static DataTable GetList(char formOrigin)
@@ -63,6 +73,8 @@ namespace MSAMISUserInterface
                 return GetGuardsList();
             else if (formOrigin == 'c')
                 return GetClientsList();
+            else if (formOrigin == 'd')
+                return GetDutyDetailList();
             else
                 return null;
         }
@@ -119,7 +131,9 @@ namespace MSAMISUserInterface
                     return "ClientsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
                 else if (o == 'g')
                     return "GuardsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
-                return null;
+            else if (o == 'd')
+                return "SchedSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
+            return null;
             }
 
             public static float[] GetPDFFormat(char formOrigin)
@@ -128,6 +142,8 @@ namespace MSAMISUserInterface
                     return new float[] { 120f, 50f, 250f, 135f, 135f, 80f };
                 else if (formOrigin == 'g')
                     return new float[] { 120f, 50f, 90f, 80f, 90f, 90f, 90f };
+                else if (formOrigin == 'd')
+                    return new float[] { 120f, 120f, 250f };
             return null;
         }
     }
