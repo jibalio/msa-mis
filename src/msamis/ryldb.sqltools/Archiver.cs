@@ -73,6 +73,32 @@ namespace MSAMISUserInterface {
             return (SQLTools.ExecuteQuery(query));
         }
 
+        public static DataTable GetDutyDetailsSummary(int AID) {
+            DataTable dt =
+                SQLTools.ExecuteQuery(@"
+                    select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
+                    concat (to_hh,':',to_mm,' ',to_period) as TimeOut,
+                    'days_columnMTWThFSSu' as days from 
+                    msadbarchive.dutydetails where AID=" + AID);
+            foreach (DataRow e in dt.Rows) {
+                e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
+            }
+            return dt;
+        }
+
+        public static Scheduling.Days GetDays(int DID) {
+            String q = "select mon, tue, wed, thu, fri, sat, sun from dutydetails where DID=" + DID;
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            return new Scheduling.Days(
+                dt.Rows[0]["mon"].ToString() == "1",
+                dt.Rows[0]["tue"].ToString() == "1",
+                dt.Rows[0]["wed"].ToString() == "1",
+                dt.Rows[0]["thu"].ToString() == "1",
+                dt.Rows[0]["fri"].ToString() == "1",
+                dt.Rows[0]["sat"].ToString() == "1",
+                dt.Rows[0]["sun"].ToString() == "1"
+            );
+        }
 
     }
 }
