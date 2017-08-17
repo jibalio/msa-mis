@@ -376,7 +376,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
-                        where  city is not null AND astatus = 1 ";
+                        where  city is not null ";
             DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " group by guards.gid order by name asc");
             return dt;
         }
