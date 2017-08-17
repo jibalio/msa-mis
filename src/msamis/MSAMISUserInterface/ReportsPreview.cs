@@ -163,6 +163,13 @@ namespace MSAMISUserInterface {
                 pdfTable.AddCell(new Phrase("Contact Person", headerfont));
                 pdfTable.AddCell(new Phrase("Contact Number", headerfont));
             }
+
+            else if (o == 'd')
+            {
+                pdfTable.AddCell(new Phrase("Client Name", headerfont));
+                pdfTable.AddCell(new Phrase("Guards Assigned", headerfont));
+                pdfTable.AddCell(new Phrase("Deployment Address", headerfont));
+            }
             return pdfTable;
                
         }

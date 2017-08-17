@@ -1044,7 +1044,7 @@ namespace MSAMISUserInterface {
             _scurrentBtn = newBtn;
             _scurrentPanel = newP;
             SViewReqsAssBTN.Visible = req;
-            SViewAssHistoryBTN.Visible = !req && SViewAssPNL.Visible;
+            SViewAssHistoryBTN.Visible = !req && (SViewAssPNL.Visible || SGuardHistoryPNL.Visible);
             }
         }
 
@@ -1366,7 +1366,7 @@ namespace MSAMISUserInterface {
         #region SMS - Reports
         public void SchedLoadReport() {
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports");//Assuming Test is your Folder
-            FileInfo[] files = d.GetFiles("SchedSummaryReport*.xlsx"); //Getting Text files]
+            FileInfo[] files = d.GetFiles("SchedSummaryReport*.pdf"); //Getting Text files]
 
             SSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
@@ -1704,5 +1704,27 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
+
+        private void SViewAssHistoryBTN_Click(object sender, EventArgs e) {
+            SChangePanel(SGuardHistoryPNL, SViewAssHistoryBTN, false);
+            SchedLoadGuardHistory();
+        }
+
+        private void SchedLoadGuardHistory() {
+            SGuardHistoryGRD.DataSource = Scheduling.GetGuardsWithAssignment(_extraQueryParams);
+            SGuardHistoryGRD.Columns[0].Visible = false;
+            SGuardHistoryGRD.Columns[1].Visible = false;
+            SGuardHistoryGRD.Columns[2].Visible = false;
+            SGuardHistoryGRD.Columns[3].HeaderText = "NAME";
+            SGuardHistoryGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
+            SGuardHistoryGRD.Columns[5].HeaderText = "SCHEDULE";
+            SGuardHistoryGRD.Columns[6].Visible = false;
+            SGuardHistoryGRD.Columns[3].Width = 230;
+            SGuardHistoryGRD.Columns[4].Width = 280;
+            SGuardHistoryGRD.Columns[5].Width = 100;
+            SGuardHistoryGRD.Columns[5].Width = 100;
+            SGuardHistoryGRD.Sort(SGuardHistoryGRD.Columns[3], ListSortDirection.Ascending);
+            SGuardHistoryGRD.ClearSelection();
+        }
     }
 }
