@@ -635,10 +635,10 @@ namespace MSAMISUserInterface {
         }
         private void GArchiveViewDetailsBTN_Click(object sender, EventArgs e) {
             try {
-                var view = new GuardsArchive() {
+                var view = new GuardsArchive {
                     Shadow = _shadow,
                     Location = _newFormLocation,
-                    Gid = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString())
+                    Gid = int.Parse(GArchivedGuardsGRD.SelectedRows[0].Cells[0].Value.ToString())
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;

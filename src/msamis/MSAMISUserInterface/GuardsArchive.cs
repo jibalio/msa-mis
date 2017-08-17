@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -24,7 +23,7 @@ namespace MSAMISUserInterface {
         }
 
         private void RefreshData() {
-            DataTable dataTable = Archiver.GetGuardsBasicData(Gid);
+            var dataTable = Archiver.GetGuardsBasicData(Gid);
             GIDLBL.Text = Gid.ToString();
             LNLBL.Text = dataTable.Rows[0]["fn"] + " " + dataTable.Rows[0]["mn"];
             LLBL.Text = dataTable.Rows[0]["ln"] + ", ";
@@ -51,21 +50,17 @@ namespace MSAMISUserInterface {
         }
 
         private void ViewInfoBTN_Click(object sender, EventArgs e) {
-            try {
-                    var view = new GuardsView {
-                        Gid = 0,
-                        Location = Location,
-                        Name = "Archived"
-                    };
-                view.ShowDialog();
-            }
-            catch (Exception) { }
+            var view = new GuardsView {
+                Gid = Gid,
+                Location = Location,
+                Name = "Archived"
+            };
+            view.ShowDialog();
         }
 
         private void ViewAssBTN_Click(object sender, EventArgs e) {
             var view = new SchedViewDutyDetails {
-                Aid = 1,
-                Gid = 1,
+                Gid = Gid,
                 Location = Location,
                 Name = "Archived"
             };
@@ -74,7 +69,7 @@ namespace MSAMISUserInterface {
 
         private void ViewPayBTN_Click(object sender, EventArgs e) {
             var view = new PayrollEmployeeView {
-                Gid = 0,
+                Gid = Gid,
                 Location = Location,
                 Name = "Archived"
             };
