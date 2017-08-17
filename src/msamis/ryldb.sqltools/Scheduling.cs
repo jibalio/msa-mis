@@ -7,6 +7,9 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
     public class Scheduling {
 
+        public static DataTable GetAssignmentHistory(int gid) {
+            return SQLTools.ExecuteQuery($"select * from sduty_assignment where gid={gid}");
+        }
 
         static String empty = "Search or filter";
         #region Request Retrieval (DataTable)  -- General View    ✔Done
@@ -145,7 +148,7 @@ namespace MSAMISUserInterface {
         /// <param name="location">Brief location description</param>
         /// <param name="description">Brief description of incident.</param>
         public static void AddUnassignmentRequest(int cid, int[] gid, int ReportType, String pcompleting, DateTime EventDate,
-            String location, String description) {
+            String location, String description, DateTime DateEffective) {
 
             // 1.) Add Incident Report
             String q = String.Format(@"INSERT INTO `msadb`.`incidentreport` 
@@ -158,12 +161,12 @@ namespace MSAMISUserInterface {
             // 2a: Get last inserted Incident Report (link this)
             int ernational_love = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "iid"));
             // 2b: Insert request
-            q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`) VALUES ('{0}', '{1}', '{2}','{3}')";
-            q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime(),Enumeration.RequestStatus.Pending, ernational_love );
+            q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`, `dateeffective`) VALUES ('{0}', '{1}', '{2}','{3}', '{4}')";
+            q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime(),Enumeration.RequestStatus.Pending, ernational_love, DateEffective.ToString("yyyy-MM-dd"));
             SQLTools.ExecuteNonQuery(q);
             String lid = SQLTools.getLastInsertedId("request", "rid");
             for (int c = 0; c < gid.Length; c++) {  
-                q = "INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `iid`) VALUES ('" + lid.ToString() + "', '" + gid[c] + "', '"+ernational_love+"');";
+                q = $@"INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `iid`, `DateEffective') VALUES ('{lid.ToString()}', '{ gid[c]}', '{ernational_love}', '{DateEffective:yyyy-MM-dd}');";
                 SQLTools.ExecuteNonQuery(q);
             }
             
@@ -187,7 +190,11 @@ namespace MSAMISUserInterface {
         }
 
 
-        public static void ApproveUnassignment(int RequestId, DateTime DateEffective) {
+        public static void ApproveUnassignment(int RequestId) {
+            DataTable de = SQLTools.ExecuteQuery($@"select * from request
+                                                        left join request_unassign on request_unassign.RID = request.RID
+                                                        where request.rid={RequestId};");
+            DateTime DateEffective = DateTime.Parse(de.Rows[0]["dateeffective"].ToString());
             // 1.) Get all GIDs of guards in RID
             DataTable GuardsToBeDismissed = SQLTools.ExecuteQuery(@"select guards.gid as gid, sduty_assignment.aid as aid from guards 
                                             left join sduty_assignment on sduty_assignment.GID = guards.gid
@@ -211,10 +218,7 @@ namespace MSAMISUserInterface {
         }
 
 
-
-        public static void ApproveUnassignment(int RequestId) {
-            ApproveUnassignment(RequestId, DateTime.Now.AddDays(1));
-        }
+        
 
         #endregion
 
@@ -237,8 +241,7 @@ namespace MSAMISUserInterface {
                     DateTime conend = DateTime.Parse(dtl["contractend"].ToString());
                     // Add assignment in assignment table
                     String q =$@"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`, `AssignedOn`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}', 
-                                {consta:
-                                yyyy-MM-dd});";
+                                '{consta.ToString("yyyy-MM-dd")}');";
                     SQLTools.ExecuteNonQuery(q);
                    // SQLTools.ExecuteNonQuery(eventddl_cs);      // contract start trigger
                    // SQLTools.ExecuteNonQuery(eventddl_ce);      // contract end trigger
@@ -343,17 +346,38 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
-                        where  city is not null AND astatus = 1 " +
+                        where  city is not null AND astatus<>2 " +
                         (cid == -1 ? "" : " AND cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND ti_hh is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
                 q += " AND ti_hh is null ";
-            DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " group by guards.gid order by name asc");
+            DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " order by name asc");
             // foreach (DataRow e in dt.Rows) {
             //    String[] x = e["Schedule"].ToString().Split(' ');
             //    if (x[0] != "Unscheduled") e.SetField("Schedule", (x[0] + " " + ParseDays(x[1])));
             // }
+            return dt;
+        }
+
+        public static DataTable GetGuardsWithAssignment(string searchkeyword) {
+            String q = @"select 
+                        guards.gid, d.did, sduty_assignment.aid,
+                        concat(ln,', ',fn,' ',mn) as name,
+                        concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,
+                        case 
+	                        when ti_hh is null then 'Unscheduled'
+                            when ti_hh is not null then 'Scheduled'
+                            end as schedule,
+						case astatus
+                        when 1 then 'Active' when 2 then 'Inactive' when 3 then 'Approved' end as Status
+                         from guards 
+                        left join sduty_assignment on sduty_assignment.gid=guards.gid
+                        left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
+                        left join request_assign on request_assign.raid=sduty_assignment.raid
+                        left join request on request_assign.rid=request.rid
+                        where  city is not null AND astatus = 1 ";
+            DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " group by guards.gid order by name asc");
             return dt;
         }
 
@@ -487,7 +511,8 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         /// <param name="AID">Assignment ID</param>
         /// <returns>Columns: ["did", "TimeIn", "TimeOut", "Days"]</returns>
         public static DataTable GetDutyDetailsSummary (int AID) {
-            DataTable dt = SQLTools.ExecuteQuery(@"
+            DataTable dt = 
+                SQLTools.ExecuteQuery(@"
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_hh,':',to_mm,' ',to_period) as TimeOut,
                     'days_columnMTWThFSSu' as days from 

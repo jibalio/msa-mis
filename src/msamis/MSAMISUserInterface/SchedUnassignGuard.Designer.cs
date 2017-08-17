@@ -103,6 +103,8 @@
             this.ReportLBL = new System.Windows.Forms.Label();
             this.ReportPNL = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DateEffective = new System.Windows.Forms.DateTimePicker();
             this.GuardsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).BeginInit();
             this.panel1.SuspendLayout();
@@ -151,6 +153,8 @@
             // GuardsPNL
             // 
             this.GuardsPNL.AutoScroll = true;
+            this.GuardsPNL.Controls.Add(this.label1);
+            this.GuardsPNL.Controls.Add(this.DateEffective);
             this.GuardsPNL.Controls.Add(this.GuardsGRD);
             this.GuardsPNL.Controls.Add(this.RemoveBTN);
             this.GuardsPNL.Location = new System.Drawing.Point(-1, 60);
@@ -271,7 +275,7 @@
             this.RemoveBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.RemoveBTN.ForeColor = System.Drawing.Color.White;
-            this.RemoveBTN.Location = new System.Drawing.Point(237, 299);
+            this.RemoveBTN.Location = new System.Drawing.Point(86, 295);
             this.RemoveBTN.Name = "RemoveBTN";
             this.RemoveBTN.Size = new System.Drawing.Size(73, 29);
             this.RemoveBTN.TabIndex = 231;
@@ -1010,8 +1014,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.ReportLBL);
-            this.panel1.Controls.Add(this.ReportPNL);
             this.panel1.Controls.Add(this.GuardsPNL);
+            this.panel1.Controls.Add(this.ReportPNL);
             this.panel1.Location = new System.Drawing.Point(-1, 116);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(551, 490);
@@ -1104,6 +1108,28 @@
             this.label3.TabIndex = 110;
             this.label3.Text = "Unassign Guard";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label1.Location = new System.Drawing.Point(267, 300);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 19);
+            this.label1.TabIndex = 233;
+            this.label1.Text = "Date Effective:";
+            // 
+            // DateEffective
+            // 
+            this.DateEffective.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DateEffective.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.DateEffective.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateEffective.Location = new System.Drawing.Point(373, 297);
+            this.DateEffective.Name = "DateEffective";
+            this.DateEffective.Size = new System.Drawing.Size(101, 25);
+            this.DateEffective.TabIndex = 232;
+            // 
             // SchedUnassignGuard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1124,6 +1150,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_DismissGuard_FormClosing);
             this.Load += new System.EventHandler(this.Sched_DismissGuard_Load);
             this.GuardsPNL.ResumeLayout(false);
+            this.GuardsPNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1209,5 +1236,7 @@
         private System.Windows.Forms.Label ReportLBL;
         private System.Windows.Forms.Panel ReportPNL;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker DateEffective;
     }
 }

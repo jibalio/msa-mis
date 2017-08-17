@@ -28,7 +28,6 @@
             this.ContactLBL = new System.Windows.Forms.Label();
             this.GIDLBL = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.LNLBL = new System.Windows.Forms.Label();
@@ -46,6 +45,8 @@
             this.ViewInfoBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
+            this.StatusLBL = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,19 +97,6 @@
             this.label42.Size = new System.Drawing.Size(55, 17);
             this.label42.TabIndex = 248;
             this.label42.Text = "Contact:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(52, 180);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 19);
-            this.label3.TabIndex = 236;
-            this.label3.Text = "ARCHIVED";
             // 
             // label4
             // 
@@ -340,6 +328,32 @@
             this.FadeTMR.Interval = 1;
             this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
             // 
+            // StatusLBL
+            // 
+            this.StatusLBL.AutoSize = true;
+            this.StatusLBL.BackColor = System.Drawing.Color.Transparent;
+            this.StatusLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.StatusLBL.ForeColor = System.Drawing.Color.White;
+            this.StatusLBL.Location = new System.Drawing.Point(101, 180);
+            this.StatusLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.StatusLBL.Name = "StatusLBL";
+            this.StatusLBL.Size = new System.Drawing.Size(62, 19);
+            this.StatusLBL.TabIndex = 253;
+            this.StatusLBL.Text = "Archived";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(52, 180);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 19);
+            this.label2.TabIndex = 252;
+            this.label2.Text = "Status:";
+            // 
             // GuardsArchive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,7 +366,6 @@
             this.Controls.Add(this.ContactLBL);
             this.Controls.Add(this.GIDLBL);
             this.Controls.Add(this.label42);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.LNLBL);
@@ -363,6 +376,8 @@
             this.Controls.Add(this.ContactNoLBL);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.TelNoLBL);
+            this.Controls.Add(this.StatusLBL);
+            this.Controls.Add(this.label2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GuardsArchive";
@@ -382,7 +397,6 @@
         private System.Windows.Forms.Label ContactLBL;
         private System.Windows.Forms.Label GIDLBL;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label LNLBL;
@@ -400,5 +414,7 @@
         private System.Windows.Forms.Button ViewPayBTN;
         private System.Windows.Forms.Button ViewAssBTN;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label StatusLBL;
+        private System.Windows.Forms.Label label2;
     }
 }

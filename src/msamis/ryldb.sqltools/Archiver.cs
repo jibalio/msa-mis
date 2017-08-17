@@ -9,16 +9,50 @@ using MSAMISUserInterface;
 namespace MSAMISUserInterface {
     public class Archiver {
 
+        //=====================================================================
+        // GUARD
+
+        public static int GetNumberOfDependents(int GID) {
+            String q = @"SELECT count(DeID) FROM msadbarchive.dependents where GID={0};";
+            q = string.Format(q, GID);
+            return SQLTools.GetInt(q) - 2;
+        }
+
+        public static int GetCivilStatus(int GID) {
+            string q = @"SELECT CivilStatus from msadbarchive.guards where GID=" + GID;
+            return SQLTools.GetInt(q);
+        }
+
+       
+        public static DataTable GetGuardsBasicData(int GID) {
+            return SQLTools.ExecuteQuery("SELECT * FROM msadbarchive.guards WHERE GID = " + GID);
+        }
+
+        public static DataTable GetGuardsAddresses(int GID) {
+            return SQLTools.ExecuteQuery("SELECT * FROM msadbarchive.address WHERE GID=" + GID + " ORDER BY Atype ASC");
+        }
+        public static DataTable GetGuardsParents(int GID) {
+            return SQLTools.ExecuteQuery("SELECT * FROM msadbarchive.dependents WHERE GID=" + GID + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
+        }
+        public static DataTable GetGuardsDependents(int GID) {
+            return SQLTools.ExecuteQuery("SELECT * FROM msadbarchive.dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
+        }
+        
+
         //======================================================================
         //      PROCESS METHODS
         //======================================================================
 
-        
-            public static void ArchiveGuard(int GuardId) {
-                SQLTools.ExecuteNonQuery($"call archive_guard({GuardId});");
-            }
 
-            
+
+        public static void ArchiveGuard(int GuardId) {
+                SQLTools.ExecuteNonQuery($"call archive_guard({GuardId});");
+        }
+
+        public static DataTable GetAssignmentHistory(int GID) {
+            return SQLTools.ExecuteQuery($"select * from msadbarchive.sduty_assignment where gid = {GID};");
+        }
+        
 
 
 
@@ -40,10 +74,5 @@ namespace MSAMISUserInterface {
         }
 
 
-   
-
-        public static DataTable GetAssignmentHistory(int GuardId) {
-            throw  new NotImplementedException();
-        }
     }
 }

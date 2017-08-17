@@ -42,6 +42,7 @@
             this.StatusLBL = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DeclineBTN = new System.Windows.Forms.Button();
+            this.ApprovedBy = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.AvailablePNL.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -223,14 +224,15 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.ApprovedBy);
             this.panel3.Controls.Add(this.StatusLBL);
             this.panel3.Controls.Add(this.NoLBL);
             this.panel3.Controls.Add(this.ContractEndLBL);
             this.panel3.Controls.Add(this.ContractStartLBL);
             this.panel3.Controls.Add(this.PermAddLBL);
-            this.panel3.Location = new System.Drawing.Point(-1, 188);
+            this.panel3.Location = new System.Drawing.Point(-1, 167);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(549, 169);
+            this.panel3.Size = new System.Drawing.Size(549, 195);
             this.panel3.TabIndex = 138;
             // 
             // StatusLBL
@@ -278,6 +280,20 @@
             this.DeclineBTN.UseVisualStyleBackColor = false;
             this.DeclineBTN.Click += new System.EventHandler(this.DeclineBTN_Click);
             // 
+            // ApprovedBy
+            // 
+            this.ApprovedBy.BackColor = System.Drawing.Color.White;
+            this.ApprovedBy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ApprovedBy.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.ApprovedBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ApprovedBy.Location = new System.Drawing.Point(0, 150);
+            this.ApprovedBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ApprovedBy.Name = "ApprovedBy";
+            this.ApprovedBy.Size = new System.Drawing.Size(549, 30);
+            this.ApprovedBy.TabIndex = 134;
+            this.ApprovedBy.Text = "---------------";
+            this.ApprovedBy.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // SchedViewAssReq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,5 +338,6 @@
         private System.Windows.Forms.Label StatusLBL;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button DeclineBTN;
+        private System.Windows.Forms.Label ApprovedBy;
     }
 }

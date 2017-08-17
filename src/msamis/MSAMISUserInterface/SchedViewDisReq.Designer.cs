@@ -39,6 +39,8 @@
             this.ViewIncidentLBL = new System.Windows.Forms.Label();
             this.DeclineBTN = new System.Windows.Forms.Button();
             this.ApproveBTN = new System.Windows.Forms.Button();
+            this.DateEffectiveLBL = new System.Windows.Forms.Label();
+            this.ApprovedByLBL = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).BeginInit();
             this.panel2.SuspendLayout();
@@ -140,7 +142,7 @@
             this.AssignedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.AssignedGRD.RowHeadersVisible = false;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AssignedGRD.Size = new System.Drawing.Size(400, 267);
+            this.AssignedGRD.Size = new System.Drawing.Size(400, 201);
             this.AssignedGRD.TabIndex = 144;
             // 
             // CloseBTN
@@ -165,6 +167,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.ApprovedByLBL);
+            this.panel2.Controls.Add(this.DateEffectiveLBL);
             this.panel2.Controls.Add(this.ViewIncidentLBL);
             this.panel2.Controls.Add(this.DeclineBTN);
             this.panel2.Controls.Add(this.ApproveBTN);
@@ -180,7 +184,7 @@
             this.ViewIncidentLBL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ViewIncidentLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ViewIncidentLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ViewIncidentLBL.Location = new System.Drawing.Point(2, 337);
+            this.ViewIncidentLBL.Location = new System.Drawing.Point(2, 275);
             this.ViewIncidentLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ViewIncidentLBL.Name = "ViewIncidentLBL";
             this.ViewIncidentLBL.Size = new System.Drawing.Size(548, 21);
@@ -231,6 +235,32 @@
             this.ApproveBTN.Visible = false;
             this.ApproveBTN.Click += new System.EventHandler(this.ApproveBTN_Click);
             // 
+            // DateEffectiveLBL
+            // 
+            this.DateEffectiveLBL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DateEffectiveLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.DateEffectiveLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DateEffectiveLBL.Location = new System.Drawing.Point(2, 306);
+            this.DateEffectiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DateEffectiveLBL.Name = "DateEffectiveLBL";
+            this.DateEffectiveLBL.Size = new System.Drawing.Size(548, 21);
+            this.DateEffectiveLBL.TabIndex = 149;
+            this.DateEffectiveLBL.Text = "Date Effective: ";
+            this.DateEffectiveLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ApprovedByLBL
+            // 
+            this.ApprovedByLBL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ApprovedByLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ApprovedByLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ApprovedByLBL.Location = new System.Drawing.Point(2, 336);
+            this.ApprovedByLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ApprovedByLBL.Name = "ApprovedByLBL";
+            this.ApprovedByLBL.Size = new System.Drawing.Size(548, 21);
+            this.ApprovedByLBL.TabIndex = 150;
+            this.ApprovedByLBL.Text = "Approved by:";
+            this.ApprovedByLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // SchedViewDisReq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,5 +297,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button DeclineBTN;
         private System.Windows.Forms.Label ViewIncidentLBL;
+        private System.Windows.Forms.Label ApprovedByLBL;
+        private System.Windows.Forms.Label DateEffectiveLBL;
     }
 }
