@@ -33,7 +33,7 @@ namespace MSAMISUserInterface {
             //Get the relative position after loading
             _newFormLocation = new Point(Location.X + 50, Location.Y + 66);
             _shadow.Location = Location;
-
+            _shadow.Transparency = 0.6;
             //Initiate the methods that updates the app
             InitiateForm();
         }
