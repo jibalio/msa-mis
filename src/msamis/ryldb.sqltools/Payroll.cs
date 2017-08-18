@@ -68,10 +68,42 @@ namespace MSAMISUserInterface {
                 _InitMeApproved();
             }
             else  _InitMeSoftly(month, year);
-            
-
-            
         }
+
+
+        public Payroll(DataRow dva) {
+            this.GID = int.Parse(dva["GID"].ToString());
+            this.period.period = int.Parse(dva["period"].ToString()); ;
+            this.period.month = int.Parse(dva["month"].ToString()); ;
+            this.period.year = int.Parse(dva["year"].ToString()); ;
+            // Inits
+            this._viewmode = 1;
+            this.GID = int.Parse(dva["GID"].ToString());
+            // Set the derivables
+            this.EmergencyAllowance = double.Parse(dva["emergencyallowance"].ToString());
+            this.CashBond = double.Parse(dva["cashbond"].ToString());
+            this.Cola = double.Parse(dva["cola"].ToString());
+            this.ThirteenthMonthPay = double.Parse(dva["thirteenth"].ToString());
+            this.CashAdvance = double.Parse(dva["cashadv"].ToString());
+            // Set the primitives
+            this.PagIbig = double.Parse(dva["pagibig"].ToString());
+            this.PhilHealth = double.Parse(dva["philhealth"].ToString());
+            this.Sss = double.Parse(dva["sss"].ToString());
+            this.Withtax = double.Parse(dva["withtax"].ToString());
+            this.hc = (Dictionary<string, HourCostPair>)_DeserializeObject(
+                System.Text.Encoding.Default.GetString((byte[])dva["hc_serializable"])
+            );
+            this.TotalSummary = (Dictionary<string, HourCostPair>)_DeserializeObject(
+                System.Text.Encoding.Default.GetString((byte[])dva["totalsummary_serializable"])
+            );
+            sw.Stop();
+            Console.WriteLine("Done\nObject Deserialization in Archive Method: {0}", sw.Elapsed.TotalSeconds);
+            
+    }
+
+
+
+
         private Stopwatch sw = new Stopwatch();
         public int PayrollStatus {
             get {

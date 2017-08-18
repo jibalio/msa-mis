@@ -145,5 +145,14 @@ namespace MSAMISUserInterface {
                                             left join msadb.client on msadb.client.cid = msadbarchive.sduty_assignment.cid
                                             where gid = {GID};");
         }
+
+        public static Payroll GetPayroll(int GID, int month, int period, int year) {
+            Payroll py = new Payroll(SQLTools.ExecuteQuery($@"select * from msadbarchive.payroll where
+                                            gid = {GID}
+                                            and period = {period}
+                                            and year = {year}
+                                            and month = {month} ").Rows[0]);
+            return py;
+        }
     }
 }

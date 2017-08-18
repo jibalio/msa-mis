@@ -35,7 +35,7 @@ namespace MSAMISUserInterface {
         }
 
         public static void AddClient(string name, string streetNo, string street, string brgy, string city, string contactPerson, string contactNo, string Manager) {
-            String q = String.Format("INSERT INTO `msadb`.`Client` (`Name`, `ClientStreetNo`, `ClientStreet`,`ClientBrgy`,`ClientCity`,`ContactPerson`,`ContactNo`,`Manager`,`CStatus` ) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '0');", name, streetNo, street, brgy, city, contactPerson, contactNo, Manager);
+            String q = String.Format("INSERT INTO `msadb`.`Client` (`Name`, `ClientStreetNo`, `ClientStreet`,`ClientBrgy`,`ClientCity`,`ContactPerson`,`ContactNo`,`Manager`,`CStatus` ) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '2');", name, streetNo, street, brgy, city, contactPerson, contactNo, Manager);
             SQLTools.ExecuteNonQuery(q);
         }
 
