@@ -330,6 +330,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         #region View Assignments    ✔Done
 
         public static DataTable GetAssignmentsByClient(int cid, int filter, string searchkeyword) {
+            SQLTools.ExecuteNonQuery("call msadb.init_checkdate_assignmentstatus();");
             String q = @"select 
                         guards.gid, d.did, sduty_assignment.aid,
                         concat(ln,', ',fn,' ',mn) as name,

@@ -154,5 +154,28 @@ namespace MSAMISUserInterface {
                                             and month = {month} ").Rows[0]);
             return py;
         }
+
+        public static DataTable GetAssignmentDetails(int aid) {
+            // Location, ContractStart, ContractEnd
+            String q = @"SELECT address as location,
+                        AssignedOn as contractstart, UnassignedOn as contractend FROM msadbarchive.sduty_assignment
+                        where msadbarchive.sduty_assignment.aid=" + aid + ";";
+            return SQLTools.ExecuteQuery(q);
+        }
+
+        public static DataTable GetAllAssignmentDetails(int AID) {
+            String q = @"/* return Gid, Name sa Guard, CID, name sa client, status */
+                            select 
+                            msadbarchive.guards.gid as gid,
+                            msadb.client.cid as cid,
+                            concat(ln,', ',fn,' ',mn) as guardname,
+                            client.name as clientname
+                             from msadbarchive.sduty_assignment
+                            left join msadb.client on msadbarchive.sduty_assignment.cid = client.cid
+                            left join msadbarchive.guards on guards.gid = sduty_assignment.GID
+                            where sduty_assignment.AID = " + AID;
+            return SQLTools.ExecuteQuery(q);
+        }
+
     }
 }
