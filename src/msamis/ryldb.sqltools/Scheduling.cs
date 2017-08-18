@@ -247,6 +247,7 @@ namespace MSAMISUserInterface {
                 Data.InitGuardStatusAndDutyAssignments();
             } else MessageBox.Show("Request is not an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             SQLTools.ExecuteQuery("call init_status_clientstatus()");
+            SQLTools.ExecuteNonQuery("call msadb.init_checkdate_assignmentstatus();");
         }
 
 
@@ -482,6 +483,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
         #region Assignment Requests
         public static DataTable GetAllAssignmentDetails(int AID) {
+            SQLTools.ExecuteNonQuery("call msadb.init_checkdate_assignmentstatus();");
             /*
              * On Status:  What status? Assignment status?
              * NTS: Is status supposed to be active when guard has duty? Or when guard has assignment?
