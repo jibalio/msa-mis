@@ -56,12 +56,12 @@ namespace MSAMISUserInterface {
                 if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
             }
             else {
-                /* var dt = Archiver.GetAllAssignmentDetails(Aid);
+                 var dt = Archiver.GetAllAssignmentDetails(Aid);
                  NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0] + ",";
                  FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
                  ClientLBL.Text = dt.Rows[0][3].ToString();
 
-                 */
+                 
                 foreach (DataRow row in Archiver.GetPeriods(Gid).Rows)
                     PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
                         int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
@@ -79,6 +79,12 @@ namespace MSAMISUserInterface {
         public void RefreshCurrent() {
             if (!Name.Equals("Archived")) {
                 var dt = Scheduling.GetAssignmentDetails(Aid);
+                LocationLBL.Text = dt.Rows[0][0].ToString();
+                StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
+                EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];
+            }
+            else {
+                var dt = Archiver.GetAssignmentDetails(Aid);
                 LocationLBL.Text = dt.Rows[0][0].ToString();
                 StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
                 EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];
