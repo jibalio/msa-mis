@@ -103,6 +103,11 @@ namespace MSAMISUserInterface {
             public static int Active = 1;
             public static int Inactive = 2;
         }
+
+        public class ClientStatus {
+            public static int Active = 1;
+            public static int Inactive = 0;
+        }
     }
 
 
