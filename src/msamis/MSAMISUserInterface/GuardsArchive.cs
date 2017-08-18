@@ -4,8 +4,8 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class GuardsArchive : Form {
-        public Shadow Shadow;
         public int Gid;
+        public Shadow Shadow;
 
         public GuardsArchive() {
             InitializeComponent();
@@ -59,12 +59,21 @@ namespace MSAMISUserInterface {
         }
 
         private void ViewAssBTN_Click(object sender, EventArgs e) {
-            var view = new SchedViewDutyDetails {
+            var shadow = new Shadow {
+                Size = new Size(900, 600),
+                Location = Location,
+                Transparency = 0.4
+            };
+            var view = new SchedViewAssHistory {
                 Gid = Gid,
                 Location = Location,
-                Name = "Archived"
+                Name = "Archived",
+                GuardName = LLBL.Text + LNLBL.Text,
+                Refer = shadow
             };
-            view.ShowDialog();
+            shadow.Transparent();
+            shadow.Form = view;
+            shadow.ShowDialog();
         }
 
         private void ViewPayBTN_Click(object sender, EventArgs e) {

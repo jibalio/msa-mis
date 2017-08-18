@@ -22,22 +22,21 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
-
-            if (Name.Equals("Archived")) {
+            if (Name.Equals("Archived") || Name.Equals("History")) {
                 AddDutyDetailsBTN.Visible = false;
                 EditDaysBTN.Visible = false;
                 PeriodCMBX.Size = new Size(352, 25);
             }
-            else {
-                LoadPage();
-            }
+            LoadPage();
             FadeTMR.Start();
             if (Login.AccountType == 2) DismissBTN.Visible = false;
         }
 
         public void LoadPage() {
-            var p = Attendance.GetCurrentPayPeriod();
-            _attendance = new Attendance(Aid, p.month, p.period, p.year);
+            if (!Name.Equals("Archived")) {
+                var p = Attendance.GetCurrentPayPeriod();
+                _attendance = new Attendance(Aid, p.month, p.period, p.year);
+            }
             RefreshDutyDetails();
             RefreshCurrent();
             RefreshData();
@@ -45,16 +44,29 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshData() {
-            var dt = Scheduling.GetAllAssignmentDetails(Aid);
-            NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0] + ",";
-            FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
-            ClientLBL.Text = dt.Rows[0][3].ToString();
+            if (!Name.Equals("Archived")) {
+                var dt = Scheduling.GetAllAssignmentDetails(Aid);
+                NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0] + ",";
+                FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
+                ClientLBL.Text = dt.Rows[0][3].ToString();
 
-            foreach (DataRow row in Attendance.GetPeriods(Gid).Rows)
-                PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
-                    int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
-            if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
+                foreach (DataRow row in Attendance.GetPeriods(Gid).Rows)
+                    PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
+                        int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+                if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
+            }
+            else {
+                /* var dt = Archiver.GetAllAssignmentDetails(Aid);
+                 NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0] + ",";
+                 FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
+                 ClientLBL.Text = dt.Rows[0][3].ToString();
 
+                 */
+                foreach (DataRow row in Archiver.GetPeriods(Gid).Rows)
+                    PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
+                        int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+                if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
+            }
             if (DutyDetailsGRD.Rows.Count == 0) {
                 ErrorPNL.Visible = true;
                 ErrorPNL.BringToFront();
@@ -65,14 +77,17 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshCurrent() {
-            var dt = Scheduling.GetAssignmentDetails(Aid);
-            LocationLBL.Text = dt.Rows[0][0].ToString();
-            StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
-            EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];
+            if (!Name.Equals("Archived")) {
+                var dt = Scheduling.GetAssignmentDetails(Aid);
+                LocationLBL.Text = dt.Rows[0][0].ToString();
+                StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
+                EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];
+            }
         }
 
         public void RefreshDutyDetails() {
-            DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(Aid);
+            if (!Name.Equals("Archived")) DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(Aid);
+            else DutyDetailsGRD.DataSource = Archiver.GetDutyDetailsSummary(Aid);
             DutyDetailsGRD.Columns[0].Visible = false;
             DutyDetailsGRD.Columns[1].HeaderText = "TIME-IN";
             DutyDetailsGRD.Columns[2].HeaderText = "TIME-OUT";
@@ -86,44 +101,74 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshAttendance() {
-            AttendanceGRD.DataSource = _attendance.GetAttendance_View(((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
-                ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-            AttendanceGRD.Columns[0].Visible = false;
-            AttendanceGRD.Columns[1].Visible = false;
-            AttendanceGRD.Columns[2].Width = 140;
-            AttendanceGRD.Sort(AttendanceGRD.Columns[2], ListSortDirection.Ascending);
-            AttendanceGRD.Columns[2].HeaderText = "DAY / SCHEDULE";
-            AttendanceGRD.Columns[3].Width = 120;
-            AttendanceGRD.Columns[3].HeaderText = "IN-OUT";
-            AttendanceGRD.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AttendanceGRD.Columns[4].Width = 50;
-            AttendanceGRD.Columns[4].HeaderText = "RD";
-            AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AttendanceGRD.Columns[5].Width = 50;
-            AttendanceGRD.Columns[5].HeaderText = "RN";
-            AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AttendanceGRD.Columns[6].Width = 50;
-            AttendanceGRD.Columns[6].HeaderText = "HD";
-            AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AttendanceGRD.Columns[7].Width = 60;
-            AttendanceGRD.Columns[7].HeaderText = "HN";
-            AttendanceGRD.Columns[8].Visible = false;
-            AttendanceGRD.Columns[9].Visible = false;
-            AttendanceGRD.Columns[10].Visible = false;
-            AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            if (!Name.Equals("Archived")) {
+                AttendanceGRD.DataSource = _attendance.GetAttendance_View(
+                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
 
-            var attendance = new Attendance(Aid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
-                ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-            var hrs = attendance.GetAttendanceSummary();
-            AShiftLBL.Text = hrs.GetNormalDay() + " hrs";
-            ANightLBL.Text = hrs.GetNormalNight() + " hrs";
-            AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
-            AHNightLBL.Text = hrs.GetHolidayNight() + " hrs";
+                AttendanceGRD.Columns[0].Visible = false;
+                AttendanceGRD.Columns[1].Visible = false;
+                AttendanceGRD.Columns[2].Width = 140;
+                AttendanceGRD.Sort(AttendanceGRD.Columns[2], ListSortDirection.Ascending);
+                AttendanceGRD.Columns[2].HeaderText = "DAY / SCHEDULE";
+                AttendanceGRD.Columns[3].Width = 120;
+                AttendanceGRD.Columns[3].HeaderText = "IN-OUT";
+                AttendanceGRD.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AttendanceGRD.Columns[4].Width = 50;
+                AttendanceGRD.Columns[4].HeaderText = "RD";
+                AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AttendanceGRD.Columns[5].Width = 50;
+                AttendanceGRD.Columns[5].HeaderText = "RN";
+                AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AttendanceGRD.Columns[6].Width = 50;
+                AttendanceGRD.Columns[6].HeaderText = "HD";
+                AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AttendanceGRD.Columns[7].Width = 60;
+                AttendanceGRD.Columns[7].HeaderText = "HN";
+                AttendanceGRD.Columns[8].Visible = false;
+                AttendanceGRD.Columns[9].Visible = false;
+                AttendanceGRD.Columns[10].Visible = false;
+                AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            else {
+                AttendanceGRD.DataSource = Archiver.GetAttendance(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
 
-            ACertifiedLBL.Text = attendance.GetCertifiedBy().Equals("")
-                ? "Unedited Attendance"
-                : attendance.GetCertifiedBy();
+                AttendanceGRD.Columns[0].Visible = false;
+                AttendanceGRD.Columns[1].Visible = false;
+                AttendanceGRD.Columns[2].Width = 100;
+                AttendanceGRD.Sort(AttendanceGRD.Columns[2], ListSortDirection.Ascending);
+                AttendanceGRD.Columns[2].HeaderText = "DAY";
+                AttendanceGRD.Columns[3].Visible = false;
+                AttendanceGRD.Columns[4].Width = 150;
+                AttendanceGRD.Columns[4].HeaderText = "SCHEDULE";
+                AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AttendanceGRD.Columns[5].Width = 100;
+                AttendanceGRD.Columns[5].HeaderText = "TIME-IN";
+                AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AttendanceGRD.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                AttendanceGRD.Columns[6].Width = 100;
+                AttendanceGRD.Columns[6].HeaderText = "TIME-OUT";
+                AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AttendanceGRD.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+
+            if (!Name.Equals("Archived")) {
+                var attendance = new Attendance(Aid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
+                var hrs = attendance.GetAttendanceSummary();
+                AShiftLBL.Text = hrs.GetNormalDay() + " hrs";
+                ANightLBL.Text = hrs.GetNormalNight() + " hrs";
+                AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
+                AHNightLBL.Text = hrs.GetHolidayNight() + " hrs";
+
+
+                ACertifiedLBL.Text = attendance.GetCertifiedBy().Equals("")
+                    ? "Unedited Attendance"
+                    : attendance.GetCertifiedBy();
+            }
         }
 
         #endregion
@@ -136,17 +181,12 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (!Name.Equals("Archived")) {
-                Reference.SchedRefreshAssignments();
-            }
+            if (!Name.Equals("Archived") && !Name.Equals("History")) Reference.SchedRefreshAssignments();
             Close();
         }
 
         private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
-            if (!Name.Equals("Archived")) {
-                Refer.Hide();
-            }
-            
+            if (!Name.Equals("Archived") && !Name.Equals("History")) Refer.Hide();
         }
 
         private void EditDutyDetailsBTN_Click(object sender, EventArgs e) {

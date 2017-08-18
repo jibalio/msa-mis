@@ -9,15 +9,14 @@ using rylui;
 
 namespace MSAMISUserInterface {
     public partial class SchedAssignGuards : Form {
+        private const string FilterText = "Search or filter";
+        private const string EmptyText = "";
         private readonly Color _dark = Color.FromArgb(53, 64, 82);
         private readonly Color _light = Color.FromArgb(94, 114, 146);
+        private string _extraQueryParams = "";
 
         private int[] _gidS = {-1};
         public string ClientName;
-
-        private const string FilterText = "Search or filter";
-        private const string EmptyText = "";
-        private string _extraQueryParams = "";
 
         public SchedAssignGuards() {
             InitializeComponent();
@@ -59,7 +58,8 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 Close();
         }
 
@@ -93,13 +93,12 @@ namespace MSAMISUserInterface {
         private void AssignBTN_Click(object sender, EventArgs e) {
             AddGuards();
         }
-        
+
         private void AddGuards() {
-            for (var i = 0; i < AvailableGRD.SelectedRows.Count; i++) { 
+            for (var i = 0; i < AvailableGRD.SelectedRows.Count; i++)
                 AssignedGRD.Rows.Add(AvailableGRD.SelectedRows[i].Cells[0].Value.ToString(),
                     AvailableGRD.SelectedRows[i].Cells[1].Value.ToString(),
                     AvailableGRD.SelectedRows[i].Cells[2].Value.ToString());
-            }
             foreach (DataGridViewRow row in AvailableGRD.SelectedRows) AvailableGRD.Rows.Remove(row);
             UpdateNeeded();
         }

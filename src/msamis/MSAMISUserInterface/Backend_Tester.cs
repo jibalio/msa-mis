@@ -3,19 +3,19 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class Backend_Tester : Form {
-        public Backend_Tester() {
-            InitializeComponent();
-        }
-
         //String querydt = "select rid, name, dataentry, case requesttype when 1 then 'Assignment' when 2 then 'Dismissal' end as type from msadb.request inner join client on request.cid=client.cid where dataentry='{0}";
         //DataTable dt = SQLTools.ExecuteQuery(q, "", "", "dataentry desc", new String[] {date.ToString("yyyy-MM-dd") });
 
         public DataGridView dv;
-        private void Backend_Tester_Load(object sender, EventArgs e) {
 
-            dgv.DataSource = Archiver.GetAllGuards("","name asc");
+        public Backend_Tester() {
+            InitializeComponent();
+        }
+
+        private void Backend_Tester_Load(object sender, EventArgs e) {
+            dgv.DataSource = Archiver.GetAllGuards("", "name asc");
             //  dtq.Text = ;
-            
+
             // dgv.DataSource = a.GetAttendance();
             // Attendance.Hours asd = a.GetAttendanceSummary();
             //  asd = asd;

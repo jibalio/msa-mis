@@ -1,15 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using iTextSharp.text.pdf;
 using iTextSharp.text;
-
+using iTextSharp.text.pdf;
 
 namespace MSAMISUserInterface {
     public partial class ReportsPreview : Form {
-        public Shadow Refer;
         public MainForm Main;
         public int Mode;
+        public Shadow Refer;
 
         public ReportsPreview() {
             InitializeComponent();
@@ -75,7 +74,8 @@ namespace MSAMISUserInterface {
                 GReportGRD.Sort(GReportGRD.Columns[1], ListSortDirection.Ascending);
 
                 #endregion
-            } else if (Mode == 2) {
+            }
+            else if (Mode == 2) {
                 GReportGRD.DataSource = Reports.GetClientsList();
 
                 GReportGRD.Columns[0].HeaderText = "Client Name";
@@ -86,6 +86,7 @@ namespace MSAMISUserInterface {
                 GReportGRD.Columns[5].HeaderText = "Contact Number";
 
                 #region Format Table
+
                 GReportGRD.Columns[0].Width = 200;
                 GReportGRD.Columns[1].Width = 70;
                 GReportGRD.Columns[2].Width = 250;
@@ -94,20 +95,19 @@ namespace MSAMISUserInterface {
                 GReportGRD.Columns[5].Width = 110;
                 GReportGRD.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GReportGRD.Sort(GReportGRD.Columns[1], ListSortDirection.Ascending);
+
                 #endregion
             }
-
         }
 
 
         #region RylBlock
 
-        public void FormatPDF(char formOrigin)
-        {
+        public void FormatPDF(char formOrigin) {
             //Default PDF Format
             GReportGRD.DataSource = Reports.GetList(formOrigin);
-            Font myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
-            PdfPTable pdfTable = new PdfPTable(GReportGRD.ColumnCount);
+            var myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
+            var pdfTable = new PdfPTable(GReportGRD.ColumnCount);
             pdfTable.SetWidths(Reports.GetPDFFormat(formOrigin));
             pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -121,30 +121,24 @@ namespace MSAMISUserInterface {
             //Add Headers Here
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfTable = AddHeaders(pdfTable, formOrigin);
-            int i = 0;
+            var i = 0;
 
             //Add Data to PDF
             foreach (DataGridViewRow row in GReportGRD.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont))
-                    {
-                        PaddingTop = 5f,
-                        PaddingBottom = 8f
-                    };
-                    pdfTable.AddCell(newcell);
-                }
+            foreach (DataGridViewCell cell in row.Cells) {
+                var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont)) {
+                    PaddingTop = 5f,
+                    PaddingBottom = 8f
+                };
+                pdfTable.AddCell(newcell);
             }
-            Reports r = new Reports();
+            var r = new Reports();
             r.ExportToPDF(pdfTable, formOrigin);
         }
 
-        public PdfPTable AddHeaders(PdfPTable pdfTable, char o)
-        {
-            Font headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
-            if (o == 'g')
-            {
+        public PdfPTable AddHeaders(PdfPTable pdfTable, char o) {
+            var headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
+            if (o == 'g') {
                 pdfTable.AddCell(new Phrase("Name", headerfont));
                 pdfTable.AddCell(new Phrase("Status", headerfont));
                 pdfTable.AddCell(new Phrase("Contact Number", headerfont));
@@ -154,8 +148,7 @@ namespace MSAMISUserInterface {
                 pdfTable.AddCell(new Phrase("PHIC", headerfont));
             }
 
-            else if (o == 'c')
-            {
+            else if (o == 'c') {
                 pdfTable.AddCell(new Phrase("Client Name", headerfont));
                 pdfTable.AddCell(new Phrase("Status", headerfont));
                 pdfTable.AddCell(new Phrase("Client Address", headerfont));
@@ -164,21 +157,14 @@ namespace MSAMISUserInterface {
                 pdfTable.AddCell(new Phrase("Contact Number", headerfont));
             }
 
-            else if (o == 'd')
-            {
+            else if (o == 'd') {
                 pdfTable.AddCell(new Phrase("Client Name", headerfont));
                 pdfTable.AddCell(new Phrase("Guards Assigned", headerfont));
                 pdfTable.AddCell(new Phrase("Deployment Address", headerfont));
             }
             return pdfTable;
-               
         }
 
         #endregion
-
-
-
-
-
     }
 }

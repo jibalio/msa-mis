@@ -1,19 +1,19 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
-
 
 namespace MSAMISUserInterface {
     public partial class Exporting : Form {
-        public Shadow Refer;
-        public char Mode;
         public MainForm Main;
+        public char Mode;
+        public Shadow Refer;
 
         public Exporting() {
             InitializeComponent();
             Opacity = 0;
         }
 
-        private void Exporting_Load(object sender, System.EventArgs e) {
+        private void Exporting_Load(object sender, EventArgs e) {
             Location = new Point(Location.X + 430, Location.Y + 210);
             FadeTMR.Start();
         }
@@ -22,14 +22,15 @@ namespace MSAMISUserInterface {
             Refer.Hide();
         }
 
-        private void FadeTMR_Tick(object sender, System.EventArgs e) {
+        private void FadeTMR_Tick(object sender, EventArgs e) {
             Opacity += 0.2;
-            if (Opacity >= 1) { FadeTMR.Stop(); Export(); }
+            if (Opacity >= 1) {
+                FadeTMR.Stop();
+                Export();
+            }
         }
 
-        private void Exporting_Shown(object sender, System.EventArgs e) {
-            
-        }
+        private void Exporting_Shown(object sender, EventArgs e) { }
 
         private void Export() {
             var rp = new ReportsPreview();

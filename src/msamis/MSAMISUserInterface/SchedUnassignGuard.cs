@@ -8,10 +8,10 @@ namespace MSAMISUserInterface {
     public partial class SchedUnassignGuard : Form {
         private readonly Color _dark = Color.FromArgb(53, 64, 82);
         private readonly Color _light = Color.DarkGray;
-        public Shadow Refer;
-        public MainForm Reference;
 
         private int _iid;
+        public Shadow Refer;
+        public MainForm Reference;
 
         public SchedUnassignGuard() {
             InitializeComponent();
@@ -33,7 +33,8 @@ namespace MSAMISUserInterface {
 
                 try {
                     _iid = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "IID"));
-                } catch { }
+                }
+                catch { }
                 try {
                     if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
                         InsertDependent(Dependent1RBX.SelectedIndex, Dependent1FirstBX.Text,
@@ -97,6 +98,87 @@ namespace MSAMISUserInterface {
 
         private void LocationBX_TextChanged(object sender, EventArgs e) { }
 
+        private static void ClearBox(TextBoxBase textBoxBase) {
+            if (textBoxBase.Text.Equals("Last")) textBoxBase.Clear();
+            else if (textBoxBase.Text.Equals("Middle")) textBoxBase.Clear();
+            else if (textBoxBase.Text.Equals("First")) textBoxBase.Clear();
+        }
+
+        private void Dependent1FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent1FirstBX);
+        }
+
+        private void Dependent1MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent1MiddleBX);
+        }
+
+        private void Dependent1LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent1LastBX);
+        }
+
+        private void Dependent2FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent2FirstBX);
+        }
+
+        private void Dependent2MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent2MiddleBX);
+        }
+
+        private void Dependent2LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent2LastBX);
+        }
+
+        private void Dependent3FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent3FirstBX);
+        }
+
+        private void Dependent3MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent3MiddleBX);
+        }
+
+        private void Dependent3LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent3LastBX);
+        }
+
+        private void Dependent4FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent4FirstBX);
+        }
+
+        private void Dependent4MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent4MiddleBX);
+        }
+
+        private void Dependent4LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent4LastBX);
+        }
+
+        private void Dependent5FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent5FirstBX);
+        }
+
+        private void Dependent5MiddleBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent5MiddleBX);
+        }
+
+        private void Dependent5LastBX_Enter(object sender, EventArgs e) {
+            ClearBox(Dependent5LastBX);
+        }
+
+        private void LastNameBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
+        }
+
+        private void FirstNameBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "First";
+        }
+
+        private void MiddleNameBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Middle";
+        }
+
         #region Form Properties
 
         private void Sched_DismissGuard_Load(object sender, EventArgs e) {
@@ -125,7 +207,8 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 Close();
         }
 
@@ -220,86 +303,5 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
-
-        private static void ClearBox(TextBoxBase textBoxBase) {
-            if (textBoxBase.Text.Equals("Last")) textBoxBase.Clear();
-            else if (textBoxBase.Text.Equals("Middle")) textBoxBase.Clear();
-            else if (textBoxBase.Text.Equals("First")) textBoxBase.Clear();
-        }
-
-        private void Dependent1FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1FirstBX);
-        }
-
-        private void Dependent1MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1MiddleBX);
-        }
-
-        private void Dependent1LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1LastBX);
-        }
-
-        private void Dependent2FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2FirstBX);
-        }
-
-        private void Dependent2MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2MiddleBX);
-        }
-
-        private void Dependent2LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2LastBX);
-        }
-
-        private void Dependent3FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3FirstBX);
-        }
-
-        private void Dependent3MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3MiddleBX);
-        }
-
-        private void Dependent3LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3LastBX);
-        }
-
-        private void Dependent4FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4FirstBX);
-        }
-
-        private void Dependent4MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4MiddleBX);
-        }
-
-        private void Dependent4LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4LastBX);
-        }
-
-        private void Dependent5FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5FirstBX);
-        }
-
-        private void Dependent5MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5MiddleBX);
-        }
-
-        private void Dependent5LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5LastBX);
-        }
-
-        private void LastNameBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
-        }
-
-        private void FirstNameBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "First";
-        }
-
-        private void MiddleNameBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Middle";
-        }
     }
 }

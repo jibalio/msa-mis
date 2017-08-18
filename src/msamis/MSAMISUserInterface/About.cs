@@ -87,7 +87,6 @@ namespace MSAMISUserInterface {
             UsersGRD.Columns[1].Width = 150;
             UsersGRD.Columns[2].HeaderText = "ACCOUNT TYPE";
             UsersGRD.Columns[2].Width = 150;
-
         }
 
         private void EditBTN_Click(object sender, EventArgs e) {
@@ -109,7 +108,8 @@ namespace MSAMISUserInterface {
             if (SaveBTN.Text.Equals("SAVE")) {
                 if (Account.ChangePassword(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), NewBX.Text,
                     CurrentBX.Text)) {
-                    Account.ChangeUsername(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), UsernameBX.Text);
+                    Account.ChangeUsername(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()),
+                        UsernameBX.Text);
                     LoadUsers();
                     CancelBTN.PerformClick();
                     RylMessageBox.ShowDialog("Account Details Changed", "Accounts Details",
@@ -123,12 +123,11 @@ namespace MSAMISUserInterface {
                 }
             }
             else {
-                Account.CreateUser(UsernameBX.Text, NewBX.Text, AdminRDBTN.Checked ? 1 : 2 );
+                Account.CreateUser(UsernameBX.Text, NewBX.Text, AdminRDBTN.Checked ? 1 : 2);
                 LoadUsers();
                 CancelBTN.PerformClick();
                 RylMessageBox.ShowDialog("User was added", "Users",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
             }
         }
 
@@ -139,7 +138,8 @@ namespace MSAMISUserInterface {
         }
 
         private void RemoveBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are your sure you want to delete this user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) { 
+            if (RylMessageBox.ShowDialog("Are your sure you want to delete this user?", "Delete User",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
                 Account.DeleteUser(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()));
                 LoadUsers();
             }

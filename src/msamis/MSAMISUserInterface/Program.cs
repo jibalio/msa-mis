@@ -23,8 +23,8 @@ namespace MSAMISUserInterface {
                 Application.SetCompatibleTextRenderingDefault(false);
             }
             catch (Exception) { }
-           // while (true)
-           // MessageBox.Show(Payroll.GetPreviousPayDay().ToString(), "Backend Says", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            // while (true)
+            // MessageBox.Show(Payroll.GetPreviousPayDay().ToString(), "Backend Says", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             Application.Run(new LoginForm());
             //  Scheduling.AddUnassignmentRequest(1, new int[] { 342, 182, 33 }, Enumeration.ReportType.Accident, "k", DateTime.Now, "asd", "asd");
@@ -82,24 +82,23 @@ namespace MSAMISUserInterface {
 
 
     internal class ComboBoxSss {
-
-            //Constructor
-            public ComboBoxSss(int m, string p, string y) {
-                Id = m;
-                Effective = p;
-                Dissolved = y;
-            }
-
-            //Accessor
-            public int Id { get; }
-
-            public string Effective { get; }
-
-            public string Dissolved { get; }
-
-            //Override ToString method
-            public override string ToString() {
-                return Effective + " - " + Dissolved;
-            }
+        //Constructor
+        public ComboBoxSss(int m, string p, string y) {
+            Id = m;
+            Effective = p;
+            Dissolved = y;
         }
+
+        //Accessor
+        public int Id { get; }
+
+        public string Effective { get; }
+
+        public string Dissolved { get; }
+
+        //Override ToString method
+        public override string ToString() {
+            return Effective + " - " + Dissolved;
+        }
+    }
 }

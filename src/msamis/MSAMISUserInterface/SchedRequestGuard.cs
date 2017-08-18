@@ -32,6 +32,16 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        private void ClientSearchBX_TextChanged(object sender, EventArgs e) {
+            var temp = ClientSearchBX.Text;
+            const string kazoo = "name";
+
+            if (ClientSearchBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            LoadClients();
+        }
+
         #region Form Initializtion and Load
 
         public SchedRequestGuard() {
@@ -64,7 +74,8 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 Close();
         }
 
@@ -230,15 +241,5 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
-
-        private void ClientSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = ClientSearchBX.Text;
-            const string kazoo = "name";
-
-            if (ClientSearchBX.Text.Contains("\\")) temp = temp + "?";
-            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
-                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
-            LoadClients();
-        }
     }
 }

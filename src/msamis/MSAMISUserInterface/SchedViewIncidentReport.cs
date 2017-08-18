@@ -3,8 +3,8 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class SchedViewIncidentReport : Form {
-        public int Rid;
         public string Client;
+        public int Rid;
 
         public SchedViewIncidentReport() {
             InitializeComponent();
@@ -28,10 +28,9 @@ namespace MSAMISUserInterface {
             TypeDateLBL.Text = "Type: " + data.Rows[0][0] + "          Event Date: " + data.Rows[0][1];
             LocationLBL.Text = data.Rows[0][2].ToString();
             DescriptionBX.Text = data.Rows[0][3].ToString();
-
+            
             try {
-                try {
-                    if (!data.Rows[0][5].ToString().Equals("")) { 
+                if (!data.Rows[0][5].ToString().Equals("")) {
                     Dependent1LBL.Text = AddRelationship(data.Rows[0][5].ToString(),
                         data.Rows[0][4].ToString());
                     Dependent2LBL.Text = AddRelationship(data.Rows[1][5].ToString(),
@@ -42,15 +41,13 @@ namespace MSAMISUserInterface {
                         data.Rows[3][4].ToString());
                     Dependent5LBL.Text = AddRelationship(data.Rows[4][5].ToString(),
                         data.Rows[4][4].ToString());
-                    }
                 }
-                catch { }
             }
             catch { }
         }
 
         private static string AddRelationship(string relationshipType, string lab) {
-            return lab + " - "+relationshipType;
+            return lab + " - " + relationshipType;
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
