@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using IniParser;
 using IniParser.Model;
@@ -15,6 +16,8 @@ namespace MSAMISUserInterface {
             InitRates();
             InitReportsFolder();
             InitGuardStatusAndDutyAssignments();
+
+
         }
 
         public static void InitGuardStatusAndDutyAssignments() {
