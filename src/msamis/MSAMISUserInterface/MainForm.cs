@@ -1705,6 +1705,8 @@ namespace MSAMISUserInterface {
 
         #endregion
 
+        #region SMS - Guards History
+
         private void SViewAssHistoryBTN_Click(object sender, EventArgs e) {
             SChangePanel(SGuardHistoryPNL, SViewAssHistoryBTN, false);
             SchedLoadGuardHistory();
@@ -1716,8 +1718,8 @@ namespace MSAMISUserInterface {
             SGuardHistoryGRD.Columns[1].Visible = false;
             SGuardHistoryGRD.Columns[2].Visible = false;
             SGuardHistoryGRD.Columns[3].HeaderText = "NAME";
-            SGuardHistoryGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
-            SGuardHistoryGRD.Columns[5].HeaderText = "SCHEDULE";
+            SGuardHistoryGRD.Columns[4].Visible = false;
+            SGuardHistoryGRD.Columns[5].Visible = false;
             SGuardHistoryGRD.Columns[6].Visible = false;
             SGuardHistoryGRD.Columns[3].Width = 230;
             SGuardHistoryGRD.Columns[4].Width = 280;
@@ -1726,5 +1728,51 @@ namespace MSAMISUserInterface {
             SGuardHistoryGRD.Sort(SGuardHistoryGRD.Columns[3], ListSortDirection.Ascending);
             SGuardHistoryGRD.ClearSelection();
         }
+
+        private void SGuardHistorySearchBX_Enter(object sender, EventArgs e) {
+            if (SGuardHistorySearchBX.Text == FilterText) {
+                SGuardHistorySearchBX.Text = string.Empty;
+                _extraQueryParams = string.Empty;
+            }
+            SGuardHistorySearchLine.Visible = true;
+        }
+
+        private void SGuardHistorySearchBX_Leave(object sender, EventArgs e) {
+            if (SGuardHistorySearchBX.Text == string.Empty) {
+                SGuardHistorySearchBX.Text = FilterText;
+                _extraQueryParams = string.Empty;
+            }
+            SchedLoadGuardHistory();
+            SGuardHistorySearchLine.Visible = false;
+        }
+
+        private void SGuardHistorySearchBX_TextChanged(object sender, EventArgs e) {
+            var temp = SGuardHistorySearchBX.Text;
+            var kazoo = "concat(ln,', ',fn,' ',mn)";
+
+            if (SGuardHistorySearchBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " AND (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
+            SchedLoadGuardHistory();
+        }
+        private void SGuardHistoryViewBTN_Click(object sender, EventArgs e) {
+            var view = new SchedViewAssHistory {
+                Refer = _shadow,
+                Gid = int.Parse(SGuardHistoryGRD.SelectedRows[0].Cells[0].Value.ToString()),
+                GuardName = SGuardHistoryGRD.SelectedRows[0].Cells[3].Value.ToString(),
+                Location = _newFormLocation
+            };
+            _shadow.Transparent();
+            _shadow.Form = view;
+            _shadow.ShowDialog();
+        }
+
+        private void SGuardHistoryGRD_DoubleClick(object sender, EventArgs e) {
+            SGuardHistoryViewBTN.PerformClick();
+        }
+
+        #endregion
+
+
     }
 }

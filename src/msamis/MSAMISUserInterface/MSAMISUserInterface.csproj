@@ -193,6 +193,12 @@
     <Compile Include="SchedRequestGuard.Designer.cs">
       <DependentUpon>SchedRequestGuard.cs</DependentUpon>
     </Compile>
+    <Compile Include="SchedViewAssHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SchedViewAssHistory.Designer.cs">
+      <DependentUpon>SchedViewAssHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="SchedViewAssReq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SchedRequestGuard.resx">
       <DependentUpon>SchedRequestGuard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SchedViewAssHistory.resx">
+      <DependentUpon>SchedViewAssHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SchedViewAssReq.resx">
       <DependentUpon>SchedViewAssReq.cs</DependentUpon>
