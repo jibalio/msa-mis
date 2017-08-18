@@ -190,6 +190,7 @@
             this.Controls.Add(this.AssignmentsGRD);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SchedViewAssHistory";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SchedViewAssHistory_FormClosing);
             this.Load += new System.EventHandler(this.SchedViewAssHistory_Load);
