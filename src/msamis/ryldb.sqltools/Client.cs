@@ -6,6 +6,7 @@ namespace MSAMISUserInterface {
         static String empty = "Search or filter";
 
         public static DataTable GetClients() {
+            SQLTools.ExecuteQuery("call init_status_clientstatus()");
             DataTable dt = new DataTable();
             String query = "select cid, name from client;";
             return SQLTools.ExecuteQuery(query);
