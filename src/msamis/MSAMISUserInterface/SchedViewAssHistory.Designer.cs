@@ -86,7 +86,7 @@
             // TimeLBL
             // 
             this.TimeLBL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TimeLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.TimeLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.TimeLBL.ForeColor = System.Drawing.Color.White;
             this.TimeLBL.Location = new System.Drawing.Point(0, 25);
             this.TimeLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -161,7 +161,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.AssignmentsGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.AssignmentsGRD.EnableHeadersVisualStyles = false;
-            this.AssignmentsGRD.Location = new System.Drawing.Point(94, 132);
+            this.AssignmentsGRD.Location = new System.Drawing.Point(31, 132);
             this.AssignmentsGRD.MultiSelect = false;
             this.AssignmentsGRD.Name = "AssignmentsGRD";
             this.AssignmentsGRD.ReadOnly = true;
@@ -175,7 +175,7 @@
             this.AssignmentsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.AssignmentsGRD.RowHeadersVisible = false;
             this.AssignmentsGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AssignmentsGRD.Size = new System.Drawing.Size(318, 365);
+            this.AssignmentsGRD.Size = new System.Drawing.Size(435, 365);
             this.AssignmentsGRD.TabIndex = 10;
             // 
             // SchedViewAssHistory

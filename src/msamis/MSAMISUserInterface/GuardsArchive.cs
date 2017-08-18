@@ -4,8 +4,8 @@ using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public partial class GuardsArchive : Form {
-        public Shadow Shadow;
         public int Gid;
+        public Shadow Shadow;
 
         public GuardsArchive() {
             InitializeComponent();

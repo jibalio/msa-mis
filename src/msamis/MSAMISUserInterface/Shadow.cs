@@ -4,6 +4,7 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
     public partial class Shadow : Form {
         public double Transparency;
+
         public Shadow() {
             InitializeComponent();
         }

@@ -49,8 +49,12 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_ConfigSSS_FormClosing(object sender, FormClosingEventArgs e) {
-            if ((!CloseBTN.Visible && RylMessageBox.ShowDialog("You are still editing. Any unsaved changes will be lost.\nAre you sure you want to close this page?", "Cancel Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) || CloseBTN.Visible)
-            Refer.Close();
+            if (!CloseBTN.Visible &&
+                RylMessageBox.ShowDialog(
+                    "You are still editing. Any unsaved changes will be lost.\nAre you sure you want to close this page?",
+                    "Cancel Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes ||
+                CloseBTN.Visible)
+                Refer.Close();
         }
 
         #endregion
@@ -137,7 +141,6 @@ namespace MSAMISUserInterface {
 
         private void MultPNL_MouseLeave(object sender, EventArgs e) {
             if (!MultiplierPagePNL.Visible) DefaultColor(MultPNL, MultLBL, MultConLBL);
-
         }
 
         private void MultPNL_MouseClick(object sender, MouseEventArgs e) {
@@ -149,6 +152,7 @@ namespace MSAMISUserInterface {
             ChangePage(GlobalPagePNL, GlobalPNL, GlobalLBL, GlobalCon);
             LoadGlobalPage();
         }
+
         #endregion
 
         #region Basic Pay rates
@@ -219,8 +223,9 @@ namespace MSAMISUserInterface {
         private void AdjustMBX_TextChanged(object sender, EventArgs e) {
             InputTLTP.Hide(AdjustMBX);
         }
+
         private void AdjustMBX_Enter(object sender, EventArgs e) {
-            BeginInvoke((MethodInvoker)delegate { AdjustMBX.Select(0,0); });
+            BeginInvoke((MethodInvoker) delegate { AdjustMBX.Select(0, 0); });
         }
 
         #endregion
@@ -229,10 +234,12 @@ namespace MSAMISUserInterface {
 
         private void LoadSssPage() {
             SSSDateCMBX.Items.Clear();
-            foreach (DataRow row in Payroll.GetSssContribList().Rows) { 
+            foreach (DataRow row in Payroll.GetSssContribList().Rows) {
                 var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var dissolved = row["date_dissolved"].ToString().Equals("Current") ? "Current" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy") ;
-                SSSDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective  , dissolved));
+                var dissolved = row["date_dissolved"].ToString().Equals("Current")
+                    ? "Current"
+                    : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
+                SSSDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
             }
             if (SSSDateCMBX.Items.Count > 0) SSSDateCMBX.SelectedIndex = 0;
             SssLoadTable();
@@ -241,15 +248,15 @@ namespace MSAMISUserInterface {
         private void SssLoadTable() {
             if (SSSDateCMBX.Items.Count > 0) {
                 SSSGRD.Rows.Clear();
-                if (Payroll.GetSssContribTable(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id).Rows.Count > 0){
-                foreach (DataRow row in Payroll.GetSssContribTable(((ComboBoxSss)SSSDateCMBX.SelectedItem).Id).Rows)
-                    SSSGRD.Rows.Add(double.Parse(row[0].ToString()).ToString("N2"),
-                        double.Parse(row[1].ToString()).ToString("N2"), "-",
-                        double.Parse(row[2].ToString()).ToString("N2"),
-                        "", double.Parse(row[3].ToString()).ToString("N2"));
-                }
+                if (Payroll.GetSssContribTable(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id).Rows.Count > 0)
+                    foreach (DataRow row in Payroll.GetSssContribTable(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id)
+                        .Rows)
+                        SSSGRD.Rows.Add(double.Parse(row[0].ToString()).ToString("N2"),
+                            double.Parse(row[1].ToString()).ToString("N2"), "-",
+                            double.Parse(row[2].ToString()).ToString("N2"),
+                            "", double.Parse(row[3].ToString()).ToString("N2"));
                 if (SSSGRD.Rows.Count > 0)
-                SSSGRD.CurrentCell = SSSGRD.Rows[0].Cells[1];
+                    SSSGRD.CurrentCell = SSSGRD.Rows[0].Cells[1];
             }
         }
 
@@ -267,46 +274,52 @@ namespace MSAMISUserInterface {
                 double value;
                 if (!double.TryParse(SSSGRD.CurrentCell.Value.ToString(), out value)) {
                     SssShowToolTip("Enter a valid number");
-                } else {
+                }
+                else {
                     SSSGRD.CurrentCell.Value = value.ToString("N2");
-                    if ( 
+                    if (
                         SSSGRD.CurrentCell.ColumnIndex == 3 &&
                         double.Parse(SSSGRD.CurrentCell.Value.ToString()) <=
                         double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[1].Value.ToString())) {
                         SssShowToolTip("Please enter a value higher than the starting range");
-
-                    } else if (
-                          SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
-                          SSSGRD.CurrentCell.ColumnIndex == 3 &&
-                          double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= double.Parse(SSSGRD
-                              .Rows[SSSGRD.CurrentCell.RowIndex + 1].Cells[1].Value.ToString())) {
+                    }
+                    else if (
+                        SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
+                        SSSGRD.CurrentCell.ColumnIndex == 3 &&
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= double.Parse(SSSGRD
+                            .Rows[SSSGRD.CurrentCell.RowIndex + 1].Cells[1].Value.ToString())) {
                         SssShowToolTip("Please enter a value lower than the next range");
-                    } else if (
-                          SSSGRD.CurrentCell.RowIndex != 0 &&
-                          !_currentval.Equals("00.00") &&
-                          SSSGRD.CurrentCell.ColumnIndex == 1 &&
-                          double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= double.Parse(SSSGRD
-                              .Rows[SSSGRD.CurrentCell.RowIndex - 1].Cells[3].Value.ToString())) {
+                    }
+                    else if (
+                        SSSGRD.CurrentCell.RowIndex != 0 &&
+                        !_currentval.Equals("00.00") &&
+                        SSSGRD.CurrentCell.ColumnIndex == 1 &&
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= double.Parse(SSSGRD
+                            .Rows[SSSGRD.CurrentCell.RowIndex - 1].Cells[3].Value.ToString())) {
                         SssShowToolTip("Please enter a value higher than the previous range");
-                    } else if (
-                          SSSGRD.CurrentCell.ColumnIndex == 1 && !SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value
-                              .ToString().Equals("00.00") &&
-                          double.Parse(SSSGRD.CurrentCell.Value.ToString()) >=
-                          double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value.ToString())) {
+                    }
+                    else if (
+                        SSSGRD.CurrentCell.ColumnIndex == 1 && !SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value
+                            .ToString().Equals("00.00") &&
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) >=
+                        double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex].Cells[3].Value.ToString())) {
                         SssShowToolTip("Please enter a value lower than the ending range");
-                    } else if (
+                    }
+                    else if (
                         SSSGRD.CurrentCell.ColumnIndex == 5 && SSSGRD.CurrentCell.RowIndex != 0 &&
-                            double.Parse(SSSGRD.CurrentCell.Value.ToString()) <=
-                            double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex - 1].Cells[5].Value.ToString())) {
+                        double.Parse(SSSGRD.CurrentCell.Value.ToString()) <=
+                        double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex - 1].Cells[5].Value.ToString())) {
                         SssShowToolTip("Please enter a value higher than the previous amount");
-                    } else if (
-                    SSSGRD.CurrentCell.ColumnIndex == 5 && SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
+                    }
+                    else if (
+                        SSSGRD.CurrentCell.ColumnIndex == 5 && SSSGRD.CurrentCell.RowIndex != SSSGRD.Rows.Count - 1 &&
                         double.Parse(SSSGRD.CurrentCell.Value.ToString()) >=
                         double.Parse(SSSGRD.Rows[SSSGRD.CurrentCell.RowIndex + 1].Cells[5].Value.ToString())) {
                         SssShowToolTip("Please enter a value lower than the next amount");
-                    } else {
+                    }
+                    else {
                         if (!InRange())
-                        EditingMode(true);
+                            EditingMode(true);
                     }
                 }
             }
@@ -315,18 +328,20 @@ namespace MSAMISUserInterface {
         private bool InRange() {
             var ret = false;
 
-            if (SSSGRD.CurrentCell.ColumnIndex != 5) 
-            foreach (DataGridViewRow row in SSSGRD.Rows) 
-                if (row.Index != SSSGRD.CurrentCell.RowIndex) { 
-                    var start = double.Parse(row.Cells[1].Value.ToString());
-                    var end = double.Parse(row.Cells[3].Value.ToString());
+            if (SSSGRD.CurrentCell.ColumnIndex != 5)
+                foreach (DataGridViewRow row in SSSGRD.Rows)
+                    if (row.Index != SSSGRD.CurrentCell.RowIndex) {
+                        var start = double.Parse(row.Cells[1].Value.ToString());
+                        var end = double.Parse(row.Cells[3].Value.ToString());
                         if (double.Parse(SSSGRD.CurrentCell.Value.ToString()) >= start &&
                             double.Parse(SSSGRD.CurrentCell.Value.ToString()) <= end) ret = true;
-                        }
-            if (ret) SssShowToolTip("The value entered is already included in a range \nPlease adjust other ranges to continue");
+                    }
+            if (ret)
+                SssShowToolTip(
+                    "The value entered is already included in a range \nPlease adjust other ranges to continue");
             return ret;
         }
-        
+
         private void SssShowToolTip(string text) {
             SSSPopup.Show(text,
                 SSSGRD,
@@ -372,14 +387,15 @@ namespace MSAMISUserInterface {
 
             SSSEditPNL.Visible = mode;
             SSSEffectivePNL.Visible = !mode;
-            SSSMainPNL.Size = mode ? new Size(478, 430): new Size(478, 470);
+            SSSMainPNL.Size = mode ? new Size(478, 430) : new Size(478, 470);
         }
 
         private void SSSSaveBTN_Click(object sender, EventArgs e) {
             if (SSSGRD.Rows.Count == 0) {
                 RylMessageBox.ShowDialog("You don't have any rates configured",
                     "SSS Contribution", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else { 
+            }
+            else {
                 if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates?",
                         "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
@@ -392,6 +408,7 @@ namespace MSAMISUserInterface {
         private void SSSDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             SssLoadTable();
         }
+
         private void SSSEditBTN_Click(object sender, EventArgs e) {
             EditingMode(true);
         }
@@ -404,8 +421,11 @@ namespace MSAMISUserInterface {
             TaxDateCMBX.Items.Clear();
             foreach (DataRow row in Payroll.GetWithTaxContribList().Rows) {
                 var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var dissolved = row["date_dissolved"].Equals("Current") ? "Current" : 
-                                (row["date_dissolved"].Equals("Pending")  ? "Pending" : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
+                var dissolved = row["date_dissolved"].Equals("Current")
+                    ? "Current"
+                    : (row["date_dissolved"].Equals("Pending")
+                        ? "Pending"
+                        : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
                 TaxDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
             }
             if (TaxDateCMBX.Items.Count > 0) TaxDateCMBX.SelectedIndex = 0;
@@ -415,10 +435,9 @@ namespace MSAMISUserInterface {
         private void LoadTaxTables() {
             TaxExemptionGRD.Rows.Clear();
             TaxExemptionGRD.ColumnCount = 2;
-            foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id).Rows) {
+            foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id).Rows)
                 TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
-            }
-            
+
             var withTaxBrackets = Payroll.GetWithTaxBrackets(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id);
             TaxExemptionGRD.ColumnCount += withTaxBrackets.Rows.Count / TaxExemptionGRD.Rows.Count;
 
@@ -426,17 +445,16 @@ namespace MSAMISUserInterface {
             for (var i = 0;
                 i < withTaxBrackets.Rows.Count / TaxExemptionGRD.Rows.Count;
                 i++) {
-                TaxExemptionGRD.Columns[i+2].HeaderText = withTaxBrackets.Rows[j][1].ToString().ToUpper();
+                TaxExemptionGRD.Columns[i + 2].HeaderText = withTaxBrackets.Rows[j][1].ToString().ToUpper();
                 TaxExemptionGRD.Columns[i + 2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 j += TaxExemptionGRD.Rows.Count;
             }
-            
+
             j = 0;
-            for (var i = 0; i < TaxExemptionGRD.ColumnCount-2; i++) {
-                for (var k = 0; k < TaxExemptionGRD.Rows.Count; k++) {
-                    TaxExemptionGRD.Rows[k].Cells[i+2].Value = withTaxBrackets.Rows[j][2].ToString();
-                    j++;
-                }
+            for (var i = 0; i < TaxExemptionGRD.ColumnCount - 2; i++)
+            for (var k = 0; k < TaxExemptionGRD.Rows.Count; k++) {
+                TaxExemptionGRD.Rows[k].Cells[i + 2].Value = withTaxBrackets.Rows[j][2].ToString();
+                j++;
             }
         }
 
@@ -449,7 +467,8 @@ namespace MSAMISUserInterface {
                 double value;
                 if (!double.TryParse(TaxExemptionGRD.CurrentCell.Value.ToString(), out value)) {
                     TaxShowToolTip("Enter a valid number");
-                } else {
+                }
+                else {
                     TaxExemptionGRD.CurrentCell.Value = value.ToString("N2");
                     TaxEditingMode(true);
                 }
@@ -516,17 +535,19 @@ namespace MSAMISUserInterface {
             if (double.Parse(TaxNewExemptBX.Value.ToString("N2")).Equals(0.00)) {
                 TaxTLTP.ToolTipTitle = "Tax Exemption Value";
                 TaxTLTP.Show("Please indicate the value", TaxNewExemptBX);
-            } else if (TaxBracketMSTXTBX.Text.Equals("+   % over")) {
+            }
+            else if (TaxBracketMSTXTBX.Text.Equals("+   % over")) {
                 TaxTLTP.ToolTipTitle = "Tax Exemption Bracket";
                 TaxTLTP.Show("Please indicate the bracket", TaxBracketMSTXTBX);
-            } else { 
+            }
+            else {
                 TaxExemptionGRD.Rows.Add(0, TaxNewExemptBX.Value + "\n  " + TaxBracketMSTXTBX.Text);
-                for (var k = 0; k < TaxExemptionGRD.ColumnCount - 2; k++) {
+                for (var k = 0; k < TaxExemptionGRD.ColumnCount - 2; k++)
                     TaxExemptionGRD.Rows[TaxExemptionGRD.RowCount - 1].Cells[k + 2].Value = "00.00";
-                }
                 TaxExCancelBTN.PerformClick();
             }
         }
+
         private void TaxDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             LoadTaxTables();
         }
@@ -540,10 +561,9 @@ namespace MSAMISUserInterface {
                         RatesSaver.CreateWithTaxBracket(
                             double.Parse(row.Cells[1].Value.ToString().Split('+')[0].Trim(' ')),
                             int.Parse(row.Cells[1].Value.ToString().Split('+')[1].Trim(' ').Split('%')[0]));
-                    for (var i = 2; i < TaxExemptionGRD.ColumnCount; i++) {
+                    for (var i = 2; i < TaxExemptionGRD.ColumnCount; i++)
                         RatesSaver.AddToWithTaxQuery(bracket, TaxExemptionGRD.Columns[i].HeaderText,
                             double.Parse(row.Cells[i].Value.ToString()));
-                    }
                 }
                 RatesSaver.ExecuteWithTaxQuery();
                 TaxEditingMode(false);
@@ -556,6 +576,7 @@ namespace MSAMISUserInterface {
         #region Rates Mult
 
         #region Rates - GUI Components
+
         private void RatesT1_Scroll(object sender, EventArgs e) {
             RatesL1.Value = RatesT1.Value;
         }
@@ -593,50 +614,54 @@ namespace MSAMISUserInterface {
         }
 
         private void RatesL1_ValueChanged(object sender, EventArgs e) {
-            RatesT1.Value = (int)RatesL1.Value;
+            RatesT1.Value = (int) RatesL1.Value;
         }
 
         private void RatesL2_ValueChanged(object sender, EventArgs e) {
-            RatesT2.Value = (int)RatesL2.Value;
+            RatesT2.Value = (int) RatesL2.Value;
         }
 
         private void RatesL3_ValueChanged(object sender, EventArgs e) {
-            RatesT3.Value = (int)RatesL3.Value;
+            RatesT3.Value = (int) RatesL3.Value;
         }
 
         private void RatesL4_ValueChanged(object sender, EventArgs e) {
-            RatesT4.Value = (int)RatesL4.Value;
+            RatesT4.Value = (int) RatesL4.Value;
         }
 
         private void RatesL5_ValueChanged(object sender, EventArgs e) {
-            RatesT5.Value = (int)RatesL5.Value;
+            RatesT5.Value = (int) RatesL5.Value;
         }
 
         private void RatesL6_ValueChanged(object sender, EventArgs e) {
-            RatesT6.Value = (int)RatesL6.Value;
+            RatesT6.Value = (int) RatesL6.Value;
         }
 
         private void RatesL7_ValueChanged(object sender, EventArgs e) {
-            RatesT7.Value = (int)RatesL7.Value;
+            RatesT7.Value = (int) RatesL7.Value;
         }
 
         private void RatesL8_ValueChanged(object sender, EventArgs e) {
-            RatesT8.Value = (int)RatesL8.Value;
+            RatesT8.Value = (int) RatesL8.Value;
         }
 
         private void RatesL9_ValueChanged(object sender, EventArgs e) {
-            RatesT9.Value = (int)RatesL9.Value;
+            RatesT9.Value = (int) RatesL9.Value;
         }
+
         #endregion
 
         private void LoadRatesMult() {
             MultipliersDateCMBX.Items.Clear();
             foreach (DataRow row in Payroll.GetRatesList().Rows) {
                 var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var dissolved = row["date_dissolved"].ToString().Equals("Current") ? "Current" :
-                    (row["date_dissolved"].ToString().Equals("Pending") ? "Pending" : 
-                    DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
-                MultipliersDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["rates_id"].ToString()), effective, dissolved));
+                var dissolved = row["date_dissolved"].ToString().Equals("Current")
+                    ? "Current"
+                    : (row["date_dissolved"].ToString().Equals("Pending")
+                        ? "Pending"
+                        : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
+                MultipliersDateCMBX.Items.Add(
+                    new ComboBoxSss(int.Parse(row["rates_id"].ToString()), effective, dissolved));
             }
             MultipliersDateCMBX.SelectedIndex = 0;
             MultLoadValues();
@@ -685,6 +710,7 @@ namespace MSAMISUserInterface {
         private void MultipliersDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             MultLoadValues();
         }
+
         private void MultLoadValues() {
             var row = Payroll.GetRates(((ComboBoxSss) MultipliersDateCMBX.SelectedItem).Id).Rows[0];
             RatesL2.Value = decimal.Parse(row[5].ToString());
@@ -700,7 +726,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Global Rates Page
-   
+
         private void LoadGlobalPage() {
             GlobalPHICBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultPHIC"]);
             GlobalHDMFBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultHDMF"]);
@@ -741,9 +767,6 @@ namespace MSAMISUserInterface {
             LoadGlobalPage();
         }
 
-
         #endregion
-
-
     }
 }

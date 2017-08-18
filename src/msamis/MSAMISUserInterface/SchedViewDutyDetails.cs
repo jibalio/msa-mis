@@ -22,8 +22,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
-
-            if (Name.Equals("Archived")) {
+            if (Name.Equals("Archived") || Name.Equals("History")) {
                 AddDutyDetailsBTN.Visible = false;
                 EditDaysBTN.Visible = false;
                 PeriodCMBX.Size = new Size(352, 25);
@@ -69,12 +68,12 @@ namespace MSAMISUserInterface {
                 if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
             }
             if (DutyDetailsGRD.Rows.Count == 0) {
-                    ErrorPNL.Visible = true;
-                    ErrorPNL.BringToFront();
-                }
-                else {
-                    ErrorPNL.Visible = false;
-                }
+                ErrorPNL.Visible = true;
+                ErrorPNL.BringToFront();
+            }
+            else {
+                ErrorPNL.Visible = false;
+            }
         }
 
         public void RefreshCurrent() {
@@ -84,18 +83,10 @@ namespace MSAMISUserInterface {
                 StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
                 EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];
             }
-            else {
-               /* var dt = Archiver.GetAssignmentDetails(Aid);
-                LocationLBL.Text = dt.Rows[0][0].ToString();
-                StartLBL.Text = dt.Rows[0][1].ToString().Split(' ')[0];
-                EndLBL.Text = dt.Rows[0][2].ToString().Split(' ')[0];*/
-            }
         }
 
         public void RefreshDutyDetails() {
-            if (!Name.Equals("Archived")) {
-                DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(Aid);
-            }
+            if (!Name.Equals("Archived")) DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(Aid);
             else DutyDetailsGRD.DataSource = Archiver.GetDutyDetailsSummary(Aid);
             DutyDetailsGRD.Columns[0].Visible = false;
             DutyDetailsGRD.Columns[1].HeaderText = "TIME-IN";
@@ -162,7 +153,7 @@ namespace MSAMISUserInterface {
                 AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
                 AttendanceGRD.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-       
+
 
             if (!Name.Equals("Archived")) {
                 var attendance = new Attendance(Aid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
@@ -178,15 +169,6 @@ namespace MSAMISUserInterface {
                     ? "Unedited Attendance"
                     : attendance.GetCertifiedBy();
             }
-            else {
-                /* var attendance = new Attendance(Aid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month,
-                    ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-                var hrs = attendance.GetAttendanceSummary();
-                AShiftLBL.Text = hrs.GetNormalDay() + " hrs";
-                ANightLBL.Text = hrs.GetNormalNight() + " hrs";
-                AHShiftLBL.Text = hrs.GetHolidayDay() + " hrs";
-                AHNightLBL.Text = hrs.GetHolidayNight() + " hrs";*/
-            }
         }
 
         #endregion
@@ -199,17 +181,12 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (!Name.Equals("Archived")) {
-                Reference.SchedRefreshAssignments();
-            }
+            if (!Name.Equals("Archived") && !Name.Equals("History")) Reference.SchedRefreshAssignments();
             Close();
         }
 
         private void Sched_ViewDutyDetails_FormClosing(object sender, FormClosingEventArgs e) {
-            if (!Name.Equals("Archived")) {
-                Refer.Hide();
-            }
-            
+            if (!Name.Equals("Archived") && !Name.Equals("History")) Refer.Hide();
         }
 
         private void EditDutyDetailsBTN_Click(object sender, EventArgs e) {

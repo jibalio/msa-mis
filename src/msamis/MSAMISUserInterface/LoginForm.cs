@@ -133,6 +133,7 @@ namespace MSAMISUserInterface {
         }
 
         private const int CsDropshadow = 0x20000;
+
         protected override CreateParams CreateParams {
             get {
                 var cp = base.CreateParams;
@@ -140,8 +141,7 @@ namespace MSAMISUserInterface {
                 return cp;
             }
         }
+
         #endregion
-
-
     }
 }

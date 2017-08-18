@@ -33,7 +33,8 @@ namespace MSAMISUserInterface {
                 EmpListGRD.Enabled = true;
                 ArchivePNL.Visible = false;
                 RefreshPayrollList();
-            } else {
+            }
+            else {
                 EmpListGRD.Enabled = false;
                 ArchivePNL.Visible = true;
                 LoadDetails();
@@ -92,7 +93,7 @@ namespace MSAMISUserInterface {
         }
 
         public void LoadAjustments() {
-            AdjGRD.DataSource =  _pay.GetAdjustmentHistory();
+            AdjGRD.DataSource = _pay.GetAdjustmentHistory();
             AdjGRD.Columns[0].HeaderText = "TYPE";
             AdjGRD.Columns[1].HeaderText = "DATE / TIME";
             AdjGRD.Columns[2].HeaderText = "VALUE";
@@ -110,7 +111,9 @@ namespace MSAMISUserInterface {
                 AdjustmentErrorPNL.BringToFront();
                 AdjustmentErrorPNL.Visible = true;
             }
-            else AdjustmentErrorPNL.Visible = false;
+            else {
+                AdjustmentErrorPNL.Visible = false;
+            }
         }
 
         private void AdjLBL_Click(object sender, EventArgs e) {
@@ -165,23 +168,19 @@ namespace MSAMISUserInterface {
             LoadDetails();
             LoadComputations();
             CalcPNL.AutoScrollPosition = new Point(0, 0);
-
-
         }
 
         private void LoadDetails() {
             PeriodCMBX.Items.Clear();
-            if (!Name.Equals("Archived")) {
+            if (!Name.Equals("Archived"))
                 foreach (DataRow row in Attendance.GetPeriods(Gid).Rows)
                     PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
                         int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
-            }
-            else {
+            else
                 foreach (DataRow row in Archiver.GetPeriods(Gid).Rows)
                     PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
                         int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
-            }
-           
+
             if (PeriodCMBX.Items.Count > 0) {
                 PeriodCMBX.SelectedIndex = 0;
                 NoPayrollPNL.Visible = false;
@@ -195,14 +194,12 @@ namespace MSAMISUserInterface {
 
         public void LoadComputations() {
             if (PeriodCMBX.Items.Count > 0) {
-                if (!Name.Equals("Archived")) {
+                if (!Name.Equals("Archived"))
                     _pay = new Payroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                         ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-                }
-                else {
-                    _pay = Archiver.GetPayroll(Gid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month,
-                        ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-                }
+                else
+                    _pay = Archiver.GetPayroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
                 UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal",
                     "nsu_overtime_night_normal", MondaySaturday);
                 UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal",
@@ -289,20 +286,21 @@ namespace MSAMISUserInterface {
         }
 
         private void EmpListGRD_MouseLeave(object sender, EventArgs e) {
-            if (!Name.Equals("Archived")) { 
-            var first = EmpListGRD.FirstDisplayedScrollingRowIndex;
-            EmpListGRD.ScrollBars = ScrollBars.None;
-            EmpListGRD.FirstDisplayedScrollingRowIndex = first;
+            if (!Name.Equals("Archived")) {
+                var first = EmpListGRD.FirstDisplayedScrollingRowIndex;
+                EmpListGRD.ScrollBars = ScrollBars.None;
+                EmpListGRD.FirstDisplayedScrollingRowIndex = first;
             }
         }
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             LoadComputations();
-            if (!Name.Equals("Archived")) { 
+            if (!Name.Equals("Archived")) {
                 if (PeriodCMBX.SelectedIndex == 0) {
                     BonusAddBTN.Visible = true;
                     ApproveBTN.Location = new Point(227, 388);
-                } else {
+                }
+                else {
                     BonusAddBTN.Visible = false;
                     ApproveBTN.Location = new Point(186, 388);
                 }
@@ -325,6 +323,12 @@ namespace MSAMISUserInterface {
 
         private void WithHoldingLBL_MouseLeave(object sender, EventArgs e) {
             HidePop(TaxPop);
+        }
+
+
+        private void ApproveBTN_Click(object sender, EventArgs e) {
+            _pay.Approve();
+            Reference.PayLoadEmployeeList();
         }
 
 
@@ -396,12 +400,5 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
-
-
-
-        private void ApproveBTN_Click(object sender, EventArgs e) {
-            _pay.Approve();
-            Reference.PayLoadEmployeeList();
-        }
     }
 }
