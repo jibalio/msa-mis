@@ -75,13 +75,7 @@ namespace MSAMISUserInterface {
 
 
 
-        /// <summary>
-        /// Returns a list of the Clients.
-        /// </summary>
-        /// <returns>DT Columns: cid, name</returns>
-        public static DataTable GetClients() {
-            return Client.GetClients();
-        }
+       
         /// <summary>
         /// Returns a list of guards assigned to a client.
         /// </summary>
@@ -227,9 +221,9 @@ namespace MSAMISUserInterface {
 
         #region Add Assignment / Dismissal (Actual)   ✔Done
         public static void AddAssignment(int rid, int[] gid) {
+            DataRow df = SQLTools.ExecuteQuery($@"select * from request where rid='{rid}'").Rows[0];
             // First check if rid is type assignment.
-            if (SQLTools.ExecuteSingleResult("select requesttype from request where rid=" + rid) == Enumeration.RequestType.Assignment.ToString()) {
-                
+            if (df["requesttype"].ToString() == Enumeration.RequestType.Assignment.ToString()) {
                 // FUNCTION BODY
                 DataRow dtl = SQLTools.ExecuteQuery($@"
                     select * from request 
@@ -243,8 +237,8 @@ namespace MSAMISUserInterface {
                     DateTime consta = DateTime.Parse(dtl["contractstart"].ToString());
                     DateTime conend = DateTime.Parse(dtl["contractend"].ToString());
                     // Add assignment in assignment table
-                    String q =$@"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`, `AssignedOn`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}', 
-                                '{consta.ToString("yyyy-MM-dd")}');";
+                    String q =$@"INSERT INTO `msadb`.`sduty_assignment` (`GID`, `RAID`, `AStatus`, `AssignedOn`, `cid`) VALUES ('{g}', '{raid}', '{Enumeration.Schedule.Pending}', 
+                                '{consta.ToString("yyyy-MM-dd")}', '{df["cid"].ToString()}');";
                     SQLTools.ExecuteNonQuery(q);
                    // SQLTools.ExecuteNonQuery(eventddl_cs);      // contract start trigger
                    // SQLTools.ExecuteNonQuery(eventddl_ce);      // contract end trigger
@@ -252,6 +246,7 @@ namespace MSAMISUserInterface {
                 UpdateRequestStatus(rid, Enumeration.RequestStatus.Active);
                 Data.InitGuardStatusAndDutyAssignments();
             } else MessageBox.Show("Request is not an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            SQLTools.ExecuteQuery("call init_status_clientstatus()");
         }
 
 
