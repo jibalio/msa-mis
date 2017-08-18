@@ -23,6 +23,8 @@ namespace MSAMISUserInterface {
 
                 if (AddBTN.Text.Equals("ADD")) {
                     Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type);
+                    DateLBL.Text = "Please choose a date/dates";
+                    DescBX.Text = "";
                 }
                 else {
                     Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), DescBX.Text,
@@ -59,7 +61,8 @@ namespace MSAMISUserInterface {
                 _end = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[2]),
                     int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[0]),
                     int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[1]));
-                SpecialBTN.Checked = HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Special");
+                SpecialBTN.Checked = HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
+                RegularBTN.Checked = !HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
                 DateLBL.Text = _start.ToShortDateString() + " - " + _end.ToShortDateString();
                 DescBX.Text = HolidaysGRD.SelectedRows[0].Cells[3].Value.ToString();
             }
@@ -150,6 +153,7 @@ namespace MSAMISUserInterface {
                             int.Parse(row.Cells[1].Value.ToString().Split('/')[1]) + i));
                 }
             HoldaysCLNDR.BoldedDates = dts.ToArray();
+            RegularBTN.Checked = true;
         }
 
         #endregion

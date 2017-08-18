@@ -49,7 +49,7 @@ namespace MSAMISUserInterface {
                          FROM msadbarchive.Guards 
                          left join msadbarchive.address on msadbarchive.address.GID=msadbarchive.guards.gid 
                          where (concat(ln,', ',fn,' ',mn) like '{SearchFilter}%' OR concat(ln,', ',fn,' ',mn) like '%{SearchFilter}%' OR concat(ln,', ',fn,' ',mn) LIKe '%{SearchFilter}')
-                         ORDER BY {ColumnName_DescAsc};";
+                         GROUP BY name ORDER BY {ColumnName_DescAsc} ;";
             return (SQLTools.ExecuteQuery(query));
         }
 

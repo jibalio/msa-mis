@@ -177,6 +177,7 @@
             this.AssignmentsGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AssignmentsGRD.Size = new System.Drawing.Size(435, 365);
             this.AssignmentsGRD.TabIndex = 10;
+            this.AssignmentsGRD.DoubleClick += new System.EventHandler(this.AssignmentsGRD_DoubleClick);
             // 
             // SchedViewAssHistory
             // 

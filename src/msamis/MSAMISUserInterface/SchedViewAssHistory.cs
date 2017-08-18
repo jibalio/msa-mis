@@ -68,5 +68,9 @@ namespace MSAMISUserInterface {
             };
             view.ShowDialog();
         }
+
+        private void AssignmentsGRD_DoubleClick(object sender, EventArgs e) {
+            SGuardHistoryViewBTN.PerformClick();
+        }
     }
 }
