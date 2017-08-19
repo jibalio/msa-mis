@@ -371,6 +371,7 @@ namespace MSAMISUserInterface {
                 DPaydayNotifPNL.Visible = true;
                 ArrangeNotif();
                 DPayDayNotifLBL.Text = "for the month of " + payday.ToString("MMMM yyyy");
+                NotifTMR.Stop();
             }
         }
 
