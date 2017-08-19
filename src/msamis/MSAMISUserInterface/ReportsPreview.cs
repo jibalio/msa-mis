@@ -106,6 +106,17 @@ namespace MSAMISUserInterface {
         public void FormatPDF(char formOrigin) {
             //Default PDF Format
             GReportGRD.DataSource = Reports.GetList(formOrigin);
+            String strcheck = "";
+            if (formOrigin == 'd') 
+            {
+                for(int x = 0; x < GReportGRD.RowCount; x++)
+                {
+                    if (GReportGRD.Rows[x].Cells[0].Value.ToString() != strcheck)
+                        strcheck = GReportGRD.Rows[x].Cells[0].Value.ToString();
+                    else
+                        GReportGRD.Rows[x].Cells[0].Value = "";
+                }
+            }
             var myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
             var pdfTable = new PdfPTable(GReportGRD.ColumnCount);
             pdfTable.SetWidths(Reports.GetPDFFormat(formOrigin));
@@ -122,15 +133,18 @@ namespace MSAMISUserInterface {
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfTable = AddHeaders(pdfTable, formOrigin);
             var i = 0;
-
             //Add Data to PDF
             foreach (DataGridViewRow row in GReportGRD.Rows)
-            foreach (DataGridViewCell cell in row.Cells) {
-                var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont)) {
-                    PaddingTop = 5f,
-                    PaddingBottom = 8f
-                };
-                pdfTable.AddCell(newcell);
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont))
+                    {
+                        PaddingTop = 5f,
+                        PaddingBottom = 8f
+                    };
+                    pdfTable.AddCell(newcell);
+                }
             }
             var r = new Reports();
             r.ExportToPDF(pdfTable, formOrigin);
