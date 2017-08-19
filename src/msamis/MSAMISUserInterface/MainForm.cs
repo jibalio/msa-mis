@@ -14,6 +14,7 @@ namespace MSAMISUserInterface {
         private readonly Font _selectedFont = new Font("Segoe UI", 10, FontStyle.Bold);
         private readonly Shadow _shadow = new Shadow();
         private string _extraQueryParams = "";
+        private readonly bool[] _notif = {false, false, false};
 
         private Point _newFormLocation;
         private Button _scurrentBtn;
@@ -367,13 +368,13 @@ namespace MSAMISUserInterface {
             var payday = Payroll.GetPreviousPayDay();
             if (DateTime.Now.Day == payday.Day &&
                 DateTime.Now.Month == payday.Month &&
-                DateTime.Now.Year == payday.Year && !DPaydayNotifPNL.Visible) {
+                DateTime.Now.Year == payday.Year && !DPaydayNotifPNL.Visible && !_notif[0]) {
                 DPaydayNotifPNL.Visible = true;
                 DPayDayNotifLBL.Text = "for the month of " + payday.ToString("MMMM yyyy");
             }
             if (DateTime.Now.Day == 5) {
-                DDutyDetailNotifPNL.Visible = true;
-                DSalaryReportNotifPNL.Visible = true;
+                DDutyDetailNotifPNL.Visible = !_notif[1];
+                DSalaryReportNotifPNL.Visible = !_notif[2];
                 DDutyDetailNotifLBL.Text = DSalaryReportNotifLBL.Text =
                     "for the month of " + new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1).ToString("MMMM yyyy");
             }
@@ -406,16 +407,19 @@ namespace MSAMISUserInterface {
 
         private void DMonthlyX_Click(object sender, EventArgs e) {
             DPaydayNotifPNL.Visible = false;
+            _notif[0] = true;
             ArrangeNotif();
         }
 
         private void DClientX_Click(object sender, EventArgs e) {
             DDutyDetailNotifPNL.Visible = false;
+            _notif[1] = true;
             ArrangeNotif();
         }
 
         private void DSalaryX_Click(object sender, EventArgs e) {
             DSalaryReportNotifPNL.Visible = false;
+            _notif[2] = true;
             ArrangeNotif();
         }
 
@@ -939,8 +943,8 @@ namespace MSAMISUserInterface {
             CSummaryFileLST.Sorting = SortOrder.Descending;
 
             CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
-            CTotalLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
-            CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
+            CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
+            CTotalLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
         }
 
         private void CSummaryExport_Click(object sender, EventArgs e) {
