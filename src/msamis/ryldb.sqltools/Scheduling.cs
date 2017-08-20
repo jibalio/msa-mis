@@ -72,12 +72,11 @@ namespace MSAMISUserInterface {
                          from msadb.guards
                          left join address on address.gid = guards.gid
                           ";
-            return SQLTools.ExecuteQuery(q + searchkeyword + "and gstatus = 2 group by name");
+            return SQLTools.ExecuteQuery(q + searchkeyword + "and gstatus = 2 and atype=2");
         }
 
 
 
-       
         /// <summary>
         /// Returns a list of guards assigned to a client.
         /// </summary>
