@@ -65,10 +65,11 @@ namespace MSAMISUserInterface {
                     }
                     SQLTools.ExecuteNonQuery($@"
                             UPDATE `msadbarchive`.`period` SET 
-                            `holiday_day`='{h.holiday_day.ToString(@"hh\:mm")}', 
-                            `holiday_night`='{h.holiday_night.ToString(@"hh\:mm")}', 
-                            `normal_day`='{h.normal_day.ToString(@"hh\:mm")}', 
-                            `normal_night`='{h.normal_night.ToString(@"hh\:mm")}' 
+                            `holiday_day`='{h.GetHolidayDay()}', 
+                            `holiday_night`='{h.GetHolidayNight()}', 
+                            `normal_day`='{h.GetNormalDay()}', 
+                            `normal_night`='{h.GetNormalNight()}' 
+                            `total` = '{h.GetTotal()}'
                             WHERE `PID`='{CurrentPid}';
                             ");
                     CurrentPid = ThisPid;
