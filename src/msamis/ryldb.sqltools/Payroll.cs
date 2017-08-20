@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing.Text;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Org.BouncyCastle.Asn1.X509;
 
 
 namespace MSAMISUserInterface {
@@ -762,7 +760,7 @@ else date_dissolved  end as date_dissolved from contribdetails where type='{
                                                 left join period on guards.gid=period.gid
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
-                                                where RequestType = 1 " + search + " group by guards.gid ";
+                                                where RequestType = 1 " + search + " AND fn is not null group by guards.gid ";
             }
             else {
                 q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
@@ -784,7 +782,8 @@ else date_dissolved  end as date_dissolved from contribdetails where type='{
                                                 left join period on guards.gid=period.gid
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
-                                                where RequestType = 1 " + search + " AND pstatus = '" + status +
+                                                where RequestType = 1 " + search + " AND fn is not null AND pstatus = '" + status +
+
                     "' group by guards.gid ";
 
 
@@ -800,8 +799,7 @@ else date_dissolved  end as date_dissolved from contribdetails where type='{
                                                 left join sduty_assignment on sduty_assignment.raid=request_assign.raid
                                                 left join guards on guards.gid=sduty_assignment.gid
                                                 left join period on guards.gid=period.gid
-                                                where RequestType = 1 
-                                                
+                                                where RequestType = 1 AND fn is not null
                                                 group by guards.gid
                                                 ");
         }

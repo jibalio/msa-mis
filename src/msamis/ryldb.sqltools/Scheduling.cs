@@ -35,7 +35,8 @@ namespace MSAMISUserInterface {
                         when 1 then 'Pending'
                         when 2 then 'Approved'
                         when 3 then 'Active'
-                        when 4 then 'Declined'
+                        when 4 then 'Inactive'
+                        when 5 then 'Declined'
                         end as status
                         from msadb.request 
                         left join client on request.cid=client.cid 
@@ -53,7 +54,8 @@ namespace MSAMISUserInterface {
                         when 1 then 'Pending'
                         when 2 then 'Approved'
                         when 3 then 'Active'
-                        when 4 then 'Declined'
+                        when 4 then 'Inactive'
+                        when 5 then 'Declined'
                         end as status from msadb.request inner join client on request.cid=client.cid ";
             q += " where 1=1 ";
             if (ClientFilter != -1) q += " and client.cid=" + ClientFilter;
@@ -64,13 +66,13 @@ namespace MSAMISUserInterface {
         }
 
 
-        public static DataTable GetUnassignedGuards(String searchkeyword, String orderbyColumnASCDESC) {
+        public static DataTable GetUnassignedGuards(String searchkeyword) {
             String q = @"SELECT guards.gid, concat(ln,', ',fn,' ',mn) as name,
                          concat(streetno, ', ', street, ', ', brgy, ', ', city) as Location
                          from msadb.guards
                          left join address on address.gid = guards.gid
-                         where gstatus = 2 ";
-            return SQLTools.ExecuteQuery(q, "concat(ln,', ',fn,' ',mn)", searchkeyword, orderbyColumnASCDESC);
+                          ";
+            return SQLTools.ExecuteQuery(q + searchkeyword + "and gstatus = 2 group by name");
         }
 
 
