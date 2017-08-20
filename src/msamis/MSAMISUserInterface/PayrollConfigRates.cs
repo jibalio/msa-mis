@@ -421,7 +421,8 @@ namespace MSAMISUserInterface {
             TaxDateCMBX.Items.Clear();
             foreach (DataRow row in Payroll.GetWithTaxContribList().Rows) {
                 var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var date = DateTime.TryParse(row["date_dissolved"].ToString(), out var dissolved);
+                DateTime dissolved;
+                var date = DateTime.TryParse(row["date_dissolved"].ToString(), out dissolved);
                 var dissolve = !date 
                     ? "Pending" : dissolved.ToString("MMMM dd, yyyy");
                 TaxDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolve));
