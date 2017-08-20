@@ -542,7 +542,7 @@ namespace MSAMISUserInterface {
                 GAllGuardsGRD.Columns[0].Width = 0;
                 GAllGuardsGRD.Columns[1].Width = 240;
                 GAllGuardsGRD.Columns[2].Width = 300;
-                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[3].Width = 70;
