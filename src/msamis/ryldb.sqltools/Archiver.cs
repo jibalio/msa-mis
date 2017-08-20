@@ -201,11 +201,9 @@ namespace MSAMISUserInterface {
 
         #region Attendance Retrieval
         public static DataTable GetAttendance(int GID, int month, int period, int year) {
-            String q = $@"
-                        select msadbarchive.attendance.atid, msadbarchive.dutydetails.did, DATE_FORMAT(msadbarchive.attendance.date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(msadbarchive.attendance.date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
-							concat (msadbarchive.dutydetails.ti_hh,':',msadbarchive.dutydetails.ti_mm,' ',msadbarchive.dutydetails.ti_period, ' - ',msadbarchive.dutydetails.to_hh,':',msadbarchive.dutydetails.to_mm,' ',msadbarchive.dutydetails.to_period) as Schedule,
-                            msadbarchive.attendance.timein,
-                           msadbarchive.attendance.TimeOut,
+            String q = $@"select msadbarchive.attendance.atid, msadbarchive.dutydetails.did, CONCAT ((DATE_FORMAT(msadbarchive.attendance.date, '%d')), ' / ', 
+							(concat (msadbarchive.dutydetails.ti_hh,':',msadbarchive.dutydetails.ti_mm, SUBSTRING(msadbarchive.dutydetails.ti_period,1,1) , ' - ',msadbarchive.dutydetails.to_hh,':',msadbarchive.dutydetails.to_mm,SUBSTRING(msadbarchive.dutydetails.to_period,1,1)))) as Schedule,
+                            (concat (SUBSTRING(msadbarchive.attendance.timein,1,7),' - ', SUBSTRING(msadbarchive.attendance.TimeOut,1,7))) as ti_to,
                             msadbarchive.attendance.normal_day as ND,
                             msadbarchive.attendance.normal_night as NN,
                             msadbarchive.attendance.holiday_day as HD,

@@ -113,53 +113,38 @@ namespace MSAMISUserInterface {
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
 
-                AttendanceGRD.Columns[0].Visible = false;
-                AttendanceGRD.Columns[1].Visible = false;
-                AttendanceGRD.Columns[2].Width = 140;
-                AttendanceGRD.Sort(AttendanceGRD.Columns[2], ListSortDirection.Ascending);
-                AttendanceGRD.Columns[2].HeaderText = "DAY / SCHEDULE";
-                AttendanceGRD.Columns[3].Width = 120;
-                AttendanceGRD.Columns[3].HeaderText = "IN-OUT";
-                AttendanceGRD.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
-                AttendanceGRD.Columns[4].Width = 50;
-                AttendanceGRD.Columns[4].HeaderText = "RD";
-                AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-                AttendanceGRD.Columns[5].Width = 50;
-                AttendanceGRD.Columns[5].HeaderText = "RN";
-                AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
-                AttendanceGRD.Columns[6].Width = 50;
-                AttendanceGRD.Columns[6].HeaderText = "HD";
-                AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-                AttendanceGRD.Columns[7].Width = 60;
-                AttendanceGRD.Columns[7].HeaderText = "HN";
+
                 AttendanceGRD.Columns[8].Visible = false;
                 AttendanceGRD.Columns[9].Visible = false;
                 AttendanceGRD.Columns[10].Visible = false;
-                AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-                AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             else {
                 AttendanceGRD.DataSource = Archiver.GetAttendance(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-
-                AttendanceGRD.Columns[0].Visible = false;
-                AttendanceGRD.Columns[1].Visible = false;
-                AttendanceGRD.Columns[2].Width = 100;
-                AttendanceGRD.Sort(AttendanceGRD.Columns[2], ListSortDirection.Ascending);
-                AttendanceGRD.Columns[2].HeaderText = "DAY";
-                AttendanceGRD.Columns[3].Visible = false;
-                AttendanceGRD.Columns[4].Width = 150;
-                AttendanceGRD.Columns[4].HeaderText = "SCHEDULE";
-                AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-                AttendanceGRD.Columns[5].Width = 100;
-                AttendanceGRD.Columns[5].HeaderText = "TIME-IN";
-                AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
-                AttendanceGRD.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                AttendanceGRD.Columns[6].Width = 100;
-                AttendanceGRD.Columns[6].HeaderText = "TIME-OUT";
-                AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-                AttendanceGRD.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+
+            AttendanceGRD.Columns[0].Visible = false;
+            AttendanceGRD.Columns[1].Visible = false;
+            AttendanceGRD.Columns[2].Width = 140;
+            AttendanceGRD.Sort(AttendanceGRD.Columns[2], ListSortDirection.Ascending);
+            AttendanceGRD.Columns[2].HeaderText = "DAY / SCHEDULE";
+            AttendanceGRD.Columns[3].Width = 120;
+            AttendanceGRD.Columns[3].HeaderText = "IN-OUT";
+            AttendanceGRD.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[4].Width = 50;
+            AttendanceGRD.Columns[4].HeaderText = "RD";
+            AttendanceGRD.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[5].Width = 50;
+            AttendanceGRD.Columns[5].HeaderText = "RN";
+            AttendanceGRD.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[6].Width = 50;
+            AttendanceGRD.Columns[6].HeaderText = "HD";
+            AttendanceGRD.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[7].Width = 60;
+            AttendanceGRD.Columns[7].HeaderText = "HN";
+            AttendanceGRD.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AttendanceGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 
 
             if (!Name.Equals("Archived")) {
@@ -175,6 +160,18 @@ namespace MSAMISUserInterface {
                 ACertifiedLBL.Text = attendance.GetCertifiedBy().Equals("")
                     ? "Unedited Attendance"
                     : attendance.GetCertifiedBy();
+            }
+            else {
+                var attendance = Archiver.GetAttendanceSummary(((ComboBoxDays)PeriodCMBX.SelectedItem).Year, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, Gid);
+
+                AShiftLBL.Text = attendance.Rows[0][4] + " hrs";
+                ANightLBL.Text = attendance.Rows[0][5] + " hrs";
+                AHShiftLBL.Text = attendance.Rows[0][2] + " hrs";
+                AHNightLBL.Text = attendance.Rows[0][3] + " hrs";
+
+
+                ACertifiedLBL.Text = attendance.Rows[0][1].ToString();
             }
         }
 

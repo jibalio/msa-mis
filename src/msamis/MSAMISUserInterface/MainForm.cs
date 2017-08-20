@@ -1473,13 +1473,16 @@ namespace MSAMISUserInterface {
 
             SSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
-                string[] row = {file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName};
+                var date = file.CreationTime.AddMonths(-1);
+                string[] row = {date.ToString("MMMM yyyy"), file.FullName};
                 var listViewItem = new ListViewItem(row) {ImageIndex = 0};
                 SSummaryFilesLST.Items.Add(listViewItem);
             }
             SSummaryFilesLST.Sorting = SortOrder.Descending;
             SSummaryErrorPNL.Visible = SSummaryFilesLST.Items.Count == 0;
-            SSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            SSummaryDateLBL.Text = SSummaryFilesLST.Items.Count > 0
+                ? "for the month of " + SSummaryFilesLST.Items[0].Text
+                : "No reports available";
         }
 
         private void SDutyDetailsPreviewBTN_Click(object sender, EventArgs e) {
@@ -1543,7 +1546,16 @@ namespace MSAMISUserInterface {
                 SchedLoadReport();
             }
         }
-
+        private void SSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
+            try {
+                Process.Start(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+            }
+            catch {
+                RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                    "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SchedLoadReport();
+            }
+        }
         #endregion
 
         #endregion
@@ -1805,5 +1817,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
+
+
     }
 }
