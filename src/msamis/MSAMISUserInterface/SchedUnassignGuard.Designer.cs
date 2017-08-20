@@ -302,6 +302,7 @@
             this.Dependent5LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent5LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent5LastBX.Location = new System.Drawing.Point(273, 304);
+            this.Dependent5LastBX.MaxLength = 45;
             this.Dependent5LastBX.Name = "Dependent5LastBX";
             this.Dependent5LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent5LastBX.TabIndex = 207;
@@ -316,6 +317,7 @@
             this.Dependent5MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent5MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent5MiddleBX.Location = new System.Drawing.Point(199, 304);
+            this.Dependent5MiddleBX.MaxLength = 45;
             this.Dependent5MiddleBX.Name = "Dependent5MiddleBX";
             this.Dependent5MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent5MiddleBX.TabIndex = 206;
@@ -330,6 +332,7 @@
             this.Dependent5FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent5FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent5FirstBX.Location = new System.Drawing.Point(127, 304);
+            this.Dependent5FirstBX.MaxLength = 45;
             this.Dependent5FirstBX.Name = "Dependent5FirstBX";
             this.Dependent5FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent5FirstBX.TabIndex = 205;
@@ -405,6 +408,7 @@
             this.Dependent4LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent4LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent4LastBX.Location = new System.Drawing.Point(273, 273);
+            this.Dependent4LastBX.MaxLength = 45;
             this.Dependent4LastBX.Name = "Dependent4LastBX";
             this.Dependent4LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent4LastBX.TabIndex = 203;
@@ -419,6 +423,7 @@
             this.Dependent4MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent4MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent4MiddleBX.Location = new System.Drawing.Point(199, 273);
+            this.Dependent4MiddleBX.MaxLength = 45;
             this.Dependent4MiddleBX.Name = "Dependent4MiddleBX";
             this.Dependent4MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent4MiddleBX.TabIndex = 202;
@@ -433,6 +438,7 @@
             this.Dependent4FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent4FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent4FirstBX.Location = new System.Drawing.Point(127, 273);
+            this.Dependent4FirstBX.MaxLength = 45;
             this.Dependent4FirstBX.Name = "Dependent4FirstBX";
             this.Dependent4FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent4FirstBX.TabIndex = 201;
@@ -508,6 +514,7 @@
             this.Dependent3LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent3LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent3LastBX.Location = new System.Drawing.Point(273, 242);
+            this.Dependent3LastBX.MaxLength = 45;
             this.Dependent3LastBX.Name = "Dependent3LastBX";
             this.Dependent3LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent3LastBX.TabIndex = 199;
@@ -522,6 +529,7 @@
             this.Dependent3MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent3MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent3MiddleBX.Location = new System.Drawing.Point(199, 242);
+            this.Dependent3MiddleBX.MaxLength = 45;
             this.Dependent3MiddleBX.Name = "Dependent3MiddleBX";
             this.Dependent3MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent3MiddleBX.TabIndex = 198;
@@ -536,6 +544,7 @@
             this.Dependent3FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent3FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent3FirstBX.Location = new System.Drawing.Point(127, 242);
+            this.Dependent3FirstBX.MaxLength = 45;
             this.Dependent3FirstBX.Name = "Dependent3FirstBX";
             this.Dependent3FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent3FirstBX.TabIndex = 197;
@@ -611,6 +620,7 @@
             this.Dependent2LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent2LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent2LastBX.Location = new System.Drawing.Point(273, 211);
+            this.Dependent2LastBX.MaxLength = 45;
             this.Dependent2LastBX.Name = "Dependent2LastBX";
             this.Dependent2LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent2LastBX.TabIndex = 195;
@@ -625,6 +635,7 @@
             this.Dependent2MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent2MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent2MiddleBX.Location = new System.Drawing.Point(199, 211);
+            this.Dependent2MiddleBX.MaxLength = 45;
             this.Dependent2MiddleBX.Name = "Dependent2MiddleBX";
             this.Dependent2MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent2MiddleBX.TabIndex = 194;
@@ -639,6 +650,7 @@
             this.Dependent2FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent2FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent2FirstBX.Location = new System.Drawing.Point(127, 211);
+            this.Dependent2FirstBX.MaxLength = 45;
             this.Dependent2FirstBX.Name = "Dependent2FirstBX";
             this.Dependent2FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent2FirstBX.TabIndex = 193;
@@ -714,6 +726,7 @@
             this.Dependent1LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent1LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent1LastBX.Location = new System.Drawing.Point(273, 179);
+            this.Dependent1LastBX.MaxLength = 45;
             this.Dependent1LastBX.Name = "Dependent1LastBX";
             this.Dependent1LastBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent1LastBX.TabIndex = 191;
@@ -728,6 +741,7 @@
             this.Dependent1MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent1MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent1MiddleBX.Location = new System.Drawing.Point(199, 179);
+            this.Dependent1MiddleBX.MaxLength = 45;
             this.Dependent1MiddleBX.Name = "Dependent1MiddleBX";
             this.Dependent1MiddleBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent1MiddleBX.TabIndex = 190;
@@ -742,6 +756,7 @@
             this.Dependent1FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent1FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.Dependent1FirstBX.Location = new System.Drawing.Point(127, 179);
+            this.Dependent1FirstBX.MaxLength = 45;
             this.Dependent1FirstBX.Name = "Dependent1FirstBX";
             this.Dependent1FirstBX.Size = new System.Drawing.Size(66, 18);
             this.Dependent1FirstBX.TabIndex = 189;
@@ -838,6 +853,7 @@
             this.LocationBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.LocationBX.Location = new System.Drawing.Point(171, 50);
+            this.LocationBX.MaxLength = 45;
             this.LocationBX.Name = "LocationBX";
             this.LocationBX.Size = new System.Drawing.Size(303, 18);
             this.LocationBX.TabIndex = 129;

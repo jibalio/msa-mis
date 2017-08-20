@@ -85,6 +85,7 @@
             this.CertifiedBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.CertifiedBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.CertifiedBX.Location = new System.Drawing.Point(199, 478);
+            this.CertifiedBX.MaxLength = 120;
             this.CertifiedBX.Name = "CertifiedBX";
             this.CertifiedBX.Size = new System.Drawing.Size(170, 18);
             this.CertifiedBX.TabIndex = 1;

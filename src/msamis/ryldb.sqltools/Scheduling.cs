@@ -180,7 +180,7 @@ namespace MSAMISUserInterface {
                         case InvolvementType when 1 then 'Involved' when 2 then 'Witness' end as InvType from request_unassign
                         left join request on request_unassign.RID = request.RID
                         left join incidentreport on request_unassign.IID = incidentreport.IID 
-                        left join personsinvolved on incidentreport.IID = personsinvolved.IID where request.RID = " + rid;
+                        left join personsinvolved on incidentreport.IID = personsinvolved.IID where request.RID = " + rid + " group by name";
             return SQLTools.ExecuteQuery(q);
         }
 

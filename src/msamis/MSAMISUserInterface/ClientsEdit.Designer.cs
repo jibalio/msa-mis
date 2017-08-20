@@ -91,6 +91,7 @@
             this.ContactBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ContactBX.Location = new System.Drawing.Point(250, 150);
+            this.ContactBX.MaxLength = 45;
             this.ContactBX.Name = "ContactBX";
             this.ContactBX.Size = new System.Drawing.Size(132, 18);
             this.ContactBX.TabIndex = 66;
@@ -103,6 +104,7 @@
             this.LocationStreetNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationStreetNoBX.ForeColor = System.Drawing.Color.White;
             this.LocationStreetNoBX.Location = new System.Drawing.Point(190, 138);
+            this.LocationStreetNoBX.MaxLength = 45;
             this.LocationStreetNoBX.Name = "LocationStreetNoBX";
             this.LocationStreetNoBX.Size = new System.Drawing.Size(38, 18);
             this.LocationStreetNoBX.TabIndex = 5;
@@ -130,6 +132,7 @@
             this.NameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.NameBX.ForeColor = System.Drawing.Color.White;
             this.NameBX.Location = new System.Drawing.Point(120, 101);
+            this.NameBX.MaxLength = 45;
             this.NameBX.Name = "NameBX";
             this.NameBX.Size = new System.Drawing.Size(358, 18);
             this.NameBX.TabIndex = 0;
@@ -158,6 +161,7 @@
             this.ContactNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ContactNoBX.Location = new System.Drawing.Point(250, 189);
+            this.ContactNoBX.MaxLength = 45;
             this.ContactNoBX.Name = "ContactNoBX";
             this.ContactNoBX.Size = new System.Drawing.Size(131, 18);
             this.ContactNoBX.TabIndex = 67;
@@ -170,8 +174,9 @@
             this.ManagerBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ManagerBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ManagerBX.Location = new System.Drawing.Point(250, 109);
+            this.ManagerBX.MaxLength = 45;
             this.ManagerBX.Name = "ManagerBX";
-            this.ManagerBX.Size = new System.Drawing.Size(121, 18);
+            this.ManagerBX.Size = new System.Drawing.Size(132, 18);
             this.ManagerBX.TabIndex = 14;
             this.ManagerBX.TextChanged += new System.EventHandler(this.NameBX_TextChanged);
             // 
@@ -182,6 +187,7 @@
             this.LocationCityBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationCityBX.ForeColor = System.Drawing.Color.White;
             this.LocationCityBX.Location = new System.Drawing.Point(409, 137);
+            this.LocationCityBX.MaxLength = 45;
             this.LocationCityBX.Name = "LocationCityBX";
             this.LocationCityBX.Size = new System.Drawing.Size(77, 18);
             this.LocationCityBX.TabIndex = 8;
@@ -197,6 +203,7 @@
             this.LocationStreetNameBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationStreetNameBX.ForeColor = System.Drawing.Color.White;
             this.LocationStreetNameBX.Location = new System.Drawing.Point(231, 138);
+            this.LocationStreetNameBX.MaxLength = 45;
             this.LocationStreetNameBX.Name = "LocationStreetNameBX";
             this.LocationStreetNameBX.Size = new System.Drawing.Size(90, 18);
             this.LocationStreetNameBX.TabIndex = 6;
@@ -278,6 +285,7 @@
             this.LocationBrgyBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.LocationBrgyBX.ForeColor = System.Drawing.Color.White;
             this.LocationBrgyBX.Location = new System.Drawing.Point(333, 138);
+            this.LocationBrgyBX.MaxLength = 45;
             this.LocationBrgyBX.Name = "LocationBrgyBX";
             this.LocationBrgyBX.Size = new System.Drawing.Size(77, 18);
             this.LocationBrgyBX.TabIndex = 7;
