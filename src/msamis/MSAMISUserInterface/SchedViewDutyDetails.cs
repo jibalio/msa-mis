@@ -44,6 +44,7 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshData() {
+            PeriodCMBX.Items.Clear();
             if (!Name.Equals("Archived")) {
                 var dt = Scheduling.GetAllAssignmentDetails(Aid);
                 NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0] + ",";
@@ -107,6 +108,7 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshAttendance() {
+            AttendanceGRD.Rows.Clear();
             if (!Name.Equals("Archived")) {
                 AttendanceGRD.DataSource = _attendance.GetAttendance_View(
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
