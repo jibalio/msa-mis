@@ -58,8 +58,8 @@ namespace MSAMISUserInterface
         #region Duty Detail Export
         public static DataTable GetDutyDetailList()
         {
-            ExtraQueryParams = " ORDER BY Client.Name asc";
-            String q = "SELECT  client.Name as 'Client Name' , concat(guards.ln,', ',guards.fn,' ',guards.mn) AS 'Guards Assigned', concat(request_assign.streetno, ' ', request_assign.streetname, ', ' ,request_assign.brgy, ', ', request_assign.city) as 'Assignment Address' FROM sduty_assignment JOIN guards ON sduty_assignment.GID = guards.GID JOIN request_assign ON sduty_assignment.RAID = request_assign.RAID JOIN request ON request_assign.RID = request.RID JOIN client ON request.CID = client.CID" + ExtraQueryParams;
+            ExtraQueryParams = "GROUP BY concat(guards.ln, ', ', guards.fn, ' ', guards.mn) ORDER BY client.Name asc; ";
+            String q = "SELECT  client.Name as 'Client Name' , concat(guards.ln,', ',guards.fn,' ',guards.mn) AS 'Guards Assigned', guards.LicenseNo as 'License Number', concat(request_assign.streetno, ' ', request_assign.streetname, ', ', request_assign.brgy, ', ', request_assign.city) as 'Assignment Address', concat(dutydetails.TI_hh, ':', dutydetails.TI_mm, ' ', dutydetails.TI_period) AS 'Shift Start', concat(dutydetails.TO_hh, ':', dutydetails.TO_mm, ' ', dutydetails.TO_period) AS 'Shift End', concat(dutydetails.Mon, dutydetails.Tue, dutydetails.Wed, dutydetails.Thu, dutydetails.Fri, dutydetails.Sat, dutydetails.Sun) AS 'Shift Days', request_assign.ContractStart AS 'Contract Start', request_assign.ContractEnd AS 'Contract End' FROM sduty_assignment JOIN guards ON sduty_assignment.GID = guards.GID JOIN request_assign ON sduty_assignment.RAID = request_assign.RAID JOIN request ON request_assign.RID = request.RID JOIN client ON request.CID = client.CID LEFT JOIN dutydetails ON sduty_assignment.AID = dutydetails.AID " + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
 
@@ -143,7 +143,7 @@ namespace MSAMISUserInterface
                 else if (formOrigin == 'g')
                     return new float[] { 120f, 50f, 90f, 80f, 90f, 90f, 90f };
                 else if (formOrigin == 'd')
-                    return new float[] { 120f, 120f, 250f };
+                    return new float[] { 130f, 130f, 80f, 230f, 60f, 60f, 60f, 120f, 120f };
             return null;
         }
     }

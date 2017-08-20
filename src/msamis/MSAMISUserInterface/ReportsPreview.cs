@@ -174,7 +174,13 @@ namespace MSAMISUserInterface {
             else if (o == 'd') {
                 pdfTable.AddCell(new Phrase("Client Name", headerfont));
                 pdfTable.AddCell(new Phrase("Guards Assigned", headerfont));
+                pdfTable.AddCell(new Phrase("License Number", headerfont));
                 pdfTable.AddCell(new Phrase("Deployment Address", headerfont));
+                pdfTable.AddCell(new Phrase("Shift Start", headerfont));
+                pdfTable.AddCell(new Phrase("Shift End", headerfont));
+                pdfTable.AddCell(new Phrase("Shift Days", headerfont));
+                pdfTable.AddCell(new Phrase("Contract Start", headerfont));
+                pdfTable.AddCell(new Phrase("Contract End", headerfont));
             }
             return pdfTable;
         }
