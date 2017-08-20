@@ -44,6 +44,7 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshData() {
+            PeriodCMBX.Items.Clear();
             if (!Name.Equals("Archived")) {
                 var dt = Scheduling.GetAllAssignmentDetails(Aid);
                 NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0] + ",";
@@ -245,7 +246,7 @@ namespace MSAMISUserInterface {
                 "Dismiss Schedule", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (x == DialogResult.Yes) {
                 Scheduling.DismissDuty(_did);
-                RefreshDutyDetails();
+                LoadPage();
             }
             if (DutyDetailsGRD.Rows.Count == 0) {
                 DismissBTN.Visible = false;

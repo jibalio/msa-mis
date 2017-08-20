@@ -39,22 +39,22 @@ namespace MSAMISUserInterface {
             RefreshAvailable();
             AssignedGRD.Columns[0].Visible = false;
             AssignedGRD.Columns[1].HeaderText = "NAME";
-            AssignedGRD.Columns[1].Width = 210;
+            AssignedGRD.Columns[1].Width = 200;
             AssignedGRD.Columns[2].HeaderText = "LOCATION";
-            AssignedGRD.Columns[2].Width = 210;
+            AssignedGRD.Columns[2].Width = 220;
             UpdateNeeded();
         }
 
         private void RefreshAvailable() {
             AvailableGRD.Rows.Clear();
-            var dt = Scheduling.GetUnassignedGuards(_extraQueryParams, "name asc");
+            var dt = Scheduling.GetUnassignedGuards(_extraQueryParams);
             foreach (DataRow row in dt.Rows)
                 if (!_gidS.Contains(int.Parse(row[0].ToString()))) AvailableGRD.Rows.Add(row[0], row[1], row[2]);
             AvailableGRD.Columns[0].Visible = false;
             AvailableGRD.Columns[1].HeaderText = "NAME";
-            AvailableGRD.Columns[1].Width = 210;
+            AvailableGRD.Columns[1].Width = 200;
             AvailableGRD.Columns[2].HeaderText = "LOCATION";
-            AvailableGRD.Columns[2].Width = 210;
+            AvailableGRD.Columns[2].Width = 220;
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
@@ -178,7 +178,12 @@ namespace MSAMISUserInterface {
         }
 
         private void AvailableSearchBX_TextChanged(object sender, EventArgs e) {
-            _extraQueryParams = AvailableSearchBX.Text;
+            var temp = AvailableSearchBX.Text;
+            const string kazoo = "concat(ln,', ',fn,' ',mn)";
+
+            if (AvailableSearchBX.Text.Contains("\\")) temp = temp + "?";
+            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+                                "%' OR " + kazoo + " LIKe '%" + temp + "')";
             RefreshAvailable();
         }
     }

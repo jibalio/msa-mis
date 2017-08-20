@@ -141,7 +141,9 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            Close();
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                Close();
         }
 
         private void Guards_EditEmployees_Load(object sender, EventArgs e) {
@@ -158,10 +160,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Guards_EditEmployees_FormClosing(object sender, FormClosingEventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                e.Cancel = true;
-            else if (Button.Equals("ADD")) Refer.Close();
+            if (Button.Equals("ADD")) Refer.Close();
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {

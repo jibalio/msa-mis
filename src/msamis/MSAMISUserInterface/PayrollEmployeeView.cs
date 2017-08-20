@@ -48,6 +48,7 @@ namespace MSAMISUserInterface {
 
         public void RefreshPayrollList() {
             EmpListGRD.DataSource = Payroll.GetGuardsPayrollMinimal();
+            if (EmpListGRD.RowCount > 0) { 
             _currentRow = EmpListGRD.Rows[0];
             EmpListGRD.Columns[0].Visible = false;
             EmpListGRD.Columns[1].Width = 320;
@@ -62,6 +63,7 @@ namespace MSAMISUserInterface {
                     else EmpListGRD.FirstDisplayedScrollingRowIndex = 0;
                     break;
                 }
+            }
         }
 
 
@@ -295,12 +297,15 @@ namespace MSAMISUserInterface {
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             LoadComputations();
+            CheckButtons();
+        }
+
+        private void CheckButtons() {
             if (!Name.Equals("Archived")) {
                 if (PeriodCMBX.SelectedIndex == 0) {
                     BonusAddBTN.Visible = true;
                     ApproveBTN.Location = new Point(227, 388);
-                }
-                else {
+                } else {
                     BonusAddBTN.Visible = false;
                     ApproveBTN.Location = new Point(186, 388);
                 }
@@ -328,6 +333,7 @@ namespace MSAMISUserInterface {
 
         private void ApproveBTN_Click(object sender, EventArgs e) {
             _pay.Approve();
+            CheckButtons();
             Reference.PayLoadEmployeeList();
         }
 

@@ -14,6 +14,7 @@ namespace MSAMISUserInterface {
         private readonly Font _selectedFont = new Font("Segoe UI", 10, FontStyle.Bold);
         private readonly Shadow _shadow = new Shadow();
         private string _extraQueryParams = "";
+        private readonly bool[] _notif = {false, false, false};
 
         private Point _newFormLocation;
         private Button _scurrentBtn;
@@ -347,16 +348,16 @@ namespace MSAMISUserInterface {
         private void ArrangeNotif() {
             // This method is used to rearrange the Notifs Widgets when dismissing them
 
-            bool[] pnl = {DPaydayNotifPNL.Visible, DClientSummaryPNL.Visible, DSalaryReportPNL.Visible};
+            bool[] pnl = {DPaydayNotifPNL.Visible, DDutyDetailNotifPNL.Visible, DSalaryReportNotifPNL.Visible};
             var loc1 = new Point(308, 208);
             var loc2 = new Point(308, 310);
-            if (pnl[0]) if (!pnl[1]) DSalaryReportPNL.Location = loc2;
+            if (pnl[0]) if (!pnl[1]) DSalaryReportNotifPNL.Location = loc2;
             if (pnl[1])
                 if (!pnl[0]) {
-                    DClientSummaryPNL.Location = loc1;
-                    DSalaryReportPNL.Location = loc2;
+                    DDutyDetailNotifPNL.Location = loc1;
+                    DSalaryReportNotifPNL.Location = loc2;
                 }
-            if (pnl[2]) if (!pnl[0] && !pnl[1]) DSalaryReportPNL.Location = loc1;
+            if (pnl[2]) if (!pnl[0] && !pnl[1]) DSalaryReportNotifPNL.Location = loc1;
         }
 
         private void NotifTMR_Tick(object sender, EventArgs e) {
@@ -367,11 +368,17 @@ namespace MSAMISUserInterface {
             var payday = Payroll.GetPreviousPayDay();
             if (DateTime.Now.Day == payday.Day &&
                 DateTime.Now.Month == payday.Month &&
-                DateTime.Now.Year == payday.Year && !DPaydayNotifPNL.Visible) {
+                DateTime.Now.Year == payday.Year && !DPaydayNotifPNL.Visible && !_notif[0]) {
                 DPaydayNotifPNL.Visible = true;
-                ArrangeNotif();
                 DPayDayNotifLBL.Text = "for the month of " + payday.ToString("MMMM yyyy");
             }
+            if (DateTime.Now.Day == 5) {
+                DDutyDetailNotifPNL.Visible = !_notif[1];
+                DSalaryReportNotifPNL.Visible = !_notif[2];
+                DDutyDetailNotifLBL.Text = DSalaryReportNotifLBL.Text =
+                    "for the month of " + new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1).ToString("MMMM yyyy");
+            }
+            ArrangeNotif();
         }
 
         private void DMonthlyDutyReportPNL_MouseEnter(object sender, EventArgs e) {
@@ -383,33 +390,36 @@ namespace MSAMISUserInterface {
         }
 
         private void DClientSummaryPNL_MouseEnter(object sender, EventArgs e) {
-            DClientSummaryPNL.BackColor = _dashboardHover;
+            DDutyDetailNotifPNL.BackColor = _dashboardHover;
         }
 
         private void DClientSummaryPNL_MouseLeave(object sender, EventArgs e) {
-            DClientSummaryPNL.BackColor = _accent;
+            DDutyDetailNotifPNL.BackColor = _accent;
         }
 
         private void DSalaryReportPNL_MouseEnter(object sender, EventArgs e) {
-            DSalaryReportPNL.BackColor = _dashboardHover;
+            DSalaryReportNotifPNL.BackColor = _dashboardHover;
         }
 
         private void DSalaryReportPNL_MouseLeave(object sender, EventArgs e) {
-            DSalaryReportPNL.BackColor = _accent;
+            DSalaryReportNotifPNL.BackColor = _accent;
         }
 
         private void DMonthlyX_Click(object sender, EventArgs e) {
             DPaydayNotifPNL.Visible = false;
+            _notif[0] = true;
             ArrangeNotif();
         }
 
         private void DClientX_Click(object sender, EventArgs e) {
-            DClientSummaryPNL.Visible = false;
+            DDutyDetailNotifPNL.Visible = false;
+            _notif[1] = true;
             ArrangeNotif();
         }
 
         private void DSalaryX_Click(object sender, EventArgs e) {
-            DSalaryReportPNL.Visible = false;
+            DSalaryReportNotifPNL.Visible = false;
+            _notif[2] = true;
             ArrangeNotif();
         }
 
@@ -418,8 +428,8 @@ namespace MSAMISUserInterface {
         }
 
         private void DClientSummaryPNL_Click(object sender, EventArgs e) {
-            ClientBTN.PerformClick();
-            CViewSummaryBTN.PerformClick();
+            SchedBTN.PerformClick();
+            SDutyDetailsBTN.PerformClick();
         }
 
         private void DSalaryReportPNL_Click(object sender, EventArgs e) {
@@ -532,7 +542,7 @@ namespace MSAMISUserInterface {
                 GAllGuardsGRD.Columns[0].Width = 0;
                 GAllGuardsGRD.Columns[1].Width = 240;
                 GAllGuardsGRD.Columns[2].Width = 300;
-                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[3].Width = 70;
@@ -630,7 +640,7 @@ namespace MSAMISUserInterface {
             // Initialize archive connection.
             if (RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
-                Archiver.ArchiveGuard(int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString()));
+                foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows)  Archiver.ArchiveGuard(int.Parse(row.Cells[0].Value.ToString()));
                 RylMessageBox.ShowDialog("Successfully archived Guard(s)", "Archive", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 GuardsRefreshGuardsList();
@@ -933,8 +943,8 @@ namespace MSAMISUserInterface {
             CSummaryFileLST.Sorting = SortOrder.Descending;
 
             CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
-            CTotalLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
-            CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
+            CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
+            CTotalLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
         }
 
         private void CSummaryExport_Click(object sender, EventArgs e) {

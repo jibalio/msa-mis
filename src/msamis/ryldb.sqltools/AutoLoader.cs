@@ -60,8 +60,9 @@ namespace MSAMISUserInterface {
         }
 
         public static void AutoImportSql(bool db, bool dbarchive) {
-            /*
+            
             Do_Check();
+            /*
             if (!File.Exists(checksumfile)) {
                 using (var writer = new StreamWriter(@checksumfile)) {
                     writer.WriteLine("0");
