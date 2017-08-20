@@ -24,13 +24,100 @@ namespace MSAMISUserInterface {
 
         public static void ArchiveGuard(int GuardId) {
                     SQLTools.ExecuteNonQuery($"call archive_guard({GuardId});");
+                    ComputeArchivedHours(GuardId);
             }
 
 
+        public static void ComputeArchivedHours(int GuardId) {
+            string q = $@"
+                            select msadbarchive.period.pid, msadbarchive.attendance.atid, msadbarchive.dutydetails.did, DATE_FORMAT(msadbarchive.attendance.date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(msadbarchive.attendance.date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
+							concat (msadbarchive.dutydetails.ti_hh,':',msadbarchive.dutydetails.ti_mm,' ',msadbarchive.dutydetails.ti_period, ' - ',msadbarchive.dutydetails.to_hh,':',msadbarchive.dutydetails.to_mm,' ',msadbarchive.dutydetails.to_period) as Schedule,
+                            msadbarchive.attendance.timein,
+                            msadbarchive.attendance.TimeOut
+                            from msadbarchive.attendance
+                            left join msadbarchive.dutydetails 
+                            on msadbarchive.dutydetails.did=msadbarchive.attendance.did
+                            left join msadbarchive.period 
+                            on msadbarchive.period.pid=msadbarchive.attendance.pid
+                            and msadbarchive.period.gid = '161'
+                            order by date asc;";
+            DataTable dt = SQLTools.ExecuteQuery(q);
+            var hourlist = new List<HourProcessor>();
+            bool firstiter = true;
+            int CurrentPid = 0;
+            DataRow LastDataRow;
+            foreach (DataRow dr in dt.Rows) {
+                int ThisPid = int.Parse(dr["PID"].ToString());
+                if (firstiter) {
+                    CurrentPid = int.Parse(dr["PID"].ToString());
+                    firstiter = false;
+                }
+                if (CurrentPid != ThisPid) {
+                    Hours h = new Hours();
+                    TimeSpan holiday_day, holiday_night, normal_day, normal_night, total;
+                    holiday_day = holiday_night = normal_day = normal_night = total = new TimeSpan();
+                    foreach (HourProcessor x in hourlist) {
+                        h.holiday_day += x.GetHolidayDayTS();
+                        h.holiday_night += x.GetHolidayNightTS();
+                        h.normal_day += x.GetNormalDayTS();
+                        h.normal_night += x.GetNormalNightTS(); ;
+                        h.total += x.GetTotalTS();
+                    }
+                    SQLTools.ExecuteNonQuery($@"
+                            UPDATE `msadbarchive`.`period` SET 
+                            `holiday_day`='{h.holiday_day.ToString(@"hh\:mm")}', 
+                            `holiday_night`='{h.holiday_night.ToString(@"hh\:mm")}', 
+                            `normal_day`='{h.normal_day.ToString(@"hh\:mm")}', 
+                            `normal_night`='{h.normal_night.ToString(@"hh\:mm")}' 
+                            WHERE `PID`='{CurrentPid}';
+                            ");
+                    CurrentPid = ThisPid;
+                    hourlist.Clear();
+                }
+
+                DateTime ti = Attendance.GetDateTime_(dr["TimeIn"].ToString());
+                DateTime to = Attendance.GetDateTime_(dr["TimeOut"].ToString());
+                HourProcessor proc = new HourProcessor(ti, to, ti, to);
+                hourlist.Add(proc);
+                SQLTools.ExecuteNonQuery($@"
+                    UPDATE `msadbarchive`.`attendance` SET 
+                    `normal_day`='{proc.GetNormalDay()}', 
+                    `normal_night`='{proc.GetNormalNight()}', 
+                    `holiday_day`='{proc.GetHolidayDay()}', 
+                    `holiday_night`='{proc.GetHolidayNight()}',
+                    `total`='{proc.GetTotal()}'
+                    WHERE `AtID`='{dr["atid"]}';
+                    ");
+                LastDataRow = dr;
+            }
+            Hours lh = new Hours();
+            foreach (HourProcessor x in hourlist) {
+                lh.holiday_day += x.GetHolidayDayTS();
+                lh.holiday_night += x.GetHolidayNightTS();
+                lh.normal_day += x.GetNormalDayTS();
+                lh.normal_night += x.GetNormalNightTS(); ;
+                lh.total += x.GetTotalTS();
+            }
+            SQLTools.ExecuteNonQuery($@"
+                            UPDATE `msadbarchive`.`period` SET 
+                            `holiday_day`='{lh.GetHolidayDay()}', 
+                            `holiday_night`='{lh.GetHolidayNight()}', 
+                            `normal_day`='{lh.GetNormalDay()}', 
+                            `normal_night`='{lh.GetNormalNight()}',
+                            `total` = '{lh.GetTotal()}'
+                            WHERE `PID`='{CurrentPid}';
+                            ");
+        }
 
 
-
-
+        public static DataTable GetAttendanceSummary(int year, int month, int period, int gid) {
+           return SQLTools.ExecuteQuery(
+                $@"SELECT pid, certby, holiday_day, holiday_night, normal_day, normal_night, total FROM msadbarchive.period
+                where month = {month}
+                and period={period}
+                and year = {year}
+                and gid={gid};");
+        }
 
 
 
@@ -117,7 +204,11 @@ namespace MSAMISUserInterface {
                         select msadbarchive.attendance.atid, msadbarchive.dutydetails.did, DATE_FORMAT(msadbarchive.attendance.date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(msadbarchive.attendance.date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
 							concat (msadbarchive.dutydetails.ti_hh,':',msadbarchive.dutydetails.ti_mm,' ',msadbarchive.dutydetails.ti_period, ' - ',msadbarchive.dutydetails.to_hh,':',msadbarchive.dutydetails.to_mm,' ',msadbarchive.dutydetails.to_period) as Schedule,
                             msadbarchive.attendance.timein,
-                           msadbarchive.attendance.TimeOut
+                           msadbarchive.attendance.TimeOut,
+                            msadbarchive.attendance.normal_day as ND,
+                            msadbarchive.attendance.normal_night as NN,
+                            msadbarchive.attendance.holiday_day as HD,
+                            msadbarchive.attendance.holiday_night as HN
                             from msadbarchive.attendance
                             left join msadbarchive.dutydetails 
                             on msadbarchive.dutydetails.did=msadbarchive.attendance.did

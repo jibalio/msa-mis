@@ -27,6 +27,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.String;
 
 namespace MSAMISUserInterface {
 
@@ -127,7 +128,7 @@ namespace MSAMISUserInterface {
                             and period.gid = '{3}'
                             order by date asc
                             ";
-            q = String.Format(q, period, month, year, this.GID);
+            q = Format(q, period, month, year, this.GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             return d;
         }
@@ -155,7 +156,7 @@ namespace MSAMISUserInterface {
                             and gid = '{3}'
                             order by date asc
                             ";
-            q = String.Format(q, month, period, year, this.GID);
+            q = Format(q, month, period, year, GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
@@ -200,7 +201,7 @@ namespace MSAMISUserInterface {
                             and period.gid = {3}
                             order by date asc
                             ";
-            q = String.Format(q, period.period, period.month, period.year, this.GID);
+            q = Format(q, period.period, period.month, period.year, this.GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
@@ -228,7 +229,7 @@ namespace MSAMISUserInterface {
         }
 
         public string GetCertifiedBy() {
-            return SQLTools.ExecuteSingleResult(String.Format("select certby from period where month='{0}' and period = '{1}' and year='{2}'", period.month, period.period, period.year));
+            return SQLTools.ExecuteSingleResult(Format("select certby from period where month='{0}' and period = '{1}' and year='{2}'", period.month, period.period, period.year));
         }
         #endregion New Region
 
@@ -243,7 +244,7 @@ namespace MSAMISUserInterface {
             DateTime start_night = GetDateTime(10, 00, "PM");
             DateTime end_night = GetDateTime(6, 0, "AM").AddDays(1);
             String q = @"UPDATE `msadb`.`attendance` SET `TimeIn`='{1}', `TimeOut`='{2}'  WHERE `AtID`='{0}';";
-            q = String.Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"));
+            q = Format(q, AtID, ti.ToString("hh:mm tt"), to.ToString("hh:mm tt"));
             SQLTools.ExecuteNonQuery(q);
         }
 
