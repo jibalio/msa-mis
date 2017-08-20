@@ -108,7 +108,6 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshAttendance() {
-            AttendanceGRD.Rows.Clear();
             if (!Name.Equals("Archived")) {
                 AttendanceGRD.DataSource = _attendance.GetAttendance_View(
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
@@ -247,7 +246,7 @@ namespace MSAMISUserInterface {
                 "Dismiss Schedule", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (x == DialogResult.Yes) {
                 Scheduling.DismissDuty(_did);
-                RefreshDutyDetails();
+                LoadPage();
             }
             if (DutyDetailsGRD.Rows.Count == 0) {
                 DismissBTN.Visible = false;

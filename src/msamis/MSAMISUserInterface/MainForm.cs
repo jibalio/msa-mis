@@ -640,7 +640,7 @@ namespace MSAMISUserInterface {
             // Initialize archive connection.
             if (RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
-                Archiver.ArchiveGuard(int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString()));
+                foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows)  Archiver.ArchiveGuard(int.Parse(row.Cells[0].Value.ToString()));
                 RylMessageBox.ShowDialog("Successfully archived Guard(s)", "Archive", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 GuardsRefreshGuardsList();
