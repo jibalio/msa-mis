@@ -72,7 +72,7 @@ namespace MSAMISUserInterface {
                          from msadb.guards
                          left join address on address.gid = guards.gid
                          where gstatus = 2 and atype=2";
-            return SQLTools.ExecuteQuery(q, "concat(ln,', ',fn,' ',mn)", searchkeyword, orderbyColumnASCDESC);
+            return SQLTools.ExecuteQuery(q, "concat(ln,', ',fn,' ',mn)", searchkeyword);
         }
 
 
