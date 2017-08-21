@@ -104,14 +104,15 @@ namespace MSAMISUserInterface
                 if (!Directory.Exists(filePath))
                     Directory.CreateDirectory(filePath);
 
-                if (File.Exists(filePath + "\\" + fileName))
-                {
-                    DialogResult x = rylui.RylMessageBox.ShowDialog(fileName + " already exists.\nDo you want to replace it?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (x == DialogResult.Yes)
-                    {
-                        File.Delete(filePath + "\\" + fileName);
-                    }
-                }
+                if (File.Exists(filePath + "\\" + fileName)) {
+                    if (formOrigin == 'g' || formOrigin == 'c') { 
+                        DialogResult x = rylui.RylMessageBox.ShowDialog(fileName + " already exists.\nDo you want to replace it?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (x == DialogResult.Yes)
+                        {
+                            File.Delete(filePath + "\\" + fileName);
+                        }
+                    } else File.Delete(filePath + "\\" + fileName);
+            }
 
                 using (FileStream stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
                 {

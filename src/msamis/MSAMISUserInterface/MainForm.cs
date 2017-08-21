@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using rylui;
 
@@ -15,6 +16,7 @@ namespace MSAMISUserInterface {
         private readonly Shadow _shadow = new Shadow();
         private string _extraQueryParams = "";
         private readonly bool[] _notif = {false, false, false};
+        private int _day = DateTime.Now.Day;
 
         private Point _newFormLocation;
         private Button _scurrentBtn;
@@ -361,7 +363,10 @@ namespace MSAMISUserInterface {
         }
 
         private void NotifTMR_Tick(object sender, EventArgs e) {
-            CheckPayday();
+            if (_day != DateTime.Now.Day) {
+                CheckPayday();
+            }
+            _day = DateTime.Now.Day;
         }
 
         private void CheckPayday() {
@@ -377,6 +382,9 @@ namespace MSAMISUserInterface {
                 DSalaryReportNotifPNL.Visible = !_notif[2];
                 DDutyDetailNotifLBL.Text = DSalaryReportNotifLBL.Text =
                     "for the month of " + new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1).ToString("MMMM yyyy");
+                var rp = new ReportsPreview();
+                rp.FormatPDF('d');
+                //rp.FormatPDF('s');
             }
             ArrangeNotif();
         }
@@ -711,7 +719,7 @@ namespace MSAMISUserInterface {
         public void GuardsLoadReport() {
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                       "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("GuardsSummaryReport*.pdf"); //Getting Text files]
+            var files = d.GetFiles("GuardsSummaryReport*.pdf").OrderByDescending(p => p.CreationTime); //Getting Text files]
 
             GSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
@@ -719,7 +727,6 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) {ImageIndex = 0};
                 GSummaryFilesLST.Items.Add(listViewItem);
             }
-            GSummaryFilesLST.Sorting = SortOrder.Descending;
             GSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
             GSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
             GTotalLBL.Text = Reports.GetTotalGuards('g', 't') + " guards";
@@ -932,7 +939,7 @@ namespace MSAMISUserInterface {
 
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                       "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("ClientsSummaryReport*.pdf"); //Getting Text files]
+            var files = d.GetFiles("ClientsSummaryReport*.pdf").OrderByDescending(p => p.CreationTime); ; //Getting Text files]
 
             CSummaryFileLST.Items.Clear();
             foreach (var file in files) {
@@ -940,8 +947,6 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) {ImageIndex = 0};
                 CSummaryFileLST.Items.Add(listViewItem);
             }
-            CSummaryFileLST.Sorting = SortOrder.Descending;
-
             CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
             CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
             CTotalLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
@@ -1469,8 +1474,7 @@ namespace MSAMISUserInterface {
         public void SchedLoadReport() {
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                       "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("SchedSummaryReport*.pdf"); //Getting Text files]
-
+            var files = d.GetFiles("SchedSummaryReport*.pdf").OrderByDescending(p => p.CreationTime);//Getting Text files]
             SSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
                 var date = file.CreationTime.AddMonths(-1);
@@ -1478,41 +1482,38 @@ namespace MSAMISUserInterface {
                 var listViewItem = new ListViewItem(row) {ImageIndex = 0};
                 SSummaryFilesLST.Items.Add(listViewItem);
             }
-            SSummaryFilesLST.Sorting = SortOrder.Descending;
             SSummaryErrorPNL.Visible = SSummaryFilesLST.Items.Count == 0;
             SSummaryDateLBL.Text = SSummaryFilesLST.Items.Count > 0
                 ? "for the month of " + SSummaryFilesLST.Items[0].Text
                 : "No reports available";
+            SDutyDetailsExportBTN.Visible = SDutyDetailsPreviewBTN.Visible = SSummaryFilesLST.Items.Count > 0;
         }
 
         private void SDutyDetailsPreviewBTN_Click(object sender, EventArgs e) {
             try {
-                var view = new ReportsPreview {
-                    Refer = _shadow,
-                    Location = _newFormLocation,
-                    Main = this,
-                    Mode = 3
-                };
-                _shadow.Transparent();
-                _shadow.Form = view;
-                _shadow.ShowDialog();
+                Process.Start(SSummaryFilesLST.Items[0].SubItems[1].Text);
             }
-            catch (Exception) { }
+            catch {
+                RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                    "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SchedLoadReport();
+            }
         }
 
         private void SDutyDetailsExportBTN_Click(object sender, EventArgs e) {
             try {
-                var view = new Exporting {
-                    Refer = _shadow,
-                    Main = this,
-                    Mode = 'd',
-                    Location = _newFormLocation
+                var savefile = new SaveFileDialog {
+                    FileName = "SchedSummaryReport_" + SSummaryFilesLST.Items[0].SubItems[0].Text,
+                    Filter = "Portable Document Format (.pdf)|*.pdf"
                 };
-                _shadow.Transparent();
-                _shadow.Form = view;
-                _shadow.ShowDialog();
+                if (savefile.ShowDialog() == DialogResult.OK)
+                    File.Copy(SSummaryFilesLST.Items[0].SubItems[1].Text, savefile.FileName, true);
             }
-            catch (Exception) { }
+            catch (Exception exception) {
+                RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                    "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(exception);
+            }
         }
 
 
@@ -1728,38 +1729,36 @@ namespace MSAMISUserInterface {
 
         private void PSalaryReportsPreviewBTN_Click(object sender, EventArgs e) {
             try {
-                var view = new ReportsPreview {
-                    Refer = _shadow,
-                    Location = _newFormLocation,
-                    Main = this,
-                    Mode = 4
-                };
-                _shadow.Transparent();
-                _shadow.Form = view;
-                _shadow.ShowDialog();
+                Process.Start(PSummaryFilesLST.Items[0].SubItems[1].Text);
             }
-            catch (Exception) { }
+            catch {
+                RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                    "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                PayLoadReport();
+            }
         }
 
         private void PSalaryReportsExportBTN_Click(object sender, EventArgs e) {
             try {
-                var view = new Exporting {
-                    Refer = _shadow,
-                    Main = this,
-                    Mode = 's',
-                    Location = _newFormLocation
+                var savefile = new SaveFileDialog {
+                    FileName = "PaySummaryReport_" + PSummaryFilesLST.Items[0].SubItems[0].Text,
+                    Filter = "Portable Document Format (.pdf)|*.pdf"
                 };
-                _shadow.Transparent();
-                _shadow.Form = view;
-                _shadow.ShowDialog();
+                if (savefile.ShowDialog() == DialogResult.OK)
+                    File.Copy(PSummaryFilesLST.Items[0].SubItems[1].Text, savefile.FileName, true);
             }
-            catch (Exception) { }
+            catch (Exception exception) {
+                RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                    "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(exception);
+            }
+          
         }
 
         public void PayLoadReport() {
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                       "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("PaySummaryReport*.xlsx"); //Getting Text files]
+            var files = d.GetFiles("PaySummaryReport*.xlsx").OrderByDescending(p => p.CreationTime); //Getting Text files]
 
             PSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
@@ -1769,7 +1768,10 @@ namespace MSAMISUserInterface {
             }
             PSummaryFilesLST.Sorting = SortOrder.Descending;
             PSummaryErrorPNL.Visible = PSummaryFilesLST.Items.Count == 0;
-            PSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            PSummaryDateLBL.Text = PSummaryFilesLST.Items.Count > 0
+                ? "for the month of " + PSummaryFilesLST.Items[0].Text
+                : "No reports available";
+            PSalaryReportsExportBTN.Visible = PSalaryReportsPreviewBTN.Visible = PSummaryFilesLST.Items.Count > 0;
         }
 
         private void PSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
