@@ -93,8 +93,9 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshDutyDetails() {
-            if (!Name.Equals("Archived")) DutyDetailsGRD.DataSource = Scheduling.GetDutyDetailsSummary(Aid);
-            else DutyDetailsGRD.DataSource = Archiver.GetDutyDetailsSummary(Aid);
+            DutyDetailsGRD.DataSource = !Name.Equals("Archived")
+                ? Scheduling.GetDutyDetailsSummary(Aid)
+                : Archiver.GetDutyDetailsSummary(Aid);
             DutyDetailsGRD.Columns[0].Visible = false;
             DutyDetailsGRD.Columns[1].HeaderText = "TIME-IN";
             DutyDetailsGRD.Columns[2].HeaderText = "TIME-OUT";

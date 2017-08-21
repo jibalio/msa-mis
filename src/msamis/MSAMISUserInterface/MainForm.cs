@@ -296,7 +296,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void DashboardTMR_Tick(object sender, EventArgs e) {
@@ -486,7 +486,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void GChangePanel(Panel newP, Button newBtn) {
@@ -583,7 +583,7 @@ namespace MSAMISUserInterface {
                     _shadow.ShowDialog();
                 }
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void GAllGuardsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
@@ -666,7 +666,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void RefreshArchivedGuards() {
@@ -745,7 +745,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void GSummaryExportBTN_Click(object sender, EventArgs e) {
@@ -760,7 +760,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void GSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
@@ -830,7 +830,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void CChangePanel(Panel newP, Button newBtn) {
@@ -899,7 +899,9 @@ namespace MSAMISUserInterface {
                     _shadow.ShowDialog();
                 }
             }
-            catch (Exception) { }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+            }
         }
 
         #endregion
@@ -939,7 +941,7 @@ namespace MSAMISUserInterface {
 
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                       "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("ClientsSummaryReport*.pdf").OrderByDescending(p => p.CreationTime); ; //Getting Text files]
+            var files = d.GetFiles("ClientsSummaryReport*.pdf").OrderByDescending(p => p.CreationTime); //Getting Text files]
 
             CSummaryFileLST.Items.Clear();
             foreach (var file in files) {
@@ -964,7 +966,9 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+            }
         }
 
         private void CSummaryPreview_Click(object sender, EventArgs e) {
@@ -979,7 +983,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void CSummaryFileLST_DoubleClick(object sender, EventArgs e) {
@@ -1106,7 +1110,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void SViewReqDisBTN_Click(object sender, EventArgs e) {
@@ -1123,7 +1127,7 @@ namespace MSAMISUserInterface {
                     _shadow.Form = view;
                     _shadow.ShowDialog();
                 }
-                catch (Exception) { }
+                catch (Exception exception) { Console.WriteLine(exception); }
             else
                 RylMessageBox.ShowDialog(
                     "You can't unassign a guard with an active assignment \nPlease dismiss the guards before unassigning them",
@@ -1231,7 +1235,7 @@ namespace MSAMISUserInterface {
                         _shadow.Form = view;
                         _shadow.ShowDialog();
                     }
-                    catch (Exception) { }
+                    catch (Exception exception) { Console.WriteLine(exception); }
                 else
                     try {
                         var view = new SchedViewDisReq {
@@ -1244,9 +1248,9 @@ namespace MSAMISUserInterface {
                         _shadow.Form = view;
                         _shadow.ShowDialog();
                     }
-                    catch (Exception) { }
+                    catch (Exception exception) { Console.WriteLine(exception); }
             }
-            catch { }
+            catch (Exception exception){ Console.WriteLine(exception); }
         }
 
         #endregion
@@ -1380,7 +1384,7 @@ namespace MSAMISUserInterface {
                     _shadow.Form = view;
                     _shadow.ShowDialog();
                 }
-                catch (Exception) { }
+                catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private bool IsUnscheduled() {
@@ -1607,7 +1611,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void PConfigSSSBTN_Click(object sender, EventArgs e) {
@@ -1620,7 +1624,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void PcHnagePanel(Panel newP, Button newBtn) {
@@ -1699,7 +1703,7 @@ namespace MSAMISUserInterface {
                 _shadow.Form = view;
                 _shadow.ShowDialog();
             }
-            catch (Exception) { }
+            catch (Exception exception) { Console.WriteLine(exception); }
         }
 
         private void PEmpListSearchBX_Enter(object sender, EventArgs e) {
