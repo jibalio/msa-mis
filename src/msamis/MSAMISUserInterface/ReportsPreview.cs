@@ -182,6 +182,37 @@ namespace MSAMISUserInterface {
                 pdfTable.AddCell(new Phrase("Contract Start", headerfont));
                 pdfTable.AddCell(new Phrase("Contract End", headerfont));
             }
+            else if (o == 's') {
+                PdfPCell cell = new PdfPCell();
+                cell.Rowspan = 3;
+                cell.AddElement(new Phrase("Employee", headerfont));
+                pdfTable.AddCell(cell);
+                cell.AddElement(new Phrase("Days of Work", headerfont));
+                pdfTable.AddCell(cell);
+                cell.AddElement(new Phrase("Rate", headerfont));
+                pdfTable.AddCell(cell);
+                cell.AddElement(new Phrase("Total Regular Wage", headerfont));
+                pdfTable.AddCell(cell);
+                cell.Rowspan = 1;
+                cell.Colspan = 4;
+                cell.AddElement(new Phrase("Overtime", headerfont));
+                pdfTable.AddCell(cell);
+                cell.Colspan = 2;
+                cell.AddElement(new Phrase("Regular Day", headerfont));
+                pdfTable.AddCell(cell);
+                cell.AddElement(new Phrase("Sunday & Holiday", headerfont));
+                pdfTable.AddCell(cell);
+                cell.Colspan = 1;
+                cell.AddElement(new Phrase("Hrs", headerfont));
+                pdfTable.AddCell(cell);
+                cell.AddElement(new Phrase("Amt", headerfont));
+                pdfTable.AddCell(cell);
+                cell.AddElement(new Phrase("Hrs", headerfont));
+                pdfTable.AddCell(cell);
+                cell.AddElement(new Phrase("Amt", headerfont));
+                pdfTable.AddCell(cell);
+                //test if it loops after the edge column of the table
+            }
             return pdfTable;
         }
 

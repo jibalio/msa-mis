@@ -140,8 +140,8 @@ namespace MSAMISUserInterface {
         }
 
         private void ExportClientsSummaryBTN_Click(object sender, EventArgs e) {
-            var r = new Reports();
-            //r.ExporttoExcel('c');
+            var rp = new ReportsPreview();
+            rp.FormatPDF('s');
         }
 
         private void label43_Click(object sender, EventArgs e) {
