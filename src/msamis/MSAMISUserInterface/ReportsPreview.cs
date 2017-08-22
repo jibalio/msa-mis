@@ -211,7 +211,7 @@ namespace MSAMISUserInterface {
                 pdfTable.AddCell(cell);
                 cell.AddElement(new Phrase("Amt", headerfont));
                 pdfTable.AddCell(cell);
-
+                //test if it loops after the edge column of the table
             }
             return pdfTable;
         }
