@@ -14,3 +14,4 @@ delete from request;
 delete from request_assign;
 delete from request_unassign;
 delete from sduty_assignment;
+use msadb;

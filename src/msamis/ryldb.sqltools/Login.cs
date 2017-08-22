@@ -4,11 +4,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using BCrypt.Net;
 using Crypt = BCrypt.Net.BCrypt;
 
 namespace MSAMISUserInterface {
     public class Login {
+        public static int LoggedInUser;
         public static bool Authenticate(string uname, string pword) {
             int uid;
             try {
@@ -20,8 +22,8 @@ namespace MSAMISUserInterface {
                     UserName = dt.Rows[0]["uname"].ToString();
                     AccountType = int.Parse(dt.Rows[0]["type"].ToString());
                     uid = int.Parse(dt.Rows[0]["accid"].ToString());
+                    LoggedInUser = uid;
                     SQLTools.conn.Close();
-
                     SQLTools.ExecuteNonQuery($@"
                     INSERT INTO `msadb`.`loginhistory` 
                     (`uid`, `logintime`) 

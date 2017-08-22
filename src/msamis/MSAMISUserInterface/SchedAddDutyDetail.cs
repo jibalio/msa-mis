@@ -135,7 +135,7 @@ namespace MSAMISUserInterface {
             else if (TimeInAMPMBX.SelectedIndex == 0 && TimeOutAMPMBX.SelectedIndex == 1) {
                 to = new TimeSpan(0, int.Parse(TimeOutHrBX.Text) + 12, int.Parse(TimeOutMinBX.Text), 0);
             }
-
+            /*
             if (to.TotalHours - ti.TotalHours < 9) {
                 HoursTLTP.ToolTipTitle = "Duty Hours";
                 HoursTLTP.Show("The specified time is less than 8hrs", HoursLBL);
@@ -145,24 +145,50 @@ namespace MSAMISUserInterface {
                 HoursTLTP.ToolTipTitle = "Duty Hours";
                 HoursTLTP.Show("The specified time is more than 8hrs", HoursLBL);
                 ret = false;
-            }
+            }*/
             return ret;
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
-                if (Button.Equals("ADD"))
-                    Scheduling.AddDutyDetail(Aid, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text,
-                        TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
-                        new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
-                            _dutyDays[6], _dutyDays[0]));
-                else if (Button.Equals("UPDATE"))
-                    Scheduling.UpdateDutyDetail(Did, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text,
-                        TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
-                        new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
-                            _dutyDays[6], _dutyDays[0]));
-                Close();
-                Refer.LoadPage();
+
+                
+                    if (Button.Equals("ADD")) {
+                        string res = Scheduling.AddDutyDetail(Aid, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text,
+                                                TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
+                                                new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
+                                                _dutyDays[6], _dutyDays[0]));
+                        if (res.Equals("<")) {
+                        HoursTLTP.ToolTipTitle = "Duty Hours";
+                        HoursTLTP.Show("The specified time is less than 8hrs", HoursLBL);
+                        } else if
+                            (res.Equals(">")) {
+                            HoursTLTP.ToolTipTitle = "Duty Hours";
+                            HoursTLTP.Show("The specified time is more than 8hrs", HoursLBL);
+                    } else {
+                            Close();
+                            Refer.LoadPage();
+                        }
+                } else if (Button.Equals("UPDATE")) {
+                        string res = Scheduling.UpdateDutyDetail(Did, TimeInHrBX.Text, TimeInMinBX.Text,
+                                    TimeInAMPMBX.Text,
+                                    TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
+                                    new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
+                                        _dutyDays[6], _dutyDays[0]));
+                        if (res.Equals("<")) {
+                        HoursTLTP.ToolTipTitle = "Duty Hours";
+                            HoursTLTP.Show("The specified time is less than 8hrs", HoursLBL);
+                    } else if (res.Equals(">")) {
+                            HoursTLTP.ToolTipTitle = "Duty Hours";
+                            HoursTLTP.Show("The specified time is more than 8hrs", HoursLBL);
+                        }
+                        else {
+                        Close();
+                            Refer.LoadPage();
+                    }
+                    }
+                    
+                
             }
         }
 

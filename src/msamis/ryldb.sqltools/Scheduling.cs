@@ -157,14 +157,14 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery(q);
             // 2.) Insert a dismissal request.\
             // 2a: Get last inserted Incident Report (link this)
-            int ernational_love = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "iid"));
+            int IncidentId = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "iid"));
             // 2b: Insert request
-            q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`, `dateeffective`) VALUES ('{0}', '{1}', '{2}','{3}', '{4}')";
-            q = String.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime(),Enumeration.RequestStatus.Pending, ernational_love, DateEffective.ToString("yyyy-MM-dd"));
+            q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`) VALUES ('{0}', '{1}', '{2}','{3}')";
+            q = string.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime(),Enumeration.RequestStatus.Pending);
             SQLTools.ExecuteNonQuery(q);
             String lid = SQLTools.getLastInsertedId("request", "rid");
             for (int c = 0; c < gid.Length; c++) {  
-                q = $@"INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `iid`, `DateEffective') VALUES ('{lid.ToString()}', '{ gid[c]}', '{ernational_love}', '{DateEffective:yyyy-MM-dd}');";
+                q = $@"INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `iid`, `DateEffective`) VALUES ('{lid.ToString()}', '{ gid[c]}', '{IncidentId}', '{DateEffective:yyyy-MM-dd}');";
                 SQLTools.ExecuteNonQuery(q);
             }
             
@@ -212,7 +212,7 @@ namespace MSAMISUserInterface {
                 SQLTools.ExecuteNonQuery(q);
             }
             // Step 4
-            UpdateRequestStatus(RequestId, Enumeration.RequestStatus.Approved);
+            UpdateRequestStatus(RequestId, Enumeration.RequestStatus.Approved, Login.LoggedInUser);
         }
 
 
@@ -244,7 +244,7 @@ namespace MSAMISUserInterface {
                    // SQLTools.ExecuteNonQuery(eventddl_cs);      // contract start trigger
                    // SQLTools.ExecuteNonQuery(eventddl_ce);      // contract end trigger
                 }
-                UpdateRequestStatus(rid, Enumeration.RequestStatus.Active);
+                UpdateRequestStatus(rid, Enumeration.RequestStatus.Active, Login.LoggedInUser);
                 Data.InitGuardStatusAndDutyAssignments();
             } else MessageBox.Show("Request is not an assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             SQLTools.ExecuteQuery("call init_status_clientstatus()");
@@ -265,7 +265,7 @@ namespace MSAMISUserInterface {
         /// </summary>
         /// <param name="rid">Request ID to decline</param>
         public static void DeclineRequest(int rid) {
-            UpdateRequestStatus(rid, Enumeration.RequestStatus.Declined);
+            UpdateRequestStatus(rid, Enumeration.RequestStatus.Declined, Login.LoggedInUser);
         }
         #endregion
 
@@ -399,7 +399,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
         #region DutyDetail Operations  (Add + Dismiss)  ✔Done
        
-        public static void AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
+        public static string AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
             String q = @"
                         INSERT INTO `msadb`.`dutydetails` 
                         (`AID`, 
@@ -423,7 +423,14 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         Convert.ToInt32(days.Sun),
                         Enumeration.DutyDetailStatus.Active
                 );
+            DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
+            DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
+            HourProcessor hp = new HourProcessor(ti, to, ti, to);
+            TimeSpan e = hp.GetTotalTS();
+            e = e;
+            if (e.TotalHours > 8) { return ">"; } else if (e.TotalHours < 8) { return "<"; }
             SQLTools.ExecuteNonQuery(q);
+            return "=";
         }
 
         public static void DismissDuty (int did) {
@@ -557,7 +564,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 );
         }
 
-        public static void UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
+        public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
             String q = @"
                         UPDATE `msadb`.`dutydetails` SET 
                         `TI_hh`='{0}', `TI_mm`='{1}', `TI_period`='{2}', 
@@ -575,7 +582,14 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         Convert.ToInt32(days.Wed), Convert.ToInt32(days.Thu),
                         Convert.ToInt32(days.Fri), Convert.ToInt32(days.Sat),
                         Convert.ToInt32(days.Sun), did);
+
+            DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
+            DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
+            HourProcessor hp = new HourProcessor(ti, to, ti, to);
+            TimeSpan e = hp.GetTotalTS();
+            if (e.TotalHours > 8) { return ">"; } else if (e.TotalHours < 8) { return "<"; }
             SQLTools.ExecuteNonQuery(q);
+            return "=";
         }
 
 
@@ -626,11 +640,11 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             if (x == empty) return "";
             else return x;
         }
-        public static void UpdateRequestStatus (int rid, int val) {
-            String q = @"UPDATE `msadb`.`request` SET `RStatus`='"+val+"' WHERE `RID`='"+rid+"';";
+        public static void UpdateRequestStatus (int rid, int val, int uidTransactedBy) {
+            String q = $@"UPDATE `msadb`.`request` SET `RStatus`='{val}', ProcessedBy='{uidTransactedBy}' WHERE `RID`='{rid}';";
             SQLTools.ExecuteNonQuery(q);
         }
-
+        
         /// <summary>
         /// (Backend) Gets a Scheduling.Days object and returns a string format: MTWThFSSu
         /// </summary>

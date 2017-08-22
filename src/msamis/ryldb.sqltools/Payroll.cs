@@ -328,10 +328,11 @@ namespace MSAMISUserInterface {
 
             // Finally, insert these values to the database, saved the 'Always Updating' fields 
             // (Those with auto-properties)
+          //  string appby = SQLTools.ExecuteQuery("SELECT * FROM msadb.loginhistory order by logintime desc limit 1;").Rows["uid"].ToString();
             string q = $@" 
                 UPDATE `msadb`.`payroll` SET `rates_id`='{this.rates_id}', `withtax`='{this.Withtax}', `sss`={this.Sss},
                 `totalsummary_serializable`='{serialized_totalsummary}', `hc_serializable`='{serialized_hc}',
-                `pstatus`={Enumeration.PayrollStatus.Approved}, `basicpayhourly`={_BasicPayHourly}
+                `pstatus`={Enumeration.PayrollStatus.Approved}, `basicpayhourly`={_BasicPayHourly}, `approvedby`='{Login.LoggedInUser}'
                 WHERE `PID`='{_PayrollId}';";
             SQLTools.ExecuteQuery(q);
 

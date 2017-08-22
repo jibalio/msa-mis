@@ -87,7 +87,7 @@ namespace MSAMISUserInterface {
                 view.ShowDialog();
             }
             else {
-                Scheduling.UpdateRequestStatus(Raid, Enumeration.RequestStatus.Approved);
+                Scheduling.UpdateRequestStatus(Raid, Enumeration.RequestStatus.Approved, Login.LoggedInUser);
                 AssignBTN.Text = "ASSIGN";
                 AssignBTN.Location = new Point(220, 411);
                 StatusLBL.Text = "Status: Approved";

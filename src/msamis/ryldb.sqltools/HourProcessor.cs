@@ -168,7 +168,6 @@ namespace MSAMISUserInterface {
                 Attendance.HE_internal o = Attendance.IsHolidayToday_(ti);
                 // Check if today is holiday.
                 if (o.isholiday) {
-                   
                         if (o.type == Enumeration.HolidayType.Regular) {
                             if (ti.DayOfWeek == DayOfWeek.Sunday) {
                                 this.hp["sun_proper_day_regular"] += day;
