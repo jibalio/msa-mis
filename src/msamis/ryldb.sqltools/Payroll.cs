@@ -274,6 +274,7 @@ namespace MSAMISUserInterface {
                 _cashadv = value;
                 string query = $@"UPDATE `msadb`.`payroll` SET `cashadv`='{value}' WHERE `PID`='{_PayrollId}';";
                 SQLTools.ExecuteNonQuery(query);
+                query = query;
             }
         }
 
@@ -458,7 +459,7 @@ namespace MSAMISUserInterface {
                 PagIbig = 0;
                 PhilHealth = 0;
             }
-            CashAdvance = RetrieveCashAdvance();
+            CashAdvance = double.Parse(DbValues["cashadv"].ToString());
             ComputeWithTax(TaxableIncome, Excess);
         }
 
