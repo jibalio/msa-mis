@@ -145,6 +145,8 @@ namespace MSAMISUserInterface
                     return new float[] { 120f, 50f, 90f, 80f, 90f, 90f, 90f };
                 else if (formOrigin == 'd')
                     return new float[] { 130f, 130f, 80f, 230f, 60f, 60f, 60f, 120f, 120f };
+            else if (formOrigin == 's')
+                return new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f };
             return null;
         }
     }
