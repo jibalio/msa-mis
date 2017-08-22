@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchedViewDisReq));
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,11 +36,11 @@
             this.AssignedGRD = new System.Windows.Forms.DataGridView();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ApprovedByLBL = new System.Windows.Forms.Label();
+            this.DateEffectiveLBL = new System.Windows.Forms.Label();
             this.ViewIncidentLBL = new System.Windows.Forms.Label();
             this.DeclineBTN = new System.Windows.Forms.Button();
             this.ApproveBTN = new System.Windows.Forms.Button();
-            this.DateEffectiveLBL = new System.Windows.Forms.Label();
-            this.ApprovedByLBL = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).BeginInit();
             this.panel2.SuspendLayout();
@@ -109,37 +109,37 @@
             this.AssignedGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AssignedGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.AssignedGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AssignedGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.NullValue = "-";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AssignedGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.AssignedGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AssignedGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AssignedGRD.DefaultCellStyle = dataGridViewCellStyle5;
             this.AssignedGRD.EnableHeadersVisualStyles = false;
             this.AssignedGRD.Location = new System.Drawing.Point(74, 58);
             this.AssignedGRD.MultiSelect = false;
             this.AssignedGRD.Name = "AssignedGRD";
             this.AssignedGRD.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AssignedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AssignedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.AssignedGRD.RowHeadersVisible = false;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AssignedGRD.Size = new System.Drawing.Size(400, 201);
@@ -179,10 +179,36 @@
             this.panel2.Size = new System.Drawing.Size(548, 445);
             this.panel2.TabIndex = 148;
             // 
+            // ApprovedByLBL
+            // 
+            this.ApprovedByLBL.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.ApprovedByLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ApprovedByLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ApprovedByLBL.Location = new System.Drawing.Point(-1, 302);
+            this.ApprovedByLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ApprovedByLBL.Name = "ApprovedByLBL";
+            this.ApprovedByLBL.Size = new System.Drawing.Size(548, 21);
+            this.ApprovedByLBL.TabIndex = 150;
+            this.ApprovedByLBL.Text = "Approved by:";
+            this.ApprovedByLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DateEffectiveLBL
+            // 
+            this.DateEffectiveLBL.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.DateEffectiveLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.DateEffectiveLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DateEffectiveLBL.Location = new System.Drawing.Point(0, 331);
+            this.DateEffectiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DateEffectiveLBL.Name = "DateEffectiveLBL";
+            this.DateEffectiveLBL.Size = new System.Drawing.Size(548, 21);
+            this.DateEffectiveLBL.TabIndex = 149;
+            this.DateEffectiveLBL.Text = "Date Effective: ";
+            this.DateEffectiveLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ViewIncidentLBL
             // 
             this.ViewIncidentLBL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ViewIncidentLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ViewIncidentLBL.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Underline);
             this.ViewIncidentLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ViewIncidentLBL.Location = new System.Drawing.Point(2, 275);
             this.ViewIncidentLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -234,32 +260,6 @@
             this.ApproveBTN.UseVisualStyleBackColor = false;
             this.ApproveBTN.Visible = false;
             this.ApproveBTN.Click += new System.EventHandler(this.ApproveBTN_Click);
-            // 
-            // DateEffectiveLBL
-            // 
-            this.DateEffectiveLBL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DateEffectiveLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.DateEffectiveLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DateEffectiveLBL.Location = new System.Drawing.Point(2, 306);
-            this.DateEffectiveLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.DateEffectiveLBL.Name = "DateEffectiveLBL";
-            this.DateEffectiveLBL.Size = new System.Drawing.Size(548, 21);
-            this.DateEffectiveLBL.TabIndex = 149;
-            this.DateEffectiveLBL.Text = "Date Effective: ";
-            this.DateEffectiveLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ApprovedByLBL
-            // 
-            this.ApprovedByLBL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ApprovedByLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ApprovedByLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ApprovedByLBL.Location = new System.Drawing.Point(2, 336);
-            this.ApprovedByLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ApprovedByLBL.Name = "ApprovedByLBL";
-            this.ApprovedByLBL.Size = new System.Drawing.Size(548, 21);
-            this.ApprovedByLBL.TabIndex = 150;
-            this.ApprovedByLBL.Text = "Approved by:";
-            this.ApprovedByLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SchedViewDisReq
             // 

@@ -31,11 +31,15 @@ namespace MSAMISUserInterface {
             else if (dt.Rows[0][1].ToString().Equals("Pending") && Login.AccountType != 2) {
                 ApproveBTN.Visible = true;
                 DeclineBTN.Visible = true;
+                DateEffectiveLBL.Text = "Date Effective: " + dt.Rows[0]["dateeffective"].ToString(); ;
+                ApprovedByLBL.Text = "Approved by: " + dt.Rows[0]["processedby"].ToString(); ;
             }
             else {
                 ApproveBTN.Visible = false;
                 DeclineBTN.Visible = false;
                 NameLBL.Text = "Declined Request to Unassign";
+                DateEffectiveLBL.Visible = false;
+                ApprovedByLBL.Text = "Declined by: " + dt.Rows[0]["processedby"].ToString();
             }
 
             AssignedGRD.DataSource = Scheduling.GetGuardsToBeUnassigned(Rid);

@@ -332,9 +332,13 @@ namespace MSAMISUserInterface {
 
 
         private void ApproveBTN_Click(object sender, EventArgs e) {
-            _pay.Approve();
-            CheckButtons();
-            Reference.PayLoadEmployeeList();
+            if (_pay.NetPay < 0) {
+                rylui.RylMessageBox.ShowDialog("Payroll net pay cannot be negative. Please make necessary adjustments", "Approve Payroll", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else { 
+                _pay.Approve();
+                CheckButtons();
+                Reference.PayLoadEmployeeList();
+            }
         }
 
 
