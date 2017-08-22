@@ -472,7 +472,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                                                 when 2 then 'Approved'
                                                 when 3 then 'Active'
                                                 when 4 then 'Declined'
-                                                end as status, uname from request_unassign
+                                                end as status, dateeffective, uname from request_unassign
                         left join request on request_unassign.RID = request.RID
                         left join client on request.CID=client.CID 
                         left join account on accid = ProcessedBy

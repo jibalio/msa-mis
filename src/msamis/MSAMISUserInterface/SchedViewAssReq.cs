@@ -49,7 +49,7 @@ namespace MSAMISUserInterface {
                 AssignBTN.Location = new Point(220, 411);
                 if (Login.AccountType == 2) AssignBTN.Visible = false;
                 DeclineBTN.Visible = false;
-                ApprovedBy.Text = "Approved by: " + dt.Rows[0]["processedby"].ToString();
+                ApprovedBy.Text = "Approved by: " + dt.Rows[0]["uname"].ToString();
             }
             else {
                 AssignBTN.Visible = false;
@@ -61,7 +61,7 @@ namespace MSAMISUserInterface {
                     StatusLBL.Text = "Status: Inctive";
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) { 
                     StatusLBL.Text = "Status: Decline";
-                    ApprovedBy.Text = "Declined by: " + dt.Rows[0]["processedby"].ToString();
+                    ApprovedBy.Text = "Declined by: " + dt.Rows[0]["uname"].ToString();
                 }
             }
             NeededLBL.ForeColor = _numGuards > Scheduling.GetNumberOfUnassignedGuards()
@@ -96,6 +96,7 @@ namespace MSAMISUserInterface {
                 AssignBTN.Location = new Point(220, 411);
                 StatusLBL.Text = "Status: Approved";
                 DeclineBTN.Visible = false;
+                RefreshData();
             }
         }
 
@@ -105,6 +106,7 @@ namespace MSAMISUserInterface {
             DeclineBTN.Visible = false;
             AvailablePNL.Visible = false;
             StatusLBL.Text = "Status: Declined";
+            RefreshData();
         }
     }
 }
