@@ -317,7 +317,7 @@ namespace MSAMISUserInterface {
                 if (_pay.PayrollStatus == Enumeration.PayrollStatus.Approved) {
                     BonusAddBTN.Visible = false;
                     ApproveBTN.Location = new Point(186, 388);
-                    ApproveBTN.Text = "PAYSLIP";
+                    ApproveBTN.Text = "VIEW PAYSLIP";
                 }
             }
         }
@@ -332,12 +332,29 @@ namespace MSAMISUserInterface {
 
 
         private void ApproveBTN_Click(object sender, EventArgs e) {
-            if (_pay.NetPay < 0) {
-                rylui.RylMessageBox.ShowDialog("Payroll net pay cannot be negative. Please make necessary adjustments", "Approve Payroll", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else { 
-                _pay.Approve();
-                CheckButtons();
-                Reference.PayLoadEmployeeList();
+            if (ApproveBTN.Text.Equals("APPROVE")) {
+                if (_pay.NetPay < 0) {
+                    rylui.RylMessageBox.ShowDialog(
+                        "Payroll net pay cannot be negative. Please make necessary adjustments", "Approve Payroll",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else {
+                    _pay.Approve();
+                    CheckButtons();
+                    Reference.PayLoadEmployeeList();
+                }
+            }
+            else {
+                try {
+                    var view = new ReportsPreview {
+                        Location = Location,
+                        Names = EmpListGRD.SelectedRows[0].Cells[1].Value.ToString(),
+                        Mode = 5
+                    };
+                    view.ShowDialog();
+                }
+                catch (Exception exception) { Console.WriteLine(exception); }
+
             }
         }
 
