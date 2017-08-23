@@ -41,6 +41,7 @@ namespace MSAMISUserInterface {
                     AssignBTN.Visible = false;
                     DeclineBTN.Visible = false;
                 }
+                ApprovedBy.Visible = false;
             }
             else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Approved.ToString())) {
                 AssignBTN.Text = "ASSIGN";
@@ -48,6 +49,7 @@ namespace MSAMISUserInterface {
                 AssignBTN.Location = new Point(220, 411);
                 if (Login.AccountType == 2) AssignBTN.Visible = false;
                 DeclineBTN.Visible = false;
+                ApprovedBy.Text = "Approved by: " + dt.Rows[0]["uname"].ToString();
             }
             else {
                 AssignBTN.Visible = false;
@@ -57,8 +59,10 @@ namespace MSAMISUserInterface {
                     StatusLBL.Text = "Status: Active";
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString()))
                     StatusLBL.Text = "Status: Inctive";
-                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString()))
+                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) { 
                     StatusLBL.Text = "Status: Decline";
+                    ApprovedBy.Text = "Declined by: " + dt.Rows[0]["uname"].ToString();
+                }
             }
             NeededLBL.ForeColor = _numGuards > Scheduling.GetNumberOfUnassignedGuards()
                 ? Color.Salmon
@@ -92,6 +96,7 @@ namespace MSAMISUserInterface {
                 AssignBTN.Location = new Point(220, 411);
                 StatusLBL.Text = "Status: Approved";
                 DeclineBTN.Visible = false;
+                RefreshData();
             }
         }
 
@@ -101,6 +106,7 @@ namespace MSAMISUserInterface {
             DeclineBTN.Visible = false;
             AvailablePNL.Visible = false;
             StatusLBL.Text = "Status: Declined";
+            RefreshData();
         }
     }
 }

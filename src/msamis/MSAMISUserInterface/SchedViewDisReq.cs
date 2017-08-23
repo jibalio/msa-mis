@@ -23,19 +23,28 @@ namespace MSAMISUserInterface {
         private void RefreshData() {
             var dt = Scheduling.GetUnassignmentRequestDetails(Rid);
             ClientLBL.Text = dt.Rows[0][0].ToString();
+
             if (dt.Rows[0][1].ToString().Equals("Approved")) {
                 ApproveBTN.Visible = false;
                 DeclineBTN.Visible = false;
                 NameLBL.Text = "Guards Unassigned";
+                DateEffectiveLBL.Text = "Date Effective: " + dt.Rows[0]["dateeffective"].ToString(); ;
+                ApprovedByLBL.Text = "Approved by: " + dt.Rows[0]["uname"].ToString(); ;
             }
-            else if (dt.Rows[0][1].ToString().Equals("Pending") && Login.AccountType != 2) {
+            else if (dt.Rows[0][1].ToString().Equals("Pending")) {
+                if (Login.AccountType != 2) { 
                 ApproveBTN.Visible = true;
                 DeclineBTN.Visible = true;
+                }
+                DateEffectiveLBL.Text = "Date Effective: " + dt.Rows[0]["dateeffective"].ToString(); ;
+                ApprovedByLBL.Text = "Approved by: " + dt.Rows[0]["uname"].ToString(); ;
             }
             else {
                 ApproveBTN.Visible = false;
                 DeclineBTN.Visible = false;
                 NameLBL.Text = "Declined Request to Unassign";
+                DateEffectiveLBL.Visible = false;
+                ApprovedByLBL.Text = "Declined by: " + dt.Rows[0]["uname"].ToString();
             }
 
             AssignedGRD.DataSource = Scheduling.GetGuardsToBeUnassigned(Rid);
@@ -60,14 +69,15 @@ namespace MSAMISUserInterface {
 
         private void ApproveBTN_Click(object sender, EventArgs e) {
             Scheduling.ApproveUnassignment(Rid);
+            RefreshData();
             Reference.SchedLoadPage();
-            Close();
         }
 
         private void DeclineBTN_Click(object sender, EventArgs e) {
             Scheduling.DeclineRequest(Rid);
             ApproveBTN.Visible = false;
             DeclineBTN.Visible = false;
+            RefreshData();
             Reference.SchedRefreshRequests();
         }
 

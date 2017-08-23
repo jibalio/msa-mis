@@ -57,7 +57,9 @@ namespace MSAMISUserInterface {
 
         private void UsersLBL_Click(object sender, EventArgs e) {
             ChangePanel(UsersLBL, UsersPNL);
-            LoadUsers();
+            if (Login.AccountType == 2) {
+                EditUserPNL.Visible = UsersGRDPNL.Visible = false;
+            } else LoadUsers();
         }
 
         private void UsersLBL_MouseEnter(object sender, EventArgs e) {

@@ -56,9 +56,9 @@ namespace MSAMISUserInterface {
                     if (changes[2]) Pay.EmergencyAllowance = double.Parse(EmergencyBX.Value.ToString("N2"));
                     if (changes[3]) Pay.CashBond = double.Parse(BondsBX.Value.ToString("N2"));
                     if (changes[4]) Pay.CashAdvance = double.Parse(AdvBX.Value.ToString("N2"));
+                    Refer.LoadAjustments();
+                    Close();
                 }
-                Refer.LoadAjustments();
-                Close();
             }
             else {
                 RylMessageBox.ShowDialog("No Changes", "There are no changes to commit", MessageBoxButtons.OK,
@@ -79,7 +79,6 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_AddAdjustments_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Close();
             Refer.LoadComputations();
         }
 

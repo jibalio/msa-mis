@@ -587,16 +587,29 @@ namespace MSAMISUserInterface {
         }
 
         private void GAllGuardsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            if (GAllGuardsGRD.SelectedRows.Count == 1) {
-                if (GAllGuardsGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Active")) HideBtNs(true, false);
-                else HideBtNs(true, Login.AccountType != 2);
-            }
-            else if (GAllGuardsGRD.SelectedRows.Count > 1) {
-                var ret = true;
-                foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows)
-                    if (row.Cells[2].Value.ToString().Equals("Active")) ret = false;
-                if (ret) HideBtNs(false, Login.AccountType != 2);
-                else HideBtNs(false, false);
+            if (GViewAllViewByCMBX.SelectedIndex == 0) { 
+                if (GAllGuardsGRD.SelectedRows.Count == 1) {
+                    if (GAllGuardsGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Active")) HideBtNs(true, false);
+                    else HideBtNs(true, Login.AccountType != 2);
+                }
+                else if (GAllGuardsGRD.SelectedRows.Count > 1) {
+                    var ret = true;
+                    foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows)
+                        if (row.Cells[2].Value.ToString().Equals("Active")) ret = false;
+                    if (ret) HideBtNs(false, Login.AccountType != 2);
+                    else HideBtNs(false, false);
+                }
+            } else {
+                if (GAllGuardsGRD.SelectedRows.Count == 1) {
+                    if (GAllGuardsGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Active")) HideBtNs(true, false);
+                    else HideBtNs(true, Login.AccountType != 2);
+                } else if (GAllGuardsGRD.SelectedRows.Count > 1) {
+                    var ret = true;
+                    foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows)
+                        if (row.Cells[3].Value.ToString().Equals("Active")) ret = false;
+                    if (ret) HideBtNs(false, Login.AccountType != 2);
+                    else HideBtNs(false, false);
+                }
             }
         }
 
@@ -1114,7 +1127,8 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewReqDisBTN_Click(object sender, EventArgs e) {
-            if (IsUnscheduled())
+            if (IsUnscheduled()) { 
+                if (SViewAssSearchClientCMBX.SelectedIndex != 0) { 
                 try {
                     var view = new SchedUnassignGuard {
                         Reference = this,
@@ -1128,7 +1142,12 @@ namespace MSAMISUserInterface {
                     _shadow.ShowDialog();
                 }
                 catch (Exception exception) { Console.WriteLine(exception); }
-            else
+                } else {
+                    RylMessageBox.ShowDialog(
+                    "You can't unassign guards from different clients \nPlease select a client and unassign the guards",
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            } else
                 RylMessageBox.ShowDialog(
                     "You can't unassign a guard with an active assignment \nPlease dismiss the guards before unassigning them",
                     "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1281,9 +1300,7 @@ namespace MSAMISUserInterface {
 
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
             SViewAssCMBX.SelectedIndex = 0;
-            if (int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID) != -1) {
-                if (Login.AccountType != 1) SViewAssUnassignBTN.Visible = true;
-            }
+            if (Login.AccountType != 1) SViewAssUnassignBTN.Visible = true;
             else {
                 SViewAssUnassignBTN.Visible = false;
             }
@@ -1344,8 +1361,7 @@ namespace MSAMISUserInterface {
             }
             else if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Active")) {
                 SViewAssViewDetailsBTN.Visible = true;
-                if (SViewAssSearchClientCMBX.SelectedIndex != 0 &&
-                    Login.AccountType != 2)
+                if (Login.AccountType != 2)
                     SViewAssUnassignBTN.Visible = true;
             }
         }
