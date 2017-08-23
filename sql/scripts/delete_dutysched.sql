@@ -1,6 +1,5 @@
-     delete from attendance;
+		delete from attendance;
         alter table attendance auto_increment = 1;
-
         
         delete from msadb.dutydetails;
         alter table msadb.dutydetails auto_increment = 1;
@@ -31,10 +30,10 @@
 
         delete from mysql.event;
 
-            -- RESET ALL GUARDS TO INACTIEF
-            update msadb.guards set gstatus=2;
+		-- RESET ALL GUARDS TO INACTIEF
+		update msadb.guards set gstatus=2;
             
-            delete from personsinvolved;
-            alter table personsinvolved auto_increment = 1;
-            delete from msadb.incidentreport;
+		delete from personsinvolved;
+		alter table personsinvolved auto_increment = 1;
+		delete from msadb.incidentreport;
         alter table msadb.incidentreport auto_increment = 1;

@@ -102,12 +102,11 @@ namespace MSAMISUserInterface {
         /// <param name="rid">Request ID.</param>
         /// <returns></returns>
         public static DataTable GetAssignmentRequestDetails(int rid) {
-            string q = $@"SELECT name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, 
-                        contractstart, contractend, noguards, request.rstatus, uname
-                        FROM request left join request_assign on request_assign.rid = request.rid
-                        left join client on request.cid = client.cid
-                        left join account on accid = ProcessedBy where request.rid={rid}"; ;
-            return SQLTools.ExecuteQuery(q);
+            String q = @"SELECT name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, 
+                        contractstart, contractend, noguards, request.rstatus
+                        FROM request left join request_assign on request_assign.rid = request.rid left join client on request.cid = client.cid "
+                 + " where request.rid={0}"; ;
+            return SQLTools.ExecuteQuery(q, null, null, null, new String[] { rid.ToString() });
         }
         #endregion
 
@@ -474,11 +473,9 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                                                 when 2 then 'Approved'
                                                 when 3 then 'Active'
                                                 when 4 then 'Declined'
-                                                end as status, dateeffective, uname from request_unassign
+                                                end as status from request_unassign
                         left join request on request_unassign.RID = request.RID
-                        left join client on request.CID=client.CID 
-                        left join account on accid = ProcessedBy
-                        where request.RID = " + RID;
+                        left join client on request.CID=client.CID where request.RID = " + RID;
             return SQLTools.ExecuteQuery(q);
         }
 
@@ -627,7 +624,6 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
 
         #region MISC
-
         public class TimePeriod {
             public int Id;
             public DateTime FromDate {
