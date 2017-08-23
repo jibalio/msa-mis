@@ -166,7 +166,7 @@ namespace MSAMISUserInterface {
                     Gid = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
                 }
             }
-            catch { }
+            catch (Exception exception) { Console.WriteLine(exception);}
             LoadDetails();
             LoadComputations();
             CalcPNL.AutoScrollPosition = new Point(0, 0);
@@ -317,7 +317,7 @@ namespace MSAMISUserInterface {
                 if (_pay.PayrollStatus == Enumeration.PayrollStatus.Approved) {
                     BonusAddBTN.Visible = false;
                     ApproveBTN.Location = new Point(186, 388);
-                    ApproveBTN.Text = "VIEW PAYSLIP";
+                    ApproveBTN.Text = "PAYSLIP";
                 }
             }
         }
@@ -349,7 +349,8 @@ namespace MSAMISUserInterface {
                     var view = new ReportsPreview {
                         Location = Location,
                         Names = EmpListGRD.SelectedRows[0].Cells[1].Value.ToString(),
-                        Mode = 5
+                        Mode = 5,
+                        Pay = _pay
                     };
                     view.ShowDialog();
                 }

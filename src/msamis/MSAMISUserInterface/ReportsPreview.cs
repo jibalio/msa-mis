@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class ReportsPreview : Form {
@@ -10,6 +11,7 @@ namespace MSAMISUserInterface {
         public int Mode;
         public Shadow Refer;
         public string Names;
+        public Payroll Pay;
 
         public ReportsPreview() {
             InitializeComponent();
@@ -39,6 +41,9 @@ namespace MSAMISUserInterface {
                     break;
                 case 5:
                     NameLBL.Text = "Payslip Details";
+                    PayslipSaveTo.Visible = true;
+                    ApproveLBL.Visible = true;
+                    ApproveLBL.Text = "Approved by: " + Pay.ApprovedBy;
                     break;
                 default:
                     NameLBL.Text = "Summary Report";
@@ -221,5 +226,15 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private void PayslipSaveTo_Click(object sender, EventArgs e) {
+            var savefile = new SaveFileDialog {
+                FileName = "Payslip for "+ Names ,
+                Filter = "Portable Document Format (.pdf)|*.pdf"
+            };
+            if (savefile.ShowDialog() == DialogResult.OK)
+                RylMessageBox.ShowDialog("Saved");
+            //  File.Copy(SSummaryFilesLST.Items[0].SubItems[1].Text, savefile.FileName, true);
+        }
     }
 }

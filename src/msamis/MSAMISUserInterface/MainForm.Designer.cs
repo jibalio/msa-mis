@@ -1568,10 +1568,10 @@
             // SchedulesPage.Panel2
             // 
             this.SchedulesPage.Panel2.BackColor = System.Drawing.Color.White;
+            this.SchedulesPage.Panel2.Controls.Add(this.SDutyDetailsPNL);
             this.SchedulesPage.Panel2.Controls.Add(this.SViewAssPNL);
             this.SchedulesPage.Panel2.Controls.Add(this.SGuardHistoryPNL);
             this.SchedulesPage.Panel2.Controls.Add(this.SViewReqPNL);
-            this.SchedulesPage.Panel2.Controls.Add(this.SDutyDetailsPNL);
             this.SchedulesPage.Size = new System.Drawing.Size(930, 668);
             this.SchedulesPage.SplitterDistance = 206;
             this.SchedulesPage.SplitterWidth = 3;
@@ -1790,7 +1790,7 @@
             this.SViewAssPNL.Controls.Add(this.SViewAssignmentErrorPNL);
             this.SViewAssPNL.Location = new System.Drawing.Point(15, 14);
             this.SViewAssPNL.Name = "SViewAssPNL";
-            this.SViewAssPNL.Size = new System.Drawing.Size(701, 640);
+            this.SViewAssPNL.Size = new System.Drawing.Size(702, 640);
             this.SViewAssPNL.TabIndex = 13;
             this.SViewAssPNL.Visible = false;
             // 
@@ -1877,7 +1877,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label10.Location = new System.Drawing.Point(513, 23);
+            this.label10.Location = new System.Drawing.Point(514, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 19);
@@ -1896,7 +1896,7 @@
             "All",
             "Scheduled",
             "Unscheduled"});
-            this.SViewAssCMBX.Location = new System.Drawing.Point(565, 20);
+            this.SViewAssCMBX.Location = new System.Drawing.Point(566, 20);
             this.SViewAssCMBX.Name = "SViewAssCMBX";
             this.SViewAssCMBX.Size = new System.Drawing.Size(119, 25);
             this.SViewAssCMBX.Sorted = true;
@@ -1912,7 +1912,7 @@
             this.SViewAssSearchTXTBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.SViewAssSearchTXTBX.Location = new System.Drawing.Point(220, 71);
             this.SViewAssSearchTXTBX.Name = "SViewAssSearchTXTBX";
-            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(266, 18);
+            this.SViewAssSearchTXTBX.Size = new System.Drawing.Size(267, 18);
             this.SViewAssSearchTXTBX.TabIndex = 8;
             this.SViewAssSearchTXTBX.Text = "Search or filter";
             this.SViewAssSearchTXTBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1965,7 +1965,7 @@
             this.SViewAssGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.SViewAssGRD.RowHeadersVisible = false;
             this.SViewAssGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SViewAssGRD.Size = new System.Drawing.Size(662, 458);
+            this.SViewAssGRD.Size = new System.Drawing.Size(663, 458);
             this.SViewAssGRD.TabIndex = 5;
             this.SViewAssGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SViewAssGRD_CellEnter);
             this.SViewAssGRD.DoubleClick += new System.EventHandler(this.SViewAssGRD_DoubleClick);
@@ -1976,7 +1976,7 @@
             this.SViewAssSearchLine.AutoSize = true;
             this.SViewAssSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.SViewAssSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.SViewAssSearchLine.Location = new System.Drawing.Point(254, 76);
+            this.SViewAssSearchLine.Location = new System.Drawing.Point(255, 76);
             this.SViewAssSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SViewAssSearchLine.Name = "SViewAssSearchLine";
             this.SViewAssSearchLine.Size = new System.Drawing.Size(207, 19);
