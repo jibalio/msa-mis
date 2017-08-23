@@ -11,12 +11,14 @@ using System.Windows.Forms;
 
 
 namespace MSAMISUserInterface {
+
+
     /// <summary>
     /// Do not serialize objects when payroll is pending.
     /// </summary>
     public class Payroll {
 
-
+        public string ApprovedBy = "ApprovedUser";
 
 
         #region Adjustement Operationen
