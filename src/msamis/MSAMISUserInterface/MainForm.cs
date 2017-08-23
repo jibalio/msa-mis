@@ -1759,6 +1759,7 @@ namespace MSAMISUserInterface {
         }
 
         private void PSalaryReportsExportBTN_Click(object sender, EventArgs e) {
+            /*
             try {
                 var savefile = new SaveFileDialog {
                     FileName = "PaySummaryReport_" + PSummaryFilesLST.Items[0].SubItems[0].Text,
@@ -1771,8 +1772,20 @@ namespace MSAMISUserInterface {
                 RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
                     "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(exception);
+            }*/
+            try {
+                var view = new Exporting {
+                    Refer = _shadow,
+                    Main = this,
+                    Mode = 's',
+                    Location = _newFormLocation
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
             }
-          
+            catch (Exception exception) { Console.WriteLine(exception); }
+
         }
 
         public void PayLoadReport() {
@@ -1839,7 +1852,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-
-
+        
     }
 }

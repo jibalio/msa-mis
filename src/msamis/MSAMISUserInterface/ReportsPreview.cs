@@ -9,6 +9,7 @@ namespace MSAMISUserInterface {
         public MainForm Main;
         public int Mode;
         public Shadow Refer;
+        public string Names;
 
         public ReportsPreview() {
             InitializeComponent();
@@ -17,7 +18,6 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             Close();
-            Refer.Hide();
         }
 
         private void GuardsReport_Load(object sender, EventArgs e) {
@@ -37,6 +37,9 @@ namespace MSAMISUserInterface {
                 case 4:
                     NameLBL.Text = "Salary Report";
                     break;
+                case 5:
+                    NameLBL.Text = "Payslip Details";
+                    break;
                 default:
                     NameLBL.Text = "Summary Report";
                     break;
@@ -49,11 +52,12 @@ namespace MSAMISUserInterface {
         }
 
         private void GuardsReport_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Hide();
+            if (Mode !=5 ) Refer.Close();
         }
 
         private void LoadTable() {
-            TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            if (Mode != 5) TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            else TimeLBL.Text = "for " + Names;
             if (Mode == 1) {
                 GReportGRD.DataSource = Reports.GetGuardsList();
                 GReportGRD.Columns[0].HeaderText = "Name";
