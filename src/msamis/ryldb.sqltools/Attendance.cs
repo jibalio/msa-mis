@@ -46,7 +46,7 @@ namespace MSAMISUserInterface {
             this.AID = AID;
             period = new Period(periodx, month, year);
             Console.Write(period.period);
-            DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun from dutydetails where AID =" + AID);
+            
 
             GID = SQLTools.GetInt("select gid from sduty_assignment where aid=" + AID);
 
@@ -55,8 +55,8 @@ namespace MSAMISUserInterface {
             ax += @"('" + GID + @"', '" + month + @"', '" + periodx + @"', '" + year + @"')";
             SQLTools.ExecuteNonQuery(ax);
             string ifn = SQLTools.getLastInsertedId("period", "pid");
-            
-            
+
+            DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun from dutydetails where AID =" + AID);
             foreach (DataRow duties in x.Rows) {
                 List<int> dutydates = new List<int>();
                 int did = int.Parse(duties["did"].ToString());
@@ -91,6 +91,8 @@ namespace MSAMISUserInterface {
             }
             
         }
+
+        
         #endregion
 
         #region Instance Fields

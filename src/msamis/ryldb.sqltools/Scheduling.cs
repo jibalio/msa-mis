@@ -1,7 +1,9 @@
 ﻿using MySql.Data;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
@@ -595,6 +597,17 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             return "=";
         }
 
+        public static string CheckOverlapping (DateTime ti, DateTime to, Days days) {
+            for (int c = 0; c < 7; c++) {
+                bool DayActive = days.Value[c];
+                if (DayActive) {
+                    List<TimePeriod> list = new List<TimePeriod>();
+                }
+            }
+            throw new NotImplementedException();
+        }
+
+
 
 
 
@@ -614,6 +627,22 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
 
         #region MISC
+
+        public class TimePeriod {
+            public int Id;
+            public DateTime FromDate {
+                get; set;
+            }
+            public DateTime ToDate {
+                get; set;
+            }
+            public static DateTime Parse(string date) {
+                var dt = DateTime.Parse(date,
+                    CultureInfo.CreateSpecificCulture("en-US"),
+                    DateTimeStyles.RoundtripKind);
+                return dt;
+            }
+        }
 
         public class Days {
             public string deendracht = null;
