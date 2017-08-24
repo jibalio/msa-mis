@@ -68,7 +68,7 @@ namespace MSAMISUserInterface
         #region Salary Export
         public static DataTable GetSalaryList()
         {
-            ExtraQueryParams = "GROUP BY fn;";
+            ExtraQueryParams = "WHERE gid = 0 GROUP BY fn;";
             String q = "SELECT fn, ln, mn, gid, GStatus, gender, height, weight, ln, mn, gid, GStatus, gender, height, weight, gender, height, weight FROM msadb.guards " + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
