@@ -68,13 +68,17 @@ namespace MSAMISUserInterface {
         }
 
 
-        public static DataTable GetUnassignedGuards(String searchkeyword) {
-            String q = @"SELECT guards.gid, concat(ln,', ',fn,' ',mn) as name,
-                         concat(streetno, ', ', street, ', ', brgy, ', ', city) as Location
-                         from msadb.guards
-                         left join address on address.gid = guards.gid
-                          ";
-            return SQLTools.ExecuteQuery(q + searchkeyword + "and gstatus = 2 and atype=2");
+        public static DataTable GetUnassignedGuards(String searchkeyword, string start, string end) {
+            MessageBox.Show(start + ":" + end);
+            String q = $@"select guards.gid, concat(ln,', ',fn,' ',mn) as name,
+                         concat(address.streetno, ', ', address.street, ', ', address.brgy, ', ', address.city) as Location, request_assign.ContractStart, request_assign.ContractEnd from guards
+	                        left join sduty_assignment on sduty_assignment.gid = guards.gid
+                            left join address on address.gid = guards.gid
+                            left join request_assign on request_assign.RAID = sduty_assignment.raid
+                            where atype = 2  and (gstatus = 2 or (GStatus = 1 or (request_assign.ContractStart > '{
+                    end
+                }' or (request_assign.ContractEnd < '{start}')))) ";
+            return SQLTools.ExecuteQuery(q + searchkeyword);
         }
 
 
@@ -103,8 +107,9 @@ namespace MSAMISUserInterface {
         /// <returns></returns>
         public static DataTable GetAssignmentRequestDetails(int rid) {
             String q = @"SELECT name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, 
-                        contractstart, contractend, noguards, request.rstatus
-                        FROM request left join request_assign on request_assign.rid = request.rid left join client on request.cid = client.cid "
+                        contractstart, contractend, noguards, request.rstatus, uname
+                        FROM request left join request_assign on request_assign.rid = request.rid left join client on request.cid = client.cid 
+                        left join account on account.accid = request.processedby "
                  + " where request.rid={0}"; ;
             return SQLTools.ExecuteQuery(q, null, null, null, new String[] { rid.ToString() });
         }

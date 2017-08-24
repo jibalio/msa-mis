@@ -8,6 +8,9 @@ namespace MSAMISUserInterface {
         public Shadow Refer;
         public MainForm Reference;
 
+        private string _contractStart;
+        private string _contractEnd;
+
         public SchedViewAssReq() {
             InitializeComponent();
             Opacity = 0;
@@ -30,8 +33,8 @@ namespace MSAMISUserInterface {
             var dt = Scheduling.GetAssignmentRequestDetails(Raid);
             ClientLBL.Text = dt.Rows[0]["name"].ToString();
             PermAddLBL.Text = "Location: " + dt.Rows[0]["location"];
-            ContractStartLBL.Text = "Contract Start: " + dt.Rows[0]["contractstart"];
-            ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"];
+            _contractStart = ContractStartLBL.Text = "Contract Start: " + dt.Rows[0]["contractstart"];
+            _contractEnd = ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"];
             _numGuards = int.Parse(dt.Rows[0]["noguards"].ToString());
             NoLBL.Text = "Guards Needed: " + _numGuards;
             if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Pending.ToString())) {
@@ -49,7 +52,7 @@ namespace MSAMISUserInterface {
                 AssignBTN.Location = new Point(220, 411);
                 if (Login.AccountType == 2) AssignBTN.Visible = false;
                 DeclineBTN.Visible = false;
-                ApprovedBy.Text = "Approved by: " + dt.Rows[0]["uname"].ToString();
+                ApprovedBy.Text = "Approved by: " + dt.Rows[0]["uname"];
             }
             else {
                 AssignBTN.Visible = false;
@@ -61,7 +64,7 @@ namespace MSAMISUserInterface {
                     StatusLBL.Text = "Status: Inctive";
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) { 
                     StatusLBL.Text = "Status: Decline";
-                    ApprovedBy.Text = "Declined by: " + dt.Rows[0]["uname"].ToString();
+                    ApprovedBy.Text = "Declined by: " + dt.Rows[0]["uname"];
                 }
             }
             NeededLBL.ForeColor = _numGuards > Scheduling.GetNumberOfUnassignedGuards()
@@ -86,7 +89,9 @@ namespace MSAMISUserInterface {
                     NumberOfGuards = _numGuards,
                     Refer = this,
                     ClientName = ClientLBL.Text,
-                    Location = Location
+                    Location = Location,
+                    ContractStart = _contractStart,
+                    ContractEnd = _contractEnd
                 };
                 view.ShowDialog();
             }
