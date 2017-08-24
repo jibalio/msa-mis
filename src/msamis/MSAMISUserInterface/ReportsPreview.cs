@@ -135,7 +135,7 @@ namespace MSAMISUserInterface {
             pdfTable.WidthPercentage = 30;
             pdfTable.DefaultCell.BorderWidth = 1;
             pdfTable.HorizontalAlignment = 1;
-            pdfTable.TotalWidth = 900f;
+            pdfTable.TotalWidth = 1000f;
             pdfTable.LockedWidth = true;
 
             //Add Headers Here
@@ -193,33 +193,139 @@ namespace MSAMISUserInterface {
             }
             else if (o == 's') {
                 PdfPCell cell = new PdfPCell();
+                cell = new PdfPCell(new Phrase("Employee", headerfont));
                 cell.Rowspan = 3;
-                cell.AddElement(new Phrase("Employee", headerfont));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Days of Work", headerfont));
+
+                cell = new PdfPCell(new Phrase("Days of Work", headerfont));
+                cell.Rowspan = 3;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Rate", headerfont));
+
+                cell = new PdfPCell(new Phrase("Rate", headerfont));
+                cell.Rowspan = 3;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Total Regular Wage", headerfont));
+
+                cell = new PdfPCell(new Phrase("Total Regular Wage", headerfont));
+                cell.Rowspan = 3;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Overtime", headerfont));
                 cell.Rowspan = 1;
                 cell.Colspan = 4;
-                cell.AddElement(new Phrase("Overtime", headerfont));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Total Amount", headerfont));
+                cell.Rowspan = 3;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Overtime", headerfont));
+                cell.Rowspan = 1;
+                cell.Colspan = 4;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("DEDUCTIONS", headerfont));
+                cell.Rowspan = 1;
+                cell.Colspan = 4;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("13th Month", headerfont));
+                cell.Rowspan = 3;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Cola", headerfont));
+                cell.Rowspan = 3;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Net Amount Paid", headerfont));
+                cell.Rowspan = 3;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Signature of Payee", headerfont));
+                cell.Rowspan = 3;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                //Second Row
+                cell = new PdfPCell(new Phrase("Regular Day", headerfont));
                 cell.Colspan = 2;
-                cell.AddElement(new Phrase("Regular Day", headerfont));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Sunday & Holiday", headerfont));
+
+                cell = new PdfPCell(new Phrase("Sunday & Holiday", headerfont));
+                cell.Colspan = 2;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
-                cell.Colspan = 1;
-                cell.AddElement(new Phrase("Hrs", headerfont));
+
+                cell = new PdfPCell(new Phrase("SSS", headerfont));
+                cell.Colspan = 2;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Amt", headerfont));
+
+                cell = new PdfPCell(new Phrase("PHIC", headerfont));
+                cell.Colspan = 2;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Hrs", headerfont));
+
+                cell = new PdfPCell(new Phrase("Tax Withhold", headerfont));
+                cell.Colspan = 2;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Amt", headerfont));
+
+                cell = new PdfPCell(new Phrase("HDMF", headerfont));
+                cell.Colspan = 2;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 pdfTable.AddCell(cell);
+
+                //Third Row
+                cell = new PdfPCell(new Phrase("Hrs", headerfont));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Amt", headerfont));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Hrs", headerfont));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase("Amt", headerfont));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfTable.AddCell(cell);
+
                 //test if it loops after the edge column of the table
             }
             return pdfTable;
