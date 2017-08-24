@@ -62,8 +62,15 @@ namespace MSAMISUserInterface {
 
             DbValues =
                 SQLTools.ExecuteQuery(
-                    $@"select * from payroll where gid={GID} AND month={month} AND period={period} AND year={year}").Rows[0];
+                    $@"select 
+                        pid, gid, month, period, year, rates_id, cashbond, 
+                        thirteenth, cola, sss, pagibig,philhealth,withtax,
+                        cashadv, emergencyallowance,totalsummary_serializable,
+                         hc_serializable,lastmodified, pstatus, basicpayhourly, uname
+                          from payroll left join account on payroll.approvedby=account.accid 
+                        where gid={GID} AND month={month} AND period={period} AND year={year}").Rows[0];
             this._PayrollId = int.Parse(DbValues["PID"].ToString());
+            this.ApprovedBy = DbValues["uname"].ToString();
             if (DbValues["pstatus"].ToString() == Enumeration.PayrollStatus.Approved.ToString()) {
                 _InitMeApproved();
             }
