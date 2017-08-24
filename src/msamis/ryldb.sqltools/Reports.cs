@@ -65,6 +65,16 @@ namespace MSAMISUserInterface
 
         #endregion
 
+        #region Salary Export
+        public static DataTable GetSalaryList()
+        {
+            ExtraQueryParams = "WHERE gid = 0 GROUP BY fn;";
+            String q = "SELECT fn, ln, mn, gid, GStatus, gender, height, weight, ln, mn, gid, GStatus, gender, height, weight, gender, height, weight FROM msadb.guards " + ExtraQueryParams;
+            return SQLTools.ExecuteQuery(q);
+        }
+
+        #endregion
+
         #region Export
 
         public static DataTable GetList(char formOrigin)
@@ -75,6 +85,8 @@ namespace MSAMISUserInterface
                 return GetClientsList();
             else if (formOrigin == 'd')
                 return GetDutyDetailList();
+            else if (formOrigin == 's')
+                return GetSalaryList();
             else
                 return null;
         }
@@ -132,8 +144,10 @@ namespace MSAMISUserInterface
                     return "ClientsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
                 else if (o == 'g')
                     return "GuardsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
-            else if (o == 'd')
-                return "SchedSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
+                else if (o == 'd')
+                    return "SchedSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
+            else if (o == 's')
+                return "SalaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
             return null;
             }
 
@@ -146,7 +160,7 @@ namespace MSAMISUserInterface
                 else if (formOrigin == 'd')
                     return new float[] { 130f, 130f, 80f, 230f, 60f, 60f, 60f, 120f, 120f };
             else if (formOrigin == 's')
-                return new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f };
+                return new float[] { 30f, 10f, 10f, 10f, 8f, 8f, 8f, 8f, 10f, 8f, 8f, 8f, 8f, 10f, 10f, 10f, 10f, 20f };
             return null;
         }
     }

@@ -559,11 +559,20 @@ namespace MSAMISUserInterface {
             return wt;
         }
 
+        private string _dateeffectivesss;
+        private string _rangesss;
+        private string _amountsss;
         public double ComputeSSS(int contrib_id) {
-            var ssscontrib = SQLTools.ExecuteQuery($"select * from ssscontrib where contrib_id='{contrib_id}'");
+            var ssscontrib = SQLTools.ExecuteQuery($@"select * from ssscontrib 
+                                                left join contribdetails on contribdetails.contrib_id = ssscontrib.contrib_id where ssscontrib.contrib_id='{contrib_id}'");
             foreach (DataRow dr in ssscontrib.Rows)
                 if (double.Parse(dr["range_start"].ToString()) < GrossPay &&
                     GrossPay < double.Parse(dr["range_end"].ToString())) {
+
+                    _dateeffectivesss = DateTime.Parse(dr["date_effective"].ToString()).ToString("MMMM dd, yyyy");
+                    _rangesss = "₱ " + dr["range_start"].ToString() + " - " + "₱ "+ dr["range_end"].ToString();
+                    _amountsss = dr["ec"].ToString();
+
                     return double.Parse(dr["ec"].ToString());
                     break;
                 }
@@ -982,9 +991,12 @@ where rates_id={rates_id};
             SQLTools.ExecuteNonQuery(kwiri);
             SQLTools.ExecuteNonQuery("call init_checkdate_rates()");
         }
+
+
+        // TODO: sdafsdgf 
         public string[] GetSSSDetails() {
             return new string[] {
-                "December 27, 2014 - January 10, 1970", "3340.00 - 5500.00", "281"
+                _dateeffectivesss, _rangesss, _amountsss
             };
         }
 

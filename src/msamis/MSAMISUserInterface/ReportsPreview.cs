@@ -126,7 +126,7 @@ namespace MSAMISUserInterface {
                         GReportGRD.Rows[x].Cells[0].Value = "";
                 }
             }
-            var myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
+            var myfont = FontFactory.GetFont("Arial", 8, BaseColor.BLACK);
             var pdfTable = new PdfPTable(GReportGRD.ColumnCount);
             pdfTable.SetWidths(Reports.GetPDFFormat(formOrigin));
             pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -135,7 +135,7 @@ namespace MSAMISUserInterface {
             pdfTable.WidthPercentage = 30;
             pdfTable.DefaultCell.BorderWidth = 1;
             pdfTable.HorizontalAlignment = 1;
-            pdfTable.TotalWidth = 900f;
+            pdfTable.TotalWidth = 1000f;
             pdfTable.LockedWidth = true;
 
             //Add Headers Here
@@ -160,7 +160,7 @@ namespace MSAMISUserInterface {
         }
 
         public PdfPTable AddHeaders(PdfPTable pdfTable, char o) {
-            var headerfont = FontFactory.GetFont("Arial", 11, BaseColor.BLACK);
+            var headerfont = FontFactory.GetFont("Arial", 9, BaseColor.BLACK);
             if (o == 'g') {
                 pdfTable.AddCell(new Phrase("Name", headerfont));
                 pdfTable.AddCell(new Phrase("Status", headerfont));
@@ -194,32 +194,95 @@ namespace MSAMISUserInterface {
             else if (o == 's') {
                 PdfPCell cell = new PdfPCell();
                 cell.Rowspan = 3;
-                cell.AddElement(new Phrase("Employee", headerfont));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+
+                cell.Phrase = (new Phrase("Employee", headerfont));
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Days of Work", headerfont));
+                cell.Phrase = (new Phrase("Days of Work", headerfont));
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Rate", headerfont));
+                cell.Phrase = (new Phrase("Rate", headerfont));
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Total Regular Wage", headerfont));
+                cell.Phrase = (new Phrase("Total Regular Wage", headerfont));
                 pdfTable.AddCell(cell);
+
                 cell.Rowspan = 1;
                 cell.Colspan = 4;
-                cell.AddElement(new Phrase("Overtime", headerfont));
+
+                cell.Phrase = (new Phrase("Overtime", headerfont));
                 pdfTable.AddCell(cell);
-                cell.Colspan = 2;
-                cell.AddElement(new Phrase("Regular Day", headerfont));
-                pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Sunday & Holiday", headerfont));
-                pdfTable.AddCell(cell);
+
+                cell.Rowspan = 3;
                 cell.Colspan = 1;
-                cell.AddElement(new Phrase("Hrs", headerfont));
+
+                cell.Phrase = (new Phrase("Total Amount", headerfont));
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Amt", headerfont));
+
+                cell.Rowspan = 1;
+                cell.Colspan = 4;
+
+                cell.Phrase = (new Phrase("DEDUCTIONS", headerfont));
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Hrs", headerfont));
+
+                cell.Rowspan = 3;
+                cell.Colspan = 1;
+
+                cell.Phrase = (new Phrase("13th Month", headerfont));
                 pdfTable.AddCell(cell);
-                cell.AddElement(new Phrase("Amt", headerfont));
+
+                cell.Phrase = (new Phrase("Cola", headerfont));
                 pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Emergency Allow.", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Net Amount Paid", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Signature of Payee", headerfont));
+                pdfTable.AddCell(cell);
+
+                //Second Row
+                cell.Colspan = 2;
+                cell.Rowspan = 1;
+
+                cell.Phrase = (new Phrase("Regular Day", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Sunday & Holiday", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Colspan = 1;
+                cell.Rowspan = 2;
+
+                cell.Phrase = (new Phrase("SSS", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("PHIC", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Tax Withhold", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("HDMF", headerfont));
+                pdfTable.AddCell(cell);
+
+                //Third Row
+                cell.Colspan = 1;
+                cell.Rowspan = 1;
+
+                cell.Phrase = (new Phrase("Hrs", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Amt", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Hrs", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Amt", headerfont));
+                pdfTable.AddCell(cell);
+
                 //test if it loops after the edge column of the table
             }
             return pdfTable;

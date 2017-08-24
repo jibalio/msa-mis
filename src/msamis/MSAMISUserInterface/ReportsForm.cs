@@ -50,7 +50,7 @@ namespace MSAMISUserInterface {
             pdfTable.WidthPercentage = 30;
             pdfTable.DefaultCell.BorderWidth = 1;
             pdfTable.HorizontalAlignment = 1;
-            pdfTable.TotalWidth = 900f;
+            pdfTable.TotalWidth = 1000f;
             pdfTable.LockedWidth = true;
 
             //Add Headers Here
