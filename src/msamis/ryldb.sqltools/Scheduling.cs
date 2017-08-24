@@ -103,8 +103,9 @@ namespace MSAMISUserInterface {
         /// <returns></returns>
         public static DataTable GetAssignmentRequestDetails(int rid) {
             String q = @"SELECT name, concat(streetno,', ',streetname,', ',brgy,', ',city) as Location, 
-                        contractstart, contractend, noguards, request.rstatus
-                        FROM request left join request_assign on request_assign.rid = request.rid left join client on request.cid = client.cid "
+                        contractstart, contractend, noguards, request.rstatus, uname
+                        FROM request left join request_assign on request_assign.rid = request.rid left join client on request.cid = client.cid 
+                        left join account on account.accid = request.processedby "
                  + " where request.rid={0}"; ;
             return SQLTools.ExecuteQuery(q, null, null, null, new String[] { rid.ToString() });
         }
