@@ -365,6 +365,7 @@ namespace MSAMISUserInterface {
         private void NotifTMR_Tick(object sender, EventArgs e) {
             if (_day != DateTime.Now.Day) {
                 CheckPayday();
+                SQLTools.ExecuteNonQuery("call init_CHECKDATE_ALL()"); 
             }
             _day = DateTime.Now.Day;
         }

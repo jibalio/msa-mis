@@ -58,6 +58,8 @@ namespace MSAMISUserInterface {
             AvailableGRD.Columns[1].Width = 200;
             AvailableGRD.Columns[2].HeaderText = "LOCATION";
             AvailableGRD.Columns[2].Width = 220;
+            AvailableGRD.Columns[3].Visible = false;
+            AvailableGRD.Columns[4].Visible = false;
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {

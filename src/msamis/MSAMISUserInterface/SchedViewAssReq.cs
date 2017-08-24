@@ -58,9 +58,10 @@ namespace MSAMISUserInterface {
                 AssignBTN.Visible = false;
                 AvailablePNL.Visible = false;
                 DeclineBTN.Visible = false;
-                if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Active.ToString()))
+                if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Active.ToString())) { 
                     StatusLBL.Text = "Status: Active";
-                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString()))
+                    ApprovedBy.Text = "Approved by: " + dt.Rows[0]["uname"];
+                } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString()))
                     StatusLBL.Text = "Status: Inctive";
                 else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) { 
                     StatusLBL.Text = "Status: Decline";

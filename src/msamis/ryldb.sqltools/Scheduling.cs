@@ -478,8 +478,12 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                                                 when 2 then 'Approved'
                                                 when 3 then 'Active'
                                                 when 4 then 'Declined'
-                                                end as status from request_unassign
+                                                end as status,
+                                                dateeffective,
+                                                uname
+                                                from request_unassign
                         left join request on request_unassign.RID = request.RID
+                        left join account on accid = request.ProcessedBy
                         left join client on request.CID=client.CID where request.RID = " + RID;
             return SQLTools.ExecuteQuery(q);
         }

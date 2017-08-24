@@ -28,23 +28,23 @@ namespace MSAMISUserInterface {
                 ApproveBTN.Visible = false;
                 DeclineBTN.Visible = false;
                 NameLBL.Text = "Guards Unassigned";
-                DateEffectiveLBL.Text = "Date Effective: " + dt.Rows[0]["dateeffective"].ToString(); ;
-                ApprovedByLBL.Text = "Approved by: " + dt.Rows[0]["uname"].ToString(); ;
+                DateEffectiveLBL.Text = "Date Effective: " + dt.Rows[0]["dateeffective"]; 
+                ApprovedByLBL.Text = "Approved by: " + dt.Rows[0]["uname"]; 
             }
             else if (dt.Rows[0][1].ToString().Equals("Pending")) {
                 if (Login.AccountType != 2) { 
                 ApproveBTN.Visible = true;
                 DeclineBTN.Visible = true;
                 }
-                DateEffectiveLBL.Text = "Date Effective: " + dt.Rows[0]["dateeffective"].ToString(); ;
-                ApprovedByLBL.Text = "Approved by: " + dt.Rows[0]["uname"].ToString(); ;
+                DateEffectiveLBL.Text = "Date Effective: " + dt.Rows[0]["dateeffective"]; 
+                ApprovedByLBL.Text = "Approved by: " + dt.Rows[0]["uname"]; 
             }
             else {
                 ApproveBTN.Visible = false;
                 DeclineBTN.Visible = false;
                 NameLBL.Text = "Declined Request to Unassign";
                 DateEffectiveLBL.Visible = false;
-                ApprovedByLBL.Text = "Declined by: " + dt.Rows[0]["uname"].ToString();
+                ApprovedByLBL.Text = "Declined by: " + dt.Rows[0]["uname"];
             }
 
             AssignedGRD.DataSource = Scheduling.GetGuardsToBeUnassigned(Rid);
