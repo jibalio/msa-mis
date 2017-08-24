@@ -1804,7 +1804,7 @@ namespace MSAMISUserInterface {
             PSummaryDateLBL.Text = PSummaryFilesLST.Items.Count > 0
                 ? "for the month of " + PSummaryFilesLST.Items[0].Text
                 : "No reports available";
-            PSalaryReportsExportBTN.Visible = PSalaryReportsPreviewBTN.Visible = PSummaryFilesLST.Items.Count > 0;
+          //  PSalaryReportsExportBTN.Visible = PSalaryReportsPreviewBTN.Visible = PSummaryFilesLST.Items.Count > 0;
         }
 
         private void PSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
