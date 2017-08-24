@@ -18,6 +18,9 @@ namespace MSAMISUserInterface {
         private int[] _gidS = {-1};
         public string ClientName;
 
+        public string ContractStart;
+        public string ContractEnd;
+
         public SchedAssignGuards() {
             InitializeComponent();
             Opacity = 0;
@@ -47,7 +50,7 @@ namespace MSAMISUserInterface {
 
         private void RefreshAvailable() {
             AvailableGRD.Rows.Clear();
-            var dt = Scheduling.GetUnassignedGuards(_extraQueryParams);
+            var dt = Scheduling.GetUnassignedGuards(_extraQueryParams, ContractStart, ContractEnd);
             foreach (DataRow row in dt.Rows)
                 if (!_gidS.Contains(int.Parse(row[0].ToString()))) AvailableGRD.Rows.Add(row[0], row[1], row[2]);
             AvailableGRD.Columns[0].Visible = false;
