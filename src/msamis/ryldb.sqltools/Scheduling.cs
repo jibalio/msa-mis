@@ -68,7 +68,8 @@ namespace MSAMISUserInterface {
         }
 
 
-        public static DataTable GetUnassignedGuards(String searchkeyword) {
+        public static DataTable GetUnassignedGuards(String searchkeyword, string start, string end) {
+            MessageBox.Show(start + ":" + end);
             String q = @"SELECT guards.gid, concat(ln,', ',fn,' ',mn) as name,
                          concat(streetno, ', ', street, ', ', brgy, ', ', city) as Location
                          from msadb.guards
