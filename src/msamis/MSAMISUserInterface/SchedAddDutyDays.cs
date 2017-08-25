@@ -30,8 +30,10 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                CloseBTN.Tag = "1";
                 Close();
+            }
         }
 
         private void LoadPage() {

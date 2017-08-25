@@ -162,7 +162,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.AvailableGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.AvailableGRD.EnableHeadersVisualStyles = false;
-            this.AvailableGRD.Location = new System.Drawing.Point(62, 43);
+            this.AvailableGRD.Location = new System.Drawing.Point(35, 54);
             this.AvailableGRD.Name = "AvailableGRD";
             this.AvailableGRD.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -176,7 +176,7 @@
             this.AvailableGRD.RowHeadersVisible = false;
             this.AvailableGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.AvailableGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AvailableGRD.Size = new System.Drawing.Size(420, 259);
+            this.AvailableGRD.Size = new System.Drawing.Size(478, 237);
             this.AvailableGRD.TabIndex = 140;
             // 
             // nGID
@@ -246,7 +246,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.AssignedGRD.DefaultCellStyle = dataGridViewCellStyle5;
             this.AssignedGRD.EnableHeadersVisualStyles = false;
-            this.AssignedGRD.Location = new System.Drawing.Point(62, 8);
+            this.AssignedGRD.Location = new System.Drawing.Point(35, 8);
             this.AssignedGRD.Name = "AssignedGRD";
             this.AssignedGRD.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -260,7 +260,7 @@
             this.AssignedGRD.RowHeadersVisible = false;
             this.AssignedGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AssignedGRD.Size = new System.Drawing.Size(420, 294);
+            this.AssignedGRD.Size = new System.Drawing.Size(478, 283);
             this.AssignedGRD.TabIndex = 142;
             // 
             // gid
@@ -383,12 +383,11 @@
             this.AvailableSearchBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AvailableSearchBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AvailableSearchBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AvailableSearchBX.Location = new System.Drawing.Point(176, 3);
+            this.AvailableSearchBX.Location = new System.Drawing.Point(42, 9);
             this.AvailableSearchBX.Name = "AvailableSearchBX";
             this.AvailableSearchBX.Size = new System.Drawing.Size(199, 18);
             this.AvailableSearchBX.TabIndex = 145;
             this.AvailableSearchBX.Text = "Search or filter";
-            this.AvailableSearchBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AvailableSearchBX.TextChanged += new System.EventHandler(this.AvailableSearchBX_TextChanged);
             this.AvailableSearchBX.Enter += new System.EventHandler(this.AvailableSearchBX_Enter);
             this.AvailableSearchBX.Leave += new System.EventHandler(this.AvailableSearchBX_Leave);
@@ -398,7 +397,7 @@
             this.AvailableSearchLine.AutoSize = true;
             this.AvailableSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AvailableSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.AvailableSearchLine.Location = new System.Drawing.Point(172, 8);
+            this.AvailableSearchLine.Location = new System.Drawing.Point(38, 14);
             this.AvailableSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AvailableSearchLine.Name = "AvailableSearchLine";
             this.AvailableSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -422,8 +421,8 @@
             this.panel2.Controls.Add(this.AssignedLBL);
             this.panel2.Controls.Add(this.ConfirmBTN);
             this.panel2.Controls.Add(this.AvailableLBL);
-            this.panel2.Controls.Add(this.AssignedPNL);
             this.panel2.Controls.Add(this.AvailablePNL);
+            this.panel2.Controls.Add(this.AssignedPNL);
             this.panel2.Location = new System.Drawing.Point(-1, 135);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(550, 467);
