@@ -55,6 +55,7 @@ namespace MSAMISUserInterface {
         public SchedAddDutyDetail() {
             InitializeComponent();
             Opacity = 0;
+            CloseBTN.Tag = "0";
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -193,5 +194,9 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private void SchedAddDutyDetail_FormClosing(object sender, FormClosingEventArgs e) {
+            if (!CloseBTN.Tag.ToString().Equals("1")) e.Cancel = true;
+        }
     }
 }

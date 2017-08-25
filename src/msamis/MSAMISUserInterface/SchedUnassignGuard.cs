@@ -303,5 +303,11 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private void SchedUnassignGuard_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.F4 && e.Alt) {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

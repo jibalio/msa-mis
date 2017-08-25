@@ -348,6 +348,14 @@ namespace MSAMISUserInterface {
 
         #region Other Textbox Props While Editing
 
+        private void CVStatusBX_SelectedIndexChanged(object sender, EventArgs e) {
+            SpouseFirstBX.Enabled = SpouseMiddleBX.Enabled = SpouseLastBX.Enabled = CVStatusBX.SelectedIndex != 1;
+        }
+
+        private void EdAttBX_SelectedIndexChanged(object sender, EventArgs e) {
+            CourseBX.Enabled = EdAttBX.SelectedIndex == 4;
+        }
+
         private void MaleRDBTN_CheckedChanged(object sender, EventArgs e) {
             if (MaleRDBTN.Checked) _gender = 1;
         }
@@ -535,7 +543,7 @@ namespace MSAMISUserInterface {
                     try {
                         InsertDependent(4, FatherFirstBX.Text, FatherMiddleBX.Text, FatherLastBX.Text);
                         InsertDependent(5, MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text);
-                        if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX))
+                        if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX) && CVStatusBX.SelectedIndex!=1)
                             InsertDependent(6, SpouseFirstBX.Text, SpouseMiddleBX.Text, SpouseLastBX.Text);
                         if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
                             InsertDependent(Dependent1RBX.SelectedIndex, Dependent1FirstBX.Text,
@@ -898,5 +906,7 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+
     }
 }

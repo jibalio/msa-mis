@@ -537,6 +537,7 @@
             this.Name = "SchedAddDutyDays";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SchedAddDutyDays_FormClosing);
             this.Load += new System.EventHandler(this.SAddDutyDays_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DaysGRD)).EndInit();
             this.ResumeLayout(false);

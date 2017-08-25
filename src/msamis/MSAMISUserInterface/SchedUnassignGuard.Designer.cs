@@ -32,6 +32,8 @@
             this.DismissBTN = new System.Windows.Forms.Button();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.GuardsPNL = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DateEffective = new System.Windows.Forms.DateTimePicker();
             this.GuardsGRD = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,8 +105,6 @@
             this.ReportLBL = new System.Windows.Forms.Label();
             this.ReportPNL = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.DateEffective = new System.Windows.Forms.DateTimePicker();
             this.GuardsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).BeginInit();
             this.panel1.SuspendLayout();
@@ -161,6 +161,28 @@
             this.GuardsPNL.Name = "GuardsPNL";
             this.GuardsPNL.Size = new System.Drawing.Size(549, 337);
             this.GuardsPNL.TabIndex = 124;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label1.Location = new System.Drawing.Point(267, 300);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 19);
+            this.label1.TabIndex = 233;
+            this.label1.Text = "Date Effective:";
+            // 
+            // DateEffective
+            // 
+            this.DateEffective.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DateEffective.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.DateEffective.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateEffective.Location = new System.Drawing.Point(373, 297);
+            this.DateEffective.Name = "DateEffective";
+            this.DateEffective.Size = new System.Drawing.Size(101, 25);
+            this.DateEffective.TabIndex = 232;
             // 
             // GuardsGRD
             // 
@@ -1108,28 +1130,6 @@
             this.label3.TabIndex = 110;
             this.label3.Text = "Unassign Guard";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(267, 300);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 19);
-            this.label1.TabIndex = 233;
-            this.label1.Text = "Date Effective:";
-            // 
-            // DateEffective
-            // 
-            this.DateEffective.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DateEffective.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.DateEffective.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateEffective.Location = new System.Drawing.Point(373, 297);
-            this.DateEffective.Name = "DateEffective";
-            this.DateEffective.Size = new System.Drawing.Size(101, 25);
-            this.DateEffective.TabIndex = 232;
-            // 
             // SchedUnassignGuard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1149,6 +1149,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_DismissGuard_FormClosing);
             this.Load += new System.EventHandler(this.Sched_DismissGuard_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SchedUnassignGuard_KeyDown);
             this.GuardsPNL.ResumeLayout(false);
             this.GuardsPNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).EndInit();

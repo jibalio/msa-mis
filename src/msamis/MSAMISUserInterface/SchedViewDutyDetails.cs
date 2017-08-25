@@ -231,7 +231,7 @@ namespace MSAMISUserInterface {
                 if (Login.AccountType != 2) DismissBTN.Visible = true;
                 EditDutyDetailsBTN.Visible = true;
 
-                if (Name.Equals("Archived")) {
+                if (Name.Equals("Archived") || Name.Equals("History")) {
                     AddDutyDetailsBTN.Visible = false;
                     DismissBTN.Visible = false;
                     EditDutyDetailsBTN.Visible = false;
@@ -271,7 +271,7 @@ namespace MSAMISUserInterface {
                 PeriodCMBX.Size = new Size(352, 25);
             }
 
-            if (Name.Equals("Archived")) {
+            if (Name.Equals("Archived") || Name.Equals("History")) {
                 EditDaysBTN.Visible = false;
                 PeriodCMBX.Size = new Size(352, 25);
             }

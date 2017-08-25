@@ -394,6 +394,7 @@
             this.Name = "PayrollAddAdjustments";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Tag = "\"0\"";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payroll_AddAdjustments_FormClosing);
             this.Load += new System.EventHandler(this.Payroll_AddAdjustments_Load);
             this.panel2.ResumeLayout(false);

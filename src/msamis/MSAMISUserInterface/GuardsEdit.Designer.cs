@@ -364,6 +364,7 @@
             this.CVStatusBX.Name = "CVStatusBX";
             this.CVStatusBX.Size = new System.Drawing.Size(132, 25);
             this.CVStatusBX.TabIndex = 15;
+            this.CVStatusBX.SelectedIndexChanged += new System.EventHandler(this.CVStatusBX_SelectedIndexChanged);
             // 
             // CVLBL
             // 
@@ -1094,6 +1095,7 @@
             this.EdAttBX.Name = "EdAttBX";
             this.EdAttBX.Size = new System.Drawing.Size(208, 25);
             this.EdAttBX.TabIndex = 64;
+            this.EdAttBX.SelectedIndexChanged += new System.EventHandler(this.EdAttBX_SelectedIndexChanged);
             // 
             // Dependent5MiddleBX
             // 
@@ -2633,9 +2635,9 @@
             this.panel3.Controls.Add(this.FamilyLBL);
             this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Controls.Add(this.GEditDetailsBTN);
+            this.panel3.Controls.Add(this.WorkPNL);
             this.panel3.Controls.Add(this.PersonalPNL);
             this.panel3.Controls.Add(this.FamilyPNL);
-            this.panel3.Controls.Add(this.WorkPNL);
             this.panel3.Location = new System.Drawing.Point(348, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 600);

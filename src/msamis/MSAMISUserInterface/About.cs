@@ -29,7 +29,8 @@ namespace MSAMISUserInterface {
         }
 
         private void About_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.Hide();
+            if (CloseBTN.Visible) Refer.Close();
+            else e.Cancel = true;
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -103,6 +104,7 @@ namespace MSAMISUserInterface {
             ClerkRDBTN.Checked = UsersGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Clerk");
             AdminRDBTN.Enabled = false;
             ClerkRDBTN.Enabled = false;
+            AboutLBL.Visible = false;
             SaveBTN.Text = "SAVE";
         }
 
@@ -137,6 +139,7 @@ namespace MSAMISUserInterface {
             UsersGRDPNL.Visible = true;
             EditUserPNL.Visible = false;
             CloseBTN.Visible = true;
+            AboutLBL.Visible = true;
         }
 
         private void RemoveBTN_Click(object sender, EventArgs e) {
@@ -157,6 +160,7 @@ namespace MSAMISUserInterface {
             CloseBTN.Visible = false;
             AdminRDBTN.Enabled = true;
             ClerkRDBTN.Enabled = true;
+            AboutLBL.Visible = false;
             SaveBTN.Text = "ADD";
         }
     }

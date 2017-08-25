@@ -18,6 +18,7 @@ namespace MSAMISUserInterface {
         public PayrollEmployeeView Refer;
         public int Pid { get; set; }
 
+
         private void AddBTN_Click(object sender, EventArgs e) {
             bool[] changes = {false, false, false, false, false};
             var changeText = "Are you sure you want to change these values?\n";
@@ -71,6 +72,7 @@ namespace MSAMISUserInterface {
         public PayrollAddAdjustments() {
             InitializeComponent();
             Opacity = 0;
+            CloseBTN.Tag = "0";
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -79,7 +81,8 @@ namespace MSAMISUserInterface {
         }
 
         private void Payroll_AddAdjustments_FormClosing(object sender, FormClosingEventArgs e) {
-            Refer.LoadComputations();
+            if (CloseBTN.Tag.ToString().Equals("1")) Refer.LoadComputations();
+            else e.Cancel = true;
         }
 
         private void Payroll_AddAdjustments_Load(object sender, EventArgs e) {
@@ -103,8 +106,10 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                CloseBTN.Tag = "1";
                 Close();
+            }
         }
 
         #endregion

@@ -1206,7 +1206,7 @@ namespace MSAMISUserInterface {
         private void LoadViewReqTable(DataTable dv) {
             SViewReqGRD.DataSource = dv;
             SViewReqGRD.Columns[0].Visible = false;
-            SViewReqGRD.Columns[1].HeaderText = "NAME";
+            SViewReqGRD.Columns[1].HeaderText = "REQUESTED BY";
             SViewReqGRD.Columns[2].HeaderText = "DATE ENTRY";
             SViewReqGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             SViewReqGRD.Columns[3].HeaderText = "TYPE";
@@ -1850,9 +1850,9 @@ namespace MSAMISUserInterface {
             }
         }
 
+
         #endregion
 
         #endregion
-        
     }
 }

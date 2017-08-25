@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using rylui;
@@ -66,6 +67,7 @@ namespace MSAMISUserInterface {
             ClientGRD.Columns[2].Visible = false;
             ClientGRD.Columns[3].Visible = false;
             ClientGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ClientGRD.Sort(ClientGRD.Columns[1], ListSortDirection.Ascending);
             ClientGRD.ClearSelection();
         }
 
