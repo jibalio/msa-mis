@@ -39,7 +39,7 @@ namespace MSAMISUserInterface {
             int date = 0;
         }
         public int GID;
-
+        public int CID;
 
         #region Constructors
         public Attendance(int AID, int month, int periodx, int year) {
@@ -48,11 +48,13 @@ namespace MSAMISUserInterface {
             Console.Write(period.period);
             
 
-            GID = SQLTools.GetInt("select gid from sduty_assignment where aid=" + AID);
-
+            DataRow dd = SQLTools.ExecuteQuery("select * from sduty_assignment where aid=" + AID).Rows[0];
+            GID = int.Parse(dd["gid"].ToString());
+            CID = int.Parse(dd["cid"].ToString());
             // Insert new period
-            String ax = "INSERT IGNORE INTO `msadb`.`period` (`GID`, `month`, `period`, `year`) VALUES ";
-            ax += @"('" + GID + @"', '" + month + @"', '" + periodx + @"', '" + year + @"')";
+            String ax = $@"INSERT IGNORE INTO `msadb`.`period` 
+                            (`GID`, `month`, `period`, `year`, `cid`) VALUES 
+                            ('{GID}', '{month}', '{periodx}', '{year}', '{CID}')";
             SQLTools.ExecuteNonQuery(ax);
             string ifn = SQLTools.getLastInsertedId("period", "pid");
 
