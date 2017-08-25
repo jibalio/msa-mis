@@ -69,7 +69,6 @@ namespace MSAMISUserInterface {
 
 
         public static DataTable GetUnassignedGuards(String searchkeyword, string start, string end) {
-            MessageBox.Show(start + ":" + end);
             String q = $@"select guards.gid, concat(ln,', ',fn,' ',mn) as name,
                          concat(address.streetno, ', ', address.street, ', ', address.brgy, ', ', address.city) as Location, request_assign.ContractStart, request_assign.ContractEnd from guards
 	                        left join sduty_assignment on sduty_assignment.gid = guards.gid
