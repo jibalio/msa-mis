@@ -182,10 +182,10 @@ namespace MSAMISUserInterface {
 
         private void AvailableSearchBX_TextChanged(object sender, EventArgs e) {
             var temp = AvailableSearchBX.Text;
-            const string kazoo = "concat(ln,', ',fn,' ',mn)";
+            string kazoo = NameRDBTN.Checked ? "concat(ln,', ',fn,' ',mn)" : "concat(address.StreetNo,', ', address.Brgy,', ',address.Street, ', ', address.City)";
 
             if (AvailableSearchBX.Text.Contains("\\")) temp = temp + "?";
-            _extraQueryParams = " where (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
+            _extraQueryParams = " and (" + kazoo + " like '" + temp + "%' OR " + kazoo + " like '%" + temp +
                                 "%' OR " + kazoo + " LIKe '%" + temp + "')";
             RefreshAvailable();
         }

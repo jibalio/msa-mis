@@ -39,10 +39,11 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.AssignBTN = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ApprovedBy = new System.Windows.Forms.Label();
             this.StatusLBL = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DeclineBTN = new System.Windows.Forms.Button();
-            this.ApprovedBy = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.AvailablePNL.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -143,12 +144,13 @@
             // 
             // AvailablePNL
             // 
+            this.AvailablePNL.Controls.Add(this.label1);
             this.AvailablePNL.Controls.Add(this.NeededLBL);
             this.AvailablePNL.Controls.Add(this.label10);
             this.AvailablePNL.ForeColor = System.Drawing.Color.White;
             this.AvailablePNL.Location = new System.Drawing.Point(0, 258);
             this.AvailablePNL.Name = "AvailablePNL";
-            this.AvailablePNL.Size = new System.Drawing.Size(549, 73);
+            this.AvailablePNL.Size = new System.Drawing.Size(549, 107);
             this.AvailablePNL.TabIndex = 125;
             // 
             // NeededLBL
@@ -159,7 +161,7 @@
             this.NeededLBL.Location = new System.Drawing.Point(0, 23);
             this.NeededLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NeededLBL.Name = "NeededLBL";
-            this.NeededLBL.Size = new System.Drawing.Size(549, 40);
+            this.NeededLBL.Size = new System.Drawing.Size(549, 36);
             this.NeededLBL.TabIndex = 120;
             this.NeededLBL.Text = "150 Guards Available";
             this.NeededLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -235,6 +237,20 @@
             this.panel3.Size = new System.Drawing.Size(549, 195);
             this.panel3.TabIndex = 138;
             // 
+            // ApprovedBy
+            // 
+            this.ApprovedBy.BackColor = System.Drawing.Color.White;
+            this.ApprovedBy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ApprovedBy.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.ApprovedBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.ApprovedBy.Location = new System.Drawing.Point(0, 150);
+            this.ApprovedBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ApprovedBy.Name = "ApprovedBy";
+            this.ApprovedBy.Size = new System.Drawing.Size(549, 30);
+            this.ApprovedBy.TabIndex = 134;
+            this.ApprovedBy.Text = "---------------";
+            this.ApprovedBy.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // StatusLBL
             // 
             this.StatusLBL.BackColor = System.Drawing.Color.White;
@@ -280,19 +296,18 @@
             this.DeclineBTN.UseVisualStyleBackColor = false;
             this.DeclineBTN.Click += new System.EventHandler(this.DeclineBTN_Click);
             // 
-            // ApprovedBy
+            // label1
             // 
-            this.ApprovedBy.BackColor = System.Drawing.Color.White;
-            this.ApprovedBy.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ApprovedBy.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.ApprovedBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ApprovedBy.Location = new System.Drawing.Point(0, 150);
-            this.ApprovedBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ApprovedBy.Name = "ApprovedBy";
-            this.ApprovedBy.Size = new System.Drawing.Size(549, 30);
-            this.ApprovedBy.TabIndex = 134;
-            this.ApprovedBy.Text = "---------------";
-            this.ApprovedBy.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label1.Location = new System.Drawing.Point(0, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(549, 23);
+            this.label1.TabIndex = 122;
+            this.label1.Text = "On the given contract period";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // SchedViewAssReq
             // 
@@ -339,5 +354,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button DeclineBTN;
         private System.Windows.Forms.Label ApprovedBy;
+        private System.Windows.Forms.Label label1;
     }
 }

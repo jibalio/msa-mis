@@ -55,12 +55,16 @@
             this.AvailableSearchLine = new System.Windows.Forms.Label();
             this.AssignedPNL = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.NameRDBTN = new System.Windows.Forms.RadioButton();
+            this.AddressRDBTN = new System.Windows.Forms.RadioButton();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AvailableGRD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).BeginInit();
             this.AvailablePNL.SuspendLayout();
             this.AssignedPNL.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -373,6 +377,7 @@
             this.AvailablePNL.Controls.Add(this.AvailableSearchLine);
             this.AvailablePNL.Controls.Add(this.AssignBTN);
             this.AvailablePNL.Controls.Add(this.AvailableGRD);
+            this.AvailablePNL.Controls.Add(this.panel3);
             this.AvailablePNL.Location = new System.Drawing.Point(0, 51);
             this.AvailablePNL.Name = "AvailablePNL";
             this.AvailablePNL.Size = new System.Drawing.Size(549, 352);
@@ -383,7 +388,7 @@
             this.AvailableSearchBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AvailableSearchBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AvailableSearchBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AvailableSearchBX.Location = new System.Drawing.Point(42, 9);
+            this.AvailableSearchBX.Location = new System.Drawing.Point(91, 9);
             this.AvailableSearchBX.Name = "AvailableSearchBX";
             this.AvailableSearchBX.Size = new System.Drawing.Size(199, 18);
             this.AvailableSearchBX.TabIndex = 145;
@@ -397,7 +402,7 @@
             this.AvailableSearchLine.AutoSize = true;
             this.AvailableSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AvailableSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.AvailableSearchLine.Location = new System.Drawing.Point(38, 14);
+            this.AvailableSearchLine.Location = new System.Drawing.Point(87, 14);
             this.AvailableSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AvailableSearchLine.Name = "AvailableSearchLine";
             this.AvailableSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -428,6 +433,41 @@
             this.panel2.Size = new System.Drawing.Size(550, 467);
             this.panel2.TabIndex = 151;
             // 
+            // NameRDBTN
+            // 
+            this.NameRDBTN.AutoSize = true;
+            this.NameRDBTN.Checked = true;
+            this.NameRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
+            this.NameRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NameRDBTN.Location = new System.Drawing.Point(3, 1);
+            this.NameRDBTN.Name = "NameRDBTN";
+            this.NameRDBTN.Size = new System.Drawing.Size(60, 21);
+            this.NameRDBTN.TabIndex = 147;
+            this.NameRDBTN.TabStop = true;
+            this.NameRDBTN.Text = "Name";
+            this.NameRDBTN.UseVisualStyleBackColor = true;
+            // 
+            // AddressRDBTN
+            // 
+            this.AddressRDBTN.AutoSize = true;
+            this.AddressRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
+            this.AddressRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddressRDBTN.Location = new System.Drawing.Point(85, 1);
+            this.AddressRDBTN.Name = "AddressRDBTN";
+            this.AddressRDBTN.Size = new System.Drawing.Size(69, 21);
+            this.AddressRDBTN.TabIndex = 148;
+            this.AddressRDBTN.Text = "Address";
+            this.AddressRDBTN.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.AddressRDBTN);
+            this.panel3.Controls.Add(this.NameRDBTN);
+            this.panel3.Location = new System.Drawing.Point(314, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(157, 26);
+            this.panel3.TabIndex = 149;
+            // 
             // SchedAssignGuards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +490,8 @@
             this.AssignedPNL.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -480,5 +522,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nName;
         private System.Windows.Forms.DataGridViewTextBoxColumn nLocation;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.RadioButton AddressRDBTN;
+        private System.Windows.Forms.RadioButton NameRDBTN;
     }
 }

@@ -77,7 +77,7 @@ namespace MSAMISUserInterface {
                             where atype = 2  and (gstatus = 2 or (GStatus = 1 or (request_assign.ContractStart > '{
                     end
                 }' or (request_assign.ContractEnd < '{start}')))) ";
-            return SQLTools.ExecuteQuery(q + searchkeyword);
+            return SQLTools.ExecuteQuery(q + searchkeyword + "order by name asc");
         }
 
 
