@@ -53,18 +53,18 @@
             this.AvailablePNL = new System.Windows.Forms.Panel();
             this.AvailableSearchBX = new System.Windows.Forms.TextBox();
             this.AvailableSearchLine = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.AddressRDBTN = new System.Windows.Forms.RadioButton();
+            this.NameRDBTN = new System.Windows.Forms.RadioButton();
             this.AssignedPNL = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.NameRDBTN = new System.Windows.Forms.RadioButton();
-            this.AddressRDBTN = new System.Windows.Forms.RadioButton();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AvailableGRD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).BeginInit();
             this.AvailablePNL.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.AssignedPNL.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -410,6 +410,41 @@
             this.AvailableSearchLine.Text = "_________________________________";
             this.AvailableSearchLine.Visible = false;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.AddressRDBTN);
+            this.panel3.Controls.Add(this.NameRDBTN);
+            this.panel3.Location = new System.Drawing.Point(314, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(157, 26);
+            this.panel3.TabIndex = 149;
+            // 
+            // AddressRDBTN
+            // 
+            this.AddressRDBTN.AutoSize = true;
+            this.AddressRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
+            this.AddressRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddressRDBTN.Location = new System.Drawing.Point(85, 1);
+            this.AddressRDBTN.Name = "AddressRDBTN";
+            this.AddressRDBTN.Size = new System.Drawing.Size(69, 21);
+            this.AddressRDBTN.TabIndex = 148;
+            this.AddressRDBTN.Text = "Address";
+            this.AddressRDBTN.UseVisualStyleBackColor = true;
+            // 
+            // NameRDBTN
+            // 
+            this.NameRDBTN.AutoSize = true;
+            this.NameRDBTN.Checked = true;
+            this.NameRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
+            this.NameRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.NameRDBTN.Location = new System.Drawing.Point(3, 1);
+            this.NameRDBTN.Name = "NameRDBTN";
+            this.NameRDBTN.Size = new System.Drawing.Size(60, 21);
+            this.NameRDBTN.TabIndex = 147;
+            this.NameRDBTN.TabStop = true;
+            this.NameRDBTN.Text = "Name";
+            this.NameRDBTN.UseVisualStyleBackColor = true;
+            // 
             // AssignedPNL
             // 
             this.AssignedPNL.BackColor = System.Drawing.Color.White;
@@ -433,41 +468,6 @@
             this.panel2.Size = new System.Drawing.Size(550, 467);
             this.panel2.TabIndex = 151;
             // 
-            // NameRDBTN
-            // 
-            this.NameRDBTN.AutoSize = true;
-            this.NameRDBTN.Checked = true;
-            this.NameRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
-            this.NameRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NameRDBTN.Location = new System.Drawing.Point(3, 1);
-            this.NameRDBTN.Name = "NameRDBTN";
-            this.NameRDBTN.Size = new System.Drawing.Size(60, 21);
-            this.NameRDBTN.TabIndex = 147;
-            this.NameRDBTN.TabStop = true;
-            this.NameRDBTN.Text = "Name";
-            this.NameRDBTN.UseVisualStyleBackColor = true;
-            // 
-            // AddressRDBTN
-            // 
-            this.AddressRDBTN.AutoSize = true;
-            this.AddressRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
-            this.AddressRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AddressRDBTN.Location = new System.Drawing.Point(85, 1);
-            this.AddressRDBTN.Name = "AddressRDBTN";
-            this.AddressRDBTN.Size = new System.Drawing.Size(69, 21);
-            this.AddressRDBTN.TabIndex = 148;
-            this.AddressRDBTN.Text = "Address";
-            this.AddressRDBTN.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.AddressRDBTN);
-            this.panel3.Controls.Add(this.NameRDBTN);
-            this.panel3.Location = new System.Drawing.Point(314, 7);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(157, 26);
-            this.panel3.TabIndex = 149;
-            // 
             // SchedAssignGuards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,6 +480,7 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SchedAssignGuards";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.Sched_AssignGuards_Load);
             this.panel1.ResumeLayout(false);
@@ -487,11 +488,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.AssignedGRD)).EndInit();
             this.AvailablePNL.ResumeLayout(false);
             this.AvailablePNL.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.AssignedPNL.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

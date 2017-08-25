@@ -169,7 +169,7 @@ namespace MSAMISUserInterface {
                             HoursTLTP.ToolTipTitle = "Duty Hours";
                             HoursTLTP.Show("The specified time is more than 8hrs", HoursLBL);
                     } else {
-                            Close();
+                            CloseBTN.PerformClick();
                             Refer.LoadPage();
                         }
                 } else if (Button.Equals("UPDATE")) {
@@ -186,8 +186,8 @@ namespace MSAMISUserInterface {
                             HoursTLTP.Show("The specified time is more than 8hrs", HoursLBL);
                         }
                         else {
-                        Close();
-                            Refer.LoadPage();
+                            CloseBTN.PerformClick();
+                        Refer.LoadPage();
                     }
                     }
                     
