@@ -814,8 +814,12 @@ namespace MSAMISUserInterface {
                     File.Copy(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
             }
             else {
-                File.Delete(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
-                GuardsLoadReport();
+                if (RylMessageBox.ShowDialog(
+                        "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
+                        "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    File.Delete(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                    GuardsLoadReport();
+                }
             }
         }
 
@@ -1032,8 +1036,12 @@ namespace MSAMISUserInterface {
                     File.Copy(CSummaryFileLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
             }
             else {
-                File.Delete(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
-                ClientsLoadSummary();
+                if (RylMessageBox.ShowDialog(
+                        "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
+                        "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    File.Delete(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
+                    ClientsLoadSummary();
+                }
             }
         }
 
@@ -1564,8 +1572,12 @@ namespace MSAMISUserInterface {
                     File.Copy(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
             }
             else {
-                File.Delete(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
-                SchedLoadReport();
+                if (RylMessageBox.ShowDialog(
+                        "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
+                        "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    File.Delete(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                    SchedLoadReport();
+                }
             }
         }
         private void SSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
@@ -1792,11 +1804,12 @@ namespace MSAMISUserInterface {
         public void PayLoadReport() {
             var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                       "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("PaySummaryReport*.xlsx").OrderByDescending(p => p.CreationTime); //Getting Text files]
+            var files = d.GetFiles("SalaryReport*.pdf").OrderByDescending(p => p.CreationTime); //Getting Text files]
 
             PSummaryFilesLST.Items.Clear();
             foreach (var file in files) {
-                string[] row = {file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName};
+                var date = file.CreationTime.AddMonths(-1);
+                string[] row = { date.ToString("MMMM yyyy"), file.FullName };
                 var listViewItem = new ListViewItem(row) {ImageIndex = 0};
                 PSummaryFilesLST.Items.Add(listViewItem);
             }
@@ -1845,8 +1858,12 @@ namespace MSAMISUserInterface {
                     File.Copy(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
             }
             else {
-                File.Delete(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
-                PayLoadReport();
+                if (RylMessageBox.ShowDialog(
+                        "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
+                        "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    File.Delete(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                    PayLoadReport();
+                }
             }
         }
 
