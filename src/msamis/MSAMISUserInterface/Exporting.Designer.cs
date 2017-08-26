@@ -26,7 +26,8 @@
             this.components = new System.ComponentModel.Container();
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
-            this.FadeTMR = new System.Windows.Forms.Timer(this.components);
+            this.FadeInTMR = new System.Windows.Forms.Timer(this.components);
+            this.FadeOutTMR = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label68
@@ -53,10 +54,15 @@
             this.label69.Text = "Exporting to PDF";
             this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // FadeTMR
+            // FadeInTMR
             // 
-            this.FadeTMR.Interval = 1;
-            this.FadeTMR.Tick += new System.EventHandler(this.FadeTMR_Tick);
+            this.FadeInTMR.Interval = 1;
+            this.FadeInTMR.Tick += new System.EventHandler(this.FadeInTMR_Tick);
+            // 
+            // FadeOutTMR
+            // 
+            this.FadeOutTMR.Interval = 1;
+            this.FadeOutTMR.Tick += new System.EventHandler(this.FadeOutTMR_Tick);
             // 
             // Exporting
             // 
@@ -82,6 +88,7 @@
 
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Timer FadeTMR;
+        private System.Windows.Forms.Timer FadeInTMR;
+        private System.Windows.Forms.Timer FadeOutTMR;
     }
 }
