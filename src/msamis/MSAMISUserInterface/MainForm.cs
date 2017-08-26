@@ -1335,14 +1335,21 @@ namespace MSAMISUserInterface {
                 SViewAssGRD.Columns[1].Visible = false;
                 SViewAssGRD.Columns[2].Visible = false;
                 SViewAssGRD.Columns[3].HeaderText = "NAME";
+
                 SViewAssGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
-                SViewAssGRD.Columns[5].HeaderText = "SCHEDULE";
-                SViewAssGRD.Columns[6].Visible = false;
+                SViewAssGRD.Columns[5].HeaderText = "ASSIGNED TO";
+
+                SViewAssGRD.Columns[4].Visible = SViewAssSearchClientCMBX.SelectedIndex != 0;
+                SViewAssGRD.Columns[5].Visible = SViewAssSearchClientCMBX.SelectedIndex == 0;
+
+                SViewAssGRD.Columns[6].HeaderText = "SCHEDULE";
+                SViewAssGRD.Columns[7].Visible = false;
 
                 SViewAssGRD.Columns[3].Width = 230;
                 SViewAssGRD.Columns[4].Width = 280;
-                SViewAssGRD.Columns[5].Width = 100;
-                SViewAssGRD.Columns[5].Width = 100;
+                SViewAssGRD.Columns[5].Width = 280;
+                SViewAssGRD.Columns[6].Width = 100;
+                SViewAssGRD.Columns[6].Width = 100;
 
                 SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
                 SViewAssGRD.ClearSelection();
@@ -1417,7 +1424,7 @@ namespace MSAMISUserInterface {
 
             var ret = true;
             foreach (DataGridViewRow row in SViewAssGRD.SelectedRows)
-                if (!row.Cells[5].Value.ToString().Equals("Unscheduled")) ret = false;
+                if (!row.Cells[6].Value.ToString().Equals("Unscheduled")) ret = false;
             return ret;
         }
 

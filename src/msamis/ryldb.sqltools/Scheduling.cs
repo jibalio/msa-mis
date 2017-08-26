@@ -340,7 +340,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             String q = @"select 
                         guards.gid, d.did, sduty_assignment.aid,
                         concat(ln,', ',fn,' ',mn) as name,
-                        concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location,
+                        concat(streetno, ', ', streetname, ', ', brgy, ', ', city) as Location, client.name as cname,
                         case 
 	                        when ti_hh is null then 'Unscheduled'
                             when ti_hh is not null then 'Scheduled'
@@ -352,6 +352,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
+                        left join client on request.cid = client.cid
                         where  city is not null " +
                         (cid == -1 ? "" : " AND sduty_assignment.cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {

@@ -388,7 +388,7 @@
             this.AvailableSearchBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AvailableSearchBX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AvailableSearchBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AvailableSearchBX.Location = new System.Drawing.Point(91, 9);
+            this.AvailableSearchBX.Location = new System.Drawing.Point(62, 9);
             this.AvailableSearchBX.Name = "AvailableSearchBX";
             this.AvailableSearchBX.Size = new System.Drawing.Size(199, 18);
             this.AvailableSearchBX.TabIndex = 145;
@@ -402,7 +402,7 @@
             this.AvailableSearchLine.AutoSize = true;
             this.AvailableSearchLine.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.AvailableSearchLine.ForeColor = System.Drawing.Color.Silver;
-            this.AvailableSearchLine.Location = new System.Drawing.Point(87, 14);
+            this.AvailableSearchLine.Location = new System.Drawing.Point(58, 14);
             this.AvailableSearchLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AvailableSearchLine.Name = "AvailableSearchLine";
             this.AvailableSearchLine.Size = new System.Drawing.Size(207, 19);
@@ -414,9 +414,9 @@
             // 
             this.panel3.Controls.Add(this.AddressRDBTN);
             this.panel3.Controls.Add(this.NameRDBTN);
-            this.panel3.Location = new System.Drawing.Point(314, 7);
+            this.panel3.Location = new System.Drawing.Point(280, 7);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(157, 26);
+            this.panel3.Size = new System.Drawing.Size(204, 26);
             this.panel3.TabIndex = 149;
             // 
             // AddressRDBTN
@@ -424,11 +424,11 @@
             this.AddressRDBTN.AutoSize = true;
             this.AddressRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
             this.AddressRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AddressRDBTN.Location = new System.Drawing.Point(85, 1);
+            this.AddressRDBTN.Location = new System.Drawing.Point(114, 2);
             this.AddressRDBTN.Name = "AddressRDBTN";
-            this.AddressRDBTN.Size = new System.Drawing.Size(69, 21);
+            this.AddressRDBTN.Size = new System.Drawing.Size(87, 21);
             this.AddressRDBTN.TabIndex = 148;
-            this.AddressRDBTN.Text = "Address";
+            this.AddressRDBTN.Text = "by location";
             this.AddressRDBTN.UseVisualStyleBackColor = true;
             // 
             // NameRDBTN
@@ -437,12 +437,12 @@
             this.NameRDBTN.Checked = true;
             this.NameRDBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
             this.NameRDBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NameRDBTN.Location = new System.Drawing.Point(3, 1);
+            this.NameRDBTN.Location = new System.Drawing.Point(19, 1);
             this.NameRDBTN.Name = "NameRDBTN";
-            this.NameRDBTN.Size = new System.Drawing.Size(60, 21);
+            this.NameRDBTN.Size = new System.Drawing.Size(75, 21);
             this.NameRDBTN.TabIndex = 147;
             this.NameRDBTN.TabStop = true;
-            this.NameRDBTN.Text = "Name";
+            this.NameRDBTN.Text = "by name";
             this.NameRDBTN.UseVisualStyleBackColor = true;
             // 
             // AssignedPNL
