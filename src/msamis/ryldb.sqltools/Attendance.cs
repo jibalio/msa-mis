@@ -52,14 +52,14 @@ namespace MSAMISUserInterface {
 
 
 
-            DataRow drSdutyAssign = SQLTools.ExecuteQuery($"select * from sduty_assignment where aid='{this.AID}' and astatus='{1}'").Rows[0];
+            DataRow drSdutyAssign = SQLTools.ExecuteQuery($"select * from sduty_assignment where aid='{this.AID}'").Rows[0];
             GID = int.Parse(drSdutyAssign["gid"].ToString());
             CID = int.Parse(drSdutyAssign["cid"].ToString());
 
             // Only add attendance on months between contract start and contract end (inclusive)'.
             // So i need to retrieve ContractStart and ContractEnd of the request.
             int raid = int.Parse(drSdutyAssign["raid"].ToString());
-            DataRow drra = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.request_assign where raid='{raid}' and contractstart<now() and contractend>now() order by contractstart asc limit 1;").Rows[0];
+            DataRow drra = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.request_assign where raid='{raid}'").Rows[0];
             DateTime cs = DateTime.Parse(drra["contractstart"].ToString());
             DateTime ce = DateTime.Parse(drra["contractend"].ToString());
 
@@ -90,9 +90,10 @@ namespace MSAMISUserInterface {
                 SQLTools.message("Finished inserting in " + ts.ToString("ss\\.ff") + " seconds");
                 SQLTools.message("Yes!");
 
-
+               
                 int count = 0;
                 int max = dutydates.Count;
+                int insertables = 0;
                 String q = @"INSERT IGNORE INTO `msadb`.`attendance` (`DID`, `date`, `PID`) VALUES ";
                 foreach (int date in dutydates) {
                     DateTime d = new DateTime(period.year, period.month, date);
@@ -100,10 +101,15 @@ namespace MSAMISUserInterface {
                     if (cs <= d && d <= ce) {
                         q += @"('" + did + "','" + d.ToString("yyyy-MM-dd HH:mm:ss") + "','" + ifn + "')";
                         q += ",\n";
+                        insertables++;
                     }
                     
                 }
-                if (x.Rows.Count != 0) SQLTools.ExecuteNonQuery(q.Substring(0,q.Length-2));
+
+                // Do not execute INSERT if there is duty dates is empty.
+                // Otherwise this will lead to a SQL syntax error.
+                // Bc bulk insert.
+                if (insertables != 0) SQLTools.ExecuteNonQuery(q.Substring(0,q.Length-2));
 
             }
             
