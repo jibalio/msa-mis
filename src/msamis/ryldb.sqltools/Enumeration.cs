@@ -59,16 +59,15 @@ namespace MSAMISUserInterface {
         }
 
         public class GuardStatus {
-            public static int Active = 1;
             public static int Inactive = 0;
-            public static int PendingPayroll = 2;
+            public static int Active = 1;
+            public static int PendingPayroll = 2;           // This guard cannot be archived
+            public static int PendingAssignment = 3;        // This guard cannot be archived.
         }
         
         public class PayrollStatus {
-            public static int Fresh = -1;
             public static int Pending = 0;
-            public static int Calculated = 1;
-            public static int Approved = 2;
+            public static int Approved = 2;                 // Objects are already serialized when approved.
         }
 
         public class ReportType {

@@ -27,7 +27,7 @@ namespace MSAMISUserInterface {
                             case gstatus 
                                 when {Enumeration.GuardStatus.Active} then 'Active' 
                                 when {Enumeration.GuardStatus.Inactive} then 'Inactive' 
-                                when {Enumeration.GuardStatus.PendingPayroll} then 'Payroll Pending'
+                                when {Enumeration.GuardStatus.PendingPayroll} then 'Pending Payroll'
                                 end as 'STATUS', 
                             bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', 
                             cellno as 'CONTACTNO' 
