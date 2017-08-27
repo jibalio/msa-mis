@@ -42,9 +42,20 @@ namespace MSAMISUserInterface {
             return hp;
         }
         public HourProcessor(DateTime ti, DateTime to, DateTime startduty, DateTime endduty) {
+            /*      HOUR PROCESSOR V2.0
+                   DateTime start = new DateTime (4,1,1,2,30,00);
+		            DateTime end = new DateTime (4,1,1,22,30,00);
+		            int sm = start.Hour * 60 + start.Minute;
+		            int em = end.Hour * 60 + end.Minute;
+		            int duration = em - sm;
+		            if (duration<0)
+			            duration+=1440;
+		            TimeSpan ti = new TimeSpan(0,duration, 0);
+        */
             DateTime NightStart = new DateTime(ti.Year, ti.Month, ti.Day, 22, 00, 00);
             DateTime NightEnd = new DateTime(ti.Year, ti.Month, ti.Day, 6, 00, 00);
-            DateTime Midnight = new DateTime(ti.Year, ti.Month, ti.Day, 0, 0, 0).AddDays(1); DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
+            DateTime Midnight = new DateTime(ti.Year, ti.Month, ti.Day, 0, 0, 0).AddDays(1); 
+DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
             // if not same
             if (ti > to) {
                 to = to.AddDays(1);
@@ -65,7 +76,7 @@ namespace MSAMISUserInterface {
                 // Check for overtimes
                 if (to > endduty) {
                     DateTime minEndOver_night = to < NightEnd ? to : NightEnd;
-                    d2_overtime_night = (minEndOver_night - endduty > TimeSpan.FromSeconds(0)) ? minEndOver_night - endduty : new TimeSpan(0, 0, 0);
+                    d2_overtime_night = (endduty - minEndOver_night> TimeSpan.FromSeconds(0)) ? endduty - minEndOver_night : new TimeSpan(0, 0, 0);
                     d2_overtime_day = to > NightEnd ? to - NightEnd : new TimeSpan(0, 0, 0);
                     d2_day -= d2_overtime_day;
                     d2_night -= d2_overtime_night;

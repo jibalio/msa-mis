@@ -39,7 +39,7 @@ namespace MSAMISUserInterface {
                             on msadbarchive.dutydetails.did=msadbarchive.attendance.did
                             left join msadbarchive.period 
                             on msadbarchive.period.pid=msadbarchive.attendance.pid
-                            and msadbarchive.period.gid = '161'
+                            and msadbarchive.period.gid = '{GuardId}'
                             order by date asc;";
             DataTable dt = SQLTools.ExecuteQuery(q);
             var hourlist = new List<HourProcessor>();
@@ -130,6 +130,7 @@ namespace MSAMISUserInterface {
 
         #region + Guard Details Getters
         public static DataTable GetAllGuards(string SearchFilter, string ColumnName_DescAsc) {
+
             var query = $@"Select guards.gid,concat(ln,', ',fn,' ',mn) as `name`,
                         case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', 
                         concat(streetno, ', ', street, ', ', brgy, ', ', city) as Location,
