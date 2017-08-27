@@ -767,7 +767,6 @@ else date_dissolved  end as date_dissolved from contribdetails where type='{
 
                 case pstatus
             when {Enumeration.PayrollStatus.Approved} then 'Approved'
-            when {Enumeration.PayrollStatus.Calculated} then 'Calculated'
             when {Enumeration.PayrollStatus.Pending} then 'Pending'
             end as pstatus
 
@@ -791,7 +790,6 @@ else date_dissolved  end as date_dissolved from contribdetails where type='{
                                                         END
                                                       ) AS attendance,  case pstatus
             when {Enumeration.PayrollStatus.Approved} then 'Approved'
-            when {Enumeration.PayrollStatus.Calculated} then 'Calculated'
             when {Enumeration.PayrollStatus.Pending} then 'Pending'
             end as pstatus
                                                 from request
@@ -1085,7 +1083,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
                 return Convert.ToBase64String(stream.ToArray());
             }
         }
-        private static object _DeserializeObject(string str) {
+        public static object _DeserializeObject(string str) {
             byte[] bytes = Convert.FromBase64String(str);
             using (MemoryStream stream = new MemoryStream(bytes)) {
                 return new BinaryFormatter().Deserialize(stream);
@@ -1119,5 +1117,15 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
 
 
         #endregion
+
+        public static DataTable GetApprovedPayrollsList() {
+            Attendance.Period px = Attendance.GetCurrentPayPeriod();
+            var q = $@"select gid, month, period, year from payroll
+            where month = {px.month}
+            and period = {px.period}
+            and year = {px.year}
+            and pstatus = {Enumeration.PayrollStatus.Approved}";
+        }
+
     }
 }
