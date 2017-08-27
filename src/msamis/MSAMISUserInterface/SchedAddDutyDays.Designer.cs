@@ -89,6 +89,7 @@
             this.CertifiedBX.Name = "CertifiedBX";
             this.CertifiedBX.Size = new System.Drawing.Size(170, 18);
             this.CertifiedBX.TabIndex = 1;
+            this.CertifiedBX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label34
             // 
