@@ -60,7 +60,8 @@ namespace MSAMISUserInterface {
 
         public class GuardStatus {
             public static int Active = 1;
-            public static int Inactive = 2;
+            public static int Inactive = 0;
+            public static int PendingPayroll = 2;
         }
         
         public class PayrollStatus {

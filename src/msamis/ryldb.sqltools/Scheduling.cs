@@ -74,9 +74,10 @@ namespace MSAMISUserInterface {
 	                        left join sduty_assignment on sduty_assignment.gid = guards.gid
                             left join address on address.gid = guards.gid
                             left join request_assign on request_assign.RAID = sduty_assignment.raid
-                            where atype = 2  and (gstatus = 2 or (GStatus = 1 or (request_assign.ContractStart > '{
-                    end
-                }' or (request_assign.ContractEnd < '{start}')))) ";
+                            where atype = 2  and 
+                            (gstatus = {Enumeration.GuardStatus.Inactive} or
+                            (gstatus= {Enumeration.GuardStatus.PendingPayroll}) or
+                            (GStatus = 1 or (request_assign.ContractStart > '{end}' or (request_assign.ContractEnd < '{start}')))) ";
             return SQLTools.ExecuteQuery(q + searchkeyword + "order by name asc");
         }
 
@@ -214,7 +215,7 @@ namespace MSAMISUserInterface {
                     }', UnassignedOn='{DateEffective:yyyy-MM-dd}' WHERE `gid`='{e["gid"]}';";
                 SQLTools.ExecuteNonQuery(q);
                 // 3.) Set guard to Inactive (BUT NOT DISMISSED)
-                q = @"UPDATE `msadb`.`guards` SET `GStatus`='" + Enumeration.GuardStatus.Inactive + "' WHERE `GID`='" + e[0] + "'";
+                q = @"UPDATE `msadb`.`guards` SET `GStatus`='" + Enumeration.GuardStatus.PendingPayroll + "' WHERE `GID`='" + e[0] + "'";
                 SQLTools.ExecuteNonQuery(q);
             }
             // Step 4
