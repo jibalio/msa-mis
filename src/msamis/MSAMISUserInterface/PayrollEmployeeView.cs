@@ -340,6 +340,7 @@ namespace MSAMISUserInterface {
                 }
                 else {
                     _pay.Approve();
+                    LoadComputations();
                     CheckButtons();
                     Reference.PayLoadEmployeeList();
                 }
