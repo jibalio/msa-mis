@@ -34,12 +34,19 @@ namespace MSAMISUserInterface {
                             FROM Guards ";
                 orderbyclause = "ORDER BY NAME ASC;";
             } else {
-                query = "Select Guards.gid,concat(ln,', ',fn,' ',mn) as NAME, " +
-                        "concat(StreetNo,', ', Brgy,', ',Street, ', ', City) As LOCATION, case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS' " +
-                        "FROM Guards LEFT JOIN Address ON Address.GID = Guards.GID ";
-                orderbyclause = "AND Atype = 2 ORDER BY NAME ASC;";
+                query = $@"Select Guards.gid,concat(ln,', ',fn,' ',mn) as NAME, 
+                        concat(StreetNo,', ', Brgy,', ',Street, ', ', City) As LOCATION, case gstatus 
+                            when { Enumeration.GuardStatus.Active}
+                            then 'Active'
+                            when { Enumeration.GuardStatus.Inactive}
+                            then 'Inactive'
+                            when { Enumeration.GuardStatus.PendingPayroll}
+                            then 'Payroll Pending'
+                            end as 'STATUS'
+                        FROM Guards LEFT JOIN Address ON Address.GID = Guards.GID ";
+                orderbyclause = " AND Atype = 2 ORDER BY NAME ASC;";
             }
-            return (SQLTools.ExecuteQuery(query + searchKeyWords + orderbyclause));
+            return SQLTools.ExecuteQuery(query + searchKeyWords + orderbyclause);
         }
 
         public static DataTable GetGuardsBasicData(int GID) {

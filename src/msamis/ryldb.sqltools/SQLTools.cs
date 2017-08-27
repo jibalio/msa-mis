@@ -291,7 +291,7 @@ namespace MSAMISUserInterface {
             int x = 99;
             try {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT count(*) as c FROM guards WHERE gstatus = " + (a == "active" ? "'1'" : "'2'"), conn);
+                MySqlCommand comm = new MySqlCommand("SELECT count(*) as c FROM guards WHERE gstatus = " + (a == "active" ? "'1'" : "'0'"), conn);
                 MySqlDataReader rdr = comm.ExecuteReader();
                 rdr.Read();
                 x = int.Parse(rdr.GetString("c"));
