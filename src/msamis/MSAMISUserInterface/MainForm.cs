@@ -459,7 +459,6 @@ namespace MSAMISUserInterface {
             GuardsUserMode();
             _scurrentPanel = GViewAllPNL;
             _scurrentBtn = GViewAllPageBTN;
-            GViewAllViewByCMBX.SelectedIndex = 0;
             GViewAllPageBTN.PerformClick();
         }
 
@@ -511,7 +510,7 @@ namespace MSAMISUserInterface {
 
         private void GViewAllPageBTN_Click(object sender, EventArgs e) {
             GChangePanel(GViewAllPNL, GViewAllPageBTN);
-            GViewAllViewByCMBX.SelectedIndex = 0;
+            GuardsRefreshGuardsList();
         }
 
         private void GSummaryPageBTN_Click(object sender, EventArgs e) {
@@ -525,17 +524,16 @@ namespace MSAMISUserInterface {
 
         #region GMS - View All - Data Grid
 
-        private void GViewAllViewByCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            GuardsRefreshGuardsList();
-        }
-
         private void GAllGuardsGRD_DoubleClick(object sender, EventArgs e) {
             if (GEditDetailsBTN.Visible) GEditDetailsBTN.PerformClick();
         }
+        private void GViewAllNameRDBTN_CheckedChanged(object sender, EventArgs e) {
+            GuardsRefreshGuardsList();
+        }
 
         public void GuardsRefreshGuardsList() {
-            GAllGuardsGRD.DataSource = Guard.GetAllGuards(_extraQueryParams, GViewAllViewByCMBX.SelectedIndex);
-            if (GViewAllViewByCMBX.SelectedIndex == 0) {
+            GAllGuardsGRD.DataSource = Guard.GetAllGuards(_extraQueryParams, GViewAllNameRDBTN.Checked ? 0 : 1);
+            if (GViewAllNameRDBTN.Checked) {
                 GAllGuardsGRD.Columns[0].Visible = false;
                 GAllGuardsGRD.Columns[1].Width = 240;
                 GAllGuardsGRD.Columns[4].Width = 80;
@@ -588,7 +586,7 @@ namespace MSAMISUserInterface {
         }
 
         private void GAllGuardsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            if (GViewAllViewByCMBX.SelectedIndex == 0) { 
+            if (GViewAllNameRDBTN.Checked) { 
                 if (GAllGuardsGRD.SelectedRows.Count == 1) {
                     if (!GAllGuardsGRD.SelectedRows[0].Cells[2].Value.ToString().Equals("Inactive")) HideBtNs(true, false);
                     else HideBtNs(true, Login.AccountType != 2);
@@ -642,7 +640,7 @@ namespace MSAMISUserInterface {
 
         private void GViewAllSearchTXTBX_TextChanged(object sender, EventArgs e) {
             var temp = GViewAllSearchTXTBX.Text;
-            var kazoo = GViewAllViewByCMBX.SelectedIndex == 0
+            var kazoo = GViewAllNameRDBTN.Checked
                 ? "concat(ln,', ',fn,' ',mn)"
                 : "concat(StreetNo,', ', Brgy,', ',Street, ', ', City)";
 
@@ -1875,8 +1873,13 @@ namespace MSAMISUserInterface {
         }
 
 
+
         #endregion
 
         #endregion
+
+        private void GViewAllLocationRDBTN_CheckedChanged(object sender, EventArgs e) {
+
+        }
     }
 }
