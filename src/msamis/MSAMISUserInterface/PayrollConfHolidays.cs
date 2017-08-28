@@ -20,18 +20,23 @@ namespace MSAMISUserInterface {
             if (DataVal()) {
                 var type = 1;
                 if (SpecialBTN.Checked) type = 2;
-
-                if (AddBTN.Text.Equals("ADD")) {
-                    Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type);
-                    DateLBL.Text = "Please choose a date/dates";
-                    DescBX.Text = "";
+                try {
+                    if (AddBTN.Text.Equals("ADD")) {
+                        Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type);
+                        DateLBL.Text = "Please choose a date/dates";
+                        DescBX.Text = "";
+                    }
+                    else {
+                        Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()),
+                            DescBX.Text,
+                            type);
+                        CancelBTN.PerformClick();
+                    }
+                    LoadPage();
                 }
-                else {
-                    Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), DescBX.Text,
-                        type);
-                    CancelBTN.PerformClick();
+                catch (Exception ex) {
+                    ShowErrorBox("Holiday", ex.Message);
                 }
-                LoadPage();
             }
         }
 
@@ -54,24 +59,30 @@ namespace MSAMISUserInterface {
         }
 
         private void EditBTN_Click(object sender, EventArgs e) {
-            if (HolidaysGRD.SelectedRows.Count > 0) {
-                _start = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[2]),
-                    int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[0]),
-                    int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[1]));
-                _end = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[2]),
-                    int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[0]),
-                    int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[1]));
-                SpecialBTN.Checked = HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
-                RegularBTN.Checked = !HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
-                DateLBL.Text = _start.ToShortDateString() + " - " + _end.ToShortDateString();
-                DescBX.Text = HolidaysGRD.SelectedRows[0].Cells[3].Value.ToString();
+            try {
+                if (HolidaysGRD.SelectedRows.Count > 0) {
+                    _start = new DateTime(
+                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[2]),
+                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[0]),
+                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('/')[1]));
+                    _end = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[2]),
+                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[0]),
+                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('/')[1]));
+                    SpecialBTN.Checked = HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
+                    RegularBTN.Checked = !HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
+                    DateLBL.Text = _start.ToShortDateString() + " - " + _end.ToShortDateString();
+                    DescBX.Text = HolidaysGRD.SelectedRows[0].Cells[3].Value.ToString();
+                }
+                HoldaysCLNDR.Enabled = false;
+                AddBTN.Text = "SAVE";
+                CloseBTN.Visible = false;
+                RemoveBTN.Visible = false;
+                EditBTN.Visible = false;
+                CancelBTN.Visible = true;
             }
-            HoldaysCLNDR.Enabled = false;
-            AddBTN.Text = "SAVE";
-            CloseBTN.Visible = false;
-            RemoveBTN.Visible = false;
-            EditBTN.Visible = false;
-            CancelBTN.Visible = true;
+            catch (Exception ex) {
+                ShowErrorBox("Holiday", ex.Message);
+            }
         }
 
         private void CancelBTN_Click(object sender, EventArgs e) {
@@ -104,6 +115,11 @@ namespace MSAMISUserInterface {
 
         #region Form Properties and Load
 
+        private static void ShowErrorBox(string name, string error) {
+            RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         public PayrollConfHolidays() {
             InitializeComponent();
             Opacity = 0;
@@ -125,35 +141,40 @@ namespace MSAMISUserInterface {
         }
 
         private void LoadPage() {
-            HolidaysGRD.DataSource = Holiday.GetHolidays();
-            HolidaysGRD.Columns[0].Visible = false;
-            HolidaysGRD.Columns[1].HeaderText = "START DATE";
-            HolidaysGRD.Columns[1].Width = 110;
-            HolidaysGRD.Columns[2].HeaderText = "START END";
-            HolidaysGRD.Columns[2].Width = 110;
-            HolidaysGRD.Columns[3].HeaderText = "DESCRIPTION";
-            HolidaysGRD.Columns[3].Width = 160;
-            HolidaysGRD.Columns[4].HeaderText = "TYPE";
-            HolidaysGRD.Columns[4].Width = 80;
+            try {
+                HolidaysGRD.DataSource = Holiday.GetHolidays();
+                HolidaysGRD.Columns[0].Visible = false;
+                HolidaysGRD.Columns[1].HeaderText = "START DATE";
+                HolidaysGRD.Columns[1].Width = 110;
+                HolidaysGRD.Columns[2].HeaderText = "START END";
+                HolidaysGRD.Columns[2].Width = 110;
+                HolidaysGRD.Columns[3].HeaderText = "DESCRIPTION";
+                HolidaysGRD.Columns[3].Width = 160;
+                HolidaysGRD.Columns[4].HeaderText = "TYPE";
+                HolidaysGRD.Columns[4].Width = 80;
 
-            var dts = new List<DateTime>();
+                var dts = new List<DateTime>();
 
-            foreach (DataGridViewRow row in HolidaysGRD.Rows)
-                if (row.Cells[1].Value.ToString().Equals(row.Cells[2].Value.ToString())) {
-                    dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]),
-                        int.Parse(row.Cells[1].Value.ToString().Split('/')[0]),
-                        int.Parse(row.Cells[1].Value.ToString().Split('/')[1])));
-                }
-                else {
-                    var count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) -
-                                int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
-                    for (var i = 0; i < count + 1; i++)
+                foreach (DataGridViewRow row in HolidaysGRD.Rows)
+                    if (row.Cells[1].Value.ToString().Equals(row.Cells[2].Value.ToString())) {
                         dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]),
                             int.Parse(row.Cells[1].Value.ToString().Split('/')[0]),
-                            int.Parse(row.Cells[1].Value.ToString().Split('/')[1]) + i));
-                }
-            HoldaysCLNDR.BoldedDates = dts.ToArray();
-            RegularBTN.Checked = true;
+                            int.Parse(row.Cells[1].Value.ToString().Split('/')[1])));
+                    }
+                    else {
+                        var count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) -
+                                    int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
+                        for (var i = 0; i < count + 1; i++)
+                            dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('/')[2]),
+                                int.Parse(row.Cells[1].Value.ToString().Split('/')[0]),
+                                int.Parse(row.Cells[1].Value.ToString().Split('/')[1]) + i));
+                    }
+                HoldaysCLNDR.BoldedDates = dts.ToArray();
+                RegularBTN.Checked = true;
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Holiday", ex.Message);
+            }
         }
 
         #endregion

@@ -56,7 +56,10 @@ namespace MSAMISUserInterface {
                 CloseBTN.Visible)
                 Refer.Close();
         }
-
+        private static void ShowErrorBox(string name, string error) {
+            RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         #endregion
 
         #region Form Navigation
@@ -158,22 +161,27 @@ namespace MSAMISUserInterface {
         #region Basic Pay rates
 
         private void LoadBasicPayPage() {
-            BasicPayGRD.DataSource = Payroll.GetBasicPayHistory();
-            BasicPayGRD.Columns[0].Visible = false;
-            BasicPayGRD.Columns[1].HeaderText = "AMOUNT";
-            BasicPayGRD.Columns[1].Width = 100;
-            BasicPayGRD.Columns[2].HeaderText = "STARTING DATE";
-            BasicPayGRD.Columns[2].Width = 130;
-            BasicPayGRD.Columns[3].HeaderText = "ENDING DATE";
-            BasicPayGRD.Columns[3].Width = 130;
-            BasicPayGRD.Columns[4].HeaderText = "STATUS";
-            BasicPayGRD.Columns[4].Width = 100;
+            try {
+                BasicPayGRD.DataSource = Payroll.GetBasicPayHistory();
+                BasicPayGRD.Columns[0].Visible = false;
+                BasicPayGRD.Columns[1].HeaderText = "AMOUNT";
+                BasicPayGRD.Columns[1].Width = 100;
+                BasicPayGRD.Columns[2].HeaderText = "STARTING DATE";
+                BasicPayGRD.Columns[2].Width = 130;
+                BasicPayGRD.Columns[3].HeaderText = "ENDING DATE";
+                BasicPayGRD.Columns[3].Width = 130;
+                BasicPayGRD.Columns[4].HeaderText = "STATUS";
+                BasicPayGRD.Columns[4].Width = 100;
 
-            BasicPayGRD.Sort(BasicPayGRD.Columns[2], ListSortDirection.Descending);
+                BasicPayGRD.Sort(BasicPayGRD.Columns[2], ListSortDirection.Descending);
 
-            if (Payroll.GetCurrentBasicPay().Length == 7)
-                CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
-            else CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay();
+                if (Payroll.GetCurrentBasicPay().Length == 7)
+                    CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
+                else CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay();
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Basic Pay", ex.Message);
+            }
         }
 
         private void AdjustBTN_Click(object sender, EventArgs e) {
@@ -202,10 +210,15 @@ namespace MSAMISUserInterface {
 
         private void SaveBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
-                Payroll.AddBasicPay(StartDate.Value,
-                    float.Parse(AdjustMBX.Text.Substring(2).Replace(" ", string.Empty)));
-                LoadBasicPayPage();
-                CancelBTN.PerformClick();
+                try {
+                    Payroll.AddBasicPay(StartDate.Value,
+                        float.Parse(AdjustMBX.Text.Substring(2).Replace(" ", string.Empty)));
+                    LoadBasicPayPage();
+                    CancelBTN.PerformClick();
+                }
+                catch (Exception ex) {
+                    ShowErrorBox("Basic Pay", ex.Message);
+                }
             }
         }
 
@@ -234,15 +247,21 @@ namespace MSAMISUserInterface {
 
         private void LoadSssPage() {
             SSSDateCMBX.Items.Clear();
-            foreach (DataRow row in Payroll.GetSssContribList().Rows) {
-                var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var dissolved = row["date_dissolved"].ToString().Equals("Current")
-                    ? "Current"
-                    : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
-                SSSDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
+            try {
+                foreach (DataRow row in Payroll.GetSssContribList().Rows) {
+                    var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
+                    var dissolved = row["date_dissolved"].ToString().Equals("Current")
+                        ? "Current"
+                        : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
+                    SSSDateCMBX.Items.Add(
+                        new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
+                }
+                if (SSSDateCMBX.Items.Count > 0) SSSDateCMBX.SelectedIndex = 0;
+                SssLoadTable();
             }
-            if (SSSDateCMBX.Items.Count > 0) SSSDateCMBX.SelectedIndex = 0;
-            SssLoadTable();
+            catch (Exception ex) {
+                ShowErrorBox("SSS Contribution", ex.Message);
+            }
         }
 
         private void SssLoadTable() {
@@ -398,9 +417,14 @@ namespace MSAMISUserInterface {
             else {
                 if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates?",
                         "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                    Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
-                    LoadSssPage();
-                    EditingMode(false);
+                    try {
+                        Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
+                        LoadSssPage();
+                        EditingMode(false);
+                    }
+                    catch (Exception ex) {
+                        ShowErrorBox("SSS Contribution", ex.Message);
+                    }
                 }
             }
         }
@@ -419,17 +443,23 @@ namespace MSAMISUserInterface {
 
         private void LoadTaxPage() {
             TaxDateCMBX.Items.Clear();
-            foreach (DataRow row in Payroll.GetWithTaxContribList().Rows) {
-                var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var dissolved = row["date_dissolved"].ToString().Equals("Current")
-                    ? "Current"
-                    : (row["date_dissolved"].ToString().Equals("Pending")
-                        ? "Pending"
-                        : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
-                TaxDateCMBX.Items.Add(new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
+            try {
+                foreach (DataRow row in Payroll.GetWithTaxContribList().Rows) {
+                    var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
+                    var dissolved = row["date_dissolved"].ToString().Equals("Current")
+                        ? "Current"
+                        : (row["date_dissolved"].ToString().Equals("Pending")
+                            ? "Pending"
+                            : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
+                    TaxDateCMBX.Items.Add(
+                        new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
+                }
+                if (TaxDateCMBX.Items.Count > 0) TaxDateCMBX.SelectedIndex = 0;
+                LoadTaxTables();
             }
-            if (TaxDateCMBX.Items.Count > 0) TaxDateCMBX.SelectedIndex = 0;
-            LoadTaxTables();
+            catch (Exception ex) {
+                ShowErrorBox("Withholding Tax", ex.Message);
+            }
         }
 
         private void LoadTaxTables() {
@@ -555,19 +585,24 @@ namespace MSAMISUserInterface {
         private void TaxSaveBTN_Click(object sender, EventArgs e) {
             if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current Tax rates?",
                     "Withholding Tax Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                RatesSaver.CreateWithTaxQuery(TaxDateDTPKR.Value);
-                foreach (DataGridViewRow row in TaxExemptionGRD.Rows) {
-                    var bracket =
-                        RatesSaver.CreateWithTaxBracket(
-                            double.Parse(row.Cells[1].Value.ToString().Split('+')[0].Trim(' ')),
-                            int.Parse(row.Cells[1].Value.ToString().Split('+')[1].Trim(' ').Split('%')[0]));
-                    for (var i = 2; i < TaxExemptionGRD.ColumnCount; i++)
-                        RatesSaver.AddToWithTaxQuery(bracket, TaxExemptionGRD.Columns[i].HeaderText,
-                            double.Parse(row.Cells[i].Value.ToString()));
+                try {
+                    RatesSaver.CreateWithTaxQuery(TaxDateDTPKR.Value);
+                    foreach (DataGridViewRow row in TaxExemptionGRD.Rows) {
+                        var bracket =
+                            RatesSaver.CreateWithTaxBracket(
+                                double.Parse(row.Cells[1].Value.ToString().Split('+')[0].Trim(' ')),
+                                int.Parse(row.Cells[1].Value.ToString().Split('+')[1].Trim(' ').Split('%')[0]));
+                        for (var i = 2; i < TaxExemptionGRD.ColumnCount; i++)
+                            RatesSaver.AddToWithTaxQuery(bracket, TaxExemptionGRD.Columns[i].HeaderText,
+                                double.Parse(row.Cells[i].Value.ToString()));
+                    }
+                    RatesSaver.ExecuteWithTaxQuery();
+                    TaxEditingMode(false);
+                    LoadTaxPage();
                 }
-                RatesSaver.ExecuteWithTaxQuery();
-                TaxEditingMode(false);
-                LoadTaxPage();
+                catch (Exception ex) {
+                    ShowErrorBox("Withholding Tax", ex.Message);
+                }
             }
         }
 
@@ -653,18 +688,23 @@ namespace MSAMISUserInterface {
 
         private void LoadRatesMult() {
             MultipliersDateCMBX.Items.Clear();
-            foreach (DataRow row in Payroll.GetRatesList().Rows) {
-                var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
-                var dissolved = row["date_dissolved"].ToString().Equals("Current")
-                    ? "Current"
-                    : (row["date_dissolved"].ToString().Equals("Pending")
-                        ? "Pending"
-                        : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
-                MultipliersDateCMBX.Items.Add(
-                    new ComboBoxSss(int.Parse(row["rates_id"].ToString()), effective, dissolved));
+            try {
+                foreach (DataRow row in Payroll.GetRatesList().Rows) {
+                    var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
+                    var dissolved = row["date_dissolved"].ToString().Equals("Current")
+                        ? "Current"
+                        : (row["date_dissolved"].ToString().Equals("Pending")
+                            ? "Pending"
+                            : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
+                    MultipliersDateCMBX.Items.Add(
+                        new ComboBoxSss(int.Parse(row["rates_id"].ToString()), effective, dissolved));
+                }
+                MultipliersDateCMBX.SelectedIndex = 0;
+                MultLoadValues();
             }
-            MultipliersDateCMBX.SelectedIndex = 0;
-            MultLoadValues();
+            catch (Exception ex) {
+                ShowErrorBox("Rates Multiplier", ex.Message);
+            }
         }
 
         private void MultEditBTN_Click(object sender, EventArgs e) {
@@ -693,13 +733,18 @@ namespace MSAMISUserInterface {
         private void MultSaveBTN_Click(object sender, EventArgs e) {
             if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current rates multipliers?",
                     "Rates Multipliers", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                Payroll.SetRates(MultDTPKR.Value, double.Parse(RatesL2.Value.ToString("N2")),
-                    double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")),
-                    double.Parse(RatesL5.Value.ToString("N2")),
-                    double.Parse(RatesL6.Value.ToString("N2")), double.Parse(RatesL7.Value.ToString("N2")),
-                    double.Parse(RatesL8.Value.ToString("N2")), double.Parse(RatesL9.Value.ToString("N2")));
-                MultEditMode(false);
-                LoadRatesMult();
+                try {
+                    Payroll.SetRates(MultDTPKR.Value, double.Parse(RatesL2.Value.ToString("N2")),
+                        double.Parse(RatesL3.Value.ToString("N2")), double.Parse(RatesL4.Value.ToString("N2")),
+                        double.Parse(RatesL5.Value.ToString("N2")),
+                        double.Parse(RatesL6.Value.ToString("N2")), double.Parse(RatesL7.Value.ToString("N2")),
+                        double.Parse(RatesL8.Value.ToString("N2")), double.Parse(RatesL9.Value.ToString("N2")));
+                    MultEditMode(false);
+                    LoadRatesMult();
+                }
+                catch (Exception ex) {
+                    ShowErrorBox("Rates Multipliers", ex.Message);
+                }
             }
         }
 
@@ -728,22 +773,32 @@ namespace MSAMISUserInterface {
         #region Global Rates Page
 
         private void LoadGlobalPage() {
-            GlobalPHICBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultPHIC"]);
-            GlobalHDMFBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultHDMF"]);
-            GlobalCashBondBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultCashBond"]);
-            GlobalColaBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultCola"]);
-            GlobalEmergencyBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultEmer"]);
+            try {
+                GlobalPHICBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultPHIC"]);
+                GlobalHDMFBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultHDMF"]);
+                GlobalCashBondBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultCashBond"]);
+                GlobalColaBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultCola"]);
+                GlobalEmergencyBX.Value = decimal.Parse(Data.PayrollIni["Payroll"]["DefaultEmer"]);
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Global Rates", ex.Message);
+            }
         }
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (RylMessageBox.ShowDialog("Are you sure you want to adjust the default rates?",
                     "Default Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                Payroll.SetBonusDefaults(double.Parse(GlobalPHICBX.Value.ToString("N2")),
-                    double.Parse(GlobalHDMFBX.Value.ToString("N2")),
-                    double.Parse(GlobalCashBondBX.Value.ToString("N2")),
-                    double.Parse(GlobalColaBX.Value.ToString("N2")),
-                    double.Parse(GlobalEmergencyBX.Value.ToString("N2")));
-                GlobalCancelBTN.PerformClick();
+                try {
+                    Payroll.SetBonusDefaults(double.Parse(GlobalPHICBX.Value.ToString("N2")),
+                        double.Parse(GlobalHDMFBX.Value.ToString("N2")),
+                        double.Parse(GlobalCashBondBX.Value.ToString("N2")),
+                        double.Parse(GlobalColaBX.Value.ToString("N2")),
+                        double.Parse(GlobalEmergencyBX.Value.ToString("N2")));
+                    GlobalCancelBTN.PerformClick();
+                }
+                catch (Exception ex) {
+                    ShowErrorBox("Global Rates", ex.Message);
+                }
             }
         }
 
@@ -768,5 +823,7 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+
     }
 }

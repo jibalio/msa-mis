@@ -381,7 +381,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(144, 133);
+            this.label1.Location = new System.Drawing.Point(153, 133);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(12, 19);
@@ -1149,16 +1149,16 @@
             this.panel3.Controls.Add(this.PersonalLBL);
             this.panel3.Controls.Add(this.FamilyLBL);
             this.panel3.Controls.Add(this.CloseBTN);
-            this.panel3.Controls.Add(this.FamilyPNL);
             this.panel3.Controls.Add(this.GEditDetailsBTN);
             this.panel3.Controls.Add(this.PersonalPNL);
             this.panel3.Controls.Add(this.WorkPNL);
+            this.panel3.Controls.Add(this.FamilyPNL);
             this.panel3.Location = new System.Drawing.Point(348, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 600);
             this.panel3.TabIndex = 240;
             // 
-            // Guards_View
+            // GuardsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1186,7 +1186,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Guards_View";
+            this.Name = "GuardsView";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RViewEmployees_FormClosing);

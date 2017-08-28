@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class PayrollEmployeeView : Form {
@@ -20,6 +21,11 @@ namespace MSAMISUserInterface {
         }
 
         public int Gid { get; set; }
+
+        private static void ShowErrorBox(string name, string error) {
+            RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         private void Payroll_EmployeeView_Load(object sender, EventArgs e) {
             FadeTMR.Start();
@@ -47,22 +53,27 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshPayrollList() {
-            EmpListGRD.DataSource = Payroll.GetGuardsPayrollMinimal();
-            if (EmpListGRD.RowCount > 0) { 
-            _currentRow = EmpListGRD.Rows[0];
-            EmpListGRD.Columns[0].Visible = false;
-            EmpListGRD.Columns[1].Width = 320;
-            EmpListGRD.Sort(EmpListGRD.Columns[1], ListSortDirection.Ascending);
+            try {
+                EmpListGRD.DataSource = Payroll.GetGuardsPayrollMinimal();
+                if (EmpListGRD.RowCount > 0) {
+                    _currentRow = EmpListGRD.Rows[0];
+                    EmpListGRD.Columns[0].Visible = false;
+                    EmpListGRD.Columns[1].Width = 320;
+                    EmpListGRD.Sort(EmpListGRD.Columns[1], ListSortDirection.Ascending);
 
-            foreach (DataGridViewRow row in EmpListGRD.Rows)
-                if (row.Cells[0].Value.ToString().Equals(Gid.ToString())) {
-                    row.Selected = true;
-                    _currentRow = row;
-                    row.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-                    if (row.Index > 4) EmpListGRD.FirstDisplayedScrollingRowIndex = row.Index - 4;
-                    else EmpListGRD.FirstDisplayedScrollingRowIndex = 0;
-                    break;
+                    foreach (DataGridViewRow row in EmpListGRD.Rows)
+                        if (row.Cells[0].Value.ToString().Equals(Gid.ToString())) {
+                            row.Selected = true;
+                            _currentRow = row;
+                            row.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                            if (row.Index > 4) EmpListGRD.FirstDisplayedScrollingRowIndex = row.Index - 4;
+                            else EmpListGRD.FirstDisplayedScrollingRowIndex = 0;
+                            break;
+                        }
                 }
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Payroll Employee List", ex.Message);
             }
         }
 
@@ -95,26 +106,31 @@ namespace MSAMISUserInterface {
         }
 
         public void LoadAjustments() {
-            AdjGRD.DataSource = _pay.GetAdjustmentHistory();
-            AdjGRD.Columns[0].HeaderText = "TYPE";
-            AdjGRD.Columns[1].HeaderText = "DATE / TIME";
-            AdjGRD.Columns[2].HeaderText = "VALUE";
+            try {
+                AdjGRD.DataSource = _pay.GetAdjustmentHistory();
+                AdjGRD.Columns[0].HeaderText = "TYPE";
+                AdjGRD.Columns[1].HeaderText = "DATE / TIME";
+                AdjGRD.Columns[2].HeaderText = "VALUE";
 
-            AdjGRD.Columns[0].Width = 100;
-            AdjGRD.Columns[1].Width = 200;
+                AdjGRD.Columns[0].Width = 100;
+                AdjGRD.Columns[1].Width = 200;
 
-            AdjGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                AdjGRD.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            AdjGRD.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AdjGRD.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AdjGRD.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AdjGRD.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AdjGRD.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+                AdjGRD.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
 
-            if (AdjGRD.RowCount == 0) {
-                AdjustmentErrorPNL.BringToFront();
-                AdjustmentErrorPNL.Visible = true;
+                if (AdjGRD.RowCount == 0) {
+                    AdjustmentErrorPNL.BringToFront();
+                    AdjustmentErrorPNL.Visible = true;
+                }
+                else {
+                    AdjustmentErrorPNL.Visible = false;
+                }
             }
-            else {
-                AdjustmentErrorPNL.Visible = false;
+            catch (Exception ex) {
+                ShowErrorBox("Payroll Adjustments", ex.Message);
             }
         }
 
@@ -173,81 +189,93 @@ namespace MSAMISUserInterface {
         }
 
         private void LoadDetails() {
-            PeriodCMBX.Items.Clear();
-            if (!Name.Equals("Archived"))
-                foreach (DataRow row in Attendance.GetPeriods(Gid).Rows)
-                    PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
-                        int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
-            else
-                foreach (DataRow row in Archiver.GetPeriods(Gid).Rows)
-                    PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
-                        int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+            try {
+                PeriodCMBX.Items.Clear();
+                if (!Name.Equals("Archived"))
+                    foreach (DataRow row in Attendance.GetPeriods(Gid).Rows)
+                        PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
+                            int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
+                else
+                    foreach (DataRow row in Archiver.GetPeriods(Gid).Rows)
+                        PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
+                            int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
 
-            if (PeriodCMBX.Items.Count > 0) {
-                PeriodCMBX.SelectedIndex = 0;
-                NoPayrollPNL.Visible = false;
+                if (PeriodCMBX.Items.Count > 0) {
+                    PeriodCMBX.SelectedIndex = 0;
+                    NoPayrollPNL.Visible = false;
+                }
+                else {
+                    NoPayrollPNL.BringToFront();
+                    NoPayrollPNL.Visible = true;
+                }
+                if (OverviewPNL.Visible == false) ChangePanel(OverviewLBL, OverviewPNL);
             }
-            else {
-                NoPayrollPNL.BringToFront();
-                NoPayrollPNL.Visible = true;
+            catch (Exception ex) {
+                ShowErrorBox("Payroll Period Details", ex.Message);
             }
-            if (OverviewPNL.Visible == false) ChangePanel(OverviewLBL, OverviewPNL);
         }
 
         public void LoadComputations() {
-            if (PeriodCMBX.Items.Count > 0) {
-                if (!Name.Equals("Archived"))
-                    _pay = new Payroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
-                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-                else
-                    _pay = Archiver.GetPayroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
-                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-                UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal",
-                    "nsu_overtime_night_normal", MondaySaturday);
-                UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal",
-                    "sun_overtime_night_normal", Sundays);
-                UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special",
-                    "nsu_overtime_night_special", SMond);
-                UpdatePopUp("sun_proper_day_special", "sun_overtime_day_special", "sun_proper_night_special",
-                    "sun_overtime_night_special", SSunds);
-                UpdatePopUp("nsu_proper_day_regular", "nsu_overtime_day_regular", "nsu_proper_night_regular",
-                    "nsu_overtime_night_regular", RMond);
-                UpdatePopUp("sun_proper_day_regular", "sun_overtime_day_regular", "sun_proper_night_regular",
-                    "sun_overtime_night_regular", RSunds);
-                UpdateLbl("normal_nsu", OMLBL);
-                UpdateLbl("normal_sun", OSLBL);
-                UpdateLbl("regular_nsu", RMLBL);
-                UpdateLbl("regular_sun", RSLBL);
-                UpdateLbl("special_nsu", SMLBL);
-                UpdateLbl("special_sun", SSLBL);
-                UpdateLbl("normal", OTLBL);
-                UpdateLbl("regular", RTLBL);
-                UpdateLbl("special", STLBL);
-                UpdateLbl("total", WorkTotalLBL);
+            try {
+                if (PeriodCMBX.Items.Count > 0) {
+                    if (!Name.Equals("Archived"))
+                        _pay = new Payroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                            ((ComboBoxDays) PeriodCMBX.SelectedItem).Period,
+                            ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
+                    else
+                        _pay = Archiver.GetPayroll(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                            ((ComboBoxDays) PeriodCMBX.SelectedItem).Period,
+                            ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
+                    UpdatePopUp("nsu_proper_day_normal", "nsu_overtime_day_normal", "nsu_proper_night_normal",
+                        "nsu_overtime_night_normal", MondaySaturday);
+                    UpdatePopUp("sun_proper_day_normal", "sun_overtime_day_normal", "sun_proper_night_normal",
+                        "sun_overtime_night_normal", Sundays);
+                    UpdatePopUp("nsu_proper_day_special", "nsu_overtime_day_special", "nsu_proper_night_special",
+                        "nsu_overtime_night_special", SMond);
+                    UpdatePopUp("sun_proper_day_special", "sun_overtime_day_special", "sun_proper_night_special",
+                        "sun_overtime_night_special", SSunds);
+                    UpdatePopUp("nsu_proper_day_regular", "nsu_overtime_day_regular", "nsu_proper_night_regular",
+                        "nsu_overtime_night_regular", RMond);
+                    UpdatePopUp("sun_proper_day_regular", "sun_overtime_day_regular", "sun_proper_night_regular",
+                        "sun_overtime_night_regular", RSunds);
+                    UpdateLbl("normal_nsu", OMLBL);
+                    UpdateLbl("normal_sun", OSLBL);
+                    UpdateLbl("regular_nsu", RMLBL);
+                    UpdateLbl("regular_sun", RSLBL);
+                    UpdateLbl("special_nsu", SMLBL);
+                    UpdateLbl("special_sun", SSLBL);
+                    UpdateLbl("normal", OTLBL);
+                    UpdateLbl("regular", RTLBL);
+                    UpdateLbl("special", STLBL);
+                    UpdateLbl("total", WorkTotalLBL);
 
-                B13LBL.Text = CurrencyFormat(_pay.ThirteenthMonthPay);
-                BAllowanceLBL.Text = CurrencyFormat(_pay.EmergencyAllowance);
-                BBondsLBL.Text = CurrencyFormat(_pay.CashBond);
-                BColaLBL.Text = CurrencyFormat(_pay.Cola);
-                BTotalLBL.Text = CurrencyFormat(_pay.Bonuses);
+                    B13LBL.Text = CurrencyFormat(_pay.ThirteenthMonthPay);
+                    BAllowanceLBL.Text = CurrencyFormat(_pay.EmergencyAllowance);
+                    BBondsLBL.Text = CurrencyFormat(_pay.CashBond);
+                    BColaLBL.Text = CurrencyFormat(_pay.Cola);
+                    BTotalLBL.Text = CurrencyFormat(_pay.Bonuses);
 
-                DCashAdvanceLBL.Text = CurrencyFormatNegative(_pay.CashAdvance);
-                DPagIbigLBL.Text = CurrencyFormatNegative(_pay.PagIbig);
-                DPhilHealthLBL.Text = CurrencyFormatNegative(_pay.PhilHealth);
-                DSSSLBL.Text = CurrencyFormatNegative(_pay.Sss);
-                DTotalLBL.Text = CurrencyFormatNegative(_pay.Deductions);
+                    DCashAdvanceLBL.Text = CurrencyFormatNegative(_pay.CashAdvance);
+                    DPagIbigLBL.Text = CurrencyFormatNegative(_pay.PagIbig);
+                    DPhilHealthLBL.Text = CurrencyFormatNegative(_pay.PhilHealth);
+                    DSSSLBL.Text = CurrencyFormatNegative(_pay.Sss);
+                    DTotalLBL.Text = CurrencyFormatNegative(_pay.Deductions);
 
-                NetPayLBL.Text = CurrencyFormat(_pay.NetPay);
+                    NetPayLBL.Text = CurrencyFormat(_pay.NetPay);
 
-                var wt = _pay.GetWithholdingTax();
-                TaxPop.Items[1].Text = CurrencyFormat(wt.TaxbaseD);
-                TaxPop.Items[3].Text = CurrencyFormat(wt.ExcessTax);
-                TaxPop.Items[5].Text = CurrencyFormat(wt.total);
+                    var wt = _pay.GetWithholdingTax();
+                    TaxPop.Items[1].Text = CurrencyFormat(wt.TaxbaseD);
+                    TaxPop.Items[3].Text = CurrencyFormat(wt.ExcessTax);
+                    TaxPop.Items[5].Text = CurrencyFormat(wt.total);
 
-                SSSPop.Items[1].Text = _pay.GetSSSDetails()[0];
-                SSSPop.Items[3].Text = _pay.GetSSSDetails()[1];
-                SSSPop.Items[5].Text = _pay.GetSSSDetails()[2];
-                DWithLBL.Text = CurrencyFormatNegative(wt.total);
+                    SSSPop.Items[1].Text = _pay.GetSSSDetails()[0];
+                    SSSPop.Items[3].Text = _pay.GetSSSDetails()[1];
+                    SSSPop.Items[5].Text = _pay.GetSSSDetails()[2];
+                    DWithLBL.Text = CurrencyFormatNegative(wt.total);
+                }
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Payroll Calculations", ex.Message);
             }
         }
 
@@ -334,7 +362,7 @@ namespace MSAMISUserInterface {
         private void ApproveBTN_Click(object sender, EventArgs e) {
             if (ApproveBTN.Text.Equals("APPROVE")) {
                 if (_pay.NetPay < 0) {
-                    rylui.RylMessageBox.ShowDialog(
+                    RylMessageBox.ShowDialog(
                         "Payroll net pay cannot be negative. Please make necessary adjustments", "Approve Payroll",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
