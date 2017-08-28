@@ -69,7 +69,7 @@ namespace MSAMISUserInterface
         public static DataTable GetSalaryList()
         {
             ExtraQueryParams = "WHERE gid = 0 GROUP BY fn;";
-            String q = "SELECT fn, ln, mn, gid, GStatus, gender, height, weight, ln, mn, gid, GStatus, gender, height, weight, gender, height, weight FROM msadb.guards " + ExtraQueryParams;
+            String q = "SELECT fn, ln, mn, gid, mn, gid, mn, gid, GStatus, gender, height, weight, ln, mn, gid, GStatus, gender, height, weight, gender FROM msadb.guards " + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
         }
 
@@ -160,7 +160,7 @@ namespace MSAMISUserInterface
                 else if (formOrigin == 'd')
                     return new float[] { 130f, 130f, 80f, 230f, 60f, 60f, 60f, 120f, 120f };
             else if (formOrigin == 's')
-                return new float[] { 30f, 10f, 10f, 10f, 8f, 8f, 8f, 8f, 10f, 8f, 8f, 8f, 8f, 10f, 10f, 10f, 10f, 20f };
+                return new float[] { 30f, 10f, 10f, 10f, 8f,/*5*/ 8f, 8f, 8f, 10f, 8f,/*5*/  8f, 8f, 8f, 8f, 10f,/*5*/ 10f, 10f, 10f, 10f, 20f /*5*/ };
             return null;
         }
     }

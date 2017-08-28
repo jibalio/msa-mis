@@ -109,6 +109,44 @@ namespace MSAMISUserInterface {
             }
         }
 
+        public void formatSalaryReportTable()
+        {
+            var approvedlist = Payroll.GetApprovedPayrollsList();
+            int gid, month, period, year;
+            int i;
+            for (i = 0; i < Payroll.GetApprovedPayrollsList().Rows.Count; i++)
+            {
+                gid = Convert.ToInt32(approvedlist.Rows[i][0]);
+                month = Convert.ToInt32(approvedlist.Rows[i][1]);
+                period = Convert.ToInt32(approvedlist.Rows[i][2]);
+                year = Convert.ToInt32(approvedlist.Rows[i][3]);
+                PayrollReport pr = new PayrollReport(gid, year, month, period);
+
+                //add data
+                GReportGRD.Rows[i].Cells[0].Value = pr.LN + ", " + pr.FN + pr.MN;
+                GReportGRD.Rows[i].Cells[1].Value = pr.DaysOfWork;
+                GReportGRD.Rows[i].Cells[2].Value = pr.Rate;
+                GReportGRD.Rows[i].Cells[3].Value = pr.TotalRegularWage;
+                GReportGRD.Rows[i].Cells[4].Value = pr.overtime.RegularDay.hour;
+                GReportGRD.Rows[i].Cells[5].Value = pr.overtime.RegularDay.total;
+                GReportGRD.Rows[i].Cells[6].Value = pr.overtime.SundayAndHoliday.hour;
+                GReportGRD.Rows[i].Cells[7].Value = pr.overtime.SundayAndHoliday;
+                GReportGRD.Rows[i].Cells[8].Value = pr.TotalAmount;
+                GReportGRD.Rows[i].Cells[9].Value = pr.Sss;
+                GReportGRD.Rows[i].Cells[10].Value = pr.PHIC;
+                GReportGRD.Rows[i].Cells[11].Value = pr.Withtax;
+                GReportGRD.Rows[i].Cells[12].Value = pr.HDMF;
+                GReportGRD.Rows[i].Cells[13].Value = pr.CashAdvance;
+                GReportGRD.Rows[i].Cells[14].Value = pr.ThirteenthMonthPay;
+                GReportGRD.Rows[i].Cells[15].Value = pr.Cola;
+                GReportGRD.Rows[i].Cells[16].Value = pr.CashBond;
+                GReportGRD.Rows[i].Cells[17].Value = pr.EmergencyAllowance;
+                GReportGRD.Rows[i].Cells[18].Value = pr.NetAmountPaid;
+                GReportGRD.Rows[i].Cells[19].Value = "";
+
+            }
+        }
+
 
         #region RylBlock
 
@@ -125,7 +163,8 @@ namespace MSAMISUserInterface {
                     else
                         GReportGRD.Rows[x].Cells[0].Value = "";
                 }
-            }
+            } //else if (formOrigin == 's') formatSalaryReportTable();
+
             var myfont = FontFactory.GetFont("Arial", 8, BaseColor.BLACK);
             var pdfTable = new PdfPTable(GReportGRD.ColumnCount);
             pdfTable.SetWidths(Reports.GetPDFFormat(formOrigin));
@@ -141,7 +180,6 @@ namespace MSAMISUserInterface {
             //Add Headers Here
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfTable = AddHeaders(pdfTable, formOrigin);
-            var i = 0;
             //Add Data to PDF
             foreach (DataGridViewRow row in GReportGRD.Rows)
             {
@@ -219,7 +257,7 @@ namespace MSAMISUserInterface {
                 pdfTable.AddCell(cell);
 
                 cell.Rowspan = 1;
-                cell.Colspan = 4;
+                cell.Colspan = 5;
 
                 cell.Phrase = (new Phrase("DEDUCTIONS", headerfont));
                 pdfTable.AddCell(cell);
@@ -231,6 +269,9 @@ namespace MSAMISUserInterface {
                 pdfTable.AddCell(cell);
 
                 cell.Phrase = (new Phrase("Cola", headerfont));
+                pdfTable.AddCell(cell);
+
+                cell.Phrase = (new Phrase("Cash Bond", headerfont));
                 pdfTable.AddCell(cell);
 
                 cell.Phrase = (new Phrase("Emergency Allow.", headerfont));
@@ -267,6 +308,9 @@ namespace MSAMISUserInterface {
                 cell.Phrase = (new Phrase("HDMF", headerfont));
                 pdfTable.AddCell(cell);
 
+                cell.Phrase = (new Phrase("Cash Advance", headerfont));
+                pdfTable.AddCell(cell);
+
                 //Third Row
                 cell.Colspan = 1;
                 cell.Rowspan = 1;
@@ -283,7 +327,6 @@ namespace MSAMISUserInterface {
                 cell.Phrase = (new Phrase("Amt", headerfont));
                 pdfTable.AddCell(cell);
 
-                //test if it loops after the edge column of the table
             }
             return pdfTable;
         }

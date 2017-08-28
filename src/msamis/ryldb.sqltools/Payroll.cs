@@ -1125,7 +1125,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             and period = {px.period}
             and year = {px.year}
             and pstatus = {Enumeration.PayrollStatus.Approved}";
+            return SQLTools.ExecuteQuery(q);
         }
-
     }
 }
