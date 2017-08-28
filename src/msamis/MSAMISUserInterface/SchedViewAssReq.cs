@@ -71,7 +71,7 @@ namespace MSAMISUserInterface {
             NeededLBL.ForeColor = _numGuards > Scheduling.GetNumberOfUnassignedGuards()
                 ? Color.Salmon
                 : Color.OliveDrab;
-            NeededLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " available guards";
+            NeededLBL.Text = Scheduling.GetUnassignedGuards("", ContractStartLBL.Text, ContractEndLBL.Text).Rows.Count + " available guards";
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {
