@@ -265,17 +265,22 @@ namespace MSAMISUserInterface {
         }
 
         private void SssLoadTable() {
-            if (SSSDateCMBX.Items.Count > 0) {
-                SSSGRD.Rows.Clear();
-                if (Payroll.GetSssContribTable(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id).Rows.Count > 0)
-                    foreach (DataRow row in Payroll.GetSssContribTable(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id)
-                        .Rows)
-                        SSSGRD.Rows.Add(double.Parse(row[0].ToString()).ToString("N2"),
-                            double.Parse(row[1].ToString()).ToString("N2"), "-",
-                            double.Parse(row[2].ToString()).ToString("N2"),
-                            "", double.Parse(row[3].ToString()).ToString("N2"));
-                if (SSSGRD.Rows.Count > 0)
-                    SSSGRD.CurrentCell = SSSGRD.Rows[0].Cells[1];
+            try {
+                if (SSSDateCMBX.Items.Count > 0) {
+                    SSSGRD.Rows.Clear();
+                    if (Payroll.GetSssContribTable(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id).Rows.Count > 0)
+                        foreach (DataRow row in Payroll.GetSssContribTable(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id)
+                            .Rows)
+                            SSSGRD.Rows.Add(double.Parse(row[0].ToString()).ToString("N2"),
+                                double.Parse(row[1].ToString()).ToString("N2"), "-",
+                                double.Parse(row[2].ToString()).ToString("N2"),
+                                "", double.Parse(row[3].ToString()).ToString("N2"));
+                    if (SSSGRD.Rows.Count > 0)
+                        SSSGRD.CurrentCell = SSSGRD.Rows[0].Cells[1];
+                }
+            }
+            catch (Exception ex) {
+                ShowErrorBox("SSS Benefit", ex.Message);
             }
         }
 
@@ -450,7 +455,9 @@ namespace MSAMISUserInterface {
                         ? "Current"
                         : (row["date_dissolved"].ToString().Equals("Pending")
                             ? "Pending"
-                            : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
+                            : (row["date_dissolved"].ToString().Equals("") 
+                                ? "Unspecified"
+                                : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy")));
                     TaxDateCMBX.Items.Add(
                         new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
                 }
@@ -464,27 +471,33 @@ namespace MSAMISUserInterface {
 
         private void LoadTaxTables() {
             TaxExemptionGRD.Rows.Clear();
-            TaxExemptionGRD.ColumnCount = 2;
-            foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id).Rows)
-                TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
+            try {
+                TaxExemptionGRD.ColumnCount = 2;
+                foreach (DataRow row in Payroll.GetWithTaxHeaders(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id).Rows)
+                    TaxExemptionGRD.Rows.Add(row["wid"], row["value"] + "\n  +" + row["excessmult"] + "% over");
 
-            var withTaxBrackets = Payroll.GetWithTaxBrackets(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id);
-            TaxExemptionGRD.ColumnCount += withTaxBrackets.Rows.Count / TaxExemptionGRD.Rows.Count;
+                var withTaxBrackets = Payroll.GetWithTaxBrackets(((ComboBoxSss) TaxDateCMBX.SelectedItem).Id);
+                TaxExemptionGRD.ColumnCount += withTaxBrackets.Rows.Count / TaxExemptionGRD.Rows.Count;
 
-            var j = 0;
-            for (var i = 0;
-                i < withTaxBrackets.Rows.Count / TaxExemptionGRD.Rows.Count;
-                i++) {
-                TaxExemptionGRD.Columns[i + 2].HeaderText = withTaxBrackets.Rows[j][1].ToString().ToUpper();
-                TaxExemptionGRD.Columns[i + 2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                j += TaxExemptionGRD.Rows.Count;
+                var j = 0;
+                for (var i = 0;
+                    i < withTaxBrackets.Rows.Count / TaxExemptionGRD.Rows.Count;
+                    i++) {
+                    TaxExemptionGRD.Columns[i + 2].HeaderText = withTaxBrackets.Rows[j][1].ToString().ToUpper();
+                    TaxExemptionGRD.Columns[i + 2].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
+                    j += TaxExemptionGRD.Rows.Count;
+                }
+
+                j = 0;
+                for (var i = 0; i < TaxExemptionGRD.ColumnCount - 2; i++)
+                for (var k = 0; k < TaxExemptionGRD.Rows.Count; k++) {
+                    TaxExemptionGRD.Rows[k].Cells[i + 2].Value = withTaxBrackets.Rows[j][2].ToString();
+                    j++;
+                }
             }
-
-            j = 0;
-            for (var i = 0; i < TaxExemptionGRD.ColumnCount - 2; i++)
-            for (var k = 0; k < TaxExemptionGRD.Rows.Count; k++) {
-                TaxExemptionGRD.Rows[k].Cells[i + 2].Value = withTaxBrackets.Rows[j][2].ToString();
-                j++;
+            catch (Exception ex) {
+                ShowErrorBox("Withholding Tax", ex.Message);
             }
         }
 
@@ -757,15 +770,20 @@ namespace MSAMISUserInterface {
         }
 
         private void MultLoadValues() {
-            var row = Payroll.GetRates(((ComboBoxSss) MultipliersDateCMBX.SelectedItem).Id).Rows[0];
-            RatesL2.Value = decimal.Parse(row[5].ToString());
-            RatesL3.Value = decimal.Parse(row[6].ToString());
-            RatesL4.Value = decimal.Parse(row[7].ToString());
-            RatesL5.Value = decimal.Parse(row[8].ToString());
-            RatesL6.Value = decimal.Parse(row[9].ToString());
-            RatesL7.Value = decimal.Parse(row[10].ToString());
-            RatesL8.Value = decimal.Parse(row[11].ToString());
-            RatesL9.Value = decimal.Parse(row[12].ToString());
+            try {
+                var row = Payroll.GetRates(((ComboBoxSss) MultipliersDateCMBX.SelectedItem).Id).Rows[0];
+                RatesL2.Value = decimal.Parse(row[5].ToString());
+                RatesL3.Value = decimal.Parse(row[6].ToString());
+                RatesL4.Value = decimal.Parse(row[7].ToString());
+                RatesL5.Value = decimal.Parse(row[8].ToString());
+                RatesL6.Value = decimal.Parse(row[9].ToString());
+                RatesL7.Value = decimal.Parse(row[10].ToString());
+                RatesL8.Value = decimal.Parse(row[11].ToString());
+                RatesL9.Value = decimal.Parse(row[12].ToString());
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Rates Multiplier", ex.Message);
+            }
         }
 
         #endregion
