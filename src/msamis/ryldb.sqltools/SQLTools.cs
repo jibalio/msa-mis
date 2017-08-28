@@ -139,6 +139,7 @@ namespace MSAMISUserInterface {
             query = AppendType(query, filters);
             query = AppendFilters(query, ColumnToFilterByKeyword, keyword, orderby);
             DataTable dt = new DataTable();
+            messageFile(query);
             message(query);
             try {
                 MySqlCommand com = new MySqlCommand(query, SQLTools.conn);
@@ -172,6 +173,7 @@ namespace MSAMISUserInterface {
             if (enablecheck) {
                 try {
                     message(query);
+                    messageFile(query);
                     MySqlCommand com = new MySqlCommand(query, conn);
                     SQLTools.conn.Open();
                     com.ExecuteNonQuery();
@@ -205,6 +207,16 @@ namespace MSAMISUserInterface {
 ");
             }
         }
+
+        public static void messageFile(String query) {
+            if (query.ToLower().StartsWith("update") || query.ToLower().StartsWith("insert") || 
+                query.ToLower().StartsWith("call")) {
+                using (var writer = new StreamWriter(@"msamisq.log", append:true)) {
+                    writer.WriteLine(query);
+                }
+            }
+        }
+
         public static void ExecuteNonQueryNoDB(string query) {
             try {
                 MySqlCommand com = new MySqlCommand(query, nodb);

@@ -46,11 +46,24 @@ namespace MSAMISUserInterface {
             this.AID = AID;
             period = new Period(periodx, month, year);
             Console.Write(period.period);
-            
 
-            DataRow dd = SQLTools.ExecuteQuery("select * from sduty_assignment where aid=" + AID).Rows[0];
-            GID = int.Parse(dd["gid"].ToString());
-            CID = int.Parse(dd["cid"].ToString());
+
+
+
+
+
+            DataRow drSdutyAssign = SQLTools.ExecuteQuery($"select * from sduty_assignment where aid='{this.AID}' and astatus='{1}'").Rows[0];
+            GID = int.Parse(drSdutyAssign["gid"].ToString());
+            CID = int.Parse(drSdutyAssign["cid"].ToString());
+
+            // Only add attendance on months between contract start and contract end (inclusive)'.
+            // So i need to retrieve ContractStart and ContractEnd of the request.
+            int raid = int.Parse(drSdutyAssign["raid"].ToString());
+            DataRow drra = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.request_assign where raid='{raid}' and contractstart<now() and contractend>now() order by contractstart asc limit 1;").Rows[0];
+            DateTime cs = DateTime.Parse(drra["contractstart"].ToString());
+            DateTime ce = DateTime.Parse(drra["contractend"].ToString());
+
+
             // Insert new period
             String ax = $@"INSERT IGNORE INTO `msadb`.`period` 
                             (`GID`, `month`, `period`, `year`, `cid`) VALUES 
@@ -84,11 +97,13 @@ namespace MSAMISUserInterface {
                 foreach (int date in dutydates) {
                     DateTime d = new DateTime(period.year, period.month, date);
                     count++;
-                    q += @"('" + did + "','" + d.ToString("yyyy-MM-dd HH:mm:ss") + "','" + ifn + "')";
-                    if (count < max) q += ",\n";
-
+                    if (cs <= d && d <= ce) {
+                        q += @"('" + did + "','" + d.ToString("yyyy-MM-dd HH:mm:ss") + "','" + ifn + "')";
+                        q += ",\n";
+                    }
+                    
                 }
-                if (x.Rows.Count != 0) SQLTools.ExecuteNonQuery(q);
+                if (x.Rows.Count != 0) SQLTools.ExecuteNonQuery(q.Substring(0,q.Length-2));
 
             }
             
@@ -115,7 +130,7 @@ namespace MSAMISUserInterface {
         }
 
         public DataTable GetAttendance(int month, int period, int year) {
-            String q = @"
+            String q = $@"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
 							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
                             timein,
@@ -126,13 +141,13 @@ namespace MSAMISUserInterface {
                             on dutydetails.did=attendance.did
                             left join period 
                             on period.pid=attendance.pid
-                            where period = '{0}'
-                            and month = '{1}'
-                            and year = '{2}'
-                            and period.gid = '{3}'
+                            where period = '{period}'
+                            and month = '{month}'
+                            and year = '{year}'
+                            and period.gid = '{this.GID}'
+                            and aid='{AID}'
                             order by date asc
                             ";
-            q = Format(q, period, month, year, this.GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             return d;
         }
@@ -142,7 +157,7 @@ namespace MSAMISUserInterface {
         }
 
         public DataTable GetAttendance_View(int month, int period, int year) {
-            String q = @"
+            String q = $@"
                         select atid, dutydetails.did, 
 							CONCAT((DATE_FORMAT(date, '%d')), ' / ' ,
 							(CONCAT (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_hh,':',to_mm,SUBSTRING(to_period,1,1)))) as Schedule,
@@ -154,13 +169,13 @@ namespace MSAMISUserInterface {
                             on dutydetails.did=attendance.did
                             left join period 
                             on period.pid=attendance.pid
-                            where period = '{1}'
-                            and month = '{0}'
-                            and year = '{2}'    
-                            and gid = '{3}'
+                            where period = '{period}'
+                            and month = '{month}'
+                            and year = '{year}'    
+                            and gid = '{GID}'
+                            and aid='{AID}'
                             order by date asc
                             ";
-            q = Format(q, month, period, year, GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
@@ -188,7 +203,7 @@ namespace MSAMISUserInterface {
         }
 
         public Hours GetAttendanceSummary() {
-            String q = @"
+            String q = $@"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
 							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
                             timein,
@@ -199,13 +214,13 @@ namespace MSAMISUserInterface {
                             on dutydetails.did=attendance.did
                             left join period 
                             on period.pid=attendance.pid
-                            where period = '{0}'
-                            and month = '{1}'
-                            and year = '{2}'
-                            and period.gid = {3}
+                            where period = '{period.period}'
+                            and month = '{period.month}'
+                            and year = '{period.year}'
+                            and period.gid = {this.GID}
+                            and aid = {AID}
                             order by date asc
                             ";
-            q = Format(q, period.period, period.month, period.year, this.GID);
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
                 DateTime ti = GetDateTime_(f["TimeIn"].ToString());
@@ -233,7 +248,9 @@ namespace MSAMISUserInterface {
         }
 
         public string GetCertifiedBy() {
-            return SQLTools.ExecuteSingleResult(Format("select certby from period where month='{0}' and period = '{1}' and year='{2}'", period.month, period.period, period.year));
+            return SQLTools.ExecuteSingleResult($@"select certby from period
+left join attendance on attendance.pid=period.pid
+left join dutydetails on dutydetails.DID= attendance.DID where month='{period.month}' and period = '{period.period}' and year='{period.year}' and aid='{AID}'");
         }
         #endregion New Region
 
