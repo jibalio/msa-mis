@@ -72,34 +72,39 @@ namespace MSAMISUserInterface {
         private void DailyQuote() {
             //This is an extra method to intitate the Daily Quotes behind the Dashboard=
 
-            var lines = File.ReadAllLines("../../Resources/Quotes.txt");
-            var r = new Random();
-            var randomLineNumber = r.Next(0, lines.Length - 1);
-            if (randomLineNumber % 2 != 0) randomLineNumber = randomLineNumber - 1;
-            QuoteMainBX.Text = '"' + lines[randomLineNumber] + '"';
-            QuoteFromBX.Text = "from " + lines[randomLineNumber + 1];
-            if (DateTime.Now.Month == 7) {
-                DevBX.Visible = true;
-                HBDLBL.Visible = true;
-                if (DateTime.Now.Day == 1) {
-                    DevBX.Text = "Jan Leryc V. Ibalio - MSAMIS Dev";
+            try {
+                var lines = File.ReadAllLines("../../Resources/Quotes.txt");
+                var r = new Random();
+                var randomLineNumber = r.Next(0, lines.Length - 1);
+                if (randomLineNumber % 2 != 0) randomLineNumber = randomLineNumber - 1;
+                QuoteMainBX.Text = '"' + lines[randomLineNumber] + '"';
+                QuoteFromBX.Text = "from " + lines[randomLineNumber + 1];
+                if (DateTime.Now.Month == 7) {
+                    DevBX.Visible = true;
+                    HBDLBL.Visible = true;
+                    if (DateTime.Now.Day == 1) {
+                        DevBX.Text = "Jan Leryc V. Ibalio - MSAMIS Dev";
+                    }
+                    else if (DateTime.Now.Day == 18) {
+                        DevBX.Text = "Anton John B. Pasigado - MSAMIS Dev";
+                    }
+                    else {
+                        HBDLBL.Visible = false;
+                        DevBX.Visible = false;
+                    }
                 }
-                else if (DateTime.Now.Day == 18) {
-                    DevBX.Text = "Anton John B. Pasigado - MSAMIS Dev";
+                else if (DateTime.Now.Month == 5 && DateTime.Now.Day == 5) {
+                    DevBX.Text = "Rhyle Abram P. Regodon - MSAMIS Dev";
+                    HBDLBL.Visible = true;
+                    DevBX.Visible = true;
                 }
                 else {
                     HBDLBL.Visible = false;
                     DevBX.Visible = false;
                 }
             }
-            else if (DateTime.Now.Month == 5 && DateTime.Now.Day == 5) {
-                DevBX.Text = "Rhyle Abram P. Regodon - MSAMIS Dev";
-                HBDLBL.Visible = true;
-                DevBX.Visible = true;
-            }
-            else {
-                HBDLBL.Visible = false;
-                DevBX.Visible = false;
+            catch (Exception ex) {
+                Console.WriteLine(ex);
             }
         }
 
@@ -116,17 +121,22 @@ namespace MSAMISUserInterface {
 
             //Scheduling Tooltip Page Notification
 
-            if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) {
-                ClientRequestsTLTP.Show(
-                    "You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
-                    " pending requests.", SchedBTN, 2000);
-                ClientRequestsTLTP.Show(
-                    "You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
-                    " pending requests.", SchedBTN, 2000);
-                SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending);
+            try {
+                if (!Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")) {
+                    ClientRequestsTLTP.Show(
+                        "You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
+                        " pending requests.", SchedBTN, 2000);
+                    ClientRequestsTLTP.Show(
+                        "You have " + Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
+                        " pending requests.", SchedBTN, 2000);
+                    SchedBTN.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending);
+                }
+                else {
+                    SchedBTN.Text = string.Empty;
+                }
             }
-            else {
-                SchedBTN.Text = string.Empty;
+            catch (Exception ex) {
+                ShowErrorBox("Notifications", ex.Message);
             }
         }
 
@@ -201,6 +211,10 @@ namespace MSAMISUserInterface {
                     LoadNotifications();
                 else SchedBTN.Text = string.Empty;
             }
+        }
+        private static void ShowErrorBox(string name, string error) {
+            RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
@@ -363,31 +377,42 @@ namespace MSAMISUserInterface {
         }
 
         private void NotifTMR_Tick(object sender, EventArgs e) {
-            if (_day != DateTime.Now.Day) {
-                CheckPayday();
-                SQLTools.ExecuteNonQuery("call init_CHECKDATE_ALL()"); 
+            try {
+                if (_day != DateTime.Now.Day) {
+                    CheckPayday();
+                    SQLTools.ExecuteNonQuery("call init_CHECKDATE_ALL()");
+                }
+                _day = DateTime.Now.Day;
             }
-            _day = DateTime.Now.Day;
+            catch (Exception ex) {
+                ShowErrorBox("Date Checker", ex.Message);
+            }
         }
 
         private void CheckPayday() {
-            var payday = Payroll.GetPreviousPayDay();
-            if (DateTime.Now.Day == payday.Day &&
-                DateTime.Now.Month == payday.Month &&
-                DateTime.Now.Year == payday.Year && !DPaydayNotifPNL.Visible && !_notif[0]) {
-                DPaydayNotifPNL.Visible = true;
-                DPayDayNotifLBL.Text = "for the month of " + payday.ToString("MMMM yyyy");
+            try {
+                var payday = Payroll.GetPreviousPayDay();
+                if (DateTime.Now.Day == payday.Day &&
+                    DateTime.Now.Month == payday.Month &&
+                    DateTime.Now.Year == payday.Year && !DPaydayNotifPNL.Visible && !_notif[0]) {
+                    DPaydayNotifPNL.Visible = true;
+                    DPayDayNotifLBL.Text = "for the month of " + payday.ToString("MMMM yyyy");
+                }
+                if (DateTime.Now.Day == 5) {
+                    DDutyDetailNotifPNL.Visible = !_notif[1];
+                    DSalaryReportNotifPNL.Visible = !_notif[2];
+                    DDutyDetailNotifLBL.Text = DSalaryReportNotifLBL.Text =
+                        "for the month of " +
+                        new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1).ToString("MMMM yyyy");
+                    var rp = new ReportsPreview();
+                    rp.FormatPDF('d');
+                    //rp.FormatPDF('s');
+                }
+                ArrangeNotif();
             }
-            if (DateTime.Now.Day == 5) {
-                DDutyDetailNotifPNL.Visible = !_notif[1];
-                DSalaryReportNotifPNL.Visible = !_notif[2];
-                DDutyDetailNotifLBL.Text = DSalaryReportNotifLBL.Text =
-                    "for the month of " + new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1).ToString("MMMM yyyy");
-                var rp = new ReportsPreview();
-                rp.FormatPDF('d');
-                //rp.FormatPDF('s');
+            catch (Exception ex) {
+                ShowErrorBox("Dashboard Notifications", ex.Message);
             }
-            ArrangeNotif();
         }
 
         private void DMonthlyDutyReportPNL_MouseEnter(object sender, EventArgs e) {
@@ -527,37 +552,43 @@ namespace MSAMISUserInterface {
         private void GAllGuardsGRD_DoubleClick(object sender, EventArgs e) {
             if (GEditDetailsBTN.Visible) GEditDetailsBTN.PerformClick();
         }
+
         private void GViewAllNameRDBTN_CheckedChanged(object sender, EventArgs e) {
             GuardsRefreshGuardsList();
         }
 
         public void GuardsRefreshGuardsList() {
-            GAllGuardsGRD.DataSource = Guard.GetAllGuards(_extraQueryParams, GViewAllNameRDBTN.Checked ? 0 : 1);
-            if (GViewAllNameRDBTN.Checked) {
-                GAllGuardsGRD.Columns[0].Visible = false;
-                GAllGuardsGRD.Columns[1].Width = 240;
-                GAllGuardsGRD.Columns[4].Width = 80;
-                GAllGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns[3].Width = 80;
-                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns[5].Width = 140;
+            try {
+                GAllGuardsGRD.DataSource = Guard.GetAllGuards(_extraQueryParams, GViewAllNameRDBTN.Checked ? 0 : 1);
+                if (GViewAllNameRDBTN.Checked) {
+                    GAllGuardsGRD.Columns[0].Visible = false;
+                    GAllGuardsGRD.Columns[1].Width = 240;
+                    GAllGuardsGRD.Columns[4].Width = 80;
+                    GAllGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    GAllGuardsGRD.Columns[3].Width = 80;
+                    GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    GAllGuardsGRD.Columns[5].Width = 140;
 
-                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns[2].Width = 70;
+                    GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    GAllGuardsGRD.Columns[2].Width = 70;
+                }
+                else {
+                    GAllGuardsGRD.Columns[0].Width = 0;
+                    GAllGuardsGRD.Columns[1].Width = 240;
+                    GAllGuardsGRD.Columns[2].Width = 300;
+                    GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                    GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    GAllGuardsGRD.Columns[3].Width = 70;
+                }
+                GAllGuardsGRD.ClearSelection();
+
+                GActiveLBL.Text = SQLTools.GetNumberOfGuards("active") + " active guards";
+                GInactiveLBL.Text = SQLTools.GetNumberOfGuards("inactive") + " inactive guards";
             }
-            else {
-                GAllGuardsGRD.Columns[0].Width = 0;
-                GAllGuardsGRD.Columns[1].Width = 240;
-                GAllGuardsGRD.Columns[2].Width = 300;
-                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                GAllGuardsGRD.Columns[3].Width = 70;
+            catch (Exception ex) {
+                ShowErrorBox("Guards Management Module", ex.Message);
             }
-            GAllGuardsGRD.ClearSelection();
-
-            GActiveLBL.Text = SQLTools.GetNumberOfGuards("active") + " active guards";
-            GInactiveLBL.Text = SQLTools.GetNumberOfGuards("inactive") + " inactive guards";
         }
 
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
@@ -660,10 +691,16 @@ namespace MSAMISUserInterface {
             // Initialize archive connection.
             if (RylMessageBox.ShowDialog("Are you sure you want to archive the selected record(s)?", "Archive",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
-                foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows) Archiver.ArchiveGuard(int.Parse(row.Cells[0].Value.ToString()));
-                RylMessageBox.ShowDialog("Successfully archived Guard(s)", "Archive", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                GuardsRefreshGuardsList();
+                try {
+                    foreach (DataGridViewRow row in GAllGuardsGRD.SelectedRows)
+                        Archiver.ArchiveGuard(int.Parse(row.Cells[0].Value.ToString()));
+                    RylMessageBox.ShowDialog("Successfully archived Guard(s)", "Archive", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    GuardsRefreshGuardsList();
+                }
+                catch (Exception ex) {
+                    ShowErrorBox("Guards Archiving", ex.Message);
+                }
             }
         }
 
@@ -682,16 +719,21 @@ namespace MSAMISUserInterface {
         }
 
         private void RefreshArchivedGuards() {
-            GArchivedGuardsGRD.DataSource = Archiver.GetAllGuards(_extraQueryParams, "name asc");
-            GArchivedGuardsGRD.Columns[0].Visible = false;
-            GArchivedGuardsGRD.Columns[1].Width = 260;
-            GArchivedGuardsGRD.Columns[1].HeaderText = "NAME";
-            GArchivedGuardsGRD.Columns[2].Width = 70;
-            GArchivedGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            GArchivedGuardsGRD.Columns[3].Visible = false;
-            GArchivedGuardsGRD.Columns[4].Width = 150;
-            GArchivedGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            GArchivedGuardsGRD.ClearSelection();
+            try {
+                GArchivedGuardsGRD.DataSource = Archiver.GetAllGuards(_extraQueryParams, "name asc");
+                GArchivedGuardsGRD.Columns[0].Visible = false;
+                GArchivedGuardsGRD.Columns[1].Width = 260;
+                GArchivedGuardsGRD.Columns[1].HeaderText = "NAME";
+                GArchivedGuardsGRD.Columns[2].Width = 70;
+                GArchivedGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GArchivedGuardsGRD.Columns[3].Visible = false;
+                GArchivedGuardsGRD.Columns[4].Width = 150;
+                GArchivedGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GArchivedGuardsGRD.ClearSelection();
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Guards Archive - Load", ex.Message);
+            }
         }
 
         private void GArchivedGuardsGRD_DoubleClick(object sender, EventArgs e) {
@@ -729,20 +771,26 @@ namespace MSAMISUserInterface {
         #region GMS - Summary
 
         public void GuardsLoadReport() {
-            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                                      "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("GuardsSummaryReport*.pdf").OrderByDescending(p => p.CreationTime); //Getting Text files]
+            try {
+                var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                          "\\MSAMIS Reports"); //Assuming Test is your Folder
+                var files = d.GetFiles("GuardsSummaryReport*.pdf")
+                    .OrderByDescending(p => p.CreationTime); //Getting Text files]
 
-            GSummaryFilesLST.Items.Clear();
-            foreach (var file in files) {
-                string[] row = {file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName};
-                var listViewItem = new ListViewItem(row) {ImageIndex = 0};
-                GSummaryFilesLST.Items.Add(listViewItem);
+                GSummaryFilesLST.Items.Clear();
+                foreach (var file in files) {
+                    string[] row = {file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName};
+                    var listViewItem = new ListViewItem(row) {ImageIndex = 0};
+                    GSummaryFilesLST.Items.Add(listViewItem);
+                }
+                GSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
+                GSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+                GTotalLBL.Text = Reports.GetTotalGuards('g', 't') + " guards";
+                GTotalActiveLBL.Text = Reports.GetTotalGuards('g', 'a') + " guards";
             }
-            GSummaryErrorPNL.Visible = GSummaryFilesLST.Items.Count == 0;
-            GSummaryDateLBL.Text = TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
-            GTotalLBL.Text = Reports.GetTotalGuards('g', 't') + " guards";
-            GTotalActiveLBL.Text = Reports.GetTotalGuards('g', 'a') + " guards";
+            catch (Exception ex) {
+                ShowErrorBox("Guards Summary Report", ex.Message);
+            }
         }
 
         private void GSummaryViewCurrent_Click(object sender, EventArgs e) {
@@ -808,15 +856,29 @@ namespace MSAMISUserInterface {
                     FileName = "GuardsSummaryReport_" + GSummaryFilesLST.SelectedItems[0].SubItems[0].Text,
                     Filter = "Portable Document Format (.pdf)|*.pdf"
                 };
-                if (savefile.ShowDialog() == DialogResult.OK)
-                    File.Copy(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+                try {
+                    if (savefile.ShowDialog() == DialogResult.OK)
+                        File.Copy(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    GuardsLoadReport();
+                }
             }
             else {
                 if (RylMessageBox.ShowDialog(
                         "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
                         "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                    File.Delete(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
-                    GuardsLoadReport();
+                    try {
+                        File.Delete(GSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                        GuardsLoadReport();
+                    }
+                    catch {
+                        RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                            "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        GuardsLoadReport();
+                    }
                 }
             }
         }
@@ -875,22 +937,27 @@ namespace MSAMISUserInterface {
         #region CMS - View All Data Grid
 
         public void ClientsRefreshClientsList() {
-            CClientListTBL.DataSource = Client.GetAllClientDetails(_extraQueryParams);
-            CClientListTBL.Columns[0].HeaderText = "ID";
-            CClientListTBL.Columns[0].Visible = false;
-            CClientListTBL.Columns[1].HeaderText = "NAME";
-            CClientListTBL.Columns[1].Width = 230;
-            CClientListTBL.Columns[2].HeaderText = "LOCATION";
-            CClientListTBL.Columns[2].Width = 300;
-            CClientListTBL.Columns[3].HeaderText = "STATUS";
-            CClientListTBL.Columns[3].Width = 70;
-            CClientListTBL.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
+            try {
+                CClientListTBL.DataSource = Client.GetAllClientDetails(_extraQueryParams);
+                CClientListTBL.Columns[0].HeaderText = "ID";
+                CClientListTBL.Columns[0].Visible = false;
+                CClientListTBL.Columns[1].HeaderText = "NAME";
+                CClientListTBL.Columns[1].Width = 230;
+                CClientListTBL.Columns[2].HeaderText = "LOCATION";
+                CClientListTBL.Columns[2].Width = 300;
+                CClientListTBL.Columns[3].HeaderText = "STATUS";
+                CClientListTBL.Columns[3].Width = 70;
+                CClientListTBL.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
 
-            CActiveClientLBL.Text = Client.GetNumberOfActiveClients() + " active clients";
-            CTotalClientLBL.Text = Client.GetNumberOfTotalClients() + " total clients";
+                CActiveClientLBL.Text = Client.GetNumberOfActiveClients() + " active clients";
+                CTotalClientLBL.Text = Client.GetNumberOfTotalClients() + " total clients";
 
-            CClientListTBL.ClearSelection();
+                CClientListTBL.ClearSelection();
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Clients Management Module", ex.Message);
+            }
         }
 
         private void CClientListTBL_DoubleClick(object sender, EventArgs e) {
@@ -953,21 +1020,27 @@ namespace MSAMISUserInterface {
         #region CMS - Summary
 
         public void ClientsLoadSummary() {
-            CSummaryDateLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            try {
+                CSummaryDateLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
 
-            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                                      "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("ClientsSummaryReport*.pdf").OrderByDescending(p => p.CreationTime); //Getting Text files]
+                var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                          "\\MSAMIS Reports"); //Assuming Test is your Folder
+                var files = d.GetFiles("ClientsSummaryReport*.pdf")
+                    .OrderByDescending(p => p.CreationTime); //Getting Text files]
 
-            CSummaryFileLST.Items.Clear();
-            foreach (var file in files) {
-                string[] row = {file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName};
-                var listViewItem = new ListViewItem(row) {ImageIndex = 0};
-                CSummaryFileLST.Items.Add(listViewItem);
+                CSummaryFileLST.Items.Clear();
+                foreach (var file in files) {
+                    string[] row = {file.CreationTime.ToString("MMMM dd, yyyy"), file.FullName};
+                    var listViewItem = new ListViewItem(row) {ImageIndex = 0};
+                    CSummaryFileLST.Items.Add(listViewItem);
+                }
+                CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
+                CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
+                CTotalLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
             }
-            CSummaryErrorPNL.Visible = CSummaryFileLST.Items.Count == 0;
-            CTotalActiveLBL.Text = Reports.GetTotalGuards('c', 't') + " clients";
-            CTotalLBL.Text = Reports.GetTotalGuards('c', 'a') + " clients";
+            catch (Exception ex) {
+                ShowErrorBox("Clients Report", ex.Message);
+            }
         }
 
         private void CSummaryExport_Click(object sender, EventArgs e) {
@@ -1030,15 +1103,29 @@ namespace MSAMISUserInterface {
                     FileName = "ClientSummaryReport_" + CSummaryFileLST.SelectedItems[0].SubItems[0].Text,
                     Filter = "Portable Document Format (.pdf)|*.pdf"
                 };
-                if (savefile.ShowDialog() == DialogResult.OK)
-                    File.Copy(CSummaryFileLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+                try {
+                    if (savefile.ShowDialog() == DialogResult.OK)
+                        File.Copy(CSummaryFileLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ClientsLoadSummary();
+                }
             }
             else {
                 if (RylMessageBox.ShowDialog(
                         "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
                         "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                    File.Delete(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
-                    ClientsLoadSummary();
+                    try {
+                        File.Delete(CSummaryFileLST.SelectedItems[0].SubItems[1].Text);
+                        ClientsLoadSummary();
+                    }
+                    catch {
+                        RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                            "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ClientsLoadSummary();
+                    }
                 }
             }
         }
@@ -1067,26 +1154,31 @@ namespace MSAMISUserInterface {
         }
 
         public void SchedLoadSidePnl() {
-            if (Login.AccountType == 1)
-                SchedBTN.Text = !Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")
-                    ? Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending)
-                    : SchedBTN.Text = string.Empty;
-            else SchedBTN.Text = string.Empty;
-            SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
-                                      " pending requests";
-            SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
-            SAssignedGuardsLBL.Text = Scheduling.GetNumberOfAssignedGuards() + " assigned guards";
+            try {
+                if (Login.AccountType == 1)
+                    SchedBTN.Text = !Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending).Equals("0")
+                        ? Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending)
+                        : SchedBTN.Text = string.Empty;
+                else SchedBTN.Text = string.Empty;
+                SClientRequestsLBL.Text = Scheduling.GetNumberOfClientRequests(Enumeration.RequestStatus.Pending) +
+                                          " pending requests";
+                SUnassignedGuardsLBL.Text = Scheduling.GetNumberOfUnassignedGuards() + " unsassigned guards";
+                SAssignedGuardsLBL.Text = Scheduling.GetNumberOfAssignedGuards() + " assigned guards";
 
-            switch (Login.AccountType) {
-                case 2:
-                    SViewReqsAssBTN.Visible = true;
-                    break;
-                case 1:
-                    SViewReqsAssBTN.Visible = false;
-                    break;
-                default:
-                    SViewReqsAssBTN.Visible = true;
-                    break;
+                switch (Login.AccountType) {
+                    case 2:
+                        SViewReqsAssBTN.Visible = true;
+                        break;
+                    case 1:
+                        SViewReqsAssBTN.Visible = false;
+                        break;
+                    default:
+                        SViewReqsAssBTN.Visible = true;
+                        break;
+                }
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Assignments and Duty Schedules Module - Laoding", ex.Message);
             }
         }
 
@@ -1176,19 +1268,34 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewReqFilterCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
-                "name", "name asc"));
+            try {
+                LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
+                    "name", "name asc"));
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Clients Requests", ex.Message);
+            }
         }
 
         private void SViewReqDTPK_ValueChanged(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
-                "name", "name asc", SViewReqDTPK.Value));
-            _changeDate = true;
+            try {
+                LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
+                    "name", "name asc", SViewReqDTPK.Value));
+                _changeDate = true;
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Clients Requests", ex.Message);
+            }
         }
 
         private void SViewReqResetDateBTN_Click(object sender, EventArgs e) {
-            LoadViewReqTable(Scheduling.GetRequests("", -1, 0, "name", "name asc"));
-            _changeDate = false;
+            try {
+                LoadViewReqTable(Scheduling.GetRequests("", -1, 0, "name", "name asc"));
+                _changeDate = false;
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Clients Requests", ex.Message);
+            }
         }
 
         private void SchedLoadRequestsPage() {
@@ -1197,16 +1304,28 @@ namespace MSAMISUserInterface {
         }
 
         public void SchedRefreshRequests() {
-            LoadViewReqTable(Scheduling.GetRequests("", -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc"));
+            try {
+                LoadViewReqTable(Scheduling.GetRequests("", -1, SViewReqFilterCMBX.SelectedIndex, "name", "name asc"));
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Clients Requests", ex.Message);
+            }
         }
 
         private void SViewReqSearchTXTBX_TextChanged(object sender, EventArgs e) {
-            if (_changeDate)
-                LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
-                    "name", "name asc", SViewReqDTPK.Value));
-            else
-                LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1, SViewReqFilterCMBX.SelectedIndex,
-                    "name", "name asc"));
+            try {
+                if (_changeDate)
+                    LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1,
+                        SViewReqFilterCMBX.SelectedIndex,
+                        "name", "name asc", SViewReqDTPK.Value));
+                else
+                    LoadViewReqTable(Scheduling.GetRequests(SViewReqSearchTXTBX.Text, -1,
+                        SViewReqFilterCMBX.SelectedIndex,
+                        "name", "name asc"));
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Clients Requests", ex.Message);
+            }
         }
 
         private void LoadViewReqTable(DataTable dv) {
@@ -1284,21 +1403,26 @@ namespace MSAMISUserInterface {
         #region SMS - View Assignment
 
         private void SchedLoadAssignmentPage() {
-            SViewAssSearchClientCMBX.Items.Clear();
-            SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem("All", "-1"));
-            SViewAssSearchClientCMBX.SelectedIndex = 0;
-            SViewAssCMBX.SelectedIndex = 0;
+            try {
+                SViewAssSearchClientCMBX.Items.Clear();
+                SViewAssSearchClientCMBX.Items.Add(new ComboBoxItem("All", "-1"));
+                SViewAssSearchClientCMBX.SelectedIndex = 0;
+                SViewAssCMBX.SelectedIndex = 0;
 
-            SViewAssViewDetailsBTN.Location = new Point(282, 600);
-            SViewAssUnassignBTN.Visible = false;
+                SViewAssViewDetailsBTN.Location = new Point(282, 600);
+                SViewAssUnassignBTN.Visible = false;
 
-            var dv = Client.GetClients().DefaultView;
-            dv.Sort = "name asc";
-            var dt = dv.ToTable();
+                var dv = Client.GetClients().DefaultView;
+                dv.Sort = "name asc";
+                var dt = dv.ToTable();
 
-            for (var i = 0; i < dt.Rows.Count; i++)
-                SViewAssSearchClientCMBX.Items.Add(
-                    new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                for (var i = 0; i < dt.Rows.Count; i++)
+                    SViewAssSearchClientCMBX.Items.Add(
+                        new ComboBoxItem(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Loading Clients", ex.Message);
+            }
         }
 
         private void SViewAssGRD_DoubleClick(object sender, EventArgs e) {
@@ -1323,34 +1447,39 @@ namespace MSAMISUserInterface {
         }
 
         public void SchedRefreshAssignments() {
-            SViewAssGRD.DataSource =
-                Scheduling.GetAssignmentsByClient(
-                    int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID),
-                    SViewAssCMBX.SelectedIndex, _extraQueryParams);
+            try {
+                SViewAssGRD.DataSource =
+                    Scheduling.GetAssignmentsByClient(
+                        int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID),
+                        SViewAssCMBX.SelectedIndex, _extraQueryParams);
 
-            if (SViewAssGRD.Rows.Count > 0) {
-                SViewAssGRD.Columns[0].Visible = false;
-                SViewAssGRD.Columns[1].Visible = false;
-                SViewAssGRD.Columns[2].Visible = false;
-                SViewAssGRD.Columns[3].HeaderText = "NAME";
+                if (SViewAssGRD.Rows.Count > 0) {
+                    SViewAssGRD.Columns[0].Visible = false;
+                    SViewAssGRD.Columns[1].Visible = false;
+                    SViewAssGRD.Columns[2].Visible = false;
+                    SViewAssGRD.Columns[3].HeaderText = "NAME";
 
-                SViewAssGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
-                SViewAssGRD.Columns[5].HeaderText = "ASSIGNED TO";
+                    SViewAssGRD.Columns[4].HeaderText = "ASSIGNMENT LOCATION";
+                    SViewAssGRD.Columns[5].HeaderText = "ASSIGNED TO";
 
-                SViewAssGRD.Columns[4].Visible = SViewAssSearchClientCMBX.SelectedIndex != 0;
-                SViewAssGRD.Columns[5].Visible = SViewAssSearchClientCMBX.SelectedIndex == 0;
+                    SViewAssGRD.Columns[4].Visible = SViewAssSearchClientCMBX.SelectedIndex != 0;
+                    SViewAssGRD.Columns[5].Visible = SViewAssSearchClientCMBX.SelectedIndex == 0;
 
-                SViewAssGRD.Columns[6].HeaderText = "SCHEDULE";
-                SViewAssGRD.Columns[7].Visible = false;
+                    SViewAssGRD.Columns[6].HeaderText = "SCHEDULE";
+                    SViewAssGRD.Columns[7].Visible = false;
 
-                SViewAssGRD.Columns[3].Width = 230;
-                SViewAssGRD.Columns[4].Width = 280;
-                SViewAssGRD.Columns[5].Width = 280;
-                SViewAssGRD.Columns[6].Width = 100;
-                SViewAssGRD.Columns[6].Width = 100;
+                    SViewAssGRD.Columns[3].Width = 230;
+                    SViewAssGRD.Columns[4].Width = 280;
+                    SViewAssGRD.Columns[5].Width = 280;
+                    SViewAssGRD.Columns[6].Width = 100;
+                    SViewAssGRD.Columns[6].Width = 100;
 
-                SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
-                SViewAssGRD.ClearSelection();
+                    SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
+                    SViewAssGRD.ClearSelection();
+                }
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Loading Assignments", ex.Message);
             }
         }
 
@@ -1436,26 +1565,31 @@ namespace MSAMISUserInterface {
         }
 
         private void SchedLoadGuardHistory() {
-            SGuardHistoryGRD.DataSource = Scheduling.GetGuardsWithAssignment(_extraQueryParams);
-            SGuardHistoryGRD.Columns[0].Visible = false;
-            SGuardHistoryGRD.Columns[1].Visible = false;
-            SGuardHistoryGRD.Columns[2].Visible = false;
-            SGuardHistoryGRD.Columns[3].HeaderText = "NAME";
-            SGuardHistoryGRD.Columns[4].Visible = false;
-            SGuardHistoryGRD.Columns[5].Visible = false;
-            SGuardHistoryGRD.Columns[6].Visible = false;
-            SGuardHistoryGRD.Columns[3].Width = 250;
-            SGuardHistoryGRD.Columns[4].Width = 280;
-            SGuardHistoryGRD.Columns[5].Width = 100;
-            SGuardHistoryGRD.Columns[5].Width = 100;
-            SGuardHistoryGRD.Columns[6].Width = 100;
-            SGuardHistoryGRD.Columns[7].Width = 130;
-            SGuardHistoryGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            SGuardHistoryGRD.Columns[8].Width = 130;
-            SGuardHistoryGRD.Columns[9].Width = 100;
-            SGuardHistoryGRD.Columns[9].HeaderText = "STATUS";
-            SGuardHistoryGRD.Sort(SGuardHistoryGRD.Columns[3], ListSortDirection.Ascending);
-            SGuardHistoryGRD.ClearSelection();
+            try {
+                SGuardHistoryGRD.DataSource = Scheduling.GetGuardsWithAssignment(_extraQueryParams);
+                SGuardHistoryGRD.Columns[0].Visible = false;
+                SGuardHistoryGRD.Columns[1].Visible = false;
+                SGuardHistoryGRD.Columns[2].Visible = false;
+                SGuardHistoryGRD.Columns[3].HeaderText = "NAME";
+                SGuardHistoryGRD.Columns[4].Visible = false;
+                SGuardHistoryGRD.Columns[5].Visible = false;
+                SGuardHistoryGRD.Columns[6].Visible = false;
+                SGuardHistoryGRD.Columns[3].Width = 250;
+                SGuardHistoryGRD.Columns[4].Width = 280;
+                SGuardHistoryGRD.Columns[5].Width = 100;
+                SGuardHistoryGRD.Columns[5].Width = 100;
+                SGuardHistoryGRD.Columns[6].Width = 100;
+                SGuardHistoryGRD.Columns[7].Width = 130;
+                SGuardHistoryGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                SGuardHistoryGRD.Columns[8].Width = 130;
+                SGuardHistoryGRD.Columns[9].Width = 100;
+                SGuardHistoryGRD.Columns[9].HeaderText = "STATUS";
+                SGuardHistoryGRD.Sort(SGuardHistoryGRD.Columns[3], ListSortDirection.Ascending);
+                SGuardHistoryGRD.ClearSelection();
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Assignment History", ex.Message);
+            }
         }
 
         private void SGuardHistorySearchBX_Enter(object sender, EventArgs e) {
@@ -1506,21 +1640,27 @@ namespace MSAMISUserInterface {
         #region SMS - Reports
 
         public void SchedLoadReport() {
-            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                                      "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("SchedSummaryReport*.pdf").OrderByDescending(p => p.CreationTime);//Getting Text files]
-            SSummaryFilesLST.Items.Clear();
-            foreach (var file in files) {
-                var date = file.CreationTime.AddMonths(-1);
-                string[] row = {date.ToString("MMMM yyyy"), file.FullName};
-                var listViewItem = new ListViewItem(row) {ImageIndex = 0};
-                SSummaryFilesLST.Items.Add(listViewItem);
+            try {
+                var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                          "\\MSAMIS Reports"); //Assuming Test is your Folder
+                var files = d.GetFiles("SchedSummaryReport*.pdf")
+                    .OrderByDescending(p => p.CreationTime); //Getting Text files]
+                SSummaryFilesLST.Items.Clear();
+                foreach (var file in files) {
+                    var date = file.CreationTime.AddMonths(-1);
+                    string[] row = {date.ToString("MMMM yyyy"), file.FullName};
+                    var listViewItem = new ListViewItem(row) {ImageIndex = 0};
+                    SSummaryFilesLST.Items.Add(listViewItem);
+                }
+                SSummaryErrorPNL.Visible = SSummaryFilesLST.Items.Count == 0;
+                SSummaryDateLBL.Text = SSummaryFilesLST.Items.Count > 0
+                    ? "for the month of " + SSummaryFilesLST.Items[0].Text
+                    : "No reports available";
+                SDutyDetailsExportBTN.Visible = SDutyDetailsPreviewBTN.Visible = SSummaryFilesLST.Items.Count > 0;
             }
-            SSummaryErrorPNL.Visible = SSummaryFilesLST.Items.Count == 0;
-            SSummaryDateLBL.Text = SSummaryFilesLST.Items.Count > 0
-                ? "for the month of " + SSummaryFilesLST.Items[0].Text
-                : "No reports available";
-            SDutyDetailsExportBTN.Visible = SDutyDetailsPreviewBTN.Visible = SSummaryFilesLST.Items.Count > 0;
+            catch (Exception ex) {
+                ShowErrorBox("Duty Details Summary Report", ex.Message);
+            }
         }
 
         private void SDutyDetailsPreviewBTN_Click(object sender, EventArgs e) {
@@ -1574,14 +1714,26 @@ namespace MSAMISUserInterface {
                     Filter = "Portable Document Format (.pdf)|*.pdf"
                 };
                 if (savefile.ShowDialog() == DialogResult.OK)
-                    File.Copy(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+                    try {
+                        File.Copy(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+                    }
+                    catch {
+                        RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                            "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
             else {
                 if (RylMessageBox.ShowDialog(
                         "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
                         "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                    File.Delete(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
-                    SchedLoadReport();
+                    try {
+                        File.Delete(SSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                        SchedLoadReport();
+                    }
+                    catch {
+                        RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                            "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -1604,16 +1756,22 @@ namespace MSAMISUserInterface {
         #region PMS - Load/Side Panel
 
         private void PayLoadPage() {
-            PayrollHideBtn();
-            PEmpListBTN.PerformClick();
+            try {
+                PayrollHideBtn();
+                PEmpListBTN.PerformClick();
 
-            PPeriodLBL.Text = "Period: " + new DateTime(Attendance.GetCurrentPayPeriod().year,
-                                      Attendance.GetCurrentPayPeriod().month, Attendance.GetCurrentPayPeriod().period)
-                                  .ToString("MMMM yyyy, ");
-            PPeriodLBL.Text += Attendance.GetCurrentPayPeriod().period == 1 ? "First" : "Second";
-            PPayLBL.Text = "Next Pay: " + Payroll.GetNextPayday().ToString("MMMM dd, yyyy");
-            _scurrentPanel = PEmpListPage;
-            _scurrentBtn = PEmpListBTN;
+                PPeriodLBL.Text = "Period: " + new DateTime(Attendance.GetCurrentPayPeriod().year,
+                                          Attendance.GetCurrentPayPeriod().month,
+                                          Attendance.GetCurrentPayPeriod().period)
+                                      .ToString("MMMM yyyy, ");
+                PPeriodLBL.Text += Attendance.GetCurrentPayPeriod().period == 1 ? "First" : "Second";
+                PPayLBL.Text = "Next Pay: " + Payroll.GetNextPayday().ToString("MMMM dd, yyyy");
+                _scurrentPanel = PEmpListPage;
+                _scurrentBtn = PEmpListBTN;
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Payroll Module", ex.Message);
+            }
         }
 
         private void PayrollHideBtn() {
@@ -1690,21 +1848,26 @@ namespace MSAMISUserInterface {
         }
 
         private void PayLoadTable() {
-            PEmpListGRD.DataSource =
-                Payroll.GetGuardsPayrollMain(_extraQueryParams, PEmpListSortCMBX.SelectedIndex - 1);
-            PEmpListGRD.Columns[0].Visible = false;
-            PEmpListGRD.Columns[1].HeaderText = "GUARD'S NAME";
-            PEmpListGRD.Columns[2].HeaderText = "ASSIGNED TO";
-            PEmpListGRD.Columns[3].HeaderText = "ATTENDANCE";
-            PEmpListGRD.Columns[4].HeaderText = "STATUS";
+            try {
+                PEmpListGRD.DataSource =
+                    Payroll.GetGuardsPayrollMain(_extraQueryParams, PEmpListSortCMBX.SelectedIndex - 1);
+                PEmpListGRD.Columns[0].Visible = false;
+                PEmpListGRD.Columns[1].HeaderText = "GUARD'S NAME";
+                PEmpListGRD.Columns[2].HeaderText = "ASSIGNED TO";
+                PEmpListGRD.Columns[3].HeaderText = "ATTENDANCE";
+                PEmpListGRD.Columns[4].HeaderText = "STATUS";
 
-            PEmpListGRD.Columns[1].Width = 200;
-            PEmpListGRD.Columns[2].Width = 180;
-            PEmpListGRD.Columns[3].Width = 130;
-            PEmpListGRD.Columns[4].Width = 90;
+                PEmpListGRD.Columns[1].Width = 200;
+                PEmpListGRD.Columns[2].Width = 180;
+                PEmpListGRD.Columns[3].Width = 130;
+                PEmpListGRD.Columns[4].Width = 90;
 
-            PEmpListGRD.Sort(PEmpListGRD.Columns[1], ListSortDirection.Ascending);
-            PEmpListViewBTN.Visible = false;
+                PEmpListGRD.Sort(PEmpListGRD.Columns[1], ListSortDirection.Ascending);
+                PEmpListViewBTN.Visible = false;
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Guards List", ex.Message);
+            }
         }
 
         private void PEmpListSearchBX_TextChanged(object sender, EventArgs e) {
@@ -1807,23 +1970,29 @@ namespace MSAMISUserInterface {
         }
 
         public void PayLoadReport() {
-            var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                                      "\\MSAMIS Reports"); //Assuming Test is your Folder
-            var files = d.GetFiles("SalaryReport*.pdf").OrderByDescending(p => p.CreationTime); //Getting Text files]
+            try {
+                var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                          "\\MSAMIS Reports"); //Assuming Test is your Folder
+                var files = d.GetFiles("SalaryReport*.pdf")
+                    .OrderByDescending(p => p.CreationTime); //Getting Text files]
 
-            PSummaryFilesLST.Items.Clear();
-            foreach (var file in files) {
-                var date = file.CreationTime.AddMonths(-1);
-                string[] row = { date.ToString("MMMM yyyy"), file.FullName };
-                var listViewItem = new ListViewItem(row) {ImageIndex = 0};
-                PSummaryFilesLST.Items.Add(listViewItem);
+                PSummaryFilesLST.Items.Clear();
+                foreach (var file in files) {
+                    var date = file.CreationTime.AddMonths(-1);
+                    string[] row = {date.ToString("MMMM yyyy"), file.FullName};
+                    var listViewItem = new ListViewItem(row) {ImageIndex = 0};
+                    PSummaryFilesLST.Items.Add(listViewItem);
+                }
+                PSummaryFilesLST.Sorting = SortOrder.Descending;
+                PSummaryErrorPNL.Visible = PSummaryFilesLST.Items.Count == 0;
+                PSummaryDateLBL.Text = PSummaryFilesLST.Items.Count > 0
+                    ? "for the month of " + PSummaryFilesLST.Items[0].Text
+                    : "No reports available";
+                //  PSalaryReportsExportBTN.Visible = PSalaryReportsPreviewBTN.Visible = PSummaryFilesLST.Items.Count > 0;
             }
-            PSummaryFilesLST.Sorting = SortOrder.Descending;
-            PSummaryErrorPNL.Visible = PSummaryFilesLST.Items.Count == 0;
-            PSummaryDateLBL.Text = PSummaryFilesLST.Items.Count > 0
-                ? "for the month of " + PSummaryFilesLST.Items[0].Text
-                : "No reports available";
-          //  PSalaryReportsExportBTN.Visible = PSalaryReportsPreviewBTN.Visible = PSummaryFilesLST.Items.Count > 0;
+            catch (Exception ex) {
+                ShowErrorBox("Salary Report", ex.Message);
+            }
         }
 
         private void PSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
@@ -1860,14 +2029,26 @@ namespace MSAMISUserInterface {
                     Filter = "Portable Document Format (.pdf)|*.pdf"
                 };
                 if (savefile.ShowDialog() == DialogResult.OK)
-                    File.Copy(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+                    try {
+                        File.Copy(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text, savefile.FileName, true);
+                    }
+                    catch {
+                        RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                            "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
             else {
                 if (RylMessageBox.ShowDialog(
                         "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
                         "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                    File.Delete(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
-                    PayLoadReport();
+                    try {
+                        File.Delete(PSummaryFilesLST.SelectedItems[0].SubItems[1].Text);
+                        PayLoadReport();
+                    }
+                    catch {
+                        RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                            "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -1877,9 +2058,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-
-        private void GViewAllLocationRDBTN_CheckedChanged(object sender, EventArgs e) {
-
-        }
+        
     }
 }

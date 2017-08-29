@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class ClientsView : Form {
@@ -44,17 +45,27 @@ namespace MSAMISUserInterface {
             view.ShowDialog();
         }
 
-        public void RefreshData() {
-            var dt = Client.GetClientDetails(Cid);
-            NameLBL.Text = dt.Rows[0]["name"].ToString();
-            CIDLBL.Text = dt.Rows[0]["CID"].ToString();
+        private static void ShowErrorBox(string name, string error) {
+            RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-            LocationLBL.Text = dt.Rows[0]["ClientStreetNo"] + " " + dt.Rows[0]["ClientStreet"] + ", " +
-                               dt.Rows[0]["ClientBrgy"] + ", " + dt.Rows[0]["ClientBrgy"] + ", " +
-                               dt.Rows[0]["ClientCity"];
-            ManagerLBL.Text = "Manager: " + dt.Rows[0]["Manager"];
-            ContactLBL.Text = "Contact Person: " + dt.Rows[0]["ContactPerson"];
-            ContactNoLBL.Text = "Contact No: " + dt.Rows[0]["ContactNo"];
+        public void RefreshData() {
+            try {
+                var dt = Client.GetClientDetails(Cid);
+                NameLBL.Text = dt.Rows[0]["name"].ToString();
+                CIDLBL.Text = dt.Rows[0]["CID"].ToString();
+
+                LocationLBL.Text = dt.Rows[0]["ClientStreetNo"] + " " + dt.Rows[0]["ClientStreet"] + ", " +
+                                   dt.Rows[0]["ClientBrgy"] + ", " + dt.Rows[0]["ClientBrgy"] + ", " +
+                                   dt.Rows[0]["ClientCity"];
+                ManagerLBL.Text = "Manager: " + dt.Rows[0]["Manager"];
+                ContactLBL.Text = "Contact Person: " + dt.Rows[0]["ContactPerson"];
+                ContactNoLBL.Text = "Contact No: " + dt.Rows[0]["ContactNo"];
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Loading Error", ex.Message);
+            }
         }
     }
 }
