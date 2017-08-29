@@ -61,6 +61,7 @@ namespace MSAMISUserInterface {
             else if (Mode == 'c') Main.ClientsLoadSummary();
             else if (Mode == 'd') Main.SchedLoadReport();
             else if (Mode == 's') Main.PayLoadReport();
+            else if (Mode == 'p')
 
             if (Mode == 'g' || Mode == 'c')
             {

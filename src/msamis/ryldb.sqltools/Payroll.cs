@@ -381,8 +381,8 @@ namespace MSAMISUserInterface {
             ;", GID, period.period, period.year, period.month));
             var HourIterationTotal = new Hours();
             foreach (DataRow dr in HourIterationDataTable.Rows) {
-                var ti = dr["date"].ToString().Substring(0, 11) + dr["TimeIn"];
-                var to = dr["date"].ToString().Substring(0, 10) + " " + dr["TimeOut"];
+                var ti = dr["date"].ToString().Substring(0, 12) + dr["TimeIn"];
+                var to = dr["date"].ToString().Substring(0, 11) + " " + dr["TimeOut"];
                 var TimeInDateTime = DateTime.Parse(ti);
                 var TimeOutDateTime = DateTime.Parse(to);
 
@@ -1110,7 +1110,9 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
         }
 
 
-
+        /*
+         * TODO: ON ASSIGNMENT, ALSO VIEW DUTIES NA MAHUMANA BY TIME OF DATE_EFFECTIVE
+         */
 
 
         #region Rates Region

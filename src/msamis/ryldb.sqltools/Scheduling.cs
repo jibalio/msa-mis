@@ -77,7 +77,7 @@ namespace MSAMISUserInterface {
                             where atype = 2  and 
                             (gstatus = {Enumeration.GuardStatus.Inactive} or
                             (gstatus= {Enumeration.GuardStatus.PendingPayroll}) or
-                            (GStatus = 1 or (request_assign.ContractStart > '{end}' or (request_assign.ContractEnd < '{start}')))) ";
+                            (GStatus <> 1 or (request_assign.ContractStart > '{DateTime.Parse(end.Substring(14,end.Length-1)).ToString("yyyy-MM-dd")}' or (request_assign.ContractEnd < '{DateTime.Parse(start).ToString("yyyy-MM-dd")}')))) ";
             return SQLTools.ExecuteQuery(q + searchkeyword + "order by name asc");
         }
 
