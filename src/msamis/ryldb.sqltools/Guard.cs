@@ -23,11 +23,15 @@ namespace MSAMISUserInterface {
             string query;
             string orderbyclause;
             if (mode == 0) {
-                query = "Select gid,concat(ln,', ',fn,' ',mn) as NAME, " +
-                        "case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS', " +
-                        "bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', " +
-                        "cellno as 'CONTACTNO' " +
-                        "FROM Guards ";
+                query = $@"Select gid,concat(ln,', ',fn,' ',mn) as NAME, 
+                            case gstatus 
+                                when {Enumeration.GuardStatus.Active} then 'Active' 
+                                when {Enumeration.GuardStatus.Inactive} then 'Inactive' 
+                                when {Enumeration.GuardStatus.PendingPayroll} then 'Payroll Pending'
+                                end as 'STATUS', 
+                            bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', 
+                            cellno as 'CONTACTNO' 
+                            FROM Guards ";
                 orderbyclause = "ORDER BY NAME ASC;";
             } else {
                 query = "Select Guards.gid,concat(ln,', ',fn,' ',mn) as NAME, " +

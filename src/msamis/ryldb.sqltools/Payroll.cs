@@ -343,6 +343,8 @@ namespace MSAMISUserInterface {
                 WHERE `PID`='{_PayrollId}';";
             SQLTools.ExecuteQuery(q);
 
+            SQLTools.ExecuteQuery("call init_checkdate_guardstatus()");
+
         }
 
         

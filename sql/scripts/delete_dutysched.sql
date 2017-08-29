@@ -31,7 +31,7 @@
         delete from mysql.event;
 
 		-- RESET ALL GUARDS TO INACTIEF
-		update msadb.guards set gstatus=2;
+		update msadb.guards set gstatus=0;
             
 		delete from personsinvolved;
 		alter table personsinvolved auto_increment = 1;
