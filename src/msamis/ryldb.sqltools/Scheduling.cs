@@ -354,7 +354,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         left join request_assign on request_assign.raid=sduty_assignment.raid
                         left join request on request_assign.rid=request.rid
                         left join client on request.cid = client.cid
-                        where  city is not null " +
+                        where  city is not null and sduty_assignment.unassignedon is null " +
                         (cid == -1 ? "" : " AND sduty_assignment.cid = " + cid + "");
             if (filter == Enumeration.ScheduleStatus.Scheduled) {
                 q += " AND ti_hh is not null";

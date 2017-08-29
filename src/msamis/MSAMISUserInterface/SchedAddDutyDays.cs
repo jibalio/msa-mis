@@ -55,7 +55,8 @@ namespace MSAMISUserInterface {
                         int.Parse(row.Cells[8].Value.ToString()), row.Cells[9].Value.ToString());
                 _attendance.SetCertifiedBy(Aid, CertifiedBX.Text);
                 Reference.RefreshAttendance();
-                CloseBTN.PerformClick();
+                CloseBTN.Tag = "1";
+                Close();
             }
         }
 
