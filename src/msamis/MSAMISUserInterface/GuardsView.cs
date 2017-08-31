@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class GuardsView : Form {
@@ -123,146 +124,156 @@ namespace MSAMISUserInterface {
         #region Refreshing Data
 
         public void RefreshData() {
-            if (!Name.Equals("Archived")) {
-                try {
-                    _dataTable = Guard.GetGuardsBasicData(Gid);
-                    GIDLBL.Text = Gid.ToString();
-                    LNLBL.Text = _dataTable.Rows[0]["fn"] + " " + _dataTable.Rows[0]["mn"];
-                    LLBL.Text = _dataTable.Rows[0]["ln"] + ", ";
-                    StatusLBL.Text = GetStatus(_dataTable);
-                    BdateLBL.Text = _dataTable.Rows[0]["Bdate"].ToString();
-                    GenderLBL.Text = GetGender(_dataTable);
-                    HeightLBL.Text = _dataTable.Rows[0]["Height"].ToString();
-                    WeightLBL.Text = _dataTable.Rows[0]["Weight"].ToString();
-                    ReligionLBL.Text = _dataTable.Rows[0]["Religion"].ToString();
-                    CivilStatusLBL.Text = GetCivilStatus(_dataTable);
-                    ContactNoLBL.Text = _dataTable.Rows[0]["CellNo"].ToString();
-                    TelNoLBL.Text = _dataTable.Rows[0]["TelNo"].ToString();
-                    LicenseNoLBL.Text = _dataTable.Rows[0]["LicenseNo"].ToString();
-                    SSSLBL.Text = _dataTable.Rows[0]["SSS"].ToString();
-                    TINLBL.Text = _dataTable.Rows[0]["TIN"].ToString();
-                    PhilHealthLBL.Text = _dataTable.Rows[0]["PhilHealth"].ToString();
-                    PrevAgencyLBL.Text = _dataTable.Rows[0]["PrevAgency"].ToString();
-                    PrevAssLVL.Text = _dataTable.Rows[0]["PrevAss"].ToString();
-                    EdAtLBL.Text = GetEducationalAttainment(_dataTable);
-                    CourseLBL.Text = _dataTable.Rows[0]["Course"].ToString();
-                    TrainLBL.Text = _dataTable.Rows[0]["MilitaryTrainings"].ToString();
-                    ContactLBL.Text = _dataTable.Rows[0]["EmergencyContact"].ToString();
-                    EmergencyLBL.Text = _dataTable.Rows[0]["EmergencyNo"].ToString();
-                }
-                catch { }
+            try {
+                if (!Name.Equals("Archived")) {
+                    try {
+                        _dataTable = Guard.GetGuardsBasicData(Gid);
+                        GIDLBL.Text = Gid.ToString();
+                        LNLBL.Text = _dataTable.Rows[0]["fn"] + " " + _dataTable.Rows[0]["mn"];
+                        LLBL.Text = _dataTable.Rows[0]["ln"] + ", ";
+                        StatusLBL.Text = GetStatus(_dataTable);
+                        BdateLBL.Text = _dataTable.Rows[0]["Bdate"].ToString();
+                        GenderLBL.Text = GetGender(_dataTable);
+                        HeightLBL.Text = _dataTable.Rows[0]["Height"].ToString();
+                        WeightLBL.Text = _dataTable.Rows[0]["Weight"].ToString();
+                        ReligionLBL.Text = _dataTable.Rows[0]["Religion"].ToString();
+                        CivilStatusLBL.Text = GetCivilStatus(_dataTable);
+                        ContactNoLBL.Text = _dataTable.Rows[0]["CellNo"].ToString();
+                        TelNoLBL.Text = _dataTable.Rows[0]["TelNo"].ToString();
+                        LicenseNoLBL.Text = _dataTable.Rows[0]["LicenseNo"].ToString();
+                        SSSLBL.Text = _dataTable.Rows[0]["SSS"].ToString();
+                        TINLBL.Text = _dataTable.Rows[0]["TIN"].ToString();
+                        PhilHealthLBL.Text = _dataTable.Rows[0]["PhilHealth"].ToString();
+                        PrevAgencyLBL.Text = _dataTable.Rows[0]["PrevAgency"].ToString();
+                        PrevAssLVL.Text = _dataTable.Rows[0]["PrevAss"].ToString();
+                        EdAtLBL.Text = GetEducationalAttainment(_dataTable);
+                        CourseLBL.Text = _dataTable.Rows[0]["Course"].ToString();
+                        TrainLBL.Text = _dataTable.Rows[0]["MilitaryTrainings"].ToString();
+                        ContactLBL.Text = _dataTable.Rows[0]["EmergencyContact"].ToString();
+                        EmergencyLBL.Text = _dataTable.Rows[0]["EmergencyNo"].ToString();
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex); }
 
-                try {
-                    _dataTable = Guard.GetGuardsAddresses(Gid);
-                    BirthplaceLBL.Text = BuildStreet(_dataTable, 0);
-                    PermAddLBL.Text = BuildStreet(_dataTable, 1);
-                    TempAddLBL.Text = BuildStreet(_dataTable, 2);
-                }
-                catch { }
-                try {
-                    _dataTable = Guard.GetGuardsParents(Gid);
-                    MotherLBL.Text = BuildName(_dataTable, 1);
-                    FatherLBL.Text = BuildName(_dataTable, 0);
                     try {
-                        SpouseLBL.Text = BuildName(_dataTable, 2);
+                        _dataTable = Guard.GetGuardsAddresses(Gid);
+                        BirthplaceLBL.Text = BuildStreet(_dataTable, 0);
+                        PermAddLBL.Text = BuildStreet(_dataTable, 1);
+                        TempAddLBL.Text = BuildStreet(_dataTable, 2);
                     }
-                    catch { }
-                }
-                catch { }
-                try {
-                    _dataTable = Guard.GetGuardsDependents(Gid);
+                    catch (Exception ex) { Console.WriteLine(ex); }
                     try {
-                        Dependents = new int[_dataTable.Rows.Count];
-                        Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
-                        Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 0));
-                        Dependents[1] = int.Parse(_dataTable.Rows[1]["DeID"].ToString());
-                        Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 1));
-                        Dependents[2] = int.Parse(_dataTable.Rows[2]["DeID"].ToString());
-                        Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 2));
-                        Dependents[3] = int.Parse(_dataTable.Rows[3]["DeID"].ToString());
-                        Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 3));
-                        Dependents[4] = int.Parse(_dataTable.Rows[4]["DeID"].ToString());
-                        Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 4));
+                        _dataTable = Guard.GetGuardsParents(Gid);
+                        MotherLBL.Text = BuildName(_dataTable, 1);
+                        FatherLBL.Text = BuildName(_dataTable, 0);
+                        try {
+                            SpouseLBL.Text = BuildName(_dataTable, 2);
+                        }
+                        catch (Exception ex) { Console.WriteLine(ex); }
                     }
-                    catch { }
+                    catch (Exception ex) { Console.WriteLine(ex); }
+                    try {
+                        _dataTable = Guard.GetGuardsDependents(Gid);
+                        try {
+                            Dependents = new int[_dataTable.Rows.Count];
+                            Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
+                            Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 0));
+                            Dependents[1] = int.Parse(_dataTable.Rows[1]["DeID"].ToString());
+                            Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 1));
+                            Dependents[2] = int.Parse(_dataTable.Rows[2]["DeID"].ToString());
+                            Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 2));
+                            Dependents[3] = int.Parse(_dataTable.Rows[3]["DeID"].ToString());
+                            Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 3));
+                            Dependents[4] = int.Parse(_dataTable.Rows[4]["DeID"].ToString());
+                            Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 4));
+                        }
+                        catch (Exception ex) { Console.WriteLine(ex); }
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex); }
                 }
-                catch { }
-            }
-            else {
-                try {
-                    _dataTable = Archiver.GetGuardsBasicData(Gid);
-                    GIDLBL.Text = Gid.ToString();
-                    LNLBL.Text = _dataTable.Rows[0]["fn"] + " " + _dataTable.Rows[0]["mn"];
-                    LLBL.Text = _dataTable.Rows[0]["ln"] + ", ";
-                    StatusLBL.Text = "Archived";
-                    BdateLBL.Text = _dataTable.Rows[0]["Bdate"].ToString();
-                    GenderLBL.Text = GetGender(_dataTable);
-                    HeightLBL.Text = _dataTable.Rows[0]["Height"].ToString();
-                    WeightLBL.Text = _dataTable.Rows[0]["Weight"].ToString();
-                    ReligionLBL.Text = _dataTable.Rows[0]["Religion"].ToString();
-                    CivilStatusLBL.Text = GetCivilStatus(_dataTable);
-                    ContactNoLBL.Text = _dataTable.Rows[0]["CellNo"].ToString();
-                    TelNoLBL.Text = _dataTable.Rows[0]["TelNo"].ToString();
-                    LicenseNoLBL.Text = _dataTable.Rows[0]["LicenseNo"].ToString();
-                    SSSLBL.Text = _dataTable.Rows[0]["SSS"].ToString();
-                    TINLBL.Text = _dataTable.Rows[0]["TIN"].ToString();
-                    PhilHealthLBL.Text = _dataTable.Rows[0]["PhilHealth"].ToString();
-                    PrevAgencyLBL.Text = _dataTable.Rows[0]["PrevAgency"].ToString();
-                    PrevAssLVL.Text = _dataTable.Rows[0]["PrevAss"].ToString();
-                    EdAtLBL.Text = GetEducationalAttainment(_dataTable);
-                    CourseLBL.Text = _dataTable.Rows[0]["Course"].ToString();
-                    TrainLBL.Text = _dataTable.Rows[0]["MilitaryTrainings"].ToString();
-                    ContactLBL.Text = _dataTable.Rows[0]["EmergencyContact"].ToString();
-                    EmergencyLBL.Text = _dataTable.Rows[0]["EmergencyNo"].ToString();
-                }
-                catch { }
+                else {
+                    try {
+                        _dataTable = Archiver.GetGuardsBasicData(Gid);
+                        GIDLBL.Text = Gid.ToString();
+                        LNLBL.Text = _dataTable.Rows[0]["fn"] + " " + _dataTable.Rows[0]["mn"];
+                        LLBL.Text = _dataTable.Rows[0]["ln"] + ", ";
+                        StatusLBL.Text = "Archived";
+                        BdateLBL.Text = _dataTable.Rows[0]["Bdate"].ToString();
+                        GenderLBL.Text = GetGender(_dataTable);
+                        HeightLBL.Text = _dataTable.Rows[0]["Height"].ToString();
+                        WeightLBL.Text = _dataTable.Rows[0]["Weight"].ToString();
+                        ReligionLBL.Text = _dataTable.Rows[0]["Religion"].ToString();
+                        CivilStatusLBL.Text = GetCivilStatus(_dataTable);
+                        ContactNoLBL.Text = _dataTable.Rows[0]["CellNo"].ToString();
+                        TelNoLBL.Text = _dataTable.Rows[0]["TelNo"].ToString();
+                        LicenseNoLBL.Text = _dataTable.Rows[0]["LicenseNo"].ToString();
+                        SSSLBL.Text = _dataTable.Rows[0]["SSS"].ToString();
+                        TINLBL.Text = _dataTable.Rows[0]["TIN"].ToString();
+                        PhilHealthLBL.Text = _dataTable.Rows[0]["PhilHealth"].ToString();
+                        PrevAgencyLBL.Text = _dataTable.Rows[0]["PrevAgency"].ToString();
+                        PrevAssLVL.Text = _dataTable.Rows[0]["PrevAss"].ToString();
+                        EdAtLBL.Text = GetEducationalAttainment(_dataTable);
+                        CourseLBL.Text = _dataTable.Rows[0]["Course"].ToString();
+                        TrainLBL.Text = _dataTable.Rows[0]["MilitaryTrainings"].ToString();
+                        ContactLBL.Text = _dataTable.Rows[0]["EmergencyContact"].ToString();
+                        EmergencyLBL.Text = _dataTable.Rows[0]["EmergencyNo"].ToString();
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex); }
 
-                try {
-                    _dataTable = Archiver.GetGuardsAddresses(Gid);
-                    BirthplaceLBL.Text = BuildStreet(_dataTable, 0);
-                    PermAddLBL.Text = BuildStreet(_dataTable, 1);
-                    TempAddLBL.Text = BuildStreet(_dataTable, 2);
-                }
-                catch { }
-                try {
-                    _dataTable = Archiver.GetGuardsParents(Gid);
-                    MotherLBL.Text = BuildName(_dataTable, 1);
-                    FatherLBL.Text = BuildName(_dataTable, 0);
                     try {
-                        SpouseLBL.Text = BuildName(_dataTable, 2);
+                        _dataTable = Archiver.GetGuardsAddresses(Gid);
+                        BirthplaceLBL.Text = BuildStreet(_dataTable, 0);
+                        PermAddLBL.Text = BuildStreet(_dataTable, 1);
+                        TempAddLBL.Text = BuildStreet(_dataTable, 2);
                     }
-                    catch { }
-                }
-                catch { }
-                try {
-                    _dataTable = Archiver.GetGuardsDependents(Gid);
+                    catch (Exception ex) { Console.WriteLine(ex); }
                     try {
-                        Dependents = new int[_dataTable.Rows.Count];
-                        Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
-                        Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 0));
-                        Dependents[1] = int.Parse(_dataTable.Rows[1]["DeID"].ToString());
-                        Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 1));
-                        Dependents[2] = int.Parse(_dataTable.Rows[2]["DeID"].ToString());
-                        Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 2));
-                        Dependents[3] = int.Parse(_dataTable.Rows[3]["DeID"].ToString());
-                        Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 3));
-                        Dependents[4] = int.Parse(_dataTable.Rows[4]["DeID"].ToString());
-                        Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(),
-                            BuildName(_dataTable, 4));
+                        _dataTable = Archiver.GetGuardsParents(Gid);
+                        MotherLBL.Text = BuildName(_dataTable, 1);
+                        FatherLBL.Text = BuildName(_dataTable, 0);
+                        try {
+                            SpouseLBL.Text = BuildName(_dataTable, 2);
+                        }
+                        catch (Exception ex) { Console.WriteLine(ex); }
                     }
-                    catch { }
+                    catch (Exception ex) { Console.WriteLine(ex); }
+                    try {
+                        _dataTable = Archiver.GetGuardsDependents(Gid);
+                        try {
+                            Dependents = new int[_dataTable.Rows.Count];
+                            Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
+                            Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 0));
+                            Dependents[1] = int.Parse(_dataTable.Rows[1]["DeID"].ToString());
+                            Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 1));
+                            Dependents[2] = int.Parse(_dataTable.Rows[2]["DeID"].ToString());
+                            Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 2));
+                            Dependents[3] = int.Parse(_dataTable.Rows[3]["DeID"].ToString());
+                            Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 3));
+                            Dependents[4] = int.Parse(_dataTable.Rows[4]["DeID"].ToString());
+                            Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(),
+                                BuildName(_dataTable, 4));
+                        }
+                        catch (Exception ex) { Console.WriteLine(ex); }
+                    }
+                    catch (Exception ex){ Console.WriteLine(ex);}
                 }
-                catch { }
             }
+            catch (Exception ex) {
+                ShowErrorBox("Laoding Guards", ex.Message);
+            }
+        }
+
+        private static void ShowErrorBox(string name, string error) {
+            RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private static string GetStatus(DataTable dt) {

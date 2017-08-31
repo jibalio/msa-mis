@@ -20,17 +20,22 @@ namespace MSAMISUserInterface {
         #region Populating 
 
         private void PopulateEdit() {
-            var dt = Client.GetClientDetails(Cid);
+            try {
+                var dt = Client.GetClientDetails(Cid);
 
-            NameBX.Text = dt.Rows[0]["name"].ToString();
+                NameBX.Text = dt.Rows[0]["name"].ToString();
 
-            LocationStreetNoBX.Text = dt.Rows[0]["ClientStreetNo"].ToString();
-            LocationBrgyBX.Text = dt.Rows[0]["ClientBrgy"].ToString();
-            LocationStreetNameBX.Text = dt.Rows[0]["ClientStreet"].ToString();
-            LocationCityBX.Text = dt.Rows[0]["ClientCity"].ToString();
-            ManagerBX.Text = dt.Rows[0]["Manager"].ToString();
-            ContactBX.Text = dt.Rows[0]["ContactPerson"].ToString();
-            ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
+                LocationStreetNoBX.Text = dt.Rows[0]["ClientStreetNo"].ToString();
+                LocationBrgyBX.Text = dt.Rows[0]["ClientBrgy"].ToString();
+                LocationStreetNameBX.Text = dt.Rows[0]["ClientStreet"].ToString();
+                LocationCityBX.Text = dt.Rows[0]["ClientCity"].ToString();
+                ManagerBX.Text = dt.Rows[0]["Manager"].ToString();
+                ContactBX.Text = dt.Rows[0]["ContactPerson"].ToString();
+                ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Clients Editing", ex.Message);
+            }
         }
 
         #endregion
@@ -58,6 +63,11 @@ namespace MSAMISUserInterface {
                 Location = new Point(Location.X + 150, Location.Y);
             }
             FadeTMR.Start();
+        }
+
+        private static void ShowErrorBox(string name, string error) {
+            RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Clients_Edit_FormClosing(object sender, FormClosingEventArgs e) {
@@ -203,17 +213,23 @@ namespace MSAMISUserInterface {
 
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
-                if (GEditDetailsBTN.Text.Equals("ADD")) {
-                    Client.AddClient(NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text,
-                        LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
+                try {
+                    if (GEditDetailsBTN.Text.Equals("ADD")) {
+                        Client.AddClient(NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text,
+                            LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
+                    }
+                    else {
+                        Client.UpdateClient(Cid.ToString(), NameBX.Text, LocationStreetNoBX.Text,
+                            LocationStreetNameBX.Text,
+                            LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
+                        ViewRef.RefreshData();
+                    }
+                    Reference.ClientsRefreshClientsList();
+                    Close();
                 }
-                else {
-                    Client.UpdateClient(Cid.ToString(), NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text,
-                        LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
-                    ViewRef.RefreshData();
+                catch (Exception ex) {
+                    ShowErrorBox("Clients Editing", ex.Message);
                 }
-                Reference.ClientsRefreshClientsList();
-                Close();
             }
         }
 

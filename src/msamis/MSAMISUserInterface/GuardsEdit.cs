@@ -63,7 +63,9 @@ namespace MSAMISUserInterface {
                 EmergBX.Text = _dataTable.Rows[0]["EmergencyContact"].ToString();
                 EmergencyNoBX.Text = _dataTable.Rows[0]["EmergencyNo"].ToString();
             }
-            catch { }
+            catch (Exception ex) {
+                ShowErrorBox("Loading Guards", ex.Message);
+            }
             try {
                 _dataTable = Guard.GetGuardsAddresses(Gid);
                 BirthplaceStreetNoBX.Text = _dataTable.Rows[0]["streetno"].ToString();
@@ -81,7 +83,9 @@ namespace MSAMISUserInterface {
                 TempBrgyBX.Text = _dataTable.Rows[2]["brgy"].ToString();
                 TempCityBX.Text = _dataTable.Rows[2]["city"].ToString();
             }
-            catch { }
+            catch (Exception ex) {
+                ShowErrorBox("Loading Guards", ex.Message);
+            }
             try {
                 _dataTable = Guard.GetGuardsParents(Gid);
                 try {
@@ -95,9 +99,13 @@ namespace MSAMISUserInterface {
                     SpouseMiddleBX.Text = _dataTable.Rows[2]["mn"].ToString();
                     SpouseLastBX.Text = _dataTable.Rows[2]["ln"].ToString();
                 }
-                catch { }
+                catch (Exception ex) {
+                    ShowErrorBox("Loading Guards", ex.Message);
+                }
             }
-            catch { }
+            catch (Exception ex) {
+                ShowErrorBox("Loading Guards", ex.Message);
+            }
             try {
                 _dataTable = Guard.GetGuardsDependents(Gid);
                 try {
@@ -126,14 +134,23 @@ namespace MSAMISUserInterface {
                     Dependent5LastBX.Text = _dataTable.Rows[4]["ln"].ToString();
                     Dependent5RBX.SelectedIndex = int.Parse(_dataTable.Rows[4]["DRelationship"].ToString());
                 }
-                catch { }
+                catch (Exception ex) {
+                    ShowErrorBox("Loading Guards", ex.Message);
+                }
             }
-            catch { }
+            catch (Exception ex) {
+                ShowErrorBox("Loading Guards", ex.Message);
+            }
         }
 
         #endregion
 
         #region Form Props
+
+        private static void ShowErrorBox(string name, string error) {
+            RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
             Opacity += 0.2;
@@ -528,18 +545,24 @@ namespace MSAMISUserInterface {
                             PhilHealthBX.Text, PrevAgencyBX.Text, PrevAssBX.Text, EdAttBX.SelectedIndex, CourseBX.Text,
                             MilTrainBX.Text, EmergBX.Text, EmergencyNoBX.Text);
                     }
-                    catch { }
+                    catch (Exception ex) {
+                        ShowErrorBox("Saving Guards", ex.Message);
+                    }
                     try {
                         Gid = int.Parse(SQLTools.getLastInsertedId("Guards", "GID"));
                     }
-                    catch { }
+                    catch (Exception ex) {
+                        ShowErrorBox("Saving Guards", ex.Message);
+                    }
                     try {
                         InsertAdd(1, BirthplaceStreetNoBX.Text, BirthplaceStreetNameBX.Text, BirthplaceCityBX.Text,
                             BirthplaceBrgyBX.Text);
                         InsertAdd(2, PermStreetNoBX.Text, PermStreetNameBX.Text, PermCityBX.Text, PermBrgyBX.Text);
                         InsertAdd(3, TempStreetNoBX.Text, TempStreetNameBX.Text, TempCityBX.Text, TempBrgyBX.Text);
                     }
-                    catch { }
+                    catch (Exception ex) {
+                        ShowErrorBox("Saving Guards", ex.Message);
+                    }
                     try {
                         InsertDependent(4, FatherFirstBX.Text, FatherMiddleBX.Text, FatherLastBX.Text);
                         InsertDependent(5, MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text);
@@ -561,7 +584,9 @@ namespace MSAMISUserInterface {
                             InsertDependent(Dependent5RBX.SelectedIndex, Dependent5FirstBX.Text,
                                 Dependent5MiddleBX.Text, Dependent5LastBX.Text);
                     }
-                    catch { }
+                    catch (Exception ex) {
+                        ShowErrorBox("Saving Guards", ex.Message);
+                    }
                 }
 
                 #endregion
@@ -577,14 +602,18 @@ namespace MSAMISUserInterface {
                             CourseBX.Text, MilTrainBX.Text, EmergBX.Text, EmergencyNoBX.Text);
                     }
 
-                    catch { }
+                    catch (Exception ex) {
+                        ShowErrorBox("Saving Guards", ex.Message);
+                    }
                     try {
                         UpdateAdd(BirthplaceStreetNoBX.Text, BirthplaceStreetNameBX.Text, BirthplaceCityBX.Text,
                             BirthplaceBrgyBX.Text, 1);
                         UpdateAdd(PermStreetNoBX.Text, PermStreetNameBX.Text, PermCityBX.Text, PermBrgyBX.Text, 2);
                         UpdateAdd(TempStreetNoBX.Text, TempStreetNameBX.Text, TempCityBX.Text, TempBrgyBX.Text, 3);
                     }
-                    catch { }
+                    catch (Exception ex) {
+                        ShowErrorBox("Saving Guards", ex.Message);
+                    }
                     try {
                         UpdateDependent(FatherFirstBX.Text, FatherMiddleBX.Text, FatherLastBX.Text, 4);
                         UpdateDependent(MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text, 5);
@@ -627,7 +656,9 @@ namespace MSAMISUserInterface {
                                     Dependent5MiddleBX.Text, Dependent5LastBX.Text);
                         ViewRef.RefreshData();
                     }
-                    catch { }
+                    catch (Exception ex) {
+                        ShowErrorBox("Saving Guards", ex.Message);
+                    }
                 }
 
                 #endregion
