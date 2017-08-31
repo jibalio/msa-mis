@@ -12,7 +12,7 @@ namespace MSAMISUserInterface {
         public MainForm Reference;
         public ClientsView ViewRef;
 
-        private int[] _dependents;
+        private int[] _dependents = new int [1];
 
         public ClientsEdit() {
             InitializeComponent();
@@ -34,6 +34,45 @@ namespace MSAMISUserInterface {
                 ManagerBX.Text = dt.Rows[0]["Manager"].ToString();
                 ContactBX.Text = dt.Rows[0]["ContactPerson"].ToString();
                 ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
+
+                try {
+                    var _dataTable = Client.GetCertifiers(Cid);
+                    if (_dataTable.Rows.Count > 0) {
+                        _dependents = new int[_dataTable.Rows.Count+1];
+                        try {
+                            if (_dataTable.Rows.Count > 0) {
+                                _dependents[1] = int.Parse(_dataTable.Rows[0]["ccid"].ToString());
+                                Dependent1FirstBX.Text = _dataTable.Rows[0]["fn"].ToString();
+                                Dependent1MiddleBX.Text = _dataTable.Rows[0]["mn"].ToString();
+                                Dependent1LastBX.Text = _dataTable.Rows[0]["ln"].ToString();
+                                Dep1Contact.Text = _dataTable.Rows[0]["contactno"].ToString();
+                            }
+                            if (_dataTable.Rows.Count > 1) {
+                                _dependents[2] = int.Parse(_dataTable.Rows[1]["ccid"].ToString());
+                                Dependent2FirstBX.Text = _dataTable.Rows[1]["fn"].ToString();
+                                Dependent2MiddleBX.Text = _dataTable.Rows[1]["mn"].ToString();
+                                Dependent2LastBX.Text = _dataTable.Rows[1]["ln"].ToString();
+                                Dep2Contact.Text = _dataTable.Rows[1]["contactno"].ToString();
+                            }
+                            if (_dataTable.Rows.Count > 2) {
+                                _dependents[3] = int.Parse(_dataTable.Rows[2]["ccid"].ToString());
+                                Dependent3FirstBX.Text = _dataTable.Rows[2]["fn"].ToString();
+                                Dependent3MiddleBX.Text = _dataTable.Rows[2]["mn"].ToString();
+                                Dependent3LastBX.Text = _dataTable.Rows[2]["ln"].ToString();
+                                Dep3Contact.Text = _dataTable.Rows[2]["contactno"].ToString();
+                            }
+                        }
+                        catch (Exception ex) {
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                }
+                catch (Exception ex) {
+                    ShowErrorBox("Loading Guards", ex.Message);
+                }
+
+
+
             }
             catch (Exception ex) {
                 ShowErrorBox("Clients Editing", ex.Message);
@@ -79,6 +118,12 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Textbox Properties while editing
+        private static void ClearBox(TextBoxBase textBoxBase) {
+            if (textBoxBase.Text.Equals("Last")) textBoxBase.Clear();
+            else if (textBoxBase.Text.Equals("Middle")) textBoxBase.Clear();
+            else if (textBoxBase.Text.Equals("First")) textBoxBase.Clear();
+            else if (textBoxBase.Text.Equals("Contact")) textBoxBase.Clear();
+        }
 
         private void NameBX_MouseEnter(object sender, EventArgs e) {
             if (NameBX.Text.Equals("Name")) {
@@ -194,7 +239,35 @@ namespace MSAMISUserInterface {
                 ret = false;
             }
 
+            if (CheckNameNotRequired(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX)) {
+                ShowToolTipOnBx(Dep1Warn, "Dependent's Name", "Please complete the fields", Dependent1FirstBX);
+                ret = false;
+            }
+            if (CheckNameNotRequired(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX)) {
+                ShowToolTipOnBx(Dep2Warn, "Dependent's Name", "Please complete the fields", Dependent2FirstBX);
+                ret = false;
+            }
+            if (CheckNameNotRequired(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX)) {
+                ShowToolTipOnBx(Dep3Warn, "Dependent's Name", "Please complete the fields", Dependent3FirstBX);
+                ret = false;
+            }
+
             return ret;
+        }
+
+        private static void ShowToolTipOnBx(ToolTip ttp, string title, string message, IWin32Window lb) {
+            ttp.ToolTipTitle = title;
+            ttp.Show(message, lb);
+        }
+
+        private static bool CheckNameNotRequired(Control firstBx, Control middleBx, Control lastBx) {
+            return CheckForInput(firstBx, middleBx, lastBx) && CheckName(firstBx, middleBx, lastBx);
+        }
+
+        private static bool CheckForInput(Control firstBx, Control middleBx, Control lastBx) {
+            return !(firstBx.Text.Equals("First") || firstBx.Text.Equals("")) ||
+                   !(middleBx.Text.Equals("Middle") || middleBx.Text.Equals("")) ||
+                   !(lastBx.Text.Equals("Last") || lastBx.Text.Equals(""));
         }
 
         private bool IsEmpty() {
@@ -239,24 +312,24 @@ namespace MSAMISUserInterface {
                             LocationStreetNameBX.Text,
                             LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
 
-                        if (CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
-                            if (_dependents.Length > 0)
+                        if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
+                            if (_dependents.Length > 1)
                                 UpdateDependent(Dependent1FirstBX.Text, Dependent1MiddleBX.Text, Dependent1LastBX.Text,
-                                    Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, _dependents[0]);
+                                    Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, _dependents[1]);
                             else
                                 InsertDependent(Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, Dependent1FirstBX.Text,
                                     Dependent1MiddleBX.Text, Dependent1LastBX.Text);
                         if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
-                            if (_dependents.Length > 1)
+                            if (_dependents.Length > 2)
                                 UpdateDependent(Dependent2FirstBX.Text, Dependent2MiddleBX.Text, Dependent2LastBX.Text,
-                                    Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, _dependents[1]);
+                                    Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, _dependents[2]);
                             else
                                 InsertDependent(Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, Dependent2FirstBX.Text,
                                     Dependent2MiddleBX.Text, Dependent2LastBX.Text);
                         if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
-                            if (_dependents.Length > 2)
+                            if (_dependents.Length > 3)
                                 UpdateDependent(Dependent3FirstBX.Text, Dependent3MiddleBX.Text, Dependent3LastBX.Text,
-                                    Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, _dependents[2]);
+                                    Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, _dependents[3]);
                             else
                                 InsertDependent(Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, Dependent3FirstBX.Text,
                                     Dependent3MiddleBX.Text, Dependent3LastBX.Text);
@@ -273,13 +346,37 @@ namespace MSAMISUserInterface {
         }
 
         private void InsertDependent(string rel, string first, string middle, string last) {
-           // Guard.AddGuardsDependent(Gid, rel, first, middle, last);
+            Client.AddCertifier(Cid, first, middle, last, rel);
         }
 
         private void UpdateDependent(string first, string middle, string last, string rel, int id) {
-            //Guard.UpdateGuardsDependent(Gid, first, middle, last, rel, id);
+            Client.UpdateCertifier(id, first, middle, last, rel);
         }
 
         #endregion
+
+        private void Dependent1FirstBX_Enter(object sender, EventArgs e) {
+            ClearBox((TextBox) sender);
+        }
+
+        private void Dependent1FirstBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "First";
+        }
+
+        private void Dependent1MiddleBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Middle";
+        }
+
+        private void Dependent1LastBX_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
+        }
+
+        private void Dep1Contact_Leave(object sender, EventArgs e) {
+            var lastbx = sender as TextBox;
+            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Contact";
+        }
     }
 }

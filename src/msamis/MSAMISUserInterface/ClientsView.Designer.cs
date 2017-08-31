@@ -33,15 +33,24 @@
             this.ContactNoLBL = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.DetailsPNL = new System.Windows.Forms.Panel();
+            this.Dependent1Cont = new System.Windows.Forms.Label();
+            this.Dependent2Cont = new System.Windows.Forms.Label();
+            this.Dependent3Cont = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.Dependent1LBL = new System.Windows.Forms.Label();
+            this.Dependent2LBL = new System.Windows.Forms.Label();
+            this.Dependent3LBL = new System.Windows.Forms.Label();
             this.ManagerLBL = new System.Windows.Forms.Label();
             this.LocationLBL = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.CEditDetailsBTN = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label28 = new System.Windows.Forms.Label();
-            this.Dependent1LBL = new System.Windows.Forms.Label();
-            this.Dependent2LBL = new System.Windows.Forms.Label();
-            this.Dependent3LBL = new System.Windows.Forms.Label();
             this.DetailsPNL.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -76,10 +85,10 @@
             // 
             this.ContactLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactLBL.Location = new System.Drawing.Point(94, 36);
+            this.ContactLBL.Location = new System.Drawing.Point(210, 36);
             this.ContactLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ContactLBL.Name = "ContactLBL";
-            this.ContactLBL.Size = new System.Drawing.Size(427, 28);
+            this.ContactLBL.Size = new System.Drawing.Size(306, 28);
             this.ContactLBL.TabIndex = 119;
             this.ContactLBL.Text = "---------------";
             this.ContactLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,10 +123,10 @@
             // 
             this.ContactNoLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactNoLBL.Location = new System.Drawing.Point(94, 66);
+            this.ContactNoLBL.Location = new System.Drawing.Point(210, 65);
             this.ContactNoLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ContactNoLBL.Name = "ContactNoLBL";
-            this.ContactNoLBL.Size = new System.Drawing.Size(427, 28);
+            this.ContactNoLBL.Size = new System.Drawing.Size(306, 28);
             this.ContactNoLBL.TabIndex = 89;
             this.ContactNoLBL.Text = "---------------";
             this.ContactNoLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,6 +141,15 @@
             this.DetailsPNL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DetailsPNL.AutoScroll = true;
+            this.DetailsPNL.Controls.Add(this.Dependent1Cont);
+            this.DetailsPNL.Controls.Add(this.Dependent2Cont);
+            this.DetailsPNL.Controls.Add(this.Dependent3Cont);
+            this.DetailsPNL.Controls.Add(this.label26);
+            this.DetailsPNL.Controls.Add(this.label22);
+            this.DetailsPNL.Controls.Add(this.label1);
+            this.DetailsPNL.Controls.Add(this.label32);
+            this.DetailsPNL.Controls.Add(this.label2);
+            this.DetailsPNL.Controls.Add(this.label3);
             this.DetailsPNL.Controls.Add(this.label28);
             this.DetailsPNL.Controls.Add(this.Dependent1LBL);
             this.DetailsPNL.Controls.Add(this.Dependent2LBL);
@@ -146,14 +164,170 @@
             this.DetailsPNL.Size = new System.Drawing.Size(599, 321);
             this.DetailsPNL.TabIndex = 229;
             // 
+            // Dependent1Cont
+            // 
+            this.Dependent1Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent1Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent1Cont.Location = new System.Drawing.Point(361, 178);
+            this.Dependent1Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Dependent1Cont.Name = "Dependent1Cont";
+            this.Dependent1Cont.Size = new System.Drawing.Size(120, 28);
+            this.Dependent1Cont.TabIndex = 232;
+            this.Dependent1Cont.Text = "---------------";
+            this.Dependent1Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Dependent2Cont
+            // 
+            this.Dependent2Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent2Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent2Cont.Location = new System.Drawing.Point(361, 215);
+            this.Dependent2Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Dependent2Cont.Name = "Dependent2Cont";
+            this.Dependent2Cont.Size = new System.Drawing.Size(120, 28);
+            this.Dependent2Cont.TabIndex = 233;
+            this.Dependent2Cont.Text = "---------------";
+            this.Dependent2Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Dependent3Cont
+            // 
+            this.Dependent3Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent3Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent3Cont.Location = new System.Drawing.Point(360, 248);
+            this.Dependent3Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Dependent3Cont.Name = "Dependent3Cont";
+            this.Dependent3Cont.Size = new System.Drawing.Size(120, 28);
+            this.Dependent3Cont.TabIndex = 234;
+            this.Dependent3Cont.Text = "---------------";
+            this.Dependent3Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label26.Location = new System.Drawing.Point(181, 183);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(17, 19);
+            this.label26.TabIndex = 229;
+            this.label26.Text = "1.";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label22.Location = new System.Drawing.Point(179, 219);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(19, 19);
+            this.label22.TabIndex = 230;
+            this.label22.Text = "2.";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label1.Location = new System.Drawing.Point(84, 93);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 28);
+            this.label1.TabIndex = 128;
+            this.label1.Text = "Manager:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label32.Location = new System.Drawing.Point(179, 256);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(19, 19);
+            this.label32.TabIndex = 231;
+            this.label32.Text = "3.";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label2.Location = new System.Drawing.Point(84, 65);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 28);
+            this.label2.TabIndex = 129;
+            this.label2.Text = "Contact No:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(84, 36);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 28);
+            this.label3.TabIndex = 130;
+            this.label3.Text = "Contact Person:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label28.Location = new System.Drawing.Point(252, 144);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(94, 21);
+            this.label28.TabIndex = 120;
+            this.label28.Text = "CERTIFIERS";
+            // 
+            // Dependent1LBL
+            // 
+            this.Dependent1LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent1LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent1LBL.Location = new System.Drawing.Point(213, 178);
+            this.Dependent1LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Dependent1LBL.Name = "Dependent1LBL";
+            this.Dependent1LBL.Size = new System.Drawing.Size(133, 28);
+            this.Dependent1LBL.TabIndex = 123;
+            this.Dependent1LBL.Text = "---------------";
+            this.Dependent1LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Dependent2LBL
+            // 
+            this.Dependent2LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent2LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent2LBL.Location = new System.Drawing.Point(213, 215);
+            this.Dependent2LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Dependent2LBL.Name = "Dependent2LBL";
+            this.Dependent2LBL.Size = new System.Drawing.Size(133, 28);
+            this.Dependent2LBL.TabIndex = 124;
+            this.Dependent2LBL.Text = "---------------";
+            this.Dependent2LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Dependent3LBL
+            // 
+            this.Dependent3LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent3LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent3LBL.Location = new System.Drawing.Point(212, 248);
+            this.Dependent3LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Dependent3LBL.Name = "Dependent3LBL";
+            this.Dependent3LBL.Size = new System.Drawing.Size(133, 28);
+            this.Dependent3LBL.TabIndex = 127;
+            this.Dependent3LBL.Text = "---------------";
+            this.Dependent3LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ManagerLBL
             // 
             this.ManagerLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ManagerLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ManagerLBL.Location = new System.Drawing.Point(94, 93);
+            this.ManagerLBL.Location = new System.Drawing.Point(210, 93);
             this.ManagerLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ManagerLBL.Name = "ManagerLBL";
-            this.ManagerLBL.Size = new System.Drawing.Size(427, 28);
+            this.ManagerLBL.Size = new System.Drawing.Size(306, 28);
             this.ManagerLBL.TabIndex = 77;
             this.ManagerLBL.Text = "---------";
             this.ManagerLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -219,54 +393,6 @@
             this.panel1.Size = new System.Drawing.Size(599, 398);
             this.panel1.TabIndex = 120;
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label28.Location = new System.Drawing.Point(252, 144);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(94, 21);
-            this.label28.TabIndex = 120;
-            this.label28.Text = "CERTIFIERS";
-            // 
-            // Dependent1LBL
-            // 
-            this.Dependent1LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent1LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1LBL.Location = new System.Drawing.Point(98, 178);
-            this.Dependent1LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent1LBL.Name = "Dependent1LBL";
-            this.Dependent1LBL.Size = new System.Drawing.Size(427, 28);
-            this.Dependent1LBL.TabIndex = 123;
-            this.Dependent1LBL.Text = "---------------";
-            this.Dependent1LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Dependent2LBL
-            // 
-            this.Dependent2LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent2LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2LBL.Location = new System.Drawing.Point(98, 215);
-            this.Dependent2LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent2LBL.Name = "Dependent2LBL";
-            this.Dependent2LBL.Size = new System.Drawing.Size(427, 28);
-            this.Dependent2LBL.TabIndex = 124;
-            this.Dependent2LBL.Text = "---------------";
-            this.Dependent2LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Dependent3LBL
-            // 
-            this.Dependent3LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent3LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3LBL.Location = new System.Drawing.Point(97, 248);
-            this.Dependent3LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent3LBL.Name = "Dependent3LBL";
-            this.Dependent3LBL.Size = new System.Drawing.Size(427, 28);
-            this.Dependent3LBL.TabIndex = 127;
-            this.Dependent3LBL.Text = "---------------";
-            this.Dependent3LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // ClientsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,5 +439,14 @@
         private System.Windows.Forms.Label Dependent1LBL;
         private System.Windows.Forms.Label Dependent2LBL;
         private System.Windows.Forms.Label Dependent3LBL;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label Dependent1Cont;
+        private System.Windows.Forms.Label Dependent2Cont;
+        private System.Windows.Forms.Label Dependent3Cont;
     }
 }

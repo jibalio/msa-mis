@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using rylui;
+using System.Data;
 
 namespace MSAMISUserInterface {
     public partial class ClientsView : Form {
@@ -55,17 +56,39 @@ namespace MSAMISUserInterface {
                 var dt = Client.GetClientDetails(Cid);
                 NameLBL.Text = dt.Rows[0]["name"].ToString();
                 CIDLBL.Text = dt.Rows[0]["CID"].ToString();
-
                 LocationLBL.Text = dt.Rows[0]["ClientStreetNo"] + " " + dt.Rows[0]["ClientStreet"] + ", " +
                                    dt.Rows[0]["ClientBrgy"] + ", " + dt.Rows[0]["ClientBrgy"] + ", " +
                                    dt.Rows[0]["ClientCity"];
-                ManagerLBL.Text = "Manager: " + dt.Rows[0]["Manager"];
-                ContactLBL.Text = "Contact Person: " + dt.Rows[0]["ContactPerson"];
-                ContactNoLBL.Text = "Contact No: " + dt.Rows[0]["ContactNo"];
+                ManagerLBL.Text = dt.Rows[0]["Manager"].ToString();
+                ContactLBL.Text = dt.Rows[0]["ContactPerson"].ToString();
+                ContactNoLBL.Text = dt.Rows[0]["ContactNo"].ToString();
+                try {
+                    var _dataTable = Client.GetCertifiers(Cid);
+                    try {
+                        if (_dataTable.Rows.Count > 0) {
+                            Dependent1LBL.Text = BuildName(_dataTable, 0);
+                            Dependent1Cont.Text = _dataTable.Rows[0]["contactno"].ToString();
+                        }
+                        if (_dataTable.Rows.Count > 1) {
+                            Dependent2LBL.Text = BuildName(_dataTable, 1);
+                            Dependent2Cont.Text = _dataTable.Rows[1]["contactno"].ToString();
+                        }
+                        if (_dataTable.Rows.Count > 2) {
+                            Dependent3LBL.Text = BuildName(_dataTable, 2);
+                            Dependent3Cont.Text = _dataTable.Rows[2]["contactno"].ToString();
+                        }
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex); }
+                    }
+                catch (Exception ex) { Console.WriteLine(ex); }
             }
             catch (Exception ex) {
                 ShowErrorBox("Loading Error", ex.Message);
             }
+        }
+
+        private static string BuildName(DataTable dt, int row) {
+            return dt.Rows[row]["ln"] + ", " + dt.Rows[row]["fn"] + " " + dt.Rows[row]["mn"];
         }
     }
 }

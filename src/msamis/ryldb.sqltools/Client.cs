@@ -21,7 +21,7 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetCertifiers(int cid) {
-            var q = $@"SELECT ccid, cid, fn, mn, ln, contactno FROM msadb.certifier WHERE cid = 7 and status=0;";
+            var q = $@"SELECT ccid, cid, fn, mn, ln, contactno FROM msadb.certifier WHERE cid = {cid} and status=1;";
             return SQLTools.ExecuteQuery(q);
         }
 
