@@ -59,6 +59,7 @@
             this.PickPNL = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.NextBTN = new System.Windows.Forms.Button();
+            this.ClientLBL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ClientGRD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NeededBX)).BeginInit();
             this.RequestPNL.SuspendLayout();
@@ -326,6 +327,7 @@
             this.ClientGRD.Size = new System.Drawing.Size(434, 284);
             this.ClientGRD.TabIndex = 104;
             this.ClientGRD.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientGRD_CellEnter);
+            this.ClientGRD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ClientGRD_MouseDoubleClick);
             // 
             // RequestLBL
             // 
@@ -406,15 +408,15 @@
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(129, 37);
+            this.label8.Location = new System.Drawing.Point(0, 22);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(305, 45);
+            this.label8.Size = new System.Drawing.Size(548, 45);
             this.label8.TabIndex = 109;
             this.label8.Text = "Request for guards";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // NeededBX
             // 
@@ -467,6 +469,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.panel3.Controls.Add(this.ClientLBL);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -493,6 +496,18 @@
             this.NextBTN.UseVisualStyleBackColor = false;
             this.NextBTN.Click += new System.EventHandler(this.NextBTN_Click);
             // 
+            // ClientLBL
+            // 
+            this.ClientLBL.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ClientLBL.ForeColor = System.Drawing.Color.White;
+            this.ClientLBL.Location = new System.Drawing.Point(-1, 70);
+            this.ClientLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ClientLBL.Name = "ClientLBL";
+            this.ClientLBL.Size = new System.Drawing.Size(548, 27);
+            this.ClientLBL.TabIndex = 110;
+            this.ClientLBL.Text = "Pick a client";
+            this.ClientLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // SchedRequestGuard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,8 +520,8 @@
             this.Controls.Add(this.RequestLBL);
             this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.RequestPNL);
             this.Controls.Add(this.PickPNL);
+            this.Controls.Add(this.RequestPNL);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SchedRequestGuard";
@@ -521,7 +536,6 @@
             this.PickPNL.ResumeLayout(false);
             this.PickPNL.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -560,5 +574,6 @@
         private System.Windows.Forms.Panel PickPNL;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button NextBTN;
+        private System.Windows.Forms.Label ClientLBL;
     }
 }

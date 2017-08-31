@@ -144,6 +144,7 @@ namespace MSAMISUserInterface {
 
         private void ClientGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (ClientGRD.SelectedRows.Count == 1) _cid = ClientGRD.SelectedRows[0].Cells[0].Value.ToString();
+            if (ClientGRD.SelectedRows.Count > 0) ClientLBL.Text = ClientGRD.SelectedRows[0].Cells[1].Value.ToString();
         }
 
         private void ContractStartDTPKR_ValueChanged(object sender, EventArgs e) {
@@ -243,5 +244,9 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private void ClientGRD_MouseDoubleClick(object sender, MouseEventArgs e) {
+            if (ClientGRD.SelectedRows.Count > 0) NextBTN.PerformClick();
+        }
     }
 }

@@ -78,8 +78,13 @@ namespace MSAMISUserInterface {
                 }
             }
             else if (NumberOfGuards > _gidS.Length) {
-                RylMessageBox.ShowDialog("The number of guards you've assigned is not enough", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var rs = RylMessageBox.ShowDialog("The number of guards you've assigned is not enough. Do you still want to assign the selected guards?", "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (rs == DialogResult.Yes) {
+                    Scheduling.AddAssignment(Rid, _gidS);
+                    Close();
+                    Refer.Close();
+                }
             }
             else {
                 Scheduling.AddAssignment(Rid, _gidS);

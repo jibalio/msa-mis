@@ -12,6 +12,8 @@ namespace MSAMISUserInterface {
         public MainForm Reference;
         public ClientsView ViewRef;
 
+        private int[] _dependents;
+
         public ClientsEdit() {
             InitializeComponent();
             Opacity = 0;
@@ -210,6 +212,10 @@ namespace MSAMISUserInterface {
             return ret;
         }
 
+        private static bool CheckName(Control firstBx, Control middleBx, Control lastBx) {
+            return firstBx.Text.Equals("First") || middleBx.Text.Equals("Middle") || lastBx.Text.Equals("Last") ||
+                   firstBx.Text.Equals("") || middleBx.Text.Equals("") || lastBx.Text.Equals("");
+        }
 
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
@@ -217,11 +223,44 @@ namespace MSAMISUserInterface {
                     if (GEditDetailsBTN.Text.Equals("ADD")) {
                         Client.AddClient(NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text,
                             LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
+
+                        if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
+                            InsertDependent(Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, Dependent1FirstBX.Text,
+                                Dependent1MiddleBX.Text, Dependent1LastBX.Text);
+                        if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
+                            InsertDependent(Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, Dependent2FirstBX.Text,
+                                Dependent2MiddleBX.Text, Dependent2LastBX.Text);
+                        if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
+                            InsertDependent(Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, Dependent3FirstBX.Text,
+                                Dependent3MiddleBX.Text, Dependent3LastBX.Text);
                     }
                     else {
                         Client.UpdateClient(Cid.ToString(), NameBX.Text, LocationStreetNoBX.Text,
                             LocationStreetNameBX.Text,
                             LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
+
+                        if (CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
+                            if (_dependents.Length > 0)
+                                UpdateDependent(Dependent1FirstBX.Text, Dependent1MiddleBX.Text, Dependent1LastBX.Text,
+                                    Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, _dependents[0]);
+                            else
+                                InsertDependent(Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, Dependent1FirstBX.Text,
+                                    Dependent1MiddleBX.Text, Dependent1LastBX.Text);
+                        if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
+                            if (_dependents.Length > 1)
+                                UpdateDependent(Dependent2FirstBX.Text, Dependent2MiddleBX.Text, Dependent2LastBX.Text,
+                                    Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, _dependents[1]);
+                            else
+                                InsertDependent(Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, Dependent2FirstBX.Text,
+                                    Dependent2MiddleBX.Text, Dependent2LastBX.Text);
+                        if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
+                            if (_dependents.Length > 2)
+                                UpdateDependent(Dependent3FirstBX.Text, Dependent3MiddleBX.Text, Dependent3LastBX.Text,
+                                    Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, _dependents[2]);
+                            else
+                                InsertDependent(Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, Dependent3FirstBX.Text,
+                                    Dependent3MiddleBX.Text, Dependent3LastBX.Text);
+
                         ViewRef.RefreshData();
                     }
                     Reference.ClientsRefreshClientsList();
@@ -231,6 +270,14 @@ namespace MSAMISUserInterface {
                     ShowErrorBox("Clients Editing", ex.Message);
                 }
             }
+        }
+
+        private void InsertDependent(string rel, string first, string middle, string last) {
+           // Guard.AddGuardsDependent(Gid, rel, first, middle, last);
+        }
+
+        private void UpdateDependent(string first, string middle, string last, string rel, int id) {
+            //Guard.UpdateGuardsDependent(Gid, first, middle, last, rel, id);
         }
 
         #endregion
