@@ -69,6 +69,8 @@ namespace MSAMISUserInterface {
 
 
         public static DataTable GetUnassignedGuards(String searchkeyword, string start, string end) {
+            string endx = end.Substring(14);
+            string startx = start.Substring(15);
             String q = $@"select guards.gid, concat(ln,', ',fn,' ',mn) as name,
                          concat(address.streetno, ', ', address.street, ', ', address.brgy, ', ', address.city) as Location, request_assign.ContractStart, request_assign.ContractEnd from guards
 	                        left join sduty_assignment on sduty_assignment.gid = guards.gid
@@ -77,7 +79,7 @@ namespace MSAMISUserInterface {
                             where atype = 2  and 
                             (gstatus = {Enumeration.GuardStatus.Inactive} or
                             (gstatus= {Enumeration.GuardStatus.PendingPayroll}) or
-                            (GStatus <> 1 or (request_assign.ContractStart > '{DateTime.Parse(end.Substring(14,end.Length-1)).ToString("yyyy-MM-dd")}' or (request_assign.ContractEnd < '{DateTime.Parse(start).ToString("yyyy-MM-dd")}')))) ";
+                            (GStatus <> 1 or (request_assign.ContractStart > '{DateTime.Parse(endx).ToString("yyyy-MM-dd")}' or (request_assign.ContractEnd < '{DateTime.Parse(startx).ToString("yyyy-MM-dd")}')))) ";
             return SQLTools.ExecuteQuery(q + searchkeyword + "order by name asc");
         }
 
@@ -360,6 +362,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 q += " AND ti_hh is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
                 q += " AND ti_hh is null ";
+              
             DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " order by name asc");
             // foreach (DataRow e in dt.Rows) {
             //    String[] x = e["Schedule"].ToString().Split(' ');
