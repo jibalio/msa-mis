@@ -3,6 +3,7 @@ using System.Data;
 
 namespace MSAMISUserInterface {
     public class Client {
+
         static String empty = "Search or filter";
 
         public static DataTable GetClients() {
@@ -11,6 +12,30 @@ namespace MSAMISUserInterface {
             String query = "select cid, name from client;";
             return SQLTools.ExecuteQuery(query);
         }
+
+        #region Certifier Region
+        public static void AddCertifier(int cid, string fn, string mn, string ln, string contactno) {
+            var q =
+                $@"INSERT INTO `msadb`.`certifier` (`cid`, `fn`, `ln`, `mn`,`contactno`) VALUES ('{cid}', '{fn}', '{ln}', '{mn}', '{contactno}');";
+            SQLTools.ExecuteNonQuery(q);
+        }
+
+        public static DataTable GetCertifiers(int cid) {
+            var q = $@"SELECT ccid, cid, fn, mn, ln, contactno FROM msadb.certifier WHERE cid = 7 and status=0;";
+            return SQLTools.ExecuteQuery(q);
+        }
+
+        public static void UpdateCertifier(int ccid, string fn, string mn,string ln, string contactno) {
+            var q =
+                $@"UPDATE `msadb`.`certifier` SET `fn`='{fn}', `mn`='{mn}', `ln`='{ln}', `contactno`='{contactno}' WHERE `ccid`='{ccid}';";
+            SQLTools.ExecuteNonQuery(q);
+        }
+
+        public static void RemoveCertifier(int ccid) {
+            var q = $@"UPDATE `msadb`.`certifier` SET `status`='0' WHERE `ccid`='{ccid}';';";
+            SQLTools.ExecuteNonQuery(q);
+        }
+        #endregion
 
         public static DataTable GetAllClientDetails(String searchKeyWords) {
             searchKeyWords = CleanSearch(searchKeyWords);
