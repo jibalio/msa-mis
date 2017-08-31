@@ -53,7 +53,7 @@ namespace MSAMISUserInterface {
                         int.Parse(row.Cells[2].Value.ToString()), int.Parse(row.Cells[4].Value.ToString()),
                         row.Cells[5].Value.ToString(), int.Parse(row.Cells[6].Value.ToString()),
                         int.Parse(row.Cells[8].Value.ToString()), row.Cells[9].Value.ToString());
-                _attendance.SetCertifiedBy(Aid, CertifiedBX.Text);
+                _attendance.SetCertifiedBy(Aid, int.Parse(((ComboBoxItem)CertifiedByCMBX.SelectedItem).ItemID));
                 Reference.RefreshAttendance();
                 CloseBTN.Tag = "1";
                 Close();
@@ -71,9 +71,9 @@ namespace MSAMISUserInterface {
 
         private bool DataValidation() {
             var ret = true;
-            if (CertifiedBX.Text.Equals("")) {
+            if (CertifiedByCMBX.Text.Equals("")) {
                 CertifiedTLTP.ToolTipTitle = "Certification";
-                CertifiedTLTP.Show("Who certified this attendanca?", CertifiedBX);
+                CertifiedTLTP.Show("Who certified this attendanca?", CertifiedByCMBX);
                 ret = false;
             }
             return ret;
@@ -88,7 +88,19 @@ namespace MSAMISUserInterface {
                         row[6].ToString().Split(':')[1].Split(' ')[1], "0");
                 DaysGRD.CurrentCell = DaysGRD.Rows[0].Cells[1];
             }
-            CertifiedBX.Text = _attendance.GetCertifiedBy();
+            try {
+                CertifiedByCMBX.Items.Clear();
+                var dv = Client.GetCertifiers(_attendance.CID);
+
+                for (var i = 0; i < dv.Rows.Count; i++)
+                    CertifiedByCMBX.Items.Add(
+                        new ComboBoxItem(dv.Rows[i][1].ToString(), dv.Rows[i][0].ToString()));
+            }
+            catch (Exception ex) {
+                Console.Write(ex.Message);
+            }
+
+            CertifiedByCMBX.Text = _attendance.GetCertifiedBy();
         }
 
         #endregion

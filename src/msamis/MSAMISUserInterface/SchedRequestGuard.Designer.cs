@@ -58,8 +58,8 @@
             this.RequestPNL = new System.Windows.Forms.Panel();
             this.PickPNL = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.NextBTN = new System.Windows.Forms.Button();
             this.ClientLBL = new System.Windows.Forms.Label();
+            this.NextBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientGRD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NeededBX)).BeginInit();
             this.RequestPNL.SuspendLayout();
@@ -469,13 +469,25 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Controls.Add(this.ClientLBL);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(554, 116);
             this.panel3.TabIndex = 115;
+            // 
+            // ClientLBL
+            // 
+            this.ClientLBL.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ClientLBL.ForeColor = System.Drawing.Color.White;
+            this.ClientLBL.Location = new System.Drawing.Point(-1, 70);
+            this.ClientLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ClientLBL.Name = "ClientLBL";
+            this.ClientLBL.Size = new System.Drawing.Size(548, 27);
+            this.ClientLBL.TabIndex = 110;
+            this.ClientLBL.Text = "Pick a client";
+            this.ClientLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // NextBTN
             // 
@@ -495,18 +507,6 @@
             this.NextBTN.Text = "NEXT";
             this.NextBTN.UseVisualStyleBackColor = false;
             this.NextBTN.Click += new System.EventHandler(this.NextBTN_Click);
-            // 
-            // ClientLBL
-            // 
-            this.ClientLBL.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ClientLBL.ForeColor = System.Drawing.Color.White;
-            this.ClientLBL.Location = new System.Drawing.Point(-1, 70);
-            this.ClientLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ClientLBL.Name = "ClientLBL";
-            this.ClientLBL.Size = new System.Drawing.Size(548, 27);
-            this.ClientLBL.TabIndex = 110;
-            this.ClientLBL.Text = "Pick a client";
-            this.ClientLBL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // SchedRequestGuard
             // 

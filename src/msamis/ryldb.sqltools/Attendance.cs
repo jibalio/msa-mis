@@ -284,7 +284,6 @@ left join dutydetails on dutydetails.DID= attendance.DID where month='{period.mo
 
         #endregion
 
-
         #region Statics
         #region MethodFamily: Period Operations
         public static int GetMonth() {
