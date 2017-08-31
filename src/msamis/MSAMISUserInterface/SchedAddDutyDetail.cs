@@ -131,28 +131,6 @@ namespace MSAMISUserInterface {
                 DaysTLTP.Show("Please choose at least one day", MBTN);
                 ret = false;
             }
-
-            var ti = new TimeSpan(0, int.Parse(TimeInHrBX.Text), int.Parse(TimeInMinBX.Text), 0);
-            var to = new TimeSpan(0, int.Parse(TimeOutHrBX.Text), int.Parse(TimeOutMinBX.Text), 0);
-
-            if (TimeInAMPMBX.SelectedIndex == 1 && TimeOutAMPMBX.SelectedIndex == 0) {
-                ti = new TimeSpan(0, int.Parse(TimeInHrBX.Text) + 12, int.Parse(TimeInMinBX.Text), 0);
-                to = new TimeSpan(1, int.Parse(TimeOutHrBX.Text), int.Parse(TimeOutMinBX.Text), 0);
-            }
-            else if (TimeInAMPMBX.SelectedIndex == 0 && TimeOutAMPMBX.SelectedIndex == 1) {
-                to = new TimeSpan(0, int.Parse(TimeOutHrBX.Text) + 12, int.Parse(TimeOutMinBX.Text), 0);
-            }
-            /*
-            if (to.TotalHours - ti.TotalHours < 9) {
-                HoursTLTP.ToolTipTitle = "Duty Hours";
-                HoursTLTP.Show("The specified time is less than 8hrs", HoursLBL);
-                ret = false;
-            }
-            else if (to.TotalHours - ti.TotalHours > 9) {
-                HoursTLTP.ToolTipTitle = "Duty Hours";
-                HoursTLTP.Show("The specified time is more than 8hrs", HoursLBL);
-                ret = false;
-            }*/
             return ret;
         }
 
@@ -182,11 +160,21 @@ namespace MSAMISUserInterface {
                         new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
                             _dutyDays[6], _dutyDays[0]));
                     if (res.Equals("<")) {
-                        HoursTLTP.ToolTipTitle = "Duty Hours";
-                        HoursTLTP.Show("The specified time is less than 8hrs", HoursLBL);
+                        if (RylMessageBox.ShowDialog(
+                                "The schedule is less than 8hrs. Do you still want to add the details?", "Duty Hours",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                            Refer.LoadPage();
+                            CloseBTN.Tag = "1";
+                            Close();
+                        }
                     } else if (res.Equals(">")) {
-                        HoursTLTP.ToolTipTitle = "Duty Hours";
-                        HoursTLTP.Show("The specified time is more than 8hrs", HoursLBL);
+                        if (RylMessageBox.ShowDialog(
+                                "The schedule is more than 8hrs. Do you still want to add the details?", "Duty Hours",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                            Refer.LoadPage();
+                            CloseBTN.Tag = "1";
+                            Close();
+                        }
                     } else {
                         Refer.LoadPage();
                         CloseBTN.Tag = "1";

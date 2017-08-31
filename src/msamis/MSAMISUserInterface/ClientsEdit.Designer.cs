@@ -57,6 +57,34 @@
             this.ContactNoTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AddLBL = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.Dependent1FirstBX = new System.Windows.Forms.TextBox();
+            this.Dependent1MiddleBX = new System.Windows.Forms.TextBox();
+            this.Dependent1LastBX = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.Dependent2FirstBX = new System.Windows.Forms.TextBox();
+            this.Dependent2MiddleBX = new System.Windows.Forms.TextBox();
+            this.Dependent2LastBX = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.Dependent3FirstBX = new System.Windows.Forms.TextBox();
+            this.Dependent3MiddleBX = new System.Windows.Forms.TextBox();
+            this.Dependent3LastBX = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.Dep1Contact = new System.Windows.Forms.TextBox();
+            this.Dep2Contact = new System.Windows.Forms.TextBox();
+            this.Dep3Contact = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.DetailsPNL.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +92,7 @@
             // 
             this.EmerLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.EmerLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.EmerLBL.Location = new System.Drawing.Point(0, 65);
+            this.EmerLBL.Location = new System.Drawing.Point(0, 16);
             this.EmerLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EmerLBL.Name = "EmerLBL";
             this.EmerLBL.Size = new System.Drawing.Size(597, 21);
@@ -77,7 +105,7 @@
             this.label86.AutoSize = true;
             this.label86.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label86.Location = new System.Drawing.Point(134, 148);
+            this.label86.Location = new System.Drawing.Point(126, 88);
             this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label86.Name = "label86";
             this.label86.Size = new System.Drawing.Size(103, 19);
@@ -90,7 +118,7 @@
             this.ContactBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactBX.Location = new System.Drawing.Point(250, 150);
+            this.ContactBX.Location = new System.Drawing.Point(250, 90);
             this.ContactBX.MaxLength = 45;
             this.ContactBX.Name = "ContactBX";
             this.ContactBX.Size = new System.Drawing.Size(132, 18);
@@ -147,7 +175,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(157, 189);
+            this.label23.Location = new System.Drawing.Point(126, 122);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(80, 19);
@@ -160,7 +188,7 @@
             this.ContactNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactNoBX.Location = new System.Drawing.Point(250, 189);
+            this.ContactNoBX.Location = new System.Drawing.Point(250, 122);
             this.ContactNoBX.MaxLength = 45;
             this.ContactNoBX.Name = "ContactNoBX";
             this.ContactNoBX.Size = new System.Drawing.Size(131, 18);
@@ -173,7 +201,7 @@
             this.ManagerBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ManagerBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ManagerBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ManagerBX.Location = new System.Drawing.Point(250, 109);
+            this.ManagerBX.Location = new System.Drawing.Point(250, 53);
             this.ManagerBX.MaxLength = 45;
             this.ManagerBX.Name = "ManagerBX";
             this.ManagerBX.Size = new System.Drawing.Size(132, 18);
@@ -216,6 +244,34 @@
             // 
             this.DetailsPNL.AutoScroll = true;
             this.DetailsPNL.BackColor = System.Drawing.Color.White;
+            this.DetailsPNL.Controls.Add(this.Dep1Contact);
+            this.DetailsPNL.Controls.Add(this.Dep2Contact);
+            this.DetailsPNL.Controls.Add(this.Dep3Contact);
+            this.DetailsPNL.Controls.Add(this.label2);
+            this.DetailsPNL.Controls.Add(this.label3);
+            this.DetailsPNL.Controls.Add(this.label6);
+            this.DetailsPNL.Controls.Add(this.label53);
+            this.DetailsPNL.Controls.Add(this.label52);
+            this.DetailsPNL.Controls.Add(this.Dependent1FirstBX);
+            this.DetailsPNL.Controls.Add(this.Dependent1MiddleBX);
+            this.DetailsPNL.Controls.Add(this.Dependent1LastBX);
+            this.DetailsPNL.Controls.Add(this.label48);
+            this.DetailsPNL.Controls.Add(this.Dependent2FirstBX);
+            this.DetailsPNL.Controls.Add(this.Dependent2MiddleBX);
+            this.DetailsPNL.Controls.Add(this.Dependent2LastBX);
+            this.DetailsPNL.Controls.Add(this.label57);
+            this.DetailsPNL.Controls.Add(this.Dependent3FirstBX);
+            this.DetailsPNL.Controls.Add(this.Dependent3MiddleBX);
+            this.DetailsPNL.Controls.Add(this.Dependent3LastBX);
+            this.DetailsPNL.Controls.Add(this.label56);
+            this.DetailsPNL.Controls.Add(this.label55);
+            this.DetailsPNL.Controls.Add(this.label54);
+            this.DetailsPNL.Controls.Add(this.label51);
+            this.DetailsPNL.Controls.Add(this.label50);
+            this.DetailsPNL.Controls.Add(this.label49);
+            this.DetailsPNL.Controls.Add(this.label60);
+            this.DetailsPNL.Controls.Add(this.label59);
+            this.DetailsPNL.Controls.Add(this.label58);
             this.DetailsPNL.Controls.Add(this.EmerLBL);
             this.DetailsPNL.Controls.Add(this.label86);
             this.DetailsPNL.Controls.Add(this.ContactBX);
@@ -238,7 +294,7 @@
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(173, 109);
+            this.label9.Location = new System.Drawing.Point(126, 53);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 19);
@@ -250,7 +306,7 @@
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.White;
             this.label34.ForeColor = System.Drawing.Color.LightGray;
-            this.label34.Location = new System.Drawing.Point(245, 113);
+            this.label34.Location = new System.Drawing.Point(245, 57);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(141, 19);
             this.label34.TabIndex = 96;
@@ -261,7 +317,7 @@
             this.label87.AutoSize = true;
             this.label87.BackColor = System.Drawing.Color.White;
             this.label87.ForeColor = System.Drawing.Color.LightGray;
-            this.label87.Location = new System.Drawing.Point(242, 154);
+            this.label87.Location = new System.Drawing.Point(242, 94);
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(147, 19);
             this.label87.TabIndex = 217;
@@ -272,7 +328,7 @@
             this.label41.AutoSize = true;
             this.label41.BackColor = System.Drawing.Color.White;
             this.label41.ForeColor = System.Drawing.Color.Silver;
-            this.label41.Location = new System.Drawing.Point(241, 193);
+            this.label41.Location = new System.Drawing.Point(241, 126);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(147, 19);
             this.label41.TabIndex = 112;
@@ -454,6 +510,342 @@
             this.AddLBL.Text = "Add a client";
             this.AddLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label53.Location = new System.Drawing.Point(251, 161);
+            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(94, 21);
+            this.label53.TabIndex = 238;
+            this.label53.Text = "CERTIFIERS";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label52.Location = new System.Drawing.Point(122, 200);
+            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(17, 19);
+            this.label52.TabIndex = 239;
+            this.label52.Text = "1.";
+            // 
+            // Dependent1FirstBX
+            // 
+            this.Dependent1FirstBX.BackColor = System.Drawing.Color.White;
+            this.Dependent1FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent1FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent1FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent1FirstBX.Location = new System.Drawing.Point(152, 200);
+            this.Dependent1FirstBX.MaxLength = 45;
+            this.Dependent1FirstBX.Name = "Dependent1FirstBX";
+            this.Dependent1FirstBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent1FirstBX.TabIndex = 218;
+            this.Dependent1FirstBX.Text = "First";
+            // 
+            // Dependent1MiddleBX
+            // 
+            this.Dependent1MiddleBX.BackColor = System.Drawing.Color.White;
+            this.Dependent1MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent1MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent1MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent1MiddleBX.Location = new System.Drawing.Point(224, 200);
+            this.Dependent1MiddleBX.MaxLength = 45;
+            this.Dependent1MiddleBX.Name = "Dependent1MiddleBX";
+            this.Dependent1MiddleBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent1MiddleBX.TabIndex = 219;
+            this.Dependent1MiddleBX.Text = "Middle";
+            // 
+            // Dependent1LastBX
+            // 
+            this.Dependent1LastBX.BackColor = System.Drawing.Color.White;
+            this.Dependent1LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent1LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent1LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent1LastBX.Location = new System.Drawing.Point(298, 200);
+            this.Dependent1LastBX.MaxLength = 45;
+            this.Dependent1LastBX.Name = "Dependent1LastBX";
+            this.Dependent1LastBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent1LastBX.TabIndex = 220;
+            this.Dependent1LastBX.Text = "Last";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label48.Location = new System.Drawing.Point(122, 241);
+            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(19, 19);
+            this.label48.TabIndex = 243;
+            this.label48.Text = "2.";
+            // 
+            // Dependent2FirstBX
+            // 
+            this.Dependent2FirstBX.BackColor = System.Drawing.Color.White;
+            this.Dependent2FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent2FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent2FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent2FirstBX.Location = new System.Drawing.Point(152, 241);
+            this.Dependent2FirstBX.MaxLength = 45;
+            this.Dependent2FirstBX.Name = "Dependent2FirstBX";
+            this.Dependent2FirstBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent2FirstBX.TabIndex = 222;
+            this.Dependent2FirstBX.Text = "First";
+            // 
+            // Dependent2MiddleBX
+            // 
+            this.Dependent2MiddleBX.BackColor = System.Drawing.Color.White;
+            this.Dependent2MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent2MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent2MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent2MiddleBX.Location = new System.Drawing.Point(224, 241);
+            this.Dependent2MiddleBX.MaxLength = 45;
+            this.Dependent2MiddleBX.Name = "Dependent2MiddleBX";
+            this.Dependent2MiddleBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent2MiddleBX.TabIndex = 223;
+            this.Dependent2MiddleBX.Text = "Middle";
+            // 
+            // Dependent2LastBX
+            // 
+            this.Dependent2LastBX.BackColor = System.Drawing.Color.White;
+            this.Dependent2LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent2LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent2LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent2LastBX.Location = new System.Drawing.Point(298, 241);
+            this.Dependent2LastBX.MaxLength = 45;
+            this.Dependent2LastBX.Name = "Dependent2LastBX";
+            this.Dependent2LastBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent2LastBX.TabIndex = 224;
+            this.Dependent2LastBX.Text = "Last";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label57.Location = new System.Drawing.Point(122, 282);
+            this.label57.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(19, 19);
+            this.label57.TabIndex = 247;
+            this.label57.Text = "3.";
+            // 
+            // Dependent3FirstBX
+            // 
+            this.Dependent3FirstBX.BackColor = System.Drawing.Color.White;
+            this.Dependent3FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent3FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent3FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent3FirstBX.Location = new System.Drawing.Point(152, 282);
+            this.Dependent3FirstBX.MaxLength = 45;
+            this.Dependent3FirstBX.Name = "Dependent3FirstBX";
+            this.Dependent3FirstBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent3FirstBX.TabIndex = 226;
+            this.Dependent3FirstBX.Text = "First";
+            // 
+            // Dependent3MiddleBX
+            // 
+            this.Dependent3MiddleBX.BackColor = System.Drawing.Color.White;
+            this.Dependent3MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent3MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent3MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent3MiddleBX.Location = new System.Drawing.Point(224, 282);
+            this.Dependent3MiddleBX.MaxLength = 45;
+            this.Dependent3MiddleBX.Name = "Dependent3MiddleBX";
+            this.Dependent3MiddleBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent3MiddleBX.TabIndex = 227;
+            this.Dependent3MiddleBX.Text = "Middle";
+            // 
+            // Dependent3LastBX
+            // 
+            this.Dependent3LastBX.BackColor = System.Drawing.Color.White;
+            this.Dependent3LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dependent3LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dependent3LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dependent3LastBX.Location = new System.Drawing.Point(298, 282);
+            this.Dependent3LastBX.MaxLength = 45;
+            this.Dependent3LastBX.Name = "Dependent3LastBX";
+            this.Dependent3LastBX.Size = new System.Drawing.Size(66, 18);
+            this.Dependent3LastBX.TabIndex = 228;
+            this.Dependent3LastBX.Text = "Last";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.BackColor = System.Drawing.Color.White;
+            this.label56.ForeColor = System.Drawing.Color.LightGray;
+            this.label56.Location = new System.Drawing.Point(292, 208);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(75, 19);
+            this.label56.TabIndex = 242;
+            this.label56.Text = "___________";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.BackColor = System.Drawing.Color.White;
+            this.label55.ForeColor = System.Drawing.Color.LightGray;
+            this.label55.Location = new System.Drawing.Point(220, 208);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(75, 19);
+            this.label55.TabIndex = 241;
+            this.label55.Text = "___________";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.BackColor = System.Drawing.Color.White;
+            this.label54.ForeColor = System.Drawing.Color.LightGray;
+            this.label54.Location = new System.Drawing.Point(146, 208);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(75, 19);
+            this.label54.TabIndex = 240;
+            this.label54.Text = "___________";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.BackColor = System.Drawing.Color.White;
+            this.label51.ForeColor = System.Drawing.Color.LightGray;
+            this.label51.Location = new System.Drawing.Point(292, 249);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(75, 19);
+            this.label51.TabIndex = 246;
+            this.label51.Text = "___________";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.BackColor = System.Drawing.Color.White;
+            this.label50.ForeColor = System.Drawing.Color.LightGray;
+            this.label50.Location = new System.Drawing.Point(220, 249);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(75, 19);
+            this.label50.TabIndex = 245;
+            this.label50.Text = "___________";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.BackColor = System.Drawing.Color.White;
+            this.label49.ForeColor = System.Drawing.Color.Silver;
+            this.label49.Location = new System.Drawing.Point(146, 249);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(75, 19);
+            this.label49.TabIndex = 244;
+            this.label49.Text = "___________";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.BackColor = System.Drawing.Color.White;
+            this.label60.ForeColor = System.Drawing.Color.LightGray;
+            this.label60.Location = new System.Drawing.Point(292, 290);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(75, 19);
+            this.label60.TabIndex = 250;
+            this.label60.Text = "___________";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.BackColor = System.Drawing.Color.White;
+            this.label59.ForeColor = System.Drawing.Color.LightGray;
+            this.label59.Location = new System.Drawing.Point(220, 290);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(75, 19);
+            this.label59.TabIndex = 249;
+            this.label59.Text = "___________";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.BackColor = System.Drawing.Color.White;
+            this.label58.ForeColor = System.Drawing.Color.LightGray;
+            this.label58.Location = new System.Drawing.Point(146, 290);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(75, 19);
+            this.label58.TabIndex = 248;
+            this.label58.Text = "___________";
+            // 
+            // Dep1Contact
+            // 
+            this.Dep1Contact.BackColor = System.Drawing.Color.White;
+            this.Dep1Contact.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dep1Contact.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dep1Contact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dep1Contact.Location = new System.Drawing.Point(407, 200);
+            this.Dep1Contact.MaxLength = 45;
+            this.Dep1Contact.Name = "Dep1Contact";
+            this.Dep1Contact.Size = new System.Drawing.Size(66, 18);
+            this.Dep1Contact.TabIndex = 251;
+            this.Dep1Contact.Text = "Contact";
+            // 
+            // Dep2Contact
+            // 
+            this.Dep2Contact.BackColor = System.Drawing.Color.White;
+            this.Dep2Contact.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dep2Contact.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dep2Contact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dep2Contact.Location = new System.Drawing.Point(407, 241);
+            this.Dep2Contact.MaxLength = 45;
+            this.Dep2Contact.Name = "Dep2Contact";
+            this.Dep2Contact.Size = new System.Drawing.Size(66, 18);
+            this.Dep2Contact.TabIndex = 252;
+            this.Dep2Contact.Text = "Contact";
+            // 
+            // Dep3Contact
+            // 
+            this.Dep3Contact.BackColor = System.Drawing.Color.White;
+            this.Dep3Contact.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dep3Contact.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.Dep3Contact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.Dep3Contact.Location = new System.Drawing.Point(407, 282);
+            this.Dep3Contact.MaxLength = 45;
+            this.Dep3Contact.Name = "Dep3Contact";
+            this.Dep3Contact.Size = new System.Drawing.Size(66, 18);
+            this.Dep3Contact.TabIndex = 253;
+            this.Dep3Contact.Text = "Contact";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.LightGray;
+            this.label2.Location = new System.Drawing.Point(401, 208);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 19);
+            this.label2.TabIndex = 254;
+            this.label2.Text = "___________";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.LightGray;
+            this.label3.Location = new System.Drawing.Point(401, 249);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 19);
+            this.label3.TabIndex = 255;
+            this.label3.Text = "___________";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.ForeColor = System.Drawing.Color.LightGray;
+            this.label6.Location = new System.Drawing.Point(401, 290);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 19);
+            this.label6.TabIndex = 256;
+            this.label6.Text = "___________";
+            // 
             // ClientsEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,5 +916,33 @@
         private System.Windows.Forms.ToolTip ContactNoTLTP;
         private System.Windows.Forms.ToolTip ToolTip;
         private System.Windows.Forms.Label AddLBL;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox Dependent1FirstBX;
+        private System.Windows.Forms.TextBox Dependent1MiddleBX;
+        private System.Windows.Forms.TextBox Dependent1LastBX;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox Dependent2FirstBX;
+        private System.Windows.Forms.TextBox Dependent2MiddleBX;
+        private System.Windows.Forms.TextBox Dependent2LastBX;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox Dependent3FirstBX;
+        private System.Windows.Forms.TextBox Dependent3MiddleBX;
+        private System.Windows.Forms.TextBox Dependent3LastBX;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox Dep1Contact;
+        private System.Windows.Forms.TextBox Dep2Contact;
+        private System.Windows.Forms.TextBox Dep3Contact;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
     }
 }

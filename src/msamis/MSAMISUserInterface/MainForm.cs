@@ -480,24 +480,10 @@ namespace MSAMISUserInterface {
 
         public void GuardsLoadPage() {
             //This method is used to intiate the forms
-
-            GuardsUserMode();
+            
             _scurrentPanel = GViewAllPNL;
             _scurrentBtn = GViewAllPageBTN;
             GViewAllPageBTN.PerformClick();
-        }
-
-        private void GuardsUserMode() {
-            switch (Login.AccountType) {
-                case 2:
-                    GAddGuardBTN.Visible = true;
-                    GArchivePageBTN.Visible = false;
-                    break;
-                default:
-                    GAddGuardBTN.Visible = true;
-                    GArchivePageBTN.Visible = true;
-                    break;
-            }
         }
 
         private void RAddEmpBTN_Click(object sender, EventArgs e) {
@@ -2058,6 +2044,5 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-        
     }
 }
