@@ -85,6 +85,9 @@ namespace MSAMISUserInterface {
             else {
                 ErrorPNL.Visible = false;
             }
+            
+            RefreshDutyDetails();
+            RefreshCurrent();
         }
 
         public void RefreshCurrent() {
@@ -268,6 +271,7 @@ namespace MSAMISUserInterface {
                 } catch (Exception e) {
                     Console.WriteLine(e.Message);
                 }
+            AttendanceWorker.CancelAsync();
         }
 
         #endregion
@@ -295,6 +299,7 @@ namespace MSAMISUserInterface {
                 Refer = this,
                 Did = _did,
                 MaxDate = DateTime.Parse(EndLBL.Text),
+                MinDate = DateTime.Parse(StartLBL.Text),
                 Location = new Point(Location.X + 330, Location.Y)
             };
             view.ShowDialog();
@@ -341,19 +346,24 @@ namespace MSAMISUserInterface {
         }
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            AttendanceWorker.RunWorkerAsync();
-            if (PeriodCMBX.SelectedIndex == 0) {
-                EditDaysBTN.Visible = true;
-                PeriodCMBX.Size = new Size(257, 25);
-            }
-            else if (PeriodCMBX.SelectedIndex > 0) {
-                EditDaysBTN.Visible = false;
-                PeriodCMBX.Size = new Size(352, 25);
-            }
+            if (!AttendanceWorker.IsBusy) {
+                if (PeriodCMBX.SelectedIndex == 0) {
+                    EditDaysBTN.Visible = true;
+                    PeriodCMBX.Size = new Size(257, 25);
+                }
+                else if (PeriodCMBX.SelectedIndex > 0) {
+                    EditDaysBTN.Visible = false;
+                    PeriodCMBX.Size = new Size(352, 25);
+                }
 
-            if (Name.Equals("Archived") || Name.Equals("History")) {
-                EditDaysBTN.Visible = false;
-                PeriodCMBX.Size = new Size(352, 25);
+                if (PeriodCMBX.Items.Count > 0) {
+                    AttendanceWorker.RunWorkerAsync();
+                }
+
+                if (Name.Equals("Archived") || Name.Equals("History")) {
+                    EditDaysBTN.Visible = false;
+                    PeriodCMBX.Size = new Size(352, 25);
+                }
             }
         }
 

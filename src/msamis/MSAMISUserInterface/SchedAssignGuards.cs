@@ -91,6 +91,9 @@ namespace MSAMISUserInterface {
                 Close();
                 Refer.Close();
             }
+
+            RylMessageBox.ShowDialog("The guards selected are now assigned to the clients.", "Assign Guards",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
