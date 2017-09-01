@@ -692,7 +692,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             return HasOverlap(aid, 0, ti, to, days, deff, dend);
         }
 
-        /// This is for EDIT. Pulos sa DFD
+        /// This is for EDIT. Pulos sa did kay para i-exclude ni pag check sa updae.
         public static bool HasOverlap(int aid, int did, string ti, string to, Days days, DateTime deff, DateTime dend) {
             string q = $@"SELECT * FROM msadb.dutydetails where aid = {aid} and did<>{did}
                         and date_effective>='12-31-2017' and date_dismissal<'12-31-2017';";
