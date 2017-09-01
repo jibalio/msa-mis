@@ -168,36 +168,36 @@
             // 
             this.Dependent1Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent1Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1Cont.Location = new System.Drawing.Point(361, 178);
+            this.Dependent1Cont.Location = new System.Drawing.Point(361, 183);
             this.Dependent1Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Dependent1Cont.Name = "Dependent1Cont";
             this.Dependent1Cont.Size = new System.Drawing.Size(120, 28);
             this.Dependent1Cont.TabIndex = 232;
-            this.Dependent1Cont.Text = "---------------";
+            this.Dependent1Cont.Text = "rerer--------------";
             this.Dependent1Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Dependent2Cont
             // 
             this.Dependent2Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent2Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2Cont.Location = new System.Drawing.Point(361, 215);
+            this.Dependent2Cont.Location = new System.Drawing.Point(361, 212);
             this.Dependent2Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Dependent2Cont.Name = "Dependent2Cont";
             this.Dependent2Cont.Size = new System.Drawing.Size(120, 28);
             this.Dependent2Cont.TabIndex = 233;
-            this.Dependent2Cont.Text = "---------------";
+            this.Dependent2Cont.Text = "ddsdsd";
             this.Dependent2Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Dependent3Cont
             // 
             this.Dependent3Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent3Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3Cont.Location = new System.Drawing.Point(360, 248);
+            this.Dependent3Cont.Location = new System.Drawing.Point(360, 245);
             this.Dependent3Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Dependent3Cont.Name = "Dependent3Cont";
             this.Dependent3Cont.Size = new System.Drawing.Size(120, 28);
             this.Dependent3Cont.TabIndex = 234;
-            this.Dependent3Cont.Text = "---------------";
+            this.Dependent3Cont.Text = "dfdfd-------------";
             this.Dependent3Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label26
@@ -205,7 +205,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label26.Location = new System.Drawing.Point(181, 183);
+            this.label26.Location = new System.Drawing.Point(181, 184);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(17, 19);
@@ -217,7 +217,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label22.Location = new System.Drawing.Point(179, 219);
+            this.label22.Location = new System.Drawing.Point(179, 216);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(19, 19);
@@ -241,7 +241,7 @@
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label32.Location = new System.Drawing.Point(179, 256);
+            this.label32.Location = new System.Drawing.Point(179, 249);
             this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(19, 19);
@@ -288,36 +288,36 @@
             // 
             this.Dependent1LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent1LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1LBL.Location = new System.Drawing.Point(213, 178);
+            this.Dependent1LBL.Location = new System.Drawing.Point(213, 179);
             this.Dependent1LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Dependent1LBL.Name = "Dependent1LBL";
             this.Dependent1LBL.Size = new System.Drawing.Size(133, 28);
             this.Dependent1LBL.TabIndex = 123;
-            this.Dependent1LBL.Text = "---------------";
+            this.Dependent1LBL.Text = "---------------fgd";
             this.Dependent1LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Dependent2LBL
             // 
             this.Dependent2LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent2LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2LBL.Location = new System.Drawing.Point(213, 215);
+            this.Dependent2LBL.Location = new System.Drawing.Point(213, 216);
             this.Dependent2LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Dependent2LBL.Name = "Dependent2LBL";
             this.Dependent2LBL.Size = new System.Drawing.Size(133, 28);
             this.Dependent2LBL.TabIndex = 124;
-            this.Dependent2LBL.Text = "---------------";
+            this.Dependent2LBL.Text = "dgdfgdfgdfgdfgdfgdfg";
             this.Dependent2LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Dependent3LBL
             // 
             this.Dependent3LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent3LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3LBL.Location = new System.Drawing.Point(212, 248);
+            this.Dependent3LBL.Location = new System.Drawing.Point(212, 249);
             this.Dependent3LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Dependent3LBL.Name = "Dependent3LBL";
             this.Dependent3LBL.Size = new System.Drawing.Size(133, 28);
             this.Dependent3LBL.TabIndex = 127;
-            this.Dependent3LBL.Text = "---------------";
+            this.Dependent3LBL.Text = "dgdfgdfgdfgdfgdfgdfg";
             this.Dependent3LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ManagerLBL

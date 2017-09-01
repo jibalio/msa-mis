@@ -344,6 +344,7 @@
             this.ConfirmBTN.TabIndex = 146;
             this.ConfirmBTN.Text = "CONFIRM";
             this.ConfirmBTN.UseVisualStyleBackColor = false;
+            this.ConfirmBTN.Visible = false;
             this.ConfirmBTN.Click += new System.EventHandler(this.ConfirmBTN_Click);
             // 
             // CloseBTN

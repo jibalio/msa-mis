@@ -36,30 +36,30 @@ namespace MSAMISUserInterface {
                 ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
 
                 try {
-                    var _dataTable = Client.GetCertifiers(Cid);
-                    if (_dataTable.Rows.Count > 0) {
-                        _dependents = new int[_dataTable.Rows.Count+1];
+                    var dataTable = Client.GetCertifiers(Cid);
+                    if (dataTable.Rows.Count > 0) {
+                        _dependents = new int[dataTable.Rows.Count+1];
                         try {
-                            if (_dataTable.Rows.Count > 0) {
-                                _dependents[1] = int.Parse(_dataTable.Rows[0]["ccid"].ToString());
-                                Dependent1FirstBX.Text = _dataTable.Rows[0]["fn"].ToString();
-                                Dependent1MiddleBX.Text = _dataTable.Rows[0]["mn"].ToString();
-                                Dependent1LastBX.Text = _dataTable.Rows[0]["ln"].ToString();
-                                Dep1Contact.Text = _dataTable.Rows[0]["contactno"].ToString();
+                            if (dataTable.Rows.Count > 0) {
+                                _dependents[1] = int.Parse(dataTable.Rows[0]["ccid"].ToString());
+                                Dependent1FirstBX.Text = dataTable.Rows[0]["fn"].ToString();
+                                Dependent1MiddleBX.Text = dataTable.Rows[0]["mn"].ToString();
+                                Dependent1LastBX.Text = dataTable.Rows[0]["ln"].ToString();
+                                Dep1Contact.Text = dataTable.Rows[0]["contactno"].ToString();
                             }
-                            if (_dataTable.Rows.Count > 1) {
-                                _dependents[2] = int.Parse(_dataTable.Rows[1]["ccid"].ToString());
-                                Dependent2FirstBX.Text = _dataTable.Rows[1]["fn"].ToString();
-                                Dependent2MiddleBX.Text = _dataTable.Rows[1]["mn"].ToString();
-                                Dependent2LastBX.Text = _dataTable.Rows[1]["ln"].ToString();
-                                Dep2Contact.Text = _dataTable.Rows[1]["contactno"].ToString();
+                            if (dataTable.Rows.Count > 1) {
+                                _dependents[2] = int.Parse(dataTable.Rows[1]["ccid"].ToString());
+                                Dependent2FirstBX.Text = dataTable.Rows[1]["fn"].ToString();
+                                Dependent2MiddleBX.Text = dataTable.Rows[1]["mn"].ToString();
+                                Dependent2LastBX.Text = dataTable.Rows[1]["ln"].ToString();
+                                Dep2Contact.Text = dataTable.Rows[1]["contactno"].ToString();
                             }
-                            if (_dataTable.Rows.Count > 2) {
-                                _dependents[3] = int.Parse(_dataTable.Rows[2]["ccid"].ToString());
-                                Dependent3FirstBX.Text = _dataTable.Rows[2]["fn"].ToString();
-                                Dependent3MiddleBX.Text = _dataTable.Rows[2]["mn"].ToString();
-                                Dependent3LastBX.Text = _dataTable.Rows[2]["ln"].ToString();
-                                Dep3Contact.Text = _dataTable.Rows[2]["contactno"].ToString();
+                            if (dataTable.Rows.Count > 2) {
+                                _dependents[3] = int.Parse(dataTable.Rows[2]["ccid"].ToString());
+                                Dependent3FirstBX.Text = dataTable.Rows[2]["fn"].ToString();
+                                Dependent3MiddleBX.Text = dataTable.Rows[2]["mn"].ToString();
+                                Dependent3LastBX.Text = dataTable.Rows[2]["ln"].ToString();
+                                Dep3Contact.Text = dataTable.Rows[2]["contactno"].ToString();
                             }
                         }
                         catch (Exception ex) {
@@ -360,22 +360,22 @@ namespace MSAMISUserInterface {
         }
 
         private void Dependent1FirstBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
+            var lastbx = (TextBox)sender;
             if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "First";
         }
 
         private void Dependent1MiddleBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
+            var lastbx = (TextBox)sender;
             if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Middle";
         }
 
         private void Dependent1LastBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
+            var lastbx = (TextBox) sender;
             if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
         }
 
         private void Dep1Contact_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
+            var lastbx = (TextBox)sender;
             if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Contact";
         }
     }

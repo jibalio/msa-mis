@@ -100,6 +100,7 @@ namespace MSAMISUserInterface {
 
         private void AssignBTN_Click(object sender, EventArgs e) {
             AddGuards();
+            ConfirmBTN.Visible = true;
         }
 
         private void AddGuards() {

@@ -53,7 +53,7 @@ namespace MSAMISUserInterface {
                         int.Parse(row.Cells[2].Value.ToString()), int.Parse(row.Cells[4].Value.ToString()),
                         row.Cells[5].Value.ToString(), int.Parse(row.Cells[6].Value.ToString()),
                         int.Parse(row.Cells[8].Value.ToString()), row.Cells[9].Value.ToString());
-                _attendance.SetCertifiedBy(Aid, int.Parse(((ComboBoxItem)CertifiedByCMBX.SelectedItem).ItemID));
+                //_attendance.SetCertifiedBy(Aid, int.Parse(((ComboBoxItem)CertifiedByCMBX.SelectedItem).ItemID));
                 Reference.RefreshAttendance();
                 CloseBTN.Tag = "1";
                 Close();
@@ -94,7 +94,7 @@ namespace MSAMISUserInterface {
 
                 for (var i = 0; i < dv.Rows.Count; i++)
                     CertifiedByCMBX.Items.Add(
-                        new ComboBoxItem(dv.Rows[i][1].ToString(), dv.Rows[i][0].ToString()));
+                        new ComboBoxItem(dv.Rows[i][4] + ", " + dv.Rows[i][2] + " " + dv.Rows[i][3], dv.Rows[i][0].ToString()));
             }
             catch (Exception ex) {
                 Console.Write(ex.Message);
