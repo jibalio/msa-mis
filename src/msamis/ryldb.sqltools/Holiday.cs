@@ -33,7 +33,7 @@ namespace MSAMISUserInterface {
                 string q =
                     $@"INSERT INTO `msadb`.`holiday` (`type`, `ds_MM`, `ds_dd`, `ds_yyyy`, `de_MM`, `de_dd`, `de_yyyy`, `desc`, `status`, `datestart`, `dateend`) 
                             VALUES ('{type}','{r.Start.Month}','{r.Start.Day}','{r.Start.Year}','{r.End.Month}','{
-                        r.End.Day}','{r.Start.Year}','{desc}','{1}', '{r.Start.ToString("MM/dd/yyyy")}', '{r.End.ToString("MM/dd/yyyy")}')";
+                        r.End.Day}','{r.Start.Year}','{desc}','{1}', '{r.Start.ToString("MM-dd-yyyy")}', '{r.End.ToString("MM-dd-yyyy")}')";
                 SQLTools.ExecuteNonQuery(q);
         }
             
@@ -65,8 +65,10 @@ namespace MSAMISUserInterface {
             string q = "select * from holiday where ds_yyyy="+year;
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
-                DateTime start = DateTime.ParseExact(e["datestart"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                DateTime end = DateTime.ParseExact(e["dateend"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                var x = e["datestart"].ToString();
+                var f = e["dateend"].ToString();
+                DateTime start = DateTime.ParseExact(x, "MM-dd-yyyy", CultureInfo.InvariantCulture);
+                DateTime end = DateTime.ParseExact(f, "MM-dd-yyyy", CultureInfo.InvariantCulture);
                 for (DateTime c = start; c <= end; c=c.AddDays(1)) {
                     holidaylist.Add(new Holiday(c.Month,c.Day, int.Parse(e["type"].ToString())));
                 }
