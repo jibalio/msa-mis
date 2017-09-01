@@ -141,7 +141,8 @@ namespace MSAMISUserInterface {
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 adp.Fill(dt);
             } catch (Exception e) {
-                MessageBox.Show(e.ToString());
+                
+MessageBox.Show(e.ToString());
             } finally {
                 
                 SQLTools.conn.Close();

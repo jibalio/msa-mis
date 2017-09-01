@@ -21,7 +21,7 @@ namespace MSAMISUserInterface {
         public static void ArchiveGuard(int GuardId) {
                     SQLTools.ExecuteNonQuery($"call archive_guard({GuardId});");
                     ComputeArchivedHours(GuardId);
-            }
+        }
 
 
         public static void ComputeArchivedHours(int GuardId) {
