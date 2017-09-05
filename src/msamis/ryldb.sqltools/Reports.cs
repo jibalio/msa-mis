@@ -137,8 +137,59 @@ namespace MSAMISUserInterface
                 }
             }
 
-        
-            public static String GetFileName(char o)
+        public void ExportPayslipPDF()
+        {
+            /*
+            PayrollReport pr = new PayrollReport();
+            var myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
+            var boldfont = FontFactory.GetFont("Arial", 10, Font.BOLD, BaseColor.BLACK);
+            var boldunderfont = FontFactory.GetFont("Arial", 10, Font.BOLD, BaseColor.BLACK);
+            boldunderfont.SetStyle(Font.UNDERLINE);
+            //Content
+            Chunk headerChunk1 = new Chunk("THIS IS TO CERTIFY THAT I'VE RECEIVED THE FULL AMOUNT OF MY SALARY FOR THE PERIOD OF ", myfont);
+            Chunk headerChunk2 = new Chunk(Attendance.GetCurrentPayPeriod.ToString() + Environment.NewLine, boldunderfont);
+            Phrase header = new Phrase();
+            header.Add(headerChunk1);
+            header.Add(headerChunk2);
+            Phrase ded = new Phrase("DEDUCTIONS", myfont);
+            Chunk dedchunk = new Chunk (": ₱" + PayrollReport.)
+            Phrase phic = new Phrase("DEDUCTIONS", myfont);
+            Phrase pagibig = new Phrase("DEDUCTIONS", myfont);
+            Phrase cashadv = new Phrase("DEDUCTIONS", myfont);
+            Phrase cashbond = new Phrase("DEDUCTIONS", myfont);
+            Phrase cash = new Phrase("DEDUCTIONS", myfont);
+            Phrase others = new Phrase("DEDUCTIONS", myfont);
+            //Humana ni diri
+
+            Chunk
+            Chunk
+
+            String fileName = GetFileName('p');
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
+            if (!Directory.Exists(filePath))
+                Directory.CreateDirectory(filePath);
+
+            if (File.Exists(filePath + "\\" + fileName))
+            {
+                DialogResult x = rylui.RylMessageBox.ShowDialog(fileName + " already exists.\nDo you want to replace it?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (x == DialogResult.Yes)
+                {
+                    File.Delete(filePath + "\\" + fileName);
+                }
+            }
+            using (FileStream stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
+            {
+                Document pdfDoc = new Document(PageSize.A8, 10f, 10f, 10f, 10f);
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                //pdfDoc.Add();
+                pdfDoc.Close();
+                stream.Close();
+            }
+*/
+        }
+
+        public static String GetFileName(char o)
             {
                 if (o == 'c')
                     return "ClientsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
@@ -146,8 +197,10 @@ namespace MSAMISUserInterface
                     return "GuardsSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
                 else if (o == 'd')
                     return "SchedSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
-            else if (o == 's')
-                return "SalaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
+                else if (o == 's')
+                    return "SalaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
+                //else if (o == 'p')
+                    //return lastname sa guard +  DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
             return null;
             }
 
