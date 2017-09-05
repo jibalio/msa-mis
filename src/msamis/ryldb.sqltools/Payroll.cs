@@ -381,17 +381,27 @@ namespace MSAMISUserInterface {
             ;", GID, period.period, period.year, period.month));
             var HourIterationTotal = new Hours();
             foreach (DataRow dr in HourIterationDataTable.Rows) {
-                var ti = dr["date"].ToString().Substring(0, 12) + dr["TimeIn"];
-                var to = dr["date"].ToString().Substring(0, 11) + " " + dr["TimeOut"];
+                var ti = dr["date"].ToString().Split(' ')[0] + " " + dr["TimeIn"];
+                var to = dr["date"].ToString().Split(' ')[0] + " " + dr["TimeOut"].ToString();
                 var TimeInDateTime = DateTime.Parse(ti);
                 var TimeOutDateTime = DateTime.Parse(to);
 
-                var StartDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["ti_hh"] + ":" + dr["ti_mm"] +
+                /*
+                var StartDutyString = dr["date"].ToString().Substring(0, 10) + " " + (dr["ti_hh"] + ":" + (dr["ti_mm"].ToString() == "0" ? "00" : dr["ti_mm"]) +":00" +
                                       " " + dr["ti_period"];
-                var EndDutyString = dr["date"].ToString().Substring(0, 11) + " " + dr["to_hh"] + ":" + dr["to_mm"] +
-                                    " " + dr["to_period"];
+                var EndDutyString = dr["date"].ToString().Substring(0, 10) + " " + dr["to_hh"] + ":" + ( dr["to_mm"].ToString() == "0" ? "00" : dr["to_mm"]) + ":00" +
+                                    " " + dr["to_period"] ;
+                                    */
+                var StartDutyString = dr["date"].ToString();
+                var EndDutyString = dr["date"].ToString();
                 var DutyStart = DateTime.Parse(StartDutyString);
+                DutyStart = DutyStart.AddHours(int.Parse(dr["ti_hh"].ToString()));
+                if (dr["ti_period"].ToString().ToLower() == "pm") DutyStart.AddHours(12);
+                DutyStart = DutyStart.AddMinutes(int.Parse(dr["ti_mm"].ToString()));
                 var DutyEnd = DateTime.Parse(EndDutyString);
+                DutyEnd = DutyEnd.AddHours(int.Parse(dr["to_hh"].ToString()));
+                DutyEnd = DutyEnd.AddMinutes(int.Parse(dr["to_mm"].ToString()));
+                if (dr["to_period"].ToString().ToLower() == "pm") DutyEnd.AddHours(12);
                 var hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
                 TotalHours.Add(hp);
             }

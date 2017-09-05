@@ -53,7 +53,7 @@ namespace MSAMISUserInterface {
                         int.Parse(row.Cells[2].Value.ToString()), int.Parse(row.Cells[4].Value.ToString()),
                         row.Cells[5].Value.ToString(), int.Parse(row.Cells[6].Value.ToString()),
                         int.Parse(row.Cells[8].Value.ToString()), row.Cells[9].Value.ToString());
-                _attendance.SetCertifiedBy(Aid, int.Parse(((ComboBoxItem)CertifiedByCMBX.SelectedItem).ItemID));
+                //_attendance.SetCertifiedBy(Aid, int.Parse(((ComboBoxItem)CertifiedByCMBX.SelectedItem).ItemID));
                 Reference.RefreshAttendance();
                 CloseBTN.Tag = "1";
                 Close();
