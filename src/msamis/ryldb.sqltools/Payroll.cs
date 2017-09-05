@@ -858,7 +858,7 @@ end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then
         #endregion
         public static DateTime GetNextPayday() {
             var p = DateTime.Now;
-            if (5 <= p.Day && p.Day < 19)
+            if (5 <= p.Day && p.Day <= 19)
                 return new DateTime(p.Year, p.Month, 20);
             else if ((1 <= p.Day && p.Day < 5)) return new DateTime(p.Year, p.Month, 5);
             else if (20 <= p.Day && p.Day <= 31) {
