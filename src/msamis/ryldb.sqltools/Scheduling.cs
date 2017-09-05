@@ -362,12 +362,8 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 q += " AND ti_hh is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
                 q += " AND ti_hh is null ";
-              
+            q += " group by gid";
             DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " order by name asc");
-            // foreach (DataRow e in dt.Rows) {
-            //    String[] x = e["Schedule"].ToString().Split(' ');
-            //    if (x[0] != "Unscheduled") e.SetField("Schedule", (x[0] + " " + ParseDays(x[1])));
-            // }
             return dt;
         }
 
