@@ -33,7 +33,7 @@ namespace MSAMISUserInterface {
                 string q =
                     $@"INSERT INTO `msadb`.`holiday` (`type`, `ds_MM`, `ds_dd`, `ds_yyyy`, `de_MM`, `de_dd`, `de_yyyy`, `desc`, `status`, `datestart`, `dateend`) 
                             VALUES ('{type}','{r.Start.Month}','{r.Start.Day}','{r.Start.Year}','{r.End.Month}','{
-                        r.End.Day}','{r.Start.Year}','{desc}','{1}', '{r.Start.ToString("MM-dd-yyyy")}', '{r.End.ToString("MM-dd-yyyy")}')";
+                        r.End.Day}','{r.Start.Year}','{desc}','{1}', '{r.Start.ToString("yyyy-MM-dd")}', '{r.End.ToString("yyyy-MM-dd")}')";
                 SQLTools.ExecuteNonQuery(q);
         }
             
@@ -41,7 +41,6 @@ namespace MSAMISUserInterface {
                 string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}', type='{2}' where hid='{1}';";
                 q = String.Format(q,  desc, hid, type);
                 SQLTools.ExecuteNonQuery(q);
-        
         }
 
         public static void RemoveHoliday(int hid) {
@@ -67,8 +66,8 @@ namespace MSAMISUserInterface {
             foreach (DataRow e in dt.Rows) {
                 var x = e["datestart"].ToString();
                 var f = e["dateend"].ToString();
-                DateTime start = DateTime.ParseExact(x, "MM-dd-yyyy", CultureInfo.InvariantCulture);
-                DateTime end = DateTime.ParseExact(f, "MM-dd-yyyy", CultureInfo.InvariantCulture);
+                DateTime start = DateTime.Parse(x);
+                DateTime end = DateTime.Parse(f);
                 for (DateTime c = start; c <= end; c=c.AddDays(1)) {
                     holidaylist.Add(new Holiday(c.Month,c.Day, int.Parse(e["type"].ToString())));
                 }

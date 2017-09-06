@@ -9,6 +9,17 @@ using System.Windows.Forms;
 namespace MSAMISUserInterface {
     public class Scheduling {
 
+        /// <summary>
+        /// TODO: Fill query.
+        /// Returns a DT of guards assigned on a specific request.
+        /// (Request must be approved + assigned)
+        /// </summary>
+        /// <param name="RequestId"></param>
+        /// <returns></returns>
+        public static DataTable GetAssignedGuards(int RequestId) {
+            return SQLTools.ExecuteQuery("select concat(ln,', ',fn,' ',mn) as name from guards limit 4;");
+        }
+
         public static DataTable GetAssignmentHistory(int gid) {
             return SQLTools.ExecuteQuery($@"select aid, client.name, assignedon, unassignedon from sduty_assignment
             left join request_assign on request_assign.raid = sduty_assignment.raid
@@ -261,13 +272,7 @@ namespace MSAMISUserInterface {
         }
 
 
-        /// <summary>
-        /// Steps:
-        /// 1.) Get Guards to be dismissed (based on RID)
-        /// 2.) 
-        /// </summary>
-        /// <param name="rid">Request ID to approve dismissal.</param>
-       
+        
 
         /// <summary>
         /// Declines a request. Does no further processes.
