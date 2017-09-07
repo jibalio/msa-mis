@@ -254,9 +254,11 @@ namespace MSAMISUserInterface {
         }
 
         public string GetCertifiedBy() {
-            return SQLTools.ExecuteSingleResult($@"select certby from period
-left join attendance on attendance.pid=period.pid
-left join dutydetails on dutydetails.DID= attendance.DID where month='{period.month}' and period = '{period.period}' and year='{period.year}' and aid='{AID}'");
+            return SQLTools.ExecuteSingleResult($@"
+                        select concat(ln,', ',fn,' ',mn) as certby from period
+                        left join attendance on attendance.pid=period.pid
+                        left join dutydetails on dutydetails.DID= attendance.DID
+                        left join certifier on period.certby = certifier.ccid where month='{period.month}' and period = '{period.period}' and year='{period.year}' and aid='{AID}'");
         }
         #endregion New Region
 
