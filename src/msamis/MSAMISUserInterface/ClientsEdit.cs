@@ -2,8 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using rylui;
-using System.Linq;
-using System.Collections.Generic;
+using System.Data;
 
 namespace MSAMISUserInterface {
     public partial class ClientsEdit : Form {
@@ -13,8 +12,6 @@ namespace MSAMISUserInterface {
         public Shadow Refer;
         public MainForm Reference;
         public ClientsView ViewRef;
-
-        private int[] _dependents = new int [1];
 
         public ClientsEdit() {
             InitializeComponent();
@@ -26,9 +23,7 @@ namespace MSAMISUserInterface {
         private void PopulateEdit() {
             try {
                 var dt = Client.GetClientDetails(Cid);
-
                 NameBX.Text = dt.Rows[0]["name"].ToString();
-
                 LocationStreetNoBX.Text = dt.Rows[0]["ClientStreetNo"].ToString();
                 LocationBrgyBX.Text = dt.Rows[0]["ClientBrgy"].ToString();
                 LocationStreetNameBX.Text = dt.Rows[0]["ClientStreet"].ToString();
@@ -36,48 +31,15 @@ namespace MSAMISUserInterface {
                 ManagerBX.Text = dt.Rows[0]["Manager"].ToString();
                 ContactBX.Text = dt.Rows[0]["ContactPerson"].ToString();
                 ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
-
                 try {
                     var dataTable = Client.GetCertifiers(Cid);
-                    if (dataTable.Rows.Count > 0) {
-                        _dependents = new int[dataTable.Rows.Count+1];
-                        try {
-                            if (dataTable.Rows.Count > 0) {
-                                _dependents[1] = int.Parse(dataTable.Rows[0]["ccid"].ToString());
-                                Dependent1FirstBX.Text = dataTable.Rows[0]["fn"].ToString();
-                                Dependent1MiddleBX.Text = dataTable.Rows[0]["mn"].ToString();
-                                Dependent1LastBX.Text = dataTable.Rows[0]["ln"].ToString();
-                                Dep1Contact.Text = dataTable.Rows[0]["contactno"].ToString();
-                                Cert1Rem.Visible = true;
-                            }
-                            if (dataTable.Rows.Count > 1) {
-                                _dependents[2] = int.Parse(dataTable.Rows[1]["ccid"].ToString());
-                                Dependent2FirstBX.Text = dataTable.Rows[1]["fn"].ToString();
-                                Dependent2MiddleBX.Text = dataTable.Rows[1]["mn"].ToString();
-                                Dependent2LastBX.Text = dataTable.Rows[1]["ln"].ToString();
-                                Dep2Contact.Text = dataTable.Rows[1]["contactno"].ToString();
-                                Cert2Rem.Visible = true;
-                            }
-                            if (dataTable.Rows.Count > 2) {
-                                _dependents[3] = int.Parse(dataTable.Rows[2]["ccid"].ToString());
-                                Dependent3FirstBX.Text = dataTable.Rows[2]["fn"].ToString();
-                                Dependent3MiddleBX.Text = dataTable.Rows[2]["mn"].ToString();
-                                Dependent3LastBX.Text = dataTable.Rows[2]["ln"].ToString();
-                                Dep3Contact.Text = dataTable.Rows[2]["contactno"].ToString();
-                                Cert3Rem.Visible = true;
-                            }
-                        }
-                        catch (Exception ex) {
-                            Console.WriteLine(ex.Message);
-                        }
+                    foreach (DataRow row in dataTable.Rows) {
+                        CertifiersGRD.Rows.Add(int.Parse(row["ccid"].ToString()), row["fn"].ToString(), row["mn"].ToString(), row["ln"].ToString(), row["contactno"].ToString());
                     }
                 }
                 catch (Exception ex) {
-                    ShowErrorBox("Loading Guards", ex.Message);
+                    ShowErrorBox("Loading Certifiers", ex.Message);
                 }
-
-
-
             }
             catch (Exception ex) {
                 ShowErrorBox("Clients Editing", ex.Message);
@@ -123,12 +85,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Textbox Properties while editing
-        private static void ClearBox(TextBoxBase textBoxBase) {
-            if (textBoxBase.Text.Equals("Last")) textBoxBase.Clear();
-            else if (textBoxBase.Text.Equals("Middle")) textBoxBase.Clear();
-            else if (textBoxBase.Text.Equals("First")) textBoxBase.Clear();
-            else if (textBoxBase.Text.Equals("Contact")) textBoxBase.Clear();
-        }
 
         private void NameBX_MouseEnter(object sender, EventArgs e) {
             if (NameBX.Text.Equals("Name")) {
@@ -244,35 +200,7 @@ namespace MSAMISUserInterface {
                 ret = false;
             }
 
-            if (CheckNameNotRequired(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX)) {
-                ShowToolTipOnBx(Dep1Warn, "Dependent's Name", "Please complete the fields", Dependent1FirstBX);
-                ret = false;
-            }
-            if (CheckNameNotRequired(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX)) {
-                ShowToolTipOnBx(Dep2Warn, "Dependent's Name", "Please complete the fields", Dependent2FirstBX);
-                ret = false;
-            }
-            if (CheckNameNotRequired(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX)) {
-                ShowToolTipOnBx(Dep3Warn, "Dependent's Name", "Please complete the fields", Dependent3FirstBX);
-                ret = false;
-            }
-
             return ret;
-        }
-
-        private static void ShowToolTipOnBx(ToolTip ttp, string title, string message, IWin32Window lb) {
-            ttp.ToolTipTitle = title;
-            ttp.Show(message, lb);
-        }
-
-        private static bool CheckNameNotRequired(Control firstBx, Control middleBx, Control lastBx) {
-            return CheckForInput(firstBx, middleBx, lastBx) && CheckName(firstBx, middleBx, lastBx);
-        }
-
-        private static bool CheckForInput(Control firstBx, Control middleBx, Control lastBx) {
-            return !(firstBx.Text.Equals("First") || firstBx.Text.Equals("")) ||
-                   !(middleBx.Text.Equals("Middle") || middleBx.Text.Equals("")) ||
-                   !(lastBx.Text.Equals("Last") || lastBx.Text.Equals(""));
         }
 
         private bool IsEmpty() {
@@ -289,12 +217,6 @@ namespace MSAMISUserInterface {
 
             return ret;
         }
-
-        private static bool CheckName(Control firstBx, Control middleBx, Control lastBx) {
-            return firstBx.Text.Equals("First") || middleBx.Text.Equals("Middle") || lastBx.Text.Equals("Last") ||
-                   firstBx.Text.Equals("") || middleBx.Text.Equals("") || lastBx.Text.Equals("");
-        }
-
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
                 try {
@@ -302,42 +224,21 @@ namespace MSAMISUserInterface {
                         Client.AddClient(NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text,
                             LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
 
-                        if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
-                            InsertDependent(Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, Dependent1FirstBX.Text,
-                                Dependent1MiddleBX.Text, Dependent1LastBX.Text);
-                        if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
-                            InsertDependent(Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, Dependent2FirstBX.Text,
-                                Dependent2MiddleBX.Text, Dependent2LastBX.Text);
-                        if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
-                            InsertDependent(Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, Dependent3FirstBX.Text,
-                                Dependent3MiddleBX.Text, Dependent3LastBX.Text);
+                        foreach (DataGridViewRow row in CertifiersGRD.Rows) {
+                            InsertDependent(row.Cells[4].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                        }
                     }
                     else {
                         Client.UpdateClient(Cid.ToString(), NameBX.Text, LocationStreetNoBX.Text,
                             LocationStreetNameBX.Text,
                             LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
 
-                        if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
-                            if (_dependents.Length > 1 && _dependents[1] != -1)
-                                UpdateDependent(Dependent1FirstBX.Text, Dependent1MiddleBX.Text, Dependent1LastBX.Text,
-                                    Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, _dependents[1]);
-                            else if (_dependents[1] != -1)
-                                InsertDependent(Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, Dependent1FirstBX.Text,
-                                    Dependent1MiddleBX.Text, Dependent1LastBX.Text);
-                        if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
-                            if (_dependents.Length > 2 && _dependents[2] != -1)
-                                UpdateDependent(Dependent2FirstBX.Text, Dependent2MiddleBX.Text, Dependent2LastBX.Text,
-                                    Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, _dependents[2]);
-                            else if (_dependents[2] != -1)
-                                InsertDependent(Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, Dependent2FirstBX.Text,
-                                    Dependent2MiddleBX.Text, Dependent2LastBX.Text);
-                        if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
-                            if (_dependents.Length > 3 && _dependents[3] != -1)
-                                UpdateDependent(Dependent3FirstBX.Text, Dependent3MiddleBX.Text, Dependent3LastBX.Text,
-                                    Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, _dependents[3]);
-                        else if(_dependents[3] != -1)
-                                InsertDependent(Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, Dependent3FirstBX.Text,
-                                    Dependent3MiddleBX.Text, Dependent3LastBX.Text);
+                        foreach (DataGridViewRow row in CertifiersGRD.Rows) {
+                            if (row.Cells[0].Value.ToString().Equals("-1"))
+                            InsertDependent(row.Cells[4].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                            else
+                            UpdateDependent(row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[1].Value.ToString(), int.Parse(row.Cells[0].Value.ToString()));
+                        }
 
                         ViewRef.RefreshData();
                     }
@@ -358,52 +259,18 @@ namespace MSAMISUserInterface {
             Client.UpdateCertifier(id, first, middle, last, rel);
         }
 
+
         #endregion
 
-        private void Dependent1FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox((TextBox) sender);
+        private void AddRowBTN_Click(object sender, EventArgs e) {
+            CertifiersGRD.Rows.Add(-1, "First", "Middle", "Last", "Contact");
         }
 
-        private void Dependent1FirstBX_Leave(object sender, EventArgs e) {
-            var lastbx = (TextBox)sender;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "First";
-        }
-
-        private void Dependent1MiddleBX_Leave(object sender, EventArgs e) {
-            var lastbx = (TextBox)sender;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Middle";
-        }
-
-        private void Dependent1LastBX_Leave(object sender, EventArgs e) {
-            var lastbx = (TextBox) sender;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
-        }
-
-        private void Dep1Contact_Leave(object sender, EventArgs e) {
-            var lastbx = (TextBox)sender;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Contact";
-        }
-
-        private void Cert1Rem_Click(object sender, EventArgs e) {
-            RemoveCert(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX, Dep1Contact, Cert1Rem, 1);
-        }
-
-        private void RemoveCert(TextBoxBase First, TextBoxBase Middle, TextBoxBase Last, TextBoxBase Contact, Button rem, int dep) {
-            First.Visible = false;
-            Middle.Visible = false;
-            Last.Visible = false;
-            Contact.Visible = false;
-            rem.Visible = false;
-            Client.RemoveCertifier(_dependents[1]);
-            _dependents[dep] = -1;
-        }
-
-        private void Cert2Rem_Click(object sender, EventArgs e) {
-            RemoveCert(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX, Dep2Contact, Cert2Rem, 2);
-        }
-
-        private void Cert3Rem_Click(object sender, EventArgs e) {
-            RemoveCert(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX, Dep3Contact, Cert3Rem, 3);
+        private void DelRowBTN_Click(object sender, EventArgs e) {
+            if (!CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString().Equals("-1")) {
+                Client.RemoveCertifier(int.Parse(CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString()));
+            }
+            CertifiersGRD.Rows.Remove(CertifiersGRD.SelectedRows[0]);
         }
     }
 }
