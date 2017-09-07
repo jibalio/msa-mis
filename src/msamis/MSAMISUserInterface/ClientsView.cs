@@ -53,12 +53,6 @@ namespace MSAMISUserInterface {
 
         public void RefreshData() {
             try {
-                Dependent1LBL.Text = "------------------";
-                Dependent1Cont.Text = "------------";
-                Dependent2LBL.Text = "------------------";
-                Dependent2Cont.Text = "------------";
-                Dependent3LBL.Text = "------------------";
-                Dependent3Cont.Text = "------------";
 
 
                 var dt = Client.GetClientDetails(Cid);
@@ -71,24 +65,24 @@ namespace MSAMISUserInterface {
                 ContactLBL.Text = dt.Rows[0]["ContactPerson"].ToString();
                 ContactNoLBL.Text = dt.Rows[0]["ContactNo"].ToString();
                 try {
-                    var _dataTable = Client.GetCertifiers(Cid);
-                    try {
-                        if (_dataTable.Rows.Count > 0) {
-                            Dependent1LBL.Text = BuildName(_dataTable, 0);
-                            Dependent1Cont.Text = _dataTable.Rows[0]["contactno"].ToString();
-                        }
-                        if (_dataTable.Rows.Count > 1) {
-                            Dependent2LBL.Text = BuildName(_dataTable, 1);
-                            Dependent2Cont.Text = _dataTable.Rows[1]["contactno"].ToString();
-                        }
-                        if (_dataTable.Rows.Count > 2) {
-                            Dependent3LBL.Text = BuildName(_dataTable, 2);
-                            Dependent3Cont.Text = _dataTable.Rows[2]["contactno"].ToString();
-                        }
+                    CertifiersGRD.DataSource = Client.GetCertifiersView(Cid);
+                    CertifiersGRD.Columns[0].Visible = false;
+                    CertifiersGRD.Columns[1].Visible = false;
+                    CertifiersGRD.Columns[2].Width = 220;
+                    CertifiersGRD.Columns[3].Width = 150;
+                    CertifiersGRD.ColumnHeadersVisible = false;
+
+                    if (CertifiersGRD.Rows.Count == 0) {
+                        ErrorPNL.BringToFront();
+                        ErrorPNL.Visible = true;
                     }
-                    catch (Exception ex) { Console.WriteLine(ex); }
+                    else {
+                        ErrorPNL.Visible = false;
                     }
-                catch (Exception ex) { Console.WriteLine(ex); }
+                }
+                catch (Exception ex) {
+                    Console.WriteLine(ex);
+                }
             }
             catch (Exception ex) {
                 ShowErrorBox("Loading Error", ex.Message);

@@ -25,6 +25,11 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery(q);
         }
 
+        public static DataTable GetCertifiersView(int cid) {
+            var q = $@"SELECT ccid, cid, concat(ln,', ',fn,' ',mn), contactno FROM msadb.certifier WHERE cid = {cid} and status=1;";
+            return SQLTools.ExecuteQuery(q);
+        }
+
         public static void UpdateCertifier(int ccid, string fn, string mn,string ln, string contactno) {
             var q =
                 $@"UPDATE `msadb`.`certifier` SET `fn`='{fn}', `mn`='{mn}', `ln`='{ln}', `contactno`='{contactno}' WHERE `ccid`='{ccid}';";

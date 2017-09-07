@@ -25,6 +25,9 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientsView));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CIDLBL = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ContactLBL = new System.Windows.Forms.Label();
@@ -33,26 +36,23 @@
             this.ContactNoLBL = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.DetailsPNL = new System.Windows.Forms.Panel();
-            this.Dependent1Cont = new System.Windows.Forms.Label();
-            this.Dependent2Cont = new System.Windows.Forms.Label();
-            this.Dependent3Cont = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.Dependent1LBL = new System.Windows.Forms.Label();
-            this.Dependent2LBL = new System.Windows.Forms.Label();
-            this.Dependent3LBL = new System.Windows.Forms.Label();
             this.ManagerLBL = new System.Windows.Forms.Label();
             this.LocationLBL = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.CEditDetailsBTN = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CertifiersGRD = new System.Windows.Forms.DataGridView();
+            this.ErrorPNL = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.DetailsPNL.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).BeginInit();
+            this.ErrorPNL.SuspendLayout();
             this.SuspendLayout();
             // 
             // CIDLBL
@@ -85,10 +85,10 @@
             // 
             this.ContactLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactLBL.Location = new System.Drawing.Point(210, 36);
+            this.ContactLBL.Location = new System.Drawing.Point(240, 36);
             this.ContactLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ContactLBL.Name = "ContactLBL";
-            this.ContactLBL.Size = new System.Drawing.Size(306, 28);
+            this.ContactLBL.Size = new System.Drawing.Size(276, 28);
             this.ContactLBL.TabIndex = 119;
             this.ContactLBL.Text = "---------------";
             this.ContactLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -123,10 +123,10 @@
             // 
             this.ContactNoLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactNoLBL.Location = new System.Drawing.Point(210, 65);
+            this.ContactNoLBL.Location = new System.Drawing.Point(240, 65);
             this.ContactNoLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ContactNoLBL.Name = "ContactNoLBL";
-            this.ContactNoLBL.Size = new System.Drawing.Size(306, 28);
+            this.ContactNoLBL.Size = new System.Drawing.Size(276, 28);
             this.ContactNoLBL.TabIndex = 89;
             this.ContactNoLBL.Text = "---------------";
             this.ContactNoLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,136 +141,57 @@
             this.DetailsPNL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DetailsPNL.AutoScroll = true;
-            this.DetailsPNL.Controls.Add(this.Dependent1Cont);
-            this.DetailsPNL.Controls.Add(this.Dependent2Cont);
-            this.DetailsPNL.Controls.Add(this.Dependent3Cont);
-            this.DetailsPNL.Controls.Add(this.label26);
-            this.DetailsPNL.Controls.Add(this.label22);
+            this.DetailsPNL.Controls.Add(this.CertifiersGRD);
             this.DetailsPNL.Controls.Add(this.label1);
-            this.DetailsPNL.Controls.Add(this.label32);
             this.DetailsPNL.Controls.Add(this.label2);
             this.DetailsPNL.Controls.Add(this.label3);
             this.DetailsPNL.Controls.Add(this.label28);
-            this.DetailsPNL.Controls.Add(this.Dependent1LBL);
-            this.DetailsPNL.Controls.Add(this.Dependent2LBL);
-            this.DetailsPNL.Controls.Add(this.Dependent3LBL);
             this.DetailsPNL.Controls.Add(this.ManagerLBL);
             this.DetailsPNL.Controls.Add(this.ContactNoLBL);
             this.DetailsPNL.Controls.Add(this.ContactLBL);
             this.DetailsPNL.Controls.Add(this.label43);
+            this.DetailsPNL.Controls.Add(this.ErrorPNL);
             this.DetailsPNL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DetailsPNL.Location = new System.Drawing.Point(0, 16);
             this.DetailsPNL.Name = "DetailsPNL";
             this.DetailsPNL.Size = new System.Drawing.Size(599, 321);
             this.DetailsPNL.TabIndex = 229;
             // 
-            // Dependent1Cont
-            // 
-            this.Dependent1Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent1Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1Cont.Location = new System.Drawing.Point(361, 179);
-            this.Dependent1Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent1Cont.Name = "Dependent1Cont";
-            this.Dependent1Cont.Size = new System.Drawing.Size(120, 28);
-            this.Dependent1Cont.TabIndex = 232;
-            this.Dependent1Cont.Text = "------------";
-            this.Dependent1Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Dependent2Cont
-            // 
-            this.Dependent2Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent2Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2Cont.Location = new System.Drawing.Point(361, 216);
-            this.Dependent2Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent2Cont.Name = "Dependent2Cont";
-            this.Dependent2Cont.Size = new System.Drawing.Size(120, 28);
-            this.Dependent2Cont.TabIndex = 233;
-            this.Dependent2Cont.Text = "------------";
-            this.Dependent2Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Dependent3Cont
-            // 
-            this.Dependent3Cont.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent3Cont.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3Cont.Location = new System.Drawing.Point(360, 249);
-            this.Dependent3Cont.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent3Cont.Name = "Dependent3Cont";
-            this.Dependent3Cont.Size = new System.Drawing.Size(120, 28);
-            this.Dependent3Cont.TabIndex = 234;
-            this.Dependent3Cont.Text = "------------";
-            this.Dependent3Cont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label26.Location = new System.Drawing.Point(181, 184);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(17, 19);
-            this.label26.TabIndex = 229;
-            this.label26.Text = "1.";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label22.Location = new System.Drawing.Point(179, 216);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(19, 19);
-            this.label22.TabIndex = 230;
-            this.label22.Text = "2.";
-            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(84, 93);
+            this.label1.Location = new System.Drawing.Point(116, 93);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 28);
             this.label1.TabIndex = 128;
             this.label1.Text = "Manager:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label32.Location = new System.Drawing.Point(179, 249);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(19, 19);
-            this.label32.TabIndex = 231;
-            this.label32.Text = "3.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(84, 65);
+            this.label2.Location = new System.Drawing.Point(116, 65);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 28);
             this.label2.TabIndex = 129;
             this.label2.Text = "Contact No:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(84, 36);
+            this.label3.Location = new System.Drawing.Point(116, 36);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 28);
             this.label3.TabIndex = 130;
             this.label3.Text = "Contact Person:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label28
             // 
@@ -284,50 +205,14 @@
             this.label28.TabIndex = 120;
             this.label28.Text = "CERTIFIERS";
             // 
-            // Dependent1LBL
-            // 
-            this.Dependent1LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent1LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1LBL.Location = new System.Drawing.Point(213, 179);
-            this.Dependent1LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent1LBL.Name = "Dependent1LBL";
-            this.Dependent1LBL.Size = new System.Drawing.Size(133, 28);
-            this.Dependent1LBL.TabIndex = 123;
-            this.Dependent1LBL.Text = "------------------";
-            this.Dependent1LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Dependent2LBL
-            // 
-            this.Dependent2LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent2LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2LBL.Location = new System.Drawing.Point(213, 216);
-            this.Dependent2LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent2LBL.Name = "Dependent2LBL";
-            this.Dependent2LBL.Size = new System.Drawing.Size(133, 28);
-            this.Dependent2LBL.TabIndex = 124;
-            this.Dependent2LBL.Text = "------------------";
-            this.Dependent2LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Dependent3LBL
-            // 
-            this.Dependent3LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent3LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3LBL.Location = new System.Drawing.Point(212, 249);
-            this.Dependent3LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent3LBL.Name = "Dependent3LBL";
-            this.Dependent3LBL.Size = new System.Drawing.Size(133, 28);
-            this.Dependent3LBL.TabIndex = 127;
-            this.Dependent3LBL.Text = "------------------";
-            this.Dependent3LBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // ManagerLBL
             // 
             this.ManagerLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ManagerLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ManagerLBL.Location = new System.Drawing.Point(210, 93);
+            this.ManagerLBL.Location = new System.Drawing.Point(240, 93);
             this.ManagerLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ManagerLBL.Name = "ManagerLBL";
-            this.ManagerLBL.Size = new System.Drawing.Size(306, 28);
+            this.ManagerLBL.Size = new System.Drawing.Size(276, 28);
             this.ManagerLBL.TabIndex = 77;
             this.ManagerLBL.Text = "---------";
             this.ManagerLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -393,6 +278,87 @@
             this.panel1.Size = new System.Drawing.Size(599, 398);
             this.panel1.TabIndex = 120;
             // 
+            // CertifiersGRD
+            // 
+            this.CertifiersGRD.AllowUserToAddRows = false;
+            this.CertifiersGRD.AllowUserToDeleteRows = false;
+            this.CertifiersGRD.AllowUserToResizeColumns = false;
+            this.CertifiersGRD.AllowUserToResizeRows = false;
+            this.CertifiersGRD.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.CertifiersGRD.BackgroundColor = System.Drawing.Color.White;
+            this.CertifiersGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CertifiersGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.CertifiersGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CertifiersGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.CertifiersGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.CertifiersGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CertifiersGRD.EnableHeadersVisualStyles = false;
+            this.CertifiersGRD.Location = new System.Drawing.Point(116, 168);
+            this.CertifiersGRD.MultiSelect = false;
+            this.CertifiersGRD.Name = "CertifiersGRD";
+            this.CertifiersGRD.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CertifiersGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.CertifiersGRD.RowHeadersVisible = false;
+            this.CertifiersGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CertifiersGRD.Size = new System.Drawing.Size(400, 134);
+            this.CertifiersGRD.TabIndex = 147;
+            // 
+            // ErrorPNL
+            // 
+            this.ErrorPNL.Controls.Add(this.label6);
+            this.ErrorPNL.Controls.Add(this.label5);
+            this.ErrorPNL.Location = new System.Drawing.Point(103, 168);
+            this.ErrorPNL.Name = "ErrorPNL";
+            this.ErrorPNL.Size = new System.Drawing.Size(413, 134);
+            this.ErrorPNL.TabIndex = 148;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label5.Location = new System.Drawing.Point(121, 40);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(158, 21);
+            this.label5.TabIndex = 149;
+            this.label5.Text = "No Certifiers Found";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(103, 65);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(194, 19);
+            this.label6.TabIndex = 150;
+            this.label6.Text = "Please edit and add a new one";
+            // 
             // ClientsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,6 +381,9 @@
             this.DetailsPNL.ResumeLayout(false);
             this.DetailsPNL.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).EndInit();
+            this.ErrorPNL.ResumeLayout(false);
+            this.ErrorPNL.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,17 +405,12 @@
         private System.Windows.Forms.Label LocationLBL;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label Dependent1LBL;
-        private System.Windows.Forms.Label Dependent2LBL;
-        private System.Windows.Forms.Label Dependent3LBL;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label Dependent1Cont;
-        private System.Windows.Forms.Label Dependent2Cont;
-        private System.Windows.Forms.Label Dependent3Cont;
+        private System.Windows.Forms.DataGridView CertifiersGRD;
+        private System.Windows.Forms.Panel ErrorPNL;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
