@@ -37,6 +37,7 @@ namespace MSAMISUserInterface {
             _contractEnd = ContractEndLBL.Text = "Contract End: " + dt.Rows[0]["contractend"];
             _numGuards = int.Parse(dt.Rows[0]["noguards"].ToString());
             NoLBL.Text = "Guards Needed: " + _numGuards;
+            UnassignedPNL.Visible = false;
             if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Pending.ToString())) {
                 AssignBTN.Text = "APPROVE";
                 StatusLBL.Text = "Status: Pending";
@@ -58,12 +59,16 @@ namespace MSAMISUserInterface {
                 AssignBTN.Visible = false;
                 AvailablePNL.Visible = false;
                 DeclineBTN.Visible = false;
-                if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Active.ToString())) { 
+                if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Active.ToString())) {
                     StatusLBL.Text = "Status: Active";
                     ApprovedBy.Text = "Approved by: " + dt.Rows[0]["uname"];
-                } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString()))
+                    UnassignedPNL.Visible = true;
+                    LoadRequestedGuard();
+                } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Inactive.ToString())) {
                     StatusLBL.Text = "Status: Inctive";
-                else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) { 
+                    UnassignedPNL.Visible = true;
+                    LoadRequestedGuard();
+                } else if (dt.Rows[0]["rstatus"].ToString().Equals(Enumeration.RequestStatus.Declined.ToString())) {
                     StatusLBL.Text = "Status: Decline";
                     ApprovedBy.Text = "Declined by: " + dt.Rows[0]["uname"];
                 }
@@ -72,6 +77,13 @@ namespace MSAMISUserInterface {
                 ? Color.Salmon
                 : Color.OliveDrab;
             NeededLBL.Text = Scheduling.GetUnassignedGuards("", ContractStartLBL.Text, ContractEndLBL.Text).Rows.Count + " available guards";
+        }
+
+        private void LoadRequestedGuard() {
+            RequestedGRD.DataSource = Scheduling.GetRequestedGuards(Raid);
+            RequestedGRD.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            RequestedGRD.Columns[0].Width = 400;
+            RequestedGRD.ColumnHeadersVisible = false;
         }
 
         private void Sched_ViewAssReq_FormClosing(object sender, FormClosingEventArgs e) {
