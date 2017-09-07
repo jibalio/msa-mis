@@ -275,7 +275,7 @@ left join dutydetails on dutydetails.DID= attendance.DID where month='{period.mo
             SQLTools.ExecuteNonQuery(q);
         }
 
-        public void SetCertifiedBy(int AID, String cert) {
+        public void SetCertifiedBy(int AID, int cert) {
             Period p = GetCurrentPayPeriod();
             String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `GID`='" + GID + "' AND month='" + p.month + "' AND period='" + p.period + "' AND year='" + p.year + "';";
             SQLTools.ExecuteNonQuery(q);
