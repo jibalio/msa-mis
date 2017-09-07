@@ -63,6 +63,11 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
         }
 
+        public static void RemoveDependent (int DependentId) {
+            var _=$@"delete from dependents where deid={DependentId}";
+            SQLTools.ExecuteNonQuery(_);
+        }
+
         public static void AddGuardBasicInfo(string FirstNameBX,string MiddleNameBX, string LastNameBX, DateTime BirthdateBX, int gender, string HeightBX,string WeightBX,string ReligionBX,int CVStatusBX,string CellNoBX,string TellNoBX,string LicenseNoBX,string SSSNoBX,string TINNoBX,string PhilHealthBX,string PrevAgencyBX,string PrevAssBX,int EdAttBX,string CourseBX,string MilTrainBX,string EmergBX,string EmergencyNoBX) {
             SQLTools.ExecuteNonQuery("INSERT INTO Guards(FN, MN, LN, GStatus, BDate, Gender, Height, Weight, Religion, CivilStatus, CellNo, TelNo, LicenseNo, SSS, TIN, PhilHealth, PrevAgency, PrevAss, EdAtt, Course, MilitaryTrainings, EmergencyContact, EmergencyNo) VALUES ('" + FirstNameBX + "','" + MiddleNameBX + "','" + LastNameBX + "','" + 2 + "','" + BirthdateBX.Month + "/" + BirthdateBX.Day + "/" + BirthdateBX.Year + "','" + gender + "','" + HeightBX + "','" + WeightBX + "','" + ReligionBX + "','" + CVStatusBX + "','" + CellNoBX + "','" + TellNoBX + "','" + LicenseNoBX + "','" + SSSNoBX + "','" + TINNoBX + "','" + PhilHealthBX + "','" + PrevAgencyBX + "','" + PrevAssBX + "','" + EdAttBX + "','" + CourseBX + "','" + MilTrainBX + "','" + EmergBX + "','" + EmergencyNoBX + "')");
         }
