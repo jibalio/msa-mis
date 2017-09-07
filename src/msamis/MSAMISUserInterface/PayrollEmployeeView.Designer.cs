@@ -1268,7 +1268,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(466, 37);
             this.label7.TabIndex = 278;
-            this.label7.Text = "Please add Duty Details for this guard";
+            this.label7.Text = "Please add Attendance Details for this guard";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4

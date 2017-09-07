@@ -76,7 +76,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
-            this.GEditDetailsBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.NameTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.LocationTLTP = new System.Windows.Forms.ToolTip(this.components);
@@ -88,6 +87,10 @@
             this.Dep1Warn = new System.Windows.Forms.ToolTip(this.components);
             this.Dep2Warn = new System.Windows.Forms.ToolTip(this.components);
             this.Dep3Warn = new System.Windows.Forms.ToolTip(this.components);
+            this.GEditDetailsBTN = new System.Windows.Forms.Button();
+            this.Cert3Rem = new System.Windows.Forms.Button();
+            this.Cert2Rem = new System.Windows.Forms.Button();
+            this.Cert1Rem = new System.Windows.Forms.Button();
             this.DetailsPNL.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,7 +111,7 @@
             this.label86.AutoSize = true;
             this.label86.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label86.Location = new System.Drawing.Point(126, 88);
+            this.label86.Location = new System.Drawing.Point(118, 88);
             this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label86.Name = "label86";
             this.label86.Size = new System.Drawing.Size(103, 19);
@@ -121,7 +124,7 @@
             this.ContactBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactBX.Location = new System.Drawing.Point(250, 88);
+            this.ContactBX.Location = new System.Drawing.Point(242, 88);
             this.ContactBX.MaxLength = 45;
             this.ContactBX.Name = "ContactBX";
             this.ContactBX.Size = new System.Drawing.Size(132, 18);
@@ -178,7 +181,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(126, 122);
+            this.label23.Location = new System.Drawing.Point(118, 122);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(80, 19);
@@ -191,7 +194,7 @@
             this.ContactNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactNoBX.Location = new System.Drawing.Point(250, 122);
+            this.ContactNoBX.Location = new System.Drawing.Point(242, 122);
             this.ContactNoBX.MaxLength = 45;
             this.ContactNoBX.Name = "ContactNoBX";
             this.ContactNoBX.Size = new System.Drawing.Size(131, 18);
@@ -204,7 +207,7 @@
             this.ManagerBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ManagerBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ManagerBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ManagerBX.Location = new System.Drawing.Point(250, 53);
+            this.ManagerBX.Location = new System.Drawing.Point(242, 53);
             this.ManagerBX.MaxLength = 45;
             this.ManagerBX.Name = "ManagerBX";
             this.ManagerBX.Size = new System.Drawing.Size(132, 18);
@@ -247,6 +250,9 @@
             // 
             this.DetailsPNL.AutoScroll = true;
             this.DetailsPNL.BackColor = System.Drawing.Color.White;
+            this.DetailsPNL.Controls.Add(this.Cert3Rem);
+            this.DetailsPNL.Controls.Add(this.Cert2Rem);
+            this.DetailsPNL.Controls.Add(this.Cert1Rem);
             this.DetailsPNL.Controls.Add(this.Dep1Contact);
             this.DetailsPNL.Controls.Add(this.Dep2Contact);
             this.DetailsPNL.Controls.Add(this.Dep3Contact);
@@ -297,7 +303,7 @@
             this.Dep1Contact.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dep1Contact.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dep1Contact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dep1Contact.Location = new System.Drawing.Point(397, 200);
+            this.Dep1Contact.Location = new System.Drawing.Point(371, 200);
             this.Dep1Contact.MaxLength = 45;
             this.Dep1Contact.Name = "Dep1Contact";
             this.Dep1Contact.Size = new System.Drawing.Size(101, 18);
@@ -312,7 +318,7 @@
             this.Dep2Contact.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dep2Contact.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dep2Contact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dep2Contact.Location = new System.Drawing.Point(397, 241);
+            this.Dep2Contact.Location = new System.Drawing.Point(371, 241);
             this.Dep2Contact.MaxLength = 45;
             this.Dep2Contact.Name = "Dep2Contact";
             this.Dep2Contact.Size = new System.Drawing.Size(101, 18);
@@ -327,7 +333,7 @@
             this.Dep3Contact.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dep3Contact.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dep3Contact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dep3Contact.Location = new System.Drawing.Point(397, 282);
+            this.Dep3Contact.Location = new System.Drawing.Point(371, 282);
             this.Dep3Contact.MaxLength = 45;
             this.Dep3Contact.Name = "Dep3Contact";
             this.Dep3Contact.Size = new System.Drawing.Size(101, 18);
@@ -341,7 +347,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.ForeColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(391, 208);
+            this.label2.Location = new System.Drawing.Point(365, 208);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 19);
             this.label2.TabIndex = 254;
@@ -352,7 +358,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.ForeColor = System.Drawing.Color.LightGray;
-            this.label3.Location = new System.Drawing.Point(391, 249);
+            this.label3.Location = new System.Drawing.Point(365, 249);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 19);
             this.label3.TabIndex = 255;
@@ -363,7 +369,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.ForeColor = System.Drawing.Color.LightGray;
-            this.label6.Location = new System.Drawing.Point(391, 290);
+            this.label6.Location = new System.Drawing.Point(365, 290);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(123, 19);
             this.label6.TabIndex = 256;
@@ -386,7 +392,7 @@
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label52.Location = new System.Drawing.Point(122, 200);
+            this.label52.Location = new System.Drawing.Point(96, 200);
             this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(17, 19);
@@ -399,7 +405,7 @@
             this.Dependent1FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent1FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent1FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1FirstBX.Location = new System.Drawing.Point(152, 200);
+            this.Dependent1FirstBX.Location = new System.Drawing.Point(126, 200);
             this.Dependent1FirstBX.MaxLength = 45;
             this.Dependent1FirstBX.Name = "Dependent1FirstBX";
             this.Dependent1FirstBX.Size = new System.Drawing.Size(66, 18);
@@ -414,7 +420,7 @@
             this.Dependent1MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent1MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent1MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1MiddleBX.Location = new System.Drawing.Point(224, 200);
+            this.Dependent1MiddleBX.Location = new System.Drawing.Point(198, 200);
             this.Dependent1MiddleBX.MaxLength = 45;
             this.Dependent1MiddleBX.Name = "Dependent1MiddleBX";
             this.Dependent1MiddleBX.Size = new System.Drawing.Size(66, 18);
@@ -429,7 +435,7 @@
             this.Dependent1LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent1LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent1LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1LastBX.Location = new System.Drawing.Point(298, 200);
+            this.Dependent1LastBX.Location = new System.Drawing.Point(272, 200);
             this.Dependent1LastBX.MaxLength = 45;
             this.Dependent1LastBX.Name = "Dependent1LastBX";
             this.Dependent1LastBX.Size = new System.Drawing.Size(66, 18);
@@ -443,7 +449,7 @@
             this.label48.AutoSize = true;
             this.label48.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label48.Location = new System.Drawing.Point(122, 241);
+            this.label48.Location = new System.Drawing.Point(96, 241);
             this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(19, 19);
@@ -456,7 +462,7 @@
             this.Dependent2FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent2FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent2FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2FirstBX.Location = new System.Drawing.Point(152, 241);
+            this.Dependent2FirstBX.Location = new System.Drawing.Point(126, 241);
             this.Dependent2FirstBX.MaxLength = 45;
             this.Dependent2FirstBX.Name = "Dependent2FirstBX";
             this.Dependent2FirstBX.Size = new System.Drawing.Size(66, 18);
@@ -471,7 +477,7 @@
             this.Dependent2MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent2MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent2MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2MiddleBX.Location = new System.Drawing.Point(224, 241);
+            this.Dependent2MiddleBX.Location = new System.Drawing.Point(198, 241);
             this.Dependent2MiddleBX.MaxLength = 45;
             this.Dependent2MiddleBX.Name = "Dependent2MiddleBX";
             this.Dependent2MiddleBX.Size = new System.Drawing.Size(66, 18);
@@ -486,7 +492,7 @@
             this.Dependent2LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent2LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent2LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2LastBX.Location = new System.Drawing.Point(298, 241);
+            this.Dependent2LastBX.Location = new System.Drawing.Point(272, 241);
             this.Dependent2LastBX.MaxLength = 45;
             this.Dependent2LastBX.Name = "Dependent2LastBX";
             this.Dependent2LastBX.Size = new System.Drawing.Size(66, 18);
@@ -500,7 +506,7 @@
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label57.Location = new System.Drawing.Point(122, 282);
+            this.label57.Location = new System.Drawing.Point(96, 282);
             this.label57.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(19, 19);
@@ -513,7 +519,7 @@
             this.Dependent3FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent3FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent3FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3FirstBX.Location = new System.Drawing.Point(152, 282);
+            this.Dependent3FirstBX.Location = new System.Drawing.Point(126, 282);
             this.Dependent3FirstBX.MaxLength = 45;
             this.Dependent3FirstBX.Name = "Dependent3FirstBX";
             this.Dependent3FirstBX.Size = new System.Drawing.Size(66, 18);
@@ -528,7 +534,7 @@
             this.Dependent3MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent3MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent3MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3MiddleBX.Location = new System.Drawing.Point(224, 282);
+            this.Dependent3MiddleBX.Location = new System.Drawing.Point(198, 282);
             this.Dependent3MiddleBX.MaxLength = 45;
             this.Dependent3MiddleBX.Name = "Dependent3MiddleBX";
             this.Dependent3MiddleBX.Size = new System.Drawing.Size(66, 18);
@@ -543,7 +549,7 @@
             this.Dependent3LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dependent3LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.Dependent3LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3LastBX.Location = new System.Drawing.Point(298, 282);
+            this.Dependent3LastBX.Location = new System.Drawing.Point(272, 282);
             this.Dependent3LastBX.MaxLength = 45;
             this.Dependent3LastBX.Name = "Dependent3LastBX";
             this.Dependent3LastBX.Size = new System.Drawing.Size(66, 18);
@@ -557,7 +563,7 @@
             this.label56.AutoSize = true;
             this.label56.BackColor = System.Drawing.Color.White;
             this.label56.ForeColor = System.Drawing.Color.LightGray;
-            this.label56.Location = new System.Drawing.Point(292, 208);
+            this.label56.Location = new System.Drawing.Point(266, 208);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(75, 19);
             this.label56.TabIndex = 242;
@@ -568,7 +574,7 @@
             this.label55.AutoSize = true;
             this.label55.BackColor = System.Drawing.Color.White;
             this.label55.ForeColor = System.Drawing.Color.LightGray;
-            this.label55.Location = new System.Drawing.Point(220, 208);
+            this.label55.Location = new System.Drawing.Point(194, 208);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(75, 19);
             this.label55.TabIndex = 241;
@@ -579,7 +585,7 @@
             this.label54.AutoSize = true;
             this.label54.BackColor = System.Drawing.Color.White;
             this.label54.ForeColor = System.Drawing.Color.LightGray;
-            this.label54.Location = new System.Drawing.Point(146, 208);
+            this.label54.Location = new System.Drawing.Point(120, 208);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(75, 19);
             this.label54.TabIndex = 240;
@@ -590,7 +596,7 @@
             this.label51.AutoSize = true;
             this.label51.BackColor = System.Drawing.Color.White;
             this.label51.ForeColor = System.Drawing.Color.LightGray;
-            this.label51.Location = new System.Drawing.Point(292, 249);
+            this.label51.Location = new System.Drawing.Point(266, 249);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(75, 19);
             this.label51.TabIndex = 246;
@@ -601,7 +607,7 @@
             this.label50.AutoSize = true;
             this.label50.BackColor = System.Drawing.Color.White;
             this.label50.ForeColor = System.Drawing.Color.LightGray;
-            this.label50.Location = new System.Drawing.Point(220, 249);
+            this.label50.Location = new System.Drawing.Point(194, 249);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(75, 19);
             this.label50.TabIndex = 245;
@@ -612,7 +618,7 @@
             this.label49.AutoSize = true;
             this.label49.BackColor = System.Drawing.Color.White;
             this.label49.ForeColor = System.Drawing.Color.Silver;
-            this.label49.Location = new System.Drawing.Point(146, 249);
+            this.label49.Location = new System.Drawing.Point(120, 249);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(75, 19);
             this.label49.TabIndex = 244;
@@ -623,7 +629,7 @@
             this.label60.AutoSize = true;
             this.label60.BackColor = System.Drawing.Color.White;
             this.label60.ForeColor = System.Drawing.Color.LightGray;
-            this.label60.Location = new System.Drawing.Point(292, 290);
+            this.label60.Location = new System.Drawing.Point(266, 290);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(75, 19);
             this.label60.TabIndex = 250;
@@ -634,7 +640,7 @@
             this.label59.AutoSize = true;
             this.label59.BackColor = System.Drawing.Color.White;
             this.label59.ForeColor = System.Drawing.Color.LightGray;
-            this.label59.Location = new System.Drawing.Point(220, 290);
+            this.label59.Location = new System.Drawing.Point(194, 290);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(75, 19);
             this.label59.TabIndex = 249;
@@ -645,7 +651,7 @@
             this.label58.AutoSize = true;
             this.label58.BackColor = System.Drawing.Color.White;
             this.label58.ForeColor = System.Drawing.Color.LightGray;
-            this.label58.Location = new System.Drawing.Point(146, 290);
+            this.label58.Location = new System.Drawing.Point(120, 290);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(75, 19);
             this.label58.TabIndex = 248;
@@ -657,7 +663,7 @@
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(126, 53);
+            this.label9.Location = new System.Drawing.Point(118, 53);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 19);
@@ -669,7 +675,7 @@
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.White;
             this.label34.ForeColor = System.Drawing.Color.LightGray;
-            this.label34.Location = new System.Drawing.Point(245, 57);
+            this.label34.Location = new System.Drawing.Point(237, 57);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(141, 19);
             this.label34.TabIndex = 96;
@@ -680,7 +686,7 @@
             this.label87.AutoSize = true;
             this.label87.BackColor = System.Drawing.Color.White;
             this.label87.ForeColor = System.Drawing.Color.LightGray;
-            this.label87.Location = new System.Drawing.Point(242, 92);
+            this.label87.Location = new System.Drawing.Point(234, 92);
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(147, 19);
             this.label87.TabIndex = 217;
@@ -691,7 +697,7 @@
             this.label41.AutoSize = true;
             this.label41.BackColor = System.Drawing.Color.White;
             this.label41.ForeColor = System.Drawing.Color.Silver;
-            this.label41.Location = new System.Drawing.Point(241, 126);
+            this.label41.Location = new System.Drawing.Point(233, 126);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(147, 19);
             this.label41.TabIndex = 112;
@@ -790,26 +796,6 @@
             this.CloseBTN.UseVisualStyleBackColor = false;
             this.CloseBTN.Click += new System.EventHandler(this.CloseBTN_Click);
             // 
-            // GEditDetailsBTN
-            // 
-            this.GEditDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.GEditDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GEditDetailsBTN.BackgroundImage")));
-            this.GEditDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GEditDetailsBTN.FlatAppearance.BorderSize = 0;
-            this.GEditDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.GEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
-            this.GEditDetailsBTN.Location = new System.Drawing.Point(259, 542);
-            this.GEditDetailsBTN.Name = "GEditDetailsBTN";
-            this.GEditDetailsBTN.Size = new System.Drawing.Size(78, 32);
-            this.GEditDetailsBTN.TabIndex = 20;
-            this.GEditDetailsBTN.Text = "SAVE";
-            this.GEditDetailsBTN.UseVisualStyleBackColor = false;
-            this.GEditDetailsBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
-            // 
             // FadeTMR
             // 
             this.FadeTMR.Interval = 1;
@@ -893,6 +879,86 @@
             this.Dep3Warn.InitialDelay = 500;
             this.Dep3Warn.ReshowDelay = 100;
             this.Dep3Warn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
+            // GEditDetailsBTN
+            // 
+            this.GEditDetailsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GEditDetailsBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.GEditDetailsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GEditDetailsBTN.BackgroundImage")));
+            this.GEditDetailsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GEditDetailsBTN.FlatAppearance.BorderSize = 0;
+            this.GEditDetailsBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.GEditDetailsBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.GEditDetailsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GEditDetailsBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GEditDetailsBTN.ForeColor = System.Drawing.Color.White;
+            this.GEditDetailsBTN.Location = new System.Drawing.Point(259, 542);
+            this.GEditDetailsBTN.Name = "GEditDetailsBTN";
+            this.GEditDetailsBTN.Size = new System.Drawing.Size(78, 32);
+            this.GEditDetailsBTN.TabIndex = 20;
+            this.GEditDetailsBTN.Text = "SAVE";
+            this.GEditDetailsBTN.UseVisualStyleBackColor = false;
+            this.GEditDetailsBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
+            // 
+            // Cert3Rem
+            // 
+            this.Cert3Rem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cert3Rem.BackColor = System.Drawing.Color.White;
+            this.Cert3Rem.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Delete;
+            this.Cert3Rem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Cert3Rem.FlatAppearance.BorderSize = 0;
+            this.Cert3Rem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.Cert3Rem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.Cert3Rem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cert3Rem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cert3Rem.ForeColor = System.Drawing.Color.White;
+            this.Cert3Rem.Location = new System.Drawing.Point(499, 278);
+            this.Cert3Rem.Name = "Cert3Rem";
+            this.Cert3Rem.Size = new System.Drawing.Size(25, 25);
+            this.Cert3Rem.TabIndex = 258;
+            this.Cert3Rem.UseVisualStyleBackColor = false;
+            this.Cert3Rem.Visible = false;
+            this.Cert3Rem.Click += new System.EventHandler(this.Cert3Rem_Click);
+            // 
+            // Cert2Rem
+            // 
+            this.Cert2Rem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cert2Rem.BackColor = System.Drawing.Color.White;
+            this.Cert2Rem.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Delete;
+            this.Cert2Rem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Cert2Rem.FlatAppearance.BorderSize = 0;
+            this.Cert2Rem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.Cert2Rem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.Cert2Rem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cert2Rem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cert2Rem.ForeColor = System.Drawing.Color.White;
+            this.Cert2Rem.Location = new System.Drawing.Point(499, 237);
+            this.Cert2Rem.Name = "Cert2Rem";
+            this.Cert2Rem.Size = new System.Drawing.Size(25, 25);
+            this.Cert2Rem.TabIndex = 257;
+            this.Cert2Rem.UseVisualStyleBackColor = false;
+            this.Cert2Rem.Visible = false;
+            this.Cert2Rem.Click += new System.EventHandler(this.Cert2Rem_Click);
+            // 
+            // Cert1Rem
+            // 
+            this.Cert1Rem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cert1Rem.BackColor = System.Drawing.Color.White;
+            this.Cert1Rem.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Delete;
+            this.Cert1Rem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Cert1Rem.FlatAppearance.BorderSize = 0;
+            this.Cert1Rem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.Cert1Rem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.Cert1Rem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cert1Rem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cert1Rem.ForeColor = System.Drawing.Color.White;
+            this.Cert1Rem.Location = new System.Drawing.Point(499, 196);
+            this.Cert1Rem.Name = "Cert1Rem";
+            this.Cert1Rem.Size = new System.Drawing.Size(25, 25);
+            this.Cert1Rem.TabIndex = 231;
+            this.Cert1Rem.UseVisualStyleBackColor = false;
+            this.Cert1Rem.Visible = false;
+            this.Cert1Rem.Click += new System.EventHandler(this.Cert1Rem_Click);
             // 
             // ClientsEdit
             // 
@@ -995,5 +1061,8 @@
         private System.Windows.Forms.ToolTip Dep1Warn;
         private System.Windows.Forms.ToolTip Dep2Warn;
         private System.Windows.Forms.ToolTip Dep3Warn;
+        private System.Windows.Forms.Button Cert3Rem;
+        private System.Windows.Forms.Button Cert2Rem;
+        private System.Windows.Forms.Button Cert1Rem;
     }
 }

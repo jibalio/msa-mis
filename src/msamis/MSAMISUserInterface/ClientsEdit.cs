@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using rylui;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace MSAMISUserInterface {
     public partial class ClientsEdit : Form {
@@ -46,6 +48,7 @@ namespace MSAMISUserInterface {
                                 Dependent1MiddleBX.Text = dataTable.Rows[0]["mn"].ToString();
                                 Dependent1LastBX.Text = dataTable.Rows[0]["ln"].ToString();
                                 Dep1Contact.Text = dataTable.Rows[0]["contactno"].ToString();
+                                Cert1Rem.Visible = true;
                             }
                             if (dataTable.Rows.Count > 1) {
                                 _dependents[2] = int.Parse(dataTable.Rows[1]["ccid"].ToString());
@@ -53,6 +56,7 @@ namespace MSAMISUserInterface {
                                 Dependent2MiddleBX.Text = dataTable.Rows[1]["mn"].ToString();
                                 Dependent2LastBX.Text = dataTable.Rows[1]["ln"].ToString();
                                 Dep2Contact.Text = dataTable.Rows[1]["contactno"].ToString();
+                                Cert2Rem.Visible = true;
                             }
                             if (dataTable.Rows.Count > 2) {
                                 _dependents[3] = int.Parse(dataTable.Rows[2]["ccid"].ToString());
@@ -60,6 +64,7 @@ namespace MSAMISUserInterface {
                                 Dependent3MiddleBX.Text = dataTable.Rows[2]["mn"].ToString();
                                 Dependent3LastBX.Text = dataTable.Rows[2]["ln"].ToString();
                                 Dep3Contact.Text = dataTable.Rows[2]["contactno"].ToString();
+                                Cert3Rem.Visible = true;
                             }
                         }
                         catch (Exception ex) {
@@ -313,24 +318,24 @@ namespace MSAMISUserInterface {
                             LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
 
                         if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
-                            if (_dependents.Length > 1)
+                            if (_dependents.Length > 1 && _dependents[1] != -1)
                                 UpdateDependent(Dependent1FirstBX.Text, Dependent1MiddleBX.Text, Dependent1LastBX.Text,
                                     Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, _dependents[1]);
-                            else
+                            else if (_dependents[1] != -1)
                                 InsertDependent(Dep1Contact.Text.Equals("Contact") ? "" : Dep1Contact.Text, Dependent1FirstBX.Text,
                                     Dependent1MiddleBX.Text, Dependent1LastBX.Text);
                         if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
-                            if (_dependents.Length > 2)
+                            if (_dependents.Length > 2 && _dependents[2] != -1)
                                 UpdateDependent(Dependent2FirstBX.Text, Dependent2MiddleBX.Text, Dependent2LastBX.Text,
                                     Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, _dependents[2]);
-                            else
+                            else if (_dependents[2] != -1)
                                 InsertDependent(Dep2Contact.Text.Equals("Contact") ? "" : Dep2Contact.Text, Dependent2FirstBX.Text,
                                     Dependent2MiddleBX.Text, Dependent2LastBX.Text);
                         if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
-                            if (_dependents.Length > 3)
+                            if (_dependents.Length > 3 && _dependents[3] != -1)
                                 UpdateDependent(Dependent3FirstBX.Text, Dependent3MiddleBX.Text, Dependent3LastBX.Text,
                                     Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, _dependents[3]);
-                            else
+                        else if(_dependents[3] != -1)
                                 InsertDependent(Dep3Contact.Text.Equals("Contact") ? "" : Dep3Contact.Text, Dependent3FirstBX.Text,
                                     Dependent3MiddleBX.Text, Dependent3LastBX.Text);
 
@@ -377,6 +382,28 @@ namespace MSAMISUserInterface {
         private void Dep1Contact_Leave(object sender, EventArgs e) {
             var lastbx = (TextBox)sender;
             if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Contact";
+        }
+
+        private void Cert1Rem_Click(object sender, EventArgs e) {
+            RemoveCert(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX, Dep1Contact, Cert1Rem, 1);
+        }
+
+        private void RemoveCert(TextBoxBase First, TextBoxBase Middle, TextBoxBase Last, TextBoxBase Contact, Button rem, int dep) {
+            First.Visible = false;
+            Middle.Visible = false;
+            Last.Visible = false;
+            Contact.Visible = false;
+            rem.Visible = false;
+            Client.RemoveCertifier(_dependents[1]);
+            _dependents[dep] = -1;
+        }
+
+        private void Cert2Rem_Click(object sender, EventArgs e) {
+            RemoveCert(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX, Dep2Contact, Cert2Rem, 2);
+        }
+
+        private void Cert3Rem_Click(object sender, EventArgs e) {
+            RemoveCert(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX, Dep3Contact, Cert3Rem, 3);
         }
     }
 }

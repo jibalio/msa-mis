@@ -47,6 +47,7 @@
             this.DateTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.RegularBTN = new System.Windows.Forms.RadioButton();
             this.SpecialBTN = new System.Windows.Forms.RadioButton();
+            this.TransBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.HolidaysGRD)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -124,7 +125,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(310, 147);
+            this.label1.Location = new System.Drawing.Point(310, 140);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 19);
@@ -137,7 +138,7 @@
             this.DescBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DescBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DescBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DescBX.Location = new System.Drawing.Point(313, 249);
+            this.DescBX.Location = new System.Drawing.Point(313, 254);
             this.DescBX.MaxLength = 120;
             this.DescBX.Name = "DescBX";
             this.DescBX.Size = new System.Drawing.Size(170, 18);
@@ -148,7 +149,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.ForeColor = System.Drawing.Color.LightGray;
-            this.label4.Location = new System.Drawing.Point(311, 258);
+            this.label4.Location = new System.Drawing.Point(311, 263);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(175, 13);
             this.label4.TabIndex = 162;
@@ -159,7 +160,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(310, 226);
+            this.label5.Location = new System.Drawing.Point(310, 235);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 19);
@@ -171,7 +172,7 @@
             this.DateLBL.AutoSize = true;
             this.DateLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.DateLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DateLBL.Location = new System.Drawing.Point(310, 166);
+            this.DateLBL.Location = new System.Drawing.Point(310, 159);
             this.DateLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DateLBL.Name = "DateLBL";
             this.DateLBL.Size = new System.Drawing.Size(174, 19);
@@ -263,7 +264,7 @@
             this.CancelBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.CancelBTN.ForeColor = System.Drawing.Color.White;
-            this.CancelBTN.Location = new System.Drawing.Point(379, 280);
+            this.CancelBTN.Location = new System.Drawing.Point(379, 282);
             this.CancelBTN.Name = "CancelBTN";
             this.CancelBTN.Size = new System.Drawing.Size(60, 22);
             this.CancelBTN.TabIndex = 166;
@@ -284,7 +285,7 @@
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.AddBTN.ForeColor = System.Drawing.Color.White;
-            this.AddBTN.Location = new System.Drawing.Point(313, 280);
+            this.AddBTN.Location = new System.Drawing.Point(313, 282);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(60, 22);
             this.AddBTN.TabIndex = 164;
@@ -311,7 +312,7 @@
             this.RegularBTN.AutoSize = true;
             this.RegularBTN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegularBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.RegularBTN.Location = new System.Drawing.Point(314, 197);
+            this.RegularBTN.Location = new System.Drawing.Point(314, 185);
             this.RegularBTN.Name = "RegularBTN";
             this.RegularBTN.Size = new System.Drawing.Size(65, 19);
             this.RegularBTN.TabIndex = 170;
@@ -324,13 +325,25 @@
             this.SpecialBTN.AutoSize = true;
             this.SpecialBTN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpecialBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SpecialBTN.Location = new System.Drawing.Point(395, 197);
+            this.SpecialBTN.Location = new System.Drawing.Point(395, 185);
             this.SpecialBTN.Name = "SpecialBTN";
             this.SpecialBTN.Size = new System.Drawing.Size(62, 19);
             this.SpecialBTN.TabIndex = 171;
             this.SpecialBTN.TabStop = true;
             this.SpecialBTN.Text = "Special";
             this.SpecialBTN.UseVisualStyleBackColor = true;
+            // 
+            // TransBox
+            // 
+            this.TransBox.AutoSize = true;
+            this.TransBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TransBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.TransBox.Location = new System.Drawing.Point(314, 212);
+            this.TransBox.Name = "TransBox";
+            this.TransBox.Size = new System.Drawing.Size(53, 19);
+            this.TransBox.TabIndex = 172;
+            this.TransBox.Text = "Fixed";
+            this.TransBox.UseVisualStyleBackColor = true;
             // 
             // PayrollConfHolidays
             // 
@@ -339,6 +352,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(598, 598);
             this.ControlBox = false;
+            this.Controls.Add(this.TransBox);
             this.Controls.Add(this.SpecialBTN);
             this.Controls.Add(this.RegularBTN);
             this.Controls.Add(this.RemoveBTN);
@@ -388,5 +402,6 @@
         private System.Windows.Forms.ToolTip DateTLTP;
         private System.Windows.Forms.RadioButton RegularBTN;
         private System.Windows.Forms.RadioButton SpecialBTN;
+        private System.Windows.Forms.CheckBox TransBox;
     }
 }

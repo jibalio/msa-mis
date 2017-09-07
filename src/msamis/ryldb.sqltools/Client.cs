@@ -32,7 +32,7 @@ namespace MSAMISUserInterface {
         }
 
         public static void RemoveCertifier(int ccid) {
-            var q = $@"UPDATE `msadb`.`certifier` SET `status`='0' WHERE `ccid`='{ccid}';';";
+            var q = $@"UPDATE `msadb`.`certifier` SET `status`='0' WHERE `ccid`='{ccid}';";
             SQLTools.ExecuteNonQuery(q);
         }
         #endregion

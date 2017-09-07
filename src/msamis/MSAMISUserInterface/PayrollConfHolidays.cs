@@ -22,14 +22,14 @@ namespace MSAMISUserInterface {
                 if (SpecialBTN.Checked) type = 2;
                 try {
                     if (AddBTN.Text.Equals("ADD")) {
-                        Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type);
+                        Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type, TransBox.Checked ? 0: 1);
                         DateLBL.Text = "Please choose a date/dates";
                         DescBX.Text = "";
                     }
                     else {
                         Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()),
                             DescBX.Text,
-                            type);
+                            type, TransBox.Checked ? 0 : 1);
                         CancelBTN.PerformClick();
                     }
                     LoadPage();
@@ -72,6 +72,7 @@ namespace MSAMISUserInterface {
                     RegularBTN.Checked = !HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
                     DateLBL.Text = _start.ToShortDateString() + " - " + _end.ToShortDateString();
                     DescBX.Text = HolidaysGRD.SelectedRows[0].Cells[3].Value.ToString();
+                    TransBox.Checked = HolidaysGRD.SelectedRows[0].Cells[5].Value.ToString().Equals("Fixed");
                 }
                 HoldaysCLNDR.Enabled = false;
                 AddBTN.Text = "SAVE";
@@ -89,6 +90,7 @@ namespace MSAMISUserInterface {
             AddBTN.Text = "ADD";
             DateLBL.Text = "Please choose a date/dates";
             DescBX.Text = "";
+            TransBox.Checked = false;
             SpecialBTN.Checked = false;
             RegularBTN.Checked = false;
             HoldaysCLNDR.Enabled = true;
@@ -145,13 +147,15 @@ namespace MSAMISUserInterface {
                 HolidaysGRD.DataSource = Holiday.GetHolidays();
                 HolidaysGRD.Columns[0].Visible = false;
                 HolidaysGRD.Columns[1].HeaderText = "START DATE";
-                HolidaysGRD.Columns[1].Width = 110;
+                HolidaysGRD.Columns[1].Width = 100;
                 HolidaysGRD.Columns[2].HeaderText = "START END";
-                HolidaysGRD.Columns[2].Width = 110;
+                HolidaysGRD.Columns[2].Width = 100;
                 HolidaysGRD.Columns[3].HeaderText = "DESCRIPTION";
-                HolidaysGRD.Columns[3].Width = 160;
+                HolidaysGRD.Columns[3].Width = 110;
                 HolidaysGRD.Columns[4].HeaderText = "TYPE";
                 HolidaysGRD.Columns[4].Width = 80;
+                HolidaysGRD.Columns[5].HeaderText = "FIXED?";
+                HolidaysGRD.Columns[5].Width = 70;
 
                 var dts = new List<DateTime>();
 

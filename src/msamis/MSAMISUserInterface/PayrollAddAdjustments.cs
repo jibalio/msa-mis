@@ -60,6 +60,7 @@ namespace MSAMISUserInterface {
                         if (changes[3]) Pay.CashBond = double.Parse(BondsBX.Value.ToString("N2"));
                         if (changes[4]) Pay.CashAdvance = double.Parse(AdvBX.Value.ToString("N2"));
                         Refer.LoadAjustments();
+                        CloseBTN.Tag = "1";
                         Close();
                     }
                 }

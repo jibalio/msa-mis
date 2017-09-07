@@ -397,6 +397,7 @@
     <None Include="Resources\ViewInfo.png" />
     <None Include="Resources\ViewAss.png" />
     <None Include="Resources\ViewPay.png" />
+    <None Include="Resources\Delete.png" />
     <Content Include="Untitled-1.ico" />
   </ItemGroup>
   <ItemGroup>

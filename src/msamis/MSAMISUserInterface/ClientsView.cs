@@ -53,6 +53,14 @@ namespace MSAMISUserInterface {
 
         public void RefreshData() {
             try {
+                Dependent1LBL.Text = "------------------";
+                Dependent1Cont.Text = "------------";
+                Dependent2LBL.Text = "------------------";
+                Dependent2Cont.Text = "------------";
+                Dependent3LBL.Text = "------------------";
+                Dependent3Cont.Text = "------------";
+
+
                 var dt = Client.GetClientDetails(Cid);
                 NameLBL.Text = dt.Rows[0]["name"].ToString();
                 CIDLBL.Text = dt.Rows[0]["CID"].ToString();
