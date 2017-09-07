@@ -53,7 +53,8 @@ namespace MSAMISUserInterface {
                         case type
                         when 1 then 'Regular'
                         when 2 then 'Special'
-                        end as type
+                        end as type,
+                        'Fixed' as trans
                         FROM msadb.holiday; ";
             return SQLTools.ExecuteQuery(q);
         }
