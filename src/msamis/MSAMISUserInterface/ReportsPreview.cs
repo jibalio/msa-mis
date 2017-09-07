@@ -163,7 +163,7 @@ namespace MSAMISUserInterface {
                     else
                         GReportGRD.Rows[x].Cells[0].Value = "";
                 }
-            } //else if (formOrigin == 's') formatSalaryReportTable();
+            }
 
             var myfont = FontFactory.GetFont("Arial", 8, BaseColor.BLACK);
             var pdfTable = new PdfPTable(GReportGRD.ColumnCount);
@@ -181,16 +181,21 @@ namespace MSAMISUserInterface {
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfTable = AddHeaders(pdfTable, formOrigin);
             //Add Data to PDF
-            foreach (DataGridViewRow row in GReportGRD.Rows)
+
+            if (formOrigin == 's') formatSalaryReportTable();
+            else
             {
-                foreach (DataGridViewCell cell in row.Cells)
+                foreach (DataGridViewRow row in GReportGRD.Rows)
                 {
-                    var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont))
+                    foreach (DataGridViewCell cell in row.Cells)
                     {
-                        PaddingTop = 5f,
-                        PaddingBottom = 8f
-                    };
-                    pdfTable.AddCell(newcell);
+                        var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont))
+                        {
+                            PaddingTop = 5f,
+                            PaddingBottom = 8f
+                        };
+                        pdfTable.AddCell(newcell);
+                    }
                 }
             }
             var r = new Reports();

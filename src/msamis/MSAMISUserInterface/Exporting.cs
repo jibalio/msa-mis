@@ -55,10 +55,10 @@ namespace MSAMISUserInterface {
         private void Export() {
             var rp = new ReportsPreview();
             var r = new Reports();
-            //String fullFilePath;
+            /*String fullFilePath;
             if (Mode == 's') r.ExportPayslipPDF();
             else rp.FormatPDF(Mode);
-
+            */
             if (Mode == 'g') Main.GuardsLoadReport();
             else if (Mode == 'c') Main.ClientsLoadSummary();
             else if (Mode == 'd') Main.SchedLoadReport();
