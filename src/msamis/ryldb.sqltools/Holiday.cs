@@ -29,7 +29,7 @@ namespace MSAMISUserInterface {
         }
 
 
-        public static void AddHoliday(SelectionRange r, string desc, int type) {
+        public static void AddHoliday(SelectionRange r, string desc, int type, int trans) {
                 string q =
                     $@"INSERT INTO `msadb`.`holiday` (`type`, `ds_MM`, `ds_dd`, `ds_yyyy`, `de_MM`, `de_dd`, `de_yyyy`, `desc`, `status`, `datestart`, `dateend`) 
                             VALUES ('{type}','{r.Start.Month}','{r.Start.Day}','{r.Start.Year}','{r.End.Month}','{
