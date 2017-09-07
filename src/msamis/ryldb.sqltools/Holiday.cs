@@ -37,7 +37,7 @@ namespace MSAMISUserInterface {
                 SQLTools.ExecuteNonQuery(q);
         }
             
-        public static void EditHoliday (int hid, string desc, int type) {
+        public static void EditHoliday (int hid, string desc, int type, int trans) {
                 string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}', type='{2}' where hid='{1}';";
                 q = String.Format(q,  desc, hid, type);
                 SQLTools.ExecuteNonQuery(q);
