@@ -16,8 +16,11 @@ namespace MSAMISUserInterface {
         /// </summary>
         /// <param name="RequestId"></param>
         /// <returns></returns>
-        public static DataTable GetAssignedGuards(int RequestId) {
-            return SQLTools.ExecuteQuery("select concat(ln,', ',fn,' ',mn) as name from guards limit 4;");
+        public static DataTable GetRequestedGuards(int RequestId) {
+            return SQLTools.ExecuteQuery($@"Select concat(ln,', ',fn,' ',mn) from guards 
+                right join SDuty_Assignment on SDuty_Assignment.gid = guards.gid
+                right join Request_Assign on Request_Assign.raid = SDuty_Assignment.raid
+                where SDuty_Assignment.raid = {RequestId}; ");
         }
 
         public static DataTable GetAssignmentHistory(int gid) {
