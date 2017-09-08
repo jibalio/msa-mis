@@ -27,9 +27,17 @@ namespace MSAMISUserInterface {
                 TimeOutHrBX.SelectedIndex = 0;
                 TimeOutMinBX.SelectedIndex = 0;
                 DateDismissedCheck.Checked = true;
-                DateEffective.MinDate = DateTime.Now;
+                DateDismissed.MaxDate = MaxDate;
+                DateDismissed.MinDate = MinDate;
+                DateEffective.MinDate = MinDate;
+                DateEffective.MaxDate = MaxDate;
             }
             else {
+                DateDismissed.MaxDate = MaxDate;
+                DateDismissed.MinDate = MinDate;
+                DateEffective.MinDate = MinDate;
+                DateEffective.MaxDate = MaxDate;
+
                 var dt = Scheduling.GetDutyDetailsDetails(Did);
                 TimeInHrBX.SelectedIndex = int.Parse(dt.Rows[0][0].ToString()) - 1;
                 TimeInMinBX.SelectedIndex = int.Parse(dt.Rows[0][1].ToString());
@@ -43,9 +51,6 @@ namespace MSAMISUserInterface {
                     DateDismissed.Value = DateTime.Parse(dt.Rows[0][7].ToString());
                     DateDismissedCheck.Checked = true;
                 }
-
-                DateDismissed.MaxDate = MaxDate;
-                DateEffective.MinDate = MinDate;
 
                 var temp = Scheduling.GetDays(Did).Value;
                 if (temp[0]) MBTN.PerformClick();

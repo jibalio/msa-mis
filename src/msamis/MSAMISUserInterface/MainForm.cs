@@ -1358,29 +1358,24 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewReqDisBTN_Click(object sender, EventArgs e) {
-            if (IsUnscheduled()) { 
-                if (SViewAssSearchClientCMBX.SelectedIndex != 0) { 
-                try {
-                    var view = new SchedUnassignGuard {
-                        Reference = this,
-                        Cid = int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID),
-                        Refer = _shadow,
-                        Guards = SViewAssGRD.SelectedRows
-                    };
-                    _shadow.Transparent();
-                    _shadow.Form = view;
-                    _shadow.ShowDialog();
-                }
-                catch (Exception exception) { Console.WriteLine(exception); }
-                } else {
-                    RylMessageBox.ShowDialog(
-                    "You can't unassign guards from different clients \nPlease select a client and unassign the guards",
-                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            } else
+            if (SViewAssSearchClientCMBX.SelectedIndex != 0) { 
+            try {
+                var view = new SchedUnassignGuard {
+                    Reference = this,
+                    Cid = int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID),
+                    Refer = _shadow,
+                    Guards = SViewAssGRD.SelectedRows
+                };
+                _shadow.Transparent();
+                _shadow.Form = view;
+                _shadow.ShowDialog();
+            }
+            catch (Exception exception) { Console.WriteLine(exception); }
+            } else {
                 RylMessageBox.ShowDialog(
-                    "You can't unassign a guard with an active assignment \nPlease dismiss the guards before unassigning them",
-                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                "You can't unassign guards from different clients \nPlease select a client and unassign the guards",
+                "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         #endregion
@@ -1631,15 +1626,10 @@ namespace MSAMISUserInterface {
 
         private void SViewAssGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (SViewAssGRD.SelectedRows.Count == 1) {
-                if (SViewAssGRD.SelectedRows[0].Cells[6].Value.ToString().Equals("Scheduled")) {
-                    SViewAssViewDetailsBTN.Visible = true;
-                    SViewAssUnassignBTN.Visible = false;
-                } else if (SViewAssGRD.SelectedRows[0].Cells[6].Value.ToString().Equals("Unscheduled")) {
-                    SViewAssViewDetailsBTN.Visible = true;
-                    if (Login.AccountType != 2 && SViewAssSearchClientCMBX.SelectedIndex != 0)
-                        SViewAssUnassignBTN.Visible = true;
-                }
-            } else if (SViewAssGRD.SelectedRows.Count > 1 && IsUnscheduled()) {
+                SViewAssViewDetailsBTN.Visible = true;
+                if (Login.AccountType != 2 && SViewAssSearchClientCMBX.SelectedIndex != 0)
+                    SViewAssUnassignBTN.Visible = true;
+            } else if (SViewAssGRD.SelectedRows.Count > 1) {
                 SViewAssViewDetailsBTN.Visible = false;
                 if (Login.AccountType != 2 && SViewAssSearchClientCMBX.SelectedIndex != 0)
                     SViewAssUnassignBTN.Visible = true;
@@ -1648,7 +1638,7 @@ namespace MSAMISUserInterface {
                 SViewAssUnassignBTN.Visible = false;
             }
         }
-
+        
         private void SViewAssSearchTXTBX_Enter(object sender, EventArgs e) {
             if (SViewAssSearchTXTBX.Text == FilterText) {
                 SViewAssSearchTXTBX.Text = string.Empty;

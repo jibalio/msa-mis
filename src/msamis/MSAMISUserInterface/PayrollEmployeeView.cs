@@ -58,7 +58,7 @@ namespace MSAMISUserInterface {
                 LoadDetails();
             }
 
-            if (Login.AccountType == 2 || Name.Equals("Archived")) {
+            if (Name.Equals("Archived")) {
                 BonusAddBTN.Visible = false;
                 ApproveBTN.Visible = false;
             }
@@ -356,24 +356,43 @@ namespace MSAMISUserInterface {
             if (!Name.Equals("Archived")) {
                 if (PeriodCMBX.SelectedIndex == 0) {
                     if (_pay.PayrollStatus == 2) {
-                        BonusAddBTN.Visible = true;
-                        ApproveBTN.Visible = true;
-                        ApproveBTN.Location = new Point(227, 388);
-                        BonusAddBTN.Text = "UNAPPROVE";
-                        ApproveBTN.Text = "PAYSLIP";
+                        if (Login.AccountType != 2) {
+                            BonusAddBTN.Visible = true;
+                            ApproveBTN.Visible = true;
+                            ApproveBTN.Location = new Point(227, 388);
+                            BonusAddBTN.Text = "UNAPPROVE";
+                            ApproveBTN.Text = "PAYSLIP";
+                        }
+                        else {
+                            BonusAddBTN.Visible = false;
+                            ApproveBTN.Visible = true;
+                            ApproveBTN.Location = new Point(186, 388);
+                            ApproveBTN.Text = "PAYSLIP";
+                        }
                     }
                     else {
-                        BonusAddBTN.Visible = true;
-                        ApproveBTN.Visible = true;
-                        ApproveBTN.Location = new Point(227, 388);
-                        BonusAddBTN.Text = "ADJUST";
-                        ApproveBTN.Text = "APPROVE";
+                        if (Login.AccountType != 2) {
+                            BonusAddBTN.Visible = true;
+                            ApproveBTN.Visible = true;
+                            ApproveBTN.Location = new Point(227, 388);
+                            BonusAddBTN.Text = "ADJUST";
+                            ApproveBTN.Text = "APPROVE";
+                        } else {
+                            BonusAddBTN.Visible = false;
+                            ApproveBTN.Visible = false;
+                        }
                     }
                 }
                 else {
-                    BonusAddBTN.Visible = false;
-                    ApproveBTN.Location = new Point(186, 388);
-                    ApproveBTN.Text = "PAYSLIP";
+                    if (_pay.PayrollStatus == 2) {
+                        BonusAddBTN.Visible = false;
+                        ApproveBTN.Location = new Point(186, 388);
+                        ApproveBTN.Text = "PAYSLIP";
+                    }
+                    else {
+                        BonusAddBTN.Visible = false;
+                        ApproveBTN.Visible = false;
+                    }
                 }
             }
             if (Name.Equals("Archived")) {

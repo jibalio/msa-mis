@@ -122,10 +122,6 @@ namespace MSAMISUserInterface {
             DutyDetailsGRD.Select();
         }
 
-        private void AttendanceWorker_DoWork(object sender, DoWorkEventArgs e) {
-            
-        }
-
         public void RefreshAttendance() {
             try {
                 if (!Name.Equals("Archived")) {
@@ -316,6 +312,8 @@ namespace MSAMISUserInterface {
             var view = new SchedAddDutyDetail {
                 Aid = Aid,
                 Refer = this,
+                MaxDate = DateTime.Parse(EndLBL.Text),
+                MinDate = DateTime.Parse(StartLBL.Text),
                 Location = new Point(Location.X + 330, Location.Y)
             };
             view.ShowDialog();
