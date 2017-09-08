@@ -65,7 +65,7 @@ namespace MSAMISUserInterface {
                         FROM
 	                        holiday
                             left join holiday_instance ON holiday.hid = holiday_instance.hid
-                            where datestart>='01-01-2017'
+                            where datestart>='{DateTime.Now:yyyy}-01-01' and holiday.status='{1}'
                              ";
             return SQLTools.ExecuteQuery(q);
         }
