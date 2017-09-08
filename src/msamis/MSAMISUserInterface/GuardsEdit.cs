@@ -16,7 +16,6 @@ namespace MSAMISUserInterface {
 
         private Panel _panel;
         public string Button = "ADD";
-        public int[] Dependents;
         public int Gid;
 
         public Shadow Refer;
@@ -107,36 +106,12 @@ namespace MSAMISUserInterface {
                 ShowErrorBox("Loading Guards", ex.Message);
             }
             try {
-                _dataTable = Guard.GetGuardsDependents(Gid);
-                try {
-                    Dependent1FirstBX.Text = _dataTable.Rows[0]["fn"].ToString();
-                    Dependent1MiddleBX.Text = _dataTable.Rows[0]["mn"].ToString();
-                    Dependent1LastBX.Text = _dataTable.Rows[0]["ln"].ToString();
-                    Dependent1RBX.SelectedIndex = int.Parse(_dataTable.Rows[0]["DRelationship"].ToString());
-
-                    Dependent2FirstBX.Text = _dataTable.Rows[1]["fn"].ToString();
-                    Dependent2MiddleBX.Text = _dataTable.Rows[1]["mn"].ToString();
-                    Dependent2LastBX.Text = _dataTable.Rows[1]["ln"].ToString();
-                    Dependent2RBX.SelectedIndex = int.Parse(_dataTable.Rows[1]["DRelationship"].ToString());
-
-                    Dependent3FirstBX.Text = _dataTable.Rows[2]["fn"].ToString();
-                    Dependent3MiddleBX.Text = _dataTable.Rows[2]["mn"].ToString();
-                    Dependent3LastBX.Text = _dataTable.Rows[2]["ln"].ToString();
-                    Dependent3RBX.SelectedIndex = int.Parse(_dataTable.Rows[2]["DRelationship"].ToString());
-
-                    Dependent4FirstBX.Text = _dataTable.Rows[3]["fn"].ToString();
-                    Dependent4MiddleBX.Text = _dataTable.Rows[3]["mn"].ToString();
-                    Dependent4LastBX.Text = _dataTable.Rows[3]["ln"].ToString();
-                    Dependent4RBX.SelectedIndex = int.Parse(_dataTable.Rows[3]["DRelationship"].ToString());
-
-                    Dependent5FirstBX.Text = _dataTable.Rows[4]["fn"].ToString();
-                    Dependent5MiddleBX.Text = _dataTable.Rows[4]["mn"].ToString();
-                    Dependent5LastBX.Text = _dataTable.Rows[4]["ln"].ToString();
-                    Dependent5RBX.SelectedIndex = int.Parse(_dataTable.Rows[4]["DRelationship"].ToString());
+                foreach (DataRow row in Guard.GetGuardsDependents(Gid).Rows) {
+                    DepGRD.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString());
+                    
                 }
-                catch (Exception ex) {
-                    ShowErrorBox("Loading Guards", ex.Message);
-                }
+
+                
             }
             catch (Exception ex) {
                 ShowErrorBox("Loading Guards", ex.Message);
@@ -239,66 +214,6 @@ namespace MSAMISUserInterface {
 
         private void MiddleNameBX_Enter(object sender, EventArgs e) {
             ClearBox(MiddleNameBX);
-        }
-
-        private void Dependent1FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1FirstBX);
-        }
-
-        private void Dependent1MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1MiddleBX);
-        }
-
-        private void Dependent1LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1LastBX);
-        }
-
-        private void Dependent2FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2FirstBX);
-        }
-
-        private void Dependent2MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2MiddleBX);
-        }
-
-        private void Dependent2LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2LastBX);
-        }
-
-        private void Dependent3FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3FirstBX);
-        }
-
-        private void Dependent3MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3MiddleBX);
-        }
-
-        private void Dependent3LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3LastBX);
-        }
-
-        private void Dependent4FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4FirstBX);
-        }
-
-        private void Dependent4MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4MiddleBX);
-        }
-
-        private void Dependent4LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4LastBX);
-        }
-
-        private void Dependent5FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5FirstBX);
-        }
-
-        private void Dependent5MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5MiddleBX);
-        }
-
-        private void Dependent5LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5LastBX);
         }
 
         private void BirthplaceStreetNoBX_Enter(object sender, EventArgs e) {
@@ -508,11 +423,6 @@ namespace MSAMISUserInterface {
             SSSWarn.Hide(SSSNoBX);
             LicenseWarn.Hide(LicenseNoBX);
             ContactWarn.Hide(ContactLBL);
-            Dep1Warn.Hide(Dependent1FirstBX);
-            Dep2Warn.Hide(Dependent2FirstBX);
-            Dep3Warn.Hide(Dependent3FirstBX);
-            Dep4Warn.Hide(Dependent4FirstBX);
-            Dep5Warn.Hide(Dependent5FirstBX);
             ReligionWarn.Hide(ReligionBX);
             SpouseWarn.Hide(SpouseFirstBX);
             FatherWarn.Hide(FatherFirstBX);
@@ -532,6 +442,19 @@ namespace MSAMISUserInterface {
         #endregion
 
         #region Adding and Editing
+
+        private static int GetRelationshipIndex(string rep) {
+            switch (rep) {
+                case "Son":
+                    return 1;
+                case "Daughter":
+                    return 2;
+                case "Sibling":
+                    return 3;
+                default:
+                    return 0;
+            }
+        }
 
         private void GEditDetailsBTN_Click(object sender, EventArgs e) {
             if (CheckInput()) {
@@ -566,23 +489,13 @@ namespace MSAMISUserInterface {
                     try {
                         InsertDependent(4, FatherFirstBX.Text, FatherMiddleBX.Text, FatherLastBX.Text);
                         InsertDependent(5, MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text);
-                        if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX) && CVStatusBX.SelectedIndex!=1)
+                        if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX) && CVStatusBX.SelectedIndex != 1)
                             InsertDependent(6, SpouseFirstBX.Text, SpouseMiddleBX.Text, SpouseLastBX.Text);
-                        if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
-                            InsertDependent(Dependent1RBX.SelectedIndex, Dependent1FirstBX.Text,
-                                Dependent1MiddleBX.Text, Dependent1LastBX.Text);
-                        if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
-                            InsertDependent(Dependent2RBX.SelectedIndex, Dependent2FirstBX.Text,
-                                Dependent2MiddleBX.Text, Dependent2LastBX.Text);
-                        if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
-                            InsertDependent(Dependent3RBX.SelectedIndex, Dependent3FirstBX.Text,
-                                Dependent3MiddleBX.Text, Dependent3LastBX.Text);
-                        if (!CheckName(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX))
-                            InsertDependent(Dependent4RBX.SelectedIndex, Dependent4FirstBX.Text,
-                                Dependent4MiddleBX.Text, Dependent4LastBX.Text);
-                        if (!CheckName(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX))
-                            InsertDependent(Dependent5RBX.SelectedIndex, Dependent5FirstBX.Text,
-                                Dependent5MiddleBX.Text, Dependent5LastBX.Text);
+
+                        foreach (DataGridViewRow row in DepGRD.Rows) {
+                            InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()) , row.Cells[1].Value.ToString(),
+                            row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                        }
                     }
                     catch (Exception ex) {
                         ShowErrorBox("Saving Guards", ex.Message);
@@ -619,41 +532,17 @@ namespace MSAMISUserInterface {
                         UpdateDependent(MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text, 5);
                         if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX))
                             UpdateDependent(SpouseFirstBX.Text, SpouseMiddleBX.Text, SpouseLastBX.Text, 6);
-                        if (CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
-                            if (Dependents.Length > 0)
-                                UpdateDependent(Dependent1FirstBX.Text, Dependent1MiddleBX.Text, Dependent1LastBX.Text,
-                                    Dependent1RBX.SelectedIndex, Dependents[0]);
+
+
+                        foreach (DataGridViewRow row in DepGRD.Rows) {
+                            if (row.Cells[0].Value.ToString().Equals("-1"))
+                            InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString(),
+                                row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
                             else
-                                InsertDependent(Dependent1RBX.SelectedIndex, Dependent1FirstBX.Text,
-                                    Dependent1MiddleBX.Text, Dependent1LastBX.Text);
-                        if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
-                            if (Dependents.Length > 1)
-                                UpdateDependent(Dependent2FirstBX.Text, Dependent2MiddleBX.Text, Dependent2LastBX.Text,
-                                    Dependent2RBX.SelectedIndex, Dependents[1]);
-                            else
-                                InsertDependent(Dependent2RBX.SelectedIndex, Dependent2FirstBX.Text,
-                                    Dependent2MiddleBX.Text, Dependent2LastBX.Text);
-                        if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
-                            if (Dependents.Length > 2)
-                                UpdateDependent(Dependent3FirstBX.Text, Dependent3MiddleBX.Text, Dependent3LastBX.Text,
-                                    Dependent3RBX.SelectedIndex, Dependents[2]);
-                            else
-                                InsertDependent(Dependent3RBX.SelectedIndex, Dependent3FirstBX.Text,
-                                    Dependent3MiddleBX.Text, Dependent3LastBX.Text);
-                        if (!CheckName(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX))
-                            if (Dependents.Length > 3)
-                                UpdateDependent(Dependent4FirstBX.Text, Dependent4MiddleBX.Text, Dependent4LastBX.Text,
-                                    Dependent4RBX.SelectedIndex, Dependents[3]);
-                            else
-                                InsertDependent(Dependent4RBX.SelectedIndex, Dependent4FirstBX.Text,
-                                    Dependent4MiddleBX.Text, Dependent4LastBX.Text);
-                        if (!CheckName(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX))
-                            if (Dependents.Length > 4)
-                                UpdateDependent(Dependent5FirstBX.Text, Dependent5MiddleBX.Text, Dependent5LastBX.Text,
-                                    Dependent5RBX.SelectedIndex, Dependents[5]);
-                            else
-                                InsertDependent(Dependent5RBX.SelectedIndex, Dependent5FirstBX.Text,
-                                    Dependent5MiddleBX.Text, Dependent5LastBX.Text);
+                                UpdateDependent(row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(),
+                                    GetRelationshipIndex(row.Cells[4].Value.ToString()), int.Parse(row.Cells[0].Value.ToString()));
+                        }
+                        
                         ViewRef.RefreshData();
                     }
                     catch (Exception ex) {
@@ -769,26 +658,6 @@ namespace MSAMISUserInterface {
                 if (CheckNameNotRequired(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX) && CVStatusBX.SelectedIndex > 0) {
                     ShowToolTipOnBx(SpouseWarn, "Spouse's Name", "Please specify or complete the fields",
                         SpouseFirstBX);
-                    check = false;
-                }
-                if (CheckNameNotRequired(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX, Dependent1RBX)) {
-                    ShowToolTipOnBx(Dep1Warn, "Dependent's Name", "Please complete the fields", Dependent1FirstBX);
-                    check = false;
-                }
-                if (CheckNameNotRequired(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX, Dependent2RBX)) {
-                    ShowToolTipOnBx(Dep2Warn, "Dependent's Name", "Please complete the fields", Dependent2FirstBX);
-                    check = false;
-                }
-                if (CheckNameNotRequired(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX, Dependent3RBX)) {
-                    ShowToolTipOnBx(Dep3Warn, "Dependent's Name", "Please complete the fields", Dependent3FirstBX);
-                    check = false;
-                }
-                if (CheckNameNotRequired(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX, Dependent4RBX)) {
-                    ShowToolTipOnBx(Dep4Warn, "Dependent's Name", "Please complete the fields", Dependent4FirstBX);
-                    check = false;
-                }
-                if (CheckNameNotRequired(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX, Dependent5RBX)) {
-                    ShowToolTipOnBx(Dep5Warn, "Dependent's Name", "Please complete the fields", Dependent5FirstBX);
                     check = false;
                 }
                 if (check) {
@@ -936,8 +805,21 @@ namespace MSAMISUserInterface {
             ChangePage(WorkPNL, WorkLBL);
         }
 
+
         #endregion
 
+        private void DelRowBTN_Click(object sender, EventArgs e) {
+            try {
+                Guard.RemoveDependent(int.Parse(DepGRD.SelectedRows[0].Cells[0].Value.ToString()));
+                DepGRD.Rows.Remove(DepGRD.SelectedRows[0]);
+            }
+            catch (Exception ex) {
+                ShowErrorBox("Removing Guards", ex.Message);
+            }
+        }
 
+        private void AddRowBTN_Click(object sender, EventArgs e) {
+            DepGRD.Rows.Add(-1, "First", "Middle", "Last", "");
+        }
     }
 }

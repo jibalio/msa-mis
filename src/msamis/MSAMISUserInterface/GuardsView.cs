@@ -113,7 +113,6 @@ namespace MSAMISUserInterface {
                 Button = "UPDATE",
                 ViewRef = this,
                 Reference = Reference,
-                Dependents = Dependents,
                 Location = Location
             };
             view.ShowDialog();
@@ -172,26 +171,19 @@ namespace MSAMISUserInterface {
                     }
                     catch (Exception ex) { Console.WriteLine(ex); }
                     try {
-                        _dataTable = Guard.GetGuardsDependents(Gid);
-                        try {
-                            Dependents = new int[_dataTable.Rows.Count];
-                            Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
-                            Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 0));
-                            Dependents[1] = int.Parse(_dataTable.Rows[1]["DeID"].ToString());
-                            Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 1));
-                            Dependents[2] = int.Parse(_dataTable.Rows[2]["DeID"].ToString());
-                            Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 2));
-                            Dependents[3] = int.Parse(_dataTable.Rows[3]["DeID"].ToString());
-                            Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 3));
-                            Dependents[4] = int.Parse(_dataTable.Rows[4]["DeID"].ToString());
-                            Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 4));
+                       DependentsGRD.DataSource = Guard.GetGuardsDependentsView(Gid);
+                       DependentsGRD.Columns[0].Visible = false;
+                        DependentsGRD.Columns[1].Width = 250;
+                        DependentsGRD.Columns[2].Width = 150;
+
+                        if (DependentsGRD.Rows.Count == 0) {
+                            ErrorPNL.BringToFront();
+                            ErrorPNL.Visible = true;
                         }
-                        catch (Exception ex) { Console.WriteLine(ex); }
+                        else {
+                            ErrorPNL.Visible = false;
+                        }
+
                     }
                     catch (Exception ex) { Console.WriteLine(ex); }
                 }
@@ -242,26 +234,17 @@ namespace MSAMISUserInterface {
                     }
                     catch (Exception ex) { Console.WriteLine(ex); }
                     try {
-                        _dataTable = Archiver.GetGuardsDependents(Gid);
-                        try {
-                            Dependents = new int[_dataTable.Rows.Count];
-                            Dependents[0] = int.Parse(_dataTable.Rows[0]["DeID"].ToString());
-                            Dependent1LBL.Text = AddRelationship(_dataTable.Rows[0]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 0));
-                            Dependents[1] = int.Parse(_dataTable.Rows[1]["DeID"].ToString());
-                            Dependent2LBL.Text = AddRelationship(_dataTable.Rows[1]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 1));
-                            Dependents[2] = int.Parse(_dataTable.Rows[2]["DeID"].ToString());
-                            Dependent3LBL.Text = AddRelationship(_dataTable.Rows[2]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 2));
-                            Dependents[3] = int.Parse(_dataTable.Rows[3]["DeID"].ToString());
-                            Dependent4LBL.Text = AddRelationship(_dataTable.Rows[3]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 3));
-                            Dependents[4] = int.Parse(_dataTable.Rows[4]["DeID"].ToString());
-                            Dependent5LBL.Text = AddRelationship(_dataTable.Rows[4]["DRelationship"].ToString(),
-                                BuildName(_dataTable, 4));
+                        DependentsGRD.DataSource = Archiver.GetGuardsDependentsView(Gid);
+                        DependentsGRD.Columns[0].Visible = false;
+                        DependentsGRD.Columns[1].Width = 250;
+                        DependentsGRD.Columns[2].Width = 150;
+
+                        if (DependentsGRD.Rows.Count == 0) {
+                            ErrorPNL.BringToFront();
+                            ErrorPNL.Visible = true;
+                        } else {
+                            ErrorPNL.Visible = false;
                         }
-                        catch (Exception ex) { Console.WriteLine(ex); }
                     }
                     catch (Exception ex){ Console.WriteLine(ex);}
                 }
@@ -308,19 +291,6 @@ namespace MSAMISUserInterface {
                 case "2": return "Married";
                 case "3": return "Widowed";
                 default: return "Unspecified";
-            }
-        }
-
-        private static string AddRelationship(string relationshipType, string lab) {
-            switch (relationshipType) {
-                case "1":
-                    return lab + " - Son";
-                case "2":
-                    return lab + " - Daughter";
-                case "3":
-                    return lab + " - Sibling";
-                default:
-                    return lab + " - Undpecified";
             }
         }
 

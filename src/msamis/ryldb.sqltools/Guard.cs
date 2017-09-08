@@ -60,7 +60,11 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '4' OR DRelationship = '5' OR DRelationship = '6') ORDER BY DRelationship ASC");
         }
         public static DataTable GetGuardsDependents(int GID) {
-            return SQLTools.ExecuteQuery("SELECT * FROM dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
+            return SQLTools.ExecuteQuery("SELECT deid, fn, mn, ln, case DRelationship when '1' then 'Son' when '2' then 'Daughter' when '3' then 'Sibling' end as Relationship  FROM dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
+        }
+
+        public static DataTable GetGuardsDependentsView(int GID) {
+            return SQLTools.ExecuteQuery("SELECT DeID, concat(ln,', ',fn,' ',mn), case DRelationship when '1' then 'Son' when '2' then 'Daughter' when '3' then 'Sibling' end as Relationship FROM dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
         }
 
         public static void RemoveDependent (int DependentId) {

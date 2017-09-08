@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientsEdit));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientsEdit));
             this.EmerLBL = new System.Windows.Forms.Label();
             this.label86 = new System.Windows.Forms.Label();
             this.ContactBX = new System.Windows.Forms.TextBox();
@@ -40,7 +40,14 @@
             this.LocationCityBX = new System.Windows.Forms.TextBox();
             this.LocationStreetNameBX = new System.Windows.Forms.TextBox();
             this.DetailsPNL = new System.Windows.Forms.Panel();
+            this.DelRowBTN = new System.Windows.Forms.Button();
+            this.AddRowBTN = new System.Windows.Forms.Button();
             this.CertifiersGRD = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.First = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Middle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Last = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label53 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
@@ -65,13 +72,6 @@
             this.Dep2Warn = new System.Windows.Forms.ToolTip(this.components);
             this.Dep3Warn = new System.Windows.Forms.ToolTip(this.components);
             this.GEditDetailsBTN = new System.Windows.Forms.Button();
-            this.AddRowBTN = new System.Windows.Forms.Button();
-            this.DelRowBTN = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.First = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Middle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Last = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +81,7 @@
             this.EmerLBL.AutoSize = true;
             this.EmerLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.EmerLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.EmerLBL.Location = new System.Drawing.Point(118, 16);
+            this.EmerLBL.Location = new System.Drawing.Point(85, 18);
             this.EmerLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EmerLBL.Name = "EmerLBL";
             this.EmerLBL.Size = new System.Drawing.Size(125, 21);
@@ -94,7 +94,7 @@
             this.label86.AutoSize = true;
             this.label86.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label86.Location = new System.Drawing.Point(118, 83);
+            this.label86.Location = new System.Drawing.Point(85, 85);
             this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label86.Name = "label86";
             this.label86.Size = new System.Drawing.Size(103, 19);
@@ -107,7 +107,7 @@
             this.ContactBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactBX.Location = new System.Drawing.Point(242, 83);
+            this.ContactBX.Location = new System.Drawing.Point(209, 85);
             this.ContactBX.MaxLength = 45;
             this.ContactBX.Name = "ContactBX";
             this.ContactBX.Size = new System.Drawing.Size(132, 18);
@@ -164,7 +164,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(118, 114);
+            this.label23.Location = new System.Drawing.Point(85, 116);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(80, 19);
@@ -177,7 +177,7 @@
             this.ContactNoBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactNoBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ContactNoBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ContactNoBX.Location = new System.Drawing.Point(242, 114);
+            this.ContactNoBX.Location = new System.Drawing.Point(209, 116);
             this.ContactNoBX.MaxLength = 45;
             this.ContactNoBX.Name = "ContactNoBX";
             this.ContactNoBX.Size = new System.Drawing.Size(131, 18);
@@ -190,7 +190,7 @@
             this.ManagerBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ManagerBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.ManagerBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ManagerBX.Location = new System.Drawing.Point(242, 52);
+            this.ManagerBX.Location = new System.Drawing.Point(209, 54);
             this.ManagerBX.MaxLength = 45;
             this.ManagerBX.Name = "ManagerBX";
             this.ManagerBX.Size = new System.Drawing.Size(132, 18);
@@ -253,6 +253,46 @@
             this.DetailsPNL.Size = new System.Drawing.Size(599, 400);
             this.DetailsPNL.TabIndex = 228;
             // 
+            // DelRowBTN
+            // 
+            this.DelRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DelRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.DelRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DelRowBTN.BackgroundImage")));
+            this.DelRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DelRowBTN.FlatAppearance.BorderSize = 0;
+            this.DelRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DelRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.DelRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DelRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.DelRowBTN.ForeColor = System.Drawing.Color.White;
+            this.DelRowBTN.Location = new System.Drawing.Point(449, 161);
+            this.DelRowBTN.Name = "DelRowBTN";
+            this.DelRowBTN.Size = new System.Drawing.Size(78, 21);
+            this.DelRowBTN.TabIndex = 239;
+            this.DelRowBTN.Text = "DEL ROW";
+            this.DelRowBTN.UseVisualStyleBackColor = false;
+            this.DelRowBTN.Click += new System.EventHandler(this.DelRowBTN_Click);
+            // 
+            // AddRowBTN
+            // 
+            this.AddRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddRowBTN.BackgroundImage")));
+            this.AddRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddRowBTN.FlatAppearance.BorderSize = 0;
+            this.AddRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AddRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.AddRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.AddRowBTN.ForeColor = System.Drawing.Color.White;
+            this.AddRowBTN.Location = new System.Drawing.Point(365, 161);
+            this.AddRowBTN.Name = "AddRowBTN";
+            this.AddRowBTN.Size = new System.Drawing.Size(78, 21);
+            this.AddRowBTN.TabIndex = 231;
+            this.AddRowBTN.Text = "ADD ROW";
+            this.AddRowBTN.UseVisualStyleBackColor = false;
+            this.AddRowBTN.Click += new System.EventHandler(this.AddRowBTN_Click);
+            // 
             // CertifiersGRD
             // 
             this.CertifiersGRD.AllowUserToAddRows = false;
@@ -274,7 +314,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.CertifiersGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.CertifiersGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CertifiersGRD.ColumnHeadersVisible = false;
             this.CertifiersGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.First,
@@ -292,7 +331,7 @@
             this.CertifiersGRD.DefaultCellStyle = dataGridViewCellStyle2;
             this.CertifiersGRD.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.CertifiersGRD.EnableHeadersVisualStyles = false;
-            this.CertifiersGRD.Location = new System.Drawing.Point(119, 194);
+            this.CertifiersGRD.Location = new System.Drawing.Point(86, 196);
             this.CertifiersGRD.MultiSelect = false;
             this.CertifiersGRD.Name = "CertifiersGRD";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -306,15 +345,43 @@
             this.CertifiersGRD.RowHeadersVisible = false;
             this.CertifiersGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.CertifiersGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CertifiersGRD.Size = new System.Drawing.Size(424, 131);
+            this.CertifiersGRD.Size = new System.Drawing.Size(442, 131);
             this.CertifiersGRD.TabIndex = 231;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "Column1";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            this.ID.Width = 150;
+            // 
+            // First
+            // 
+            this.First.HeaderText = "FIRST";
+            this.First.Name = "First";
+            // 
+            // Middle
+            // 
+            this.Middle.HeaderText = "MIDDLE";
+            this.Middle.Name = "Middle";
+            // 
+            // Last
+            // 
+            this.Last.HeaderText = "LAST";
+            this.Last.Name = "Last";
+            // 
+            // Contact
+            // 
+            this.Contact.HeaderText = "CONTACT";
+            this.Contact.Name = "Contact";
+            this.Contact.Width = 130;
             // 
             // label53
             // 
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label53.Location = new System.Drawing.Point(118, 157);
+            this.label53.Location = new System.Drawing.Point(85, 159);
             this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(94, 21);
@@ -327,7 +394,7 @@
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(118, 52);
+            this.label9.Location = new System.Drawing.Point(85, 54);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 19);
@@ -339,7 +406,7 @@
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.White;
             this.label34.ForeColor = System.Drawing.Color.LightGray;
-            this.label34.Location = new System.Drawing.Point(237, 56);
+            this.label34.Location = new System.Drawing.Point(204, 58);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(141, 19);
             this.label34.TabIndex = 96;
@@ -350,7 +417,7 @@
             this.label87.AutoSize = true;
             this.label87.BackColor = System.Drawing.Color.White;
             this.label87.ForeColor = System.Drawing.Color.LightGray;
-            this.label87.Location = new System.Drawing.Point(234, 87);
+            this.label87.Location = new System.Drawing.Point(201, 89);
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(147, 19);
             this.label87.TabIndex = 217;
@@ -361,7 +428,7 @@
             this.label41.AutoSize = true;
             this.label41.BackColor = System.Drawing.Color.White;
             this.label41.ForeColor = System.Drawing.Color.Silver;
-            this.label41.Location = new System.Drawing.Point(233, 118);
+            this.label41.Location = new System.Drawing.Point(200, 120);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(147, 19);
             this.label41.TabIndex = 112;
@@ -563,74 +630,6 @@
             this.GEditDetailsBTN.Text = "SAVE";
             this.GEditDetailsBTN.UseVisualStyleBackColor = false;
             this.GEditDetailsBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
-            // 
-            // AddRowBTN
-            // 
-            this.AddRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AddRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddRowBTN.BackgroundImage")));
-            this.AddRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddRowBTN.FlatAppearance.BorderSize = 0;
-            this.AddRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.AddRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.AddRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.AddRowBTN.ForeColor = System.Drawing.Color.White;
-            this.AddRowBTN.Location = new System.Drawing.Point(384, 159);
-            this.AddRowBTN.Name = "AddRowBTN";
-            this.AddRowBTN.Size = new System.Drawing.Size(78, 21);
-            this.AddRowBTN.TabIndex = 231;
-            this.AddRowBTN.Text = "ADD ROW";
-            this.AddRowBTN.UseVisualStyleBackColor = false;
-            this.AddRowBTN.Click += new System.EventHandler(this.AddRowBTN_Click);
-            // 
-            // DelRowBTN
-            // 
-            this.DelRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DelRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.DelRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DelRowBTN.BackgroundImage")));
-            this.DelRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DelRowBTN.FlatAppearance.BorderSize = 0;
-            this.DelRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.DelRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.DelRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DelRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.DelRowBTN.ForeColor = System.Drawing.Color.White;
-            this.DelRowBTN.Location = new System.Drawing.Point(468, 159);
-            this.DelRowBTN.Name = "DelRowBTN";
-            this.DelRowBTN.Size = new System.Drawing.Size(78, 21);
-            this.DelRowBTN.TabIndex = 239;
-            this.DelRowBTN.Text = "DEL ROW";
-            this.DelRowBTN.UseVisualStyleBackColor = false;
-            this.DelRowBTN.Click += new System.EventHandler(this.DelRowBTN_Click);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "Column1";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            this.ID.Width = 150;
-            // 
-            // First
-            // 
-            this.First.HeaderText = "FIRST";
-            this.First.Name = "First";
-            // 
-            // Middle
-            // 
-            this.Middle.HeaderText = "MIDDLE";
-            this.Middle.Name = "Middle";
-            // 
-            // Last
-            // 
-            this.Last.HeaderText = "LAST";
-            this.Last.Name = "Last";
-            // 
-            // Contact
-            // 
-            this.Contact.HeaderText = "CONTACT";
-            this.Contact.Name = "Contact";
-            this.Contact.Width = 130;
             // 
             // ClientsEdit
             // 

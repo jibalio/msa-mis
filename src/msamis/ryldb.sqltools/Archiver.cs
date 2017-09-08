@@ -155,6 +155,10 @@ namespace MSAMISUserInterface {
         public static DataTable GetGuardsDependents(int GID) {
             return SQLTools.ExecuteQuery("SELECT * FROM msadbarchive.dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
         }
+
+        public static DataTable GetGuardsDependentsView(int GID) {
+            return SQLTools.ExecuteQuery("SELECT DeID, concat(ln,', ',fn,' ',mn), case DRelationship when '1' then 'Son' when '2' then 'Daughter' when '3' then 'Sibling' end as Relationship FROM msadbarchive.dependents WHERE GID=" + GID + " AND (DRelationship = '1' OR DRelationship = '2' OR DRelationship = '3') ORDER BY DeID ASC");
+        }
         #endregion
 
         #region Duty Details Getters

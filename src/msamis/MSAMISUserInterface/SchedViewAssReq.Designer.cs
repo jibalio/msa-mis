@@ -374,7 +374,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -393,6 +393,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.RequestedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.RequestedGRD.RowHeadersVisible = false;
+            this.RequestedGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.RequestedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RequestedGRD.Size = new System.Drawing.Size(400, 132);
             this.RequestedGRD.TabIndex = 146;
