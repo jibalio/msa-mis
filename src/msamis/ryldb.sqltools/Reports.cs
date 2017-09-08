@@ -478,7 +478,7 @@ namespace MSAMISUserInterface
 
                 //Export Content
 
-                fileName = "Payslip" + pr.LN + pr.FN + pr.FN + ($@"{p.year}-{p.month}-{(p.period == 1?"1st_Half":"2nd_Half")}")+".pdf";
+                fileName = "Payslip" + pr.LN + pr.FN + pr.LN + ($@"{p.year}-{p.month}-{(p.period == 1?"1st_Half":"2nd_Half")}")+".pdf";
                 string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
                 if (!Directory.Exists(filePath))
                     Directory.CreateDirectory(filePath);
@@ -509,6 +509,16 @@ namespace MSAMISUserInterface
             {
                 PrintPDF(fileName);
             }
+        }
+
+        public void newExportToPayslipPDF(DataTable approvedList, bool printFlag)
+        {
+            //if approved list is not 1 then change filename to temp batch print for printing and delete after
+            //pass approvedlist to payroll to identify approved employees, assign to datatable
+            //loop through all rows sa datatable
+                //add phrases for payslip content for each guard
+            // add document
+
         }
 
         private Document getPDFSize(int count)

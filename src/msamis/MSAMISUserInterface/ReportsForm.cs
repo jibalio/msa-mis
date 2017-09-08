@@ -152,7 +152,7 @@ namespace MSAMISUserInterface {
             */
             var r = new Reports();
             r.PrintPayslipPDF();
-            rp.FormatPDF('d');
+            rp.FormatPDF('s');
             //
             //r.ExportToPayslipPDF(Payroll.GetApprovedPayrollsList());
 
