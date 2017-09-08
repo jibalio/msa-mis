@@ -137,34 +137,77 @@ namespace MSAMISUserInterface
                 }
             }
 
-        public void ExportPayslipPDF()
+        public void ExportPayslipPDF(int gid, int year, int month, int period)
         {
-            /*
-            PayrollReport pr = new PayrollReport();
+            var newLine = Environment.NewLine;
+            PayrollReport pr = new PayrollReport(gid, year, month, period);
             var myfont = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
             var boldfont = FontFactory.GetFont("Arial", 10, Font.BOLD, BaseColor.BLACK);
             var boldunderfont = FontFactory.GetFont("Arial", 10, Font.BOLD, BaseColor.BLACK);
             boldunderfont.SetStyle(Font.UNDERLINE);
             //Content
-            Chunk headerChunk1 = new Chunk("THIS IS TO CERTIFY THAT I'VE RECEIVED THE FULL AMOUNT OF MY SALARY FOR THE PERIOD OF ", myfont);
-            Chunk headerChunk2 = new Chunk(Attendance.GetCurrentPayPeriod.ToString() + Environment.NewLine, boldunderfont);
-            Phrase header = new Phrase();
-            header.Add(headerChunk1);
-            header.Add(headerChunk2);
-            Phrase ded = new Phrase("DEDUCTIONS", myfont);
-            Chunk dedchunk = new Chunk (": ₱" + PayrollReport.)
-            Phrase phic = new Phrase("DEDUCTIONS", myfont);
-            Phrase pagibig = new Phrase("DEDUCTIONS", myfont);
-            Phrase cashadv = new Phrase("DEDUCTIONS", myfont);
-            Phrase cashbond = new Phrase("DEDUCTIONS", myfont);
-            Phrase cash = new Phrase("DEDUCTIONS", myfont);
-            Phrase others = new Phrase("DEDUCTIONS", myfont);
-            //Humana ni diri
+            //Name
+            String GuardFullName = pr.LN.ToUpper() + ", " + pr.FN.ToUpper() + " " + pr.MN[0].ToString().ToUpper() + "."; 
+            Phrase Name = new Phrase(GuardFullName + newLine,boldfont);
 
-            Chunk
-            Chunk
+            Chunk ChunkHeader1 = new Chunk("THIS IS TO CERTIFY THAT I'VE RECEIVED THE FULL AMOUNT OF MY SALARY FOR THE PERIOD OF ", myfont);
+            Chunk ChunkHeader2 = new Chunk(Attendance.GetCurrentPayPeriod().ToString() + newLine, boldunderfont);
+            Phrase Header = new Phrase();
+            Header.Add(ChunkHeader1);
+            Header.Add(ChunkHeader2);
 
-            String fileName = GetFileName('p');
+            //deductions
+            Phrase Ded = new Phrase("DEDUCTIONS:" + newLine, boldfont);
+            Phrase SSS = new Phrase("SSS: ", myfont);
+            Chunk ChunkSSS = new Chunk("₱" + pr.Sss + newLine);
+            SSS.Add(ChunkSSS);
+            Phrase PHIC = new Phrase("PHIC: ", myfont);
+            Chunk ChunkPHIC = new Chunk("₱" + pr.PHIC + newLine);
+            PHIC.Add(ChunkPHIC);
+            Phrase TaxWith = new Phrase("Tax Withhold: ", myfont);
+            Chunk ChunkTaxWith = new Chunk("₱" + pr.Withtax + newLine);
+            TaxWith.Add(ChunkTaxWith);
+            Phrase PagIbig = new Phrase("Pag-Ibig: ", myfont);
+            Chunk ChunkPagIbig = new Chunk("₱" + pr.HDMF + newLine);
+            PagIbig.Add(ChunkPagIbig);
+            Phrase CashAdv = new Phrase("Cash Advance: ", myfont);
+            Chunk ChunkCashAdv = new Chunk("₱" + pr.CashAdvance + newLine);
+            CashAdv.Add(ChunkCashAdv);
+
+            double TotalDedVal = pr.Sss + pr.PHIC + pr.Withtax + pr.HDMF + pr.CashAdvance; 
+            Phrase TotalDed = new Phrase("Total Deductions: ", boldfont);
+            Chunk ChunkTotalDed = new Chunk("₱" + TotalDedVal + newLine);
+            TotalDed.Add(ChunkTotalDed);
+
+            //Bonuses
+            Phrase Bon = new Phrase("Bonuses:" + newLine, boldfont);
+            Phrase ThirteenthMon = new Phrase("Thirteenth Month: ", myfont);
+            Chunk Chunk13Mon = new Chunk("₱" + pr.ThirteenthMonthPay + newLine);
+            ThirteenthMon.Add(Chunk13Mon);
+            Phrase Cola = new Phrase("Cola: ", myfont);
+            Chunk ChunkCola = new Chunk("₱" + pr.Cola + newLine);
+            Cola.Add(ChunkCola);
+            Phrase CashBond = new Phrase("Cash Bond: ", myfont);
+            Chunk ChunkCashBond = new Chunk("₱" + pr.CashBond + newLine);
+            CashBond.Add(ChunkCashBond);
+            Phrase EmergencyAllow = new Phrase("Emergency Allowance: ", myfont);
+            Chunk ChunkEmergencyAllow = new Chunk("₱" + pr.EmergencyAllowance + newLine);
+            EmergencyAllow.Add(ChunkEmergencyAllow);
+
+            double TotalBonVal = pr.ThirteenthMonthPay + pr.Cola + pr.CashBond + pr.EmergencyAllowance;
+            Phrase TotalBon = new Phrase("Total Bonuses: ", boldfont);
+            Chunk ChunkTotalBon = new Chunk("₱" + TotalBonVal + newLine);
+            TotalBon.Add(ChunkTotalBon);
+
+            Phrase Footer = new Phrase("COUNT YOUR MONEY BEFORE LEAVING" + newLine, boldfont);
+
+            Phrase Total = new Phrase("Total Pay:" + newLine, boldfont);
+            Chunk ChunkTotal = new Chunk("₱" + pr.NetAmountPaid + newLine);
+            Total.Add(ChunkTotal);
+
+            //Export Content
+
+            String fileName = "Payslip" + pr.LN + pr.FN + pr.FN + Attendance.GetCurrentPayPeriod();
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             if (!Directory.Exists(filePath))
                 Directory.CreateDirectory(filePath);
@@ -182,11 +225,29 @@ namespace MSAMISUserInterface
                 Document pdfDoc = new Document(PageSize.A8, 10f, 10f, 10f, 10f);
                 PdfWriter.GetInstance(pdfDoc, stream);
                 pdfDoc.Open();
-                //pdfDoc.Add();
+                pdfDoc.Add(Name);
+                pdfDoc.Add(Header);
+
+                pdfDoc.Add(Ded);
+                pdfDoc.Add(SSS);
+                pdfDoc.Add(PHIC);
+                pdfDoc.Add(TaxWith);
+                pdfDoc.Add(PagIbig);
+                pdfDoc.Add(CashAdv);
+                pdfDoc.Add(TotalDed);
+
+                pdfDoc.Add(Bon);
+                pdfDoc.Add(ThirteenthMon);
+                pdfDoc.Add(Cola);
+                pdfDoc.Add(CashBond);
+                pdfDoc.Add(EmergencyAllow);
+                pdfDoc.Add(TotalBon);
+
+                pdfDoc.Add(Footer);
+                pdfDoc.Add(Total);
                 pdfDoc.Close();
                 stream.Close();
             }
-*/
         }
 
         public static String GetFileName(char o)
@@ -199,8 +260,6 @@ namespace MSAMISUserInterface
                     return "SchedSummaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
                 else if (o == 's')
                     return "SalaryReport_" + DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
-                //else if (o == 'p')
-                    //return lastname sa guard +  DateTime.Now.ToString("MMM-dd-yyyy") + ".pdf";
             return null;
             }
 
