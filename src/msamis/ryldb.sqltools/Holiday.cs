@@ -49,13 +49,21 @@ namespace MSAMISUserInterface {
         }
 
         public static DataTable GetHolidays() {
-            string q = @"SELECT hid, datestart, dateend, `desc`, 
+            string q = $@"SELECT 
+	                    hhid, datestart, dateend, `name` as 'name',
                         case type
-                        when 1 then 'Regular'
-                        when 2 then 'Special'
+                        when {Enumeration.HolidayType.Regular} then 'Regular'
+                        when {Enumeration.HolidayType.Special} then 'Special'
                         end as type,
-                        'Fixed' as trans
-                        FROM msadb.holiday; ";
+                        case transferability
+                                                when 0 then 'Fixed'
+                                                when 1 then 'Regular'
+                                                end as trans
+                        FROM
+	                        holiday
+                            left join holiday_instance ON holiday.hid = holiday_instance.hid
+                            where datestart>='01-01-2017'
+                             ";
             return SQLTools.ExecuteQuery(q);
         }
 
