@@ -1,2 +1,2 @@
-delete from holiday;
-alter table holiday auto_increment = 1;
+delete from msadb.holiday;
+delete from msadb.holiday_instance;

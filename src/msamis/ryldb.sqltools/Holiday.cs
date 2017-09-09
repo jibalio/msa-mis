@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MSAMISUserInterface;
 using System.Globalization;
-
+/*
+ * TODO: Allow Edit of Holidays
+ * TODO: Adjust payroll holiday checkers.
+ * TODO: Holiday_instance populator on new year.
+ */
 namespace MSAMISUserInterface {
     public class Holiday : IEquatable<Holiday> {
 
@@ -30,11 +34,10 @@ namespace MSAMISUserInterface {
 
 
         public static void AddHoliday(SelectionRange r, string desc, int type, int trans) {
-                string q =
-                    $@"INSERT INTO `msadb`.`holiday` (`type`, `ds_MM`, `ds_dd`, `ds_yyyy`, `de_MM`, `de_dd`, `de_yyyy`, `desc`, `status`, `datestart`, `dateend`) 
-                            VALUES ('{type}','{r.Start.Month}','{r.Start.Day}','{r.Start.Year}','{r.End.Month}','{
-                        r.End.Day}','{r.Start.Year}','{desc}','{1}', '{r.Start.ToString("yyyy-MM-dd")}', '{r.End.ToString("yyyy-MM-dd")}')";
-                SQLTools.ExecuteNonQuery(q);
+            var q = $@"
+            call msadb.proc_holiday_addholiday('{r.Start:yyyy-MM-dd}', '{r.End:yyyy-MM-dd}', '{desc}', {type}, {trans});
+            ";
+            SQLTools.ExecuteNonQuery(q);
         }
             
         public static void EditHoliday (int hid, string desc, int type, int trans) {
@@ -50,14 +53,14 @@ namespace MSAMISUserInterface {
 
         public static DataTable GetHolidays() {
             string q = $@"SELECT 
-	                    hhid, datestart, dateend, `name` as 'name',
+	                    holiday.hid, datestart, dateend, `name` as 'name',
                         case type
                         when {Enumeration.HolidayType.Regular} then 'Regular'
                         when {Enumeration.HolidayType.Special} then 'Special'
                         end as type,
                         case transferability
                                                 when 0 then 'Fixed'
-                                                when 1 then 'Regular'
+                                                when 1 then 'Movable'
                                                 end as trans
                         FROM
 	                        holiday

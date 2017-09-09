@@ -18,12 +18,12 @@ namespace MSAMISUserInterface {
 
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
-                var type = 1;
-                if (SpecialBTN.Checked) type = 2;
+                var type = Enumeration.HolidayType.Regular;
+                if (SpecialBTN.Checked) type = Enumeration.HolidayType.Special;
                 try {
                     if (AddBTN.Text.Equals("ADD")) {
                         Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type, TransBox.Checked ? 0: 1);
-                        DateLBL.Text = "Please choose a date/dates";
+                        DateLBL.Text = "Select date(s)";
                         DescBX.Text = "";
                     }
                     else {
