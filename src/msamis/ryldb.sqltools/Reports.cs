@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Drawing.Printing;
 using System.Linq;
+using rylui;
 
 namespace MSAMISUserInterface
 {
@@ -27,6 +28,7 @@ namespace MSAMISUserInterface
         public Font boldunderfont = FontFactory.GetFont("Arial", 8, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
         public Font testFont = FontFactory.GetFont("Segoe UI", 10, BaseColor.BLACK);
         public String fileName;
+        //public String LetterHeadImage = Properties.Resources.LetterHead.png;
 
         #region Guards Report
 
@@ -385,22 +387,29 @@ namespace MSAMISUserInterface
             int gid, month, period, year;
             int i;
 
-            
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             var PrintTable = new PdfPTable(2);
             var alignTable = new PdfPTable(2);
-            
+            Document pdfDoc = getPDFSize(approvedList.Rows.Count);
+
             alignTable.DefaultCell.Padding = 3;
             alignTable.WidthPercentage = 100;
             alignTable.DefaultCell.BorderWidth = 0;
             //alignTable.LockedWidth = true;
-
+            Paragraph par = new Paragraph();
             PrintTable.DefaultCell.Padding = 3;
             PrintTable.WidthPercentage = 100;
             PrintTable.DefaultCell.BorderWidth = 0;
-
+            if (approvedList.Rows.Count != 1) fileName = "PayslipBatchPrintTemp.pdf";
             //rylui.RylMessageBox.ShowDialog("Flag boiii");
             for (i = 0; i < approvedList.Rows.Count; i++)
             {
+                alignTable = new PdfPTable(2);
+                alignTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                alignTable.DefaultCell.Padding = 3;
+                alignTable.WidthPercentage = 45;
+                alignTable.DefaultCell.BorderWidth = 0;
+
                 gid = Convert.ToInt32(approvedList.Rows[i][0]);
                 month = Convert.ToInt32(approvedList.Rows[i][1]);
                 period = Convert.ToInt32(approvedList.Rows[i][2]);
@@ -412,12 +421,13 @@ namespace MSAMISUserInterface
                 Attendance.Period p = Attendance.GetCurrentPayPeriod();
                 //Content
                 //Name
-                String GuardFullName = pr.LN.ToUpper() + ", " + pr.FN.ToUpper() + " " + pr.MN[0].ToString().ToUpper() + "."; 
+                String GuardFullName = pr.LN.ToUpper() + ", " + pr.FN.ToUpper() + " " + pr.MN[0].ToString().ToUpper() + ".";
                 Phrase Name = new Phrase(GuardFullName + newLine, boldfontPayslip);
+                //rylui.RylMessageBox.ShowDialog(GuardFullName);
 
-                Phrase Header = new Phrase("THIS IS TO CERTIFY THAT I'VE RECEIVED THE FULL AMOUNT OF MY SALARY FOR THE PERIOD OF ", myfontPayslip);
+                Phrase Header = new Phrase("THIS IS TO CERTIFY THAT I'VE RECEIVED THE FULL" + newLine + " AMOUNT OF MY SALARY FOR THE PERIOD OF " + newLine, myfontPayslip);
                 Chunk ChunkHeader2 = new Chunk(($@"{(p.period == 1 ? "1ST HALF" : "2ND HALF")} OF {p.month}/{p.year}") + newLine + newLine, boldfontPayslip);
-                                            
+
                 Header.Add(ChunkHeader2);
 
                 //deductions
@@ -469,41 +479,42 @@ namespace MSAMISUserInterface
 
                 alignTable.DefaultCell.Colspan = 2;
                 alignTable.AddCell(new Phrase(" "));
-                 
+
                 alignTable.AddCell(new Phrase("PLEASE COUNT YOUR MONEY BEFORE LEAVING", myfontPayslip));
 
                 alignTable.AddCell(new Phrase(" "));
 
-                alignTable.AddCell(new Phrase("TOTAL PAY: Php " + pr.NetAmountPaid.ToString("₱0.00"), boldunderfontPayslip));
+                alignTable.AddCell(new Phrase("TOTAL PAY: Php " + pr.NetAmountPaid.ToString("₱0.00") + newLine + newLine, boldunderfontPayslip));
+                alignTable.DefaultCell.Colspan = 1;
 
                 //Export Content
-
-                fileName = "Payslip" + pr.LN + pr.FN + pr.LN + ($@"{p.year}-{p.month}-{(p.period == 1?"1st_Half":"2nd_Half")}")+".pdf";
-                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
+                if (approvedList.Rows.Count == 1)
+                    fileName = "Payslip" + pr.LN + pr.FN + pr.MN + ($@"{p.year}-{p.month}-{(p.period == 1 ? "1st_Half" : "2nd_Half")}") + ".pdf";
+                
                 if (!Directory.Exists(filePath))
                     Directory.CreateDirectory(filePath);
 
+
                 if (File.Exists(filePath + "\\" + fileName))
                 {
-                    DialogResult x = rylui.RylMessageBox.ShowDialog(fileName + " already exists.\nDo you want to replace it?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (x == DialogResult.Yes)
-                    {
-                        File.Delete(filePath + "\\" + fileName);
-                    }
-                }
-                using (FileStream stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
-                {
-                    Document pdfDoc = getPDFSize(approvedList.Rows.Count);// new Document(PageSize.A8, 10f, 10f, 10f, 10f);
-                    PdfWriter.GetInstance(pdfDoc, stream);
-                    pdfDoc.Open();
-                    pdfDoc.Add(Name);
-                    pdfDoc.Add(Header);
 
-                    pdfDoc.Add(alignTable);
-                    pdfDoc.Close();
-                    stream.Close();
+                    File.Delete(filePath + "\\" + fileName);
+
                 }
-                
+     
+
+                par.Add(Name);
+                par.Add(Header);
+                par.Add(alignTable);
+            }
+            using (FileStream stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
+            {
+                //pdfDoc = new Document();
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(par);
+                pdfDoc.Close();
+                stream.Close();
             }
             if (printFlag == true)
             {
@@ -511,21 +522,12 @@ namespace MSAMISUserInterface
             }
         }
 
-        public void newExportToPayslipPDF(DataTable approvedList, bool printFlag)
-        {
-            //if approved list is not 1 then change filename to temp batch print for printing and delete after
-            //pass approvedlist to payroll to identify approved employees, assign to datatable
-            //loop through all rows sa datatable
-                //add phrases for payslip content for each guard
-            // add document
-
-        }
 
         private Document getPDFSize(int count)
         {
             if (count == 1)
                 return new Document(PageSize.A6, 10f, 10f, 10f, 10f);
-            else return new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+            else return new Document(PageSize.A4, 10f, 60f, 10f, 10f);
         }
 
         public void PrintPayslipPDF()
