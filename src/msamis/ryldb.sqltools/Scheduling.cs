@@ -515,7 +515,6 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         WHERE `DID`='{did}';
                          ";
             SQLTools.ExecuteNonQuery(q);
-            SQLTools.ExecuteNonQuery($@"DELETE FROM msadb.attendance where did={did}");
             return "=";
         }
 
