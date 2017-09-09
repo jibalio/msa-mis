@@ -109,7 +109,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            Reference.PayLoadEmployeeList();
+            if (!Name.Equals("Archived")) Reference.PayLoadEmployeeList();
             Close();
         }
 
