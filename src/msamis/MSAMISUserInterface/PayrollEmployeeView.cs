@@ -299,7 +299,7 @@ namespace MSAMISUserInterface {
                 }
             }
             catch (Exception ex) {
-                ShowErrorBox("Payroll Calculations", ex.Message);
+                rylui.RylMessageBox.ShowDialog("This guard has no Approved payrolls archived.","Payroll Calculations",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
         }
 

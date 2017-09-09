@@ -291,12 +291,12 @@ namespace MSAMISUserInterface {
         }
 
         public static Payroll GetPayroll(int GID, int month, int period, int year) {
-            Payroll py = new Payroll(SQLTools.ExecuteQuery($@"select * from msadbarchive.payroll where
+                Payroll py = new Payroll(SQLTools.ExecuteQuery($@"select * from msadbarchive.payroll where
                                             gid = {GID}
                                             and period = {period}
                                             and year = {year}
                                             and month = {month} ").Rows[0]);
-            return py;
+                return py;
         }
 
         public static DataTable GetAssignmentDetails(int aid) {

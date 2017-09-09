@@ -633,7 +633,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 						else DATE_FORMAT(date_dismissal, '%Y-%m-%d')
                     end AS DateDismissal  
                from 
-					dutydetails  where (DStatus=1 or dstatus=3)  and AID=" + AID);
+					dutydetails  where  AID=" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
             }

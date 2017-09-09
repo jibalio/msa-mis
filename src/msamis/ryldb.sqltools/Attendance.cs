@@ -34,6 +34,10 @@ namespace MSAMISUserInterface {
             DataRow drra = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.request_assign where raid='{raid}'").Rows[0];
             
             // Insert new period
+            SQLTools.ExecuteNonQuery(
+                $@"delete from msadb.period where gid='{GID}' and month='{month}' and period='{periodx}' and year='{
+                        year
+                    }' and cid='{CID}';");
             String ax = $@"INSERT IGNORE INTO `msadb`.`period` 
                             (`GID`, `month`, `period`, `year`, `cid`) VALUES 
                             ('{GID}', '{month}', '{periodx}', '{year}', '{CID}')";
@@ -88,7 +92,7 @@ namespace MSAMISUserInterface {
                 // Otherwise this will lead to a SQL syntax error.
                 // Bc bulk insert.
                 if (insertables != 0) SQLTools.ExecuteNonQuery(q.Substring(0,q.Length-2));
-
+                
             }
             
         }
