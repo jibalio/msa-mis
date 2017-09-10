@@ -73,7 +73,11 @@ namespace MSAMISUserInterface {
         public static List<Holiday> InitHolidays(int year) {
             List<Holiday> holidaylist = new List<Holiday>();
             // datestart, dateend, desc
-            string q = "select * from holiday where ds_yyyy="+year;
+            string q =
+                $@"select * from holiday_instance left join holiday on holiday_instance.hid=holiday.hid
+                    where datestart>='{year}-01-01 00:00:00' AND datestart<'{
+                        year + 1
+                    }-01-01 00:00:00'";
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
                 var x = e["datestart"].ToString();
