@@ -61,13 +61,14 @@ namespace MSAMISUserInterface {
         private void EditBTN_Click(object sender, EventArgs e) {
             try {
                 if (HolidaysGRD.SelectedRows.Count > 0) {
+                    var date = HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split(' ')[0];
                     _start = new DateTime(
-                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('-')[2]),
-                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('-')[0]),
-                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[1].Value.ToString().Split('-')[1]));
-                    _end = new DateTime(int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('-')[2]),
-                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('-')[0]),
-                        int.Parse(HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split('-')[1]));
+                        int.Parse(date.Split('/')[2]),
+                        int.Parse(date.Split('/')[0]),
+                        int.Parse(date.Split('/')[1]));
+                    _end = new DateTime(int.Parse(date.Split('/')[2]),
+                        int.Parse(date.Split('/')[0]),
+                        int.Parse(date.Split('/')[1]));
                     SpecialBTN.Checked = HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
                     RegularBTN.Checked = !HolidaysGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Special");
                     DateLBL.Text = _start.ToShortDateString() + " - " + _end.ToShortDateString();
@@ -161,17 +162,20 @@ namespace MSAMISUserInterface {
 
                 foreach (DataGridViewRow row in HolidaysGRD.Rows)
                     if (row.Cells[1].Value.ToString().Equals(row.Cells[2].Value.ToString())) {
-                        dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('-')[2]),
-                            int.Parse(row.Cells[1].Value.ToString().Split('-')[0]),
-                            int.Parse(row.Cells[1].Value.ToString().Split('-')[1])));
+                        var date = row.Cells[1].Value.ToString().Split(' ')[0];
+                        dts.Add(new DateTime(int.Parse(date.Split('/')[2]),
+                            int.Parse(date.Split('/')[0]),
+                            int.Parse(date.Split('/')[1])));
                     }
                     else {
-                        var count = int.Parse(row.Cells[2].Value.ToString().Split('-')[1]) -
-                                    int.Parse(row.Cells[1].Value.ToString().Split('-')[1]);
-                        for (var i = 0; i < count + 1; i++)
-                            dts.Add(new DateTime(int.Parse(row.Cells[1].Value.ToString().Split('-')[2]),
-                                int.Parse(row.Cells[1].Value.ToString().Split('-')[0]),
-                                int.Parse(row.Cells[1].Value.ToString().Split('-')[1]) + i));
+                        var count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) -
+                                    int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
+                        for (var i = 0; i < count + 1; i++) {
+                            var date = row.Cells[1].Value.ToString().Split(' ')[0];
+                            dts.Add(new DateTime(int.Parse(date.Split('/')[2]),
+                                int.Parse(date.Split('/')[0]),
+                                int.Parse(date.Split('/')[1]) + i));
+                        }
                     }
                 HoldaysCLNDR.BoldedDates = dts.ToArray();
                 RegularBTN.Checked = true;

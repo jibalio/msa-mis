@@ -28,26 +28,10 @@ namespace MSAMISUserInterface {
             TypeDateLBL.Text = "Type: " + data.Rows[0][0] + "          Event Date: " + data.Rows[0][1];
             LocationLBL.Text = data.Rows[0][2].ToString();
             DescriptionBX.Text = data.Rows[0][3].ToString();
-            
-            try {
-                if (!data.Rows[0][5].ToString().Equals("")) {
-                    Dependent1LBL.Text = AddRelationship(data.Rows[0][5].ToString(),
-                        data.Rows[0][4].ToString());
-                    Dependent2LBL.Text = AddRelationship(data.Rows[1][5].ToString(),
-                        data.Rows[1][4].ToString());
-                    Dependent3LBL.Text = AddRelationship(data.Rows[2][5].ToString(),
-                        data.Rows[2][4].ToString());
-                    Dependent4LBL.Text = AddRelationship(data.Rows[3][5].ToString(),
-                        data.Rows[3][4].ToString());
-                    Dependent5LBL.Text = AddRelationship(data.Rows[4][5].ToString(),
-                        data.Rows[4][4].ToString());
-                }
-            }
-            catch { }
-        }
 
-        private static string AddRelationship(string relationshipType, string lab) {
-            return lab + " - " + relationshipType;
+            CertifiersGRD.DataSource = Scheduling.GetIncidentInvolved(Rid);
+            CertifiersGRD.Columns[0].Width = 270;
+            CertifiersGRD.Columns[1].Width = 100;
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
