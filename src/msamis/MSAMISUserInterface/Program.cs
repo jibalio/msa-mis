@@ -10,8 +10,11 @@ namespace MSAMISUserInterface {
         /// </summary>
         [STAThread]
         private static void Main() {
-            if (Environment.OSVersion.Version.Major & gt;= 6)
+        //if (Environment.OSVersion.Version.Major & gt;= 6)
             SetProcessDPIAware();
+
+
+
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
             //var q = Payroll.GetNextPayday().ToString();
