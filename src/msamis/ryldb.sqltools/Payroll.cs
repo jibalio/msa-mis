@@ -381,10 +381,18 @@ namespace MSAMISUserInterface {
             ;", GID, period.period, period.year, period.month));
             var HourIterationTotal = new Hours();
             foreach (DataRow dr in HourIterationDataTable.Rows) {
-                var ti = dr["date"].ToString().Split(' ')[0] + " " + dr["TimeIn"];
-                var to = dr["date"].ToString().Split(' ')[0] + " " + dr["TimeOut"].ToString();
-                var TimeInDateTime = DateTime.Parse(ti);
-                var TimeOutDateTime = DateTime.Parse(to);
+                DateTime TimeInDateTime = DateTime.Parse(dr["date"].ToString());
+                DateTime TimeOutDateTime = DateTime.Parse(dr["date"].ToString());
+                string[] ti_time = dr["TimeIn"].ToString().Split(' ');
+                string[] to_time = dr["timeout"].ToString().Split(' ');
+                int tidt_add = int.Parse(ti_time[0].Split(':')[0]);
+                TimeInDateTime = TimeInDateTime.AddHours(tidt_add);
+                TimeInDateTime = TimeInDateTime.AddMinutes(int.Parse(ti_time[0].Split(':')[1]));
+                if (ti_time[1].ToLower().Equals("pm")) TimeInDateTime = TimeInDateTime.AddHours(12);
+
+                TimeOutDateTime = TimeOutDateTime.AddHours(int.Parse(to_time[0].Split(':')[0]));
+                TimeOutDateTime = TimeOutDateTime.AddMinutes(int.Parse(to_time[0].Split(':')[1]));
+                if (to_time[1].ToLower().Equals("pm")) TimeOutDateTime = TimeOutDateTime.AddHours(12);
 
                 /*
                 var StartDutyString = dr["date"].ToString().Substring(0, 10) + " " + (dr["ti_hh"] + ":" + (dr["ti_mm"].ToString() == "0" ? "00" : dr["ti_mm"]) +":00" +
@@ -396,12 +404,12 @@ namespace MSAMISUserInterface {
                 var EndDutyString = dr["date"].ToString();
                 var DutyStart = DateTime.Parse(StartDutyString);
                 DutyStart = DutyStart.AddHours(int.Parse(dr["ti_hh"].ToString()));
-                if (dr["ti_period"].ToString().ToLower() == "pm") DutyStart.AddHours(12);
+                if (dr["ti_period"].ToString().ToLower() == "pm") DutyStart = DutyStart.AddHours(12);
                 DutyStart = DutyStart.AddMinutes(int.Parse(dr["ti_mm"].ToString()));
                 var DutyEnd = DateTime.Parse(EndDutyString);
                 DutyEnd = DutyEnd.AddHours(int.Parse(dr["to_hh"].ToString()));
                 DutyEnd = DutyEnd.AddMinutes(int.Parse(dr["to_mm"].ToString()));
-                if (dr["to_period"].ToString().ToLower() == "pm") DutyEnd.AddHours(12);
+                if (dr["to_period"].ToString().ToLower() == "pm") DutyEnd = DutyEnd.AddHours(12);
                 var hp = new HourProcessor(TimeInDateTime, TimeOutDateTime, DutyStart, DutyEnd);
                 TotalHours.Add(hp);
             }
