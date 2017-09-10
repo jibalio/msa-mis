@@ -1751,7 +1751,7 @@ namespace MSAMISUserInterface {
                                           Attendance.GetCurrentPayPeriod().period)
                                       .ToString("MM/yyyy, ");
                 PPeriodLBL.Text += Attendance.GetCurrentPayPeriod().period == 1 ? "First" : "Second";
-                PPayLBL.Text = "Next Pay: " + Payroll.GetNextPayday().ToString("MM//dd/yyyy");
+                PPayLBL.Text = "Next Pay: " + Payroll.GetNextPayday().ToString("MM/dd/yyyy");
                 _scurrentPanel = PEmpListPage;
                 _scurrentBtn = PEmpListBTN;
             }

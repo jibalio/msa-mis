@@ -395,7 +395,7 @@ namespace MSAMISUserInterface {
 
         private void SSSReset_Click(object sender, EventArgs e) {
             if (RylMessageBox.ShowDialog(
-                    "Are you sure you want to cancel the adjustments on the current SSS Contribution rates?",
+                    "Are you sure you want to cancel the adjustments on the current SSS Contribution rates? Unsaved changes will be lost.",
                     "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 LoadSssPage();
                 EditingMode(false);
@@ -420,7 +420,7 @@ namespace MSAMISUserInterface {
                     "SSS Contribution", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else {
-                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates?",
+                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates? Unsaved changes will be lost.",
                         "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     try {
                         Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
@@ -596,7 +596,7 @@ namespace MSAMISUserInterface {
         }
 
         private void TaxSaveBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current Tax rates?",
+            if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current Tax rates? Unsaved changes will be lost.",
                     "Withholding Tax Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 try {
                     RatesSaver.CreateWithTaxQuery(TaxDateDTPKR.Value);
@@ -736,7 +736,7 @@ namespace MSAMISUserInterface {
         }
 
         private void MultCancelBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the adjustment?",
+            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the adjustment? Unsaved changes will be lost.",
                     "Rates Multipliers", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 MultEditMode(false);
                 LoadRatesMult();

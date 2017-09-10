@@ -29,7 +29,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing? Unsaved changes will be lost.", "Stop Editing?",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
                 CloseBTN.Tag = "1";
                 Close();
@@ -95,6 +95,13 @@ namespace MSAMISUserInterface {
                 for (var i = 0; i < dv.Rows.Count; i++)
                     CertifiedByCMBX.Items.Add(
                         new ComboBoxItem(dv.Rows[i][4] + ", " + dv.Rows[i][2] + " " + dv.Rows[i][3], dv.Rows[i][0].ToString()));
+
+                if (CertifiedByCMBX.Items.Count == 0) {
+                    RylMessageBox.ShowDialog(
+                        "There are no certifiers added for this client. Please add a certifier before adding an attendance.",
+                        "No Certifiers Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Close();
+                }
             }
             catch (Exception ex) {
                 Console.Write(ex.Message);

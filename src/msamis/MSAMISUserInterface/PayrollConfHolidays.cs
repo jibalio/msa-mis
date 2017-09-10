@@ -109,7 +109,7 @@ namespace MSAMISUserInterface {
 
         private void Payroll_ConfHolidays_FormClosing(object sender, FormClosingEventArgs e) {
             if (!CloseBTN.Visible)
-                if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+                if (RylMessageBox.ShowDialog("Are you sure you want to stop editing? Unsaved changes will be lost.", "Stop Editing?",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) Refer.Close();
                 else e.Cancel = true;
             else
