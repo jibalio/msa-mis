@@ -809,9 +809,11 @@ namespace MSAMISUserInterface {
         #endregion
 
         private void DelRowBTN_Click(object sender, EventArgs e) {
-            try {
+            try { 
+                if (DepGRD.SelectedRows.Count > 0) { 
                 Guard.RemoveDependent(int.Parse(DepGRD.SelectedRows[0].Cells[0].Value.ToString()));
                 DepGRD.Rows.Remove(DepGRD.SelectedRows[0]);
+                }
             }
             catch (Exception ex) {
                 ShowErrorBox("Removing Guards", ex.Message);

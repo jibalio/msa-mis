@@ -174,14 +174,14 @@
             this.DelRowBTN = new System.Windows.Forms.Button();
             this.AddRowBTN = new System.Windows.Forms.Button();
             this.DepGRD = new System.Windows.Forms.DataGridView();
-            this.WorkPNL = new System.Windows.Forms.Panel();
-            this.AddLBL = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.First = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Middle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Last = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rel = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.WorkPNL = new System.Windows.Forms.Panel();
+            this.AddLBL = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.PersonalPNL.SuspendLayout();
             this.FamilyPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DepGRD)).BeginInit();
@@ -2067,6 +2067,41 @@
             this.DepGRD.Size = new System.Drawing.Size(434, 222);
             this.DepGRD.TabIndex = 241;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "Column1";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            this.ID.Width = 150;
+            // 
+            // First
+            // 
+            this.First.HeaderText = "FIRST";
+            this.First.Name = "First";
+            // 
+            // Middle
+            // 
+            this.Middle.HeaderText = "MIDDLE";
+            this.Middle.Name = "Middle";
+            // 
+            // Last
+            // 
+            this.Last.HeaderText = "LAST";
+            this.Last.Name = "Last";
+            // 
+            // Rel
+            // 
+            this.Rel.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Rel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Rel.HeaderText = "RELATIONSHIP";
+            this.Rel.Items.AddRange(new object[] {
+            "",
+            "Son",
+            "Daughter",
+            "Sibling"});
+            this.Rel.Name = "Rel";
+            this.Rel.Width = 130;
+            // 
             // WorkPNL
             // 
             this.WorkPNL.Controls.Add(this.label80);
@@ -2123,41 +2158,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 600);
             this.panel3.TabIndex = 234;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "Column1";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            this.ID.Width = 150;
-            // 
-            // First
-            // 
-            this.First.HeaderText = "FIRST";
-            this.First.Name = "First";
-            // 
-            // Middle
-            // 
-            this.Middle.HeaderText = "MIDDLE";
-            this.Middle.Name = "Middle";
-            // 
-            // Last
-            // 
-            this.Last.HeaderText = "LAST";
-            this.Last.Name = "Last";
-            // 
-            // Rel
-            // 
-            this.Rel.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.Rel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Rel.HeaderText = "RELATIONSHIP";
-            this.Rel.Items.AddRange(new object[] {
-            "",
-            "Son",
-            "Daughter",
-            "Sibling"});
-            this.Rel.Name = "Rel";
-            this.Rel.Width = 130;
             // 
             // GuardsEdit
             // 

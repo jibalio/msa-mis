@@ -10,6 +10,8 @@ namespace MSAMISUserInterface {
         /// </summary>
         [STAThread]
         private static void Main() {
+            if (Environment.OSVersion.Version.Major & gt;= 6)
+            SetProcessDPIAware();
             //RylMessageBox.ShowDialog("Could not connect to the specified hosts", "Message Title", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk);
 
             //var q = Payroll.GetNextPayday().ToString();
@@ -30,6 +32,9 @@ namespace MSAMISUserInterface {
             //Scheduling.ApproveUnassignment(42);
             // Scheduling.AddAssignment(1, new int[] { 1 });
         }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
     }
 
 

@@ -267,10 +267,12 @@ namespace MSAMISUserInterface {
         }
 
         private void DelRowBTN_Click(object sender, EventArgs e) {
-            if (!CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString().Equals("-1")) {
-                Client.RemoveCertifier(int.Parse(CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString()));
+            if (CertifiersGRD.SelectedRows.Count > 0) { 
+                if (!CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString().Equals("-1")) {
+                 Client.RemoveCertifier(int.Parse(CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString()));
+               }
+                CertifiersGRD.Rows.Remove(CertifiersGRD.SelectedRows[0]);
             }
-            CertifiersGRD.Rows.Remove(CertifiersGRD.SelectedRows[0]);
         }
     }
 }

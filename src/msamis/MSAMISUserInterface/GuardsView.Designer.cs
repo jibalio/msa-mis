@@ -96,18 +96,18 @@
             this.PersonalLBL = new System.Windows.Forms.Label();
             this.FamilyLBL = new System.Windows.Forms.Label();
             this.FamilyPNL = new System.Windows.Forms.Panel();
-            this.WorkPNL = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.DependentsGRD = new System.Windows.Forms.DataGridView();
             this.ErrorPNL = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.WorkPNL = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.PersonalPNL.SuspendLayout();
             this.FamilyPNL.SuspendLayout();
-            this.WorkPNL.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DependentsGRD)).BeginInit();
             this.ErrorPNL.SuspendLayout();
+            this.WorkPNL.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // FadeTMR
@@ -987,48 +987,6 @@
             this.FamilyPNL.TabIndex = 238;
             this.FamilyPNL.Visible = false;
             // 
-            // WorkPNL
-            // 
-            this.WorkPNL.Controls.Add(this.TrainLBL);
-            this.WorkPNL.Controls.Add(this.label18);
-            this.WorkPNL.Controls.Add(this.label36);
-            this.WorkPNL.Controls.Add(this.label17);
-            this.WorkPNL.Controls.Add(this.CourseLBL);
-            this.WorkPNL.Controls.Add(this.label20);
-            this.WorkPNL.Controls.Add(this.label39);
-            this.WorkPNL.Controls.Add(this.label19);
-            this.WorkPNL.Controls.Add(this.EdAtLBL);
-            this.WorkPNL.Controls.Add(this.SSSLBL);
-            this.WorkPNL.Controls.Add(this.label37);
-            this.WorkPNL.Controls.Add(this.TINLBL);
-            this.WorkPNL.Controls.Add(this.PrevAssLVL);
-            this.WorkPNL.Controls.Add(this.PhilHealthLBL);
-            this.WorkPNL.Controls.Add(this.label35);
-            this.WorkPNL.Controls.Add(this.PrevAgencyLBL);
-            this.WorkPNL.Controls.Add(this.LicenseNoLBL);
-            this.WorkPNL.Controls.Add(this.label33);
-            this.WorkPNL.Location = new System.Drawing.Point(62, 117);
-            this.WorkPNL.Name = "WorkPNL";
-            this.WorkPNL.Size = new System.Drawing.Size(437, 421);
-            this.WorkPNL.TabIndex = 239;
-            this.WorkPNL.Visible = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.WorkLBL);
-            this.panel3.Controls.Add(this.PersonalLBL);
-            this.panel3.Controls.Add(this.FamilyLBL);
-            this.panel3.Controls.Add(this.CloseBTN);
-            this.panel3.Controls.Add(this.GEditDetailsBTN);
-            this.panel3.Controls.Add(this.FamilyPNL);
-            this.panel3.Controls.Add(this.PersonalPNL);
-            this.panel3.Controls.Add(this.WorkPNL);
-            this.panel3.Location = new System.Drawing.Point(348, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(550, 600);
-            this.panel3.TabIndex = 240;
-            // 
             // DependentsGRD
             // 
             this.DependentsGRD.AllowUserToAddRows = false;
@@ -1111,10 +1069,52 @@
             this.label15.TabIndex = 149;
             this.label15.Text = "No Dependents Found";
             // 
+            // WorkPNL
+            // 
+            this.WorkPNL.Controls.Add(this.TrainLBL);
+            this.WorkPNL.Controls.Add(this.label18);
+            this.WorkPNL.Controls.Add(this.label36);
+            this.WorkPNL.Controls.Add(this.label17);
+            this.WorkPNL.Controls.Add(this.CourseLBL);
+            this.WorkPNL.Controls.Add(this.label20);
+            this.WorkPNL.Controls.Add(this.label39);
+            this.WorkPNL.Controls.Add(this.label19);
+            this.WorkPNL.Controls.Add(this.EdAtLBL);
+            this.WorkPNL.Controls.Add(this.SSSLBL);
+            this.WorkPNL.Controls.Add(this.label37);
+            this.WorkPNL.Controls.Add(this.TINLBL);
+            this.WorkPNL.Controls.Add(this.PrevAssLVL);
+            this.WorkPNL.Controls.Add(this.PhilHealthLBL);
+            this.WorkPNL.Controls.Add(this.label35);
+            this.WorkPNL.Controls.Add(this.PrevAgencyLBL);
+            this.WorkPNL.Controls.Add(this.LicenseNoLBL);
+            this.WorkPNL.Controls.Add(this.label33);
+            this.WorkPNL.Location = new System.Drawing.Point(62, 117);
+            this.WorkPNL.Name = "WorkPNL";
+            this.WorkPNL.Size = new System.Drawing.Size(437, 421);
+            this.WorkPNL.TabIndex = 239;
+            this.WorkPNL.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.WorkLBL);
+            this.panel3.Controls.Add(this.PersonalLBL);
+            this.panel3.Controls.Add(this.FamilyLBL);
+            this.panel3.Controls.Add(this.CloseBTN);
+            this.panel3.Controls.Add(this.GEditDetailsBTN);
+            this.panel3.Controls.Add(this.FamilyPNL);
+            this.panel3.Controls.Add(this.PersonalPNL);
+            this.panel3.Controls.Add(this.WorkPNL);
+            this.panel3.Location = new System.Drawing.Point(348, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(550, 600);
+            this.panel3.TabIndex = 240;
+            // 
             // GuardsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(898, 598);
             this.ControlBox = false;
@@ -1148,13 +1148,13 @@
             this.PersonalPNL.PerformLayout();
             this.FamilyPNL.ResumeLayout(false);
             this.FamilyPNL.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DependentsGRD)).EndInit();
+            this.ErrorPNL.ResumeLayout(false);
+            this.ErrorPNL.PerformLayout();
             this.WorkPNL.ResumeLayout(false);
             this.WorkPNL.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DependentsGRD)).EndInit();
-            this.ErrorPNL.ResumeLayout(false);
-            this.ErrorPNL.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -68,15 +68,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ReportLBL = new System.Windows.Forms.Label();
             this.ReportPNL = new System.Windows.Forms.Panel();
-            this.DelRowBTN = new System.Windows.Forms.Button();
-            this.AddRowBTN = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.DepsGRD = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.First = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Middle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Last = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rel = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.DelRowBTN = new System.Windows.Forms.Button();
+            this.AddRowBTN = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.GuardsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GuardsGRD)).BeginInit();
             this.panel1.SuspendLayout();
@@ -504,58 +504,6 @@
             this.ReportPNL.Size = new System.Drawing.Size(549, 337);
             this.ReportPNL.TabIndex = 127;
             // 
-            // DelRowBTN
-            // 
-            this.DelRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DelRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.DelRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DelRowBTN.BackgroundImage")));
-            this.DelRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DelRowBTN.FlatAppearance.BorderSize = 0;
-            this.DelRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.DelRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.DelRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DelRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.DelRowBTN.ForeColor = System.Drawing.Color.White;
-            this.DelRowBTN.Location = new System.Drawing.Point(401, 150);
-            this.DelRowBTN.Name = "DelRowBTN";
-            this.DelRowBTN.Size = new System.Drawing.Size(78, 21);
-            this.DelRowBTN.TabIndex = 245;
-            this.DelRowBTN.Text = "DEL ROW";
-            this.DelRowBTN.UseVisualStyleBackColor = false;
-            this.DelRowBTN.Click += new System.EventHandler(this.DelRowBTN_Click);
-            // 
-            // AddRowBTN
-            // 
-            this.AddRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.AddRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddRowBTN.BackgroundImage")));
-            this.AddRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddRowBTN.FlatAppearance.BorderSize = 0;
-            this.AddRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.AddRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            this.AddRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.AddRowBTN.ForeColor = System.Drawing.Color.White;
-            this.AddRowBTN.Location = new System.Drawing.Point(317, 150);
-            this.AddRowBTN.Name = "AddRowBTN";
-            this.AddRowBTN.Size = new System.Drawing.Size(78, 21);
-            this.AddRowBTN.TabIndex = 243;
-            this.AddRowBTN.Text = "ADD ROW";
-            this.AddRowBTN.UseVisualStyleBackColor = false;
-            this.AddRowBTN.Click += new System.EventHandler(this.AddRowBTN_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(161, 39);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(256, 45);
-            this.label3.TabIndex = 110;
-            this.label3.Text = "Unassign Guard";
-            // 
             // DepsGRD
             // 
             this.DepsGRD.AllowUserToAddRows = false;
@@ -657,10 +605,62 @@
             this.Rel.Name = "Rel";
             this.Rel.Width = 130;
             // 
+            // DelRowBTN
+            // 
+            this.DelRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DelRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.DelRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DelRowBTN.BackgroundImage")));
+            this.DelRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DelRowBTN.FlatAppearance.BorderSize = 0;
+            this.DelRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DelRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.DelRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DelRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.DelRowBTN.ForeColor = System.Drawing.Color.White;
+            this.DelRowBTN.Location = new System.Drawing.Point(401, 150);
+            this.DelRowBTN.Name = "DelRowBTN";
+            this.DelRowBTN.Size = new System.Drawing.Size(78, 21);
+            this.DelRowBTN.TabIndex = 245;
+            this.DelRowBTN.Text = "DEL ROW";
+            this.DelRowBTN.UseVisualStyleBackColor = false;
+            this.DelRowBTN.Click += new System.EventHandler(this.DelRowBTN_Click);
+            // 
+            // AddRowBTN
+            // 
+            this.AddRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddRowBTN.BackgroundImage")));
+            this.AddRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddRowBTN.FlatAppearance.BorderSize = 0;
+            this.AddRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AddRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.AddRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.AddRowBTN.ForeColor = System.Drawing.Color.White;
+            this.AddRowBTN.Location = new System.Drawing.Point(317, 150);
+            this.AddRowBTN.Name = "AddRowBTN";
+            this.AddRowBTN.Size = new System.Drawing.Size(78, 21);
+            this.AddRowBTN.TabIndex = 243;
+            this.AddRowBTN.Text = "ADD ROW";
+            this.AddRowBTN.UseVisualStyleBackColor = false;
+            this.AddRowBTN.Click += new System.EventHandler(this.AddRowBTN_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(161, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(256, 45);
+            this.label3.TabIndex = 110;
+            this.label3.Text = "Unassign Guard";
+            // 
             // SchedUnassignGuard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(548, 598);
             this.ControlBox = false;

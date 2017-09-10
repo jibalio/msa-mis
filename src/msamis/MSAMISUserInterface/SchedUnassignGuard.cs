@@ -188,6 +188,7 @@ namespace MSAMISUserInterface {
         }
 
         private void DelRowBTN_Click(object sender, EventArgs e) {
+            if (DepsGRD.SelectedRows.Count > 0)
             DepsGRD.Rows.Remove(DepsGRD.SelectedRows[0]);
         }
     }
