@@ -27,7 +27,7 @@ namespace MSAMISUserInterface {
                         DescBX.Text = "";
                     }
                     else {
-                        Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()),
+                        Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), HoldaysCLNDR.SelectionRange.Start, HoldaysCLNDR.SelectionRange.End,
                             DescBX.Text,
                             type, TransBox.Checked ? 0 : 1);
                         CancelBTN.PerformClick();
@@ -66,6 +66,7 @@ namespace MSAMISUserInterface {
                         int.Parse(date.Split('/')[2]),
                         int.Parse(date.Split('/')[0]),
                         int.Parse(date.Split('/')[1]));
+                    date = HolidaysGRD.SelectedRows[0].Cells[2].Value.ToString().Split(' ')[0];
                     _end = new DateTime(int.Parse(date.Split('/')[2]),
                         int.Parse(date.Split('/')[0]),
                         int.Parse(date.Split('/')[1]));
@@ -75,7 +76,7 @@ namespace MSAMISUserInterface {
                     DescBX.Text = HolidaysGRD.SelectedRows[0].Cells[3].Value.ToString();
                     TransBox.Checked = HolidaysGRD.SelectedRows[0].Cells[5].Value.ToString().Equals("Fixed");
                 }
-                HoldaysCLNDR.Enabled = false;
+                HolidaysGRD.Enabled = false;
                 AddBTN.Text = "SAVE";
                 CloseBTN.Visible = false;
                 RemoveBTN.Visible = false;
@@ -94,7 +95,7 @@ namespace MSAMISUserInterface {
             TransBox.Checked = false;
             SpecialBTN.Checked = false;
             RegularBTN.Checked = false;
-            HoldaysCLNDR.Enabled = true;
+            HolidaysGRD.Enabled = true;
             RemoveBTN.Visible = true;
             CloseBTN.Visible = true;
             EditBTN.Visible = true;
