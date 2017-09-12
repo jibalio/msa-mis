@@ -10,7 +10,15 @@ using Crypt = BCrypt.Net.BCrypt;
 
 namespace MSAMISUserInterface {
     public class Login {
+
         public static int LoggedInUser;
+        public static int SessionId;
+
+        public static void EndSession() {
+                
+        }
+
+        
         public static bool Authenticate(string uname, string pword) {
             int uid;
             try {
@@ -26,9 +34,10 @@ namespace MSAMISUserInterface {
                     SQLTools.conn.Close();
                     SQLTools.ExecuteNonQuery($@"
                     INSERT INTO `msadb`.`loginhistory` 
-                    (`uid`, `logintime`) 
+                    (`uid`, `session_start`) 
                     VALUES ('{uid}', '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');
                     ");
+                    SessionId = SQLTools.GetInt("select last_insert_id()");
                     return true;
                 }
                 else return false;
