@@ -20,12 +20,6 @@ namespace MSAMISUserInterface {
 
         public string ApprovedBy;
         
-        #region Adjustement Operationen
-
-        public void GetAdjustments() { }
-
-        #endregion
-
         #region Constructors
 
         private DataRow DbValues;
@@ -1021,12 +1015,11 @@ where rates_id={rates_id};
             var HasElapsed = DateTime.Now >= date_effective;
 
             // Create ContribDetails Table (main)
-
             // if date has already elapsed (adding historical data)
             if (HasElapsed) {
                 var q2 = $@"
                     UPDATE `msadb`.`contribdetails` SET 
-                    `date_dissolved`='{date_effectives}'
+                    `date_dissolved` = '{date_effectives}'
                     WHERE type ={Enumeration.ContribType.Sss} AND status={Enumeration.ContribStatus.Active}";
                 SQLTools.ExecuteNonQuery(q2);
             }
