@@ -36,4 +36,4 @@ Get full paper [here](http://dl.dropbox.com/s/itqlfhgvn9rgm1o/MSAMIS%2097.docx?d
 * Guard Management Module
 * Client Management Module
 * Duty Scheduling Module
-* Payroll Management Module
+* Payroll Management Modulea
