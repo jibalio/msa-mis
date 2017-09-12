@@ -10,7 +10,6 @@ using System.Globalization;
 using rylui;
 
 /*
- * TODO: Allow Edit of Holidays
  * TODO: Adjust payroll holiday checkers.
  * TODO: Holiday_instance populator on new year.
  */
