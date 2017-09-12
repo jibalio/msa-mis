@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<sequenceDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 15.25" name="Sequence_Mod5_Pg3">
+<sequenceDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 15.375" name="Sequence_Mod5_Pg3">
   <SequenceDesignerModelMoniker Id="e88f8ef9-816a-4ddd-895c-2ffc85dfcdbf" />
   <nestedChildShapes>
-    <lifelineShape Id="e143ae59-1ea6-48cb-8122-5f55b253fa07" absoluteBounds="2.9912877453698905, 1, 0.15, 14.041699281628551" visible="true" visualStyleMode="Modified">
+    <lifelineShape Id="e143ae59-1ea6-48cb-8122-5f55b253fa07" absoluteBounds="2.9912877453698905, 1, 0.15, 14.104199281628551" visible="true" visualStyleMode="Modified">
       <lifelineMoniker Id="78bc062d-edfe-4c30-adc2-b226d2b69e46" LastKnownName="Payroll Sys." />
       <relativeChildShapes>
-        <lifelineHoverShape Id="65ddc773-0851-40aa-a826-d56a21750390" absoluteBounds="2.9912877453698905, 1, 0, 14">
+        <lifelineHoverShape Id="65ddc773-0851-40aa-a826-d56a21750390" absoluteBounds="2.9912877453698905, 1, 0, 14.125">
           <lifelineMoniker Id="78bc062d-edfe-4c30-adc2-b226d2b69e46" LastKnownName="Payroll Sys." />
         </lifelineHoverShape>
         <umlLifelineHeadShape Id="fe993a8b-e955-4fb6-b94e-e79f05e53a93" absoluteBounds="2.5662877453698907, 0.6, 1, 0.4" customColor="White" visualStyleMode="Modified">
@@ -20,10 +20,10 @@
         </umlExecutionSpecificationShape>
       </relativeChildShapes>
     </lifelineShape>
-    <lifelineShape Id="06b2587f-227f-4a55-a03a-9d82aada35f1" absoluteBounds="8.2220103541969358, 1, 0.15, 14.003327738616351" visible="true" visualStyleMode="Modified">
+    <lifelineShape Id="06b2587f-227f-4a55-a03a-9d82aada35f1" absoluteBounds="8.2220103541969358, 1, 0.15, 14.086661071949685" visible="true" visualStyleMode="Modified">
       <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
       <relativeChildShapes>
-        <lifelineHoverShape Id="13ec2325-9098-44d2-b208-d0db376dc98b" absoluteBounds="8.2220103541969358, 1, 0, 14">
+        <lifelineHoverShape Id="13ec2325-9098-44d2-b208-d0db376dc98b" absoluteBounds="8.2220103541969358, 1, 0, 14.125">
           <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
         </lifelineHoverShape>
         <umlLifelineHeadShape Id="900a0fcd-12d8-4084-a74b-f88b47e2b1a1" absoluteBounds="7.797010354196936, 0.6, 1, 0.4" customColor="White" visualStyleMode="Modified">
@@ -44,10 +44,10 @@
         </umlExecutionSpecificationShape>
       </relativeChildShapes>
     </lifelineShape>
-    <lifelineShape Id="15a75d42-18a9-49c6-bc4e-28670e6958cc" absoluteBounds="10.508139270238399, 1, 0.15, 14.010176866140592" visible="true" visualStyleMode="Modified">
+    <lifelineShape Id="15a75d42-18a9-49c6-bc4e-28670e6958cc" absoluteBounds="10.508139270238399, 1, 0.15, 14.093510199473924" visible="true" visualStyleMode="Modified">
       <lifelineMoniker Id="2f1b8cce-7951-4de5-8aa0-9101c8664e20" LastKnownName="MSAMIS DB" />
       <relativeChildShapes>
-        <lifelineHoverShape Id="6d257e64-ffc7-4208-8f94-08f898d8d0e5" absoluteBounds="10.508139270238399, 1, 0, 14">
+        <lifelineHoverShape Id="6d257e64-ffc7-4208-8f94-08f898d8d0e5" absoluteBounds="10.508139270238399, 1, 0, 14.125">
           <lifelineMoniker Id="2f1b8cce-7951-4de5-8aa0-9101c8664e20" LastKnownName="MSAMIS DB" />
         </lifelineHoverShape>
         <umlLifelineHeadShape Id="18358d27-04e0-42b4-88f7-c1f533051fae" absoluteBounds="10.083139270238398, 0.6, 1, 0.4" customColor="White" visualStyleMode="Modified">
@@ -94,14 +94,14 @@
         <lifelineShapeMoniker Id="c5c48340-be98-4165-8889-0622a1425b9f" />
       </nodes>
     </returnMessageConnector>
-    <lifelineShape Id="b1ecc5c1-0f2b-4bbc-ab0a-48e4b5504997" absoluteBounds="5.4185561716728516, 1, 0.15, 14.029362637646694" visible="true" visualStyleMode="Modified">
+    <lifelineShape Id="b1ecc5c1-0f2b-4bbc-ab0a-48e4b5504997" absoluteBounds="5.4185561716728516, 1, 0.15, 14.091862637646694" visible="true" visualStyleMode="Modified">
       <lifelineMoniker Id="9085e937-8206-4fbc-9f75-2318fb1ef532" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
       <relativeChildShapes>
         <umlLifelineHeadShape Id="35bfb9c0-2701-41d7-83e7-452f25f9014c" absoluteBounds="4.9935561716728518, 0.6, 1, 0.4" customColor="White" visualStyleMode="Modified">
           <lifelineMoniker Id="9085e937-8206-4fbc-9f75-2318fb1ef532" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
           <relativeChildShapes />
         </umlLifelineHeadShape>
-        <lifelineHoverShape Id="9bc55ea0-0eff-424f-8565-966723e1d28a" absoluteBounds="5.4185561716728516, 1, 0, 14">
+        <lifelineHoverShape Id="9bc55ea0-0eff-424f-8565-966723e1d28a" absoluteBounds="5.4185561716728516, 1, 0, 14.125">
           <lifelineMoniker Id="9085e937-8206-4fbc-9f75-2318fb1ef532" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
         </lifelineHoverShape>
         <umlExecutionSpecificationShape Id="9b7bf99b-7244-4599-ad29-8841aa059b6f" absoluteBounds="5.4185561716728516, 1.6654891587441727, 0.15, 5.9080034587532264" customColor="184, 204, 215" visualStyleMode="Modified">

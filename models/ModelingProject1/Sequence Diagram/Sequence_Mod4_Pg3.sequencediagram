@@ -214,16 +214,16 @@
               <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="43f19f1a-541b-453f-bb71-12631f27f9d0" name="MessageOccurrenceSpecification10">
-            <elementDefinition Id="2fb626ea-d7ac-4f0e-9cf9-7a7c5cee47e0" />
-            <covered>
-              <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="abbee9dd-7908-4271-94cc-55e6a47318bc" name="MessageOccurrenceSpecification9">
             <elementDefinition Id="c1069a1e-6b54-448b-bd70-b03e1b5b74f4" />
             <covered>
               <lifelineMoniker Id="9085e937-8206-4fbc-9f75-2318fb1ef532" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="43f19f1a-541b-453f-bb71-12631f27f9d0" name="MessageOccurrenceSpecification10">
+            <elementDefinition Id="2fb626ea-d7ac-4f0e-9cf9-7a7c5cee47e0" />
+            <covered>
+              <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
             </covered>
           </messageOccurrenceSpecification>
           <behaviorExecutionSpecification Id="abe7315e-1c7a-4247-b365-9ca9090e0e42" name="BehaviorExecutionSpecification4">
@@ -472,16 +472,16 @@
               <lifelineMoniker Id="2f1b8cce-7951-4de5-8aa0-9101c8664e20" LastKnownName="MSAMIS DB" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="259f51d7-f61c-4c2d-851d-e37b7dff8dcc" name="MessageOccurrenceSpecification39">
-            <elementDefinition Id="c8c2d64d-2151-4ce3-b6c3-92c182c45e55" />
-            <covered>
-              <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="d8e954eb-b8dc-493d-bb2e-e3e0915474ff" name="MessageOccurrenceSpecification40">
             <elementDefinition Id="0964d3e3-247d-49a5-89ec-cc3f8829811a" />
             <covered>
               <lifelineMoniker Id="9085e937-8206-4fbc-9f75-2318fb1ef532" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="259f51d7-f61c-4c2d-851d-e37b7dff8dcc" name="MessageOccurrenceSpecification39">
+            <elementDefinition Id="c8c2d64d-2151-4ce3-b6c3-92c182c45e55" />
+            <covered>
+              <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="974e734f-b624-469f-aa2c-37b60b65f43f" name="ExecutionOccurrenceSpecification22">
@@ -788,16 +788,16 @@
               <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="6983972e-5012-4f73-bc26-c27f89206ad2" name="MessageOccurrenceSpecification10">
-            <elementDefinition Id="66c9b160-ce49-47a9-b2ef-7939616379d4" />
-            <covered>
-              <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="9e2b7be8-240b-4a9f-9e07-0b9a56268bc6" name="MessageOccurrenceSpecification9">
             <elementDefinition Id="3e54a231-3810-4ee7-a7f5-eb5ddfdb46b3" />
             <covered>
               <lifelineMoniker Id="9085e937-8206-4fbc-9f75-2318fb1ef532" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="6983972e-5012-4f73-bc26-c27f89206ad2" name="MessageOccurrenceSpecification10">
+            <elementDefinition Id="66c9b160-ce49-47a9-b2ef-7939616379d4" />
+            <covered>
+              <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
             </covered>
           </messageOccurrenceSpecification>
           <behaviorExecutionSpecification Id="3b850db4-d5a9-473e-9445-768c6e1f1852" name="BehaviorExecutionSpecification4">
@@ -1046,16 +1046,16 @@
               <lifelineMoniker Id="2f1b8cce-7951-4de5-8aa0-9101c8664e20" LastKnownName="MSAMIS DB" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="1a86b0ab-679e-4297-8dd1-efa539f3bbb7" name="MessageOccurrenceSpecification40">
-            <elementDefinition Id="f6a1457f-2fb9-4bb1-a75b-274fd373b7c9" />
-            <covered>
-              <lifelineMoniker Id="9085e937-8206-4fbc-9f75-2318fb1ef532" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="a782765d-d5eb-46e1-bb3a-a278f64a78be" name="MessageOccurrenceSpecification39">
             <elementDefinition Id="4fac6bc7-f566-4806-b7f7-085bc5e3a1d9" />
             <covered>
               <lifelineMoniker Id="a77dcc01-4afd-4aee-8497-2fb79ef6619c" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="1a86b0ab-679e-4297-8dd1-efa539f3bbb7" name="MessageOccurrenceSpecification40">
+            <elementDefinition Id="f6a1457f-2fb9-4bb1-a75b-274fd373b7c9" />
+            <covered>
+              <lifelineMoniker Id="9085e937-8206-4fbc-9f75-2318fb1ef532" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="6abaaa6d-19a1-4466-acdb-5a4c825b29f4" name="ExecutionOccurrenceSpecification22">
@@ -1253,7 +1253,7 @@
               <messageOccurrenceSpecificationMoniker Id="a7d26ab6-00a7-4fbc-8606-2ceb79d7b3a2" LastKnownName="MessageOccurrenceSpecification6" />
             </receiveEvent>
           </message>
-          <message Id="6bb54454-fa48-413a-a3dd-4bd9f4ef187b" name="Insert Query" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+          <message Id="6bb54454-fa48-413a-a3dd-4bd9f4ef187b" name="ExecuteQuery ( )" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
             <elementDefinition Id="245acf8f-98c1-4571-88fb-61144c104d0f" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="abbee9dd-7908-4271-94cc-55e6a47318bc" LastKnownName="MessageOccurrenceSpecification9" />
@@ -1262,7 +1262,7 @@
               <messageOccurrenceSpecificationMoniker Id="43f19f1a-541b-453f-bb71-12631f27f9d0" LastKnownName="MessageOccurrenceSpecification10" />
             </receiveEvent>
           </message>
-          <message Id="95caf31c-6253-45b7-840c-f47fef2a9b9e" name="Inserted Values" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+          <message Id="95caf31c-6253-45b7-840c-f47fef2a9b9e" name="Insert Query" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
             <elementDefinition Id="dfea2dcb-1630-4676-b115-c9873582a360" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="259ccd30-cd91-4c20-ab94-c80e5169d214" LastKnownName="MessageOccurrenceSpecification13" />
@@ -1271,7 +1271,7 @@
               <messageOccurrenceSpecificationMoniker Id="a78b977b-b2c1-4c42-a48e-19fb2efcb239" LastKnownName="MessageOccurrenceSpecification14" />
             </receiveEvent>
           </message>
-          <message Id="2448d041-1129-4b65-993a-c5cbeb57102e" name="Response" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="2448d041-1129-4b65-993a-c5cbeb57102e" name="Values Inserted" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <elementDefinition Id="16447502-6900-456e-b843-97b6da7d06ec" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="48a3a6d2-ce0e-422c-8eaf-33065d6e1398" LastKnownName="MessageOccurrenceSpecification15" />
@@ -1325,7 +1325,7 @@
               <messageOccurrenceSpecificationMoniker Id="f6c8654e-89e6-4a2d-becc-2733f4757b27" LastKnownName="MessageOccurrenceSpecification44" />
             </receiveEvent>
           </message>
-          <message Id="bfc88f40-e379-4442-8fae-dcb9ef4f6b35" name="New basic pay set" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="bfc88f40-e379-4442-8fae-dcb9ef4f6b35" name="New basic pay set to active" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <elementDefinition Id="7c20ea5a-0de9-45cd-aa0d-9e3ca73acd4c" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="259f51d7-f61c-4c2d-851d-e37b7dff8dcc" LastKnownName="MessageOccurrenceSpecification39" />
@@ -1370,7 +1370,7 @@
               <messageOccurrenceSpecificationMoniker Id="5c1a1c00-12c3-425d-bd73-58ba63233d10" LastKnownName="MessageOccurrenceSpecification6" />
             </receiveEvent>
           </message>
-          <message Id="bfc7b48c-1431-463b-a13c-9f635410df88" name="Insert Query" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+          <message Id="bfc7b48c-1431-463b-a13c-9f635410df88" name="ExecuteQuery ( query )" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
             <elementDefinition Id="6e7e1573-0028-4ebe-872e-641f07288beb" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="9e2b7be8-240b-4a9f-9e07-0b9a56268bc6" LastKnownName="MessageOccurrenceSpecification9" />
@@ -1379,7 +1379,7 @@
               <messageOccurrenceSpecificationMoniker Id="6983972e-5012-4f73-bc26-c27f89206ad2" LastKnownName="MessageOccurrenceSpecification10" />
             </receiveEvent>
           </message>
-          <message Id="0de5e5a9-6bd4-45a6-97ac-5195d8c460af" name="Inserted Values" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+          <message Id="0de5e5a9-6bd4-45a6-97ac-5195d8c460af" name="Insert Query" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
             <elementDefinition Id="7c072570-cf59-4941-9201-2d1dcdcf227b" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="f21b5d29-b08e-4f5a-9054-668eea32c7af" LastKnownName="MessageOccurrenceSpecification13" />
@@ -1388,7 +1388,7 @@
               <messageOccurrenceSpecificationMoniker Id="a25cfb4c-233e-4e87-91f9-8f098039ba56" LastKnownName="MessageOccurrenceSpecification14" />
             </receiveEvent>
           </message>
-          <message Id="3246fce5-e6a0-4b5f-9397-3f1a0e323713" name="Response" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="3246fce5-e6a0-4b5f-9397-3f1a0e323713" name="Values Inserted" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <elementDefinition Id="c657d919-d724-437e-aed5-3434ed52fe20" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="dd51a3cc-952e-4dc9-89db-47df03a49556" LastKnownName="MessageOccurrenceSpecification15" />
@@ -1442,7 +1442,7 @@
               <messageOccurrenceSpecificationMoniker Id="bfeeca37-0899-4520-9bfe-4aae0797d252" LastKnownName="MessageOccurrenceSpecification44" />
             </receiveEvent>
           </message>
-          <message Id="dd159a3b-9a65-42ce-89bc-acf50e39954c" name="Procedure Executed: New Rates Set" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="dd159a3b-9a65-42ce-89bc-acf50e39954c" name="New rates set to active" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <elementDefinition Id="d1c3cd0c-76f5-40a4-a4c0-a7fb1f01238b" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="a782765d-d5eb-46e1-bb3a-a278f64a78be" LastKnownName="MessageOccurrenceSpecification39" />
