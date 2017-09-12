@@ -30,7 +30,10 @@ Get SQL Dump [here](https://github.com/lerycibalio/msa-mis/tree/master/sql).
 - Include Create Schema *(MySql Workbench 6.3+ only)*
 
 ## About
+
+Get full paper [here](http://dl.dropbox.com/s/itqlfhgvn9rgm1o/MSAMIS%2097.docx?dl=1).
 ### Modules
-* Guard and Client Management Module
+* Guard Management Module
+* Client Management Module
 * Duty Scheduling Module
-* Payroll Module
+* Payroll Management Module
