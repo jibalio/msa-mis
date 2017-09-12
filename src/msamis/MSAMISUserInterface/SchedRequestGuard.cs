@@ -35,6 +35,16 @@ namespace MSAMISUserInterface {
                 }
         }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         #endregion
 
         private void ClientSearchBX_TextChanged(object sender, EventArgs e) {
@@ -56,7 +66,6 @@ namespace MSAMISUserInterface {
 
         private void Sched_RequestGuard_Load(object sender, EventArgs e) {
             LoadClients();
-            Location = new Point(Location.X + 175, Location.Y);
             RequestPNL.Hide();
             PickPNL.Show();
             FadeTMR.Start();

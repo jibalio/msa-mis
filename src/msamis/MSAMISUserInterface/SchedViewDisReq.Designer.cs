@@ -274,7 +274,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SchedViewDisReq";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_ViewDisReq_FormClosing);
             this.Load += new System.EventHandler(this.Sched_ViewDisReq_Load);
             this.panel1.ResumeLayout(false);

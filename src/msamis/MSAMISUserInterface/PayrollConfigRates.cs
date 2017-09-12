@@ -21,6 +21,16 @@ namespace MSAMISUserInterface {
             Opacity = 0;
         }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         private void Payroll_ConfigSSS_Load(object sender, EventArgs e) {
             FadeTMR.Start();
             _currentPanel = BasicPagePNL;

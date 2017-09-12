@@ -737,7 +737,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SchedViewDutyDetails";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_ViewDutyDetails_FormClosing);
             this.Load += new System.EventHandler(this.Sched_ViewDutyDetails_Load);
             this.panel1.ResumeLayout(false);

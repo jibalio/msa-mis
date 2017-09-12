@@ -15,10 +15,19 @@ namespace MSAMISUserInterface {
         }
 
         private void SchedViewAssHistory_Load(object sender, EventArgs e) {
-            Location = new Point(Location.X + 200, Location.Y);
             FadeTMR.Start();
             LoadTable();
             NameLBL.Text = GuardName;
+        }
+
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
         }
 
         private void LoadTable() {

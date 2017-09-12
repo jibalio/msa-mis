@@ -673,7 +673,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SchedUnassignGuard";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sched_DismissGuard_FormClosing);
             this.Load += new System.EventHandler(this.Sched_DismissGuard_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SchedUnassignGuard_KeyDown);

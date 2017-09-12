@@ -22,10 +22,17 @@ namespace MSAMISUserInterface {
             Opacity += 0.2;
             if (Opacity >= 1) FadeTMR.Stop();
         }
+        private const int CsDropshadow = 0x20000;
 
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
         private void Sched_ViewAssReq_Load(object sender, EventArgs e) {
             RefreshData();
-            Location = new Point(Location.X + 175, Location.Y);
             FadeTMR.Start();
         }
 

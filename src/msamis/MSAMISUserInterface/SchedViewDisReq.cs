@@ -16,10 +16,18 @@ namespace MSAMISUserInterface {
 
         private void Sched_ViewDisReq_Load(object sender, EventArgs e) {
             RefreshData();
-            Location = new Point(Location.X + 175, Location.Y);
             FadeTMR.Start();
         }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
         private void RefreshData() {
             var dt = Scheduling.GetUnassignmentRequestDetails(Rid);
             ClientLBL.Text = dt.Rows[0][0].ToString();

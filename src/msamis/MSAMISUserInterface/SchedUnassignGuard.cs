@@ -21,6 +21,15 @@ namespace MSAMISUserInterface {
         public DataGridViewSelectedRowCollection Guards { get; set; }
         public int Cid { get; set; }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
 
         private void DismissBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
