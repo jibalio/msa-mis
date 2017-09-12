@@ -50,12 +50,12 @@
       <SubType>Content</SubType>
       <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg5.sequencediagram</DependentUpon>
     </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram">
+    <Content Include="Sequence Diagram\Sequence_Mod4_Pg3.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram.layout">
+    <Content Include="Sequence Diagram\Sequence_Mod4_Pg3.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram</DependentUpon>
+      <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg3.sequencediagram</DependentUpon>
     </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\ModelingProject1.uml">
