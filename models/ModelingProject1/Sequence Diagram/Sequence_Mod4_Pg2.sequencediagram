@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="ae3abbd5-17e8-46a5-9f33-552f10bc439d" name="Payroll Management System Cont." linkedPackageId="b7e2272b-8863-4ea7-9bc5-eb9985727a2e" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="57dbb823-5b24-42f8-9930-3aec40beefe2">
+      <profileInstance Id="1c61897b-ff0e-4287-944f-4ccfbbbcf44d" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="cc09755e-9200-40ae-bc8f-2b73fed11388">
+      <profileInstance Id="53293c3b-07f3-4d47-a05a-62147964256c" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="079024ea-3e30-4b8d-862a-24acc82041e1" name="Payroll Management System Cont." collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <elementDefinition Id="1400c084-6f65-4511-9b1e-80589411c828" />
+        <fragments>
+          <behaviorExecutionSpecification Id="495ffe50-6232-4775-b0e2-a8e614fd2dcb" name="BehaviorExecutionSpecification1">
+            <elementDefinition Id="07994045-a16c-45ca-abf5-bcda10d0b4cb" />
+            <coveredLifelines>
+              <lifelineMoniker Id="ca4ce4aa-aa92-44e7-9c3f-97822deda1a1" LastKnownName="Payroll Sys." />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="8f4d1b95-cc55-4c7f-85b4-f310611428b2" LastKnownName="ExecutionOccurrenceSpecification2" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="f7cdbc5c-268e-4cae-aed2-70bc01dc8910" LastKnownName="ExecutionOccurrenceSpecification1" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="1e5bd340-4590-4717-8536-75853123a47d" LastKnownName="MessageOccurrenceSpecification2" />
+              <messageOccurrenceSpecificationMoniker Id="124b3aab-5fe1-40e6-9ae6-c5bf1e8e0b57" LastKnownName="MessageOccurrenceSpecification5" />
+              <messageOccurrenceSpecificationMoniker Id="97861864-df90-44b8-85b2-22175a3e8d7e" LastKnownName="MessageOccurrenceSpecification8" />
+              <messageOccurrenceSpecificationMoniker Id="7f79c401-4c7b-42d6-a866-81da752059fe" LastKnownName="MessageOccurrenceSpecification3" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="f7cdbc5c-268e-4cae-aed2-70bc01dc8910" name="ExecutionOccurrenceSpecification1">
+            <elementDefinition Id="1d537af5-7c1f-4d64-9f45-010515bbb186" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="818831d3-0a8a-4d70-806f-780f445ecd07" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="ca4ce4aa-aa92-44e7-9c3f-97822deda1a1" LastKnownName="Payroll Sys." />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="a6822569-1e44-4440-89f4-87c052ee1ea7" name="MessageOccurrenceSpecification1">
+            <elementDefinition Id="dd9f3ffe-1f8d-4372-a387-f81406abf181" />
+            <covered>
+              <lifelineMoniker Id="750c61b5-c084-4379-bad9-8dc5aade9b61" LastKnownName="Manager" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="1e5bd340-4590-4717-8536-75853123a47d" name="MessageOccurrenceSpecification2">
+            <elementDefinition Id="2acdf077-baa1-4e1a-b28f-e120a105e207" />
+            <covered>
+              <lifelineMoniker Id="ca4ce4aa-aa92-44e7-9c3f-97822deda1a1" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="b51887d8-1fec-479a-838e-e20f468e076c" name="BehaviorExecutionSpecification2">
+            <elementDefinition Id="596cd032-249c-4060-9bf2-4b6e3c96cc58" />
+            <coveredLifelines>
+              <lifelineMoniker Id="7b4926b3-ce3e-4efa-89eb-52871ae6c460" LastKnownName="&lt;&lt;class&gt;&gt; Holiday" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="4199a3e6-51f2-4de8-a8ac-7ef9dc79d624" LastKnownName="ExecutionOccurrenceSpecification4" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="df987db3-842f-40d0-82d0-1256cd8d6963" LastKnownName="ExecutionOccurrenceSpecification3" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="1f070618-6b4a-4f25-82ca-0a2246d3f328" LastKnownName="MessageOccurrenceSpecification6" />
+              <messageOccurrenceSpecificationMoniker Id="f2b7c9fd-0300-4baf-94bd-60f25ec92c47" LastKnownName="MessageOccurrenceSpecification7" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="df987db3-842f-40d0-82d0-1256cd8d6963" name="ExecutionOccurrenceSpecification3">
+            <elementDefinition Id="fcb14b11-efb9-4c74-826c-b62b4940d8ea" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="d323c598-9278-4bc3-a36e-bc31ffb44952" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7b4926b3-ce3e-4efa-89eb-52871ae6c460" LastKnownName="&lt;&lt;class&gt;&gt; Holiday" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="124b3aab-5fe1-40e6-9ae6-c5bf1e8e0b57" name="MessageOccurrenceSpecification5">
+            <elementDefinition Id="d13908ae-0510-4e7b-873c-721c9eb2548d" />
+            <covered>
+              <lifelineMoniker Id="ca4ce4aa-aa92-44e7-9c3f-97822deda1a1" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="1f070618-6b4a-4f25-82ca-0a2246d3f328" name="MessageOccurrenceSpecification6">
+            <elementDefinition Id="e1462ca0-2537-418e-bff2-486b7782d4e0" />
+            <covered>
+              <lifelineMoniker Id="7b4926b3-ce3e-4efa-89eb-52871ae6c460" LastKnownName="&lt;&lt;class&gt;&gt; Holiday" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="f2b7c9fd-0300-4baf-94bd-60f25ec92c47" name="MessageOccurrenceSpecification7">
+            <elementDefinition Id="7a891b07-b250-4ba2-ab9c-0aceccc598ed" />
+            <covered>
+              <lifelineMoniker Id="7b4926b3-ce3e-4efa-89eb-52871ae6c460" LastKnownName="&lt;&lt;class&gt;&gt; Holiday" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="97861864-df90-44b8-85b2-22175a3e8d7e" name="MessageOccurrenceSpecification8">
+            <elementDefinition Id="0638cee4-f7ac-4445-b9e1-f32e96286480" />
+            <covered>
+              <lifelineMoniker Id="ca4ce4aa-aa92-44e7-9c3f-97822deda1a1" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="4199a3e6-51f2-4de8-a8ac-7ef9dc79d624" name="ExecutionOccurrenceSpecification4">
+            <elementDefinition Id="0680083e-6382-4255-8c64-5623ef353fcd" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="8aaeda04-990f-4f85-b1ed-4b06563deae3" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7b4926b3-ce3e-4efa-89eb-52871ae6c460" LastKnownName="&lt;&lt;class&gt;&gt; Holiday" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="7f79c401-4c7b-42d6-a866-81da752059fe" name="MessageOccurrenceSpecification3">
+            <elementDefinition Id="ce38f291-a683-41fa-ace7-431cbed64acb" />
+            <covered>
+              <lifelineMoniker Id="ca4ce4aa-aa92-44e7-9c3f-97822deda1a1" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c5c25d86-1941-4bec-8a0c-f56e97cc1c54" name="MessageOccurrenceSpecification4">
+            <elementDefinition Id="048c268f-2f94-4c35-b5d2-c0675d08c0f8" />
+            <covered>
+              <lifelineMoniker Id="750c61b5-c084-4379-bad9-8dc5aade9b61" LastKnownName="Manager" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="8f4d1b95-cc55-4c7f-85b4-f310611428b2" name="ExecutionOccurrenceSpecification2">
+            <elementDefinition Id="a0734fb8-6314-4119-89d5-b2c8f24e3e6c" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="4bb47eec-e2d6-4658-a31a-ef4094c7a976" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="ca4ce4aa-aa92-44e7-9c3f-97822deda1a1" LastKnownName="Payroll Sys." />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="750c61b5-c084-4379-bad9-8dc5aade9b61" name="Manager" isActor="true" lifelineDisplayName="Manager">
+            <elementDefinition Id="86af5609-d023-498c-a68e-e1444daf927a" />
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="a6822569-1e44-4440-89f4-87c052ee1ea7" LastKnownName="MessageOccurrenceSpecification1" />
+              <messageOccurrenceSpecificationMoniker Id="c5c25d86-1941-4bec-8a0c-f56e97cc1c54" LastKnownName="MessageOccurrenceSpecification4" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="ca4ce4aa-aa92-44e7-9c3f-97822deda1a1" name="Payroll Sys." isActor="false" lifelineDisplayName="Payroll Sys.">
+            <elementDefinition Id="e861c26c-a5fd-4f66-b938-e1e30d8171b6" />
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="f7cdbc5c-268e-4cae-aed2-70bc01dc8910" LastKnownName="ExecutionOccurrenceSpecification1" />
+              <executionOccurrenceSpecificationMoniker Id="8f4d1b95-cc55-4c7f-85b4-f310611428b2" LastKnownName="ExecutionOccurrenceSpecification2" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="6de7de27-b554-4a83-b1a2-43f98d41b22e" name=": Payroll" isActor="false" lifelineDisplayName=": Payroll">
+            <elementDefinition Id="e8a3a8c8-ecd9-4f9b-8bbd-b7f8a4b9fed8" />
+          </lifeline>
+          <lifeline Id="9c489137-490b-4991-bfd1-e9dced8236ab" name="&lt;&lt;class&gt;&gt; Payroll" isActor="false" lifelineDisplayName="&lt;&lt;class&gt;&gt; Payroll">
+            <elementDefinition Id="8b04d43b-767f-4f68-a3c0-9221b26e51b6" />
+          </lifeline>
+          <lifeline Id="7b4926b3-ce3e-4efa-89eb-52871ae6c460" name="&lt;&lt;class&gt;&gt; Holiday" isActor="false" lifelineDisplayName="&lt;&lt;class&gt;&gt; Holiday">
+            <elementDefinition Id="af71a9bb-fdf3-43b2-8abd-3bcde387b095" />
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="df987db3-842f-40d0-82d0-1256cd8d6963" LastKnownName="ExecutionOccurrenceSpecification3" />
+              <executionOccurrenceSpecificationMoniker Id="4199a3e6-51f2-4de8-a8ac-7ef9dc79d624" LastKnownName="ExecutionOccurrenceSpecification4" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="d8cee6de-99cd-43da-b3a6-13bf223e9338" name="Adjustment" isActor="false" lifelineDisplayName="Adjustment">
+            <elementDefinition Id="b5e39944-2e29-4404-95dc-1c7e47b94937" />
+          </lifeline>
+          <lifeline Id="2fbc9ba3-90bf-4639-917c-3e02e49a023e" name="&lt;&lt;class&gt;&gt; SQLTools" isActor="false" lifelineDisplayName="&lt;&lt;class&gt;&gt; SQLTools">
+            <elementDefinition Id="86116707-9c14-46aa-8404-e42c6bdef2f0" />
+          </lifeline>
+          <lifeline Id="5ab6799d-6611-4226-b46f-993910c2cc9e" name="MSAMIS DB" isActor="false" lifelineDisplayName="MSAMIS DB">
+            <elementDefinition Id="c959b8d0-d91b-497d-b7db-77988d0d22f7" />
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="f3446971-cd1d-4126-b551-e83cac87ea99" name="Add Holidays" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <elementDefinition Id="23d950b2-3335-4cf6-9a55-78a8268f879e" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="a6822569-1e44-4440-89f4-87c052ee1ea7" LastKnownName="MessageOccurrenceSpecification1" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="1e5bd340-4590-4717-8536-75853123a47d" LastKnownName="MessageOccurrenceSpecification2" />
+            </receiveEvent>
+          </message>
+          <message Id="5341b715-6f9e-47a4-8508-26cb24e3c80e" name="Holiday Details" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <elementDefinition Id="a9e10a19-37cf-49eb-a9c6-51facb30b04d" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="124b3aab-5fe1-40e6-9ae6-c5bf1e8e0b57" LastKnownName="MessageOccurrenceSpecification5" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="1f070618-6b4a-4f25-82ca-0a2246d3f328" LastKnownName="MessageOccurrenceSpecification6" />
+            </receiveEvent>
+          </message>
+          <message Id="c106f0d2-8c40-4efd-bca6-531f375bcc1a" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="bc85df72-8995-4a25-acf2-504062ac3bb5" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="f2b7c9fd-0300-4baf-94bd-60f25ec92c47" LastKnownName="MessageOccurrenceSpecification7" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="97861864-df90-44b8-85b2-22175a3e8d7e" LastKnownName="MessageOccurrenceSpecification8" />
+            </receiveEvent>
+          </message>
+          <message Id="8e3e664b-45c5-4f26-8be7-2ab9accef29d" name="Holiday Added" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="aa50eb31-8f8e-43c3-bfcf-b55a3b843069" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="7f79c401-4c7b-42d6-a866-81da752059fe" LastKnownName="MessageOccurrenceSpecification3" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="c5c25d86-1941-4bec-8a0c-f56e97cc1c54" LastKnownName="MessageOccurrenceSpecification4" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="818831d3-0a8a-4d70-806f-780f445ecd07" name="ExecutionEvent">
+        <elementDefinition Id="5cdf8e6e-2038-4aff-8f6e-8630052734f6" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="4bb47eec-e2d6-4658-a31a-ef4094c7a976" name="ExecutionEvent">
+        <elementDefinition Id="bdffb00e-9234-48fb-9fe2-2df1db366780" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="d323c598-9278-4bc3-a36e-bc31ffb44952" name="ExecutionEvent">
+        <elementDefinition Id="f7044ad2-b934-49c0-90e4-74ca276593b7" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="8aaeda04-990f-4f85-b1ed-4b06563deae3" name="ExecutionEvent">
+        <elementDefinition Id="1e12219c-6a2d-4bf1-9819-5f53ba8d1bf3" />
+      </executionEvent>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="b7e2272b-8863-4ea7-9bc5-eb9985727a2e" name="ModelingProject1">
+    <elementDefinition Id="8ac36f2a-7453-482b-a736-812a812cf6ca" />
+  </package>
+</SequenceDesignerModel>
