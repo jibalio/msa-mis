@@ -657,7 +657,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ClientsEdit";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clients_Edit_FormClosing);
             this.Load += new System.EventHandler(this.Clients_Edit_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Clients_Edit_KeyDown);

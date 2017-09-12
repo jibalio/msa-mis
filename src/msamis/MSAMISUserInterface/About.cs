@@ -18,9 +18,17 @@ namespace MSAMISUserInterface {
 
         public string Username { get; set; }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
 
         private void About_Load(object sender, EventArgs e) {
-            Location = new Point(Location.X + 150, Location.Y);
             FadeTMR.Start();
             _currentLbl = AboutLBL;
             _currentPnl = AboutPNL;

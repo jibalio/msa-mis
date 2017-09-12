@@ -25,6 +25,16 @@ namespace MSAMISUserInterface {
 
         public int Gid { get; set; }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         private void ChangePage(Panel newP, Label newB) {
             _panel.Visible = false;
             _label.ForeColor = _light;

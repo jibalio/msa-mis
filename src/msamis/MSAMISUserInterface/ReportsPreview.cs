@@ -22,6 +22,16 @@ namespace MSAMISUserInterface {
             Close();
         }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         private void GuardsReport_Load(object sender, EventArgs e) {
             FadeTMR.Start();
             LoadTable();
