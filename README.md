@@ -1,6 +1,8 @@
 # MSA-MIS
 An information system for Makabayan Security Agency written in C# &#x1F499;&#x1F499;&#x1F499;
 
+![](http://dl.dropbox.com/s/a0viv74tw3tii5b/happycommit.png?dl=1)
+
 ## Setting-up
 ### References
 MSA-MIS requires:

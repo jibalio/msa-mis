@@ -376,8 +376,9 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 q += " AND ti_hh is not null";
             } else if (filter == Enumeration.ScheduleStatus.Unscheduled)
                 q += " AND ti_hh is null ";
-            q += " group by gid";
-            DataTable dt = SQLTools.ExecuteQuery(q + searchkeyword + " order by name asc");
+            q += searchkeyword;
+            q += " group by guards.gid";
+            DataTable dt = SQLTools.ExecuteQuery(q + " order by name asc");
             return dt;
         }
 
@@ -391,10 +392,18 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                             when ti_hh is not null then 'Scheduled'
                             end as schedule,
 						case astatus
-                        when 1 then 'Active' when 2 then 'Inactive' when 3 then 'Approved' end as Status,
+                            when 1 then 'Active'    
+                            when 2 then 'Inactive' 
+                            when 3 then 'Approved' 
+                        end as Status,
                         case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', 
                         cellno as 'CONTACTNO',
-                        case gstatus when 1 then 'Active' when 2 then 'Inactive' end as 'STATUS'
+                        case gstatus 
+                            when 0 then 'Inctive' 
+                            when 1 then 'Active'
+                            when 2 then 'Pending Payroll'
+                            when 1 then 'Pending Assignment'
+                        end as 'STATUS'
                          from guards 
                         left join sduty_assignment on sduty_assignment.gid=guards.gid
                         left join (select * from dutydetails where dstatus=1) as d on sduty_assignment.aid=d.aid

@@ -85,6 +85,13 @@
       <SubType>Content</SubType>
       <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg3.sequencediagram</DependentUpon>
     </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg4_AddSSSContrib.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg4_AddSSSContrib.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg4_AddSSSContrib.sequencediagram</DependentUpon>
+    </Content>
     <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg5.sequencediagram">
       <SubType>Content</SubType>
     </Content>
@@ -92,19 +99,19 @@
       <SubType>Content</SubType>
       <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg5.sequencediagram</DependentUpon>
     </Content>
-    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg6.sequencediagram">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg7_ApproveSeq.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg6.sequencediagram.layout">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg7_ApproveSeq.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg6.sequencediagram</DependentUpon>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg7_ApproveSeq.sequencediagram</DependentUpon>
     </Content>
-    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg7.sequencediagram">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mood4_Pg6.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg7.sequencediagram.layout">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mood4_Pg6.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg7.sequencediagram</DependentUpon>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mood4_Pg6.sequencediagram</DependentUpon>
     </Content>
     <Content Include="Sequence Diagram\Mod99_MiscRefs\seq0_sqltools.cs.sequencediagram">
       <SubType>Content</SubType>
