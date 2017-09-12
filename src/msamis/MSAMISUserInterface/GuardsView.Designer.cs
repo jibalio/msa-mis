@@ -1141,7 +1141,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GuardsView";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RViewEmployees_FormClosing);
             this.Load += new System.EventHandler(this.RViewEmployees_Load);
             this.PersonalPNL.ResumeLayout(false);

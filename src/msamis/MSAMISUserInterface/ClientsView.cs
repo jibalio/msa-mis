@@ -14,11 +14,20 @@ namespace MSAMISUserInterface {
             Opacity = 0;
         }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         public int Cid { get; set; }
 
         private void Clients_View_Load(object sender, EventArgs e) {
             RefreshData();
-            Location = new Point(Location.X + 150, Location.Y);
             FadeTMR.Start();
         }
 

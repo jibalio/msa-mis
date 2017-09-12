@@ -17,7 +17,8 @@ namespace MSAMISUserInterface {
         private string _extraQueryParams = "";
         private readonly bool[] _notif = {false, false, false};
         private int _day = DateTime.Now.Day;
-        
+
+        private Point _formLocation;
         private Button _scurrentBtn;
         private Panel _scurrentPanel;
 
@@ -59,6 +60,7 @@ namespace MSAMISUserInterface {
             TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy").ToUpper();
             _scurrentPanel = GViewAllPNL;
             _scurrentBtn = GViewAllPageBTN;
+            _formLocation = Location;
 
             //Initial Methods
             DailyQuote();
@@ -161,6 +163,7 @@ namespace MSAMISUserInterface {
                 Location = new Point(Location.X - _lastLocation.X + e.X, Location.Y - _lastLocation.Y + e.Y);
                 Update();
             }
+            if (MaximizeBTN.Tag.ToString().Equals("0")) _formLocation = Location;
         }
 
         #endregion
@@ -169,20 +172,19 @@ namespace MSAMISUserInterface {
 
         private void Dashboard_MouseUp(object sender, MouseEventArgs e) {
             _mouseDown = false;
-            if (DashboardPage.Location.Y <= -300) {
-                if (DashboardPage.Location.Y <= -568)
-                    DashboardPage.Location = new Point(DashboardPage.Location.X, -628);
-                else if (DashboardPage.Location.Y <= -448)
-                    DashboardPage.Location = new Point(DashboardPage.Location.X, -508);
-                else if (DashboardPage.Location.Y <= -300)
-                    DashboardPage.Location = new Point(DashboardPage.Location.X, -328);
+            if (DashboardPage.Location.Y <= -(DashboardPage.Height/2)) {
+                if (DashboardPage.Location.Y <= -(DashboardPage.Height / 4))
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 4)));
+                else if (DashboardPage.Location.Y <= -(DashboardPage.Height / 3))
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 3)));
+                else if (DashboardPage.Location.Y <= -(DashboardPage.Height / 2))
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 2)));
                 RecordsBTN.PerformClick();
             }
             else {
-                if (DashboardPage.Location.Y > -148) DashboardPage.Location = new Point(DashboardPage.Location.X, -28);
-                else if (DashboardPage.Location.Y > -208)
-                    DashboardPage.Location = new Point(DashboardPage.Location.X, -148);
-                else DashboardPage.Location = new Point(DashboardPage.Location.X, -268);
+                if (DashboardPage.Location.Y > -(DashboardPage.Height / 2))
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, (DashboardPage.Height + (60 * 2)));
+                else DashboardPage.Location = new Point(DashboardPage.Location.X, 32);
                 _dashboardToBeMinimized = false;
                 DashboardTMR.Start();
             }
@@ -219,10 +221,26 @@ namespace MSAMISUserInterface {
             _shadow.Close();
             Lf.Opacity = 0;
             Lf.Show();
+            Lf.Location = Location;
             Hide();
         }
         private void MainForm_SizeChanged(object sender, EventArgs e) {
             _shadow.Size = Size;
+            UpdateLayout();
+        }
+
+        private void UpdateLayout() {
+            if (GArchivePNL.Visible) GArchiveListFormat();
+            if (GViewAllPNL.Visible) GuardsListFormat();
+            if (GSummaryPNL.Visible) GuardsLoadReport();
+            if (CViewAllPNL.Visible) CListFormat();
+            if (CCurrentSummaryPNL.Visible) ClientsLoadSummary();
+            if (SViewReqPNL.Visible) SchedViewRequestFormat();
+            if (SDutyDetailsPNL.Visible) SchedLoadReport();
+            if (SViewAssPNL.Visible) SchedRefreshAssignmentLayout();
+            if (SGuardHistoryPNL.Visible) SchedGuardHistoryFormat();
+            if (PSalaryReportPage.Visible) PayLoadReportLayout();
+            if (PEmpListPage.Visible) PayChnageSize();
         }
 
 
@@ -316,7 +334,7 @@ namespace MSAMISUserInterface {
             //This event gives the dashboard its slide-up effect when changing panels
 
             if (_dashboardToBeMinimized) {
-                var defaultPoint = new Point(100, -865);
+                var defaultPoint = new Point(70, -Height-DashboardPage.Height);
                 if (DashboardPage.Location.Y > defaultPoint.Y) {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y - 60);
                 }
@@ -333,10 +351,11 @@ namespace MSAMISUserInterface {
                 ControlBoxTimeLBL.Visible = false;
                 SettingsBTN.Visible = false;
                 var defaultPoint = new Point(70, 32);
-                if (DashboardPage.Location.Y != defaultPoint.Y) {
+                if (DashboardPage.Location.Y < defaultPoint.Y && DashboardPage.Location.Y < 32) {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y + 60);
                 }
                 else {
+                    DashboardPage.Location = new Point(DashboardPage.Location.X, 32);
                     DashboardTMR.Stop();
                     ControlBoxPanel.BackColor = _dashboard;
                     GuardsPage.Hide();
@@ -544,27 +563,7 @@ namespace MSAMISUserInterface {
         public void GuardsRefreshGuardsList() {
             try {
                 GAllGuardsGRD.DataSource = Guard.GetAllGuards(_extraQueryParams, GViewAllNameRDBTN.Checked ? 0 : 1);
-                if (GViewAllNameRDBTN.Checked) {
-                    GAllGuardsGRD.Columns[0].Visible = false;
-                    GAllGuardsGRD.Columns[1].Width = 240;
-                    GAllGuardsGRD.Columns[4].Width = 80;
-                    GAllGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    GAllGuardsGRD.Columns[3].Width = 80;
-                    GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    GAllGuardsGRD.Columns[5].Width = 140;
-
-                    GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    GAllGuardsGRD.Columns[2].Width = 70;
-                }
-                else {
-                    GAllGuardsGRD.Columns[0].Width = 0;
-                    GAllGuardsGRD.Columns[1].Width = 240;
-                    GAllGuardsGRD.Columns[2].Width = 300;
-                    GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-                    GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    GAllGuardsGRD.Columns[3].Width = 70;
-                }
+                GuardsListFormat();
                 GAllGuardsGRD.ClearSelection();
 
                 GActiveLBL.Text = SQLTools.GetNumberOfGuards("active") + " active guards";
@@ -572,6 +571,29 @@ namespace MSAMISUserInterface {
             }
             catch (Exception ex) {
                 ShowErrorBox("Guards Management Module", ex.Message);
+            }
+        }
+
+        private void GuardsListFormat() {
+            if (GViewAllNameRDBTN.Checked) {
+                GAllGuardsGRD.Columns[0].Visible = false;
+                GAllGuardsGRD.Columns[1].Width = (int)(GAllGuardsGRD.Width * 0.3664);
+                GAllGuardsGRD.Columns[4].Width = (int)(GAllGuardsGRD.Width * 0.1221);
+                GAllGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[3].Width = (int)(GAllGuardsGRD.Width * 0.1221);
+                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[5].Width = (int)(GAllGuardsGRD.Width * 0.2137);
+
+                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[2].Width = (int)(GAllGuardsGRD.Width * 0.1069);
+            } else {
+                GAllGuardsGRD.Columns[0].Visible = false;
+                GAllGuardsGRD.Columns[1].Width = (int)(GAllGuardsGRD.Width * 0.3664);
+                GAllGuardsGRD.Columns[2].Width = (int)(GAllGuardsGRD.Width * 0.4580);
+                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                GAllGuardsGRD.Columns[3].Width = (int)(GAllGuardsGRD.Width * 0.1069);
             }
         }
 
@@ -704,18 +726,22 @@ namespace MSAMISUserInterface {
             try {
                 GArchivedGuardsGRD.DataSource = Archiver.GetAllGuards(_extraQueryParams, "name asc");
                 GArchivedGuardsGRD.Columns[0].Visible = false;
-                GArchivedGuardsGRD.Columns[1].Width = 260;
                 GArchivedGuardsGRD.Columns[1].HeaderText = "NAME";
-                GArchivedGuardsGRD.Columns[2].Width = 70;
                 GArchivedGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GArchivedGuardsGRD.Columns[3].Visible = false;
-                GArchivedGuardsGRD.Columns[4].Width = 150;
+                GArchiveListFormat();
                 GArchivedGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GArchivedGuardsGRD.ClearSelection();
             }
             catch (Exception ex) {
                 ShowErrorBox("Guards Archive - Load", ex.Message);
             }
+        }
+
+        private void GArchiveListFormat() {
+            GArchivedGuardsGRD.Columns[1].Width = (int)(GArchivedGuardsGRD.Width * 0.5068);
+            GArchivedGuardsGRD.Columns[2].Width = (int)(GArchivedGuardsGRD.Width * 0.1365);
+            GArchivedGuardsGRD.Columns[4].Width = (int)(GArchivedGuardsGRD.Width * 0.2924);
         }
 
         private void GArchivedGuardsGRD_DoubleClick(object sender, EventArgs e) {
@@ -754,6 +780,9 @@ namespace MSAMISUserInterface {
 
         public void GuardsLoadReport() {
             try {
+                GCurrentSummaryPNL.Location = new Point(
+                    GSummaryPNL.Width / 2 - GCurrentSummaryPNL.Size.Width / 2, GCurrentSummaryPNL.Location.Y);
+
                 var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                           "\\MSAMIS Reports"); //Assuming Test is your Folder
                 var files = d.GetFiles("GuardsSummaryReport*.pdf")
@@ -921,22 +950,24 @@ namespace MSAMISUserInterface {
                 CClientListTBL.Columns[0].HeaderText = "ID";
                 CClientListTBL.Columns[0].Visible = false;
                 CClientListTBL.Columns[1].HeaderText = "NAME";
-                CClientListTBL.Columns[1].Width = 230;
                 CClientListTBL.Columns[2].HeaderText = "LOCATION";
-                CClientListTBL.Columns[2].Width = 300;
                 CClientListTBL.Columns[3].HeaderText = "STATUS";
-                CClientListTBL.Columns[3].Width = 70;
                 CClientListTBL.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
-
                 CActiveClientLBL.Text = Client.GetNumberOfActiveClients() + " active clients";
                 CTotalClientLBL.Text = Client.GetNumberOfTotalClients() + " total clients";
-
+                CListFormat();
                 CClientListTBL.ClearSelection();
             }
             catch (Exception ex) {
                 ShowErrorBox("Clients Management Module", ex.Message);
             }
+        }
+
+        private void CListFormat() {
+            CClientListTBL.Columns[1].Width = (int)(CClientListTBL.Width * 0.3511);
+            CClientListTBL.Columns[2].Width = (int)(CClientListTBL.Width * 0.4580);
+            CClientListTBL.Columns[3].Width = (int)(CClientListTBL.Width * 0.1069);
         }
 
         private void CClientListTBL_DoubleClick(object sender, EventArgs e) {
@@ -999,6 +1030,9 @@ namespace MSAMISUserInterface {
 
         public void ClientsLoadSummary() {
             try {
+                CCurrentSummaryPNL.Location = new Point(
+                    CSummaryPNL.Width / 2 - CCurrentSummaryPNL.Size.Width / 2, CCurrentSummaryPNL.Location.Y);
+
                 CSummaryDateLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
 
                 var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
@@ -2051,5 +2085,25 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
+
+        private void MaximizeBTN_Click(object sender, EventArgs e) {
+            if (MaximizeBTN.Tag.ToString().Equals("0")) {
+                Left = Top = 0;
+                Width = Screen.PrimaryScreen.WorkingArea.Width;
+                Height = Screen.PrimaryScreen.WorkingArea.Height;
+                MaximizeBTN.Tag = "1";
+                MaximizeBTN.Image = Properties.Resources.Minimize;
+            } else {
+                Width = 1000;
+                Height = 700;
+                Location = _formLocation;
+                MaximizeBTN.Tag = "0";
+                MaximizeBTN.Image = Properties.Resources.Maximize;
+            }
+        }
+
+        private void MinimizeBTN_Click(object sender, EventArgs e) {
+            WindowState = FormWindowState.Minimized;
+        }
     }
 }

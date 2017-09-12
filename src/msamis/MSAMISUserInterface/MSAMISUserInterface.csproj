@@ -398,6 +398,9 @@
     <None Include="Resources\ViewAss.png" />
     <None Include="Resources\ViewPay.png" />
     <None Include="Resources\Delete.png" />
+    <None Include="Resources\Maximize.png" />
+    <None Include="Resources\Minimize.png" />
+    <None Include="Resources\Taskbar.png" />
     <Content Include="Untitled-1.ico" />
   </ItemGroup>
   <ItemGroup>

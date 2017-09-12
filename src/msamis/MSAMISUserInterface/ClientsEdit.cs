@@ -67,9 +67,6 @@ namespace MSAMISUserInterface {
                 AddLBL.Text = "Edit details";
                 PopulateEdit();
             }
-            else {
-                Location = new Point(Location.X + 150, Location.Y);
-            }
             FadeTMR.Start();
         }
 
@@ -272,6 +269,16 @@ namespace MSAMISUserInterface {
                  Client.RemoveCertifier(int.Parse(CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString()));
                }
                 CertifiersGRD.Rows.Remove(CertifiersGRD.SelectedRows[0]);
+            }
+        }
+
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
             }
         }
     }
