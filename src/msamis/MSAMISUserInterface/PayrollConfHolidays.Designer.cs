@@ -371,7 +371,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollConfHolidays";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payroll_ConfHolidays_FormClosing);
             this.Load += new System.EventHandler(this.Sched_ConfHolidays_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HolidaysGRD)).EndInit();

@@ -16,6 +16,16 @@ namespace MSAMISUserInterface {
             else DateLBL.Text = HoldaysCLNDR.SelectionRange.Start.ToShortDateString();
         }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataVal()) {
                 var type = Enumeration.HolidayType.Regular;
@@ -129,8 +139,7 @@ namespace MSAMISUserInterface {
             Opacity = 0;
         }
 
-        private void Sched_ConfHolidays_Load(object sender, EventArgs e) {
-            Location = new Point(Location.X + 150, Location.Y);
+        private void Sched_ConfHolidays_Load(object sender, EventArgs e) { 
             LoadPage();
             FadeTMR.Start();
         }

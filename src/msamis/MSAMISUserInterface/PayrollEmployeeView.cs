@@ -22,6 +22,16 @@ namespace MSAMISUserInterface {
 
         public int Gid { get; set; }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         private static void ShowErrorBox(string name, string error) {
             RylMessageBox.ShowDialog("Please try again.\nIf the problem still persist, please contact your administrator. \n\n\nError Message: \n=============================\n" + error + "\n=============================\n", "Error Configuring " + name,
                 MessageBoxButtons.OK, MessageBoxIcon.Error);

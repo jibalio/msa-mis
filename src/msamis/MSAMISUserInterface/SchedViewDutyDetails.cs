@@ -21,6 +21,16 @@ namespace MSAMISUserInterface {
             Opacity = 0;
         }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         private void Sched_ViewDutyDetails_Load(object sender, EventArgs e) {
             if (Name.Equals("Archived") || Name.Equals("History")) {
                 AddDutyDetailsBTN.Visible = false;

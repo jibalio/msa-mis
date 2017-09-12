@@ -2210,7 +2210,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollEmployeeView";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payroll_EmployeeView_FormClosing);
             this.Load += new System.EventHandler(this.Payroll_EmployeeView_Load);
             this.MouseEnter += new System.EventHandler(this.EmpListGRD_MouseLeave);

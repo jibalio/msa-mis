@@ -17,8 +17,7 @@ namespace MSAMISUserInterface {
         private string _extraQueryParams = "";
         private readonly bool[] _notif = {false, false, false};
         private int _day = DateTime.Now.Day;
-
-        private Point _newFormLocation;
+        
         private Button _scurrentBtn;
         private Panel _scurrentPanel;
 
@@ -35,8 +34,7 @@ namespace MSAMISUserInterface {
 
         private void MainForm_Load(object sender, EventArgs e) {
             //Get the relative position after loading
-            _newFormLocation = new Point(Location.X + 50, Location.Y + 66);
-            _shadow.Location = Location;
+            _shadow.Size = Size;
             _shadow.Transparency = 0.6;
             //Initiate the methods that updates the app
             InitiateForm();
@@ -221,12 +219,14 @@ namespace MSAMISUserInterface {
             _shadow.Close();
             Lf.Opacity = 0;
             Lf.Show();
-            Lf.Location = _newFormLocation;
             Hide();
         }
+        private void MainForm_SizeChanged(object sender, EventArgs e) {
+            _shadow.Size = Size;
+        }
+
 
         private void MainForm_LocationChanged(object sender, EventArgs e) {
-            _newFormLocation = new Point(Location.X + 50, Location.Y + 66);
             _shadow.Location = Location;
         }
 
@@ -304,7 +304,6 @@ namespace MSAMISUserInterface {
                 var view = new About {
                     Username = User,
                     Refer = _shadow,
-                    Location = _newFormLocation
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -491,7 +490,6 @@ namespace MSAMISUserInterface {
                 var view = new GuardsEdit {
                     Reference = this,
                     Refer = _shadow,
-                    Location = _newFormLocation
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -592,7 +590,6 @@ namespace MSAMISUserInterface {
                         Gid = int.Parse(GAllGuardsGRD.SelectedRows[0].Cells[0].Value.ToString()),
                         Reference = this,
                         Shadow = _shadow,
-                        Location = _newFormLocation
                     };
                     _shadow.Transparent();
                     _shadow.Form = view;
@@ -694,7 +691,6 @@ namespace MSAMISUserInterface {
             try {
                 var view = new GuardsArchive {
                     Shadow = _shadow,
-                    Location = _newFormLocation,
                     Gid = int.Parse(GArchivedGuardsGRD.SelectedRows[0].Cells[0].Value.ToString())
                 };
                 _shadow.Transparent();
@@ -783,7 +779,6 @@ namespace MSAMISUserInterface {
             try {
                 var view = new ReportsPreview {
                     Refer = _shadow,
-                    Location = _newFormLocation,
                     Main = this,
                     Mode = 1
                 };
@@ -799,8 +794,7 @@ namespace MSAMISUserInterface {
                 var view = new Exporting {
                     Refer = _shadow,
                     Main = this,
-                    Mode = 'g',
-                    Location = _newFormLocation
+                    Mode = 'g'
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -887,8 +881,7 @@ namespace MSAMISUserInterface {
             try {
                 var view = new ClientsEdit {
                     Reference = this,
-                    Refer = _shadow,
-                    Location = _newFormLocation
+                    Refer = _shadow
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -960,8 +953,7 @@ namespace MSAMISUserInterface {
                     var view = new ClientsView {
                         Cid = int.Parse(CClientListTBL.SelectedRows[0].Cells[0].Value.ToString()),
                         Reference = this,
-                        Refer = _shadow,
-                        Location = _newFormLocation
+                        Refer = _shadow
                     };
                     _shadow.Transparent();
                     _shadow.Form = view;
@@ -1034,8 +1026,7 @@ namespace MSAMISUserInterface {
                 var view = new Exporting {
                     Refer = _shadow,
                     Main = this,
-                    Mode = 'c',
-                    Location = _newFormLocation
+                    Mode = 'c'
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -1050,7 +1041,6 @@ namespace MSAMISUserInterface {
             try {
                 var view = new ReportsPreview {
                     Refer = _shadow,
-                    Location = _newFormLocation,
                     Main = this,
                     Mode = 2
                 };
@@ -1200,8 +1190,7 @@ namespace MSAMISUserInterface {
             try {
                 var view = new SchedRequestGuard {
                     Reference = this,
-                    Refer = _shadow,
-                    Location = _newFormLocation
+                    Refer = _shadow
                 };
 
                 _shadow.Transparent();
@@ -1219,8 +1208,7 @@ namespace MSAMISUserInterface {
                         Reference = this,
                         Cid = int.Parse(((ComboBoxItem) SViewAssSearchClientCMBX.SelectedItem).ItemID),
                         Refer = _shadow,
-                        Guards = SViewAssGRD.SelectedRows,
-                        Location = _newFormLocation
+                        Guards = SViewAssGRD.SelectedRows
                     };
                     _shadow.Transparent();
                     _shadow.Form = view;
@@ -1325,14 +1313,19 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns[4].HeaderText = "STATUS";
             SViewReqGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            SViewReqGRD.Columns[1].Width = 250;
-            SViewReqGRD.Columns[2].Width = 120;
-            SViewReqGRD.Columns[3].Width = 120;
-            SViewReqGRD.Columns[4].Width = 100;
+            SchedViewRequestFormat();
 
             SViewReqGRD.Sort(SViewReqGRD.Columns[0], ListSortDirection.Descending);
 
             SViewReqGRD.ClearSelection();
+        }
+
+        private void SchedViewRequestFormat() {
+            SViewReqGRD.Columns[1].Width = (int)(SViewReqGRD.Width * 0.3817);
+            SViewReqGRD.Columns[2].Width = (int)(SViewReqGRD.Width * 0.1832);
+            SViewReqGRD.Columns[3].Width = (int)(SViewReqGRD.Width * 0.1832);
+            SViewReqGRD.Columns[4].Width = (int)(SViewReqGRD.Width * 0.1527);
+
         }
 
         private void SViewReqSearchTXTBX_Enter(object sender, EventArgs e) {
@@ -1359,8 +1352,7 @@ namespace MSAMISUserInterface {
                         var view = new SchedViewAssReq {
                             Reference = this,
                             Raid = _rid,
-                            Refer = _shadow,
-                            Location = _newFormLocation
+                            Refer = _shadow
                         };
                         _shadow.Transparent();
                         _shadow.Form = view;
@@ -1372,8 +1364,7 @@ namespace MSAMISUserInterface {
                         var view = new SchedViewDisReq {
                             Reference = this,
                             Rid = _rid,
-                            Refer = _shadow,
-                            Location = _newFormLocation
+                            Refer = _shadow
                         };
                         _shadow.Transparent();
                         _shadow.Form = view;
@@ -1454,11 +1445,7 @@ namespace MSAMISUserInterface {
                     SViewAssGRD.Columns[6].HeaderText = "SCHEDULE";
                     SViewAssGRD.Columns[7].Visible = false;
 
-                    SViewAssGRD.Columns[3].Width = 230;
-                    SViewAssGRD.Columns[4].Width = 280;
-                    SViewAssGRD.Columns[5].Width = 280;
-                    SViewAssGRD.Columns[6].Width = 100;
-                    SViewAssGRD.Columns[6].Width = 100;
+                    SchedRefreshAssignmentLayout();
 
                     SViewAssGRD.Sort(SViewAssGRD.Columns[3], ListSortDirection.Ascending);
                     SViewAssGRD.ClearSelection();
@@ -1467,6 +1454,14 @@ namespace MSAMISUserInterface {
             catch (Exception ex) {
                 ShowErrorBox("Loading Assignments", ex.Message);
             }
+        }
+
+        private void SchedRefreshAssignmentLayout() {
+            SViewAssGRD.Columns[3].Width = (int)(SViewAssGRD.Width * 0.355);
+            SViewAssGRD.Columns[4].Width = (int)(SViewAssGRD.Width * 0.4275);
+            SViewAssGRD.Columns[5].Width = (int)(SViewAssGRD.Width * 0.4275);
+            SViewAssGRD.Columns[6].Width = (int)(SViewAssGRD.Width * 0.1527);
+            SViewAssGRD.Columns[6].Width = (int)(SViewAssGRD.Width * 0.1527); 
         }
 
         private void SViewAssSearchTXTBX_TextChanged(object sender, EventArgs e) {
@@ -1522,8 +1517,7 @@ namespace MSAMISUserInterface {
                         Reference = this,
                         Refer = _shadow,
                         Aid = int.Parse(SViewAssGRD.SelectedRows[0].Cells[2].Value.ToString()),
-                        Gid = int.Parse(SViewAssGRD.SelectedRows[0].Cells[0].Value.ToString()),
-                        Location = _newFormLocation
+                        Gid = int.Parse(SViewAssGRD.SelectedRows[0].Cells[0].Value.ToString())
                     };
                     _shadow.Transparent();
                     _shadow.Form = view;
@@ -1560,15 +1554,8 @@ namespace MSAMISUserInterface {
                 SGuardHistoryGRD.Columns[4].Visible = false;
                 SGuardHistoryGRD.Columns[5].Visible = false;
                 SGuardHistoryGRD.Columns[6].Visible = false;
-                SGuardHistoryGRD.Columns[3].Width = 250;
-                SGuardHistoryGRD.Columns[4].Width = 280;
-                SGuardHistoryGRD.Columns[5].Width = 100;
-                SGuardHistoryGRD.Columns[5].Width = 100;
-                SGuardHistoryGRD.Columns[6].Width = 100;
-                SGuardHistoryGRD.Columns[7].Width = 130;
                 SGuardHistoryGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                SGuardHistoryGRD.Columns[8].Width = 130;
-                SGuardHistoryGRD.Columns[9].Width = 100;
+                SchedGuardHistoryFormat();
                 SGuardHistoryGRD.Columns[9].HeaderText = "STATUS";
                 SGuardHistoryGRD.Sort(SGuardHistoryGRD.Columns[3], ListSortDirection.Ascending);
                 SGuardHistoryGRD.ClearSelection();
@@ -1576,6 +1563,17 @@ namespace MSAMISUserInterface {
             catch (Exception ex) {
                 ShowErrorBox("Assignment History", ex.Message);
             }
+        }
+
+        private void SchedGuardHistoryFormat() {
+            SGuardHistoryGRD.Columns[3].Width = (int)(SGuardHistoryGRD.Width * 0.3817);
+            SGuardHistoryGRD.Columns[4].Width = (int)(SGuardHistoryGRD.Width * 0.4275);
+            SGuardHistoryGRD.Columns[5].Width = (int)(SGuardHistoryGRD.Width * 0.1527);
+            SGuardHistoryGRD.Columns[5].Width = (int)(SGuardHistoryGRD.Width * 0.1527);
+            SGuardHistoryGRD.Columns[6].Width = (int)(SGuardHistoryGRD.Width * 0.1527);
+            SGuardHistoryGRD.Columns[7].Width = (int)(SGuardHistoryGRD.Width * 0.1985);
+            SGuardHistoryGRD.Columns[8].Width = (int)(SGuardHistoryGRD.Width * 0.1985);
+            SGuardHistoryGRD.Columns[9].Width = (int)(SGuardHistoryGRD.Width * 0.1527);
         }
 
         private void SGuardHistorySearchBX_Enter(object sender, EventArgs e) {
@@ -1609,8 +1607,7 @@ namespace MSAMISUserInterface {
             var view = new SchedViewAssHistory {
                 Refer = _shadow,
                 Gid = int.Parse(SGuardHistoryGRD.SelectedRows[0].Cells[0].Value.ToString()),
-                GuardName = SGuardHistoryGRD.SelectedRows[0].Cells[3].Value.ToString(),
-                Location = _newFormLocation
+                GuardName = SGuardHistoryGRD.SelectedRows[0].Cells[3].Value.ToString()
             };
             _shadow.Transparent();
             _shadow.Form = view;
@@ -1627,6 +1624,9 @@ namespace MSAMISUserInterface {
 
         public void SchedLoadReport() {
             try {
+                SDutyReportPNL.Location = new Point(
+                    SDutyDetailsPNL.Width / 2 - SDutyReportPNL.Size.Width / 2, SDutyReportPNL.Location.Y);
+
                 var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                           "\\MSAMIS Reports"); //Assuming Test is your Folder
                 var files = d.GetFiles("SchedSummaryReport*.pdf")
@@ -1780,8 +1780,7 @@ namespace MSAMISUserInterface {
         private void PConfHoliday_Click(object sender, EventArgs e) {
             try {
                 var view = new PayrollConfHolidays {
-                    Refer = _shadow,
-                    Location = _newFormLocation
+                    Refer = _shadow
                 };
 
 
@@ -1795,8 +1794,7 @@ namespace MSAMISUserInterface {
         private void PConfigSSSBTN_Click(object sender, EventArgs e) {
             try {
                 var view = new PayrollConfigRates {
-                    Refer = _shadow,
-                    Location = _newFormLocation
+                    Refer = _shadow
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -1843,10 +1841,7 @@ namespace MSAMISUserInterface {
                 PEmpListGRD.Columns[3].HeaderText = "ATTENDANCE";
                 PEmpListGRD.Columns[4].HeaderText = "STATUS";
 
-                PEmpListGRD.Columns[1].Width = 200;
-                PEmpListGRD.Columns[2].Width = 180;
-                PEmpListGRD.Columns[3].Width = 130;
-                PEmpListGRD.Columns[4].Width = 90;
+                PayChnageSize();
 
                 PEmpListGRD.Sort(PEmpListGRD.Columns[1], ListSortDirection.Ascending);
                 PEmpListViewBTN.Visible = false;
@@ -1854,6 +1849,13 @@ namespace MSAMISUserInterface {
             catch (Exception ex) {
                 ShowErrorBox("Guards List", ex.Message);
             }
+        }
+
+        private void PayChnageSize() {
+            PEmpListGRD.Columns[1].Width = (int)(PEmpListGRD.Size.Width * 0.30);
+            PEmpListGRD.Columns[2].Width = (int)(PEmpListGRD.Size.Width * 0.275);
+            PEmpListGRD.Columns[3].Width = (int)(PEmpListGRD.Size.Width * 0.198);
+            PEmpListGRD.Columns[4].Width = (int)(PEmpListGRD.Size.Width * 0.137);
         }
 
         private void PEmpListSearchBX_TextChanged(object sender, EventArgs e) {
@@ -1879,8 +1881,7 @@ namespace MSAMISUserInterface {
                 var view = new PayrollEmployeeView {
                     Reference = this,
                     Refer = _shadow,
-                    Gid = int.Parse(PEmpListGRD.SelectedRows[0].Cells[0].Value.ToString()),
-                    Location = _newFormLocation
+                    Gid = int.Parse(PEmpListGRD.SelectedRows[0].Cells[0].Value.ToString())
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -1944,8 +1945,7 @@ namespace MSAMISUserInterface {
                 var view = new Exporting {
                     Refer = _shadow,
                     Main = this,
-                    Mode = 's',
-                    Location = _newFormLocation
+                    Mode = 's'
                 };
                 _shadow.Transparent();
                 _shadow.Form = view;
@@ -1957,6 +1957,7 @@ namespace MSAMISUserInterface {
 
         public void PayLoadReport() {
             try {
+                PayLoadReportLayout();
                 var d = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                           "\\MSAMIS Reports"); //Assuming Test is your Folder
                 var files = d.GetFiles("SalaryReport*.pdf")
@@ -1979,6 +1980,12 @@ namespace MSAMISUserInterface {
             catch (Exception ex) {
                 ShowErrorBox("Salary Report", ex.Message);
             }
+        }
+
+        private void PayLoadReportLayout() {
+            PSalaryPanel.Location = new Point(
+                PSalaryReportPage.Width / 2 - PSalaryPanel.Size.Width / 2, PSalaryPanel.Location.Y);
+
         }
 
         private void PSummaryFilesLST_DoubleClick(object sender, EventArgs e) {
