@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.PersonalPNL = new System.Windows.Forms.Panel();
             this.CivilStatusLBL = new System.Windows.Forms.Label();
@@ -65,16 +68,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.SpouseLBL = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Dependent5LBL = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.Dependent4LBL = new System.Windows.Forms.Label();
-            this.Dependent3LBL = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.Dependent2LBL = new System.Windows.Forms.Label();
-            this.Dependent1LBL = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.ContactNoLBL = new System.Windows.Forms.Label();
             this.PrevAgencyLBL = new System.Windows.Forms.Label();
@@ -103,10 +96,16 @@
             this.PersonalLBL = new System.Windows.Forms.Label();
             this.FamilyLBL = new System.Windows.Forms.Label();
             this.FamilyPNL = new System.Windows.Forms.Panel();
+            this.DependentsGRD = new System.Windows.Forms.DataGridView();
+            this.ErrorPNL = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.WorkPNL = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.PersonalPNL.SuspendLayout();
             this.FamilyPNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DependentsGRD)).BeginInit();
+            this.ErrorPNL.SuspendLayout();
             this.WorkPNL.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -616,126 +615,6 @@
             this.label5.TabIndex = 103;
             this.label5.Text = "Spouse\'s Name:";
             // 
-            // Dependent5LBL
-            // 
-            this.Dependent5LBL.AutoSize = true;
-            this.Dependent5LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent5LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent5LBL.Location = new System.Drawing.Point(130, 337);
-            this.Dependent5LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent5LBL.Name = "Dependent5LBL";
-            this.Dependent5LBL.Size = new System.Drawing.Size(99, 19);
-            this.Dependent5LBL.TabIndex = 102;
-            this.Dependent5LBL.Text = "---------------";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label34.Location = new System.Drawing.Point(80, 337);
-            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(19, 19);
-            this.label34.TabIndex = 101;
-            this.label34.Text = "5.";
-            // 
-            // Dependent4LBL
-            // 
-            this.Dependent4LBL.AutoSize = true;
-            this.Dependent4LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent4LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent4LBL.Location = new System.Drawing.Point(130, 295);
-            this.Dependent4LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent4LBL.Name = "Dependent4LBL";
-            this.Dependent4LBL.Size = new System.Drawing.Size(99, 19);
-            this.Dependent4LBL.TabIndex = 100;
-            this.Dependent4LBL.Text = "---------------";
-            // 
-            // Dependent3LBL
-            // 
-            this.Dependent3LBL.AutoSize = true;
-            this.Dependent3LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent3LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3LBL.Location = new System.Drawing.Point(131, 258);
-            this.Dependent3LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent3LBL.Name = "Dependent3LBL";
-            this.Dependent3LBL.Size = new System.Drawing.Size(99, 19);
-            this.Dependent3LBL.TabIndex = 99;
-            this.Dependent3LBL.Text = "---------------";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label31.Location = new System.Drawing.Point(80, 295);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(20, 19);
-            this.label31.TabIndex = 98;
-            this.label31.Text = "4.";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label32.Location = new System.Drawing.Point(81, 258);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(19, 19);
-            this.label32.TabIndex = 97;
-            this.label32.Text = "3.";
-            // 
-            // Dependent2LBL
-            // 
-            this.Dependent2LBL.AutoSize = true;
-            this.Dependent2LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent2LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2LBL.Location = new System.Drawing.Point(132, 221);
-            this.Dependent2LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent2LBL.Name = "Dependent2LBL";
-            this.Dependent2LBL.Size = new System.Drawing.Size(99, 19);
-            this.Dependent2LBL.TabIndex = 96;
-            this.Dependent2LBL.Text = "---------------";
-            // 
-            // Dependent1LBL
-            // 
-            this.Dependent1LBL.AutoSize = true;
-            this.Dependent1LBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent1LBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1LBL.Location = new System.Drawing.Point(131, 185);
-            this.Dependent1LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Dependent1LBL.Name = "Dependent1LBL";
-            this.Dependent1LBL.Size = new System.Drawing.Size(99, 19);
-            this.Dependent1LBL.TabIndex = 95;
-            this.Dependent1LBL.Text = "---------------";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label22.Location = new System.Drawing.Point(81, 221);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(19, 19);
-            this.label22.TabIndex = 94;
-            this.label22.Text = "2.";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label26.Location = new System.Drawing.Point(81, 185);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(17, 19);
-            this.label26.TabIndex = 93;
-            this.label26.Text = "1.";
-            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -1098,23 +977,97 @@
             this.FamilyPNL.Controls.Add(this.FatherLBL);
             this.FamilyPNL.Controls.Add(this.MotherLBL);
             this.FamilyPNL.Controls.Add(this.label28);
-            this.FamilyPNL.Controls.Add(this.label26);
-            this.FamilyPNL.Controls.Add(this.label22);
-            this.FamilyPNL.Controls.Add(this.Dependent1LBL);
-            this.FamilyPNL.Controls.Add(this.Dependent2LBL);
-            this.FamilyPNL.Controls.Add(this.label32);
             this.FamilyPNL.Controls.Add(this.SpouseLBL);
-            this.FamilyPNL.Controls.Add(this.label31);
             this.FamilyPNL.Controls.Add(this.label5);
-            this.FamilyPNL.Controls.Add(this.Dependent3LBL);
-            this.FamilyPNL.Controls.Add(this.Dependent5LBL);
-            this.FamilyPNL.Controls.Add(this.Dependent4LBL);
-            this.FamilyPNL.Controls.Add(this.label34);
+            this.FamilyPNL.Controls.Add(this.DependentsGRD);
+            this.FamilyPNL.Controls.Add(this.ErrorPNL);
             this.FamilyPNL.Location = new System.Drawing.Point(62, 117);
             this.FamilyPNL.Name = "FamilyPNL";
             this.FamilyPNL.Size = new System.Drawing.Size(437, 421);
             this.FamilyPNL.TabIndex = 238;
             this.FamilyPNL.Visible = false;
+            // 
+            // DependentsGRD
+            // 
+            this.DependentsGRD.AllowUserToAddRows = false;
+            this.DependentsGRD.AllowUserToDeleteRows = false;
+            this.DependentsGRD.AllowUserToResizeColumns = false;
+            this.DependentsGRD.AllowUserToResizeRows = false;
+            this.DependentsGRD.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.DependentsGRD.BackgroundColor = System.Drawing.Color.White;
+            this.DependentsGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DependentsGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.DependentsGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DependentsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DependentsGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DependentsGRD.ColumnHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DependentsGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DependentsGRD.EnableHeadersVisualStyles = false;
+            this.DependentsGRD.Location = new System.Drawing.Point(6, 172);
+            this.DependentsGRD.MultiSelect = false;
+            this.DependentsGRD.Name = "DependentsGRD";
+            this.DependentsGRD.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DependentsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DependentsGRD.RowHeadersVisible = false;
+            this.DependentsGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DependentsGRD.Size = new System.Drawing.Size(400, 229);
+            this.DependentsGRD.TabIndex = 149;
+            // 
+            // ErrorPNL
+            // 
+            this.ErrorPNL.Controls.Add(this.label6);
+            this.ErrorPNL.Controls.Add(this.label15);
+            this.ErrorPNL.Location = new System.Drawing.Point(7, 167);
+            this.ErrorPNL.Name = "ErrorPNL";
+            this.ErrorPNL.Size = new System.Drawing.Size(413, 229);
+            this.ErrorPNL.TabIndex = 150;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(113, 107);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(194, 19);
+            this.label6.TabIndex = 150;
+            this.label6.Text = "Please edit and add a new one";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label15.Location = new System.Drawing.Point(119, 84);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(181, 21);
+            this.label15.TabIndex = 149;
+            this.label15.Text = "No Dependents Found";
             // 
             // WorkPNL
             // 
@@ -1160,8 +1113,8 @@
             // 
             // GuardsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(898, 598);
             this.ControlBox = false;
@@ -1195,6 +1148,9 @@
             this.PersonalPNL.PerformLayout();
             this.FamilyPNL.ResumeLayout(false);
             this.FamilyPNL.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DependentsGRD)).EndInit();
+            this.ErrorPNL.ResumeLayout(false);
+            this.ErrorPNL.PerformLayout();
             this.WorkPNL.ResumeLayout(false);
             this.WorkPNL.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1249,16 +1205,6 @@
         private System.Windows.Forms.Label FatherLBL;
         private System.Windows.Forms.Label CivilStatusLBL;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label Dependent5LBL;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label Dependent4LBL;
-        private System.Windows.Forms.Label Dependent3LBL;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label Dependent2LBL;
-        private System.Windows.Forms.Label Dependent1LBL;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label LicenseNoLBL;
         private System.Windows.Forms.Label label33;
@@ -1286,5 +1232,9 @@
         private System.Windows.Forms.Panel FamilyPNL;
         private System.Windows.Forms.Panel WorkPNL;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView DependentsGRD;
+        private System.Windows.Forms.Panel ErrorPNL;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label15;
     }
 }

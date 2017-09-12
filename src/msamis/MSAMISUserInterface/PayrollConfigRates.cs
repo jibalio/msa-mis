@@ -184,6 +184,18 @@ namespace MSAMISUserInterface {
             }
         }
 
+
+        private void BasicPayGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
+            if (BasicPayGRD.SelectedRows.Count > 0 && BasicPayGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Pending")) {
+                BasicPayCancelBTN.Visible = true;
+                AdjustBTN.Location = new Point(170, 60);
+            }
+            else {
+                BasicPayCancelBTN.Visible = false;
+                AdjustBTN.Location = new Point(201, 60);
+            }
+        }
+
         private void AdjustBTN_Click(object sender, EventArgs e) {
             AdjustPNL.Visible = true;
             CurrentPNL.Visible = false;
@@ -395,7 +407,7 @@ namespace MSAMISUserInterface {
 
         private void SSSReset_Click(object sender, EventArgs e) {
             if (RylMessageBox.ShowDialog(
-                    "Are you sure you want to cancel the adjustments on the current SSS Contribution rates?",
+                    "Are you sure you want to cancel the adjustments on the current SSS Contribution rates? Unsaved changes will be lost.",
                     "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 LoadSssPage();
                 EditingMode(false);
@@ -420,7 +432,7 @@ namespace MSAMISUserInterface {
                     "SSS Contribution", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else {
-                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates?",
+                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates? Unsaved changes will be lost.",
                         "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     try {
                         Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
@@ -436,6 +448,21 @@ namespace MSAMISUserInterface {
 
         private void SSSDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             SssLoadTable();
+            SssFormatLayout();
+        }
+
+        private void SssFormatLayout() {
+            if (SSSDateCMBX.Text.Contains("Pending")) {
+                SSSCancelBTN.Visible = true;
+                SSSDateCMBX.Size = new Size(208, 25);
+                SSSEditBTN.Location = new Point(337, -1);
+            }
+            else {
+                SSSCancelBTN.Visible = false;
+                SSSDateCMBX.Size = new Size(293, 25);
+                SSSEditBTN.Location = new Point(421, -1);
+            }
+
         }
 
         private void SSSEditBTN_Click(object sender, EventArgs e) {
@@ -596,7 +623,7 @@ namespace MSAMISUserInterface {
         }
 
         private void TaxSaveBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current Tax rates?",
+            if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current Tax rates? Unsaved changes will be lost.",
                     "Withholding Tax Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 try {
                     RatesSaver.CreateWithTaxQuery(TaxDateDTPKR.Value);
@@ -736,7 +763,7 @@ namespace MSAMISUserInterface {
         }
 
         private void MultCancelBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the adjustment?",
+            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the adjustment? Unsaved changes will be lost.",
                     "Rates Multipliers", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 MultEditMode(false);
                 LoadRatesMult();
@@ -767,6 +794,22 @@ namespace MSAMISUserInterface {
 
         private void MultipliersDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             MultLoadValues();
+            MultFormatPage();
+        }
+
+        private void MultFormatPage() {
+            if (MultipliersDateCMBX.Text.Contains("Pending")) {
+                MultCancelPendingBTN.Visible = true;
+                MultipliersDateCMBX.Size = new Size(249, 25);
+                MultEditBTN.Location = new Point(337, 8);
+            }
+            else {
+                MultCancelPendingBTN.Visible = false;
+                MultipliersDateCMBX.Size = new Size(327, 25);
+                MultEditBTN.Location = new Point(420, 8);
+            }
+
+
         }
 
         private void MultLoadValues() {
@@ -840,8 +883,8 @@ namespace MSAMISUserInterface {
             LoadGlobalPage();
         }
 
-        #endregion
 
+        #endregion
 
     }
 }

@@ -254,10 +254,10 @@
             this.NetPayLBL.BackColor = System.Drawing.Color.Transparent;
             this.NetPayLBL.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
             this.NetPayLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.NetPayLBL.Location = new System.Drawing.Point(105, 339);
+            this.NetPayLBL.Location = new System.Drawing.Point(23, 343);
             this.NetPayLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NetPayLBL.Name = "NetPayLBL";
-            this.NetPayLBL.Size = new System.Drawing.Size(252, 41);
+            this.NetPayLBL.Size = new System.Drawing.Size(426, 41);
             this.NetPayLBL.TabIndex = 244;
             this.NetPayLBL.Text = "₱ 12,121.00";
             this.NetPayLBL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -267,10 +267,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(105, 321);
+            this.label5.Location = new System.Drawing.Point(23, 325);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(252, 19);
+            this.label5.Size = new System.Drawing.Size(427, 19);
             this.label5.TabIndex = 243;
             this.label5.Text = "Net Pay:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2196,8 +2196,8 @@
             // 
             // PayrollEmployeeView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(898, 598);
             this.ControlBox = false;

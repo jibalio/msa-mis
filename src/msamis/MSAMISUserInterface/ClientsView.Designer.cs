@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientsView));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientsView));
             this.CIDLBL = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ContactLBL = new System.Windows.Forms.Label();
@@ -36,23 +36,23 @@
             this.ContactNoLBL = new System.Windows.Forms.Label();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.DetailsPNL = new System.Windows.Forms.Panel();
+            this.CertifiersGRD = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.ManagerLBL = new System.Windows.Forms.Label();
+            this.ErrorPNL = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.LocationLBL = new System.Windows.Forms.Label();
             this.CloseBTN = new System.Windows.Forms.Button();
             this.CEditDetailsBTN = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CertifiersGRD = new System.Windows.Forms.DataGridView();
-            this.ErrorPNL = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.DetailsPNL.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).BeginInit();
             this.ErrorPNL.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CIDLBL
@@ -157,6 +157,54 @@
             this.DetailsPNL.Size = new System.Drawing.Size(599, 321);
             this.DetailsPNL.TabIndex = 229;
             // 
+            // CertifiersGRD
+            // 
+            this.CertifiersGRD.AllowUserToAddRows = false;
+            this.CertifiersGRD.AllowUserToDeleteRows = false;
+            this.CertifiersGRD.AllowUserToResizeColumns = false;
+            this.CertifiersGRD.AllowUserToResizeRows = false;
+            this.CertifiersGRD.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.CertifiersGRD.BackgroundColor = System.Drawing.Color.White;
+            this.CertifiersGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CertifiersGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.CertifiersGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CertifiersGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.CertifiersGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.CertifiersGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CertifiersGRD.EnableHeadersVisualStyles = false;
+            this.CertifiersGRD.Location = new System.Drawing.Point(116, 168);
+            this.CertifiersGRD.MultiSelect = false;
+            this.CertifiersGRD.Name = "CertifiersGRD";
+            this.CertifiersGRD.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CertifiersGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.CertifiersGRD.RowHeadersVisible = false;
+            this.CertifiersGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CertifiersGRD.Size = new System.Drawing.Size(400, 134);
+            this.CertifiersGRD.TabIndex = 147;
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
@@ -216,6 +264,39 @@
             this.ManagerLBL.TabIndex = 77;
             this.ManagerLBL.Text = "---------";
             this.ManagerLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ErrorPNL
+            // 
+            this.ErrorPNL.Controls.Add(this.label6);
+            this.ErrorPNL.Controls.Add(this.label5);
+            this.ErrorPNL.Location = new System.Drawing.Point(103, 168);
+            this.ErrorPNL.Name = "ErrorPNL";
+            this.ErrorPNL.Size = new System.Drawing.Size(413, 134);
+            this.ErrorPNL.TabIndex = 148;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(103, 65);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(194, 19);
+            this.label6.TabIndex = 150;
+            this.label6.Text = "Please edit and add a new one";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label5.Location = new System.Drawing.Point(121, 40);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(158, 21);
+            this.label5.TabIndex = 149;
+            this.label5.Text = "No Certifiers Found";
             // 
             // LocationLBL
             // 
@@ -278,91 +359,10 @@
             this.panel1.Size = new System.Drawing.Size(599, 398);
             this.panel1.TabIndex = 120;
             // 
-            // CertifiersGRD
-            // 
-            this.CertifiersGRD.AllowUserToAddRows = false;
-            this.CertifiersGRD.AllowUserToDeleteRows = false;
-            this.CertifiersGRD.AllowUserToResizeColumns = false;
-            this.CertifiersGRD.AllowUserToResizeRows = false;
-            this.CertifiersGRD.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.CertifiersGRD.BackgroundColor = System.Drawing.Color.White;
-            this.CertifiersGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CertifiersGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.CertifiersGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CertifiersGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.CertifiersGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.CertifiersGRD.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CertifiersGRD.EnableHeadersVisualStyles = false;
-            this.CertifiersGRD.Location = new System.Drawing.Point(116, 168);
-            this.CertifiersGRD.MultiSelect = false;
-            this.CertifiersGRD.Name = "CertifiersGRD";
-            this.CertifiersGRD.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CertifiersGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.CertifiersGRD.RowHeadersVisible = false;
-            this.CertifiersGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CertifiersGRD.Size = new System.Drawing.Size(400, 134);
-            this.CertifiersGRD.TabIndex = 147;
-            // 
-            // ErrorPNL
-            // 
-            this.ErrorPNL.Controls.Add(this.label6);
-            this.ErrorPNL.Controls.Add(this.label5);
-            this.ErrorPNL.Location = new System.Drawing.Point(103, 168);
-            this.ErrorPNL.Name = "ErrorPNL";
-            this.ErrorPNL.Size = new System.Drawing.Size(413, 134);
-            this.ErrorPNL.TabIndex = 148;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(121, 40);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(158, 21);
-            this.label5.TabIndex = 149;
-            this.label5.Text = "No Certifiers Found";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(103, 65);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(194, 19);
-            this.label6.TabIndex = 150;
-            this.label6.Text = "Please edit and add a new one";
-            // 
             // ClientsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(598, 598);
             this.ControlBox = false;
@@ -380,10 +380,10 @@
             this.Load += new System.EventHandler(this.Clients_View_Load);
             this.DetailsPNL.ResumeLayout(false);
             this.DetailsPNL.PerformLayout();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).EndInit();
             this.ErrorPNL.ResumeLayout(false);
             this.ErrorPNL.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

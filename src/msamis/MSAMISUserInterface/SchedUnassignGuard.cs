@@ -36,21 +36,10 @@ namespace MSAMISUserInterface {
                 }
                 catch { }
                 try {
-                    if (!CheckName(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX))
-                        InsertDependent(Dependent1RBX.SelectedIndex, Dependent1FirstBX.Text,
-                            Dependent1MiddleBX.Text, Dependent1LastBX.Text);
-                    if (!CheckName(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX))
-                        InsertDependent(Dependent2RBX.SelectedIndex, Dependent2FirstBX.Text,
-                            Dependent2MiddleBX.Text, Dependent2LastBX.Text);
-                    if (!CheckName(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX))
-                        InsertDependent(Dependent3RBX.SelectedIndex, Dependent3FirstBX.Text,
-                            Dependent3MiddleBX.Text, Dependent3LastBX.Text);
-                    if (!CheckName(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX))
-                        InsertDependent(Dependent4RBX.SelectedIndex, Dependent4FirstBX.Text,
-                            Dependent4MiddleBX.Text, Dependent4LastBX.Text);
-                    if (!CheckName(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX))
-                        InsertDependent(Dependent5RBX.SelectedIndex, Dependent5FirstBX.Text,
-                            Dependent5MiddleBX.Text, Dependent5LastBX.Text);
+                    foreach (DataGridViewRow row in DepsGRD.Rows) {
+                        InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString(),
+                            row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                    }
                 }
                 catch { }
 
@@ -58,6 +47,17 @@ namespace MSAMISUserInterface {
                     MessageBoxIcon.Information);
                 Reference.SchedLoadSidePnl();
                 Close();
+            }
+        }
+
+        private static int GetRelationshipIndex(string rep) {
+            switch (rep) {
+                case "Involved":
+                    return 1;
+                case "Witness":
+                    return 2;
+                default:
+                    return 0;
             }
         }
 
@@ -97,88 +97,7 @@ namespace MSAMISUserInterface {
         }
 
         private void LocationBX_TextChanged(object sender, EventArgs e) { }
-
-        private static void ClearBox(TextBoxBase textBoxBase) {
-            if (textBoxBase.Text.Equals("Last")) textBoxBase.Clear();
-            else if (textBoxBase.Text.Equals("Middle")) textBoxBase.Clear();
-            else if (textBoxBase.Text.Equals("First")) textBoxBase.Clear();
-        }
-
-        private void Dependent1FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1FirstBX);
-        }
-
-        private void Dependent1MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1MiddleBX);
-        }
-
-        private void Dependent1LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent1LastBX);
-        }
-
-        private void Dependent2FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2FirstBX);
-        }
-
-        private void Dependent2MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2MiddleBX);
-        }
-
-        private void Dependent2LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent2LastBX);
-        }
-
-        private void Dependent3FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3FirstBX);
-        }
-
-        private void Dependent3MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3MiddleBX);
-        }
-
-        private void Dependent3LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent3LastBX);
-        }
-
-        private void Dependent4FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4FirstBX);
-        }
-
-        private void Dependent4MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4MiddleBX);
-        }
-
-        private void Dependent4LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent4LastBX);
-        }
-
-        private void Dependent5FirstBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5FirstBX);
-        }
-
-        private void Dependent5MiddleBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5MiddleBX);
-        }
-
-        private void Dependent5LastBX_Enter(object sender, EventArgs e) {
-            ClearBox(Dependent5LastBX);
-        }
-
-        private void LastNameBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Last";
-        }
-
-        private void FirstNameBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "First";
-        }
-
-        private void MiddleNameBX_Leave(object sender, EventArgs e) {
-            var lastbx = sender as TextBox;
-            if (lastbx.Text.Trim(' ').Length == 0) lastbx.Text = "Middle";
-        }
-
+        
         #region Form Properties
 
         private void Sched_DismissGuard_Load(object sender, EventArgs e) {
@@ -207,7 +126,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing? Unsaved changes will be lost.", "Stop Editing?",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 Close();
         }
@@ -249,26 +168,6 @@ namespace MSAMISUserInterface {
                 ShowToolTipOnBx(DescriptionTLTP, "Event Description", "What happened in this incident?", DescriptionBX);
                 ret = false;
             }
-            if (CheckNameNotRequired(Dependent1FirstBX, Dependent1MiddleBX, Dependent1LastBX, Dependent1RBX)) {
-                ShowToolTipOnBx(Dep1Warn, "Dependent's Name", "Please complete the fields", Dependent1FirstBX);
-                ret = false;
-            }
-            if (CheckNameNotRequired(Dependent2FirstBX, Dependent2MiddleBX, Dependent2LastBX, Dependent2RBX)) {
-                ShowToolTipOnBx(Dep2Warn, "Dependent's Name", "Please complete the fields", Dependent2FirstBX);
-                ret = false;
-            }
-            if (CheckNameNotRequired(Dependent3FirstBX, Dependent3MiddleBX, Dependent3LastBX, Dependent3RBX)) {
-                ShowToolTipOnBx(Dep3Warn, "Dependent's Name", "Please complete the fields", Dependent3FirstBX);
-                ret = false;
-            }
-            if (CheckNameNotRequired(Dependent4FirstBX, Dependent4MiddleBX, Dependent4LastBX, Dependent4RBX)) {
-                ShowToolTipOnBx(Dep4Warn, "Dependent's Name", "Please complete the fields", Dependent4FirstBX);
-                ret = false;
-            }
-            if (CheckNameNotRequired(Dependent5FirstBX, Dependent5MiddleBX, Dependent5LastBX, Dependent5RBX)) {
-                ShowToolTipOnBx(Dep5Warn, "Dependent's Name", "Please complete the fields", Dependent5FirstBX);
-                ret = false;
-            }
             return ret;
         }
 
@@ -276,38 +175,21 @@ namespace MSAMISUserInterface {
             ttp.ToolTipTitle = title;
             ttp.Show(message, lb);
         }
-
-        private static bool CheckName(Control firstBx, Control middleBx, Control lastBx) {
-            return firstBx.Text.Equals("First") || middleBx.Text.Equals("Middle") || lastBx.Text.Equals("Last") ||
-                   firstBx.Text.Equals("") || middleBx.Text.Equals("") || lastBx.Text.Equals("");
-        }
-
-        private static bool CheckNameNotRequired(Control firstBx, Control middleBx, Control lastBx, ListControl rbx) {
-            return CheckNameNotRequired(firstBx, middleBx, lastBx) && CheckForInput(firstBx, middleBx, lastBx, rbx);
-        }
-
-        private static bool CheckNameNotRequired(Control firstBx, Control middleBx, Control lastBx) {
-            return CheckForInput(firstBx, middleBx, lastBx) && CheckName(firstBx, middleBx, lastBx);
-        }
-
-        private static bool CheckForInput(Control firstBx, Control middleBx, Control lastBx) {
-            return !(firstBx.Text.Equals("First") || firstBx.Text.Equals("")) ||
-                   !(middleBx.Text.Equals("Middle") || middleBx.Text.Equals("")) ||
-                   !(lastBx.Text.Equals("Last") || lastBx.Text.Equals(""));
-        }
-
-        private static bool CheckForInput(Control firstBx, Control middleBx, Control lastBx, ListControl rbx) {
-            return !(firstBx.Text.Equals("First") || firstBx.Text.Equals("")) ||
-                   !(middleBx.Text.Equals("Middle") || middleBx.Text.Equals("")) ||
-                   !(lastBx.Text.Equals("Last") || lastBx.Text.Equals("")) || rbx.SelectedIndex > 0;
-        }
-
         #endregion
 
         private void SchedUnassignGuard_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.F4 && e.Alt) {
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void AddRowBTN_Click(object sender, EventArgs e) {
+            DepsGRD.Rows.Add(-1, "First", "Middle", "Last", "");
+        }
+
+        private void DelRowBTN_Click(object sender, EventArgs e) {
+            if (DepsGRD.SelectedRows.Count > 0)
+            DepsGRD.Rows.Remove(DepsGRD.SelectedRows[0]);
         }
     }
 }

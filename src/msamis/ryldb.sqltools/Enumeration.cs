@@ -37,9 +37,15 @@ namespace MSAMISUserInterface {
         }
 
         public class HolidayType {
-            public static int Regular = 1;
-            public static int Special = 2;
+            public static int Regular = 0;
+            public static int Special = 1;
         }
+
+        public class HolidayTrans {
+            public static int Fixed = 0;
+            public static int Movable = 1;
+        }
+
 
         public class Schedule {
             public static int Active = 1;

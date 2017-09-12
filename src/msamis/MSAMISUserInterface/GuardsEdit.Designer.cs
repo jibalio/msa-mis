@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GuardsEdit));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GenderLBL = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -82,68 +86,28 @@
             this.label71 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
-            this.Dependent5RBX = new System.Windows.Forms.ComboBox();
             this.MilTrainBX = new System.Windows.Forms.TextBox();
-            this.Dependent5LastBX = new System.Windows.Forms.TextBox();
             this.EdAttBX = new System.Windows.Forms.ComboBox();
-            this.Dependent5MiddleBX = new System.Windows.Forms.TextBox();
-            this.Dependent5FirstBX = new System.Windows.Forms.TextBox();
-            this.label65 = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
             this.CourseBX = new System.Windows.Forms.TextBox();
-            this.label67 = new System.Windows.Forms.Label();
             this.EdAtLBL = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.Dependent4RBX = new System.Windows.Forms.ComboBox();
             this.label75 = new System.Windows.Forms.Label();
-            this.Dependent4LastBX = new System.Windows.Forms.TextBox();
             this.PrevAssBX = new System.Windows.Forms.TextBox();
-            this.Dependent4MiddleBX = new System.Windows.Forms.TextBox();
             this.LicenseNoBX = new System.Windows.Forms.MaskedTextBox();
-            this.Dependent4FirstBX = new System.Windows.Forms.TextBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.Dependent3RBX = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.Dependent3LastBX = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.Dependent3MiddleBX = new System.Windows.Forms.TextBox();
             this.PrevAgencyBX = new System.Windows.Forms.TextBox();
-            this.Dependent3FirstBX = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
             this.SSSNoBX = new System.Windows.Forms.MaskedTextBox();
-            this.label58 = new System.Windows.Forms.Label();
             this.TINNoBX = new System.Windows.Forms.MaskedTextBox();
-            this.label59 = new System.Windows.Forms.Label();
             this.PhilHealthBX = new System.Windows.Forms.MaskedTextBox();
-            this.label60 = new System.Windows.Forms.Label();
-            this.Dependent2RBX = new System.Windows.Forms.ComboBox();
             this.EmergencyNoBX = new System.Windows.Forms.TextBox();
-            this.Dependent2LastBX = new System.Windows.Forms.TextBox();
             this.ContactLBL = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.Dependent2MiddleBX = new System.Windows.Forms.TextBox();
-            this.Dependent2FirstBX = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.Dependent1RBX = new System.Windows.Forms.ComboBox();
-            this.Dependent1LastBX = new System.Windows.Forms.TextBox();
-            this.Dependent1MiddleBX = new System.Windows.Forms.TextBox();
-            this.Dependent1FirstBX = new System.Windows.Forms.TextBox();
-            this.label52 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
             this.MotherLastBX = new System.Windows.Forms.TextBox();
             this.MotherMiddleBX = new System.Windows.Forms.TextBox();
             this.MotherFirstBX = new System.Windows.Forms.TextBox();
@@ -207,11 +171,20 @@
             this.FamilyLBL = new System.Windows.Forms.Label();
             this.WorkLBL = new System.Windows.Forms.Label();
             this.FamilyPNL = new System.Windows.Forms.Panel();
+            this.DelRowBTN = new System.Windows.Forms.Button();
+            this.AddRowBTN = new System.Windows.Forms.Button();
+            this.DepGRD = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.First = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Middle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Last = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rel = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.WorkPNL = new System.Windows.Forms.Panel();
             this.AddLBL = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.PersonalPNL.SuspendLayout();
             this.FamilyPNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DepGRD)).BeginInit();
             this.WorkPNL.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -1031,23 +1004,6 @@
             this.label72.TabIndex = 192;
             this.label72.Text = "Spouse\'s Name:";
             // 
-            // Dependent5RBX
-            // 
-            this.Dependent5RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Dependent5RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Dependent5RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent5RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent5RBX.FormattingEnabled = true;
-            this.Dependent5RBX.Items.AddRange(new object[] {
-            "",
-            "Son",
-            "Daughter",
-            "Sibling"});
-            this.Dependent5RBX.Location = new System.Drawing.Point(253, 334);
-            this.Dependent5RBX.Name = "Dependent5RBX";
-            this.Dependent5RBX.Size = new System.Drawing.Size(108, 25);
-            this.Dependent5RBX.TabIndex = 55;
-            // 
             // MilTrainBX
             // 
             this.MilTrainBX.BackColor = System.Drawing.Color.White;
@@ -1060,22 +1016,6 @@
             this.MilTrainBX.Size = new System.Drawing.Size(201, 18);
             this.MilTrainBX.TabIndex = 66;
             this.MilTrainBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            // 
-            // Dependent5LastBX
-            // 
-            this.Dependent5LastBX.BackColor = System.Drawing.Color.White;
-            this.Dependent5LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent5LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent5LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent5LastBX.Location = new System.Drawing.Point(178, 338);
-            this.Dependent5LastBX.MaxLength = 45;
-            this.Dependent5LastBX.Name = "Dependent5LastBX";
-            this.Dependent5LastBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent5LastBX.TabIndex = 54;
-            this.Dependent5LastBX.Text = "Last";
-            this.Dependent5LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent5LastBX.Enter += new System.EventHandler(this.Dependent5LastBX_Enter);
-            this.Dependent5LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // EdAttBX
             // 
@@ -1097,50 +1037,6 @@
             this.EdAttBX.TabIndex = 64;
             this.EdAttBX.SelectedIndexChanged += new System.EventHandler(this.EdAttBX_SelectedIndexChanged);
             // 
-            // Dependent5MiddleBX
-            // 
-            this.Dependent5MiddleBX.BackColor = System.Drawing.Color.White;
-            this.Dependent5MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent5MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent5MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent5MiddleBX.Location = new System.Drawing.Point(104, 338);
-            this.Dependent5MiddleBX.MaxLength = 45;
-            this.Dependent5MiddleBX.Name = "Dependent5MiddleBX";
-            this.Dependent5MiddleBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent5MiddleBX.TabIndex = 53;
-            this.Dependent5MiddleBX.Text = "Middle";
-            this.Dependent5MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent5MiddleBX.Enter += new System.EventHandler(this.Dependent5MiddleBX_Enter);
-            this.Dependent5MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
-            // 
-            // Dependent5FirstBX
-            // 
-            this.Dependent5FirstBX.BackColor = System.Drawing.Color.White;
-            this.Dependent5FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent5FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent5FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent5FirstBX.Location = new System.Drawing.Point(32, 338);
-            this.Dependent5FirstBX.MaxLength = 45;
-            this.Dependent5FirstBX.Name = "Dependent5FirstBX";
-            this.Dependent5FirstBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent5FirstBX.TabIndex = 52;
-            this.Dependent5FirstBX.Text = "First";
-            this.Dependent5FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent5FirstBX.Enter += new System.EventHandler(this.Dependent5FirstBX_Enter);
-            this.Dependent5FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label65.Location = new System.Drawing.Point(2, 338);
-            this.label65.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(19, 19);
-            this.label65.TabIndex = 182;
-            this.label65.Text = "5.";
-            // 
             // label79
             // 
             this.label79.AutoSize = true;
@@ -1152,17 +1048,6 @@
             this.label79.Size = new System.Drawing.Size(52, 17);
             this.label79.TabIndex = 206;
             this.label79.Text = "Course:";
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.BackColor = System.Drawing.Color.White;
-            this.label66.ForeColor = System.Drawing.Color.LightGray;
-            this.label66.Location = new System.Drawing.Point(26, 345);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(73, 13);
-            this.label66.TabIndex = 186;
-            this.label66.Text = "___________";
             // 
             // CourseBX
             // 
@@ -1177,17 +1062,6 @@
             this.CourseBX.TabIndex = 65;
             this.CourseBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.BackColor = System.Drawing.Color.White;
-            this.label67.ForeColor = System.Drawing.Color.LightGray;
-            this.label67.Location = new System.Drawing.Point(100, 345);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(73, 13);
-            this.label67.TabIndex = 187;
-            this.label67.Text = "___________";
-            // 
             // EdAtLBL
             // 
             this.EdAtLBL.AutoSize = true;
@@ -1199,34 +1073,6 @@
             this.EdAtLBL.Size = new System.Drawing.Size(95, 17);
             this.EdAtLBL.TabIndex = 203;
             this.EdAtLBL.Text = "Ed. Attainment:";
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.BackColor = System.Drawing.Color.White;
-            this.label68.ForeColor = System.Drawing.Color.LightGray;
-            this.label68.Location = new System.Drawing.Point(172, 345);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(73, 13);
-            this.label68.TabIndex = 188;
-            this.label68.Text = "___________";
-            // 
-            // Dependent4RBX
-            // 
-            this.Dependent4RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Dependent4RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Dependent4RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent4RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent4RBX.FormattingEnabled = true;
-            this.Dependent4RBX.Items.AddRange(new object[] {
-            "",
-            "Son",
-            "Daughter",
-            "Sibling"});
-            this.Dependent4RBX.Location = new System.Drawing.Point(253, 292);
-            this.Dependent4RBX.Name = "Dependent4RBX";
-            this.Dependent4RBX.Size = new System.Drawing.Size(108, 25);
-            this.Dependent4RBX.TabIndex = 51;
             // 
             // label75
             // 
@@ -1240,22 +1086,6 @@
             this.label75.TabIndex = 200;
             this.label75.Text = "Prev Assignment:";
             // 
-            // Dependent4LastBX
-            // 
-            this.Dependent4LastBX.BackColor = System.Drawing.Color.White;
-            this.Dependent4LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent4LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent4LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent4LastBX.Location = new System.Drawing.Point(178, 296);
-            this.Dependent4LastBX.MaxLength = 45;
-            this.Dependent4LastBX.Name = "Dependent4LastBX";
-            this.Dependent4LastBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent4LastBX.TabIndex = 50;
-            this.Dependent4LastBX.Text = "Last";
-            this.Dependent4LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent4LastBX.Enter += new System.EventHandler(this.Dependent4LastBX_Enter);
-            this.Dependent4LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
-            // 
             // PrevAssBX
             // 
             this.PrevAssBX.BackColor = System.Drawing.Color.White;
@@ -1268,22 +1098,6 @@
             this.PrevAssBX.Size = new System.Drawing.Size(201, 18);
             this.PrevAssBX.TabIndex = 63;
             this.PrevAssBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            // 
-            // Dependent4MiddleBX
-            // 
-            this.Dependent4MiddleBX.BackColor = System.Drawing.Color.White;
-            this.Dependent4MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent4MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent4MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent4MiddleBX.Location = new System.Drawing.Point(104, 295);
-            this.Dependent4MiddleBX.MaxLength = 45;
-            this.Dependent4MiddleBX.Name = "Dependent4MiddleBX";
-            this.Dependent4MiddleBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent4MiddleBX.TabIndex = 49;
-            this.Dependent4MiddleBX.Text = "Middle";
-            this.Dependent4MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent4MiddleBX.Enter += new System.EventHandler(this.Dependent4MiddleBX_Enter);
-            this.Dependent4MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // LicenseNoBX
             // 
@@ -1299,45 +1113,6 @@
             this.LicenseNoBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.LicenseNoBX.Enter += new System.EventHandler(this.LicenseNoBX_Enter);
             // 
-            // Dependent4FirstBX
-            // 
-            this.Dependent4FirstBX.BackColor = System.Drawing.Color.White;
-            this.Dependent4FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent4FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent4FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent4FirstBX.Location = new System.Drawing.Point(32, 296);
-            this.Dependent4FirstBX.MaxLength = 45;
-            this.Dependent4FirstBX.Name = "Dependent4FirstBX";
-            this.Dependent4FirstBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent4FirstBX.TabIndex = 48;
-            this.Dependent4FirstBX.Text = "First";
-            this.Dependent4FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent4FirstBX.Enter += new System.EventHandler(this.Dependent4FirstBX_Enter);
-            this.Dependent4FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label61.Location = new System.Drawing.Point(2, 296);
-            this.label61.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(20, 19);
-            this.label61.TabIndex = 174;
-            this.label61.Text = "4.";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.BackColor = System.Drawing.Color.White;
-            this.label62.ForeColor = System.Drawing.Color.LightGray;
-            this.label62.Location = new System.Drawing.Point(26, 303);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(73, 13);
-            this.label62.TabIndex = 178;
-            this.label62.Text = "___________";
-            // 
             // label74
             // 
             this.label74.AutoSize = true;
@@ -1349,17 +1124,6 @@
             this.label74.Size = new System.Drawing.Size(75, 17);
             this.label74.TabIndex = 197;
             this.label74.Text = "License No:";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.BackColor = System.Drawing.Color.White;
-            this.label63.ForeColor = System.Drawing.Color.LightGray;
-            this.label63.Location = new System.Drawing.Point(100, 303);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(73, 13);
-            this.label63.TabIndex = 179;
-            this.label63.Text = "___________";
             // 
             // label18
             // 
@@ -1373,17 +1137,6 @@
             this.label18.TabIndex = 63;
             this.label18.Text = "SSS No:";
             // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.BackColor = System.Drawing.Color.White;
-            this.label64.ForeColor = System.Drawing.Color.LightGray;
-            this.label64.Location = new System.Drawing.Point(172, 303);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(73, 13);
-            this.label64.TabIndex = 180;
-            this.label64.Text = "___________";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -1395,23 +1148,6 @@
             this.label17.Size = new System.Drawing.Size(53, 17);
             this.label17.TabIndex = 64;
             this.label17.Text = "TIN No:";
-            // 
-            // Dependent3RBX
-            // 
-            this.Dependent3RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Dependent3RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Dependent3RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent3RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3RBX.FormattingEnabled = true;
-            this.Dependent3RBX.Items.AddRange(new object[] {
-            "",
-            "Son",
-            "Daughter",
-            "Sibling"});
-            this.Dependent3RBX.Location = new System.Drawing.Point(253, 253);
-            this.Dependent3RBX.Name = "Dependent3RBX";
-            this.Dependent3RBX.Size = new System.Drawing.Size(108, 25);
-            this.Dependent3RBX.TabIndex = 47;
             // 
             // label20
             // 
@@ -1425,22 +1161,6 @@
             this.label20.TabIndex = 67;
             this.label20.Text = "PhilHealth:";
             // 
-            // Dependent3LastBX
-            // 
-            this.Dependent3LastBX.BackColor = System.Drawing.Color.White;
-            this.Dependent3LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent3LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent3LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3LastBX.Location = new System.Drawing.Point(178, 257);
-            this.Dependent3LastBX.MaxLength = 45;
-            this.Dependent3LastBX.Name = "Dependent3LastBX";
-            this.Dependent3LastBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent3LastBX.TabIndex = 46;
-            this.Dependent3LastBX.Text = "Last";
-            this.Dependent3LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent3LastBX.Enter += new System.EventHandler(this.Dependent3LastBX_Enter);
-            this.Dependent3LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -1452,22 +1172,6 @@
             this.label19.Size = new System.Drawing.Size(82, 17);
             this.label19.TabIndex = 68;
             this.label19.Text = "Prev Agency:";
-            // 
-            // Dependent3MiddleBX
-            // 
-            this.Dependent3MiddleBX.BackColor = System.Drawing.Color.White;
-            this.Dependent3MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent3MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent3MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3MiddleBX.Location = new System.Drawing.Point(104, 257);
-            this.Dependent3MiddleBX.MaxLength = 45;
-            this.Dependent3MiddleBX.Name = "Dependent3MiddleBX";
-            this.Dependent3MiddleBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent3MiddleBX.TabIndex = 45;
-            this.Dependent3MiddleBX.Text = "Middle";
-            this.Dependent3MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent3MiddleBX.Enter += new System.EventHandler(this.Dependent3MiddleBX_Enter);
-            this.Dependent3MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
             // 
             // PrevAgencyBX
             // 
@@ -1482,22 +1186,6 @@
             this.PrevAgencyBX.TabIndex = 62;
             this.PrevAgencyBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             // 
-            // Dependent3FirstBX
-            // 
-            this.Dependent3FirstBX.BackColor = System.Drawing.Color.White;
-            this.Dependent3FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent3FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent3FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent3FirstBX.Location = new System.Drawing.Point(32, 257);
-            this.Dependent3FirstBX.MaxLength = 45;
-            this.Dependent3FirstBX.Name = "Dependent3FirstBX";
-            this.Dependent3FirstBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent3FirstBX.TabIndex = 44;
-            this.Dependent3FirstBX.Text = "First";
-            this.Dependent3FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent3FirstBX.Enter += new System.EventHandler(this.Dependent3FirstBX_Enter);
-            this.Dependent3FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -1509,18 +1197,6 @@
             this.label23.Size = new System.Drawing.Size(97, 17);
             this.label23.TabIndex = 73;
             this.label23.Text = "Emergency No:";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label57.Location = new System.Drawing.Point(2, 257);
-            this.label57.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(19, 19);
-            this.label57.TabIndex = 166;
-            this.label57.Text = "3.";
             // 
             // SSSNoBX
             // 
@@ -1536,17 +1212,6 @@
             this.SSSNoBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.SSSNoBX.Enter += new System.EventHandler(this.SSSNoBX_Enter);
             // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.BackColor = System.Drawing.Color.White;
-            this.label58.ForeColor = System.Drawing.Color.LightGray;
-            this.label58.Location = new System.Drawing.Point(26, 265);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(73, 13);
-            this.label58.TabIndex = 170;
-            this.label58.Text = "___________";
-            // 
             // TINNoBX
             // 
             this.TINNoBX.BackColor = System.Drawing.Color.White;
@@ -1560,17 +1225,6 @@
             this.TINNoBX.TabIndex = 60;
             this.TINNoBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.TINNoBX.Enter += new System.EventHandler(this.TINNoBX_Enter);
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.BackColor = System.Drawing.Color.White;
-            this.label59.ForeColor = System.Drawing.Color.LightGray;
-            this.label59.Location = new System.Drawing.Point(100, 265);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(73, 13);
-            this.label59.TabIndex = 171;
-            this.label59.Text = "___________";
             // 
             // PhilHealthBX
             // 
@@ -1586,34 +1240,6 @@
             this.PhilHealthBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.PhilHealthBX.Enter += new System.EventHandler(this.PhilHealthBX_Enter);
             // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.BackColor = System.Drawing.Color.White;
-            this.label60.ForeColor = System.Drawing.Color.LightGray;
-            this.label60.Location = new System.Drawing.Point(172, 265);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(73, 13);
-            this.label60.TabIndex = 172;
-            this.label60.Text = "___________";
-            // 
-            // Dependent2RBX
-            // 
-            this.Dependent2RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Dependent2RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Dependent2RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent2RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2RBX.FormattingEnabled = true;
-            this.Dependent2RBX.Items.AddRange(new object[] {
-            "",
-            "Son",
-            "Daughter",
-            "Sibling"});
-            this.Dependent2RBX.Location = new System.Drawing.Point(253, 212);
-            this.Dependent2RBX.Name = "Dependent2RBX";
-            this.Dependent2RBX.Size = new System.Drawing.Size(108, 25);
-            this.Dependent2RBX.TabIndex = 43;
-            // 
             // EmergencyNoBX
             // 
             this.EmergencyNoBX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
@@ -1627,22 +1253,6 @@
             this.EmergencyNoBX.TabIndex = 68;
             this.EmergencyNoBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.EmergencyNoBX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmergencyNoBX_KeyPress);
-            // 
-            // Dependent2LastBX
-            // 
-            this.Dependent2LastBX.BackColor = System.Drawing.Color.White;
-            this.Dependent2LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent2LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent2LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2LastBX.Location = new System.Drawing.Point(178, 216);
-            this.Dependent2LastBX.MaxLength = 45;
-            this.Dependent2LastBX.Name = "Dependent2LastBX";
-            this.Dependent2LastBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent2LastBX.TabIndex = 42;
-            this.Dependent2LastBX.Text = "Last";
-            this.Dependent2LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent2LastBX.Enter += new System.EventHandler(this.Dependent2LastBX_Enter);
-            this.Dependent2LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
             // 
             // ContactLBL
             // 
@@ -1668,160 +1278,6 @@
             this.label24.TabIndex = 72;
             this.label24.Text = "Cellphone No:";
             // 
-            // Dependent2MiddleBX
-            // 
-            this.Dependent2MiddleBX.BackColor = System.Drawing.Color.White;
-            this.Dependent2MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent2MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent2MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2MiddleBX.Location = new System.Drawing.Point(104, 216);
-            this.Dependent2MiddleBX.MaxLength = 45;
-            this.Dependent2MiddleBX.Name = "Dependent2MiddleBX";
-            this.Dependent2MiddleBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent2MiddleBX.TabIndex = 41;
-            this.Dependent2MiddleBX.Text = "Middle";
-            this.Dependent2MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent2MiddleBX.Enter += new System.EventHandler(this.Dependent2MiddleBX_Enter);
-            this.Dependent2MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
-            // 
-            // Dependent2FirstBX
-            // 
-            this.Dependent2FirstBX.BackColor = System.Drawing.Color.White;
-            this.Dependent2FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent2FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent2FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent2FirstBX.Location = new System.Drawing.Point(32, 216);
-            this.Dependent2FirstBX.MaxLength = 45;
-            this.Dependent2FirstBX.Name = "Dependent2FirstBX";
-            this.Dependent2FirstBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent2FirstBX.TabIndex = 40;
-            this.Dependent2FirstBX.Text = "First";
-            this.Dependent2FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent2FirstBX.Enter += new System.EventHandler(this.Dependent2FirstBX_Enter);
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label48.Location = new System.Drawing.Point(2, 216);
-            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(19, 19);
-            this.label48.TabIndex = 158;
-            this.label48.Text = "2.";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.BackColor = System.Drawing.Color.White;
-            this.label49.ForeColor = System.Drawing.Color.Silver;
-            this.label49.Location = new System.Drawing.Point(26, 224);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(73, 13);
-            this.label49.TabIndex = 162;
-            this.label49.Text = "___________";
-            this.label49.Leave += new System.EventHandler(this.FirstNameBX_Leave);
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.BackColor = System.Drawing.Color.White;
-            this.label50.ForeColor = System.Drawing.Color.LightGray;
-            this.label50.Location = new System.Drawing.Point(100, 224);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(73, 13);
-            this.label50.TabIndex = 163;
-            this.label50.Text = "___________";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.BackColor = System.Drawing.Color.White;
-            this.label51.ForeColor = System.Drawing.Color.LightGray;
-            this.label51.Location = new System.Drawing.Point(172, 224);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(73, 13);
-            this.label51.TabIndex = 164;
-            this.label51.Text = "___________";
-            // 
-            // Dependent1RBX
-            // 
-            this.Dependent1RBX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Dependent1RBX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Dependent1RBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent1RBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1RBX.FormattingEnabled = true;
-            this.Dependent1RBX.Items.AddRange(new object[] {
-            "",
-            "Son",
-            "Daughter",
-            "Sibling"});
-            this.Dependent1RBX.Location = new System.Drawing.Point(253, 171);
-            this.Dependent1RBX.Name = "Dependent1RBX";
-            this.Dependent1RBX.Size = new System.Drawing.Size(108, 25);
-            this.Dependent1RBX.TabIndex = 39;
-            // 
-            // Dependent1LastBX
-            // 
-            this.Dependent1LastBX.BackColor = System.Drawing.Color.White;
-            this.Dependent1LastBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent1LastBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent1LastBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1LastBX.Location = new System.Drawing.Point(178, 175);
-            this.Dependent1LastBX.MaxLength = 45;
-            this.Dependent1LastBX.Name = "Dependent1LastBX";
-            this.Dependent1LastBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent1LastBX.TabIndex = 38;
-            this.Dependent1LastBX.Text = "Last";
-            this.Dependent1LastBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent1LastBX.Enter += new System.EventHandler(this.Dependent1LastBX_Enter);
-            this.Dependent1LastBX.Leave += new System.EventHandler(this.LastNameBX_Leave);
-            // 
-            // Dependent1MiddleBX
-            // 
-            this.Dependent1MiddleBX.BackColor = System.Drawing.Color.White;
-            this.Dependent1MiddleBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent1MiddleBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent1MiddleBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1MiddleBX.Location = new System.Drawing.Point(104, 175);
-            this.Dependent1MiddleBX.MaxLength = 45;
-            this.Dependent1MiddleBX.Name = "Dependent1MiddleBX";
-            this.Dependent1MiddleBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent1MiddleBX.TabIndex = 37;
-            this.Dependent1MiddleBX.Text = "Middle";
-            this.Dependent1MiddleBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent1MiddleBX.Enter += new System.EventHandler(this.Dependent1MiddleBX_Enter);
-            this.Dependent1MiddleBX.Leave += new System.EventHandler(this.MiddleNameBX_Leave);
-            // 
-            // Dependent1FirstBX
-            // 
-            this.Dependent1FirstBX.BackColor = System.Drawing.Color.White;
-            this.Dependent1FirstBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dependent1FirstBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.Dependent1FirstBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.Dependent1FirstBX.Location = new System.Drawing.Point(32, 175);
-            this.Dependent1FirstBX.MaxLength = 45;
-            this.Dependent1FirstBX.Name = "Dependent1FirstBX";
-            this.Dependent1FirstBX.Size = new System.Drawing.Size(66, 18);
-            this.Dependent1FirstBX.TabIndex = 36;
-            this.Dependent1FirstBX.Text = "First";
-            this.Dependent1FirstBX.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
-            this.Dependent1FirstBX.Enter += new System.EventHandler(this.Dependent1FirstBX_Enter);
-            this.Dependent1FirstBX.Leave += new System.EventHandler(this.FirstNameBX_Leave);
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label52.Location = new System.Drawing.Point(2, 175);
-            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(17, 19);
-            this.label52.TabIndex = 117;
-            this.label52.Text = "1.";
-            // 
             // label53
             // 
             this.label53.AutoSize = true;
@@ -1833,39 +1289,6 @@
             this.label53.Size = new System.Drawing.Size(115, 21);
             this.label53.TabIndex = 116;
             this.label53.Text = "DEPENDENTS";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.BackColor = System.Drawing.Color.White;
-            this.label54.ForeColor = System.Drawing.Color.LightGray;
-            this.label54.Location = new System.Drawing.Point(26, 183);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(73, 13);
-            this.label54.TabIndex = 122;
-            this.label54.Text = "___________";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.BackColor = System.Drawing.Color.White;
-            this.label55.ForeColor = System.Drawing.Color.LightGray;
-            this.label55.Location = new System.Drawing.Point(100, 183);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(73, 13);
-            this.label55.TabIndex = 123;
-            this.label55.Text = "___________";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.BackColor = System.Drawing.Color.White;
-            this.label56.ForeColor = System.Drawing.Color.LightGray;
-            this.label56.Location = new System.Drawing.Point(172, 183);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(73, 13);
-            this.label56.TabIndex = 124;
-            this.label56.Text = "___________";
             // 
             // MotherLastBX
             // 
@@ -2518,6 +1941,9 @@
             // 
             // FamilyPNL
             // 
+            this.FamilyPNL.Controls.Add(this.DelRowBTN);
+            this.FamilyPNL.Controls.Add(this.AddRowBTN);
+            this.FamilyPNL.Controls.Add(this.DepGRD);
             this.FamilyPNL.Controls.Add(this.SpouseLastBX);
             this.FamilyPNL.Controls.Add(this.SpouseMiddleBX);
             this.FamilyPNL.Controls.Add(this.SpouseFirstBX);
@@ -2529,62 +1955,152 @@
             this.FamilyPNL.Controls.Add(this.FatherFirstBX);
             this.FamilyPNL.Controls.Add(this.label72);
             this.FamilyPNL.Controls.Add(this.FatherMiddleBX);
-            this.FamilyPNL.Controls.Add(this.Dependent5RBX);
             this.FamilyPNL.Controls.Add(this.FatherLastBX);
             this.FamilyPNL.Controls.Add(this.MotherFirstBX);
             this.FamilyPNL.Controls.Add(this.MotherMiddleBX);
-            this.FamilyPNL.Controls.Add(this.label65);
             this.FamilyPNL.Controls.Add(this.MotherLastBX);
             this.FamilyPNL.Controls.Add(this.label53);
-            this.FamilyPNL.Controls.Add(this.label52);
-            this.FamilyPNL.Controls.Add(this.Dependent1FirstBX);
-            this.FamilyPNL.Controls.Add(this.Dependent4RBX);
-            this.FamilyPNL.Controls.Add(this.Dependent1MiddleBX);
-            this.FamilyPNL.Controls.Add(this.Dependent1LastBX);
-            this.FamilyPNL.Controls.Add(this.Dependent1RBX);
-            this.FamilyPNL.Controls.Add(this.label48);
-            this.FamilyPNL.Controls.Add(this.Dependent2FirstBX);
-            this.FamilyPNL.Controls.Add(this.label61);
-            this.FamilyPNL.Controls.Add(this.Dependent2MiddleBX);
-            this.FamilyPNL.Controls.Add(this.Dependent2LastBX);
-            this.FamilyPNL.Controls.Add(this.Dependent2RBX);
-            this.FamilyPNL.Controls.Add(this.label57);
-            this.FamilyPNL.Controls.Add(this.Dependent3RBX);
-            this.FamilyPNL.Controls.Add(this.Dependent3FirstBX);
-            this.FamilyPNL.Controls.Add(this.Dependent3MiddleBX);
-            this.FamilyPNL.Controls.Add(this.Dependent3LastBX);
             this.FamilyPNL.Controls.Add(this.label37);
             this.FamilyPNL.Controls.Add(this.label36);
             this.FamilyPNL.Controls.Add(this.label35);
             this.FamilyPNL.Controls.Add(this.label40);
             this.FamilyPNL.Controls.Add(this.label39);
             this.FamilyPNL.Controls.Add(this.label38);
-            this.FamilyPNL.Controls.Add(this.label56);
-            this.FamilyPNL.Controls.Add(this.label55);
-            this.FamilyPNL.Controls.Add(this.label54);
-            this.FamilyPNL.Controls.Add(this.label51);
-            this.FamilyPNL.Controls.Add(this.label50);
-            this.FamilyPNL.Controls.Add(this.label49);
-            this.FamilyPNL.Controls.Add(this.label60);
-            this.FamilyPNL.Controls.Add(this.label59);
-            this.FamilyPNL.Controls.Add(this.label58);
-            this.FamilyPNL.Controls.Add(this.Dependent5LastBX);
-            this.FamilyPNL.Controls.Add(this.Dependent5MiddleBX);
-            this.FamilyPNL.Controls.Add(this.Dependent5FirstBX);
-            this.FamilyPNL.Controls.Add(this.Dependent4LastBX);
-            this.FamilyPNL.Controls.Add(this.Dependent4FirstBX);
-            this.FamilyPNL.Controls.Add(this.label66);
-            this.FamilyPNL.Controls.Add(this.label67);
-            this.FamilyPNL.Controls.Add(this.label68);
-            this.FamilyPNL.Controls.Add(this.label62);
-            this.FamilyPNL.Controls.Add(this.label64);
-            this.FamilyPNL.Controls.Add(this.Dependent4MiddleBX);
-            this.FamilyPNL.Controls.Add(this.label63);
             this.FamilyPNL.Location = new System.Drawing.Point(62, 117);
             this.FamilyPNL.Name = "FamilyPNL";
             this.FamilyPNL.Size = new System.Drawing.Size(437, 393);
             this.FamilyPNL.TabIndex = 231;
             this.FamilyPNL.Visible = false;
+            // 
+            // DelRowBTN
+            // 
+            this.DelRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DelRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.DelRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DelRowBTN.BackgroundImage")));
+            this.DelRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DelRowBTN.FlatAppearance.BorderSize = 0;
+            this.DelRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DelRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.DelRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DelRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.DelRowBTN.ForeColor = System.Drawing.Color.White;
+            this.DelRowBTN.Location = new System.Drawing.Point(355, 133);
+            this.DelRowBTN.Name = "DelRowBTN";
+            this.DelRowBTN.Size = new System.Drawing.Size(78, 21);
+            this.DelRowBTN.TabIndex = 242;
+            this.DelRowBTN.Text = "DEL ROW";
+            this.DelRowBTN.UseVisualStyleBackColor = false;
+            this.DelRowBTN.Click += new System.EventHandler(this.DelRowBTN_Click);
+            // 
+            // AddRowBTN
+            // 
+            this.AddRowBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddRowBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.AddRowBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddRowBTN.BackgroundImage")));
+            this.AddRowBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddRowBTN.FlatAppearance.BorderSize = 0;
+            this.AddRowBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.AddRowBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.AddRowBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddRowBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.AddRowBTN.ForeColor = System.Drawing.Color.White;
+            this.AddRowBTN.Location = new System.Drawing.Point(271, 133);
+            this.AddRowBTN.Name = "AddRowBTN";
+            this.AddRowBTN.Size = new System.Drawing.Size(78, 21);
+            this.AddRowBTN.TabIndex = 240;
+            this.AddRowBTN.Text = "ADD ROW";
+            this.AddRowBTN.UseVisualStyleBackColor = false;
+            this.AddRowBTN.Click += new System.EventHandler(this.AddRowBTN_Click);
+            // 
+            // DepGRD
+            // 
+            this.DepGRD.AllowUserToAddRows = false;
+            this.DepGRD.AllowUserToDeleteRows = false;
+            this.DepGRD.AllowUserToResizeColumns = false;
+            this.DepGRD.AllowUserToResizeRows = false;
+            this.DepGRD.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.DepGRD.BackgroundColor = System.Drawing.Color.White;
+            this.DepGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DepGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.DepGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.NullValue = "-";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DepGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DepGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DepGRD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.First,
+            this.Middle,
+            this.Last,
+            this.Rel});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DepGRD.DefaultCellStyle = dataGridViewCellStyle5;
+            this.DepGRD.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.DepGRD.EnableHeadersVisualStyles = false;
+            this.DepGRD.Location = new System.Drawing.Point(0, 168);
+            this.DepGRD.MultiSelect = false;
+            this.DepGRD.Name = "DepGRD";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DepGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.DepGRD.RowHeadersVisible = false;
+            this.DepGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DepGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DepGRD.Size = new System.Drawing.Size(434, 222);
+            this.DepGRD.TabIndex = 241;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "Column1";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            this.ID.Width = 150;
+            // 
+            // First
+            // 
+            this.First.HeaderText = "FIRST";
+            this.First.Name = "First";
+            // 
+            // Middle
+            // 
+            this.Middle.HeaderText = "MIDDLE";
+            this.Middle.Name = "Middle";
+            // 
+            // Last
+            // 
+            this.Last.HeaderText = "LAST";
+            this.Last.Name = "Last";
+            // 
+            // Rel
+            // 
+            this.Rel.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Rel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Rel.HeaderText = "RELATIONSHIP";
+            this.Rel.Items.AddRange(new object[] {
+            "",
+            "Son",
+            "Daughter",
+            "Sibling"});
+            this.Rel.Name = "Rel";
+            this.Rel.Width = 130;
             // 
             // WorkPNL
             // 
@@ -2682,6 +2198,7 @@
             this.PersonalPNL.PerformLayout();
             this.FamilyPNL.ResumeLayout(false);
             this.FamilyPNL.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DepGRD)).EndInit();
             this.WorkPNL.ResumeLayout(false);
             this.WorkPNL.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -2773,47 +2290,7 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.ComboBox Dependent1RBX;
-        private System.Windows.Forms.TextBox Dependent1LastBX;
-        private System.Windows.Forms.TextBox Dependent1MiddleBX;
-        private System.Windows.Forms.TextBox Dependent1FirstBX;
-        private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.ComboBox Dependent5RBX;
-        private System.Windows.Forms.TextBox Dependent5LastBX;
-        private System.Windows.Forms.TextBox Dependent5MiddleBX;
-        private System.Windows.Forms.TextBox Dependent5FirstBX;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.ComboBox Dependent4RBX;
-        private System.Windows.Forms.TextBox Dependent4LastBX;
-        private System.Windows.Forms.TextBox Dependent4MiddleBX;
-        private System.Windows.Forms.TextBox Dependent4FirstBX;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.ComboBox Dependent3RBX;
-        private System.Windows.Forms.TextBox Dependent3LastBX;
-        private System.Windows.Forms.TextBox Dependent3MiddleBX;
-        private System.Windows.Forms.TextBox Dependent3FirstBX;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.ComboBox Dependent2RBX;
-        private System.Windows.Forms.TextBox Dependent2LastBX;
-        private System.Windows.Forms.TextBox Dependent2MiddleBX;
-        private System.Windows.Forms.TextBox Dependent2FirstBX;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label74;
         private System.Windows.Forms.TextBox SpouseLastBX;
         private System.Windows.Forms.TextBox SpouseMiddleBX;
@@ -2879,5 +2356,13 @@
         private System.Windows.Forms.Panel WorkPNL;
         private System.Windows.Forms.Label AddLBL;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button DelRowBTN;
+        private System.Windows.Forms.Button AddRowBTN;
+        private System.Windows.Forms.DataGridView DepGRD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn First;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Middle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Last;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Rel;
     }
 }

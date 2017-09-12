@@ -56,7 +56,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
-            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing?", "Stop Editing?",
+            if (RylMessageBox.ShowDialog("Are you sure you want to stop editing? Unsaved changes will be lost.", "Stop Editing?",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 Close();
         }
@@ -267,10 +267,12 @@ namespace MSAMISUserInterface {
         }
 
         private void DelRowBTN_Click(object sender, EventArgs e) {
-            if (!CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString().Equals("-1")) {
-                Client.RemoveCertifier(int.Parse(CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString()));
+            if (CertifiersGRD.SelectedRows.Count > 0) { 
+                if (!CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString().Equals("-1")) {
+                 Client.RemoveCertifier(int.Parse(CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString()));
+               }
+                CertifiersGRD.Rows.Remove(CertifiersGRD.SelectedRows[0]);
             }
-            CertifiersGRD.Rows.Remove(CertifiersGRD.SelectedRows[0]);
         }
     }
 }

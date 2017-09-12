@@ -195,15 +195,24 @@ namespace MSAMISUserInterface {
 
 
         public static DataTable GetIncidentReport(int rid) {
-            var q = @"select case  incidentreport.ReportType when 1 then 'Injury' when 2 then 'Accident' when 3 then 'Complaint' end as Type, 
-                        incidentreport.EventDate as EventDate, incidentreport.EventLocation as Location, 
-                        incidentreport.Description as Description, 
-                        concat (ln, ', ',  fn, ' ', mn) as name, 
+            var q = @"select case incidentreport.ReportType when 1 then 'Injury' when 2 then 'Accident' when 3 then 'Complaint' end as Type, 
+                        incidentreport.EventDate as EventDate, 
+                        incidentreport.EventLocation as Location, 
+                        incidentreport.Description as Description from request_unassign
+                        left join request on request_unassign.RID = request.RID
+                        left join incidentreport on request_unassign.IID = incidentreport.IID 
+                        left join personsinvolved on incidentreport.IID = personsinvolved.IID where request.RID = " + rid + " group by Description";
+            return SQLTools.ExecuteQuery(q);
+        }
+
+        public static DataTable GetIncidentInvolved(int rid) {
+            var q = @"select concat (ln, ', ',  fn, ' ', mn) as name, 
                         case InvolvementType when 1 then 'Involved' when 2 then 'Witness' end as InvType from request_unassign
                         left join request on request_unassign.RID = request.RID
                         left join incidentreport on request_unassign.IID = incidentreport.IID 
                         left join personsinvolved on incidentreport.IID = personsinvolved.IID where request.RID = " + rid + " group by name";
             return SQLTools.ExecuteQuery(q);
+
         }
 
         public static void AddIncidentReportInvolvement(int Iid, int type, string First, string Middle, string Last) {

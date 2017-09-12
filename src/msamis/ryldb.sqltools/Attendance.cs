@@ -169,7 +169,7 @@ namespace MSAMISUserInterface {
 							(CONCAT (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_hh,':',to_mm,SUBSTRING(to_period,1,1)))) as Schedule,
                             concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as ti_to,
                             
-                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, timein, timeout
+                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, timein, timeout, CONCAT(`year`, '-',period.month,'-', (DATE_FORMAT(date, '%d')), ' ') as Date
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
@@ -184,8 +184,8 @@ namespace MSAMISUserInterface {
                             ";
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
-                DateTime ti = GetDateTime_(f["TimeIn"].ToString());
-                DateTime to = GetDateTime_(f["TimeOut"].ToString());
+                DateTime ti = DateTime.Parse(f["Date"].ToString()+f["TimeIn"].ToString());
+                DateTime to = DateTime.Parse(f["Date"].ToString()+f["TimeOut"].ToString());
                 HourProcessor proc = new HourProcessor(ti, to, ti, to);
                 hourlist.Add(proc);
                 f["normal_day"] = proc.GetNormalDay();
@@ -209,12 +209,13 @@ namespace MSAMISUserInterface {
         }
 
         public Hours GetAttendanceSummary() {
+            
             String q = $@"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
 							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
                             timein,
                            TimeOut, 
-                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total
+                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, CONCAT(`year`, '-',period.month,'-', (DATE_FORMAT(date, '%d')), '  ') as Datex
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
@@ -229,8 +230,10 @@ namespace MSAMISUserInterface {
                             ";
             DataTable d = SQLTools.ExecuteQuery(q);
             foreach (DataRow f in d.Rows) {
-                DateTime ti = GetDateTime_(f["TimeIn"].ToString());
-                DateTime to = GetDateTime_(f["TimeOut"].ToString());
+                var sti = f["Datex"].ToString() + f["TimeIn"].ToString();
+                var sto = f["Datex"].ToString() + f["TimeOut"].ToString();
+                DateTime ti = DateTime.Parse(sti);
+                DateTime to = DateTime.Parse(sto);
                 HourProcessor proc = new HourProcessor(ti, to, ti, to);
                 hourlist.Add(proc);
                 f["normal_day"] = proc.GetNormalDay();

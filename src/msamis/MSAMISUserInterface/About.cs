@@ -163,5 +163,9 @@ namespace MSAMISUserInterface {
             AboutLBL.Visible = false;
             SaveBTN.Text = "ADD";
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e) {
+
+        }
     }
 }
