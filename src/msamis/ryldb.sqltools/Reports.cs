@@ -69,12 +69,47 @@ namespace MSAMISUserInterface
         #region Salary Export
         public static DataTable GetSalaryList()
         {
-            /*
-            ExtraQueryParams = "WHERE gid = 0 GROUP BY fn;";
-            String q = "SELECT fn, ln, mn, gid, mn, gid, mn, gid, GStatus, gender, height, weight, ln, mn, gid, GStatus, gender, height, weight, gender FROM msadb.guards " + ExtraQueryParams;
-            return SQLTools.ExecuteQuery(q);
-        */
-        return null;
+            var dt = new DataTable();
+            var approvedlist = Payroll.GetApprovedPayrollsList();
+            int gid, month, period, year;
+            int i;
+
+            for (i = 0; i <= 19; i++)
+            dt.Columns.Add();
+
+            for (i = 0; i < Payroll.GetApprovedPayrollsList().Rows.Count; i++)
+            {
+                gid = Convert.ToInt32(approvedlist.Rows[i][0]);
+                month = Convert.ToInt32(approvedlist.Rows[i][1]);
+                period = Convert.ToInt32(approvedlist.Rows[i][2]);
+                year = Convert.ToInt32(approvedlist.Rows[i][3]);
+                PayrollReport pr = new PayrollReport(gid, year, month, period);
+
+                DataRow dr = dt.NewRow();
+                dr[0] = pr.LN + ", " + pr.FN + pr.MN;
+                dr[1] = pr.DaysOfWork;
+                dr[2] = "₱" + pr.Rate.ToString("0.00");
+                dr[3] = "₱" + pr.TotalRegularWage.ToString("0.00");
+                dr[4] = pr.overtime.RegularDay.hour;
+                dr[5] = "₱" + pr.overtime.RegularDay.total.ToString("0.00");
+                dr[6] = pr.overtime.SundayAndHoliday.hour;
+                dr[7] = "₱" + pr.overtime.SundayAndHoliday.total.ToString("0.00");
+                dr[8] = "₱" + pr.TotalAmount.ToString("0.00");
+                dr[9] = "₱" + pr.Sss.ToString("0.00");
+                dr[10] = "₱" + pr.PHIC.ToString("0.00");
+                dr[11] = "₱" + pr.Withtax.ToString("0.00");
+                dr[12] = "₱" + pr.HDMF.ToString("0.00");
+                dr[13] = "₱" + pr.CashAdvance.ToString("0.00");
+                dr[14] = "₱" + pr.ThirteenthMonthPay.ToString("0.00");
+                dr[15] = "₱" + pr.Cola.ToString("0.00");
+                dr[16] = "₱" + pr.CashBond.ToString("0.00");
+                dr[17] = "₱" + pr.EmergencyAllowance.ToString("0.00");
+                dr[18] = "₱" + pr.NetAmountPaid.ToString("0.00");
+               dr[19] = "";
+
+                dt.Rows.InsertAt(dr, i);
+            }
+            return dt;
         }
 
         #endregion
@@ -91,8 +126,7 @@ namespace MSAMISUserInterface
                 return GetDutyDetailList();
             else if (formOrigin == 's')
                 return GetSalaryList();
-            else
-                return null;
+            else return null;
         }
         #endregion
 

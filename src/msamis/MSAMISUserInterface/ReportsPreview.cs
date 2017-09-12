@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using rylui;
+using System.Data;
 
 namespace MSAMISUserInterface {
     public partial class ReportsPreview : Form {
@@ -118,9 +119,10 @@ namespace MSAMISUserInterface {
                 #endregion
             }
         }
-
-        public void formatSalaryReportTable()
+        /*
+        public DataTable formatSalaryReportTable()
         {
+             dt;
             var approvedlist = Payroll.GetApprovedPayrollsList();
             int gid, month, period, year;
             int i;
@@ -132,8 +134,12 @@ namespace MSAMISUserInterface {
                 year = Convert.ToInt32(approvedlist.Rows[i][3]);
                 PayrollReport pr = new PayrollReport(gid, year, month, period);
 
+
+                DataRow dr = dt.NewRow(pr.LN + ", " + pr.FN + pr.MN, pr.DaysOfWork, pr.Rate, pr.TotalRegularWage, pr.overtime.RegularDay.hour, pr.overtime.RegularDay.total, pr.overtime.SundayAndHoliday.hour, pr.overtime.SundayAndHoliday, pr.TotalAmount, pr.Sss, pr.PHIC, pr.Withtax, pr.HDMF, pr.CashAdvance, pr.ThirteenthMonthPay, pr.Cola, pr.CashBond, pr.EmergencyAllowance, pr.NetAmountPaid, "");
+                dt.Rows.InsertAt(dr, i);
                 //add data
-               // GReportGRD.Rows.Add("", "" ) [i].Cells[0].Value = pr.LN + ", " + pr.FN + pr.MN;
+                //GReportGRD.Rows.Add(pr.LN + ", " + pr.FN + pr.MN, pr.DaysOfWork, pr.Rate, pr.TotalRegularWage, pr.overtime.RegularDay.hour, pr.overtime.RegularDay.total, pr.overtime.SundayAndHoliday.hour, pr.overtime.SundayAndHoliday, pr.TotalAmount, pr.Sss, pr.PHIC, pr.Withtax, pr.HDMF, pr.CashAdvance, pr.ThirteenthMonthPay, pr.Cola, pr.CashBond, pr.EmergencyAllowance, pr.NetAmountPaid, "");
+                [i].Cells[0].Value = pr.LN + ", " + pr.FN + pr.MN;
                 GReportGRD.Rows[i].Cells[1].Value = pr.DaysOfWork;
                 GReportGRD.Rows[i].Cells[2].Value = pr.Rate;
                 GReportGRD.Rows[i].Cells[3].Value = pr.TotalRegularWage;
@@ -153,17 +159,20 @@ namespace MSAMISUserInterface {
                 GReportGRD.Rows[i].Cells[17].Value = pr.EmergencyAllowance;
                 GReportGRD.Rows[i].Cells[18].Value = pr.NetAmountPaid;
                 GReportGRD.Rows[i].Cells[19].Value = "";
-
+                
             }
+            return dt;
         }
-
+        */
 
         #region RylBlock
 
         public void FormatPDF(char formOrigin) {
             //Default PDF Format
+
+
             GReportGRD.DataSource = Reports.GetList(formOrigin);
-            if (formOrigin == 's') formatSalaryReportTable();
+            
             String strcheck = "";
             if (formOrigin == 'd') 
             {
@@ -202,6 +211,7 @@ namespace MSAMISUserInterface {
                         {
                             PaddingTop = 5f,
                             PaddingBottom = 8f
+
                         };
                         pdfTable.AddCell(newcell);
                     }
