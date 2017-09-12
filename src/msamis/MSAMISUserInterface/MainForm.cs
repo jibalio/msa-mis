@@ -221,6 +221,7 @@ namespace MSAMISUserInterface {
             _shadow.Close();
             Lf.Opacity = 0;
             Lf.Show();
+            Lf.Location = Location;
             Hide();
         }
         private void MainForm_SizeChanged(object sender, EventArgs e) {
