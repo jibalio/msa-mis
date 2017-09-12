@@ -36,6 +36,27 @@
       <SubType>Content</SubType>
       <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg2.sequencediagram</DependentUpon>
     </Content>
+    <Content Include="Sequence Diagram\Sequence_Mod4_Pg4.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Sequence_Mod4_Pg4.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg4.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Sequence Diagram\Sequence_Mod4_Pg5.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Sequence_Mod4_Pg5.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg5.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\ModelingProject1.uml">
       <SubType>Content</SubType>
