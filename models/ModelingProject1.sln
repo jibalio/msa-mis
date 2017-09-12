@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "ModelingProject1\ModelingProject1.modelproj", "{C670C43A-7611-4A3C-B1AB-4F89D4665B49}"
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "MSAMISModels", "ModelingProject1\MSAMISModels.modelproj", "{C670C43A-7611-4A3C-B1AB-4F89D4665B49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
