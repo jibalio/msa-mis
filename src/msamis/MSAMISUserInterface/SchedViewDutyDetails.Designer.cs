@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchedViewDutyDetails));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientLBL = new System.Windows.Forms.Label();
             this.FirstNameLBL = new System.Windows.Forms.Label();
@@ -58,16 +58,16 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.HNSLBL = new System.Windows.Forms.Label();
             this.EditDaysBTN = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
+            this.HDSLBL = new System.Windows.Forms.Label();
             this.PeriodCMBX = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.AHShiftLBL = new System.Windows.Forms.Label();
             this.ANightLBL = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.RNSLBL = new System.Windows.Forms.Label();
             this.AHNightLBL = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.RDSLBL = new System.Windows.Forms.Label();
             this.AShiftLBL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Header = new System.Windows.Forms.ToolTip(this.components);
@@ -75,6 +75,58 @@
             this.label14 = new System.Windows.Forms.Label();
             this.StartLBL = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.OrdinaryDay = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripTextBox9 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox10 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox11 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox12 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox14 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.OrdinaryNight = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripTextBox3 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox6 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox7 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox8 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox13 = new System.Windows.Forms.ToolStripTextBox();
+            this.HolidayDay = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripTextBox15 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox16 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox17 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox18 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox19 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox20 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox21 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox29 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox30 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox31 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox32 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox33 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox34 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox35 = new System.Windows.Forms.ToolStripTextBox();
+            this.HolidayNight = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripTextBox22 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox23 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox24 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox25 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox26 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox27 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox28 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox36 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox37 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox38 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox39 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox40 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox41 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox42 = new System.Windows.Forms.ToolStripTextBox();
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).BeginInit();
@@ -84,6 +136,10 @@
             this.AttendancePNL.SuspendLayout();
             this.MainAttendancePNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).BeginInit();
+            this.OrdinaryDay.SuspendLayout();
+            this.OrdinaryNight.SuspendLayout();
+            this.HolidayDay.SuspendLayout();
+            this.HolidayNight.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -192,37 +248,37 @@
             this.DutyDetailsGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DutyDetailsGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.DutyDetailsGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DutyDetailsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle19.NullValue = "-";
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DutyDetailsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.DutyDetailsGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DutyDetailsGRD.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DutyDetailsGRD.DefaultCellStyle = dataGridViewCellStyle20;
             this.DutyDetailsGRD.EnableHeadersVisualStyles = false;
             this.DutyDetailsGRD.Location = new System.Drawing.Point(31, 14);
             this.DutyDetailsGRD.MultiSelect = false;
             this.DutyDetailsGRD.Name = "DutyDetailsGRD";
             this.DutyDetailsGRD.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DutyDetailsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DutyDetailsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.DutyDetailsGRD.RowHeadersVisible = false;
             this.DutyDetailsGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DutyDetailsGRD.Size = new System.Drawing.Size(489, 356);
@@ -328,12 +384,12 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.ErrorPNL);
             this.panel3.Controls.Add(this.AttendanceLBL);
             this.panel3.Controls.Add(this.CloseBTN);
             this.panel3.Controls.Add(this.DutyDetailsLBL);
-            this.panel3.Controls.Add(this.DutyDetailsPNL);
             this.panel3.Controls.Add(this.AttendancePNL);
+            this.panel3.Controls.Add(this.ErrorPNL);
+            this.panel3.Controls.Add(this.DutyDetailsPNL);
             this.panel3.Location = new System.Drawing.Point(329, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(570, 600);
@@ -404,16 +460,16 @@
             this.MainAttendancePNL.Controls.Add(this.label21);
             this.MainAttendancePNL.Controls.Add(this.label4);
             this.MainAttendancePNL.Controls.Add(this.label1);
-            this.MainAttendancePNL.Controls.Add(this.label8);
+            this.MainAttendancePNL.Controls.Add(this.HNSLBL);
             this.MainAttendancePNL.Controls.Add(this.EditDaysBTN);
-            this.MainAttendancePNL.Controls.Add(this.label9);
+            this.MainAttendancePNL.Controls.Add(this.HDSLBL);
             this.MainAttendancePNL.Controls.Add(this.PeriodCMBX);
             this.MainAttendancePNL.Controls.Add(this.label10);
             this.MainAttendancePNL.Controls.Add(this.AHShiftLBL);
             this.MainAttendancePNL.Controls.Add(this.ANightLBL);
-            this.MainAttendancePNL.Controls.Add(this.label19);
+            this.MainAttendancePNL.Controls.Add(this.RNSLBL);
             this.MainAttendancePNL.Controls.Add(this.AHNightLBL);
-            this.MainAttendancePNL.Controls.Add(this.label18);
+            this.MainAttendancePNL.Controls.Add(this.RDSLBL);
             this.MainAttendancePNL.Controls.Add(this.AShiftLBL);
             this.MainAttendancePNL.Location = new System.Drawing.Point(15, 15);
             this.MainAttendancePNL.Name = "MainAttendancePNL";
@@ -430,37 +486,37 @@
             this.AttendanceGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AttendanceGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.AttendanceGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle4.NullValue = "-";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AttendanceGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle22.NullValue = "-";
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AttendanceGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.AttendanceGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AttendanceGRD.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AttendanceGRD.DefaultCellStyle = dataGridViewCellStyle23;
             this.AttendanceGRD.EnableHeadersVisualStyles = false;
             this.AttendanceGRD.Location = new System.Drawing.Point(3, 49);
             this.AttendanceGRD.MultiSelect = false;
             this.AttendanceGRD.Name = "AttendanceGRD";
             this.AttendanceGRD.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AttendanceGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AttendanceGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.AttendanceGRD.RowHeadersVisible = false;
             this.AttendanceGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AttendanceGRD.ShowCellToolTips = false;
@@ -515,17 +571,19 @@
             this.label1.TabIndex = 263;
             this.label1.Text = "For payroll period:";
             // 
-            // label8
+            // HNSLBL
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(391, 295);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 19);
-            this.label8.TabIndex = 267;
-            this.label8.Text = "Night Shift:";
+            this.HNSLBL.AutoSize = true;
+            this.HNSLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.HNSLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.HNSLBL.Location = new System.Drawing.Point(391, 295);
+            this.HNSLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.HNSLBL.Name = "HNSLBL";
+            this.HNSLBL.Size = new System.Drawing.Size(91, 19);
+            this.HNSLBL.TabIndex = 267;
+            this.HNSLBL.Text = "Night Shift: ≡";
+            this.HNSLBL.MouseEnter += new System.EventHandler(this.HNSLBL_MouseEnter);
+            this.HNSLBL.MouseLeave += new System.EventHandler(this.HNSLBL_MouseLeave);
             // 
             // EditDaysBTN
             // 
@@ -547,17 +605,19 @@
             this.EditDaysBTN.UseVisualStyleBackColor = false;
             this.EditDaysBTN.Click += new System.EventHandler(this.EditDaysBTN_Click);
             // 
-            // label9
+            // HDSLBL
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(284, 295);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 19);
-            this.label9.TabIndex = 266;
-            this.label9.Text = "Day Shift:";
+            this.HDSLBL.AutoSize = true;
+            this.HDSLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.HDSLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.HDSLBL.Location = new System.Drawing.Point(284, 295);
+            this.HDSLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.HDSLBL.Name = "HDSLBL";
+            this.HDSLBL.Size = new System.Drawing.Size(81, 19);
+            this.HDSLBL.TabIndex = 266;
+            this.HDSLBL.Text = "Day Shift: ≡";
+            this.HDSLBL.MouseEnter += new System.EventHandler(this.HDSLBL_MouseEnter);
+            this.HDSLBL.MouseLeave += new System.EventHandler(this.HDSLBL_MouseLeave);
             // 
             // PeriodCMBX
             // 
@@ -609,17 +669,19 @@
             this.ANightLBL.TabIndex = 265;
             this.ANightLBL.Text = "102 hrs";
             // 
-            // label19
+            // RNSLBL
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label19.Location = new System.Drawing.Point(111, 295);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(77, 19);
-            this.label19.TabIndex = 263;
-            this.label19.Text = "Night Shift:";
+            this.RNSLBL.AutoSize = true;
+            this.RNSLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.RNSLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RNSLBL.Location = new System.Drawing.Point(111, 295);
+            this.RNSLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RNSLBL.Name = "RNSLBL";
+            this.RNSLBL.Size = new System.Drawing.Size(91, 19);
+            this.RNSLBL.TabIndex = 263;
+            this.RNSLBL.Text = "Night Shift: ≡";
+            this.RNSLBL.MouseEnter += new System.EventHandler(this.RNSLBL_MouseEnter);
+            this.RNSLBL.MouseLeave += new System.EventHandler(this.RNSLBL_MouseLeave);
             // 
             // AHNightLBL
             // 
@@ -633,17 +695,19 @@
             this.AHNightLBL.TabIndex = 269;
             this.AHNightLBL.Text = "102 hrs";
             // 
-            // label18
+            // RDSLBL
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label18.Location = new System.Drawing.Point(4, 295);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(67, 19);
-            this.label18.TabIndex = 262;
-            this.label18.Text = "Day Shift:";
+            this.RDSLBL.AutoSize = true;
+            this.RDSLBL.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.RDSLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.RDSLBL.Location = new System.Drawing.Point(4, 295);
+            this.RDSLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RDSLBL.Name = "RDSLBL";
+            this.RDSLBL.Size = new System.Drawing.Size(81, 19);
+            this.RDSLBL.TabIndex = 262;
+            this.RDSLBL.Text = "Day Shift: ≡";
+            this.RDSLBL.MouseEnter += new System.EventHandler(this.RDSLBL_MouseEnter);
+            this.RDSLBL.MouseLeave += new System.EventHandler(this.RDSLBL_MouseLeave);
             // 
             // AShiftLBL
             // 
@@ -717,6 +781,594 @@
             this.label5.Text = "Contract Start";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // OrdinaryDay
+            // 
+            this.OrdinaryDay.BackColor = System.Drawing.Color.White;
+            this.OrdinaryDay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OrdinaryDay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox1,
+            this.toolStripSeparator1,
+            this.toolStripTextBox9,
+            this.toolStripTextBox2,
+            this.toolStripTextBox10,
+            this.toolStripTextBox11,
+            this.toolStripTextBox12,
+            this.toolStripTextBox14});
+            this.OrdinaryDay.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.OrdinaryDay.Name = "contextMenuStrip1";
+            this.OrdinaryDay.ShowImageMargin = false;
+            this.OrdinaryDay.Size = new System.Drawing.Size(206, 192);
+            this.OrdinaryDay.Text = "Mondays to Saturdays";
+            // 
+            // toolStripTextBox9
+            // 
+            this.toolStripTextBox9.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox9.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox9.Name = "toolStripTextBox9";
+            this.toolStripTextBox9.ReadOnly = true;
+            this.toolStripTextBox9.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox9.Text = "Mon - Sat";
+            // 
+            // toolStripTextBox10
+            // 
+            this.toolStripTextBox10.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox10.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox10.Name = "toolStripTextBox10";
+            this.toolStripTextBox10.ReadOnly = true;
+            this.toolStripTextBox10.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox10.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox11
+            // 
+            this.toolStripTextBox11.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox11.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox11.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox11.Name = "toolStripTextBox11";
+            this.toolStripTextBox11.ReadOnly = true;
+            this.toolStripTextBox11.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox11.Text = "Sunday";
+            // 
+            // toolStripTextBox12
+            // 
+            this.toolStripTextBox12.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox12.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox12.Name = "toolStripTextBox12";
+            this.toolStripTextBox12.ReadOnly = true;
+            this.toolStripTextBox12.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox12.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox14
+            // 
+            this.toolStripTextBox14.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox14.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox14.Name = "toolStripTextBox14";
+            this.toolStripTextBox14.ReadOnly = true;
+            this.toolStripTextBox14.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox14.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox1.Margin = new System.Windows.Forms.Padding(0, 5, 1, 1);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.ReadOnly = true;
+            this.toolStripTextBox1.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox1.Text = "ORDINARY DAY";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(202, 6);
+            // 
+            // toolStripTextBox2
+            // 
+            this.toolStripTextBox2.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox2.Name = "toolStripTextBox2";
+            this.toolStripTextBox2.ReadOnly = true;
+            this.toolStripTextBox2.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox2.Text = "345 x 8hrs";
+            // 
+            // OrdinaryNight
+            // 
+            this.OrdinaryNight.BackColor = System.Drawing.Color.White;
+            this.OrdinaryNight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OrdinaryNight.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox3,
+            this.toolStripSeparator2,
+            this.toolStripTextBox4,
+            this.toolStripTextBox5,
+            this.toolStripTextBox6,
+            this.toolStripTextBox7,
+            this.toolStripTextBox8,
+            this.toolStripTextBox13});
+            this.OrdinaryNight.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.OrdinaryNight.Name = "contextMenuStrip1";
+            this.OrdinaryNight.ShowImageMargin = false;
+            this.OrdinaryNight.Size = new System.Drawing.Size(206, 192);
+            this.OrdinaryNight.Text = "Mondays to Saturdays";
+            // 
+            // toolStripTextBox3
+            // 
+            this.toolStripTextBox3.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox3.Margin = new System.Windows.Forms.Padding(0, 5, 1, 1);
+            this.toolStripTextBox3.Name = "toolStripTextBox3";
+            this.toolStripTextBox3.ReadOnly = true;
+            this.toolStripTextBox3.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox3.Text = "ORDINARY NIGHT";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(202, 6);
+            // 
+            // toolStripTextBox4
+            // 
+            this.toolStripTextBox4.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox4.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox4.Name = "toolStripTextBox4";
+            this.toolStripTextBox4.ReadOnly = true;
+            this.toolStripTextBox4.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox4.Text = "Mon - Sat";
+            // 
+            // toolStripTextBox5
+            // 
+            this.toolStripTextBox5.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox5.Name = "toolStripTextBox5";
+            this.toolStripTextBox5.ReadOnly = true;
+            this.toolStripTextBox5.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox5.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox6
+            // 
+            this.toolStripTextBox6.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox6.Name = "toolStripTextBox6";
+            this.toolStripTextBox6.ReadOnly = true;
+            this.toolStripTextBox6.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox6.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox7
+            // 
+            this.toolStripTextBox7.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox7.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox7.Name = "toolStripTextBox7";
+            this.toolStripTextBox7.ReadOnly = true;
+            this.toolStripTextBox7.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox7.Text = "Sunday";
+            // 
+            // toolStripTextBox8
+            // 
+            this.toolStripTextBox8.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox8.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox8.Name = "toolStripTextBox8";
+            this.toolStripTextBox8.ReadOnly = true;
+            this.toolStripTextBox8.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox8.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox13
+            // 
+            this.toolStripTextBox13.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox13.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox13.Name = "toolStripTextBox13";
+            this.toolStripTextBox13.ReadOnly = true;
+            this.toolStripTextBox13.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox13.Text = "345 x 8hrs";
+            // 
+            // HolidayDay
+            // 
+            this.HolidayDay.BackColor = System.Drawing.Color.White;
+            this.HolidayDay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.HolidayDay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox15,
+            this.toolStripSeparator3,
+            this.toolStripTextBox16,
+            this.toolStripTextBox17,
+            this.toolStripTextBox18,
+            this.toolStripTextBox19,
+            this.toolStripTextBox20,
+            this.toolStripTextBox21,
+            this.toolStripTextBox29,
+            this.toolStripSeparator5,
+            this.toolStripTextBox30,
+            this.toolStripTextBox31,
+            this.toolStripTextBox32,
+            this.toolStripTextBox33,
+            this.toolStripTextBox34,
+            this.toolStripTextBox35});
+            this.HolidayDay.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.HolidayDay.Name = "contextMenuStrip1";
+            this.HolidayDay.ShowImageMargin = false;
+            this.HolidayDay.Size = new System.Drawing.Size(206, 380);
+            this.HolidayDay.Text = "Mondays to Saturdays";
+            // 
+            // toolStripTextBox15
+            // 
+            this.toolStripTextBox15.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox15.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox15.Margin = new System.Windows.Forms.Padding(0, 5, 1, 1);
+            this.toolStripTextBox15.Name = "toolStripTextBox15";
+            this.toolStripTextBox15.ReadOnly = true;
+            this.toolStripTextBox15.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox15.Text = "REGULAR HOLIDAY DAY";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(202, 6);
+            // 
+            // toolStripTextBox16
+            // 
+            this.toolStripTextBox16.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox16.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox16.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox16.Name = "toolStripTextBox16";
+            this.toolStripTextBox16.ReadOnly = true;
+            this.toolStripTextBox16.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox16.Text = "Mon - Sat";
+            // 
+            // toolStripTextBox17
+            // 
+            this.toolStripTextBox17.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox17.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox17.Name = "toolStripTextBox17";
+            this.toolStripTextBox17.ReadOnly = true;
+            this.toolStripTextBox17.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox17.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox18
+            // 
+            this.toolStripTextBox18.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox18.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox18.Name = "toolStripTextBox18";
+            this.toolStripTextBox18.ReadOnly = true;
+            this.toolStripTextBox18.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox18.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox19
+            // 
+            this.toolStripTextBox19.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox19.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox19.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox19.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox19.Name = "toolStripTextBox19";
+            this.toolStripTextBox19.ReadOnly = true;
+            this.toolStripTextBox19.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox19.Text = "Sunday";
+            // 
+            // toolStripTextBox20
+            // 
+            this.toolStripTextBox20.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox20.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox20.Name = "toolStripTextBox20";
+            this.toolStripTextBox20.ReadOnly = true;
+            this.toolStripTextBox20.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox20.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox21
+            // 
+            this.toolStripTextBox21.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox21.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox21.Name = "toolStripTextBox21";
+            this.toolStripTextBox21.ReadOnly = true;
+            this.toolStripTextBox21.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox21.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox29
+            // 
+            this.toolStripTextBox29.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox29.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox29.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox29.Margin = new System.Windows.Forms.Padding(1, 7, 1, 1);
+            this.toolStripTextBox29.Name = "toolStripTextBox29";
+            this.toolStripTextBox29.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox29.Text = "SPECIAL HOLIDAY DAY";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(202, 6);
+            // 
+            // toolStripTextBox30
+            // 
+            this.toolStripTextBox30.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox30.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox30.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox30.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox30.Name = "toolStripTextBox30";
+            this.toolStripTextBox30.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox30.Text = "Mon - Sat";
+            // 
+            // toolStripTextBox31
+            // 
+            this.toolStripTextBox31.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox31.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox31.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox31.Name = "toolStripTextBox31";
+            this.toolStripTextBox31.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox31.Text = "dhsjhds";
+            // 
+            // toolStripTextBox32
+            // 
+            this.toolStripTextBox32.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox32.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox32.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox32.Name = "toolStripTextBox32";
+            this.toolStripTextBox32.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox32.Text = "dhsjhds";
+            // 
+            // toolStripTextBox33
+            // 
+            this.toolStripTextBox33.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox33.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox33.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox33.Name = "toolStripTextBox33";
+            this.toolStripTextBox33.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox33.Text = "Sunday";
+            // 
+            // toolStripTextBox34
+            // 
+            this.toolStripTextBox34.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox34.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox34.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox34.Name = "toolStripTextBox34";
+            this.toolStripTextBox34.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox34.Text = "dhsjhds";
+            // 
+            // toolStripTextBox35
+            // 
+            this.toolStripTextBox35.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox35.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox35.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox35.Name = "toolStripTextBox35";
+            this.toolStripTextBox35.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox35.Text = "dhsjhds";
+            // 
+            // HolidayNight
+            // 
+            this.HolidayNight.BackColor = System.Drawing.Color.White;
+            this.HolidayNight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.HolidayNight.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox22,
+            this.toolStripSeparator4,
+            this.toolStripTextBox23,
+            this.toolStripTextBox24,
+            this.toolStripTextBox25,
+            this.toolStripTextBox26,
+            this.toolStripTextBox27,
+            this.toolStripTextBox28,
+            this.toolStripTextBox36,
+            this.toolStripSeparator6,
+            this.toolStripTextBox37,
+            this.toolStripTextBox38,
+            this.toolStripTextBox39,
+            this.toolStripTextBox40,
+            this.toolStripTextBox41,
+            this.toolStripTextBox42});
+            this.HolidayNight.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.HolidayNight.Name = "contextMenuStrip1";
+            this.HolidayNight.ShowImageMargin = false;
+            this.HolidayNight.Size = new System.Drawing.Size(206, 380);
+            this.HolidayNight.Text = "Mondays to Saturdays";
+            // 
+            // toolStripTextBox22
+            // 
+            this.toolStripTextBox22.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox22.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox22.Margin = new System.Windows.Forms.Padding(0, 5, 1, 1);
+            this.toolStripTextBox22.Name = "toolStripTextBox22";
+            this.toolStripTextBox22.ReadOnly = true;
+            this.toolStripTextBox22.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox22.Text = "REGULAR HOLIDAY NIGHT";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(202, 6);
+            // 
+            // toolStripTextBox23
+            // 
+            this.toolStripTextBox23.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox23.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox23.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox23.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox23.Name = "toolStripTextBox23";
+            this.toolStripTextBox23.ReadOnly = true;
+            this.toolStripTextBox23.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox23.Text = "Mon - Sat";
+            // 
+            // toolStripTextBox24
+            // 
+            this.toolStripTextBox24.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox24.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox24.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox24.Name = "toolStripTextBox24";
+            this.toolStripTextBox24.ReadOnly = true;
+            this.toolStripTextBox24.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox24.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox25
+            // 
+            this.toolStripTextBox25.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox25.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox25.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox25.Name = "toolStripTextBox25";
+            this.toolStripTextBox25.ReadOnly = true;
+            this.toolStripTextBox25.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox25.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox26
+            // 
+            this.toolStripTextBox26.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox26.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox26.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox26.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox26.Name = "toolStripTextBox26";
+            this.toolStripTextBox26.ReadOnly = true;
+            this.toolStripTextBox26.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox26.Text = "Sunday";
+            // 
+            // toolStripTextBox27
+            // 
+            this.toolStripTextBox27.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox27.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox27.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox27.Name = "toolStripTextBox27";
+            this.toolStripTextBox27.ReadOnly = true;
+            this.toolStripTextBox27.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox27.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox28
+            // 
+            this.toolStripTextBox28.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox28.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox28.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox28.Name = "toolStripTextBox28";
+            this.toolStripTextBox28.ReadOnly = true;
+            this.toolStripTextBox28.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox28.Text = "345 x 8hrs";
+            // 
+            // toolStripTextBox36
+            // 
+            this.toolStripTextBox36.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox36.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox36.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox36.Margin = new System.Windows.Forms.Padding(1, 7, 1, 1);
+            this.toolStripTextBox36.Name = "toolStripTextBox36";
+            this.toolStripTextBox36.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox36.Text = "SPECIAL HOLIDAY NIGHT";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(202, 6);
+            // 
+            // toolStripTextBox37
+            // 
+            this.toolStripTextBox37.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox37.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox37.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox37.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox37.Name = "toolStripTextBox37";
+            this.toolStripTextBox37.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox37.Text = "Mon - Sat";
+            // 
+            // toolStripTextBox38
+            // 
+            this.toolStripTextBox38.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox38.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox38.Name = "toolStripTextBox38";
+            this.toolStripTextBox38.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox38.Text = "dhsjhds";
+            // 
+            // toolStripTextBox39
+            // 
+            this.toolStripTextBox39.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox39.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox39.Name = "toolStripTextBox39";
+            this.toolStripTextBox39.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox39.Text = "dhsjhds";
+            // 
+            // toolStripTextBox40
+            // 
+            this.toolStripTextBox40.BackColor = System.Drawing.Color.White;
+            this.toolStripTextBox40.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox40.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.toolStripTextBox40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox40.Margin = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.toolStripTextBox40.Name = "toolStripTextBox40";
+            this.toolStripTextBox40.Size = new System.Drawing.Size(170, 18);
+            this.toolStripTextBox40.Text = "Sunday";
+            // 
+            // toolStripTextBox41
+            // 
+            this.toolStripTextBox41.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox41.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox41.Name = "toolStripTextBox41";
+            this.toolStripTextBox41.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox41.Text = "dhsjhds";
+            // 
+            // toolStripTextBox42
+            // 
+            this.toolStripTextBox42.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toolStripTextBox42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.toolStripTextBox42.Margin = new System.Windows.Forms.Padding(1, 1, 1, 7);
+            this.toolStripTextBox42.Name = "toolStripTextBox42";
+            this.toolStripTextBox42.Size = new System.Drawing.Size(170, 16);
+            this.toolStripTextBox42.Text = "dhsjhds";
+            // 
             // SchedViewDutyDetails
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -753,6 +1405,14 @@
             this.MainAttendancePNL.ResumeLayout(false);
             this.MainAttendancePNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).EndInit();
+            this.OrdinaryDay.ResumeLayout(false);
+            this.OrdinaryDay.PerformLayout();
+            this.OrdinaryNight.ResumeLayout(false);
+            this.OrdinaryNight.PerformLayout();
+            this.HolidayDay.ResumeLayout(false);
+            this.HolidayDay.PerformLayout();
+            this.HolidayNight.ResumeLayout(false);
+            this.HolidayNight.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -781,15 +1441,15 @@
         private System.Windows.Forms.Label ACertifiedLBL;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label HNSLBL;
         private System.Windows.Forms.DataGridView AttendanceGRD;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label HDSLBL;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label AHShiftLBL;
         private System.Windows.Forms.Label ANightLBL;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label RNSLBL;
         private System.Windows.Forms.Label AHNightLBL;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label RDSLBL;
         private System.Windows.Forms.Label AShiftLBL;
         private System.Windows.Forms.Label AttendanceLBL;
         private System.Windows.Forms.ComboBox PeriodCMBX;
@@ -804,5 +1464,57 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ContextMenuStrip OrdinaryDay;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox9;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox10;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox11;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox12;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox14;
+        private System.Windows.Forms.ContextMenuStrip OrdinaryNight;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox5;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox6;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox7;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox8;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox13;
+        private System.Windows.Forms.ContextMenuStrip HolidayDay;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox15;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox16;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox17;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox18;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox19;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox20;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox21;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox29;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox30;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox31;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox32;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox33;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox34;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox35;
+        private System.Windows.Forms.ContextMenuStrip HolidayNight;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox22;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox23;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox24;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox25;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox26;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox27;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox28;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox36;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox37;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox38;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox39;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox40;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox41;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox42;
     }
 }

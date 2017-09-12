@@ -67,12 +67,12 @@ namespace MSAMISUserInterface {
                 if (PeriodCMBX.Items.Count > 0) PeriodCMBX.SelectedIndex = 0;
             }
             else {
-                 var dt = Archiver.GetAllAssignmentDetails(Aid);
-                 NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0] + ",";
-                 FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
-                 ClientLBL.Text = dt.Rows[0][3].ToString();
+                var dt = Archiver.GetAllAssignmentDetails(Aid);
+                NameLBL.Text = dt.Rows[0][2].ToString().Split(',')[0] + ",";
+                FirstNameLBL.Text = dt.Rows[0][2].ToString().Split(',')[1];
+                ClientLBL.Text = dt.Rows[0][3].ToString();
 
-                 
+
                 foreach (DataRow row in Archiver.GetPeriods(Gid).Rows)
                     PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
                         int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
@@ -128,6 +128,7 @@ namespace MSAMISUserInterface {
                 AttendanceGRD.Columns[8].Visible = false;
                 AttendanceGRD.Columns[9].Visible = false;
                 AttendanceGRD.Columns[10].Visible = false;
+                AttendanceGRD.Columns[11].Visible = false;
             }
             else {
                 AttendanceGRD.DataSource = Archiver.GetAttendance(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
@@ -173,7 +174,8 @@ namespace MSAMISUserInterface {
                     : attendance.GetCertifiedBy();
             }
             else {
-                var attendance = Archiver.GetAttendanceSummary(((ComboBoxDays)PeriodCMBX.SelectedItem).Year, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                var attendance = Archiver.GetAttendanceSummary(((ComboBoxDays) PeriodCMBX.SelectedItem).Year,
+                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, Gid);
 
                 AShiftLBL.Text = attendance.Rows[0][4] + " hrs";
@@ -325,5 +327,45 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private static void ShowPopup(ToolStripDropDown cms, Control cntrl) {
+            cms.Show(cntrl, new Point(cntrl.Size.Width + 5, -cms.Height+cntrl.Height));
+        }
+
+        private static void HidePop(Control cms) {
+            cms.Hide();
+        }
+
+        private void RDSLBL_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(OrdinaryDay, RDSLBL);
+        }
+
+        private void RNSLBL_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(OrdinaryNight, RNSLBL);
+        }
+
+        private void HDSLBL_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(HolidayDay, HDSLBL);
+        }
+
+        private void HNSLBL_MouseEnter(object sender, EventArgs e) {
+            ShowPopup(HolidayNight, HNSLBL);
+        }
+
+        private void HNSLBL_MouseLeave(object sender, EventArgs e) {
+            HidePop(HolidayNight);
+        }
+
+        private void HDSLBL_MouseLeave(object sender, EventArgs e) {
+            HidePop(HolidayDay);
+        }
+
+        private void RNSLBL_MouseLeave(object sender, EventArgs e) {
+            HidePop(OrdinaryNight);
+        }
+
+        private void RDSLBL_MouseLeave(object sender, EventArgs e) {
+            HidePop(OrdinaryDay);
+        }
     }
 }

@@ -1569,7 +1569,7 @@
             this.RMond.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.RMond.Name = "contextMenuStrip1";
             this.RMond.ShowImageMargin = false;
-            this.RMond.Size = new System.Drawing.Size(236, 190);
+            this.RMond.Size = new System.Drawing.Size(236, 212);
             this.RMond.Text = "Mondays to Saturdays";
             // 
             // toolStripTextBox9

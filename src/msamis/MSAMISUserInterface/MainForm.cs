@@ -280,6 +280,26 @@ namespace MSAMISUserInterface {
             SamplePNL.Show();
         }
 
+        private void MaximizeBTN_Click(object sender, EventArgs e) {
+            if (MaximizeBTN.Tag.ToString().Equals("0")) {
+                Left = Top = 0;
+                Width = Screen.PrimaryScreen.WorkingArea.Width;
+                Height = Screen.PrimaryScreen.WorkingArea.Height;
+                MaximizeBTN.Tag = "1";
+                MaximizeBTN.Image = Properties.Resources.Minimize;
+            } else {
+                Location = _formLocation;
+                Width = 1000;
+                Height = 700;
+                MaximizeBTN.Tag = "0";
+                MaximizeBTN.Image = Properties.Resources.Maximize;
+            }
+        }
+
+        private void MinimizeBTN_Click(object sender, EventArgs e) {
+            WindowState = FormWindowState.Minimized;
+        }
+
         private void ChangePage(SplitContainer newP, Button button) {
             //Generic Function to switch the panels that are shown and hidden
             _extraQueryParams = "";
@@ -2086,24 +2106,6 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        private void MaximizeBTN_Click(object sender, EventArgs e) {
-            if (MaximizeBTN.Tag.ToString().Equals("0")) {
-                Left = Top = 0;
-                Width = Screen.PrimaryScreen.WorkingArea.Width;
-                Height = Screen.PrimaryScreen.WorkingArea.Height;
-                MaximizeBTN.Tag = "1";
-                MaximizeBTN.Image = Properties.Resources.Minimize;
-            } else {
-                Width = 1000;
-                Height = 700;
-                Location = _formLocation;
-                MaximizeBTN.Tag = "0";
-                MaximizeBTN.Image = Properties.Resources.Maximize;
-            }
-        }
 
-        private void MinimizeBTN_Click(object sender, EventArgs e) {
-            WindowState = FormWindowState.Minimized;
-        }
     }
 }
