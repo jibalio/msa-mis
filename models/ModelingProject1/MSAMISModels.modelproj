@@ -22,45 +22,60 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <ItemGroup>
-    <Content Include="Sequence Diagram\Sequence_Mod4_Pg1.sequencediagram">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg1.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod4_Pg1.sequencediagram.layout">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg1.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg1.sequencediagram</DependentUpon>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg1.sequencediagram</DependentUpon>
     </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod4_Pg2.sequencediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod4_Pg2.sequencediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg2.sequencediagram</DependentUpon>
-    </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod4_Pg4.sequencediagram">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg2.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod4_Pg4.sequencediagram.layout">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg2.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg4.sequencediagram</DependentUpon>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg2.sequencediagram</DependentUpon>
     </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod4_Pg5.sequencediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod4_Pg5.sequencediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Sequence Diagram\Sequence_Mod4_Pg5.sequencediagram</DependentUpon>
-    </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg3.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram.layout">
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg3.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Sequence Diagram\Sequence_Mod5_Pg3.sequencediagram</DependentUpon>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg3.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg4.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg4.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg4.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg5.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg5.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg5.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg6.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg6.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg6.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg7.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg7.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg7.sequencediagram</DependentUpon>
     </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\ModelingProject1.uml">
       <SubType>Content</SubType>
     </Content>
     <Folder Include="Sequence Diagram" />
+    <Folder Include="Sequence Diagram\Mod4" />
   </ItemGroup>
 </Project>
