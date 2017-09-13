@@ -71,11 +71,19 @@
       <SubType>Content</SubType>
       <DependentUpon>Sequence Diagram\Mod4\Sequence_Mod4_Pg7.sequencediagram</DependentUpon>
     </Content>
+    <Content Include="Sequence Diagram\Mod99_MiscRefs\seq0_sqltools.cs.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod99_MiscRefs\seq0_sqltools.cs.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod99_MiscRefs\seq0_sqltools.cs.sequencediagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\ModelingProject1.uml">
       <SubType>Content</SubType>
     </Content>
     <Folder Include="Sequence Diagram" />
     <Folder Include="Sequence Diagram\Mod4" />
+    <Folder Include="Sequence Diagram\Mod99_MiscRefs" />
   </ItemGroup>
 </Project>
