@@ -175,11 +175,11 @@
         <umlExecutionSpecificationShapeMoniker Id="a371f199-9faa-491f-8b73-864ea820a549" />
       </nodes>
     </returnMessageConnector>
-    <commentShape Id="3b159bb1-34a3-490d-8298-9925ee8b35ed" absoluteBounds="5.75, 2.125, 1.75, 0.5" customColor="224, 224, 224">
+    <commentShape Id="3b159bb1-34a3-490d-8298-9925ee8b35ed" absoluteBounds="5.625, 2.125, 1.75, 0.5" customColor="224, 224, 224">
       <commentMoniker Id="dd6cd992-4368-4916-bcf1-c164d17fbb95" />
       <relativeChildShapes />
     </commentShape>
-    <commentConnector edgePoints="[(5.75 : 2.625); (3.47305013186775 : 2.75617781300834)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+    <commentConnector edgePoints="[(5.625 : 2.625); (3.47305013186775 : 2.75617781300834)]" fixedFrom="Caller" fixedTo="Caller" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
       <relativeChildShapes />
       <nodes>
         <commentShapeMoniker Id="3b159bb1-34a3-490d-8298-9925ee8b35ed" />
@@ -200,11 +200,11 @@
         <umlExecutionSpecificationShapeMoniker Id="90b9a3f8-21e5-48e3-9ddd-9b4d111554ad" />
       </nodes>
     </returnMessageConnector>
-    <commentShape Id="aaa3af82-2883-43ac-9804-94efa2eb5109" absoluteBounds="6.75, 4.75, 1.25, 0.5" customColor="224, 224, 224">
+    <commentShape Id="aaa3af82-2883-43ac-9804-94efa2eb5109" absoluteBounds="7.375, 4.5, 1.25, 0.5" customColor="224, 224, 224">
       <commentMoniker Id="2b5e295a-7db3-45fa-b85d-46b164a3f4fc" />
       <relativeChildShapes />
     </commentShape>
-    <commentConnector edgePoints="[(6.75 : 5.25); (6.70077302631473 : 5.47418127265564)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+    <commentConnector edgePoints="[(7.375 : 5); (6.70077302631473 : 5.47418127265564)]" fixedFrom="Caller" fixedTo="Caller" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
       <relativeChildShapes />
       <nodes>
         <commentShapeMoniker Id="aaa3af82-2883-43ac-9804-94efa2eb5109" />
