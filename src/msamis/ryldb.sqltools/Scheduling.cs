@@ -620,25 +620,6 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             return "=";
         }
 
-        public static string CheckOverlapping (DateTime ti, DateTime to, Days days) {
-            for (int c = 0; c < 7; c++) {
-                bool DayActive = days.Value[c];
-                if (DayActive) {
-                    List<TimePeriod> list = new List<TimePeriod>();
-                }
-            }
-            throw new NotImplementedException();
-        }
-
-
-
-
-
-
-
-
-
-
 
 
 
