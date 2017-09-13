@@ -159,7 +159,7 @@ namespace MSAMISUserInterface {
         }
 
         private void Form_MouseMove(object sender, MouseEventArgs e) {
-            if (_mouseDown) {
+            if (_mouseDown && MaximizeBTN.Tag.ToString().Equals("0")) {
                 Location = new Point(Location.X - _lastLocation.X + e.X, Location.Y - _lastLocation.Y + e.Y);
                 Update();
             }
@@ -247,17 +247,6 @@ namespace MSAMISUserInterface {
         private void MainForm_LocationChanged(object sender, EventArgs e) {
             _shadow.Location = Location;
         }
-
-        private const int CsDropshadow = 0x20000;
-
-        protected override CreateParams CreateParams {
-            get {
-                var cp = base.CreateParams;
-                cp.ClassStyle |= CsDropshadow;
-                return cp;
-            }
-        }
-
         #endregion
 
         #region Form Global Buttons and Events
@@ -282,12 +271,14 @@ namespace MSAMISUserInterface {
 
         private void MaximizeBTN_Click(object sender, EventArgs e) {
             if (MaximizeBTN.Tag.ToString().Equals("0")) {
+                FormBorderStyle = FormBorderStyle.None;
                 Left = Top = 0;
                 Width = Screen.PrimaryScreen.WorkingArea.Width;
                 Height = Screen.PrimaryScreen.WorkingArea.Height;
                 MaximizeBTN.Tag = "1";
                 MaximizeBTN.Image = Properties.Resources.Minimize;
             } else {
+                FormBorderStyle = FormBorderStyle.Sizable;
                 Location = _formLocation;
                 Width = 1000;
                 Height = 700;
@@ -400,11 +391,11 @@ namespace MSAMISUserInterface {
         private readonly Color _dashboardHover = Color.FromArgb(72, 87, 112);
 
         private void ArrangeNotif() {
+            NotifLayout();
             // This method is used to rearrange the Notifs Widgets when dismissing them
-
             bool[] pnl = {DPaydayNotifPNL.Visible, DDutyDetailNotifPNL.Visible, DSalaryReportNotifPNL.Visible};
-            var loc1 = new Point(308, 208);
-            var loc2 = new Point(308, 310);
+            var loc1 = new Point(DPaydayNotifPNL.Location.X, 208);
+            var loc2 = new Point(DPaydayNotifPNL.Location.X, 310);
             if (pnl[0]) if (!pnl[1]) DSalaryReportNotifPNL.Location = loc2;
             if (pnl[1])
                 if (!pnl[0]) {
@@ -412,6 +403,17 @@ namespace MSAMISUserInterface {
                     DSalaryReportNotifPNL.Location = loc2;
                 }
             if (pnl[2]) if (!pnl[0] && !pnl[1]) DSalaryReportNotifPNL.Location = loc1;
+        }
+
+        private void NotifLayout() {
+            DPaydayNotifPNL.Location = new Point(
+                DashboardPage.Width / 2 - DPaydayNotifPNL.Size.Width / 2, DPaydayNotifPNL.Location.Y);
+
+            DDutyDetailNotifPNL.Location = new Point(
+                DashboardPage.Width / 2 - DDutyDetailNotifPNL.Size.Width / 2, DDutyDetailNotifPNL.Location.Y);
+
+            DSalaryReportNotifPNL.Location = new Point(
+                DashboardPage.Width / 2 - DSalaryReportNotifPNL.Size.Width / 2, DSalaryReportNotifPNL.Location.Y);
         }
 
         private void NotifTMR_Tick(object sender, EventArgs e) {
@@ -2105,7 +2107,6 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-
-
+        
     }
 }
