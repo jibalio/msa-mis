@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<sequenceDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.875, 18.875" name="seq1.1">
+<sequenceDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.875, 18.5" name="seq1.1">
   <SequenceDesignerModelMoniker Id="93e949c0-cdca-4983-98c0-498d1d5b5f8a" />
   <nestedChildShapes>
     <lifelineShape Id="a6905a0c-619b-4989-9d66-2b706bb9d96a" absoluteBounds="4.9274999186710815, 1, 0.15, 17.295706813142807" visible="true" visualStyleMode="Modified">

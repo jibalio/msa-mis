@@ -1,0 +1,1114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="13333a79-ba28-4d8b-9341-79fc58b95bc3" name="Sequence_Mood4_Pg6" linkedPackageId="09e03ead-c118-4df9-b336-6ea23b3a136e" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="b5555ff9-40b6-4df9-ad08-6cb7f902ff63" name="Sequence_Mood4_Pg6" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <ownedCommentsInternal>
+          <comment Id="8665a2e9-6bd4-4238-b5a4-198c5fa0e642">
+            <elementDefinition Id="86d86859-9234-4a08-b35b-225b52b8f739" />
+            <body>Get payroll details here.</body>
+            <annotatedElements>
+              <behaviorExecutionSpecificationMoniker Id="629a07b8-26ce-4546-be32-9e1f41bee36d" LastKnownName="BehaviorExecutionSpecification7" />
+            </annotatedElements>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="8839114c-b15e-43d1-9b25-0c7016d2ff01" />
+        <fragments>
+          <behaviorExecutionSpecification Id="4078e14e-4870-4231-8e6f-f1b65571553e" name="BehaviorExecutionSpecification1">
+            <elementDefinition Id="41c42c82-3302-4f9d-bafb-5883e0804760" />
+            <coveredLifelines>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="d791c560-d259-4af9-9f28-18b47dfb5a9b" LastKnownName="ExecutionOccurrenceSpecification2" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="61555616-3316-49c8-aa6c-415d016afa91" LastKnownName="ExecutionOccurrenceSpecification1" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="25a253d2-2893-4c39-b793-635e87f15766" LastKnownName="MessageOccurrenceSpecification2" />
+              <messageOccurrenceSpecificationMoniker Id="c9d6963d-fd6c-4a08-b4c1-1e43e7cdd71c" LastKnownName="MessageOccurrenceSpecification5" />
+              <messageOccurrenceSpecificationMoniker Id="26fcd981-8917-48ff-b1be-d5929de3823d" LastKnownName="MessageOccurrenceSpecification8" />
+              <messageOccurrenceSpecificationMoniker Id="15495d5e-a768-426d-90e3-0896c08cf023" LastKnownName="MessageOccurrenceSpecification3" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="61555616-3316-49c8-aa6c-415d016afa91" name="ExecutionOccurrenceSpecification1">
+            <elementDefinition Id="3050b266-b9b0-44aa-9cd8-f6ad7918b8f7" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="d6fd7543-0d1a-4e3b-88fc-b59a7f95d06c" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="25a253d2-2893-4c39-b793-635e87f15766" name="MessageOccurrenceSpecification2">
+            <elementDefinition Id="43e3e491-1bbb-4736-bcf7-69fad7c0ce05" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="29bc4a89-069c-46e5-babf-fa1a6b7253b0" name="MessageOccurrenceSpecification1">
+            <elementDefinition Id="971f9154-3738-4993-827e-1707aa9b66c3" />
+            <covered>
+              <lifelineMoniker Id="6fe17b59-d5f2-4496-bc8d-c3e7f0571be9" LastKnownName="Clerk" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="6f312e32-2500-4478-acf3-c53c91b61d78" name="BehaviorExecutionSpecification2">
+            <elementDefinition Id="2b8b8875-5c6e-482c-a978-44dadb1ef64d" />
+            <coveredLifelines>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="6a49e316-aa7c-4e40-905c-fd85aecbc902" LastKnownName="ExecutionOccurrenceSpecification4" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="f8bdaccf-9934-4af0-b809-7e6e457bb76f" LastKnownName="ExecutionOccurrenceSpecification3" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="c1237ac3-fe42-4c02-b1f7-9b343fe2f5bf" LastKnownName="MessageOccurrenceSpecification6" />
+              <interactionUseOccurrenceSpecificationMoniker Id="badde514-fe17-4dd4-b553-da34bbc47151" LastKnownName="InteractionUseOccurrenceSpecification1" />
+              <messageOccurrenceSpecificationMoniker Id="34017510-3c0d-49d2-83e2-00ebb9ea098d" LastKnownName="MessageOccurrenceSpecification7" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="f8bdaccf-9934-4af0-b809-7e6e457bb76f" name="ExecutionOccurrenceSpecification3">
+            <elementDefinition Id="35ccf838-b741-432d-bdd4-023d80fc4852" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="e2da1f66-5310-4b43-80d8-3d71164858c7" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c9d6963d-fd6c-4a08-b4c1-1e43e7cdd71c" name="MessageOccurrenceSpecification5">
+            <elementDefinition Id="d91d8c90-03f3-4ad5-9a78-02bda28a9683" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c1237ac3-fe42-4c02-b1f7-9b343fe2f5bf" name="MessageOccurrenceSpecification6">
+            <elementDefinition Id="4937bc93-bd57-40a4-b948-bb02fb7b1572" />
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <interactionUse Id="c6170705-a57e-4e72-a67a-e296eef688c5" name="SQLTools.ExecuteQuery : DataTable">
+            <elementDefinition Id="484eb34f-2094-4145-a773-36ad297d5ca9" />
+            <coveredLifelines>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </coveredLifelines>
+            <interactionUseOccurrenceSpecifications>
+              <interactionUseOccurrenceSpecificationMoniker Id="badde514-fe17-4dd4-b553-da34bbc47151" LastKnownName="InteractionUseOccurrenceSpecification1" />
+              <interactionUseOccurrenceSpecificationMoniker Id="32f3bd7e-f996-4dde-8fd3-3630bb796919" LastKnownName="InteractionUseOccurrenceSpecification2" />
+              <interactionUseOccurrenceSpecificationMoniker Id="f25f947f-ab61-4a3d-86c7-7dde64f47bd7" LastKnownName="InteractionUseOccurrenceSpecification3" />
+            </interactionUseOccurrenceSpecifications>
+          </interactionUse>
+          <interactionUseOccurrenceSpecification Id="f25f947f-ab61-4a3d-86c7-7dde64f47bd7" name="InteractionUseOccurrenceSpecification3">
+            <elementDefinition Id="d9befdab-0b1e-4ba8-aadb-a8b5399598f5" />
+            <covered>
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification Id="badde514-fe17-4dd4-b553-da34bbc47151" name="InteractionUseOccurrenceSpecification1">
+            <elementDefinition Id="186494d9-0061-4782-a507-0c180a40d0ab" />
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification Id="32f3bd7e-f996-4dde-8fd3-3630bb796919" name="InteractionUseOccurrenceSpecification2">
+            <elementDefinition Id="4cecba85-99ef-4f1d-85fe-17c9bfe9f48d" />
+            <covered>
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="34017510-3c0d-49d2-83e2-00ebb9ea098d" name="MessageOccurrenceSpecification7">
+            <elementDefinition Id="d63ff53f-d458-4c93-aec8-f52cbed4c41f" />
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="26fcd981-8917-48ff-b1be-d5929de3823d" name="MessageOccurrenceSpecification8">
+            <elementDefinition Id="e5455e8f-753e-4287-96ca-4e25e4a16ec3" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="6a49e316-aa7c-4e40-905c-fd85aecbc902" name="ExecutionOccurrenceSpecification4">
+            <elementDefinition Id="df2440de-881f-4e11-852a-8849f39cbdfd" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="45ebef1c-c332-480f-acbe-6564a7fa00e3" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="15495d5e-a768-426d-90e3-0896c08cf023" name="MessageOccurrenceSpecification3">
+            <elementDefinition Id="f18b11c0-c9cc-4bfd-973f-1e7d86ff2e77" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="5dd1bfec-70cc-404d-975d-a39cd53eaec2" name="MessageOccurrenceSpecification4">
+            <elementDefinition Id="b1c7f23c-2abe-40ff-b295-be747650a97c" />
+            <covered>
+              <lifelineMoniker Id="6fe17b59-d5f2-4496-bc8d-c3e7f0571be9" LastKnownName="Clerk" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="d791c560-d259-4af9-9f28-18b47dfb5a9b" name="ExecutionOccurrenceSpecification2">
+            <elementDefinition Id="8a81da32-1450-4cac-a582-7479314183eb" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="e925acb2-805b-470e-b18c-7066c6b25aee" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="5ca39c95-7f21-4a28-94f5-49fa283525b0" name="BehaviorExecutionSpecification3">
+            <elementDefinition Id="48dcfc83-05f2-4684-91c8-ad0207195b2f" />
+            <coveredLifelines>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="5b1a7bdd-8c50-4842-971e-b2855a1a5f4f" LastKnownName="ExecutionOccurrenceSpecification6" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="781d6e86-0941-45d6-998d-0b3b78a718a4" LastKnownName="ExecutionOccurrenceSpecification5" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="723ac0e7-69a6-4ecf-9c20-383c2a0a96f6" LastKnownName="MessageOccurrenceSpecification10" />
+              <messageOccurrenceSpecificationMoniker Id="0cc889e2-5d65-4108-87f5-36b4b566ab0b" LastKnownName="MessageOccurrenceSpecification13" />
+              <messageOccurrenceSpecificationMoniker Id="ae601691-e860-4b4d-92c8-f563762f0fa3" LastKnownName="MessageOccurrenceSpecification16" />
+              <messageOccurrenceSpecificationMoniker Id="9044a1d2-2eb9-4cf6-a9eb-260ac916a398" LastKnownName="MessageOccurrenceSpecification11" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="781d6e86-0941-45d6-998d-0b3b78a718a4" name="ExecutionOccurrenceSpecification5">
+            <elementDefinition Id="f77fc3ff-0f04-4f32-bf4b-27a76a9eaa5f" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="15b803ca-4853-4f37-a9c9-79bb54206b8c" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="723ac0e7-69a6-4ecf-9c20-383c2a0a96f6" name="MessageOccurrenceSpecification10">
+            <elementDefinition Id="48ebf094-ac38-4566-b317-1e2aeb4f7aa8" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9c4db3ee-aa8c-48a6-8e18-db0b5d2a7d99" name="MessageOccurrenceSpecification9">
+            <elementDefinition Id="97bf8253-7f57-4fc9-a40f-675a4f7da4e2" />
+            <covered>
+              <lifelineMoniker Id="6fe17b59-d5f2-4496-bc8d-c3e7f0571be9" LastKnownName="Clerk" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="622c5cad-d24f-4930-82dd-05568362fa0e" name="BehaviorExecutionSpecification4">
+            <elementDefinition Id="ae35110c-c054-4e41-914d-0a2688eb791c" />
+            <coveredLifelines>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="9de78d32-7f50-43da-9fc7-fd8fc8579dd0" LastKnownName="ExecutionOccurrenceSpecification8" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="554500a7-cb73-4b4c-b752-e949fa22c969" LastKnownName="ExecutionOccurrenceSpecification7" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="ef411514-88e7-4081-9bbc-a7cdf75c4fc2" LastKnownName="MessageOccurrenceSpecification14" />
+              <operandOccurrenceSpecificationMoniker Id="9b8de375-95e4-4b27-928e-e090f2900b6e" LastKnownName="OperandOccurrenceSpecification3" />
+              <operandOccurrenceSpecificationMoniker Id="983494c6-4e60-4a5e-961e-d365f505e93b" LastKnownName="OperandOccurrenceSpecification11" />
+              <messageOccurrenceSpecificationMoniker Id="48c4aa65-79c7-42b5-8118-67e9f18f69d6" LastKnownName="MessageOccurrenceSpecification21" />
+              <messageOccurrenceSpecificationMoniker Id="05e0a442-5e67-47a1-b1d9-97456a179ace" LastKnownName="MessageOccurrenceSpecification24" />
+              <operandOccurrenceSpecificationMoniker Id="4f74ebd4-5f9c-478d-9372-15def09cb560" LastKnownName="OperandOccurrenceSpecification12" />
+              <messageOccurrenceSpecificationMoniker Id="f841ffb5-e80f-4e09-afb6-2e76d9829391" LastKnownName="MessageOccurrenceSpecification17" />
+              <executionOccurrenceSpecificationMoniker Id="f1afbc25-883e-4a96-b604-4561aa7b28ae" LastKnownName="ExecutionOccurrenceSpecification9" />
+              <executionOccurrenceSpecificationMoniker Id="64cb0522-8962-4436-a5d7-ab09337ca366" LastKnownName="ExecutionOccurrenceSpecification10" />
+              <operandOccurrenceSpecificationMoniker Id="abeb0052-efa2-451c-8b77-ed17cd45835d" LastKnownName="OperandOccurrenceSpecification4" />
+              <messageOccurrenceSpecificationMoniker Id="335199ce-6cd0-4bd2-ab7b-909620794e66" LastKnownName="MessageOccurrenceSpecification15" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="554500a7-cb73-4b4c-b752-e949fa22c969" name="ExecutionOccurrenceSpecification7">
+            <elementDefinition Id="1315d7db-9c6b-495d-be8f-3584dd81d32f" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="4697f905-2d1c-4eff-9242-c2340adf3edf" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="0cc889e2-5d65-4108-87f5-36b4b566ab0b" name="MessageOccurrenceSpecification13">
+            <elementDefinition Id="8154b902-e9fc-4c7d-9794-16100778aa2a" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="ef411514-88e7-4081-9bbc-a7cdf75c4fc2" name="MessageOccurrenceSpecification14">
+            <elementDefinition Id="b1909aec-e2e6-40e2-b43e-03c09d1feeb3" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <combinedFragment Id="075cc9a8-0db9-4740-8cf2-37bba7f550cc" name="CombinedFragment1" interactionOperator="Seq">
+            <elementDefinition Id="608396c4-ad84-4058-b479-2474a13d06c6" />
+            <coveredLifelines>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </coveredLifelines>
+            <operands>
+              <interactionOperand Id="20765e11-a432-4d65-b89b-2db48d96ae11" name="InteractionOperand1">
+                <elementDefinition Id="43b7fd99-4be1-4666-b7e1-f900ba075e2f" />
+                <coveredLifelines>
+                  <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+                  <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+                  <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+                  <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+                </coveredLifelines>
+                <fragments>
+                  <combinedFragment Id="66021dc6-8904-4b5d-b160-bd7dc05df4e0" name="CombinedFragment1" interactionOperator="Loop">
+                    <elementDefinition Id="83cfbbbd-6660-4e32-9eac-66c272ea5c3f" />
+                    <coveredLifelines>
+                      <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+                      <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+                      <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+                      <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+                    </coveredLifelines>
+                    <operands>
+                      <interactionOperand Id="70ca25d0-9375-4bff-a6d9-80f99f43d56e" name="InteractionOperand1">
+                        <elementDefinition Id="c28a7222-1df2-405b-a161-6853b08cf26c" />
+                        <coveredLifelines>
+                          <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+                          <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+                          <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+                          <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+                        </coveredLifelines>
+                        <guard>
+                          <interactionConstraint Id="52d124b2-502e-426e-b592-f654af014f93" guardText="FOREACH GuardId IN GetGuardsPayrollMAIN()">
+                            <elementDefinition Id="55d6db0c-f8fe-4727-a43e-8422fb114fb5" />
+                            <maxInt>
+                              <literalString Id="aca199cd-ea67-42b1-8df5-0d011f51b682" name="LiteralString1">
+                                <elementDefinition Id="ad1a60f9-f1c6-4413-9673-e7c2ae994834" />
+                              </literalString>
+                            </maxInt>
+                            <minInt>
+                              <literalString Id="0e24337d-b8d2-42e4-a501-d504578868b5" name="LiteralString2">
+                                <elementDefinition Id="c7a72c6b-5883-4a2c-aaff-07c30d714ec0" />
+                              </literalString>
+                            </minInt>
+                          </interactionConstraint>
+                        </guard>
+                        <operandOccurrenceSpecifications>
+                          <operandOccurrenceSpecificationMoniker Id="b60136fc-2a35-45d6-b388-3917d09fea4b" LastKnownName="OperandOccurrenceSpecification9" />
+                          <operandOccurrenceSpecificationMoniker Id="3cbc4cd6-f797-4bd5-abcb-612188c8f16d" LastKnownName="OperandOccurrenceSpecification10" />
+                          <operandOccurrenceSpecificationMoniker Id="983494c6-4e60-4a5e-961e-d365f505e93b" LastKnownName="OperandOccurrenceSpecification11" />
+                          <operandOccurrenceSpecificationMoniker Id="4f74ebd4-5f9c-478d-9372-15def09cb560" LastKnownName="OperandOccurrenceSpecification12" />
+                          <operandOccurrenceSpecificationMoniker Id="dafb571a-0a9e-4d56-8019-af1143eb78fb" LastKnownName="OperandOccurrenceSpecification13" />
+                          <operandOccurrenceSpecificationMoniker Id="86adf19d-641e-45fc-9d37-50460b64d351" LastKnownName="OperandOccurrenceSpecification14" />
+                          <operandOccurrenceSpecificationMoniker Id="13855d40-8f8f-4eb4-ab83-cb888d6e70d1" LastKnownName="OperandOccurrenceSpecification15" />
+                          <operandOccurrenceSpecificationMoniker Id="deca57df-db84-4e31-8640-67f1794245a9" LastKnownName="OperandOccurrenceSpecification16" />
+                        </operandOccurrenceSpecifications>
+                      </interactionOperand>
+                    </operands>
+                  </combinedFragment>
+                </fragments>
+                <guard>
+                  <interactionConstraint Id="e857ebe3-8195-487e-b973-40cbecba120a">
+                    <elementDefinition Id="6ff04490-30be-4e88-9556-42202699e0fc" />
+                  </interactionConstraint>
+                </guard>
+                <operandOccurrenceSpecifications>
+                  <operandOccurrenceSpecificationMoniker Id="c6547d8e-6013-4f86-971e-63ed650e4138" LastKnownName="OperandOccurrenceSpecification1" />
+                  <operandOccurrenceSpecificationMoniker Id="9a2f0d74-363c-42a7-8f7a-20086a08fdbc" LastKnownName="OperandOccurrenceSpecification2" />
+                  <operandOccurrenceSpecificationMoniker Id="9b8de375-95e4-4b27-928e-e090f2900b6e" LastKnownName="OperandOccurrenceSpecification3" />
+                  <operandOccurrenceSpecificationMoniker Id="abeb0052-efa2-451c-8b77-ed17cd45835d" LastKnownName="OperandOccurrenceSpecification4" />
+                  <operandOccurrenceSpecificationMoniker Id="c146f48c-fb2e-4343-aaf3-fcbac2dff503" LastKnownName="OperandOccurrenceSpecification5" />
+                  <operandOccurrenceSpecificationMoniker Id="eb6228d6-f29f-457c-9f2c-9409d2246d40" LastKnownName="OperandOccurrenceSpecification6" />
+                  <operandOccurrenceSpecificationMoniker Id="08549ed0-41e8-41cb-8536-ce819b414cbd" LastKnownName="OperandOccurrenceSpecification7" />
+                  <operandOccurrenceSpecificationMoniker Id="14961363-5931-41f8-95ec-4cda07951dab" LastKnownName="OperandOccurrenceSpecification8" />
+                </operandOccurrenceSpecifications>
+              </interactionOperand>
+            </operands>
+          </combinedFragment>
+          <operandOccurrenceSpecification Id="08549ed0-41e8-41cb-8536-ce819b414cbd" name="OperandOccurrenceSpecification7">
+            <elementDefinition Id="696ee9a8-e777-4480-8678-65b4fe1be234" />
+            <covered>
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="c146f48c-fb2e-4343-aaf3-fcbac2dff503" name="OperandOccurrenceSpecification5">
+            <elementDefinition Id="86006ec3-d292-48fa-9967-20d09d425c55" />
+            <covered>
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="c6547d8e-6013-4f86-971e-63ed650e4138" name="OperandOccurrenceSpecification1">
+            <elementDefinition Id="dcf9602d-d86b-4b29-ad09-433e5b3f8443" />
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="9b8de375-95e4-4b27-928e-e090f2900b6e" name="OperandOccurrenceSpecification3">
+            <elementDefinition Id="d792afbf-6801-41fa-ad91-32c8ba9d03bc" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="13855d40-8f8f-4eb4-ab83-cb888d6e70d1" name="OperandOccurrenceSpecification15">
+            <elementDefinition Id="a689bd39-93b3-402a-97ee-6788dd121e1e" />
+            <covered>
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="dafb571a-0a9e-4d56-8019-af1143eb78fb" name="OperandOccurrenceSpecification13">
+            <elementDefinition Id="0718fa80-d520-4f67-b820-11db973c16cb" />
+            <covered>
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="b60136fc-2a35-45d6-b388-3917d09fea4b" name="OperandOccurrenceSpecification9">
+            <elementDefinition Id="3e648a08-4f17-447e-a29d-a894f451dd35" />
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="983494c6-4e60-4a5e-961e-d365f505e93b" name="OperandOccurrenceSpecification11">
+            <elementDefinition Id="bdb322ab-bb07-41a5-898c-2670df026062" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="629a07b8-26ce-4546-be32-9e1f41bee36d" name="BehaviorExecutionSpecification7">
+            <elementDefinition Id="c23629ce-9ada-47ab-bfe4-1285e6d0c5e6" />
+            <coveredLifelines>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="5d7496a0-e5ff-4051-b07d-7fdcaf4e0898" LastKnownName="ExecutionOccurrenceSpecification14" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="d0ce754b-9587-4735-b494-41eb8672de7f" LastKnownName="ExecutionOccurrenceSpecification13" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="38546823-6676-4c2b-adb2-b794c82f7ecc" LastKnownName="MessageOccurrenceSpecification22" />
+              <interactionUseOccurrenceSpecificationMoniker Id="89962646-a05a-4a31-8ac0-d44ad789c943" LastKnownName="InteractionUseOccurrenceSpecification5" />
+              <messageOccurrenceSpecificationMoniker Id="97affdfe-9293-4c45-949b-d0806155d3d7" LastKnownName="MessageOccurrenceSpecification23" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="d0ce754b-9587-4735-b494-41eb8672de7f" name="ExecutionOccurrenceSpecification13">
+            <elementDefinition Id="3060a069-8990-4f2e-99fd-8a7228877064" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="0971408f-d6ef-423c-87f4-5d58c62385af" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="38546823-6676-4c2b-adb2-b794c82f7ecc" name="MessageOccurrenceSpecification22">
+            <elementDefinition Id="148c60f1-04e1-4e1b-a412-829ac9f4244c" />
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="48c4aa65-79c7-42b5-8118-67e9f18f69d6" name="MessageOccurrenceSpecification21">
+            <elementDefinition Id="4af10b20-2b1b-4c76-8472-dd78780a46f3" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <interactionUse Id="c3462f07-9486-4006-8053-5bc676481913" name="SQLTools.ExecuteQuery : DataTable">
+            <elementDefinition Id="e6141404-9ed1-4eb7-b479-132fd759994a" />
+            <coveredLifelines>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </coveredLifelines>
+            <interactionUseOccurrenceSpecifications>
+              <interactionUseOccurrenceSpecificationMoniker Id="89962646-a05a-4a31-8ac0-d44ad789c943" LastKnownName="InteractionUseOccurrenceSpecification5" />
+              <interactionUseOccurrenceSpecificationMoniker Id="75ce78c3-6fbd-40f8-8833-604db5fdd5a8" LastKnownName="InteractionUseOccurrenceSpecification6" />
+              <interactionUseOccurrenceSpecificationMoniker Id="a6f79537-fe99-4ed2-82f4-8eda2cd45b7e" LastKnownName="InteractionUseOccurrenceSpecification7" />
+            </interactionUseOccurrenceSpecifications>
+          </interactionUse>
+          <interactionUseOccurrenceSpecification Id="75ce78c3-6fbd-40f8-8833-604db5fdd5a8" name="InteractionUseOccurrenceSpecification6">
+            <elementDefinition Id="19ea9d06-2d08-4cd0-b291-4fa415c66677" />
+            <covered>
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification Id="89962646-a05a-4a31-8ac0-d44ad789c943" name="InteractionUseOccurrenceSpecification5">
+            <elementDefinition Id="72a870ea-d7a2-426c-8b79-9eadae173b8d" />
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification Id="a6f79537-fe99-4ed2-82f4-8eda2cd45b7e" name="InteractionUseOccurrenceSpecification7">
+            <elementDefinition Id="fd547c83-adda-49e0-9441-7fc40bfe38a0" />
+            <covered>
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="97affdfe-9293-4c45-949b-d0806155d3d7" name="MessageOccurrenceSpecification23">
+            <elementDefinition Id="9b65fde3-4bb8-4c0e-91d1-64bfdeca59e0" />
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="05e0a442-5e67-47a1-b1d9-97456a179ace" name="MessageOccurrenceSpecification24">
+            <elementDefinition Id="6cf06ff7-1c96-4749-9b2b-e24639b7fe56" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="5d7496a0-e5ff-4051-b07d-7fdcaf4e0898" name="ExecutionOccurrenceSpecification14">
+            <elementDefinition Id="d49d7b85-377a-4a25-8a51-ffa4b61014bc" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="ff444179-80c9-4934-a48a-1f50e6b01ff1" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="86adf19d-641e-45fc-9d37-50460b64d351" name="OperandOccurrenceSpecification14">
+            <elementDefinition Id="93fb362f-7ca0-4e69-82e8-bf844572ea12" />
+            <covered>
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="4f74ebd4-5f9c-478d-9372-15def09cb560" name="OperandOccurrenceSpecification12">
+            <elementDefinition Id="772092be-ae96-47bf-8e6e-5a5f8c549eb6" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="3cbc4cd6-f797-4bd5-abcb-612188c8f16d" name="OperandOccurrenceSpecification10">
+            <elementDefinition Id="7c97e096-9649-4da9-a2a5-2084c04f9401" />
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="deca57df-db84-4e31-8640-67f1794245a9" name="OperandOccurrenceSpecification16">
+            <elementDefinition Id="f79b28cb-5cfa-400c-b4cc-902a5541f6a0" />
+            <covered>
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="f841ffb5-e80f-4e09-afb6-2e76d9829391" name="MessageOccurrenceSpecification17">
+            <elementDefinition Id="549453db-ecf8-4313-80d9-15d7a6002ca3" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="9ed184bb-627a-4521-8dc0-d57fbdf60ea0" name="BehaviorExecutionSpecification5">
+            <elementDefinition Id="7e68bdad-ee76-47cb-9754-ce57aaa37887" />
+            <coveredLifelines>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="64cb0522-8962-4436-a5d7-ab09337ca366" LastKnownName="ExecutionOccurrenceSpecification10" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="f1afbc25-883e-4a96-b604-4561aa7b28ae" LastKnownName="ExecutionOccurrenceSpecification9" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="04809263-1302-47dd-873e-ce357a2de4bd" LastKnownName="MessageOccurrenceSpecification18" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="f1afbc25-883e-4a96-b604-4561aa7b28ae" name="ExecutionOccurrenceSpecification9">
+            <elementDefinition Id="6cac3151-c004-496f-a782-09144563bc98" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="5814e3fd-b3dc-4efd-9dd2-69098ca83a19" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="04809263-1302-47dd-873e-ce357a2de4bd" name="MessageOccurrenceSpecification18">
+            <elementDefinition Id="8e8cd687-8c04-477b-bb14-01bd67b3f342" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="64cb0522-8962-4436-a5d7-ab09337ca366" name="ExecutionOccurrenceSpecification10">
+            <elementDefinition Id="e8abe5d1-c447-438e-a37d-ec66a4069e80" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="fccf69a4-7532-4adf-8f48-9f64744f15ef" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="abeb0052-efa2-451c-8b77-ed17cd45835d" name="OperandOccurrenceSpecification4">
+            <elementDefinition Id="3088d77d-3b98-43d6-a7b3-bf535465286c" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="eb6228d6-f29f-457c-9f2c-9409d2246d40" name="OperandOccurrenceSpecification6">
+            <elementDefinition Id="fed64b95-b319-4b1d-b143-27a8334ac13a" />
+            <covered>
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="14961363-5931-41f8-95ec-4cda07951dab" name="OperandOccurrenceSpecification8">
+            <elementDefinition Id="af202b89-7a42-4887-9a92-2fdef50406ba" />
+            <covered>
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="9a2f0d74-363c-42a7-8f7a-20086a08fdbc" name="OperandOccurrenceSpecification2">
+            <elementDefinition Id="ad2f97ea-5f85-4495-a25b-a71d5097fb30" />
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="ae601691-e860-4b4d-92c8-f563762f0fa3" name="MessageOccurrenceSpecification16">
+            <elementDefinition Id="f71a5bee-feb3-44c9-9ea9-117512232ec9" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="335199ce-6cd0-4bd2-ab7b-909620794e66" name="MessageOccurrenceSpecification15">
+            <elementDefinition Id="bea548e0-9144-4879-9987-bacecd555941" />
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="9de78d32-7f50-43da-9fc7-fd8fc8579dd0" name="ExecutionOccurrenceSpecification8">
+            <elementDefinition Id="e5f8ff92-b230-4052-b8ad-2ae319086472" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="f0d37925-a1d6-4734-9425-f0479bfa1c2b" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" LastKnownName="&lt;&lt;class&gt;&gt; Reports" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9044a1d2-2eb9-4cf6-a9eb-260ac916a398" name="MessageOccurrenceSpecification11">
+            <elementDefinition Id="10fc52b4-5c9f-42a0-b338-b6ad7578973a" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c988a24b-4770-4e71-bd81-7348a0f4dae2" name="MessageOccurrenceSpecification12">
+            <elementDefinition Id="0bbcb69f-8030-43a0-8362-fa05ad526743" />
+            <covered>
+              <lifelineMoniker Id="6fe17b59-d5f2-4496-bc8d-c3e7f0571be9" LastKnownName="Clerk" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="5b1a7bdd-8c50-4842-971e-b2855a1a5f4f" name="ExecutionOccurrenceSpecification6">
+            <elementDefinition Id="e270f865-763e-4996-9544-060c7bbcd2d7" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="e514b808-96af-472b-b7ab-00ebc8164635" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="1e8bddb1-ebcf-4ad0-92c1-2bf8248a5393" name="BehaviorExecutionSpecification8">
+            <elementDefinition Id="272813f9-29af-4444-bc0e-c69f9c73512c" />
+            <coveredLifelines>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="431f560c-42f7-48d6-bfcf-7e6dd0fb9a39" LastKnownName="ExecutionOccurrenceSpecification16" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="2cc3bc56-3e19-4167-91b7-20e1d1be5018" LastKnownName="ExecutionOccurrenceSpecification15" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="6283197a-aa4f-447f-a1b2-f796e1585cf0" LastKnownName="MessageOccurrenceSpecification26" />
+              <messageOccurrenceSpecificationMoniker Id="31979050-d720-4c82-99c3-73bd04c4bb5d" LastKnownName="MessageOccurrenceSpecification29" />
+              <messageOccurrenceSpecificationMoniker Id="b63553bd-e04b-4984-a76a-7fa46bfeff6d" LastKnownName="MessageOccurrenceSpecification32" />
+              <messageOccurrenceSpecificationMoniker Id="3ebded25-da86-4cf6-8c6f-fe056af567d6" LastKnownName="MessageOccurrenceSpecification27" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="2cc3bc56-3e19-4167-91b7-20e1d1be5018" name="ExecutionOccurrenceSpecification15">
+            <elementDefinition Id="c8487f48-182a-4bd7-97e0-b84826db7743" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="b280c352-1e41-4ba3-887a-739eb48b9a9c" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="827aecd3-87c2-4fe8-8a3a-49610f44c372" name="MessageOccurrenceSpecification25">
+            <elementDefinition Id="671b4b50-2e01-4ead-ac2b-3b6376f9a94e" />
+            <covered>
+              <lifelineMoniker Id="6fe17b59-d5f2-4496-bc8d-c3e7f0571be9" LastKnownName="Clerk" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="6283197a-aa4f-447f-a1b2-f796e1585cf0" name="MessageOccurrenceSpecification26">
+            <elementDefinition Id="5c7235f0-c172-4e71-ab1e-91cbf7a2b19b" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="81a67569-2e2d-4879-ab2d-f86baca4a9d9" name="BehaviorExecutionSpecification9">
+            <elementDefinition Id="38c81488-4bd3-4ed2-89ef-dc4eb174f5a1" />
+            <coveredLifelines>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="db28b040-d952-40a1-8a70-15eb85ff57be" LastKnownName="ExecutionOccurrenceSpecification18" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="af8eba6d-4a7c-4b23-80c4-c5c8eea00bf5" LastKnownName="ExecutionOccurrenceSpecification17" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="d9f0d423-63ca-4e16-b7c9-12ba2ee0aeb1" LastKnownName="MessageOccurrenceSpecification30" />
+              <interactionUseOccurrenceSpecificationMoniker Id="d071a1cb-b57b-4db7-8ffd-6fb7a43ff4e5" LastKnownName="InteractionUseOccurrenceSpecification11" />
+              <messageOccurrenceSpecificationMoniker Id="55f4cf1f-3cd0-41a2-ad85-14dac9a293e8" LastKnownName="MessageOccurrenceSpecification31" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="af8eba6d-4a7c-4b23-80c4-c5c8eea00bf5" name="ExecutionOccurrenceSpecification17">
+            <elementDefinition Id="d3b20fd3-e785-455b-91d6-404c248a2e17" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="9a8e5616-bc4c-498a-98a9-9e8b689810c9" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="d9f0d423-63ca-4e16-b7c9-12ba2ee0aeb1" name="MessageOccurrenceSpecification30">
+            <elementDefinition Id="5b30b5dd-43cb-4f86-88e0-5d8c9b91e529" />
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="31979050-d720-4c82-99c3-73bd04c4bb5d" name="MessageOccurrenceSpecification29">
+            <elementDefinition Id="014daa68-8962-4e9d-8769-85ab10b73a32" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <interactionUse Id="0bf13762-bb52-4e5c-83fa-cbf00f6be86e" name="SQLTools.ExecuteQuery : DataTable">
+            <elementDefinition Id="4ae0f0af-b135-4a0e-927f-9868a9f5cde6" />
+            <coveredLifelines>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </coveredLifelines>
+            <interactionUseOccurrenceSpecifications>
+              <interactionUseOccurrenceSpecificationMoniker Id="d071a1cb-b57b-4db7-8ffd-6fb7a43ff4e5" LastKnownName="InteractionUseOccurrenceSpecification11" />
+              <interactionUseOccurrenceSpecificationMoniker Id="a19c3b5c-07e4-4df2-8b74-9f0102bc2214" LastKnownName="InteractionUseOccurrenceSpecification12" />
+              <interactionUseOccurrenceSpecificationMoniker Id="a892d791-1752-4d8d-82e1-732bdee18d99" LastKnownName="InteractionUseOccurrenceSpecification13" />
+              <interactionUseOccurrenceSpecificationMoniker Id="85c9c553-4f76-4d82-b39a-092fd1378162" LastKnownName="InteractionUseOccurrenceSpecification14" />
+            </interactionUseOccurrenceSpecifications>
+          </interactionUse>
+          <interactionUseOccurrenceSpecification Id="a19c3b5c-07e4-4df2-8b74-9f0102bc2214" name="InteractionUseOccurrenceSpecification12">
+            <elementDefinition Id="bdf6f24d-e5b5-4e50-a332-24d814f50a54" />
+            <covered>
+              <lifelineMoniker Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" LastKnownName=": PayrollReport" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification Id="d071a1cb-b57b-4db7-8ffd-6fb7a43ff4e5" name="InteractionUseOccurrenceSpecification11">
+            <elementDefinition Id="10fb70bf-5bfe-4307-b553-bc55a8c690ec" />
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification Id="85c9c553-4f76-4d82-b39a-092fd1378162" name="InteractionUseOccurrenceSpecification14">
+            <elementDefinition Id="d47c6429-c794-4a7f-8310-436fbf816db6" />
+            <covered>
+              <lifelineMoniker Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" LastKnownName="MSAMIS DB" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification Id="a892d791-1752-4d8d-82e1-732bdee18d99" name="InteractionUseOccurrenceSpecification13">
+            <elementDefinition Id="80247eaa-ad35-4bfd-a696-90ac127d3cd3" />
+            <covered>
+              <lifelineMoniker Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="55f4cf1f-3cd0-41a2-ad85-14dac9a293e8" name="MessageOccurrenceSpecification31">
+            <elementDefinition Id="906abc7d-3aad-4b27-993a-dd8ced249b16" />
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="b63553bd-e04b-4984-a76a-7fa46bfeff6d" name="MessageOccurrenceSpecification32">
+            <elementDefinition Id="eeb89a27-dd4a-4860-bf2c-a37da2c24c83" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="db28b040-d952-40a1-8a70-15eb85ff57be" name="ExecutionOccurrenceSpecification18">
+            <elementDefinition Id="ca98e5cd-572b-4020-bde0-b668f0a2327b" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="3a1a7d26-66ea-4b23-94e9-05129a582c66" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="546b148e-2ddc-442c-b724-63ac0f923ed6" LastKnownName="&lt;&lt;class&gt;&gt; Payroll" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="3ebded25-da86-4cf6-8c6f-fe056af567d6" name="MessageOccurrenceSpecification27">
+            <elementDefinition Id="892f0b37-a865-4d51-8e27-f5b972da387f" />
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="7afe62b3-888f-454e-bd84-77b5c52bfc4c" name="MessageOccurrenceSpecification28">
+            <elementDefinition Id="5e110649-b5db-4d35-92f4-c1e8170255e2" />
+            <covered>
+              <lifelineMoniker Id="6fe17b59-d5f2-4496-bc8d-c3e7f0571be9" LastKnownName="Clerk" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="431f560c-42f7-48d6-bfcf-7e6dd0fb9a39" name="ExecutionOccurrenceSpecification16">
+            <elementDefinition Id="982210d3-5e89-418c-a76f-9678ca3d4dec" />
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="d2397269-1b2e-4b1d-8183-be3c413fba3a" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="2309acc0-8966-4435-b438-52915e9183e3" LastKnownName="Payroll Sys." />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="6fe17b59-d5f2-4496-bc8d-c3e7f0571be9" name="Clerk" isActor="true" lifelineDisplayName="Clerk">
+            <elementDefinition Id="d7e7b08a-1963-4e12-9dc4-903867a17cea" />
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="29bc4a89-069c-46e5-babf-fa1a6b7253b0" LastKnownName="MessageOccurrenceSpecification1" />
+              <messageOccurrenceSpecificationMoniker Id="5dd1bfec-70cc-404d-975d-a39cd53eaec2" LastKnownName="MessageOccurrenceSpecification4" />
+              <messageOccurrenceSpecificationMoniker Id="9c4db3ee-aa8c-48a6-8e18-db0b5d2a7d99" LastKnownName="MessageOccurrenceSpecification9" />
+              <messageOccurrenceSpecificationMoniker Id="c988a24b-4770-4e71-bd81-7348a0f4dae2" LastKnownName="MessageOccurrenceSpecification12" />
+              <messageOccurrenceSpecificationMoniker Id="827aecd3-87c2-4fe8-8a3a-49610f44c372" LastKnownName="MessageOccurrenceSpecification25" />
+              <messageOccurrenceSpecificationMoniker Id="7afe62b3-888f-454e-bd84-77b5c52bfc4c" LastKnownName="MessageOccurrenceSpecification28" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="45737b72-0f20-426c-b57b-a9bd9bb5574b" name="Manager" isActor="true" lifelineDisplayName="Manager">
+            <elementDefinition Id="ee5dea95-5b79-41ad-a8d3-4a52dfb3f12c" />
+          </lifeline>
+          <lifeline Id="2309acc0-8966-4435-b438-52915e9183e3" name="Payroll Sys." isActor="false" lifelineDisplayName="Payroll Sys.">
+            <elementDefinition Id="4ae3f422-cce4-4f38-b27a-5dd8d3f9d91f" />
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="61555616-3316-49c8-aa6c-415d016afa91" LastKnownName="ExecutionOccurrenceSpecification1" />
+              <executionOccurrenceSpecificationMoniker Id="d791c560-d259-4af9-9f28-18b47dfb5a9b" LastKnownName="ExecutionOccurrenceSpecification2" />
+              <executionOccurrenceSpecificationMoniker Id="781d6e86-0941-45d6-998d-0b3b78a718a4" LastKnownName="ExecutionOccurrenceSpecification5" />
+              <executionOccurrenceSpecificationMoniker Id="5b1a7bdd-8c50-4842-971e-b2855a1a5f4f" LastKnownName="ExecutionOccurrenceSpecification6" />
+              <executionOccurrenceSpecificationMoniker Id="2cc3bc56-3e19-4167-91b7-20e1d1be5018" LastKnownName="ExecutionOccurrenceSpecification15" />
+              <executionOccurrenceSpecificationMoniker Id="431f560c-42f7-48d6-bfcf-7e6dd0fb9a39" LastKnownName="ExecutionOccurrenceSpecification16" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="1ef93902-1f1b-4958-817d-26f645a4a7b7" name="&lt;&lt;class&gt;&gt; Reports" isActor="false" lifelineDisplayName="&lt;&lt;class&gt;&gt; Reports">
+            <elementDefinition Id="284ef4c4-0e79-46e1-889f-e20c2b03763e" />
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="554500a7-cb73-4b4c-b752-e949fa22c969" LastKnownName="ExecutionOccurrenceSpecification7" />
+              <executionOccurrenceSpecificationMoniker Id="9de78d32-7f50-43da-9fc7-fd8fc8579dd0" LastKnownName="ExecutionOccurrenceSpecification8" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="546b148e-2ddc-442c-b724-63ac0f923ed6" name="&lt;&lt;class&gt;&gt; Payroll" isActor="false" lifelineDisplayName="&lt;&lt;class&gt;&gt; Payroll">
+            <elementDefinition Id="b1fd6e77-fb1a-4710-803c-4e1cb4a37887" />
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="f8bdaccf-9934-4af0-b809-7e6e457bb76f" LastKnownName="ExecutionOccurrenceSpecification3" />
+              <executionOccurrenceSpecificationMoniker Id="6a49e316-aa7c-4e40-905c-fd85aecbc902" LastKnownName="ExecutionOccurrenceSpecification4" />
+              <executionOccurrenceSpecificationMoniker Id="af8eba6d-4a7c-4b23-80c4-c5c8eea00bf5" LastKnownName="ExecutionOccurrenceSpecification17" />
+              <executionOccurrenceSpecificationMoniker Id="db28b040-d952-40a1-8a70-15eb85ff57be" LastKnownName="ExecutionOccurrenceSpecification18" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="b0a8eb1f-1c95-404a-aa12-cbb9325d5cd8" name=": PayrollReport" isActor="false" lifelineDisplayName=": PayrollReport">
+            <elementDefinition Id="8be8f331-f6fa-41c8-87a7-0e0f163a3ab6" />
+            <topLevelOccurrences>
+              <operandOccurrenceSpecificationMoniker Id="c6547d8e-6013-4f86-971e-63ed650e4138" LastKnownName="OperandOccurrenceSpecification1" />
+              <operandOccurrenceSpecificationMoniker Id="b60136fc-2a35-45d6-b388-3917d09fea4b" LastKnownName="OperandOccurrenceSpecification9" />
+              <executionOccurrenceSpecificationMoniker Id="d0ce754b-9587-4735-b494-41eb8672de7f" LastKnownName="ExecutionOccurrenceSpecification13" />
+              <executionOccurrenceSpecificationMoniker Id="5d7496a0-e5ff-4051-b07d-7fdcaf4e0898" LastKnownName="ExecutionOccurrenceSpecification14" />
+              <operandOccurrenceSpecificationMoniker Id="3cbc4cd6-f797-4bd5-abcb-612188c8f16d" LastKnownName="OperandOccurrenceSpecification10" />
+              <operandOccurrenceSpecificationMoniker Id="9a2f0d74-363c-42a7-8f7a-20086a08fdbc" LastKnownName="OperandOccurrenceSpecification2" />
+              <interactionUseOccurrenceSpecificationMoniker Id="a19c3b5c-07e4-4df2-8b74-9f0102bc2214" LastKnownName="InteractionUseOccurrenceSpecification12" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="7fecadad-8774-41b3-a1cd-6c0dea987a0e" name="&lt;&lt;class&gt;&gt; SQLTools" isActor="false" lifelineDisplayName="&lt;&lt;class&gt;&gt; SQLTools">
+            <elementDefinition Id="e7023776-0e30-47df-b204-4e5381e5872e" />
+            <topLevelOccurrences>
+              <interactionUseOccurrenceSpecificationMoniker Id="32f3bd7e-f996-4dde-8fd3-3630bb796919" LastKnownName="InteractionUseOccurrenceSpecification2" />
+              <operandOccurrenceSpecificationMoniker Id="c146f48c-fb2e-4343-aaf3-fcbac2dff503" LastKnownName="OperandOccurrenceSpecification5" />
+              <operandOccurrenceSpecificationMoniker Id="dafb571a-0a9e-4d56-8019-af1143eb78fb" LastKnownName="OperandOccurrenceSpecification13" />
+              <interactionUseOccurrenceSpecificationMoniker Id="75ce78c3-6fbd-40f8-8833-604db5fdd5a8" LastKnownName="InteractionUseOccurrenceSpecification6" />
+              <operandOccurrenceSpecificationMoniker Id="86adf19d-641e-45fc-9d37-50460b64d351" LastKnownName="OperandOccurrenceSpecification14" />
+              <operandOccurrenceSpecificationMoniker Id="eb6228d6-f29f-457c-9f2c-9409d2246d40" LastKnownName="OperandOccurrenceSpecification6" />
+              <interactionUseOccurrenceSpecificationMoniker Id="a892d791-1752-4d8d-82e1-732bdee18d99" LastKnownName="InteractionUseOccurrenceSpecification13" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="5cfac9be-d452-48b4-b1ef-b187b10b4377" name="MSAMIS DB" isActor="false" lifelineDisplayName="MSAMIS DB">
+            <elementDefinition Id="fb713d8e-4cca-4402-b7e3-f0b8a45ab62a" />
+            <topLevelOccurrences>
+              <interactionUseOccurrenceSpecificationMoniker Id="f25f947f-ab61-4a3d-86c7-7dde64f47bd7" LastKnownName="InteractionUseOccurrenceSpecification3" />
+              <operandOccurrenceSpecificationMoniker Id="08549ed0-41e8-41cb-8536-ce819b414cbd" LastKnownName="OperandOccurrenceSpecification7" />
+              <operandOccurrenceSpecificationMoniker Id="13855d40-8f8f-4eb4-ab83-cb888d6e70d1" LastKnownName="OperandOccurrenceSpecification15" />
+              <interactionUseOccurrenceSpecificationMoniker Id="a6f79537-fe99-4ed2-82f4-8eda2cd45b7e" LastKnownName="InteractionUseOccurrenceSpecification7" />
+              <operandOccurrenceSpecificationMoniker Id="deca57df-db84-4e31-8640-67f1794245a9" LastKnownName="OperandOccurrenceSpecification16" />
+              <operandOccurrenceSpecificationMoniker Id="14961363-5931-41f8-95ec-4cda07951dab" LastKnownName="OperandOccurrenceSpecification8" />
+              <interactionUseOccurrenceSpecificationMoniker Id="85c9c553-4f76-4d82-b39a-092fd1378162" LastKnownName="InteractionUseOccurrenceSpecification14" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="0cd26808-a63d-460f-8c99-756f7591f11b" name="View List of Guards with Payroll" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <elementDefinition Id="d114b38f-27f6-42e4-9b08-661f63a81193" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="29bc4a89-069c-46e5-babf-fa1a6b7253b0" LastKnownName="MessageOccurrenceSpecification1" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="25a253d2-2893-4c39-b793-635e87f15766" LastKnownName="MessageOccurrenceSpecification2" />
+            </receiveEvent>
+          </message>
+          <message Id="e6965aa5-970f-4f6a-a34e-4056c264b68c" name="GetGuardsPayrollMain(SearchFilter, Status)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <elementDefinition Id="90ed19c1-23a0-45c8-9f41-413a84d9f483" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="c9d6963d-fd6c-4a08-b4c1-1e43e7cdd71c" LastKnownName="MessageOccurrenceSpecification5" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="c1237ac3-fe42-4c02-b1f7-9b343fe2f5bf" LastKnownName="MessageOccurrenceSpecification6" />
+            </receiveEvent>
+          </message>
+          <message Id="89324e60-5f6c-40f4-9ec6-7a21a817c842" name="Guards with Payroll : DataTable" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="b8d1fd4e-4cf4-43b7-a492-0d7ccade4a3f" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="34017510-3c0d-49d2-83e2-00ebb9ea098d" LastKnownName="MessageOccurrenceSpecification7" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="26fcd981-8917-48ff-b1be-d5929de3823d" LastKnownName="MessageOccurrenceSpecification8" />
+            </receiveEvent>
+          </message>
+          <message Id="298b8765-3f27-4e0e-b791-89b5bb43b814" name="List of Guards with Payroll" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="dace29d6-566f-4fb4-8997-474694906e97" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="15495d5e-a768-426d-90e3-0896c08cf023" LastKnownName="MessageOccurrenceSpecification3" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="5dd1bfec-70cc-404d-975d-a39cd53eaec2" LastKnownName="MessageOccurrenceSpecification4" />
+            </receiveEvent>
+          </message>
+          <message Id="2bb999d4-72f5-443d-b2ab-57459fc67fff" name="Generate Salary Report" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <elementDefinition Id="4d92d9aa-3de4-4b21-b274-162d34376a07" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="9c4db3ee-aa8c-48a6-8e18-db0b5d2a7d99" LastKnownName="MessageOccurrenceSpecification9" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="723ac0e7-69a6-4ecf-9c20-383c2a0a96f6" LastKnownName="MessageOccurrenceSpecification10" />
+            </receiveEvent>
+          </message>
+          <message Id="55299b15-a3a7-4ce1-9c6e-526b126bee6d" name="GetSalaryReportPDF()" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <elementDefinition Id="beaa06da-9db8-41c3-8b53-20f8c6275303" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="0cc889e2-5d65-4108-87f5-36b4b566ab0b" LastKnownName="MessageOccurrenceSpecification13" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="ef411514-88e7-4081-9bbc-a7cdf75c4fc2" LastKnownName="MessageOccurrenceSpecification14" />
+            </receiveEvent>
+          </message>
+          <message Id="258b483a-a0cd-4d0b-9a92-4e7fb84b0409" name="&lt;&lt;create&gt;&gt; new PayrollReport (GuardId)" messageKind="Complete" messageSort="CreateMessage" createSelfMessage="false">
+            <elementDefinition Id="79597f51-9e5a-4c0c-9405-f55e2eef34c1" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="48c4aa65-79c7-42b5-8118-67e9f18f69d6" LastKnownName="MessageOccurrenceSpecification21" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="38546823-6676-4c2b-adb2-b794c82f7ecc" LastKnownName="MessageOccurrenceSpecification22" />
+            </receiveEvent>
+          </message>
+          <message Id="4c31fae3-af4c-4112-8832-b1461963ece9" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="934f075f-4e56-4d3a-9db2-cab3dfaa1f68" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="97affdfe-9293-4c45-949b-d0806155d3d7" LastKnownName="MessageOccurrenceSpecification23" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="05e0a442-5e67-47a1-b1d9-97456a179ace" LastKnownName="MessageOccurrenceSpecification24" />
+            </receiveEvent>
+          </message>
+          <message Id="2fdb4cc9-56b0-4930-b366-48bd0bf6d88f" name="FormatPDF (mode)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="true">
+            <elementDefinition Id="e2ac06e0-0e33-447e-bd7f-25c52a6495f2" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="f841ffb5-e80f-4e09-afb6-2e76d9829391" LastKnownName="MessageOccurrenceSpecification17" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="04809263-1302-47dd-873e-ce357a2de4bd" LastKnownName="MessageOccurrenceSpecification18" />
+            </receiveEvent>
+          </message>
+          <message Id="7e99574f-be0b-44a3-ad6f-322592ffaa6a" name="SalaryReport" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="cea0a99a-9662-4d95-84b3-ea8043d65943" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="335199ce-6cd0-4bd2-ab7b-909620794e66" LastKnownName="MessageOccurrenceSpecification15" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="ae601691-e860-4b4d-92c8-f563762f0fa3" LastKnownName="MessageOccurrenceSpecification16" />
+            </receiveEvent>
+          </message>
+          <message Id="d24de9d8-ba47-48c3-b2a4-3e8c6e475caf" name="Salary Report" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="cf924f3c-b417-4b99-85b4-c80d50804aab" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="9044a1d2-2eb9-4cf6-a9eb-260ac916a398" LastKnownName="MessageOccurrenceSpecification11" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="c988a24b-4770-4e71-bd81-7348a0f4dae2" LastKnownName="MessageOccurrenceSpecification12" />
+            </receiveEvent>
+          </message>
+          <message Id="4adc8e34-b092-4143-b706-5772aa368fd9" name="View Guard Adjustment History" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <elementDefinition Id="bedd17a0-0a9e-48e1-be2c-fd0b766b68c3" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="827aecd3-87c2-4fe8-8a3a-49610f44c372" LastKnownName="MessageOccurrenceSpecification25" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="6283197a-aa4f-447f-a1b2-f796e1585cf0" LastKnownName="MessageOccurrenceSpecification26" />
+            </receiveEvent>
+          </message>
+          <message Id="12de3564-7822-49d5-b064-d3d0abc7c906" name="GetGuardAdjustmentHistory (GuardId)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <elementDefinition Id="9bea67c2-02ef-49a8-974e-4150d68e95b6" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="31979050-d720-4c82-99c3-73bd04c4bb5d" LastKnownName="MessageOccurrenceSpecification29" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="d9f0d423-63ca-4e16-b7c9-12ba2ee0aeb1" LastKnownName="MessageOccurrenceSpecification30" />
+            </receiveEvent>
+          </message>
+          <message Id="60c9a954-7492-4e28-b09f-b564b0d721b0" name="Adjustment History : DataTable" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="6928e436-b0a7-403a-869b-dfff4c1ca228" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="55f4cf1f-3cd0-41a2-ad85-14dac9a293e8" LastKnownName="MessageOccurrenceSpecification31" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="b63553bd-e04b-4984-a76a-7fa46bfeff6d" LastKnownName="MessageOccurrenceSpecification32" />
+            </receiveEvent>
+          </message>
+          <message Id="82191fda-0fd4-4028-9e12-fa4eef0f1db2" name="Guard Adjustment History" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <elementDefinition Id="49f9c6f4-5fd5-4094-ab99-a86393038561" />
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="3ebded25-da86-4cf6-8c6f-fe056af567d6" LastKnownName="MessageOccurrenceSpecification27" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="7afe62b3-888f-454e-bd84-77b5c52bfc4c" LastKnownName="MessageOccurrenceSpecification28" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="d6fd7543-0d1a-4e3b-88fc-b59a7f95d06c" name="ExecutionEvent">
+        <elementDefinition Id="6e696734-fcde-4c92-b007-e7b6872c7c2a" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="e925acb2-805b-470e-b18c-7066c6b25aee" name="ExecutionEvent">
+        <elementDefinition Id="26bcecea-788c-4d4b-8ad8-9f8392a2476b" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="e2da1f66-5310-4b43-80d8-3d71164858c7" name="ExecutionEvent">
+        <elementDefinition Id="6b150405-33b8-46bd-b99f-9802642d947f" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="45ebef1c-c332-480f-acbe-6564a7fa00e3" name="ExecutionEvent">
+        <elementDefinition Id="826e2d79-b9b3-46a2-bcff-5e38ff02f1ed" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="15b803ca-4853-4f37-a9c9-79bb54206b8c" name="ExecutionEvent">
+        <elementDefinition Id="28637556-aab5-4740-a2e5-49b5f8b6910a" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="e514b808-96af-472b-b7ab-00ebc8164635" name="ExecutionEvent">
+        <elementDefinition Id="97eeb7af-2fe3-427e-b8bf-11c420fb160f" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="4697f905-2d1c-4eff-9242-c2340adf3edf" name="ExecutionEvent">
+        <elementDefinition Id="d0f7674a-e6c3-4958-ad29-f4d7eb16ac32" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="f0d37925-a1d6-4734-9425-f0479bfa1c2b" name="ExecutionEvent">
+        <elementDefinition Id="da840087-1de7-43a4-8a71-1ad7900b396d" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="0971408f-d6ef-423c-87f4-5d58c62385af" name="ExecutionEvent">
+        <elementDefinition Id="5e75397a-15a0-41ff-a664-e13c52f9b2d3" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="ff444179-80c9-4934-a48a-1f50e6b01ff1" name="ExecutionEvent">
+        <elementDefinition Id="85587c5b-b181-4d17-a7a4-9110abfec8bc" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="5814e3fd-b3dc-4efd-9dd2-69098ca83a19" name="ExecutionEvent">
+        <elementDefinition Id="a138e5be-233d-4455-a608-303a12cf26fc" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="fccf69a4-7532-4adf-8f48-9f64744f15ef" name="ExecutionEvent">
+        <elementDefinition Id="12dc6f98-830f-4f55-9d65-87a6dfbfa1e2" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="b280c352-1e41-4ba3-887a-739eb48b9a9c" name="ExecutionEvent">
+        <elementDefinition Id="14f204f3-8991-4990-94ed-67dafc510510" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="d2397269-1b2e-4b1d-8183-be3c413fba3a" name="ExecutionEvent">
+        <elementDefinition Id="9dfd2439-13a8-4510-8b09-0c48df176ab4" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="9a8e5616-bc4c-498a-98a9-9e8b689810c9" name="ExecutionEvent">
+        <elementDefinition Id="7a1e3aaa-cf6d-4a5f-acdb-36cc830c21de" />
+      </executionEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="3a1a7d26-66ea-4b23-94e9-05129a582c66" name="ExecutionEvent">
+        <elementDefinition Id="7963c86d-2c4c-4269-bc04-ab2f1832aec0" />
+      </executionEvent>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="09e03ead-c118-4df9-b336-6ea23b3a136e" name="ModelingProject1">
+    <elementDefinition Id="8ac36f2a-7453-482b-a736-812a812cf6ca" />
+    <profileInstances>
+      <packageHasProfileInstances Id="fd76adcd-b339-4b80-b7b2-c8efd32eb941">
+        <profileInstance Id="a21a83e2-e627-4a95-a1b7-10c8c4d58c2b" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="f4aeecfa-f959-4141-b2f6-eab092ea7836">
+        <profileInstance Id="87df4c3d-4562-405b-8a72-86c49c4ec320" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</SequenceDesignerModel>
