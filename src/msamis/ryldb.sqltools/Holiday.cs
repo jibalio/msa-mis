@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MSAMISUserInterface;
 using System.Globalization;
+using rylui;
+
 /*
  * TODO: Allow Edit of Holidays
  * TODO: Adjust payroll holiday checkers.
@@ -41,14 +43,18 @@ namespace MSAMISUserInterface {
         }
             
         public static void EditHoliday (int hid, string desc, int type, int trans) {
-                string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}', type='{2}' where hid='{1}';";
-                q = String.Format(q,  desc, hid, type);
-                SQLTools.ExecuteNonQuery(q);
+            RylMessageBox.ShowDialog("This function is now deprecated. Use other EditHoliday function instead.","Warning",MessageBoxButtons.OK);
+            //string q = @"UPDATE `msadb`.`holiday` SET `desc`='{0}', type='{2}' where hid='{1}';";
+            //q = String.Format(q,  desc, hid, type);
+           // SQLTools.ExecuteNonQuery(q);
+        }
+
+        public static void EditHoliday(int HolidayId, DateTime DateStart, DateTime DateEnd, string HolidayName, int HolidayType_USE_ENUMS, int HolidayTrans_USE_ENUMS) {
+            var q = $@"call msadb.proc_holiday_update({HolidayId}, '{DateStart:yyyy-MM-dd}', '{DateEnd:yyyy-MM-dd}', '{HolidayName}', {HolidayType_USE_ENUMS}, {HolidayTrans_USE_ENUMS});";
         }
 
         public static void RemoveHoliday(int hid) {
-            SQLTools.ExecuteNonQuery("delete from holiday where hid=" + hid);
-          
+            SQLTools.ExecuteNonQuery($@"call msadb.proc_holiday_remove({hid});");
         }
 
         public static DataTable GetHolidays() {
@@ -77,7 +83,7 @@ namespace MSAMISUserInterface {
                 $@"select * from holiday_instance left join holiday on holiday_instance.hid=holiday.hid
                     where datestart>='{year}-01-01 00:00:00' AND datestart<'{
                         year + 1
-                    }-01-01 00:00:00'";
+                    }-01-01 00:00:00' and status=1";
             DataTable dt = SQLTools.ExecuteQuery(q);
             foreach (DataRow e in dt.Rows) {
                 var x = e["datestart"].ToString();
