@@ -1,16 +1,8 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using ryldb.sqltools;
 using IniParser;
 using IniParser.Model;
-using rylui;
 
 namespace MSAMISUserInterface {
 

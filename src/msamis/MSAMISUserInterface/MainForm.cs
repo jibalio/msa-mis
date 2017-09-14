@@ -21,6 +21,7 @@ namespace MSAMISUserInterface {
         private Point _formLocation;
         private Button _scurrentBtn;
         private Panel _scurrentPanel;
+        private bool _allowResize;
 
         //Only Paste Global Variable Here//
 
@@ -47,6 +48,7 @@ namespace MSAMISUserInterface {
 
             //Main Form Arrangement
             DashboardPage.BringToFront();
+            DragPanel.BringToFront();
             ControlBoxPanel.BringToFront();
             SamplePNL.SendToBack();
 
@@ -144,6 +146,16 @@ namespace MSAMISUserInterface {
 
         #region Form Features
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         #region Enable Dragging of Form
 
         private bool _mouseDown;
@@ -164,6 +176,23 @@ namespace MSAMISUserInterface {
                 Update();
             }
             if (MaximizeBTN.Tag.ToString().Equals("0")) _formLocation = Location;
+        }
+
+        private void DragPanel_MouseUp(object sender, MouseEventArgs e) {
+            _allowResize = false;
+        }
+
+        private void DragPanel_MouseMove(object sender, MouseEventArgs e) {
+            if (_allowResize) {
+                Height = Height + e.Y;
+                Update();
+                Width = Width + e.X;
+                Update();
+            }
+        }
+
+        private void DragPanel_MouseDown(object sender, MouseEventArgs e) {
+            _allowResize = true;
         }
 
         #endregion
@@ -271,14 +300,12 @@ namespace MSAMISUserInterface {
 
         private void MaximizeBTN_Click(object sender, EventArgs e) {
             if (MaximizeBTN.Tag.ToString().Equals("0")) {
-                FormBorderStyle = FormBorderStyle.None;
                 Left = Top = 0;
                 Width = Screen.PrimaryScreen.WorkingArea.Width;
                 Height = Screen.PrimaryScreen.WorkingArea.Height;
                 MaximizeBTN.Tag = "1";
                 MaximizeBTN.Image = Properties.Resources.Minimize;
             } else {
-                FormBorderStyle = FormBorderStyle.Sizable;
                 Location = _formLocation;
                 Width = 1000;
                 Height = 700;
@@ -345,6 +372,8 @@ namespace MSAMISUserInterface {
             //This event gives the dashboard its slide-up effect when changing panels
 
             if (_dashboardToBeMinimized) {
+                DragPanel.BackColor = Color.White;
+                DragPanel.BackgroundImage = Properties.Resources.Drag;
                 var defaultPoint = new Point(70, -Height-DashboardPage.Height);
                 if (DashboardPage.Location.Y > defaultPoint.Y) {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y - 60);
@@ -368,6 +397,8 @@ namespace MSAMISUserInterface {
                 else {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, 32);
                     DashboardTMR.Stop();
+                    DragPanel.BackColor = _dashboard;
+                    DragPanel.BackgroundImage = Properties.Resources.DragWhite;
                     ControlBoxPanel.BackColor = _dashboard;
                     GuardsPage.Hide();
                     SchedulesPage.Hide();
@@ -2107,6 +2138,9 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-        
+
+
+
+
     }
 }
