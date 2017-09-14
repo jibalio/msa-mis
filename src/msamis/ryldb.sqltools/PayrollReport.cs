@@ -60,9 +60,10 @@ namespace MSAMISUserInterface {
 	                msadb.payroll
                     LEFT JOIN msadb.guards ON msadb.payroll.gid = msadb.guards.gid
                 WHERE
-	                guards.gid = 161
-                    AND month = 8
-                    AND period = 2;
+	                guards.gid = {GID}
+                    AND month = {month}
+                    AND period = {period}
+                    AND YEAR = {year};
                 ";
             DataRow dt = SQLTools.ExecuteQuery(q).Rows[0];
 
