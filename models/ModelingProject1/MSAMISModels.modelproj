@@ -22,6 +22,13 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <ItemGroup>
+    <Content Include="Sequence Diagram\Mod1\seq1.1.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod1\seq1.1.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod1\seq1.1.sequencediagram</DependentUpon>
+    </Content>
     <Content Include="Sequence Diagram\Mod2\seq2.1.sequencediagram">
       <SubType>Content</SubType>
     </Content>
@@ -115,5 +122,6 @@
     <Folder Include="Sequence Diagram\Mod99_MiscRefs" />
     <Folder Include="Sequence Diagram\Mod3" />
     <Folder Include="Sequence Diagram\Mod2" />
+    <Folder Include="Sequence Diagram\Mod1" />
   </ItemGroup>
 </Project>

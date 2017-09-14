@@ -4,6 +4,7 @@ using System.Data;
 namespace MSAMISUserInterface {
     public class Guard {
 
+        // Don't use this. Use GetAssingmnet Histroy in Scheduling.cs instead.
         public static DataTable GetAssignmentHistory(int GuardId) {
             throw new NotImplementedException();
         }
