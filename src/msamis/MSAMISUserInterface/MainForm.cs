@@ -185,10 +185,10 @@ namespace MSAMISUserInterface {
         private void DragPanel_MouseMove(object sender, MouseEventArgs e) {
             if (_allowResize) {
                 Height = Height + e.Y;
-                Refresh();
+                Invalidate();
                 Update();
                 Width = Width + e.X;
-                Refresh();
+                Invalidate();
                 Update();
             }
         }
@@ -410,6 +410,7 @@ namespace MSAMISUserInterface {
                     ClientsPage.Hide();
                 }
             }
+            Invalidate();
         }
 
         private void RightClickStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
