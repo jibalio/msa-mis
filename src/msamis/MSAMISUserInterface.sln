@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rylui", "rylui\rylui\rylui.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ryldb.sqltools", "ryldb.sqltools\ryldb.sqltools.csproj", "{C3A9BE5D-2DD9-41AB-87AA-F3754BB23187}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ryldb.sqltools.Tests", "ryldb.sqltools.Tests\ryldb.sqltools.Tests.csproj", "{83319B66-02B5-4FEE-B1A7-455021DD4D0D}"
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "MSAMISModels", "..\..\models\ModelingProject1\MSAMISModels.modelproj", "{C670C43A-7611-4A3C-B1AB-4F89D4665B49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{C3A9BE5D-2DD9-41AB-87AA-F3754BB23187}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3A9BE5D-2DD9-41AB-87AA-F3754BB23187}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3A9BE5D-2DD9-41AB-87AA-F3754BB23187}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83319B66-02B5-4FEE-B1A7-455021DD4D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83319B66-02B5-4FEE-B1A7-455021DD4D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83319B66-02B5-4FEE-B1A7-455021DD4D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83319B66-02B5-4FEE-B1A7-455021DD4D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C670C43A-7611-4A3C-B1AB-4F89D4665B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C670C43A-7611-4A3C-B1AB-4F89D4665B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C670C43A-7611-4A3C-B1AB-4F89D4665B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C670C43A-7611-4A3C-B1AB-4F89D4665B49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
