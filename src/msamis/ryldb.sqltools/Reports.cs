@@ -5,6 +5,7 @@ using iTextSharp.text;
 using System.IO;
 using System.Windows.Forms;
 using System.Data;
+using System.Diagnostics;
 
 namespace MSAMISUserInterface
 {
@@ -135,6 +136,7 @@ namespace MSAMISUserInterface
                     pdfDoc.Close();
                     stream.Close();
                 }
+            SendToPrinter(filePath + "\\" + fileName);
             }
 
         public void ExportPayslipPDF(int gid, int year, int month, int period)
@@ -248,6 +250,21 @@ namespace MSAMISUserInterface
                 pdfDoc.Close();
                 stream.Close();
             }
+        }
+
+        private void SendToPrinter(String fileDir)
+        {
+            ProcessStartInfo newProcess = new ProcessStartInfo(fileDir);
+
+            newProcess.CreateNoWindow = true;
+            newProcess.RedirectStandardOutput = true;
+            newProcess.UseShellExecute = false;
+
+            Process pdfProcess = new Process();
+            pdfProcess.StartInfo = newProcess;
+            pdfProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            pdfProcess.Start();
+            pdfProcess.WaitForExit();
         }
 
         public static String GetFileName(char o)

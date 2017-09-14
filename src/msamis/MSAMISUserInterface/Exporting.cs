@@ -57,19 +57,21 @@ namespace MSAMISUserInterface {
             var r = new Reports();
             /*String fullFilePath;
             if (Mode == 's') r.ExportPayslipPDF();
-            else rp.FormatPDF(Mode);
+            else
             */
+            rp.FormatPDF(Mode);
+
             if (Mode == 'g') Main.GuardsLoadReport();
             else if (Mode == 'c') Main.ClientsLoadSummary();
             else if (Mode == 'd') Main.SchedLoadReport();
             else if (Mode == 's') Main.PayLoadReport();
-            // TODO: REGODON INTAWON GI COMMIT NIMO ANG ERROR 😂😂😂
-                //else if (Mode == 'p')
+            //else if (Mode == 'p')
 
             /*
             if (Mode == 'g' || Mode == 'c')
             {
                 fullFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MSAMIS Reports\\" + Reports.GetFileName(Mode);
+                
                 if (!System.IO.File.Exists(fullFilePath))
                 {
                     label69.Text = "Something went wrong!";
