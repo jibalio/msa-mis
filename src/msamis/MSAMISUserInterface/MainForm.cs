@@ -374,6 +374,7 @@ namespace MSAMISUserInterface {
                     ControlBoxTimeLBL.Visible = true;
                     ControlBoxPanel.BackColor = _primary;
                     DragPanel.BackColor = Color.White;
+                    DragPanel.BackgroundImage = Properties.Resources.Drag;
                     SettingsBTN.Visible = true;
                 }
             }
@@ -390,6 +391,7 @@ namespace MSAMISUserInterface {
                     DashboardTMR.Stop();
                     ControlBoxPanel.BackColor = _dashboard;
                     DragPanel.BackColor = _dashboard;
+                    DragPanel.BackgroundImage = Properties.Resources.DragWhite;
                     GuardsPage.Hide();
                     SchedulesPage.Hide();
                     PayrollPage.Hide();

@@ -402,6 +402,7 @@
     <None Include="Resources\Minimize.png" />
     <None Include="Resources\Taskbar.png" />
     <None Include="Resources\Drag.png" />
+    <None Include="Resources\DragWhite.png" />
     <Content Include="Untitled-1.ico" />
   </ItemGroup>
   <ItemGroup>
