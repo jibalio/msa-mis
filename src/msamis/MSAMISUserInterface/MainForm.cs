@@ -185,8 +185,10 @@ namespace MSAMISUserInterface {
         private void DragPanel_MouseMove(object sender, MouseEventArgs e) {
             if (_allowResize) {
                 Height = Height + e.Y;
+                Refresh();
                 Update();
                 Width = Width + e.X;
+                Refresh();
                 Update();
             }
         }
@@ -250,7 +252,7 @@ namespace MSAMISUserInterface {
             _shadow.Close();
             Lf.Opacity = 0;
             Lf.Show();
-            Lf.Location = Location;
+            Lf.Location = _formLocation;
             Hide();
         }
         private void MainForm_SizeChanged(object sender, EventArgs e) {
@@ -305,7 +307,9 @@ namespace MSAMISUserInterface {
                 Height = Screen.PrimaryScreen.WorkingArea.Height;
                 MaximizeBTN.Tag = "1";
                 MaximizeBTN.Image = Properties.Resources.Minimize;
+                DragPanel.Visible = false;
             } else {
+                DragPanel.Visible = true;
                 Location = _formLocation;
                 Width = 1000;
                 Height = 700;
@@ -632,20 +636,13 @@ namespace MSAMISUserInterface {
                 GAllGuardsGRD.Columns[0].Visible = false;
                 GAllGuardsGRD.Columns[1].Width = (int)(GAllGuardsGRD.Width * 0.3664);
                 GAllGuardsGRD.Columns[4].Width = (int)(GAllGuardsGRD.Width * 0.1221);
-                GAllGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[3].Width = (int)(GAllGuardsGRD.Width * 0.1221);
-                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[5].Width = (int)(GAllGuardsGRD.Width * 0.2137);
-
-                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[2].Width = (int)(GAllGuardsGRD.Width * 0.1069);
             } else {
                 GAllGuardsGRD.Columns[0].Visible = false;
                 GAllGuardsGRD.Columns[1].Width = (int)(GAllGuardsGRD.Width * 0.3664);
                 GAllGuardsGRD.Columns[2].Width = (int)(GAllGuardsGRD.Width * 0.4580);
-                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[3].Width = (int)(GAllGuardsGRD.Width * 0.1069);
             }
         }
@@ -780,10 +777,8 @@ namespace MSAMISUserInterface {
                 GArchivedGuardsGRD.DataSource = Archiver.GetAllGuards(_extraQueryParams, "name asc");
                 GArchivedGuardsGRD.Columns[0].Visible = false;
                 GArchivedGuardsGRD.Columns[1].HeaderText = "NAME";
-                GArchivedGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GArchivedGuardsGRD.Columns[3].Visible = false;
                 GArchiveListFormat();
-                GArchivedGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GArchivedGuardsGRD.ClearSelection();
             }
             catch (Exception ex) {
@@ -1005,7 +1000,6 @@ namespace MSAMISUserInterface {
                 CClientListTBL.Columns[1].HeaderText = "NAME";
                 CClientListTBL.Columns[2].HeaderText = "LOCATION";
                 CClientListTBL.Columns[3].HeaderText = "STATUS";
-                CClientListTBL.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
                 CActiveClientLBL.Text = Client.GetNumberOfActiveClients() + " active clients";
                 CTotalClientLBL.Text = Client.GetNumberOfTotalClients() + " total clients";
@@ -1394,11 +1388,8 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns[0].Visible = false;
             SViewReqGRD.Columns[1].HeaderText = "REQUESTED BY";
             SViewReqGRD.Columns[2].HeaderText = "DATE ENTRY";
-            SViewReqGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             SViewReqGRD.Columns[3].HeaderText = "TYPE";
-            SViewReqGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             SViewReqGRD.Columns[4].HeaderText = "STATUS";
-            SViewReqGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             SchedViewRequestFormat();
 
@@ -1641,7 +1632,6 @@ namespace MSAMISUserInterface {
                 SGuardHistoryGRD.Columns[4].Visible = false;
                 SGuardHistoryGRD.Columns[5].Visible = false;
                 SGuardHistoryGRD.Columns[6].Visible = false;
-                SGuardHistoryGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 SchedGuardHistoryFormat();
                 SGuardHistoryGRD.Columns[9].HeaderText = "STATUS";
                 SGuardHistoryGRD.Sort(SGuardHistoryGRD.Columns[3], ListSortDirection.Ascending);
