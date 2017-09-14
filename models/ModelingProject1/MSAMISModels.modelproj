@@ -29,6 +29,20 @@
       <SubType>Content</SubType>
       <DependentUpon>Sequence Diagram\Mod3\seq3.1.sequencediagram</DependentUpon>
     </Content>
+    <Content Include="Sequence Diagram\Mod3\seq3.2.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod3\seq3.2.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod3\seq3.2.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Sequence Diagram\Mod3\seq3.3.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence Diagram\Mod3\seq3.3.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence Diagram\Mod3\seq3.3.sequencediagram</DependentUpon>
+    </Content>
     <Content Include="Sequence Diagram\Mod4\Sequence_Mod4_Pg1.sequencediagram">
       <SubType>Content</SubType>
     </Content>
