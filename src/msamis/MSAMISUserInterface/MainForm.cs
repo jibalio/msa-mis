@@ -21,6 +21,7 @@ namespace MSAMISUserInterface {
         private Point _formLocation;
         private Button _scurrentBtn;
         private Panel _scurrentPanel;
+        private bool _allowResize;
 
         //Only Paste Global Variable Here//
 
@@ -47,6 +48,7 @@ namespace MSAMISUserInterface {
 
             //Main Form Arrangement
             DashboardPage.BringToFront();
+            DragPanel.BringToFront();
             ControlBoxPanel.BringToFront();
             SamplePNL.SendToBack();
 
@@ -164,6 +166,23 @@ namespace MSAMISUserInterface {
                 Update();
             }
             if (MaximizeBTN.Tag.ToString().Equals("0")) _formLocation = Location;
+        }
+
+        private void DragPanel_MouseUp(object sender, MouseEventArgs e) {
+            _allowResize = false;
+        }
+
+        private void DragPanel_MouseMove(object sender, MouseEventArgs e) {
+            if (_allowResize) {
+                Height = Height + e.Y;
+                Update();
+                Width = Width + e.X;
+                Update();
+            }
+        }
+
+        private void DragPanel_MouseDown(object sender, MouseEventArgs e) {
+            _allowResize = true;
         }
 
         #endregion
@@ -354,6 +373,8 @@ namespace MSAMISUserInterface {
                     ControlBoxLBL.Visible = true;
                     ControlBoxTimeLBL.Visible = true;
                     ControlBoxPanel.BackColor = _primary;
+                    DragPanel.BackColor = Color.White;
+                    DragPanel.BackgroundImage = Properties.Resources.Drag;
                     SettingsBTN.Visible = true;
                 }
             }
@@ -369,6 +390,8 @@ namespace MSAMISUserInterface {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, 32);
                     DashboardTMR.Stop();
                     ControlBoxPanel.BackColor = _dashboard;
+                    DragPanel.BackColor = _dashboard;
+                    DragPanel.BackgroundImage = Properties.Resources.DragWhite;
                     GuardsPage.Hide();
                     SchedulesPage.Hide();
                     PayrollPage.Hide();
@@ -2107,6 +2130,9 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
-        
+
+
+
+
     }
 }
