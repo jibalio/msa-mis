@@ -174,7 +174,7 @@ namespace MSAMISUserInterface {
             if (_mouseDown && MaximizeBTN.Tag.ToString().Equals("0")) {
                 Location = new Point(Location.X - _lastLocation.X + e.X, Location.Y - _lastLocation.Y + e.Y);
                 Update();
-            }
+            } 
             if (MaximizeBTN.Tag.ToString().Equals("0")) _formLocation = Location;
         }
 
@@ -202,23 +202,18 @@ namespace MSAMISUserInterface {
         #region Slide-Up Dashboard
 
         private void Dashboard_MouseUp(object sender, MouseEventArgs e) {
+            if (_mouseDown) { 
+                if (DashboardPage.Location.Y <= (DashboardPage.Height/2)) {
+                    if (DashboardPage.Location.Y <= -(DashboardPage.Height / 4))
+                        DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 2)));
+                    else if (DashboardPage.Location.Y <= -(DashboardPage.Height / 3))
+                        DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 3)));
+                    else if (DashboardPage.Location.Y <= -(DashboardPage.Height / 2))
+                        DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 4)));
+                    RecordsBTN.PerformClick();
+                }
+            }
             _mouseDown = false;
-            if (DashboardPage.Location.Y <= -(DashboardPage.Height/2)) {
-                if (DashboardPage.Location.Y <= -(DashboardPage.Height / 4))
-                    DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 4)));
-                else if (DashboardPage.Location.Y <= -(DashboardPage.Height / 3))
-                    DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 3)));
-                else if (DashboardPage.Location.Y <= -(DashboardPage.Height / 2))
-                    DashboardPage.Location = new Point(DashboardPage.Location.X, -(DashboardPage.Height - (60 * 2)));
-                RecordsBTN.PerformClick();
-            }
-            else {
-                if (DashboardPage.Location.Y > -(DashboardPage.Height / 2))
-                    DashboardPage.Location = new Point(DashboardPage.Location.X, (DashboardPage.Height + (60 * 2)));
-                else DashboardPage.Location = new Point(DashboardPage.Location.X, 32);
-                _dashboardToBeMinimized = false;
-                DashboardTMR.Start();
-            }
         }
 
         private void Dashboard_MouseMove(object sender, MouseEventArgs e) {
@@ -252,7 +247,6 @@ namespace MSAMISUserInterface {
             _shadow.Close();
             Lf.Opacity = 0;
             Lf.Show();
-            Lf.Location = _formLocation;
             Hide();
         }
         private void MainForm_SizeChanged(object sender, EventArgs e) {
@@ -468,10 +462,17 @@ namespace MSAMISUserInterface {
         private void CheckPayday() {
             try {
                 var payday = Payroll.GetPreviousPayDay();
+
+                if (DateTime.Now.Day >= 1 && DateTime.Now.Day < 5 && !DPaydayNotifPNL.Visible && !_notif[0]) {
+                    DPaydayNotifPNL.Visible = true;
+                    DPayDayTitle.Text = "Attendance Period";
+                    DPayDayNotifLBL.Text = "Time to add attendance details for guards";
+                }
                 if (DateTime.Now.Day == payday.Day &&
                     DateTime.Now.Month == payday.Month &&
                     DateTime.Now.Year == payday.Year && !DPaydayNotifPNL.Visible && !_notif[0]) {
                     DPaydayNotifPNL.Visible = true;
+                    DPayDayTitle.Text = "Payroll Payday";
                     DPayDayNotifLBL.Text = "for the month of " + payday.ToString("MMMM yyyy");
                 }
                 if (DateTime.Now.Day == 5) {

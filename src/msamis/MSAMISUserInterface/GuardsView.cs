@@ -270,9 +270,11 @@ namespace MSAMISUserInterface {
         }
 
         private static string GetStatus(DataTable dt) {
-            switch (dt.Rows[0]["gstatus"].ToString()) {
-                case "1": return "Active";
-                case "2": return "Inactive";
+            switch (int.Parse(dt.Rows[0]["gstatus"].ToString())) {
+                case 0: return "Inactive";
+                case 1: return "Active";
+                case 2: return "Pending Payroll";
+                case 3: return "Pending Assignment";
                 default: return "Unspecified";
             }
         }
