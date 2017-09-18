@@ -69,9 +69,12 @@ namespace MSAMISUserInterface
         #region Salary Export
         public static DataTable GetSalaryList()
         {
+            /*
             ExtraQueryParams = "WHERE gid = 0 GROUP BY fn;";
             String q = "SELECT fn, ln, mn, gid, mn, gid, mn, gid, GStatus, gender, height, weight, ln, mn, gid, GStatus, gender, height, weight, gender FROM msadb.guards " + ExtraQueryParams;
             return SQLTools.ExecuteQuery(q);
+        */
+        return null;
         }
 
         #endregion
@@ -136,7 +139,7 @@ namespace MSAMISUserInterface
                     pdfDoc.Close();
                     stream.Close();
                 }
-            SendToPrinter(filePath + "\\" + fileName);
+            //SendToPrinter(filePath + "\\" + fileName);
             }
 
         public void ExportPayslipPDF(int gid, int year, int month, int period)
@@ -252,7 +255,7 @@ namespace MSAMISUserInterface
             }
         }
 
-        private void SendToPrinter(String fileDir)
+       /* private void SendToPrinter(String fileDir)
         {
             ProcessStartInfo newProcess = new ProcessStartInfo(fileDir);
 
@@ -266,7 +269,7 @@ namespace MSAMISUserInterface
             pdfProcess.Start();
             pdfProcess.WaitForExit();
         }
-
+        */
         public static String GetFileName(char o)
             {
                 if (o == 'c')

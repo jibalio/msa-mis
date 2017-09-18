@@ -146,6 +146,16 @@ namespace MSAMISUserInterface {
 
         #region Form Features
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         #region Enable Dragging of Form
 
         private bool _mouseDown;
@@ -175,8 +185,10 @@ namespace MSAMISUserInterface {
         private void DragPanel_MouseMove(object sender, MouseEventArgs e) {
             if (_allowResize) {
                 Height = Height + e.Y;
+                Invalidate();
                 Update();
                 Width = Width + e.X;
+                Invalidate();
                 Update();
             }
         }
@@ -240,7 +252,7 @@ namespace MSAMISUserInterface {
             _shadow.Close();
             Lf.Opacity = 0;
             Lf.Show();
-            Lf.Location = Location;
+            Lf.Location = _formLocation;
             Hide();
         }
         private void MainForm_SizeChanged(object sender, EventArgs e) {
@@ -290,14 +302,14 @@ namespace MSAMISUserInterface {
 
         private void MaximizeBTN_Click(object sender, EventArgs e) {
             if (MaximizeBTN.Tag.ToString().Equals("0")) {
-                FormBorderStyle = FormBorderStyle.None;
                 Left = Top = 0;
                 Width = Screen.PrimaryScreen.WorkingArea.Width;
                 Height = Screen.PrimaryScreen.WorkingArea.Height;
                 MaximizeBTN.Tag = "1";
                 MaximizeBTN.Image = Properties.Resources.Minimize;
+                DragPanel.Visible = false;
             } else {
-                FormBorderStyle = FormBorderStyle.Sizable;
+                DragPanel.Visible = true;
                 Location = _formLocation;
                 Width = 1000;
                 Height = 700;
@@ -364,6 +376,8 @@ namespace MSAMISUserInterface {
             //This event gives the dashboard its slide-up effect when changing panels
 
             if (_dashboardToBeMinimized) {
+                DragPanel.BackColor = Color.White;
+                DragPanel.BackgroundImage = Properties.Resources.Drag;
                 var defaultPoint = new Point(70, -Height-DashboardPage.Height);
                 if (DashboardPage.Location.Y > defaultPoint.Y) {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, DashboardPage.Location.Y - 60);
@@ -373,8 +387,6 @@ namespace MSAMISUserInterface {
                     ControlBoxLBL.Visible = true;
                     ControlBoxTimeLBL.Visible = true;
                     ControlBoxPanel.BackColor = _primary;
-                    DragPanel.BackColor = Color.White;
-                    DragPanel.BackgroundImage = Properties.Resources.Drag;
                     SettingsBTN.Visible = true;
                 }
             }
@@ -389,15 +401,16 @@ namespace MSAMISUserInterface {
                 else {
                     DashboardPage.Location = new Point(DashboardPage.Location.X, 32);
                     DashboardTMR.Stop();
-                    ControlBoxPanel.BackColor = _dashboard;
                     DragPanel.BackColor = _dashboard;
                     DragPanel.BackgroundImage = Properties.Resources.DragWhite;
+                    ControlBoxPanel.BackColor = _dashboard;
                     GuardsPage.Hide();
                     SchedulesPage.Hide();
                     PayrollPage.Hide();
                     ClientsPage.Hide();
                 }
             }
+            Invalidate();
         }
 
         private void RightClickStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
@@ -469,7 +482,7 @@ namespace MSAMISUserInterface {
                         new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1).ToString("MMMM yyyy");
                     var rp = new ReportsPreview();
                     rp.FormatPDF('d');
-                    //rp.FormatPDF('s');
+                    rp.FormatPDF('s');
                 }
                 ArrangeNotif();
             }
@@ -624,20 +637,13 @@ namespace MSAMISUserInterface {
                 GAllGuardsGRD.Columns[0].Visible = false;
                 GAllGuardsGRD.Columns[1].Width = (int)(GAllGuardsGRD.Width * 0.3664);
                 GAllGuardsGRD.Columns[4].Width = (int)(GAllGuardsGRD.Width * 0.1221);
-                GAllGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[3].Width = (int)(GAllGuardsGRD.Width * 0.1221);
-                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[5].Width = (int)(GAllGuardsGRD.Width * 0.2137);
-
-                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[2].Width = (int)(GAllGuardsGRD.Width * 0.1069);
             } else {
                 GAllGuardsGRD.Columns[0].Visible = false;
                 GAllGuardsGRD.Columns[1].Width = (int)(GAllGuardsGRD.Width * 0.3664);
                 GAllGuardsGRD.Columns[2].Width = (int)(GAllGuardsGRD.Width * 0.4580);
-                GAllGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-                GAllGuardsGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GAllGuardsGRD.Columns[3].Width = (int)(GAllGuardsGRD.Width * 0.1069);
             }
         }
@@ -772,10 +778,8 @@ namespace MSAMISUserInterface {
                 GArchivedGuardsGRD.DataSource = Archiver.GetAllGuards(_extraQueryParams, "name asc");
                 GArchivedGuardsGRD.Columns[0].Visible = false;
                 GArchivedGuardsGRD.Columns[1].HeaderText = "NAME";
-                GArchivedGuardsGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GArchivedGuardsGRD.Columns[3].Visible = false;
                 GArchiveListFormat();
-                GArchivedGuardsGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GArchivedGuardsGRD.ClearSelection();
             }
             catch (Exception ex) {
@@ -997,7 +1001,6 @@ namespace MSAMISUserInterface {
                 CClientListTBL.Columns[1].HeaderText = "NAME";
                 CClientListTBL.Columns[2].HeaderText = "LOCATION";
                 CClientListTBL.Columns[3].HeaderText = "STATUS";
-                CClientListTBL.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 CClientListTBL.Sort(CClientListTBL.Columns[1], ListSortDirection.Ascending);
                 CActiveClientLBL.Text = Client.GetNumberOfActiveClients() + " active clients";
                 CTotalClientLBL.Text = Client.GetNumberOfTotalClients() + " total clients";
@@ -1386,11 +1389,8 @@ namespace MSAMISUserInterface {
             SViewReqGRD.Columns[0].Visible = false;
             SViewReqGRD.Columns[1].HeaderText = "REQUESTED BY";
             SViewReqGRD.Columns[2].HeaderText = "DATE ENTRY";
-            SViewReqGRD.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             SViewReqGRD.Columns[3].HeaderText = "TYPE";
-            SViewReqGRD.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             SViewReqGRD.Columns[4].HeaderText = "STATUS";
-            SViewReqGRD.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             SchedViewRequestFormat();
 
@@ -1633,7 +1633,6 @@ namespace MSAMISUserInterface {
                 SGuardHistoryGRD.Columns[4].Visible = false;
                 SGuardHistoryGRD.Columns[5].Visible = false;
                 SGuardHistoryGRD.Columns[6].Visible = false;
-                SGuardHistoryGRD.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 SchedGuardHistoryFormat();
                 SGuardHistoryGRD.Columns[9].HeaderText = "STATUS";
                 SGuardHistoryGRD.Sort(SGuardHistoryGRD.Columns[3], ListSortDirection.Ascending);
@@ -2006,7 +2005,6 @@ namespace MSAMISUserInterface {
         }
 
         private void PSalaryReportsExportBTN_Click(object sender, EventArgs e) {
-            /*
             try {
                 var savefile = new SaveFileDialog {
                     FileName = "PaySummaryReport_" + PSummaryFilesLST.Items[0].SubItems[0].Text,
@@ -2019,19 +2017,7 @@ namespace MSAMISUserInterface {
                 RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
                     "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(exception);
-            }*/
-            try {
-                var view = new Exporting {
-                    Refer = _shadow,
-                    Main = this,
-                    Mode = 's'
-                };
-                _shadow.Transparent();
-                _shadow.Form = view;
-                _shadow.ShowDialog();
             }
-            catch (Exception exception) { Console.WriteLine(exception); }
-
         }
 
         public void PayLoadReport() {

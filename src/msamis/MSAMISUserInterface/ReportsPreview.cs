@@ -133,7 +133,7 @@ namespace MSAMISUserInterface {
                 PayrollReport pr = new PayrollReport(gid, year, month, period);
 
                 //add data
-                GReportGRD.Rows[i].Cells[0].Value = pr.LN + ", " + pr.FN + pr.MN;
+               // GReportGRD.Rows.Add("", "" ) [i].Cells[0].Value = pr.LN + ", " + pr.FN + pr.MN;
                 GReportGRD.Rows[i].Cells[1].Value = pr.DaysOfWork;
                 GReportGRD.Rows[i].Cells[2].Value = pr.Rate;
                 GReportGRD.Rows[i].Cells[3].Value = pr.TotalRegularWage;
@@ -163,6 +163,7 @@ namespace MSAMISUserInterface {
         public void FormatPDF(char formOrigin) {
             //Default PDF Format
             GReportGRD.DataSource = Reports.GetList(formOrigin);
+            if (formOrigin == 's') formatSalaryReportTable();
             String strcheck = "";
             if (formOrigin == 'd') 
             {
@@ -192,9 +193,7 @@ namespace MSAMISUserInterface {
             pdfTable = AddHeaders(pdfTable, formOrigin);
             //Add Data to PDF
 
-            if (formOrigin == 's') formatSalaryReportTable();
-            else
-            {
+            
                 foreach (DataGridViewRow row in GReportGRD.Rows)
                 {
                     foreach (DataGridViewCell cell in row.Cells)
@@ -207,7 +206,6 @@ namespace MSAMISUserInterface {
                         pdfTable.AddCell(newcell);
                     }
                 }
-            }
             var r = new Reports();
             r.ExportToPDF(pdfTable, formOrigin);
         }
