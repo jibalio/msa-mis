@@ -282,6 +282,9 @@ namespace MSAMISUserInterface {
             String q = @"UPDATE `msadb`.`period` SET `certby`='" + cert + "' WHERE `GID`='" + GID + "' AND month='" + p.month + "' AND period='" + p.period + "' AND year='" + p.year + "';";
             SQLTools.ExecuteNonQuery(q);
         }
+
+       
+
         #endregion
 
         #endregion
@@ -298,6 +301,12 @@ namespace MSAMISUserInterface {
 
         // This method gets the current pay period.
         public static Period GetCurrentPayPeriod() {
+            /* Definitions are swapped. This returns 
+             *      1 = 1-15
+             *      2 = 16-31
+             */
+            #region + OLD DEFINTION
+            /*
             int m = 0, y = 0, p = 0;
             #region + Dates Setting
             int date = int.Parse(DateTime.Now.ToString("dd"));
@@ -315,8 +324,44 @@ namespace MSAMISUserInterface {
                 y = GetYear();
             }
             #endregion
+            return new Period(p, m, y);*/
+            #endregion
+
+            // Overriden definition starts here.
+            int m = 0, y = 0, p = 0;
+            #region + Dates Setting
+            int date = int.Parse(DateTime.Now.ToString("dd"));
+            if (date >= 1 && date <= 15) {
+                p = 1;
+                m = GetMonth();
+                y = GetYear();
+            } else if ((date >= 16 && date <= 31)) {
+                p = 2;
+                m = GetMonth();
+                y = GetYear();
+            }
+            #endregion
             return new Period(p, m, y); ;
         }
+
+        public static Period GetCurrentPeriod() {
+            int m = 0, y = 0, p = 0;
+            #region + Dates Setting
+            int date = int.Parse(DateTime.Now.ToString("dd"));
+            if (date >= 1 && date <= 15) {
+                p = 1;
+                m = GetMonth();
+                y = GetYear();
+            } else if ((date >= 16 && date <= 31)) {
+                p = 2;
+                m = GetMonth();
+                y = GetYear();
+            }
+            #endregion
+            return new Period(p, m, y); ;
+        }
+
+
 
         public static DataTable GetPeriods(int GID) {
             return SQLTools.ExecuteQuery(@"SELECT month, period, year
