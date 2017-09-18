@@ -108,8 +108,6 @@ namespace MSAMISUserInterface {
 
         private void CloseBTN_Click(object sender, EventArgs e) {
             Close();
-            if (!Name.Equals("Archived"))
-                Reference.GuardsRefreshGuardsList();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
