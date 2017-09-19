@@ -98,6 +98,7 @@
       <DependentUpon>LoaderGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs" />
+    <Compile Include="LogRetriever.cs" />
     <Compile Include="Payroll.cs" />
     <Compile Include="PayrollReport.cs" />
     <Compile Include="Program.cs" />

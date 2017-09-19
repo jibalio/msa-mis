@@ -3,3 +3,7 @@
 
 4U_Approve			Approve Payroll
 
+1CGuard				New Guard
+1UGuardDetail		Updated guard detail.
+2CClient			New Client
+2UClientDetail		Updated Client Detail.
