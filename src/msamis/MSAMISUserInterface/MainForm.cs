@@ -2114,12 +2114,47 @@ namespace MSAMISUserInterface {
 
 
 
+
+
+
         #endregion
 
         #endregion
 
+        private void GAllGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                GEditDetailsBTN.PerformClick();
+            }
+        }
 
+        private void GArchivedGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                GArchiveViewDetailsBTN.PerformClick();
+            }
+        }
 
+        private void CClientListTBL_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                CViewDetailsBTN.PerformClick();
+            }
+        }
 
+        private void SViewAssGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SViewAssViewDetailsBTN.PerformClick();
+            }
+        }
+
+        private void SGuardHistoryGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SGuardHistoryViewBTN.PerformClick();
+            }
+        }
+
+        private void SViewReqGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SViewReqViewBTN.PerformClick();
+            }
+        }
     }
 }

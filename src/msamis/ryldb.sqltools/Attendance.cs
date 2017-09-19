@@ -1,23 +1,4 @@
-﻿/*
- * RylDB 
- * Ibalio, Jan Leryc V.
- * Pasigado, Anton John B.
- * Regodon, Rhyle Abram P.
- * 
-            Why, yes, I use lists for the days.
-            B4 u say anything, there is only a small performance difference
-            between list<generic> and int[].
-            Sampled from 60k size input:
-            Memory usage for arrays and Lists:
-                List generic:  6.172 MB
-                Integer array: 5.554 MB
-            Lookup performance for arrays and Lists:
-                List generic:  1043.4 ms
-                Integer array:  980.2 ms
-            So, yes, I'm definitely gonna use lists here.
-            See more: https://www.dotnetperls.com/array-memory
- */
- 
+﻿
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -43,24 +24,15 @@ namespace MSAMISUserInterface {
             this.AID = AID;
             period = new Period(periodx, month, year);
             Console.Write(period.period);
-
-
-
-
-
-
             DataRow drSdutyAssign = SQLTools.ExecuteQuery($"select * from sduty_assignment where aid='{this.AID}'").Rows[0];
             GID = int.Parse(drSdutyAssign["gid"].ToString());
             CID = int.Parse(drSdutyAssign["cid"].ToString());
-
             // Only add attendance on months between contract start and contract end (inclusive)'.
             // So i need to retrieve ContractStart and ContractEnd of the request.
             int raid = int.Parse(drSdutyAssign["raid"].ToString());
             DataRow drra = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.request_assign where raid='{raid}'").Rows[0];
             DateTime cs = DateTime.Parse(drra["contractstart"].ToString());
             DateTime ce = DateTime.Parse(drra["contractend"].ToString());
-
-
             // Insert new period
             String ax = $@"INSERT IGNORE INTO `msadb`.`period` 
                             (`GID`, `month`, `period`, `year`, `cid`) VALUES 
@@ -118,6 +90,7 @@ namespace MSAMISUserInterface {
         #region Instance Fields
 
         public List<HourProcessor> hourlist = new List<HourProcessor>();
+        public HourProcessor TotalHours = new HourProcessor();
         public int AID;
         public Period period;
         private DataTable attendance_cached;
@@ -243,14 +216,53 @@ namespace MSAMISUserInterface {
             attendance_cached = d;
             TimeSpan holiday_day, holiday_night, normal_day, normal_night, total;
             holiday_day = holiday_night = normal_day = normal_night = total = new TimeSpan();
+
             foreach (HourProcessor x in hourlist) {
+                TotalHours += x;
                 h.holiday_day += x.GetHolidayDayTS();
                 h.holiday_night += x.GetHolidayNightTS();
                 h.normal_day += x.GetNormalDayTS();
                 h.normal_night += x.GetNormalNightTS(); ;
                 h.total += x.GetTotalTS();
+                TotalHours += x;
             }
             return h;
+        }
+
+        public string[] GetAttendanceTooltip() {
+            HourProcessor h = TotalHours;
+            string[] a = new string [24];
+            string[] b = {
+                "nsu_proper_day_normal",
+                "nsu_overtime_day_normal",
+                "sun_proper_day_normal",
+                "sun_overtime_day_normal",
+                "nsu_proper_night_normal",
+                "nsu_overtime_night_normal",
+                "sun_proper_night_normal",
+                "sun_overtime_night_normal",
+                "nsu_proper_day_regular",
+                "nsu_overtime_day_regular",
+                "sun_proper_day_regular",
+                "sun_overtime_day_regular",
+                "nsu_proper_day_special",
+                "nsu_overtime_day_special",
+                "sun_proper_day_special",
+                "sun_overtime_day_special",
+                "nsu_proper_night_regular",
+                "nsu_overtime_night_regular",
+                "sun_proper_night_regular",
+                "sun_overtime_night_regular",
+                "nsu_proper_night_special",
+                "nsu_overtime_night_special",
+                "sun_proper_night_special",
+                "sun_overtime_night_special"
+            };
+            for (int c = 0; c < b.Length; c++) {
+                TimeSpan ts = TotalHours.hp[b[c]];
+                a[c] = (((int) (ts.TotalHours / 60)).ToString() + ":" + ((int) ts.Minutes).ToString()).ToString() + "hrs.";
+            }
+            return a;
         }
 
         public string GetCertifiedBy() {

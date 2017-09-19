@@ -53,7 +53,7 @@ concat (ti_hh,':',ti_mm,' ',ti_period, '-',
 
 !
 totalhours:
-    nsu_proper_day_normal
+    !nsu_proper_day_normal
     nsu_proper_day_special
     nsu_proper_day_regular
     nsu_proper_night_normal
