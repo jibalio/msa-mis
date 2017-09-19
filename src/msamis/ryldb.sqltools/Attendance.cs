@@ -224,7 +224,7 @@ namespace MSAMISUserInterface {
                 h.normal_day += x.GetNormalDayTS();
                 h.normal_night += x.GetNormalNightTS(); ;
                 h.total += x.GetTotalTS();
-                TotalHours += x;
+                int pc = 1 + 1;
             }
             return h;
         }
@@ -259,8 +259,8 @@ namespace MSAMISUserInterface {
                 "sun_overtime_night_special"
             };
             for (int c = 0; c < b.Length; c++) {
-                TimeSpan ts = TotalHours.hp[b[c]];
-                a[c] = (((int) (ts.TotalHours / 60)).ToString() + ":" + ((int) ts.Minutes).ToString()).ToString() + "hrs.";
+                TimeSpan ts = h.hp[b[c]];
+                a[c] = (((int) (ts.TotalHours)).ToString("00") + ":" + ((int) ts.Minutes).ToString("00")).ToString() + " hrs.";
             }
             return a;
         }

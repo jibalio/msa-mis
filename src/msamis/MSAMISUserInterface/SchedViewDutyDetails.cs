@@ -172,7 +172,7 @@ namespace MSAMISUserInterface {
                     : attendance.GetCertifiedBy();
 
                 try {
-                    string[] tooltip = _attendance.GetAttendanceTooltip();
+                    string[] tooltip = attendance.GetAttendanceTooltip();
 
                     OrdinaryDay.Items[3].Text = tooltip[0];
                     OrdinaryDay.Items[4].Text = tooltip[1];
