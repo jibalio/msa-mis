@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="486d42a8-1333-44a5-bd05-ce65798659c6" name="seq3.4" linkedPackageId="3f6759aa-defb-4c86-8bbd-633c4bc1abce" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="dd222620-c225-42c7-9d7e-0777618db2a0">
-      <profileInstance Id="79310e44-aced-4d6a-9dc3-a8327e37e8cd" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="60236da7-1768-4762-9b00-148b55031462">
-      <profileInstance Id="096fc445-9978-451e-8401-c23925c75342" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <packageHasNamedElement>
       <interaction Id="ab167400-88ce-4522-8f89-56a816691181" name="seq3.4" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
@@ -113,6 +99,12 @@
               <interactionUseOccurrenceSpecificationMoniker Id="914c16b8-18db-4fd8-b0ba-4e4337abe4ad" LastKnownName="InteractionUseOccurrenceSpecification57" />
             </interactionUseOccurrenceSpecifications>
           </interactionUse>
+          <interactionUseOccurrenceSpecification Id="b1c44a04-807f-459d-a824-11c29260fa1a" name="InteractionUseOccurrenceSpecification55">
+            <elementDefinition Id="d2951aef-9543-4d3e-aeee-34de29856263" />
+            <covered>
+              <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
           <interactionUseOccurrenceSpecification Id="3274e979-823c-4787-9e26-3b60f19d518f" name="InteractionUseOccurrenceSpecification56">
             <elementDefinition Id="c8d942de-edd2-45cd-a78d-6e4bfe91ba01" />
             <covered>
@@ -123,12 +115,6 @@
             <elementDefinition Id="d3f349e0-2477-4848-826d-d0cea2b01d36" />
             <covered>
               <lifelineMoniker Id="2fbd5e87-87e5-4250-9581-7e1699927aab" LastKnownName="MSAMIS DB" />
-            </covered>
-          </interactionUseOccurrenceSpecification>
-          <interactionUseOccurrenceSpecification Id="b1c44a04-807f-459d-a824-11c29260fa1a" name="InteractionUseOccurrenceSpecification55">
-            <elementDefinition Id="d2951aef-9543-4d3e-aeee-34de29856263" />
-            <covered>
-              <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
             </covered>
           </interactionUseOccurrenceSpecification>
           <messageOccurrenceSpecification Id="5c8a5065-cd0e-4a29-85fd-e6e0eaf1d4e5" name="MessageOccurrenceSpecification32">
@@ -206,16 +192,16 @@
               <lifelineMoniker Id="1722b306-eda4-4f53-808c-8efc0819ba15" LastKnownName="Duty Scheduling &amp; Assignment Sys." />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="c31e5386-cb8e-4dae-bdd1-98502ad635f1" name="MessageOccurrenceSpecification25">
-            <elementDefinition Id="c2df0cf8-cb48-4079-8f3b-86defb9c0ee1" />
-            <covered>
-              <lifelineMoniker Id="a2769670-2b42-4a31-9781-68306412da55" LastKnownName="Manager" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="dc2b69e0-00fc-426c-a974-822e27f8387f" name="MessageOccurrenceSpecification26">
             <elementDefinition Id="46120b34-8761-4b14-b6b6-6403b805b1fa" />
             <covered>
               <lifelineMoniker Id="1722b306-eda4-4f53-808c-8efc0819ba15" LastKnownName="Duty Scheduling &amp; Assignment Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c31e5386-cb8e-4dae-bdd1-98502ad635f1" name="MessageOccurrenceSpecification25">
+            <elementDefinition Id="c2df0cf8-cb48-4079-8f3b-86defb9c0ee1" />
+            <covered>
+              <lifelineMoniker Id="a2769670-2b42-4a31-9781-68306412da55" LastKnownName="Manager" />
             </covered>
           </messageOccurrenceSpecification>
           <behaviorExecutionSpecification Id="cb58ec2b-7776-4005-b8a5-1cb8c672cce0" name="BehaviorExecutionSpecification10">
@@ -289,16 +275,16 @@
               <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
             </covered>
           </interactionUseOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="45b27dff-1ba2-4ef9-b5d8-5d2261e3b7c0" name="MessageOccurrenceSpecification31">
-            <elementDefinition Id="f20e9f30-c652-4b11-8449-463822cb891d" />
-            <covered>
-              <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="1a3a5f84-77a6-4fd1-9d15-16c4cd8ed1e3" name="MessageOccurrenceSpecification32">
             <elementDefinition Id="1fb77efd-af34-46ce-a777-d8b497b7d325" />
             <covered>
               <lifelineMoniker Id="1722b306-eda4-4f53-808c-8efc0819ba15" LastKnownName="Duty Scheduling &amp; Assignment Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="45b27dff-1ba2-4ef9-b5d8-5d2261e3b7c0" name="MessageOccurrenceSpecification31">
+            <elementDefinition Id="f20e9f30-c652-4b11-8449-463822cb891d" />
+            <covered>
+              <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="a22505c1-62ac-4bd5-bb6c-369a7ce65b2b" name="ExecutionOccurrenceSpecification20">
@@ -605,16 +591,16 @@
               <lifelineMoniker Id="ab580d1d-b1b1-4e40-b2f7-5667abe0209a" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
             </covered>
           </interactionUseOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="7e6534a8-38c1-4260-ab3c-93a3cb9381b4" name="MessageOccurrenceSpecification43">
-            <elementDefinition Id="82cc96a9-4715-4d46-b3a2-1f3700c2f701" />
-            <covered>
-              <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="ef1e0426-d2b2-45f7-b451-9b7030e785cc" name="MessageOccurrenceSpecification44">
             <elementDefinition Id="d4d08a02-fc74-4d1f-95fc-0c4f8a4f41ad" />
             <covered>
               <lifelineMoniker Id="1722b306-eda4-4f53-808c-8efc0819ba15" LastKnownName="Duty Scheduling &amp; Assignment Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="7e6534a8-38c1-4260-ab3c-93a3cb9381b4" name="MessageOccurrenceSpecification43">
+            <elementDefinition Id="82cc96a9-4715-4d46-b3a2-1f3700c2f701" />
+            <covered>
+              <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="d3e2a05a-c800-4858-b69c-03c4c6bbf7bc" name="ExecutionOccurrenceSpecification26">
@@ -720,16 +706,16 @@
               <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="a50b8fd8-09ca-4c93-82aa-e2bd8ea07f80" name="MessageOccurrenceSpecification50">
-            <elementDefinition Id="f700a496-2962-47ae-9f01-bc1b542ff70e" />
-            <covered>
-              <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="42d50072-f6b9-414d-9854-f039b4026017" name="MessageOccurrenceSpecification49">
             <elementDefinition Id="e6fffdd6-bc82-4317-baac-368c32f2c407" />
             <covered>
               <lifelineMoniker Id="1722b306-eda4-4f53-808c-8efc0819ba15" LastKnownName="Duty Scheduling &amp; Assignment Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="a50b8fd8-09ca-4c93-82aa-e2bd8ea07f80" name="MessageOccurrenceSpecification50">
+            <elementDefinition Id="f700a496-2962-47ae-9f01-bc1b542ff70e" />
+            <covered>
+              <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
             </covered>
           </messageOccurrenceSpecification>
           <interactionUse Id="0a22b4aa-9e04-4b7d-8678-75a4e7e210ae" name="SQLTools.ExecuteQuery() : DataTable">
@@ -786,16 +772,16 @@
               <lifelineMoniker Id="d3e3d67b-93ab-4407-aa94-41ad2d1a2b33" LastKnownName="&lt;&lt;class&gt;&gt; Scheduling" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="a5a373c0-f783-491c-8834-f22de59025bc" name="MessageOccurrenceSpecification48">
-            <elementDefinition Id="55b4acda-7017-4edd-bbb1-81d04d1d1580" />
-            <covered>
-              <lifelineMoniker Id="a2769670-2b42-4a31-9781-68306412da55" LastKnownName="Manager" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="681cba86-c1d7-43ee-be25-9044a60467ff" name="MessageOccurrenceSpecification47">
             <elementDefinition Id="0d638a4f-4144-44e4-8071-e70bd22582d5" />
             <covered>
               <lifelineMoniker Id="1722b306-eda4-4f53-808c-8efc0819ba15" LastKnownName="Duty Scheduling &amp; Assignment Sys." />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="a5a373c0-f783-491c-8834-f22de59025bc" name="MessageOccurrenceSpecification48">
+            <elementDefinition Id="55b4acda-7017-4edd-bbb1-81d04d1d1580" />
+            <covered>
+              <lifelineMoniker Id="a2769670-2b42-4a31-9781-68306412da55" LastKnownName="Manager" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="23c140f8-df7b-489f-b2eb-5ad3177ab9a7" name="ExecutionOccurrenceSpecification28">
@@ -1164,5 +1150,19 @@
   </packagedElements>
   <package Id="3f6759aa-defb-4c86-8bbd-633c4bc1abce" name="ModelingProject1">
     <elementDefinition Id="8ac36f2a-7453-482b-a736-812a812cf6ca" />
+    <profileInstances>
+      <packageHasProfileInstances Id="dd222620-c225-42c7-9d7e-0777618db2a0">
+        <profileInstance Id="79310e44-aced-4d6a-9dc3-a8327e37e8cd" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="60236da7-1768-4762-9b00-148b55031462">
+        <profileInstance Id="096fc445-9978-451e-8401-c23925c75342" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </SequenceDesignerModel>
