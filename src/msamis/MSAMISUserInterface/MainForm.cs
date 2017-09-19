@@ -266,6 +266,7 @@ namespace MSAMISUserInterface {
             if (SGuardHistoryPNL.Visible) SchedGuardHistoryFormat();
             if (PSalaryReportPage.Visible) PayLoadReportLayout();
             if (PEmpListPage.Visible) PayChnageSize();
+            NotifLayout();
         }
 
 
@@ -482,8 +483,8 @@ namespace MSAMISUserInterface {
                         "for the month of " +
                         new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1).ToString("MMMM yyyy");
                     var rp = new ReportsPreview();
-                    rp.FormatPDF('d');
-                    rp.FormatPDF('s');
+                    //rp.FormatPDF('d');
+                    //rp.FormatPDF('s');
                 }
                 ArrangeNotif();
             }
@@ -1720,8 +1721,8 @@ namespace MSAMISUserInterface {
                 SSummaryErrorPNL.Visible = SSummaryFilesLST.Items.Count == 0;
                 SSummaryDateLBL.Text = SSummaryFilesLST.Items.Count > 0
                     ? "for the month of " + SSummaryFilesLST.Items[0].Text
-                    : "No reports available";
-                SDutyDetailsExportBTN.Visible = SDutyDetailsPreviewBTN.Visible = SSummaryFilesLST.Items.Count > 0;
+                    : "No reports available. This report is automatically generated.";
+                SDutyDetailsExportBTN.Visible = SDutyDetailsPreviewBTN.Visible = SDutyDetailsPrintBTN.Visible = SSummaryFilesLST.Items.Count > 0;
             }
             catch (Exception ex) {
                 ShowErrorBox("Duty Details Summary Report", ex.Message);
@@ -2040,8 +2041,8 @@ namespace MSAMISUserInterface {
                 PSummaryErrorPNL.Visible = PSummaryFilesLST.Items.Count == 0;
                 PSummaryDateLBL.Text = PSummaryFilesLST.Items.Count > 0
                     ? "for the month of " + PSummaryFilesLST.Items[0].Text
-                    : "No reports available";
-                //  PSalaryReportsExportBTN.Visible = PSalaryReportsPreviewBTN.Visible = PSummaryFilesLST.Items.Count > 0;
+                    : "No reports available. This report is automatically generated.";
+                  PSalaryReportsExportBTN.Visible = PSalaryReportsPreviewBTN.Visible = PSalaryReportsPrintBTN.Visible = PSummaryFilesLST.Items.Count > 0;
             }
             catch (Exception ex) {
                 ShowErrorBox("Salary Report", ex.Message);
