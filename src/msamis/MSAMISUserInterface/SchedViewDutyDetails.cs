@@ -123,48 +123,10 @@ namespace MSAMISUserInterface {
                 AttendanceGRD.DataSource = _attendance.GetAttendance_View(
                     ((ComboBoxDays)PeriodCMBX.SelectedItem).Month,
                     ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-
-
                 AttendanceGRD.Columns[8].Visible = false;
                 AttendanceGRD.Columns[9].Visible = false;
                 AttendanceGRD.Columns[10].Visible = false;
                 AttendanceGRD.Columns[11].Visible = false;
-
-                try { 
-                string[] tooltip = _attendance.GetAttendanceTooltip();
-
-                OrdinaryDay.Items[3].Text = tooltip[0];
-                OrdinaryDay.Items[4].Text = tooltip[1];
-                OrdinaryDay.Items[6].Text = tooltip[2];
-                OrdinaryDay.Items[7].Text = tooltip[3];
-
-                OrdinaryNight.Items[3].Text = tooltip[4];
-                OrdinaryNight.Items[4].Text = tooltip[5];
-                OrdinaryNight.Items[6].Text = tooltip[6];
-                OrdinaryNight.Items[7].Text = tooltip[7];
-
-                HolidayDay.Items[3].Text = tooltip[8];
-                HolidayDay.Items[4].Text = tooltip[9];
-                HolidayDay.Items[6].Text = tooltip[10];
-                HolidayDay.Items[7].Text = tooltip[11];
-                HolidayDay.Items[11].Text = tooltip[12];
-                HolidayDay.Items[12].Text = tooltip[13];
-                HolidayDay.Items[14].Text = tooltip[14];
-                HolidayDay.Items[15].Text = tooltip[15];
-
-                HolidayNight.Items[3].Text = tooltip[16];
-                HolidayNight.Items[4].Text = tooltip[17];
-                HolidayNight.Items[6].Text = tooltip[18];
-                HolidayNight.Items[7].Text = tooltip[19];
-                HolidayNight.Items[11].Text = tooltip[20];
-                HolidayNight.Items[12].Text = tooltip[21];
-                HolidayNight.Items[14].Text = tooltip[22];
-                HolidayNight.Items[15].Text = tooltip[23];
-                } catch (Exception exception) {
-                    Console.WriteLine(exception);
-                }
-
-
             }
             else {
                 AttendanceGRD.DataSource = Archiver.GetAttendance(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
@@ -208,8 +170,43 @@ namespace MSAMISUserInterface {
                 ACertifiedLBL.Text = attendance.GetCertifiedBy().Equals("")
                     ? "Unedited Attendance"
                     : attendance.GetCertifiedBy();
-            }
-            else {
+
+                try {
+                    string[] tooltip = _attendance.GetAttendanceTooltip();
+
+                    OrdinaryDay.Items[3].Text = tooltip[0];
+                    OrdinaryDay.Items[4].Text = tooltip[1];
+                    OrdinaryDay.Items[6].Text = tooltip[2];
+                    OrdinaryDay.Items[7].Text = tooltip[3];
+
+                    OrdinaryNight.Items[3].Text = tooltip[4];
+                    OrdinaryNight.Items[4].Text = tooltip[5];
+                    OrdinaryNight.Items[6].Text = tooltip[6];
+                    OrdinaryNight.Items[7].Text = tooltip[7];
+
+                    HolidayDay.Items[3].Text = tooltip[8];
+                    HolidayDay.Items[4].Text = tooltip[9];
+                    HolidayDay.Items[6].Text = tooltip[10];
+                    HolidayDay.Items[7].Text = tooltip[11];
+                    HolidayDay.Items[11].Text = tooltip[12];
+                    HolidayDay.Items[12].Text = tooltip[13];
+                    HolidayDay.Items[14].Text = tooltip[14];
+                    HolidayDay.Items[15].Text = tooltip[15];
+
+                    HolidayNight.Items[3].Text = tooltip[16];
+                    HolidayNight.Items[4].Text = tooltip[17];
+                    HolidayNight.Items[6].Text = tooltip[18];
+                    HolidayNight.Items[7].Text = tooltip[19];
+                    HolidayNight.Items[11].Text = tooltip[20];
+                    HolidayNight.Items[12].Text = tooltip[21];
+                    HolidayNight.Items[14].Text = tooltip[22];
+                    HolidayNight.Items[15].Text = tooltip[23];
+                }
+                catch (Exception exception) {
+                    Console.WriteLine(exception);
+                }
+
+            } else {
                 var attendance = Archiver.GetAttendanceSummary(((ComboBoxDays) PeriodCMBX.SelectedItem).Year,
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                     ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, Gid);
@@ -221,6 +218,44 @@ namespace MSAMISUserInterface {
 
 
                 ACertifiedLBL.Text = attendance.Rows[0][1].ToString();
+                /*
+                try {
+                    string[] tooltip = attendance.GetAttendanceTooltip();
+
+                    OrdinaryDay.Items[3].Text = tooltip[0];
+                    OrdinaryDay.Items[4].Text = tooltip[1];
+                    OrdinaryDay.Items[6].Text = tooltip[2];
+                    OrdinaryDay.Items[7].Text = tooltip[3];
+
+                    OrdinaryNight.Items[3].Text = tooltip[4];
+                    OrdinaryNight.Items[4].Text = tooltip[5];
+                    OrdinaryNight.Items[6].Text = tooltip[6];
+                    OrdinaryNight.Items[7].Text = tooltip[7];
+
+                    HolidayDay.Items[3].Text = tooltip[8];
+                    HolidayDay.Items[4].Text = tooltip[9];
+                    HolidayDay.Items[6].Text = tooltip[10];
+                    HolidayDay.Items[7].Text = tooltip[11];
+                    HolidayDay.Items[11].Text = tooltip[12];
+                    HolidayDay.Items[12].Text = tooltip[13];
+                    HolidayDay.Items[14].Text = tooltip[14];
+                    HolidayDay.Items[15].Text = tooltip[15];
+
+                    HolidayNight.Items[3].Text = tooltip[16];
+                    HolidayNight.Items[4].Text = tooltip[17];
+                    HolidayNight.Items[6].Text = tooltip[18];
+                    HolidayNight.Items[7].Text = tooltip[19];
+                    HolidayNight.Items[11].Text = tooltip[20];
+                    HolidayNight.Items[12].Text = tooltip[21];
+                    HolidayNight.Items[14].Text = tooltip[22];
+                    HolidayNight.Items[15].Text = tooltip[23];
+                }
+                catch (Exception exception) {
+                    Console.WriteLine(exception);
+                }
+
+                */
+
             }
         }
 
