@@ -5,7 +5,8 @@ using iTextSharp.text;
 using System.IO;
 using System.Windows.Forms;
 using System.Data;
-using System.Diagnostics;
+using System.Drawing.Printing;
+
 
 namespace MSAMISUserInterface
 {
@@ -173,7 +174,7 @@ namespace MSAMISUserInterface
                     pdfDoc.Close();
                     stream.Close();
                 }
-            //SendToPrinter(filePath + "\\" + fileName);
+            PrintPDF(filePath, fileName);
             }
 
         public void ExportPayslipPDF(int gid, int year, int month, int period)
@@ -288,22 +289,35 @@ namespace MSAMISUserInterface
                 stream.Close();
             }
         }
-
-       /* private void SendToPrinter(String fileDir)
+        
+        public void PrintPDF(String filePath, String fileName)
         {
-            ProcessStartInfo newProcess = new ProcessStartInfo(fileDir);
+            String fileDir = filePath + "\\" + fileName; 
+            foreach (string printer in PrinterSettings.InstalledPrinters)
+                Console.WriteLine(printer);
+            var printerSettings = new PrinterSettings();
+            Console.WriteLine(string.Format("The default printer is: {0}", printerSettings.PrinterName));
 
-            newProcess.CreateNoWindow = true;
-            newProcess.RedirectStandardOutput = true;
-            newProcess.UseShellExecute = false;
+            Console.WriteLine(printerSettings.PrintFileName);
+            OpenFileDialog fdlg = new OpenFileDialog();
+            fdlg.Title = "Open File Dialog";
+            fdlg.InitialDirectory = fileDir;
+            fdlg.RestoreDirectory = true;
+            fdlg.ShowDialog();
+            Console.WriteLine(fdlg.Title);
+            if (fdlg.ShowDialog() == DialogResult.OK)
+            {
+                fileName = String.Copy(fdlg.FileName);
+            }
+            Console.WriteLine(fileName);
 
-            Process pdfProcess = new Process();
-            pdfProcess.StartInfo = newProcess;
-            pdfProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            pdfProcess.Start();
-            pdfProcess.WaitForExit();
+            PrintDialog printdg = new PrintDialog();
+            PrintDocument pd_doc = new PrintDocument();
+            printdg.ShowDialog();
+            if (printdg.ShowDialog() == DialogResult.OK)
+                pd_doc.Print();
         }
-        */
+
         public static String GetFileName(char o)
             {
                 if (o == 'c')
