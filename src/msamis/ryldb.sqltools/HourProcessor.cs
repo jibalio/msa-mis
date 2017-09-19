@@ -324,5 +324,16 @@ DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
             return e;
         }
 
+
+        public static HourProcessor operator + (HourProcessor c1, HourProcessor c2) {
+            HourProcessor f = new HourProcessor();
+            foreach (string key in f.hp.Keys) { f.hp[key] = c1.hp[key] + c2.hp[key]; }
+            f.total = c1.total + c2.total;
+            f.totalday = c1.totalday + c2.totalday;
+            f.totalnight = c1.totalnight + c2.totalnight;
+            return f;
+        }
+
+
     }
 }
