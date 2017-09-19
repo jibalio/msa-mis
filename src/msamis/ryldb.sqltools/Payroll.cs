@@ -207,7 +207,7 @@ namespace MSAMISUserInterface {
         private int _viewmode;
         private Dictionary<string, double> _rates = new Dictionary<string, double>();
         private double _BasicPayHourly;
-
+        
         #endregion
 
         #region Derivables
