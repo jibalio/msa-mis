@@ -2156,5 +2156,11 @@ namespace MSAMISUserInterface {
                 SViewReqViewBTN.PerformClick();
             }
         }
+
+        private void PEmpListGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                PEmpListViewBTN.PerformClick();
+            }
+        }
     }
 }
