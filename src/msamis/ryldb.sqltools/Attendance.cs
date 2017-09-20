@@ -134,17 +134,17 @@ namespace MSAMISUserInterface {
 
         public DataTable GetAttendance_View(int month, int period, int year) {
             String q = $@"
-                        select atid, dutydetails.did, 
-							CONCAT((DATE_FORMAT(date, '%d')), ' / ' ,
-							(CONCAT (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_actual_hh,':',to_actual_mm,SUBSTRING(to_actual_period,1,1)))) as Schedule,
-                            concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as ti_to,
+                            select atid, dutydetails.did, 
+							    CONCAT((DATE_FORMAT(date, '%d')), ' / ' ,
+							    (CONCAT (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_actual_hh,':',to_actual_mm,SUBSTRING(to_actual_period,1,1)))) as Schedule,
+                                concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as ti_to,
                             
-                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, timein, timeout, CONCAT(`year`, '-',period.month,'-', (DATE_FORMAT(date, '%d')), ' ') as Date
-                            from attendance
-                            left join dutydetails 
-                            on dutydetails.did=attendance.did
-                            left join period 
-                            on period.pid=attendance.pid
+                                ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, timein, timeout, CONCAT(`year`, '-',period.month,'-', (DATE_FORMAT(date, '%d')), ' ') as Date
+                                from attendance
+                                left join dutydetails 
+                                on dutydetails.did=attendance.did
+                                left join period 
+                                on period.pid=attendance.pid
                             where period = '{period}'
                             and month = '{month}'
                             and year = '{year}'    
@@ -237,6 +237,7 @@ namespace MSAMISUserInterface {
             HourProcessor h = TotalHours;
             string[] a = new string [24];
             string[] b = {
+                #region +Keys
                 "nsu_proper_day_normal",
                 "nsu_overtime_day_normal",
                 "sun_proper_day_normal",
@@ -261,10 +262,12 @@ namespace MSAMISUserInterface {
                 "nsu_overtime_night_special",
                 "sun_proper_night_special",
                 "sun_overtime_night_special"
+                #endregion
             };
+            
             for (int c = 0; c < b.Length; c++) {
                 TimeSpan ts = h.hp[b[c]];
-                a[c] = (((int) (ts.TotalHours)).ToString("00") + ":" + ((int) ts.Minutes).ToString("00")).ToString() + " hrs.";
+                a[c] = (b[c][4]=='p'?"Regular":"Overtime")+": "+(((int) (ts.TotalHours)).ToString("00") + ":" + ((int) ts.Minutes).ToString("00")).ToString() + " hrs.";
             }
             return a;
         }

@@ -210,8 +210,8 @@ DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
                         } else {
                            this.hp["nsu_proper_day_normal"] += day;
                            this.hp["nsu_proper_night_normal"] += night;
-                           this.hp["sun_overtime_day_normal"] += overtimeday;
-                           this.hp["sun_overtime_night_normal"] += overtimenight;
+                           this.hp["nsu_overtime_day_normal"] += overtimeday;
+                           this.hp["nsu_overtime_night_normal"] += overtimenight;
                         }
                     }
                 }
