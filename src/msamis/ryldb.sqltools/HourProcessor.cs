@@ -56,6 +56,7 @@ DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
             // if not same
             if (ti > to) {
                 to = to.AddDays(1);
+                endduty = endduty.AddDays(1);
                 NightEnd = NightEnd.AddDays(1);
                 // First Half
                 // 1: Max Selection, either nighstart or actuals
@@ -73,8 +74,10 @@ DateTime maxStart; DateTime minEnd; DateTime minStart; DateTime maxEnd;
                 // Check for overtimes
                 if (to > endduty) {
                     DateTime minEndOver_night = to < NightEnd ? to : NightEnd;
+                    DateTime maxEndOver_day = to > NightEnd ? to : NightEnd;
+                     
                     d2_overtime_night = (endduty - minEndOver_night> TimeSpan.FromSeconds(0)) ? endduty - minEndOver_night : new TimeSpan(0, 0, 0);
-                    d2_overtime_day = to > NightEnd ? to - NightEnd : new TimeSpan(0, 0, 0);
+                    d2_overtime_day = (maxEndOver_day - endduty > TimeSpan.FromSeconds(0)) ? maxEndOver_day - endduty : new TimeSpan(0, 0, 0);
                     d2_day -= d2_overtime_day;
                     d2_night -= d2_overtime_night;
                 }
