@@ -32,6 +32,7 @@ namespace MSAMISUserInterface {
                     VALUES ('{uid}', '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');
                     ");
                     SessionId = SQLTools.GetInt("select last_insert_id()");
+                    SQLTools.ExecuteNonQuery($@"SET @cuser={SessionId};");
                     return true;
                 }
                 else return false;

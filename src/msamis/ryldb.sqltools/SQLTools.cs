@@ -14,9 +14,9 @@ namespace MSAMISUserInterface {
     public static class SQLTools {
         public static string sqlversion = "5";
         public static String ArchiveName = "msadbarchive";
-        public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;");
-        public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;");
-        public static MySqlConnection nodb = new MySqlConnection("Server=localhost;Uid=root;Pwd=root;");
+        public static MySqlConnection conn = new MySqlConnection("Server=localhost;Database=MSAdb;Uid=root;Pwd=root;Allow User Variables=True");
+        public static MySqlConnection archiveconn = new MySqlConnection("Server=localhost;Database=" + ArchiveName + ";Uid=root;Pwd=root;Allow User Variables=True");
+        public static MySqlConnection nodb = new MySqlConnection("Server=localhost;Uid=root;Pwd=root;Allow User Variables=True");
         /* GENERIC METHODS
          * ExecuteQuery(query)      :   DataTable
          * ExecuteReader(query)     :   MySqlDataReader
