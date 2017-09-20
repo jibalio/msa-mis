@@ -689,7 +689,7 @@ namespace MSAMISUserInterface {
                 }
             } else {
                 if (GAllGuardsGRD.SelectedRows.Count == 1) {
-                    if (!GAllGuardsGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Inctive")) HideBtNs(true, false);
+                    if (!GAllGuardsGRD.SelectedRows[0].Cells[3].Value.ToString().Equals("Inactive")) HideBtNs(true, false);
                     else HideBtNs(true, Login.AccountType != 2);
                 } else if (GAllGuardsGRD.SelectedRows.Count > 1) {
                     var ret = true;
