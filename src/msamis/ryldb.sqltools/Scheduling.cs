@@ -460,6 +460,30 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             return "=";
         }
 
+        public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
+            
+            DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
+            DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
+            DateTime to_props = ti.AddHours(8);
+            HourProcessor hp = new HourProcessor(ti, to, ti, to);
+            TimeSpan e = hp.GetTotalTS();
+            //if (e.TotalHours > 8) { return ">"; } else if (e.TotalHours < 8) { return "<"; }
+            Console.Write(e.TotalMinutes);
+            String q = $@"
+                        UPDATE `msadb`.`dutydetails` SET 
+                        `TI_hh`='{TI_hr}', `TI_mm`='{TI_min}', `TI_period`='{TI_ampm}', 
+                        `TO_actua_hh`='{TO_hr}', `TO_actua_mm`='{TO_min}', `TO_actua_period`='{TO_ampm}',
+                        `TO_hh`='{to_props:hh}', `TO_mm`='{to_props:mm}', `TO_period`='{to_props:tt}',
+                        `Mon`='{ToInt32(days.Mon)}', `Tue`='{ToInt32(days.Tue)}', 
+                        `Wed`='{ ToInt32(days.Wed)}', `Thu`='{ToInt32(days.Thu)}', 
+                        `Fri`='{ToInt32(days.Fri)}', `Sat`='{ToInt32(days.Sat)}', 
+                        `Sun`='{ToInt32(days.Sun)}', `minutediff`={(int)(e.TotalMinutes)}
+                        WHERE `DID`='{did}';
+                         ";
+            SQLTools.ExecuteNonQuery(q);
+            return "=";
+        }
+
         public static void DismissDuty (int did) {
             // Set duty detail to inactive.
             // Previous duty na ni niya.
@@ -572,7 +596,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         /// <returns>Columns: ["ti_hh" , "ti_mm" , "ti_period" , "to_hh" , "to_mm" , "to_period"]</returns>
         public static DataTable GetDutyDetailsDetails(int DID) {
             String q = @"select ti_hh, ti_mm, ti_period,
-		                to_hh, to_mm, to_period
+		                to_actual_hh as 'to_hh', to_actual_mm as 'to_mm', to_actual_period as 'to_period'
                         from dutydetails  where DStatus=1 and did=" + DID;
             return SQLTools.ExecuteQuery(q);
         }
@@ -593,28 +617,6 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 dt.Rows[0]["sat"].ToString() == "1",
                 dt.Rows[0]["sun"].ToString() == "1"
                 );
-        }
-
-        public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
-            
-            DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
-            DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
-            HourProcessor hp = new HourProcessor(ti, to, ti, to);
-            TimeSpan e = hp.GetTotalTS();
-            if (e.TotalHours > 8) { return ">"; } else if (e.TotalHours < 8) { return "<"; }
-            Console.Write(e.TotalMinutes);
-            String q = $@"
-                        UPDATE `msadb`.`dutydetails` SET 
-                        `TI_hh`='{TI_hr}', `TI_mm`='{TI_min}', `TI_period`='{TI_ampm}', 
-                        `TO_hh`='{TO_hr}', `TO_mm`='{TO_min}', `TO_period`='{TO_ampm}',
-                        `Mon`='{ToInt32(days.Mon)}', `Tue`='{ToInt32(days.Tue)}', 
-                        `Wed`='{ ToInt32(days.Wed)}', `Thu`='{ToInt32(days.Thu)}', 
-                        `Fri`='{ToInt32(days.Fri)}', `Sat`='{ToInt32(days.Sat)}', 
-                        `Sun`='{ToInt32(days.Sun)}', `minutediff`={(int)(e.TotalMinutes)}
-                        WHERE `DID`='{did}';
-                         ";
-            SQLTools.ExecuteNonQuery(q);
-            return "=";
         }
 
         public static bool HasOverlap(int aid, string ti, string to, Days days) {
