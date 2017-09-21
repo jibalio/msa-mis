@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
+using static System.Convert;
 
 namespace MSAMISUserInterface {
     public class Scheduling {
@@ -430,35 +433,58 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         #region DutyDetail Operations  (Add + Dismiss)  ✔Done
        
         public static string AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
-            String q = @"
+            bool isOverlap = HasOverlap(aid, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
+            if (isOverlap) {
+                MessageBox.Show("Overlapping schedule.");
+                return ">";
+            }
+            DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
+            DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
+            HourProcessor hp = new HourProcessor(ti, to, ti, to);
+            DateTime to_props = ti.AddHours(8);
+            TimeSpan e = hp.GetTotalTS();
+            String q = $@"
                         INSERT INTO `msadb`.`dutydetails` 
                         (`AID`, 
                         `TI_hh`, `TI_mm`, `TI_period`, 
                         `TO_hh`, `TO_mm`, `TO_period`,
                         `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`, 
-                        `DStatus`) 
+                        `DStatus`, `minutediff`,`to_actual_hh`,`to_actual_mm`,`to_actual_period`) 
                         VALUES 
-                        ('{0}',
-                        '{1}','{2}','{3}',
-                        '{4}','{5}','{6}',
-                        '{7}','{8}','{9}','{10}','{11}','{12}','{13}',
-                        '{14}');
+                        ('{aid}',
+                        '{TI_hr}','{TI_min}','{TI_ampm}',
+                        '{to_props:hh}','{to_props:mm}','{to_props:tt}',
+                        '{ToInt32(days.Mon)}','{ToInt32(days.Tue)}','{ToInt32(days.Wed)}','{ToInt32(days.Thu)}','{ToInt32(days.Fri)}',
+                        '{ToInt32(days.Sat)}','{ToInt32(days.Sun)}',
+                        '{Enumeration.DutyDetailStatus.Active}', {(int)e.TotalMinutes},
+                        '{TO_hr}','{TO_min}','{TO_ampm}');
                         ";
-            q = String.Format(q, aid,
-                        TI_hr, TI_min, TI_ampm,
-                        TO_hr, TO_min, TO_ampm,
-                        Convert.ToInt32(days.Mon), Convert.ToInt32(days.Tue), 
-                        Convert.ToInt32(days.Wed), Convert.ToInt32(days.Thu), 
-                        Convert.ToInt32(days.Fri), Convert.ToInt32(days.Sat), 
-                        Convert.ToInt32(days.Sun),
-                        Enumeration.DutyDetailStatus.Active
-                );
+            
+            //if (e.TotalHours > 8) { return "="; } else if (e.TotalHours < 8) { return "="; }
+            SQLTools.ExecuteNonQuery(q);
+            return "=";
+        }
+
+        public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
+            
             DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
             DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
+            DateTime to_props = ti.AddHours(8);
             HourProcessor hp = new HourProcessor(ti, to, ti, to);
             TimeSpan e = hp.GetTotalTS();
-            e = e;
-            if (e.TotalHours > 8) { return ">"; } else if (e.TotalHours < 8) { return "<"; }
+            //if (e.TotalHours > 8) { return ">"; } else if (e.TotalHours < 8) { return "<"; }
+            Console.Write(e.TotalMinutes);
+            String q = $@"
+                        UPDATE `msadb`.`dutydetails` SET 
+                        `TI_hh`='{TI_hr}', `TI_mm`='{TI_min}', `TI_period`='{TI_ampm}', 
+                        `TO_actua_hh`='{TO_hr}', `TO_actua_mm`='{TO_min}', `TO_actua_period`='{TO_ampm}',
+                        `TO_hh`='{to_props:hh}', `TO_mm`='{to_props:mm}', `TO_period`='{to_props:tt}',
+                        `Mon`='{ToInt32(days.Mon)}', `Tue`='{ToInt32(days.Tue)}', 
+                        `Wed`='{ ToInt32(days.Wed)}', `Thu`='{ToInt32(days.Thu)}', 
+                        `Fri`='{ToInt32(days.Fri)}', `Sat`='{ToInt32(days.Sat)}', 
+                        `Sun`='{ToInt32(days.Sun)}', `minutediff`={(int)(e.TotalMinutes)}
+                        WHERE `DID`='{did}';
+                         ";
             SQLTools.ExecuteNonQuery(q);
             return "=";
         }
@@ -559,7 +585,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             DataTable dt = 
                 SQLTools.ExecuteQuery(@"
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
-                    concat (to_hh,':',to_mm,' ',to_period) as TimeOut,
+                    concat (to_actual_hh,':',to_actual_mm,' ',to_actual_period) as TimeOut,
                     'days_columnMTWThFSSu' as days from 
                     dutydetails where DStatus=1 and AID=" + AID);
             foreach (DataRow e in dt.Rows) {
@@ -575,7 +601,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         /// <returns>Columns: ["ti_hh" , "ti_mm" , "ti_period" , "to_hh" , "to_mm" , "to_period"]</returns>
         public static DataTable GetDutyDetailsDetails(int DID) {
             String q = @"select ti_hh, ti_mm, ti_period,
-		                to_hh, to_mm, to_period
+		                to_actual_hh as 'to_hh', to_actual_mm as 'to_mm', to_actual_period as 'to_period'
                         from dutydetails  where DStatus=1 and did=" + DID;
             return SQLTools.ExecuteQuery(q);
         }
@@ -598,35 +624,66 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 );
         }
 
-        public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
-            String q = @"
-                        UPDATE `msadb`.`dutydetails` SET 
-                        `TI_hh`='{0}', `TI_mm`='{1}', `TI_period`='{2}', 
-                        `TO_hh`='{3}', `TO_mm`='{4}', `TO_period`='{5}',
-                        `Mon`='{6}', `Tue`='{7}', 
-                        `Wed`='{8}', `Thu`='{9}', 
-                        `Fri`='{10}', `Sat`='{11}', 
-                        `Sun`='{12}'
-                        WHERE `DID`='{13}';
-                         ";
-            q = String.Format(q,
-                 TI_hr, TI_min, TI_ampm,
-                        TO_hr, TO_min, TO_ampm,
-                        Convert.ToInt32(days.Mon), Convert.ToInt32(days.Tue),
-                        Convert.ToInt32(days.Wed), Convert.ToInt32(days.Thu),
-                        Convert.ToInt32(days.Fri), Convert.ToInt32(days.Sat),
-                        Convert.ToInt32(days.Sun), did);
-
-            DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
-            DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
-            HourProcessor hp = new HourProcessor(ti, to, ti, to);
-            TimeSpan e = hp.GetTotalTS();
-            if (e.TotalHours > 8) { return ">"; } else if (e.TotalHours < 8) { return "<"; }
-            SQLTools.ExecuteNonQuery(q);
-            return "=";
+        public static bool HasOverlap(int aid, string ti, string to, Days days) {
+            DataTable dt = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.dutydetails where aid = {aid};");
+            Dictionary<string,string> date = new Dictionary<string, string> {
+                {"Sun","2017-09-03 "},
+                {"Mon","2017-09-04 "},
+                {"Tue","2017-09-05 "},
+                {"Wed","2017-09-06 "},
+                {"Thu","2017-09-07 "},
+                {"Fri","2017-09-08 "},
+                {"Sat","2017-09-09 "},
+            };
+            string[] keys = date.Keys.ToArray();
+            DateTime offset = new DateTime(1970,1,1,0,0,0);
+            List<Java> tmins = new List<Java>();
+            List<Java> newCom = new List<Java>();
+            foreach (DataRow dr in dt.Rows) {
+                bool[] e_bool = new bool[] {
+                    dr["sun"].ToString() == "1",dr["Mon"].ToString()=="1", dr["Tue"].ToString() == "1",
+                    dr["wed"].ToString() == "1", dr["thu"].ToString() == "1",
+                    dr["fri"].ToString() == "1", dr["sat"].ToString() == "1"};
+                DateTime temp;
+                for(int c=0;c < e_bool.Length; c++) {
+                    if (e_bool[c]) {
+                        int x = (int)(DateTime.Parse((date[keys[c]]+$@"{dr["ti_hh"]}:{dr["ti_mm"]} {dr["ti_period"]}"))-DateTime.Parse("1970-01-01 00:00:00")).TotalMinutes;
+                        int y = (int)(DateTime.Parse((date[keys[c]] + $@"{dr["to_actual_hh"]}:{dr["to_actual_mm"]} {dr["to_actual_period"]}")) - DateTime.Parse("1970-01-01 00:00:00")).TotalMinutes;
+                        Java java = new Java(x,y);
+                        tmins.Add(java);
+                    }
+                }
+            
+            }
+           
+            // Create tspan of this time
+            bool[] y_bool = new bool[] {days.Sun, days.Mon, days.Tue, days.Wed, days.Thu, days.Fri, days.Sat};
+            for (int c = 0; c < y_bool.Length; c++) {
+                if (y_bool[c]) {
+                    int a = (int)(DateTime.Parse((date[keys[c]] + ti)) - DateTime.Parse("1970-01-01 00:00:00")).TotalMinutes;
+                    int b = (int)(DateTime.Parse((date[keys[c]] + to)) - DateTime.Parse("1970-01-01 00:00:00")).TotalMinutes;
+                    Java java = new Java(a, b);
+                    newCom.Add(java);
+                }
+            }
+            bool overlap;
+            foreach (Java x in newCom){
+                foreach (Java y in tmins) {
+                    overlap = x.sta < y.end && x.sta < y.end;
+                    if (overlap) return true;
+                }
+            }
+            return false;
         }
 
-
+        public class Java {
+            public int sta;
+            public int end;
+            public Java(int sta, int end) {
+                this.sta = sta;
+                this.end = end;
+            }
+        }
 
 
 
