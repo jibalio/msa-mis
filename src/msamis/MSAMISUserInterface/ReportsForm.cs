@@ -140,8 +140,25 @@ namespace MSAMISUserInterface {
         }
 
         private void ExportClientsSummaryBTN_Click(object sender, EventArgs e) {
-            var rp = new ReportsPreview();
-            rp.FormatPDF('s');
+            //var rp = new ReportsPreview();
+            //rp.FormatPDF('s');
+            
+            var r = new Reports();
+            var approvedlist = Payroll.GetApprovedPayrollsList();
+            int gid, month, period, year;
+            int i;
+
+            for (i = 0; i < Payroll.GetApprovedPayrollsList().Rows.Count; i++)
+            {
+                gid = Convert.ToInt32(approvedlist.Rows[i][0]);
+                month = Convert.ToInt32(approvedlist.Rows[i][1]);
+                period = Convert.ToInt32(approvedlist.Rows[i][2]);
+                year = Convert.ToInt32(approvedlist.Rows[i][3]);
+
+                r.ExportPayslipPDF(gid, year, month, period);
+            }
+            
+
         }
 
         private void label43_Click(object sender, EventArgs e) {
