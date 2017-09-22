@@ -473,8 +473,8 @@ namespace MSAMISUserInterface {
                 if (GEditDetailsBTN.Text.Equals("ADD")) {
                     try {
                         Guard.AddGuardBasicInfo(FirstNameBX.Text, MiddleNameBX.Text, LastNameBX.Text, BirthdateBX.Value,
-                            _gender, HeightBX.Text, WeightBX.Text, ReligionBX.Text, CVStatusBX.SelectedIndex,
-                            CellNoBX.Text, TellNoBX.Text, LicenseNoBX.Text, SSSNoBX.Text, TINNoBX.Text,
+                            _gender, HeightBX.Text.Replace(".", string.Empty), WeightBX.Text.Replace(".", string.Empty), ReligionBX.Text, CVStatusBX.SelectedIndex,
+                            CellNoBX.Text.Replace(".", string.Empty), TellNoBX.Text.Replace(".", string.Empty), LicenseNoBX.Text, SSSNoBX.Text, TINNoBX.Text,
                             PhilHealthBX.Text, PrevAgencyBX.Text, PrevAssBX.Text, EdAttBX.SelectedIndex, CourseBX.Text,
                             MilTrainBX.Text, EmergBX.Text, EmergencyNoBX.Text);
                     }
@@ -519,8 +519,8 @@ namespace MSAMISUserInterface {
                 else if (GEditDetailsBTN.Text.Equals("UPDATE")) {
                     try {
                         Guard.UpdateGuardBasicInfo(Gid, FirstNameBX.Text, MiddleNameBX.Text, LastNameBX.Text,
-                            BirthdateBX.Value, _gender, HeightBX.Text, WeightBX.Text, ReligionBX.Text,
-                            CVStatusBX.SelectedIndex, CellNoBX.Text, TellNoBX.Text, LicenseNoBX.Text, SSSNoBX.Text,
+                            BirthdateBX.Value, _gender, HeightBX.Text.Replace(".", string.Empty), WeightBX.Text.Replace(".", string.Empty), ReligionBX.Text,
+                            CVStatusBX.SelectedIndex, CellNoBX.Text.Replace(".", string.Empty), TellNoBX.Text.Replace(".", string.Empty), LicenseNoBX.Text, SSSNoBX.Text,
                             TINNoBX.Text, PhilHealthBX.Text, PrevAgencyBX.Text, PrevAssBX.Text, EdAttBX.SelectedIndex,
                             CourseBX.Text, MilTrainBX.Text, EmergBX.Text, EmergencyNoBX.Text);
                     }
