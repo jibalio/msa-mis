@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportsForm));
             this.ClientsReportPNL = new System.Windows.Forms.Panel();
+            this.CExportToPDFBTN = new System.Windows.Forms.Button();
             this.CTotalActiveLBL = new System.Windows.Forms.Label();
             this.CTotalLBL = new System.Windows.Forms.Label();
             this.CSummaryDateLBL = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.ExportGuardsSummaryBTN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.CExportToPDFBTN = new System.Windows.Forms.Button();
             this.ClientsReportPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsSummaryTBL)).BeginInit();
             this.GuardsReportPNL.SuspendLayout();
@@ -59,6 +59,24 @@
             this.ClientsReportPNL.Name = "ClientsReportPNL";
             this.ClientsReportPNL.Size = new System.Drawing.Size(690, 640);
             this.ClientsReportPNL.TabIndex = 21;
+            // 
+            // CExportToPDFBTN
+            // 
+            this.CExportToPDFBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.CExportToPDFBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.CExportToPDFBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CExportToPDFBTN.FlatAppearance.BorderSize = 0;
+            this.CExportToPDFBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
+            this.CExportToPDFBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CExportToPDFBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CExportToPDFBTN.ForeColor = System.Drawing.Color.White;
+            this.CExportToPDFBTN.Location = new System.Drawing.Point(548, 591);
+            this.CExportToPDFBTN.Name = "CExportToPDFBTN";
+            this.CExportToPDFBTN.Size = new System.Drawing.Size(112, 46);
+            this.CExportToPDFBTN.TabIndex = 22;
+            this.CExportToPDFBTN.Text = "EXPORT TO PDF";
+            this.CExportToPDFBTN.UseVisualStyleBackColor = false;
+            this.CExportToPDFBTN.Click += new System.EventHandler(this.CExportToPDFBTN_Click);
             // 
             // CTotalActiveLBL
             // 
@@ -117,11 +135,11 @@
             this.ExportClientsSummaryBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExportClientsSummaryBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExportClientsSummaryBTN.ForeColor = System.Drawing.Color.White;
-            this.ExportClientsSummaryBTN.Location = new System.Drawing.Point(287, 594);
+            this.ExportClientsSummaryBTN.Location = new System.Drawing.Point(287, 589);
             this.ExportClientsSummaryBTN.Name = "ExportClientsSummaryBTN";
-            this.ExportClientsSummaryBTN.Size = new System.Drawing.Size(112, 32);
+            this.ExportClientsSummaryBTN.Size = new System.Drawing.Size(112, 51);
             this.ExportClientsSummaryBTN.TabIndex = 6;
-            this.ExportClientsSummaryBTN.Text = "EXPORT";
+            this.ExportClientsSummaryBTN.Text = "EXPORT ALL REPORTS";
             this.ExportClientsSummaryBTN.UseVisualStyleBackColor = false;
             this.ExportClientsSummaryBTN.Click += new System.EventHandler(this.ExportClientsSummaryBTN_Click);
             // 
@@ -228,24 +246,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Guards Report";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // CExportToPDFBTN
-            // 
-            this.CExportToPDFBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.CExportToPDFBTN.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
-            this.CExportToPDFBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CExportToPDFBTN.FlatAppearance.BorderSize = 0;
-            this.CExportToPDFBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(87)))), ((int)(((byte)(145)))));
-            this.CExportToPDFBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CExportToPDFBTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CExportToPDFBTN.ForeColor = System.Drawing.Color.White;
-            this.CExportToPDFBTN.Location = new System.Drawing.Point(548, 591);
-            this.CExportToPDFBTN.Name = "CExportToPDFBTN";
-            this.CExportToPDFBTN.Size = new System.Drawing.Size(112, 46);
-            this.CExportToPDFBTN.TabIndex = 22;
-            this.CExportToPDFBTN.Text = "EXPORT TO PDF";
-            this.CExportToPDFBTN.UseVisualStyleBackColor = false;
-            this.CExportToPDFBTN.Click += new System.EventHandler(this.CExportToPDFBTN_Click);
             // 
             // ReportsForm
             // 
