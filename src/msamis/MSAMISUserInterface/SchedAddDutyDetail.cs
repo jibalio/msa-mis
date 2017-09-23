@@ -143,7 +143,7 @@ namespace MSAMISUserInterface {
                             _dutyDays[6], _dutyDays[0]));
                     if (res.Equals(">")) {
                         HoursTLTP.ToolTipTitle = "Duty Details";
-                        HoursTLTP.Show("The specified schedule overlaps one of the current duty details.", HoursLBL);
+                        HoursTLTP.Show("The specified schedule overlaps one of the current duty details.", HoursLBL, 2000);
                     } else {
                         Refer.LoadPage();
                         CloseBTN.Tag = "1";
@@ -157,7 +157,7 @@ namespace MSAMISUserInterface {
                             _dutyDays[6], _dutyDays[0]));
                     if (res.Equals(">")) {
                         HoursTLTP.ToolTipTitle = "Duty Details";
-                        HoursTLTP.Show("The specified schedule overlaps one of the current duty details.", HoursLBL);
+                        HoursTLTP.Show("The specified schedule overlaps one of the current duty details.", HoursLBL, 2000);
                     } else {
                         Refer.LoadPage();
                         CloseBTN.Tag = "1";
