@@ -187,7 +187,7 @@ namespace MSAMISUserInterface {
         }
 
         private void AvailableSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = AvailableSearchBX.Text;
+            var temp = AvailableSearchBX.Text.Replace("'", string.Empty);
             string kazoo = NameRDBTN.Checked ? "concat(ln,', ',fn,' ',mn)" : "concat(address.StreetNo,', ', address.Brgy,', ',address.Street, ', ', address.City)";
 
             if (AvailableSearchBX.Text.Contains("\\")) temp = temp + "?";

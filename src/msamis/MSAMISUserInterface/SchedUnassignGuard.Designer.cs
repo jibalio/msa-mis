@@ -458,8 +458,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.ReportLBL);
-            this.panel1.Controls.Add(this.ReportPNL);
             this.panel1.Controls.Add(this.GuardsPNL);
+            this.panel1.Controls.Add(this.ReportPNL);
             this.panel1.Location = new System.Drawing.Point(-1, 116);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(551, 490);

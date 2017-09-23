@@ -274,7 +274,9 @@ namespace MSAMISUserInterface {
                     var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
                     var dissolved = row["date_dissolved"].ToString().Equals("Current")
                         ? "Current"
-                        : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
+                        : (row["date_dissolved"].ToString().Equals("Pending")
+                            ? "Pending"
+                            : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
                     SSSDateCMBX.Items.Add(
                         new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
                 }

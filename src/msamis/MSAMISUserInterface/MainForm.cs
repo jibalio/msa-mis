@@ -59,7 +59,7 @@ namespace MSAMISUserInterface {
 
             //Variable Initialization
             ControlBoxTimeLBL.Text = "Logged in as " + User;
-            TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy").ToUpper();
+            TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy").ToUpper();
             _scurrentPanel = GViewAllPNL;
             _scurrentBtn = GViewAllPageBTN;
             _formLocation = Location;
@@ -221,6 +221,46 @@ namespace MSAMISUserInterface {
                 if (DashboardPage.Location.Y - _lastLocation.Y + e.Y < 32)
                     DashboardPage.Location = new Point(DashboardPage.Location.X,
                         DashboardPage.Location.Y - _lastLocation.Y + e.Y);
+        }
+
+        #endregion
+
+        #region Pressing Enter on DataGrids
+
+        private void GAllGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                GEditDetailsBTN.PerformClick();
+            }
+        }
+
+        private void GArchivedGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                GArchiveViewDetailsBTN.PerformClick();
+            }
+        }
+
+        private void CClientListTBL_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                CViewDetailsBTN.PerformClick();
+            }
+        }
+
+        private void SViewAssGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SViewAssViewDetailsBTN.PerformClick();
+            }
+        }
+
+        private void SGuardHistoryGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SGuardHistoryViewBTN.PerformClick();
+            }
+        }
+
+        private void SViewReqGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SViewReqViewBTN.PerformClick();
+            }
         }
 
         #endregion
@@ -728,7 +768,7 @@ namespace MSAMISUserInterface {
         }
 
         private void GViewAllSearchTXTBX_TextChanged(object sender, EventArgs e) {
-            var temp = GViewAllSearchTXTBX.Text;
+            var temp = GViewAllSearchTXTBX.Text.Replace("'", string.Empty);
             var kazoo = GViewAllNameRDBTN.Checked
                 ? "concat(ln,', ',fn,' ',mn)"
                 : "concat(StreetNo,', ', Brgy,', ',Street, ', ', City)";
@@ -819,8 +859,8 @@ namespace MSAMISUserInterface {
         }
 
         private void GArchiveSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = GArchiveSearchBX.Text;
-            if (GViewAllSearchTXTBX.Text.Contains("\\")) temp = "";
+            var temp = GArchiveSearchBX.Text.Replace("'", string.Empty); ;
+            if (GArchiveSearchBX.Text.Contains("\\")) temp = "";
             _extraQueryParams = temp;
             RefreshArchivedGuards();
         }
@@ -1063,7 +1103,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CViewAllSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = CViewAllSearchBX.Text;
+            var temp = CViewAllSearchBX.Text.Replace("'", string.Empty);
             const string kazoo = "name";
 
             if (CViewAllSearchBX.Text.Contains("\\")) temp = temp + "?";
@@ -1546,7 +1586,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewAssSearchTXTBX_TextChanged(object sender, EventArgs e) {
-            var temp = SViewAssSearchTXTBX.Text;
+            var temp = SViewAssSearchTXTBX.Text.Replace("'", string.Empty);
             var kazoo = "concat(ln,', ',fn,' ',mn)";
 
             if (SViewAssSearchTXTBX.Text.Contains("\\")) temp = temp + "?";
@@ -1674,7 +1714,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SGuardHistorySearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = SGuardHistorySearchBX.Text;
+            var temp = SGuardHistorySearchBX.Text.Replace("'", string.Empty);
             var kazoo = "concat(ln,', ',fn,' ',mn)";
 
             if (SGuardHistorySearchBX.Text.Contains("\\")) temp = temp + "?";
@@ -1939,7 +1979,7 @@ namespace MSAMISUserInterface {
         }
 
         private void PEmpListSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = PEmpListSearchBX.Text;
+            var temp = PEmpListSearchBX.Text.Replace("'", string.Empty);
             var kazoo = "concat(ln,', ',fn,' ',mn)";
 
             if (PEmpListSearchBX.Text.Contains("\\")) temp = temp + "?";
@@ -1949,7 +1989,26 @@ namespace MSAMISUserInterface {
         }
 
         private void PEmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            PEmpListViewBTN.Visible = true;
+            if (PEmpListGRD.SelectedRows.Count == 1) {
+                PEmpListViewBTN.Visible = true;
+                PEmpListPrintBTN.Visible = PEmpListGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Approved");
+            }
+            else if (PayIsApproved()) {
+                PEmpListViewBTN.Visible = false;
+                PEmpListPrintBTN.Visible = true;
+            }
+            else {
+                PEmpListViewBTN.Visible = false;
+                PEmpListPrintBTN.Visible = false;
+            }
+        }
+
+        private bool PayIsApproved() {
+            var ret = true;
+            foreach (DataGridViewRow row in PEmpListGRD.SelectedRows) {
+                if (!row.Cells[4].Value.ToString().Equals("Approved")) ret = false;
+            }
+            return ret;
         }
 
         private void PEmpListGRD_DoubleClick(object sender, EventArgs e) {
@@ -2118,44 +2177,17 @@ namespace MSAMISUserInterface {
 
 
 
-        #endregion
 
         #endregion
 
-        private void GAllGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                GEditDetailsBTN.PerformClick();
-            }
+        #region PMS - Payslip Print
+        private void PEmpListPrintBTN_Click(object sender, EventArgs e) {
+            //No Function
         }
 
-        private void GArchivedGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                GArchiveViewDetailsBTN.PerformClick();
-            }
-        }
+        #endregion
+        #endregion
 
-        private void CClientListTBL_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                CViewDetailsBTN.PerformClick();
-            }
-        }
 
-        private void SViewAssGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                SViewAssViewDetailsBTN.PerformClick();
-            }
-        }
-
-        private void SGuardHistoryGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                SGuardHistoryViewBTN.PerformClick();
-            }
-        }
-
-        private void SViewReqGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                SViewReqViewBTN.PerformClick();
-            }
-        }
     }
 }

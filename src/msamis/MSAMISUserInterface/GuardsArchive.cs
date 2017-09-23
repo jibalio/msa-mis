@@ -101,7 +101,8 @@ namespace MSAMISUserInterface {
             var view = new PayrollEmployeeView {
                 Gid = Gid,
                 Location = Location,
-                Name = "Archived"
+                Name = "Archived",
+                GuardName = LLBL.Text + LNLBL.Text
             };
             view.ShowDialog();
         }

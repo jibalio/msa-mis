@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using rylui;
 using System.Data;
@@ -218,23 +217,23 @@ namespace MSAMISUserInterface {
             if (DataVal()) {
                 try {
                     if (GEditDetailsBTN.Text.Equals("ADD")) {
-                        Client.AddClient(NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text,
-                            LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
+                        Client.AddClient(NameBX.Text.Replace("'", string.Empty), LocationStreetNoBX.Text.Replace("'", string.Empty), LocationStreetNameBX.Text.Replace("'", string.Empty),
+                            LocationBrgyBX.Text.Replace("'", string.Empty), LocationCityBX.Text.Replace("'", string.Empty), ContactBX.Text.Replace("'", string.Empty), ContactNoBX.Text.Replace("'", string.Empty), ManagerBX.Text.Replace("'", string.Empty));
 
                         foreach (DataGridViewRow row in CertifiersGRD.Rows) {
-                            InsertDependent(row.Cells[4].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                            InsertDependent(row.Cells[4].Value.ToString().Replace("'", string.Empty), row.Cells[1].Value.ToString().Replace("'", string.Empty), row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
                         }
                     }
                     else {
-                        Client.UpdateClient(Cid.ToString(), NameBX.Text, LocationStreetNoBX.Text,
-                            LocationStreetNameBX.Text,
-                            LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
+                        Client.UpdateClient(Cid.ToString(), NameBX.Text.Replace("'", string.Empty), LocationStreetNoBX.Text.Replace("'", string.Empty),
+                            LocationStreetNameBX.Text.Replace("'", string.Empty),
+                            LocationBrgyBX.Text.Replace("'", string.Empty), LocationCityBX.Text.Replace("'", string.Empty), ContactBX.Text.Replace("'", string.Empty), ContactNoBX.Text.Replace("'", string.Empty), ManagerBX.Text.Replace("'", string.Empty));
 
                         foreach (DataGridViewRow row in CertifiersGRD.Rows) {
                             if (row.Cells[0].Value.ToString().Equals("-1"))
-                            InsertDependent(row.Cells[4].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                            InsertDependent(row.Cells[4].Value.ToString().Replace("'", string.Empty), row.Cells[1].Value.ToString().Replace("'", string.Empty), row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
                             else
-                            UpdateDependent(row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[1].Value.ToString(), int.Parse(row.Cells[0].Value.ToString()));
+                            UpdateDependent(row.Cells[1].Value.ToString().Replace("'", string.Empty), row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty), row.Cells[1].Value.ToString().Replace("'", string.Empty), int.Parse(row.Cells[0].Value.ToString()));
                         }
 
                         ViewRef.RefreshData();

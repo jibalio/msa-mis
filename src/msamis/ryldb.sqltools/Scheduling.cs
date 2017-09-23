@@ -435,7 +435,6 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         public static string AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
             bool isOverlap = HasOverlap(aid, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
             if (isOverlap) {
-                MessageBox.Show("Overlapping schedule.");
                 return ">";
             }
             DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");

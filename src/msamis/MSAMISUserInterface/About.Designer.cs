@@ -47,6 +47,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.UsersPNL = new System.Windows.Forms.Panel();
             this.EditUserPNL = new System.Windows.Forms.Panel();
+            this.NewPassPic = new System.Windows.Forms.PictureBox();
+            this.CurrentPassPic = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -71,10 +73,13 @@
             this.RemoveBTN = new System.Windows.Forms.Button();
             this.EditBTN = new System.Windows.Forms.Button();
             this.UsersGRD = new System.Windows.Forms.DataGridView();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.AboutPNL.SuspendLayout();
             this.UsersPNL.SuspendLayout();
             this.EditUserPNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NewPassPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentPassPic)).BeginInit();
             this.UsersGRDPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +99,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(598, 139);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
@@ -316,6 +320,9 @@
             // 
             // EditUserPNL
             // 
+            this.EditUserPNL.Controls.Add(this.label17);
+            this.EditUserPNL.Controls.Add(this.NewPassPic);
+            this.EditUserPNL.Controls.Add(this.CurrentPassPic);
             this.EditUserPNL.Controls.Add(this.label14);
             this.EditUserPNL.Controls.Add(this.label13);
             this.EditUserPNL.Controls.Add(this.label28);
@@ -338,6 +345,32 @@
             this.EditUserPNL.Size = new System.Drawing.Size(373, 378);
             this.EditUserPNL.TabIndex = 173;
             this.EditUserPNL.Visible = false;
+            // 
+            // NewPassPic
+            // 
+            this.NewPassPic.BackColor = System.Drawing.Color.White;
+            this.NewPassPic.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.eYE;
+            this.NewPassPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.NewPassPic.Location = new System.Drawing.Point(296, 248);
+            this.NewPassPic.Name = "NewPassPic";
+            this.NewPassPic.Size = new System.Drawing.Size(23, 20);
+            this.NewPassPic.TabIndex = 240;
+            this.NewPassPic.TabStop = false;
+            this.NewPassPic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NewPassPic_MouseDown);
+            this.NewPassPic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NewPassPic_MouseUp);
+            // 
+            // CurrentPassPic
+            // 
+            this.CurrentPassPic.BackColor = System.Drawing.Color.White;
+            this.CurrentPassPic.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.eYE;
+            this.CurrentPassPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CurrentPassPic.Location = new System.Drawing.Point(297, 218);
+            this.CurrentPassPic.Name = "CurrentPassPic";
+            this.CurrentPassPic.Size = new System.Drawing.Size(23, 20);
+            this.CurrentPassPic.TabIndex = 239;
+            this.CurrentPassPic.TabStop = false;
+            this.CurrentPassPic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CurrentPassPic_MouseDown);
+            this.CurrentPassPic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CurrentPassPic_MouseUp);
             // 
             // label14
             // 
@@ -423,9 +456,9 @@
             this.label86.Location = new System.Drawing.Point(40, 217);
             this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(120, 19);
+            this.label86.Size = new System.Drawing.Size(130, 19);
             this.label86.TabIndex = 225;
-            this.label86.Text = "Current Password:";
+            this.label86.Text = "Current Password: *";
             // 
             // CurrentBX
             // 
@@ -436,7 +469,7 @@
             this.CurrentBX.Location = new System.Drawing.Point(181, 219);
             this.CurrentBX.Name = "CurrentBX";
             this.CurrentBX.PasswordChar = '•';
-            this.CurrentBX.Size = new System.Drawing.Size(132, 18);
+            this.CurrentBX.Size = new System.Drawing.Size(114, 18);
             this.CurrentBX.TabIndex = 220;
             // 
             // label23
@@ -447,9 +480,9 @@
             this.label23.Location = new System.Drawing.Point(40, 250);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(101, 19);
+            this.label23.Size = new System.Drawing.Size(111, 19);
             this.label23.TabIndex = 222;
-            this.label23.Text = "New Password:";
+            this.label23.Text = "New Password: *";
             // 
             // NewBX
             // 
@@ -460,7 +493,7 @@
             this.NewBX.Location = new System.Drawing.Point(181, 250);
             this.NewBX.Name = "NewBX";
             this.NewBX.PasswordChar = '•';
-            this.NewBX.Size = new System.Drawing.Size(131, 18);
+            this.NewBX.Size = new System.Drawing.Size(114, 18);
             this.NewBX.TabIndex = 221;
             // 
             // UsernameBX
@@ -702,6 +735,18 @@
             this.UsersGRD.Size = new System.Drawing.Size(328, 305);
             this.UsersGRD.TabIndex = 6;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label17.Location = new System.Drawing.Point(136, 287);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(195, 19);
+            this.label17.TabIndex = 241;
+            this.label17.Text = "* Cannot contain single quotes";
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -729,6 +774,8 @@
             this.UsersPNL.PerformLayout();
             this.EditUserPNL.ResumeLayout(false);
             this.EditUserPNL.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NewPassPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentPassPic)).EndInit();
             this.UsersGRDPNL.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UsersGRD)).EndInit();
             this.ResumeLayout(false);
@@ -781,5 +828,8 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.PictureBox NewPassPic;
+        private System.Windows.Forms.PictureBox CurrentPassPic;
+        private System.Windows.Forms.Label label17;
     }
 }
