@@ -465,10 +465,11 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         }
 
         public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
-            int aid = SQLTools.GetInt($@"SELECT aid FROM msadbarchive.dutydetails where did = '{did}';");
+            string wq = $@"SELECT aid FROM msadb.dutydetails where did = '{did}';";
+            int aid = SQLTools.GetInt(wq);
             bool isOverlap = HasOverlap(aid,did, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
             if (isOverlap) {
-                return ">";
+                return "olap";
             }
             DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
             DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
@@ -480,7 +481,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             String q = $@"
                         UPDATE `msadb`.`dutydetails` SET 
                         `TI_hh`='{TI_hr}', `TI_mm`='{TI_min}', `TI_period`='{TI_ampm}', 
-                        `TO_actua_hh`='{TO_hr}', `TO_actua_mm`='{TO_min}', `TO_actua_period`='{TO_ampm}',
+                        `TO_actual_hh`='{TO_hr}', `TO_actual_mm`='{TO_min}', `TO_actual_period`='{TO_ampm}',
                         `TO_hh`='{to_props:hh}', `TO_mm`='{to_props:mm}', `TO_period`='{to_props:tt}',
                         `Mon`='{ToInt32(days.Mon)}', `Tue`='{ToInt32(days.Tue)}', 
                         `Wed`='{ ToInt32(days.Wed)}', `Thu`='{ToInt32(days.Thu)}', 
@@ -632,7 +633,8 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         }
 
         public static bool HasOverlap(int aid, int did, string ti, string to, Days days) {
-            DataTable dt = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.dutydetails where aid = {aid} and did<>{did};");
+            string q = $@"SELECT * FROM msadb.dutydetails where aid = {aid} and did<>{did};";
+            DataTable dt = SQLTools.ExecuteQuery(q);
             Dictionary<string, string> date = new Dictionary<string, string> {
                 {"Sun","2017-09-03 "},
                 {"Mon","2017-09-04 "},
@@ -673,10 +675,10 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                     newCom.Add(java);
                 }
             }
-            bool overlap;
+            bool overlap = false;
             foreach (Java x in newCom) {
                 foreach (Java y in tmins) {
-                    overlap = x.sta < y.end && x.sta < y.end;
+                    overlap = x.sta < y.end && y.sta < x.end;
                     if (overlap) return true;
                 }
             }

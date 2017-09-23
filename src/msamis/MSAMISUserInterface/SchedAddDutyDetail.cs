@@ -155,10 +155,27 @@ namespace MSAMISUserInterface {
                         TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
                         new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
                             _dutyDays[6], _dutyDays[0]));
-                    if (res.Equals(">")) {
+                    if (res.Equals("<")) {
+                        if (RylMessageBox.ShowDialog(
+                                "The schedule is less than 8hrs. Do you still want to add the details?", "Duty Hours",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                            Refer.LoadPage();
+                            CloseBTN.Tag = "1";
+                            Close();
+                        }
+                    } else if (res.Equals(">")) {
+                        if (RylMessageBox.ShowDialog(
+                                "The schedule is more than 8hrs. Do you still want to add the details?", "Duty Hours",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                            Refer.LoadPage();
+                            CloseBTN.Tag = "1";
+                            Close();
+                        } 
+                    } else if (res.Equals("olap")) {
                         HoursTLTP.ToolTipTitle = "Duty Details";
                         HoursTLTP.Show("The specified schedule overlaps one of the current duty details.", HoursLBL, 2000);
-                    } else {
+                    } 
+                    else {
                         Refer.LoadPage();
                         CloseBTN.Tag = "1";
                         Close();
