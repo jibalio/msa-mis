@@ -469,7 +469,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             int aid = SQLTools.GetInt(wq);
             bool isOverlap = HasOverlap(aid,did, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
             if (isOverlap) {
-                return "overlap";
+                return "olap";
             }
             DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
             DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
