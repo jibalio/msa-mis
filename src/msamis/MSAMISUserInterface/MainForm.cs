@@ -65,9 +65,13 @@ namespace MSAMISUserInterface {
             _formLocation = Location;
 
             //Initial Methods
-            DailyQuote();
             FadeTMR.Start();
+            BackgroundWorker.RunWorkerAsync();
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e) {
             CheckPayday();
+            DailyQuote();
             NotifTMR.Start();
         }
 
@@ -2185,7 +2189,9 @@ namespace MSAMISUserInterface {
             //No Function
         }
 
+
         #endregion
+
         #endregion
 
 

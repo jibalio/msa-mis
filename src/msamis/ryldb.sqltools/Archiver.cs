@@ -124,7 +124,7 @@ namespace MSAMISUserInterface {
                 and gid={gid};");
         }
 
-        public string[] GetAttendanceTooltip(int aid, int period, int month, int year) {
+        public static  string[] GetAttendanceTooltip(int aid, int period, int month, int year) {
             string hpblob =
                 SQLTools.ExecuteSingleResult(
                     $@"SELECT hp FROM msadbarchive.period where aid={aid} and period={period} and month = {
