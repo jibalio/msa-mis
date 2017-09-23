@@ -50,7 +50,6 @@ namespace MSAMISUserInterface {
             RefreshDutyDetails();
             RefreshCurrent();
             RefreshData();
-            RefreshAttendance();
         }
 
         public void RefreshData() {
@@ -116,6 +115,10 @@ namespace MSAMISUserInterface {
             DutyDetailsGRD.Columns[3].Width = 150;
 
             DutyDetailsGRD.Select();
+        }
+
+        private void AttendanceWorker_DoWork(object sender, DoWorkEventArgs e) {
+            RefreshAttendance();
         }
 
         public void RefreshAttendance() {
@@ -257,10 +260,6 @@ namespace MSAMISUserInterface {
             }
         }
 
-        private static void ArchiveLoadAttendance() {
-            
-        }
-
         #endregion
 
         #region Form Props
@@ -346,7 +345,7 @@ namespace MSAMISUserInterface {
         }
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            RefreshAttendance();
+            AttendanceWorker.RunWorkerAsync();
             if (PeriodCMBX.SelectedIndex == 0) {
                 EditDaysBTN.Visible = true;
                 PeriodCMBX.Size = new Size(257, 25);
@@ -440,5 +439,7 @@ namespace MSAMISUserInterface {
         private void RDSLBL_MouseLeave(object sender, EventArgs e) {
             HidePop(OrdinaryDay);
         }
+
+
     }
 }

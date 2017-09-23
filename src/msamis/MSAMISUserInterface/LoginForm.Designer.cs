@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ErrorLBL = new System.Windows.Forms.Label();
+            this.InitData = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.PassPic)).BeginInit();
             this.InfoPNL.SuspendLayout();
             this.SuspendLayout();
@@ -292,6 +293,10 @@
             this.ErrorLBL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.ErrorLBL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
+            // InitData
+            // 
+            this.InitData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.InitData_DoWork);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -316,6 +321,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
@@ -347,5 +353,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label ErrorLBL;
         private System.Windows.Forms.Label label6;
+        private System.ComponentModel.BackgroundWorker InitData;
     }
 }

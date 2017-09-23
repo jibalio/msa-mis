@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using ryldb.sqltools;
 
 namespace MSAMISUserInterface {
     public partial class LoginForm : Form {
@@ -10,6 +11,7 @@ namespace MSAMISUserInterface {
             ErrorLBL.Visible = false;
             FadeTMR.Start();
         }
+     
 
         #region Backend Tester
 
@@ -143,5 +145,14 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private void LoginForm_Load(object sender, EventArgs e) {
+            InitData.RunWorkerAsync();
+
+        }
+
+        private void InitData_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e) {
+            Data.InitData();
+        }
     }
 }
