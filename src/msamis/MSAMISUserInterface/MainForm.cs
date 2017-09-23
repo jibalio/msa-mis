@@ -1989,7 +1989,26 @@ namespace MSAMISUserInterface {
         }
 
         private void PEmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            PEmpListViewBTN.Visible = true;
+            if (PEmpListGRD.SelectedRows.Count == 1) {
+                PEmpListViewBTN.Visible = true;
+                PEmpListPrintBTN.Visible = PEmpListGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Approved");
+            }
+            else if (PayIsApproved()) {
+                PEmpListViewBTN.Visible = false;
+                PEmpListPrintBTN.Visible = true;
+            }
+            else {
+                PEmpListViewBTN.Visible = false;
+                PEmpListPrintBTN.Visible = false;
+            }
+        }
+
+        private bool PayIsApproved() {
+            var ret = true;
+            foreach (DataGridViewRow row in PEmpListGRD.SelectedRows) {
+                if (!row.Cells[4].Value.ToString().Equals("Approved")) ret = false;
+            }
+            return ret;
         }
 
         private void PEmpListGRD_DoubleClick(object sender, EventArgs e) {
@@ -2158,8 +2177,15 @@ namespace MSAMISUserInterface {
 
 
 
+
         #endregion
 
+        #region PMS - Payslip Print
+        private void PEmpListPrintBTN_Click(object sender, EventArgs e) {
+            //No Function
+        }
+
+        #endregion
         #endregion
 
 
