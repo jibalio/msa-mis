@@ -171,6 +171,11 @@ namespace MSAMISUserInterface {
                             CloseBTN.Tag = "1";
                             Close();
                         }
+
+                    } else if (res.Equals("overlap")) {
+                        HoursTLTP.ToolTipTitle = "Duty Details";
+                        HoursTLTP.Show("The specified time overlaps one of the current duty details.", HoursLBL);
+
                     } else {
                         Refer.LoadPage();
                         CloseBTN.Tag = "1";
