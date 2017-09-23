@@ -66,12 +66,12 @@ namespace MSAMISUserInterface {
 
             //Initial Methods
             FadeTMR.Start();
+            DailyQuote();
             BackgroundWorker.RunWorkerAsync();
         }
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e) {
             CheckPayday();
-            DailyQuote();
             NotifTMR.Start();
         }
 
@@ -264,6 +264,12 @@ namespace MSAMISUserInterface {
         private void SViewReqGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 SViewReqViewBTN.PerformClick();
+            }
+        }
+
+        private void PEmpListGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                PEmpListViewBTN.PerformClick();
             }
         }
 
@@ -531,7 +537,7 @@ namespace MSAMISUserInterface {
                 ArrangeNotif();
             }
             catch (Exception ex) {
-                ShowErrorBox("Dashboard Notifications", ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -868,7 +874,7 @@ namespace MSAMISUserInterface {
         }
 
         private void GArchiveSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = GArchiveSearchBX.Text.Replace("'", string.Empty); ;
+            var temp = GArchiveSearchBX.Text.Replace("'", string.Empty);
             if (GArchiveSearchBX.Text.Contains("\\")) temp = "";
             _extraQueryParams = temp;
             RefreshArchivedGuards();
@@ -2199,6 +2205,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
+
 
     }
 }
