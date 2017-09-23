@@ -87,6 +87,12 @@ namespace MSAMISUserInterface {
                     ");
                 LastDataRow = dr;
             }
+
+
+            // The General Attendance sumamry starts here.
+            // i shoulve put more comments damn,
+            // kani ang totalsummary, gi convert to hourprocessor for dat breakdonw,
+            HourProcessor cumhours = new HourProcessor();
             Hours lh = new Hours();
             foreach (HourProcessor x in hourlist) {
                 lh.holiday_day += x.GetHolidayDayTS();
@@ -94,6 +100,7 @@ namespace MSAMISUserInterface {
                 lh.normal_day += x.GetNormalDayTS();
                 lh.normal_night += x.GetNormalNightTS(); ;
                 lh.total += x.GetTotalTS();
+                cumhours += x;
             }
             SQLTools.ExecuteNonQuery($@"
                             UPDATE `msadbarchive`.`period` SET 
@@ -101,6 +108,7 @@ namespace MSAMISUserInterface {
                             `holiday_night`='{lh.GetHolidayNight()}', 
                             `normal_day`='{lh.GetNormalDay()}', 
                             `normal_night`='{lh.GetNormalNight()}',
+                            `hp`='{Data.SerializeHp(cumhours)}',
                             `total` = '{lh.GetTotal()}'
                             WHERE `PID`='{CurrentPid}';
                             ");
@@ -116,7 +124,49 @@ namespace MSAMISUserInterface {
                 and gid={gid};");
         }
 
+        public string[] GetAttendanceTooltip(int aid, int period, int month, int year) {
+            string hpblob =
+                SQLTools.ExecuteSingleResult(
+                    $@"SELECT hp FROM msadbarchive.period where aid={aid} and period={period} and month = {
+                            month
+                        } and year={year};");
+            HourProcessor h = (HourProcessor)Payroll._DeserializeObject(hpblob);
+            string[] a = new string[24];
+            string[] b = {
+                #region +Keys
+                "nsu_proper_day_normal",
+                "nsu_overtime_day_normal",
+                "sun_proper_day_normal",
+                "sun_overtime_day_normal",
+                "nsu_proper_night_normal",
+                "nsu_overtime_night_normal",
+                "sun_proper_night_normal",
+                "sun_overtime_night_normal",
+                "nsu_proper_day_regular",
+                "nsu_overtime_day_regular",
+                "sun_proper_day_regular",
+                "sun_overtime_day_regular",
+                "nsu_proper_day_special",
+                "nsu_overtime_day_special",
+                "sun_proper_day_special",
+                "sun_overtime_day_special",
+                "nsu_proper_night_regular",
+                "nsu_overtime_night_regular",
+                "sun_proper_night_regular",
+                "sun_overtime_night_regular",
+                "nsu_proper_night_special",
+                "nsu_overtime_night_special",
+                "sun_proper_night_special",
+                "sun_overtime_night_special"
+                #endregion
+            };
 
+            for (int c = 0; c < b.Length; c++) {
+                TimeSpan ts = h.hp[b[c]];
+                a[c] = (b[c][4] == 'p' ? "Regular" : "Overtime") + ": " + (((int)(ts.TotalHours)).ToString("00") + ":" + ((int)ts.Minutes).ToString("00")).ToString() + " hrs.";
+            }
+            return a;
+        }
 
 
 
