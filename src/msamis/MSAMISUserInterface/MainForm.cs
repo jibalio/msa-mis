@@ -526,15 +526,20 @@ namespace MSAMISUserInterface {
                     DDutyDetailNotifLBL.Text = DSalaryReportNotifLBL.Text =
                         "for the month of " +
                         new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1).ToString("MMMM yyyy");
-                    var rp = new ReportsPreview();
-                    //rp.FormatPDF('d');
-                    //rp.FormatPDF('s');
+                   ReportsExportWorker.RunWorkerAsync();
                 }
                 ArrangeNotif();
             }
             catch (Exception ex) {
                 ShowErrorBox("Dashboard Notifications", ex.Message);
             }
+        }
+
+
+        private void ReportsExportWorker_DoWork(object sender, DoWorkEventArgs e) {
+            var rp = new ReportsPreview();
+            //rp.FormatPDF('d');
+            //rp.FormatPDF('s');
         }
 
         private void DMonthlyDutyReportPNL_MouseEnter(object sender, EventArgs e) {
@@ -1997,7 +2002,7 @@ namespace MSAMISUserInterface {
                 PEmpListViewBTN.Visible = true;
                 PEmpListPrintBTN.Visible = PEmpListGRD.SelectedRows[0].Cells[4].Value.ToString().Equals("Approved");
             }
-            else if (PayIsApproved()) {
+            else if (PayIsApproved() && PEmpListGRD.SelectedRows.Count > 1) {
                 PEmpListViewBTN.Visible = false;
                 PEmpListPrintBTN.Visible = true;
             }
@@ -2190,10 +2195,10 @@ namespace MSAMISUserInterface {
         }
 
 
-        #endregion
 
         #endregion
 
+        #endregion
 
     }
 }
