@@ -23,8 +23,8 @@ namespace MSAMISUserInterface {
                         MessageBoxIcon.Error);
                 }
                 else {
-                    Scheduling.AddAssignmentRequest(int.Parse(_cid), AssStreetNoBX.Text, AssStreetNameBX.Text,
-                        AssBrgyBX.Text, AssCityBX.Text, ContractStartDTPKR.Value, ContractEndDTPKR.Value,
+                    Scheduling.AddAssignmentRequest(int.Parse(_cid), AssStreetNoBX.Text.Replace("'", string.Empty), AssStreetNameBX.Text.Replace("'", string.Empty),
+                        AssBrgyBX.Text.Replace("'", string.Empty), AssCityBX.Text.Replace("'", string.Empty), ContractStartDTPKR.Value, ContractEndDTPKR.Value,
                         (int) NeededBX.Value);
                     Reference.SchedLoadPage();
                     RylMessageBox.ShowDialog("Your request is now pending for approval",
@@ -48,7 +48,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         private void ClientSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = ClientSearchBX.Text;
+            var temp = ClientSearchBX.Text.Replace("'", string.Empty);
             const string kazoo = "name";
 
             if (ClientSearchBX.Text.Contains("\\")) temp = temp + "?";

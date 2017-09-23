@@ -38,7 +38,7 @@ namespace MSAMISUserInterface {
                     giDs[i] = int.Parse(GuardsGRD.Rows[i].Cells[0].Value.ToString());
                 Scheduling.AddUnassignmentRequest(Cid, giDs, IncidentTypeCMBX.SelectedIndex, Login.UserName,
                     DateDTPKR.Value,
-                    LocationBX.Text, DescriptionBX.Text, DateEffective.Value);
+                    LocationBX.Text.Replace("'", string.Empty), DescriptionBX.Text.Replace("'", string.Empty), DateEffective.Value);
 
                 try {
                     _iid = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "IID"));
@@ -46,8 +46,8 @@ namespace MSAMISUserInterface {
                 catch { }
                 try {
                     foreach (DataGridViewRow row in DepsGRD.Rows) {
-                        InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString(),
-                            row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                        InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString().Replace("'", string.Empty),
+                            row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
                     }
                 }
                 catch { }

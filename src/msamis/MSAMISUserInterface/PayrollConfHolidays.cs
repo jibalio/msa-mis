@@ -32,13 +32,13 @@ namespace MSAMISUserInterface {
                 if (SpecialBTN.Checked) type = Enumeration.HolidayType.Special;
                 try {
                     if (AddBTN.Text.Equals("ADD")) {
-                        Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type, TransBox.Checked ? 0: 1);
+                        Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text.Replace("'", string.Empty), type, TransBox.Checked ? 0: 1);
                         DateLBL.Text = "Select date(s)";
                         DescBX.Text = "";
                     }
                     else {
                         Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), HoldaysCLNDR.SelectionRange.Start, HoldaysCLNDR.SelectionRange.End,
-                            DescBX.Text,
+                            DescBX.Text.Replace("'", string.Empty),
                             type, TransBox.Checked ? 0 : 1);
                         CancelBTN.PerformClick();
                     }

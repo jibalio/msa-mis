@@ -768,7 +768,7 @@ namespace MSAMISUserInterface {
         }
 
         private void GViewAllSearchTXTBX_TextChanged(object sender, EventArgs e) {
-            var temp = GViewAllSearchTXTBX.Text;
+            var temp = GViewAllSearchTXTBX.Text.Replace("'", string.Empty);
             var kazoo = GViewAllNameRDBTN.Checked
                 ? "concat(ln,', ',fn,' ',mn)"
                 : "concat(StreetNo,', ', Brgy,', ',Street, ', ', City)";
@@ -859,8 +859,8 @@ namespace MSAMISUserInterface {
         }
 
         private void GArchiveSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = GArchiveSearchBX.Text;
-            if (GViewAllSearchTXTBX.Text.Contains("\\")) temp = "";
+            var temp = GArchiveSearchBX.Text.Replace("'", string.Empty); ;
+            if (GArchiveSearchBX.Text.Contains("\\")) temp = "";
             _extraQueryParams = temp;
             RefreshArchivedGuards();
         }
@@ -1103,7 +1103,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CViewAllSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = CViewAllSearchBX.Text;
+            var temp = CViewAllSearchBX.Text.Replace("'", string.Empty);
             const string kazoo = "name";
 
             if (CViewAllSearchBX.Text.Contains("\\")) temp = temp + "?";
@@ -1586,7 +1586,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewAssSearchTXTBX_TextChanged(object sender, EventArgs e) {
-            var temp = SViewAssSearchTXTBX.Text;
+            var temp = SViewAssSearchTXTBX.Text.Replace("'", string.Empty);
             var kazoo = "concat(ln,', ',fn,' ',mn)";
 
             if (SViewAssSearchTXTBX.Text.Contains("\\")) temp = temp + "?";
@@ -1714,7 +1714,7 @@ namespace MSAMISUserInterface {
         }
 
         private void SGuardHistorySearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = SGuardHistorySearchBX.Text;
+            var temp = SGuardHistorySearchBX.Text.Replace("'", string.Empty);
             var kazoo = "concat(ln,', ',fn,' ',mn)";
 
             if (SGuardHistorySearchBX.Text.Contains("\\")) temp = temp + "?";
@@ -1979,7 +1979,7 @@ namespace MSAMISUserInterface {
         }
 
         private void PEmpListSearchBX_TextChanged(object sender, EventArgs e) {
-            var temp = PEmpListSearchBX.Text;
+            var temp = PEmpListSearchBX.Text.Replace("'", string.Empty);
             var kazoo = "concat(ln,', ',fn,' ',mn)";
 
             if (PEmpListSearchBX.Text.Contains("\\")) temp = temp + "?";
