@@ -465,7 +465,11 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         }
 
         public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
-            
+            int aid = SQLTools.GetInt($@"SELECT aid FROM msadbarchive.dutydetails where did = '{did}';");
+            bool isOverlap = HasOverlap(aid,did, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
+            if (isOverlap) {
+                return ">";
+            }
             DateTime ti = DateTime.Parse($"3/1/0001 {TI_hr}:{TI_min} {TI_ampm}");
             DateTime to = DateTime.Parse($"3/1/0001 {TO_hr}:{TO_min} {TO_ampm}");
             DateTime to_props = ti.AddHours(8);
@@ -624,8 +628,12 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         }
 
         public static bool HasOverlap(int aid, string ti, string to, Days days) {
-            DataTable dt = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.dutydetails where aid = {aid};");
-            Dictionary<string,string> date = new Dictionary<string, string> {
+            return HasOverlap(aid, 0, ti, to, days);
+        }
+
+        public static bool HasOverlap(int aid, int did, string ti, string to, Days days) {
+            DataTable dt = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.dutydetails where aid = {aid} and did<>{did};");
+            Dictionary<string, string> date = new Dictionary<string, string> {
                 {"Sun","2017-09-03 "},
                 {"Mon","2017-09-04 "},
                 {"Tue","2017-09-05 "},
@@ -635,7 +643,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 {"Sat","2017-09-09 "},
             };
             string[] keys = date.Keys.ToArray();
-            DateTime offset = new DateTime(1970,1,1,0,0,0);
+            DateTime offset = new DateTime(1970, 1, 1, 0, 0, 0);
             List<Java> tmins = new List<Java>();
             List<Java> newCom = new List<Java>();
             foreach (DataRow dr in dt.Rows) {
@@ -644,19 +652,19 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                     dr["wed"].ToString() == "1", dr["thu"].ToString() == "1",
                     dr["fri"].ToString() == "1", dr["sat"].ToString() == "1"};
                 DateTime temp;
-                for(int c=0;c < e_bool.Length; c++) {
+                for (int c = 0; c < e_bool.Length; c++) {
                     if (e_bool[c]) {
-                        int x = (int)(DateTime.Parse((date[keys[c]]+$@"{dr["ti_hh"]}:{dr["ti_mm"]} {dr["ti_period"]}"))-DateTime.Parse("1970-01-01 00:00:00")).TotalMinutes;
+                        int x = (int)(DateTime.Parse((date[keys[c]] + $@"{dr["ti_hh"]}:{dr["ti_mm"]} {dr["ti_period"]}")) - DateTime.Parse("1970-01-01 00:00:00")).TotalMinutes;
                         int y = (int)(DateTime.Parse((date[keys[c]] + $@"{dr["to_actual_hh"]}:{dr["to_actual_mm"]} {dr["to_actual_period"]}")) - DateTime.Parse("1970-01-01 00:00:00")).TotalMinutes;
-                        Java java = new Java(x,y);
+                        Java java = new Java(x, y);
                         tmins.Add(java);
                     }
                 }
-            
+
             }
-           
+
             // Create tspan of this time
-            bool[] y_bool = new bool[] {days.Sun, days.Mon, days.Tue, days.Wed, days.Thu, days.Fri, days.Sat};
+            bool[] y_bool = new bool[] { days.Sun, days.Mon, days.Tue, days.Wed, days.Thu, days.Fri, days.Sat };
             for (int c = 0; c < y_bool.Length; c++) {
                 if (y_bool[c]) {
                     int a = (int)(DateTime.Parse((date[keys[c]] + ti)) - DateTime.Parse("1970-01-01 00:00:00")).TotalMinutes;
@@ -666,7 +674,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 }
             }
             bool overlap;
-            foreach (Java x in newCom){
+            foreach (Java x in newCom) {
                 foreach (Java y in tmins) {
                     overlap = x.sta < y.end && x.sta < y.end;
                     if (overlap) return true;
@@ -674,7 +682,6 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             }
             return false;
         }
-
         public class Java {
             public int sta;
             public int end;
