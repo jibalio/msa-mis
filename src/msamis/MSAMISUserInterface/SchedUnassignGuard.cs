@@ -182,7 +182,7 @@ namespace MSAMISUserInterface {
 
         private static void ShowToolTipOnBx(ToolTip ttp, string title, string message, IWin32Window lb) {
             ttp.ToolTipTitle = title;
-            ttp.Show(message, lb);
+            ttp.Show(message, lb, 2000);
         }
         #endregion
 

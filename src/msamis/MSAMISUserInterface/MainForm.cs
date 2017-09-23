@@ -59,7 +59,7 @@ namespace MSAMISUserInterface {
 
             //Variable Initialization
             ControlBoxTimeLBL.Text = "Logged in as " + User;
-            TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy").ToUpper();
+            TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy").ToUpper();
             _scurrentPanel = GViewAllPNL;
             _scurrentBtn = GViewAllPageBTN;
             _formLocation = Location;
@@ -221,6 +221,46 @@ namespace MSAMISUserInterface {
                 if (DashboardPage.Location.Y - _lastLocation.Y + e.Y < 32)
                     DashboardPage.Location = new Point(DashboardPage.Location.X,
                         DashboardPage.Location.Y - _lastLocation.Y + e.Y);
+        }
+
+        #endregion
+
+        #region Pressing Enter on DataGrids
+
+        private void GAllGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                GEditDetailsBTN.PerformClick();
+            }
+        }
+
+        private void GArchivedGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                GArchiveViewDetailsBTN.PerformClick();
+            }
+        }
+
+        private void CClientListTBL_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                CViewDetailsBTN.PerformClick();
+            }
+        }
+
+        private void SViewAssGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SViewAssViewDetailsBTN.PerformClick();
+            }
+        }
+
+        private void SGuardHistoryGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SGuardHistoryViewBTN.PerformClick();
+            }
+        }
+
+        private void SViewReqGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SViewReqViewBTN.PerformClick();
+            }
         }
 
         #endregion
@@ -2122,40 +2162,6 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        private void GAllGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                GEditDetailsBTN.PerformClick();
-            }
-        }
 
-        private void GArchivedGuardsGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                GArchiveViewDetailsBTN.PerformClick();
-            }
-        }
-
-        private void CClientListTBL_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                CViewDetailsBTN.PerformClick();
-            }
-        }
-
-        private void SViewAssGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                SViewAssViewDetailsBTN.PerformClick();
-            }
-        }
-
-        private void SGuardHistoryGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                SGuardHistoryViewBTN.PerformClick();
-            }
-        }
-
-        private void SViewReqGRD_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                SViewReqViewBTN.PerformClick();
-            }
-        }
     }
 }

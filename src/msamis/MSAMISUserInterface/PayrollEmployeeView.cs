@@ -14,6 +14,7 @@ namespace MSAMISUserInterface {
         private Payroll _pay;
         public Shadow Refer;
         public MainForm Reference;
+        public string GuardName;
 
         public PayrollEmployeeView() {
             InitializeComponent();
@@ -53,6 +54,7 @@ namespace MSAMISUserInterface {
             else {
                 EmpListGRD.Enabled = false;
                 ArchivePNL.Visible = true;
+                ArchiveNameLBL.Text = GuardName;
                 LoadDetails();
             }
 
@@ -205,7 +207,7 @@ namespace MSAMISUserInterface {
                     foreach (DataRow row in Attendance.GetPeriods(Gid).Rows)
                         PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
                             int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
-                else
+                else 
                     foreach (DataRow row in Archiver.GetPeriods(Gid).Rows)
                         PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
                             int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
