@@ -174,8 +174,10 @@ namespace MSAMISUserInterface {
                     if (row.Cells[1].Value.ToString().Equals(row.Cells[2].Value.ToString())) {
                         var date = row.Cells[1].Value.ToString().Split(' ')[0];
                         dts.Add(new DateTime(int.Parse(date.Split('/')[2]),
-                            int.Parse(date.Split('/')[0]),
-                            int.Parse(date.Split('/')[1])));
+                            int.Parse(date.Split('/')[1]), 
+                            int.Parse(date.Split('/')[0])
+                            ));
+                        
                     }
                     else {
                         var count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) -
