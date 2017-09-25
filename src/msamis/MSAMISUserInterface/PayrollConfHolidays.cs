@@ -173,20 +173,14 @@ namespace MSAMISUserInterface {
                 foreach (DataGridViewRow row in HolidaysGRD.Rows)
                     if (row.Cells[1].Value.ToString().Equals(row.Cells[2].Value.ToString())) {
                         var date = row.Cells[1].Value.ToString().Split(' ')[0];
-                        dts.Add(new DateTime(int.Parse(date.Split('/')[2]),
-                            int.Parse(date.Split('/')[1]), 
-                            int.Parse(date.Split('/')[0])
-                            ));
-                        
+                        dts.Add(DateTime.Parse(date));
                     }
                     else {
                         var count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) -
                                     int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
                         for (var i = 0; i < count + 1; i++) {
                             var date = row.Cells[1].Value.ToString().Split(' ')[0];
-                            dts.Add(new DateTime(int.Parse(date.Split('/')[2]),
-                                int.Parse(date.Split('/')[0]),
-                                int.Parse(date.Split('/')[1]) + i));
+                            dts.Add(DateTime.Parse(date).AddDays(i));
                         }
                     }
                 HoldaysCLNDR.BoldedDates = dts.ToArray();

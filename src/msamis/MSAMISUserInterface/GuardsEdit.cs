@@ -94,9 +94,11 @@ namespace MSAMISUserInterface {
                     FatherFirstBX.Text = _dataTable.Rows[0]["fn"].ToString();
                     FatherMiddleBX.Text = _dataTable.Rows[0]["mn"].ToString();
                     FatherLastBX.Text = _dataTable.Rows[0]["ln"].ToString();
-                    SpouseFirstBX.Text = _dataTable.Rows[2]["fn"].ToString();
-                    SpouseMiddleBX.Text = _dataTable.Rows[2]["mn"].ToString();
-                    SpouseLastBX.Text = _dataTable.Rows[2]["ln"].ToString();
+                    if (_dataTable.Rows.Count > 2) { 
+                        SpouseFirstBX.Text = _dataTable.Rows[2]["fn"].ToString();
+                        SpouseMiddleBX.Text = _dataTable.Rows[2]["mn"].ToString();
+                        SpouseLastBX.Text = _dataTable.Rows[2]["ln"].ToString();
+                    }
                 }
                 catch (Exception ex) {
                     ShowErrorBox("Loading Guards", ex.Message);
@@ -546,8 +548,10 @@ namespace MSAMISUserInterface {
 
                         foreach (DataGridViewRow row in DepGRD.Rows) {
                             if (row.Cells[0].Value.ToString().Equals("-1"))
-                            InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString().Replace("'", string.Empty),
-                                row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
+                                InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString().Replace("'", string.Empty),
+                                    row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
+                            else if (row.Cells[0].Value.ToString().Contains("Del"))
+                                Guard.RemoveDependent(int.Parse(row.Cells[0].Value.ToString().Replace("Del", string.Empty)));
                             else
                                 UpdateDependent(row.Cells[1].Value.ToString().Replace("'", string.Empty), row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty),
                                     GetRelationshipIndex(row.Cells[4].Value.ToString()), int.Parse(row.Cells[0].Value.ToString()));
@@ -810,9 +814,9 @@ namespace MSAMISUserInterface {
 
         private void DelRowBTN_Click(object sender, EventArgs e) {
             try { 
-                if (DepGRD.SelectedRows.Count > 0) { 
-                Guard.RemoveDependent(int.Parse(DepGRD.SelectedRows[0].Cells[0].Value.ToString()));
-                DepGRD.Rows.Remove(DepGRD.SelectedRows[0]);
+                if (DepGRD.SelectedRows.Count > 0) {
+                    DepGRD.SelectedRows[0].Cells[0].Value = DepGRD.SelectedRows[0].Cells[0].Value + "Del";
+                    DepGRD.SelectedRows[0].Visible = false;
                 }
             }
             catch (Exception ex) {

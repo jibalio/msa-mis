@@ -61,7 +61,7 @@
             this.CIDLBL.BackColor = System.Drawing.Color.Transparent;
             this.CIDLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.CIDLBL.ForeColor = System.Drawing.Color.White;
-            this.CIDLBL.Location = new System.Drawing.Point(304, 134);
+            this.CIDLBL.Location = new System.Drawing.Point(317, 134);
             this.CIDLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CIDLBL.Name = "CIDLBL";
             this.CIDLBL.Size = new System.Drawing.Size(21, 19);
@@ -74,7 +74,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(235, 134);
+            this.label4.Location = new System.Drawing.Point(248, 134);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 19);
@@ -141,6 +141,7 @@
             this.DetailsPNL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DetailsPNL.AutoScroll = true;
+            this.DetailsPNL.Controls.Add(this.ErrorPNL);
             this.DetailsPNL.Controls.Add(this.CertifiersGRD);
             this.DetailsPNL.Controls.Add(this.label1);
             this.DetailsPNL.Controls.Add(this.label2);
@@ -150,7 +151,6 @@
             this.DetailsPNL.Controls.Add(this.ContactNoLBL);
             this.DetailsPNL.Controls.Add(this.ContactLBL);
             this.DetailsPNL.Controls.Add(this.label43);
-            this.DetailsPNL.Controls.Add(this.ErrorPNL);
             this.DetailsPNL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DetailsPNL.Location = new System.Drawing.Point(0, 16);
             this.DetailsPNL.Name = "DetailsPNL";
