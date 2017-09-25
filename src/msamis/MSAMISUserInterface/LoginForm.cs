@@ -6,10 +6,12 @@ namespace MSAMISUserInterface {
     public partial class LoginForm : Form {
         public LoginForm() {
             InitializeComponent();
+            InitData.RunWorkerAsync();
             Opacity = 0;
             ErrorLBL.Visible = false;
             FadeTMR.Start();
         }
+     
 
         #region Backend Tester
 
@@ -143,5 +145,13 @@ namespace MSAMISUserInterface {
         }
 
         #endregion
+
+        private void LoginForm_Load(object sender, EventArgs e) {
+
+        }
+
+        private void InitData_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e) {
+            Data.InitData();
+        }
     }
 }

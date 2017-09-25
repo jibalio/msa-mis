@@ -22,6 +22,7 @@ namespace MSAMISUserInterface
         public Font myfont = FontFactory.GetFont("Arial", 8, BaseColor.BLACK);
         public Font boldfont = FontFactory.GetFont("Arial", 8, Font.BOLD, BaseColor.BLACK);
         public Font boldunderfont = FontFactory.GetFont("Arial", 8, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
+        public Font testFont = FontFactory.GetFont("Segoe UI", 10, BaseColor.BLACK);
 
         #region Guards Report
 
@@ -251,70 +252,70 @@ namespace MSAMISUserInterface
 
         public void ExportPayslipPDF(int gid, int year, int month, int period)
         {
-            
             var newLine = Environment.NewLine;
             PayrollReport pr = new PayrollReport(gid, year, month, period);
+            Attendance.Period p = Attendance.GetCurrentPayPeriod();
             //Content
             //Name
             String GuardFullName = pr.LN.ToUpper() + ", " + pr.FN.ToUpper() + " " + pr.MN[0].ToString().ToUpper() + "."; 
             Phrase Name = new Phrase(GuardFullName + newLine, boldfontPayslip);
 
             Phrase Header = new Phrase("THIS IS TO CERTIFY THAT I'VE RECEIVED THE FULL AMOUNT OF MY SALARY FOR THE PERIOD OF ", myfontPayslip);
-            Chunk ChunkHeader2 = new Chunk(month + "/" + year + newLine, boldfontPayslip);
+            Chunk ChunkHeader2 = new Chunk(($@"{(p.period == 1 ? "1ST HALF" : "2ND HALF")} OF {p.month}/{p.year}") + newLine + newLine, boldfontPayslip);
+                                            
             Header.Add(ChunkHeader2);
-
             //deductions
             Phrase Ded = new Phrase("DEDUCTIONS:" + newLine, boldunderfontPayslip);
             Phrase SSS = new Phrase("SSS: ", myfontPayslip);
-            Chunk ChunkSSS = new Chunk("-Php " + pr.Sss + newLine);
+            Chunk ChunkSSS = new Chunk("₱" + pr.Sss.ToString("0.00") + newLine);
             SSS.Add(ChunkSSS);
             Phrase PHIC = new Phrase("PHIC: ", myfontPayslip);
-            Chunk ChunkPHIC = new Chunk("-Php " + pr.PHIC + newLine);
+            Chunk ChunkPHIC = new Chunk("Php " + pr.PHIC.ToString("₱0.00") + newLine);
             PHIC.Add(ChunkPHIC);
             Phrase TaxWith = new Phrase("Tax Withhold: ", myfontPayslip);
-            Chunk ChunkTaxWith = new Chunk("-Php " + pr.Withtax + newLine);
+            Chunk ChunkTaxWith = new Chunk("Php " + pr.Withtax.ToString("₱0.00") + newLine);
             TaxWith.Add(ChunkTaxWith);
             Phrase PagIbig = new Phrase("Pag-Ibig: ", myfontPayslip);
-            Chunk ChunkPagIbig = new Chunk("-Php " + pr.HDMF + newLine);
+            Chunk ChunkPagIbig = new Chunk("Php " + pr.HDMF.ToString("₱0.00") + newLine);
             PagIbig.Add(ChunkPagIbig);
             Phrase CashAdv = new Phrase("Cash Advance: ", myfontPayslip);
-            Chunk ChunkCashAdv = new Chunk("-Php " + pr.CashAdvance + newLine);
+            Chunk ChunkCashAdv = new Chunk("Php " + pr.CashAdvance.ToString("₱0.00") + newLine);
             CashAdv.Add(ChunkCashAdv);
 
             double TotalDedVal = pr.Sss + pr.PHIC + pr.Withtax + pr.HDMF + pr.CashAdvance; 
             Phrase TotalDed = new Phrase("Total Deductions: ", boldfontPayslip);
-            Chunk ChunkTotalDed = new Chunk("Php " + TotalDedVal + newLine + newLine);
+            Chunk ChunkTotalDed = new Chunk("Php " + TotalDedVal.ToString("₱0.00") + newLine + newLine);
             TotalDed.Add(ChunkTotalDed);
 
             //Bonuses
             Phrase Bon = new Phrase("BONUSES:" + newLine, boldunderfontPayslip);
             Phrase ThirteenthMon = new Phrase("Thirteenth Month: ", myfontPayslip);
-            Chunk Chunk13Mon = new Chunk("Php " + pr.ThirteenthMonthPay + newLine);
+            Chunk Chunk13Mon = new Chunk("Php " + pr.ThirteenthMonthPay.ToString("₱0.00") + newLine);
             ThirteenthMon.Add(Chunk13Mon);
             Phrase Cola = new Phrase("Cola: ", myfontPayslip);
-            Chunk ChunkCola = new Chunk("Php " + pr.Cola + newLine);
+            Chunk ChunkCola = new Chunk("Php " + pr.Cola.ToString("₱0.00") + newLine);
             Cola.Add(ChunkCola);
             Phrase CashBond = new Phrase("Cash Bond: ", myfontPayslip);
-            Chunk ChunkCashBond = new Chunk("Php " + pr.CashBond + newLine);
+            Chunk ChunkCashBond = new Chunk("Php " + pr.CashBond.ToString("₱0.00") + newLine);
             CashBond.Add(ChunkCashBond);
             Phrase EmergencyAllow = new Phrase("Emergency Allowance: ", myfontPayslip);
-            Chunk ChunkEmergencyAllow = new Chunk("Php " + pr.EmergencyAllowance + newLine);
+            Chunk ChunkEmergencyAllow = new Chunk("Php " + pr.EmergencyAllowance.ToString("₱0.00") + newLine);
             EmergencyAllow.Add(ChunkEmergencyAllow);
 
             double TotalBonVal = pr.ThirteenthMonthPay + pr.Cola + pr.CashBond + pr.EmergencyAllowance;
             Phrase TotalBon = new Phrase("Total Bonuses: ", boldfontPayslip);
-            Chunk ChunkTotalBon = new Chunk("Php " + TotalBonVal + newLine + newLine);
+            Chunk ChunkTotalBon = new Chunk("Php " + TotalBonVal.ToString("₱0.00") + newLine + newLine);
             TotalBon.Add(ChunkTotalBon);
 
             Phrase Footer = new Phrase("PLEASE COUNT YOUR MONEY BEFORE LEAVING" + newLine + newLine, myfontPayslip);
 
             Phrase Total = new Phrase("TOTAL PAY:", boldunderfontPayslip);
-            Chunk ChunkTotal = new Chunk("Php " + pr.NetAmountPaid + newLine);
+            Chunk ChunkTotal = new Chunk("Php " + pr.NetAmountPaid.ToString("₱0.00") + newLine);
             Total.Add(ChunkTotal);
 
             //Export Content
 
-            String fileName = "Payslip" + pr.LN + pr.FN + pr.FN + Attendance.GetCurrentPayPeriod()+".pdf";
+            String fileName = "Payslip" + pr.LN + pr.FN + pr.FN + ($@"{p.year}-{p.month}-{(p.period == 1?"1st_Half":"2nd_Half")}")+".pdf";
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             if (!Directory.Exists(filePath))
                 Directory.CreateDirectory(filePath);
@@ -375,13 +376,10 @@ namespace MSAMISUserInterface
 
             PrintDialog printdg = new PrintDialog();
             PrintDocument pdoc = new PrintDocument();
-            
             //printdg.ShowDialog();
             if (printdg.ShowDialog() == DialogResult.OK)
             {
-                
-                //pdoc.PrinterSettings.PrinterName = printerName;
-                pdoc.PrinterSettings = printerSettings;
+                pdoc.PrinterSettings.PrinterName = "Microsoft Print to PDF";
                 pdoc.PrinterSettings.PrintFileName = fileTempDir;
                 pdoc.PrinterSettings.PrintToFile = true;
                 pdoc.Print();

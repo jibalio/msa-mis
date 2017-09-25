@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using System.Data;
 
 namespace MSAMISUserInterface {
     public partial class ReportsForm : Form {
@@ -140,24 +141,25 @@ namespace MSAMISUserInterface {
         }
 
         private void ExportClientsSummaryBTN_Click(object sender, EventArgs e) {
-            //var rp = new ReportsPreview();
-            //rp.FormatPDF('s');
-            
+            var rp = new ReportsPreview();
+            rp.FormatPDF('s');
+            rp.FormatPDF('g');
+            rp.FormatPDF('c');
+            rp.FormatPDF('d');
+
             var r = new Reports();
-            var approvedlist = Payroll.GetApprovedPayrollsList();
+            DataTable approvedlist = Payroll.GetApprovedPayrollsList();
             int gid, month, period, year;
             int i;
-
-            for (i = 0; i < Payroll.GetApprovedPayrollsList().Rows.Count; i++)
+            //rylui.RylMessageBox.ShowDialog("Flag boiii");
+            for (i = 0; i < approvedlist.Rows.Count; i++)
             {
                 gid = Convert.ToInt32(approvedlist.Rows[i][0]);
                 month = Convert.ToInt32(approvedlist.Rows[i][1]);
                 period = Convert.ToInt32(approvedlist.Rows[i][2]);
                 year = Convert.ToInt32(approvedlist.Rows[i][3]);
-
                 r.ExportPayslipPDF(gid, year, month, period);
             }
-            
 
         }
 

@@ -94,9 +94,11 @@ namespace MSAMISUserInterface {
                     FatherFirstBX.Text = _dataTable.Rows[0]["fn"].ToString();
                     FatherMiddleBX.Text = _dataTable.Rows[0]["mn"].ToString();
                     FatherLastBX.Text = _dataTable.Rows[0]["ln"].ToString();
-                    SpouseFirstBX.Text = _dataTable.Rows[2]["fn"].ToString();
-                    SpouseMiddleBX.Text = _dataTable.Rows[2]["mn"].ToString();
-                    SpouseLastBX.Text = _dataTable.Rows[2]["ln"].ToString();
+                    if (_dataTable.Rows.Count > 2) { 
+                        SpouseFirstBX.Text = _dataTable.Rows[2]["fn"].ToString();
+                        SpouseMiddleBX.Text = _dataTable.Rows[2]["mn"].ToString();
+                        SpouseLastBX.Text = _dataTable.Rows[2]["ln"].ToString();
+                    }
                 }
                 catch (Exception ex) {
                     ShowErrorBox("Loading Guards", ex.Message);
@@ -472,11 +474,11 @@ namespace MSAMISUserInterface {
 
                 if (GEditDetailsBTN.Text.Equals("ADD")) {
                     try {
-                        Guard.AddGuardBasicInfo(FirstNameBX.Text, MiddleNameBX.Text, LastNameBX.Text, BirthdateBX.Value,
-                            _gender, HeightBX.Text, WeightBX.Text, ReligionBX.Text, CVStatusBX.SelectedIndex,
-                            CellNoBX.Text, TellNoBX.Text, LicenseNoBX.Text, SSSNoBX.Text, TINNoBX.Text,
-                            PhilHealthBX.Text, PrevAgencyBX.Text, PrevAssBX.Text, EdAttBX.SelectedIndex, CourseBX.Text,
-                            MilTrainBX.Text, EmergBX.Text, EmergencyNoBX.Text);
+                        Guard.AddGuardBasicInfo(FirstNameBX.Text.Replace("'", string.Empty), MiddleNameBX.Text.Replace("'", string.Empty), LastNameBX.Text.Replace("'", string.Empty), BirthdateBX.Value,
+                            _gender, HeightBX.Text.Replace(".", string.Empty), WeightBX.Text.Replace(".", string.Empty), ReligionBX.Text.Replace("'", string.Empty), CVStatusBX.SelectedIndex,
+                            CellNoBX.Text.Replace(".", string.Empty), TellNoBX.Text.Replace(".", string.Empty), LicenseNoBX.Text, SSSNoBX.Text, TINNoBX.Text,
+                            PhilHealthBX.Text, PrevAgencyBX.Text.Replace("'", string.Empty), PrevAssBX.Text.Replace("'", string.Empty), EdAttBX.SelectedIndex, CourseBX.Text,
+                            MilTrainBX.Text.Replace("'", string.Empty), EmergBX.Text.Replace("'", string.Empty), EmergencyNoBX.Text.Replace("'", string.Empty));
                     }
                     catch (Exception ex) {
                         ShowErrorBox("Saving Guards", ex.Message);
@@ -497,14 +499,14 @@ namespace MSAMISUserInterface {
                         ShowErrorBox("Saving Guards", ex.Message);
                     }
                     try {
-                        InsertDependent(4, FatherFirstBX.Text, FatherMiddleBX.Text, FatherLastBX.Text);
-                        InsertDependent(5, MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text);
+                        InsertDependent(4, FatherFirstBX.Text.Replace("'", string.Empty), FatherMiddleBX.Text.Replace("'", string.Empty), FatherLastBX.Text.Replace("'", string.Empty));
+                        InsertDependent(5, MotherFirstBX.Text.Replace("'", string.Empty), MotherMiddleBX.Text.Replace("'", string.Empty), MotherLastBX.Text.Replace("'", string.Empty));
                         if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX) && CVStatusBX.SelectedIndex != 1)
-                            InsertDependent(6, SpouseFirstBX.Text, SpouseMiddleBX.Text, SpouseLastBX.Text);
+                            InsertDependent(6, SpouseFirstBX.Text.Replace("'", string.Empty), SpouseMiddleBX.Text.Replace("'", string.Empty), SpouseLastBX.Text.Replace("'", string.Empty));
 
                         foreach (DataGridViewRow row in DepGRD.Rows) {
-                            InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()) , row.Cells[1].Value.ToString(),
-                            row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                            InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()) , row.Cells[1].Value.ToString().Replace("'", string.Empty),
+                            row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
                         }
                     }
                     catch (Exception ex) {
@@ -518,38 +520,40 @@ namespace MSAMISUserInterface {
 
                 else if (GEditDetailsBTN.Text.Equals("UPDATE")) {
                     try {
-                        Guard.UpdateGuardBasicInfo(Gid, FirstNameBX.Text, MiddleNameBX.Text, LastNameBX.Text,
-                            BirthdateBX.Value, _gender, HeightBX.Text, WeightBX.Text, ReligionBX.Text,
-                            CVStatusBX.SelectedIndex, CellNoBX.Text, TellNoBX.Text, LicenseNoBX.Text, SSSNoBX.Text,
-                            TINNoBX.Text, PhilHealthBX.Text, PrevAgencyBX.Text, PrevAssBX.Text, EdAttBX.SelectedIndex,
-                            CourseBX.Text, MilTrainBX.Text, EmergBX.Text, EmergencyNoBX.Text);
+                        Guard.UpdateGuardBasicInfo(Gid, FirstNameBX.Text.Replace("'", string.Empty), MiddleNameBX.Text.Replace("'", string.Empty), LastNameBX.Text.Replace("'", string.Empty),
+                            BirthdateBX.Value, _gender, HeightBX.Text.Replace(".", string.Empty), WeightBX.Text.Replace(".", string.Empty), ReligionBX.Text.Replace("'", string.Empty),
+                            CVStatusBX.SelectedIndex, CellNoBX.Text.Replace(".", string.Empty), TellNoBX.Text.Replace(".", string.Empty), LicenseNoBX.Text, SSSNoBX.Text,
+                            TINNoBX.Text, PhilHealthBX.Text, PrevAgencyBX.Text.Replace("'", string.Empty), PrevAssBX.Text.Replace("'", string.Empty), EdAttBX.SelectedIndex,
+                            CourseBX.Text.Replace("'", string.Empty), MilTrainBX.Text.Replace("'", string.Empty), EmergBX.Text.Replace("'", string.Empty), EmergencyNoBX.Text.Replace("'", string.Empty));
                     }
 
                     catch (Exception ex) {
                         ShowErrorBox("Saving Guards", ex.Message);
                     }
                     try {
-                        UpdateAdd(BirthplaceStreetNoBX.Text, BirthplaceStreetNameBX.Text, BirthplaceCityBX.Text,
+                        UpdateAdd(BirthplaceStreetNoBX.Text.Replace("'", string.Empty), BirthplaceStreetNameBX.Text.Replace("'", string.Empty), BirthplaceCityBX.Text.Replace("'", string.Empty),
                             BirthplaceBrgyBX.Text, 1);
-                        UpdateAdd(PermStreetNoBX.Text, PermStreetNameBX.Text, PermCityBX.Text, PermBrgyBX.Text, 2);
-                        UpdateAdd(TempStreetNoBX.Text, TempStreetNameBX.Text, TempCityBX.Text, TempBrgyBX.Text, 3);
+                        UpdateAdd(PermStreetNoBX.Text.Replace("'", string.Empty), PermStreetNameBX.Text.Replace("'", string.Empty), PermCityBX.Text.Replace("'", string.Empty), PermBrgyBX.Text.Replace("'", string.Empty), 2);
+                        UpdateAdd(TempStreetNoBX.Text.Replace("'", string.Empty), TempStreetNameBX.Text.Replace("'", string.Empty), TempCityBX.Text.Replace("'", string.Empty), TempBrgyBX.Text.Replace("'", string.Empty), 3);
                     }
                     catch (Exception ex) {
                         ShowErrorBox("Saving Guards", ex.Message);
                     }
                     try {
-                        UpdateDependent(FatherFirstBX.Text, FatherMiddleBX.Text, FatherLastBX.Text, 4);
-                        UpdateDependent(MotherFirstBX.Text, MotherMiddleBX.Text, MotherLastBX.Text, 5);
+                        UpdateDependent(FatherFirstBX.Text.Replace("'", string.Empty), FatherMiddleBX.Text.Replace("'", string.Empty), FatherLastBX.Text.Replace("'", string.Empty), 4);
+                        UpdateDependent(MotherFirstBX.Text.Replace("'", string.Empty), MotherMiddleBX.Text.Replace("'", string.Empty), MotherLastBX.Text.Replace("'", string.Empty), 5);
                         if (!CheckName(SpouseFirstBX, SpouseMiddleBX, SpouseLastBX))
-                            UpdateDependent(SpouseFirstBX.Text, SpouseMiddleBX.Text, SpouseLastBX.Text, 6);
+                            UpdateDependent(SpouseFirstBX.Text.Replace("'", string.Empty), SpouseMiddleBX.Text.Replace("'", string.Empty), SpouseLastBX.Text.Replace("'", string.Empty), 6);
 
 
                         foreach (DataGridViewRow row in DepGRD.Rows) {
                             if (row.Cells[0].Value.ToString().Equals("-1"))
-                            InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString(),
-                                row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                                InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString().Replace("'", string.Empty),
+                                    row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
+                            else if (row.Cells[0].Value.ToString().Contains("Del"))
+                                Guard.RemoveDependent(int.Parse(row.Cells[0].Value.ToString().Replace("Del", string.Empty)));
                             else
-                                UpdateDependent(row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(),
+                                UpdateDependent(row.Cells[1].Value.ToString().Replace("'", string.Empty), row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty),
                                     GetRelationshipIndex(row.Cells[4].Value.ToString()), int.Parse(row.Cells[0].Value.ToString()));
                         }
                         
@@ -742,10 +746,6 @@ namespace MSAMISUserInterface {
                    firstBx.Text.Equals("") || middleBx.Text.Equals("") || lastBx.Text.Equals("");
         }
 
-        private static bool CheckNameNotRequired(Control firstBx, Control middleBx, Control lastBx, ListControl rbx) {
-            return CheckNameNotRequired(firstBx, middleBx, lastBx) && CheckForInput(firstBx, middleBx, lastBx, rbx);
-        }
-
         private static bool CheckNameNotRequired(Control firstBx, Control middleBx, Control lastBx) {
             return CheckForInput(firstBx, middleBx, lastBx) && CheckName(firstBx, middleBx, lastBx);
         }
@@ -754,12 +754,6 @@ namespace MSAMISUserInterface {
             return !(firstBx.Text.Equals("First") || firstBx.Text.Equals("")) ||
                    !(middleBx.Text.Equals("Middle") || middleBx.Text.Equals("")) ||
                    !(lastBx.Text.Equals("Last") || lastBx.Text.Equals(""));
-        }
-
-        private static bool CheckForInput(Control firstBx, Control middleBx, Control lastBx, ListControl rbx) {
-            return !(firstBx.Text.Equals("First") || firstBx.Text.Equals("")) ||
-                   !(middleBx.Text.Equals("Middle") || middleBx.Text.Equals("")) ||
-                   !(lastBx.Text.Equals("Last") || lastBx.Text.Equals("")) || rbx.SelectedIndex > 0;
         }
 
         #endregion
@@ -820,9 +814,9 @@ namespace MSAMISUserInterface {
 
         private void DelRowBTN_Click(object sender, EventArgs e) {
             try { 
-                if (DepGRD.SelectedRows.Count > 0) { 
-                Guard.RemoveDependent(int.Parse(DepGRD.SelectedRows[0].Cells[0].Value.ToString()));
-                DepGRD.Rows.Remove(DepGRD.SelectedRows[0]);
+                if (DepGRD.SelectedRows.Count > 0) {
+                    DepGRD.SelectedRows[0].Cells[0].Value = DepGRD.SelectedRows[0].Cells[0].Value + "Del";
+                    DepGRD.SelectedRows[0].Visible = false;
                 }
             }
             catch (Exception ex) {

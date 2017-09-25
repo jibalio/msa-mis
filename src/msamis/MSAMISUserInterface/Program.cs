@@ -21,8 +21,7 @@ namespace MSAMISUserInterface {
             //rylui.RylMessageBox.ShowDialog(q, @"Backend says", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             AutoLoader.AutoImportSql(false, false);
-
-            Data.InitData();
+            
             Application.EnableVisualStyles();
             try {
                 Application.SetCompatibleTextRenderingDefault(false);

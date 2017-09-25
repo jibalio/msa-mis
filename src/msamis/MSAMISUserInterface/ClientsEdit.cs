@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using rylui;
 using System.Data;
@@ -197,6 +196,12 @@ namespace MSAMISUserInterface {
                 ret = false;
             }
 
+            if (CertifiersGRD.Rows.Count == 0) {
+                CertifiersTLTP.ToolTipTitle = "Certifiers";
+                CertifiersTLTP.Show("Please enter at least one certifier", CertifiersGRD);
+                ret = false;
+            }
+
             return ret;
         }
 
@@ -218,23 +223,25 @@ namespace MSAMISUserInterface {
             if (DataVal()) {
                 try {
                     if (GEditDetailsBTN.Text.Equals("ADD")) {
-                        Client.AddClient(NameBX.Text, LocationStreetNoBX.Text, LocationStreetNameBX.Text,
-                            LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
-
+                        Client.AddClient(NameBX.Text.Replace("'", string.Empty), LocationStreetNoBX.Text.Replace("'", string.Empty), LocationStreetNameBX.Text.Replace("'", string.Empty),
+                            LocationBrgyBX.Text.Replace("'", string.Empty), LocationCityBX.Text.Replace("'", string.Empty), ContactBX.Text.Replace("'", string.Empty), ContactNoBX.Text.Replace("'", string.Empty), ManagerBX.Text.Replace("'", string.Empty));
+                        var dep = int.Parse(SQLTools.getLastInsertedId("Client", "cid"));
                         foreach (DataGridViewRow row in CertifiersGRD.Rows) {
-                            InsertDependent(row.Cells[4].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                            InsertDependent(dep, row.Cells[4].Value.ToString().Replace("'", string.Empty), row.Cells[1].Value.ToString().Replace("'", string.Empty), row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
                         }
                     }
                     else {
-                        Client.UpdateClient(Cid.ToString(), NameBX.Text, LocationStreetNoBX.Text,
-                            LocationStreetNameBX.Text,
-                            LocationBrgyBX.Text, LocationCityBX.Text, ContactBX.Text, ContactNoBX.Text, ManagerBX.Text);
+                        Client.UpdateClient(Cid.ToString(), NameBX.Text.Replace("'", string.Empty), LocationStreetNoBX.Text.Replace("'", string.Empty),
+                            LocationStreetNameBX.Text.Replace("'", string.Empty),
+                            LocationBrgyBX.Text.Replace("'", string.Empty), LocationCityBX.Text.Replace("'", string.Empty), ContactBX.Text.Replace("'", string.Empty), ContactNoBX.Text.Replace("'", string.Empty), ManagerBX.Text.Replace("'", string.Empty));
 
                         foreach (DataGridViewRow row in CertifiersGRD.Rows) {
                             if (row.Cells[0].Value.ToString().Equals("-1"))
-                            InsertDependent(row.Cells[4].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
+                                InsertDependent(row.Cells[4].Value.ToString().Replace("'", string.Empty), row.Cells[1].Value.ToString().Replace("'", string.Empty), row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
+                            else if (row.Cells[0].Value.ToString().Contains("Del"))
+                                Client.RemoveCertifier(int.Parse(CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString().Replace("Del", string.Empty)));
                             else
-                            UpdateDependent(row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[1].Value.ToString(), int.Parse(row.Cells[0].Value.ToString()));
+                                UpdateDependent(row.Cells[1].Value.ToString().Replace("'", string.Empty), row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty), row.Cells[1].Value.ToString().Replace("'", string.Empty), int.Parse(row.Cells[0].Value.ToString()));
                         }
 
                         ViewRef.RefreshData();
@@ -246,6 +253,10 @@ namespace MSAMISUserInterface {
                     ShowErrorBox("Clients Editing", ex.Message);
                 }
             }
+        }
+
+        private void InsertDependent(int cid, string rel, string first, string middle, string last) {
+            Client.AddCertifier(cid, first, middle, last, rel);
         }
 
         private void InsertDependent(string rel, string first, string middle, string last) {
@@ -264,11 +275,9 @@ namespace MSAMISUserInterface {
         }
 
         private void DelRowBTN_Click(object sender, EventArgs e) {
-            if (CertifiersGRD.SelectedRows.Count > 0) { 
-                if (!CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString().Equals("-1")) {
-                 Client.RemoveCertifier(int.Parse(CertifiersGRD.SelectedRows[0].Cells[0].Value.ToString()));
-               }
-                CertifiersGRD.Rows.Remove(CertifiersGRD.SelectedRows[0]);
+            if (CertifiersGRD.SelectedRows.Count > 0) {
+                CertifiersGRD.SelectedRows[0].Cells[0].Value += "Del";
+                CertifiersGRD.SelectedRows[0].Visible = false;
             }
         }
 

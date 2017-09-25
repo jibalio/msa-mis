@@ -715,9 +715,9 @@ end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then
 
         public static DataTable GetSssContribList() {
             return SQLTools.ExecuteQuery(
-                $@"select contrib_id, date_effective, case date_dissolved
-when '9999-12-31 00:00:00' then 'Current' 
-else date_dissolved  end as date_dissolved from contribdetails where type='{
+                $@"select contrib_id, date_effective, case when (date_dissolved = '9999-12-31 00:00:00' and status=1) then 'Current'
+when (date_dissolved = '9999-12-31 00:00:00' and status=2) then 'Pending'
+else date_dissolved end as date_dissolved from contribdetails where type='{
                         Enumeration.ContribType.Sss
                     }' order by date_effective desc");
         }
@@ -1101,6 +1101,7 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             }
         }
 
+        
 
 
        

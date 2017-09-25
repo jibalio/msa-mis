@@ -53,6 +53,7 @@ namespace MSAMISUserInterface {
                 AssignmentsGRD.Columns[3].HeaderText = "ASSIGNED AT";
                 AssignmentsGRD.Columns[3].Width = 200;
             }
+            SGuardHistoryViewBTN.Visible = AssignmentsGRD.Rows.Count > 0;
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
