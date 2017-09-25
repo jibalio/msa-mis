@@ -379,7 +379,7 @@ namespace MSAMISUserInterface
             //printdg.ShowDialog();
             if (printdg.ShowDialog() == DialogResult.OK)
             {
-                pdoc.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+                pdoc.PrinterSettings.PrinterName = printdg.PrinterSettings.PrinterName;
                 pdoc.PrinterSettings.PrintFileName = fileTempDir;
                 pdoc.PrinterSettings.PrintToFile = true;
                 pdoc.Print();
