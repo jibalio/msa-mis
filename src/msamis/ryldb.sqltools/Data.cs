@@ -81,6 +81,14 @@ DefaultDirectory = C:\Docs
             }
         }
 
+        public static string SerializeStringArray(string[] hp) {
+            using (MemoryStream stream = new MemoryStream()) {
+                new BinaryFormatter().Serialize(stream, hp);
+                return Convert.ToBase64String(stream.ToArray());
+            }
+        }
+
+        
 
         public static readonly string PayrollIniContent =
             #region + string definition

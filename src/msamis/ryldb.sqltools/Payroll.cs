@@ -59,7 +59,7 @@ namespace MSAMISUserInterface {
                         pid, gid, month, period, year, rates_id, cashbond, 
                         thirteenth, cola, sss, pagibig,philhealth,withtax,
                         cashadv, emergencyallowance,totalsummary_serializable,
-                         hc_serializable,lastmodified, pstatus, basicpayhourly, uname
+                         hc_serializable,lastmodified, pstatus, basicpayhourly, uname, sssinfo_ser
                           from payroll left join account on payroll.approvedby=account.accid 
                         where gid={GID} AND month={month} AND period={period} AND year={year}").Rows[0];
             this._PayrollId = int.Parse(DbValues["PID"].ToString());
@@ -131,6 +131,12 @@ namespace MSAMISUserInterface {
             this.TotalSummary = (Dictionary<string, HourCostPair>)_DeserializeObject(
                 System.Text.Encoding.Default.GetString((byte[])DbValues["totalsummary_serializable"])
             );
+            string[] sssdetails = (string[])(Payroll._DeserializeObject(System.Text.Encoding.Default.GetString((byte[])DbValues["sssinfo_ser"])));
+            this._dateeffectivesss = sssdetails[0];
+            this._rangesss = sssdetails[1];
+            this._amountsss = sssdetails[2];
+
+
             sw.Stop();
             Console.WriteLine("Done\nObject Deserialization Method: {0}", sw.Elapsed.TotalSeconds);
         }
@@ -333,7 +339,8 @@ namespace MSAMISUserInterface {
             string q = $@" 
                 UPDATE `msadb`.`payroll` SET `rates_id`='{this.rates_id}', `withtax`='{this.Withtax}', `sss`={this.Sss},
                 `totalsummary_serializable`='{serialized_totalsummary}', `hc_serializable`='{serialized_hc}',
-                `pstatus`={Enumeration.PayrollStatus.Approved}, `basicpayhourly`={_BasicPayHourly}, `approvedby`='{Login.LoggedInUser}'
+                `pstatus`={Enumeration.PayrollStatus.Approved}, `basicpayhourly`={_BasicPayHourly}, `approvedby`='{Login.LoggedInUser}',
+                `sssinfo_ser`='{Data.SerializeStringArray(this.GetSSSDetails())}'
                 WHERE `PID`='{_PayrollId}';";
             SQLTools.ExecuteQuery(q);
 
@@ -571,9 +578,9 @@ namespace MSAMISUserInterface {
             return wt;
         }
 
-        private string _dateeffectivesss;
-        private string _rangesss;
-        private string _amountsss;
+        private string _dateeffectivesss { get; set; }
+        private string _rangesss { get; set; }
+        private string _amountsss { get; set; }
         public double ComputeSSS(int contrib_id) {
             var ssscontrib = SQLTools.ExecuteQuery($@"select * from ssscontrib 
                                                 left join contribdetails on contribdetails.contrib_id = ssscontrib.contrib_id where ssscontrib.contrib_id='{contrib_id}'");
