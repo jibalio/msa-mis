@@ -391,7 +391,8 @@ namespace MSAMISUserInterface {
                         Location = Location,
                         Names = EmpListGRD.SelectedRows[0].Cells[1].Value.ToString(),
                         Mode = 5,
-                        Pay = _pay
+                        Pay = _pay,
+                        PayrollPeriod = PeriodCMBX.Text
                     };
                     view.ShowDialog();
                 }

@@ -259,6 +259,9 @@ namespace MSAMISUserInterface {
             BeginInvoke((MethodInvoker) delegate { AdjustMBX.Select(0, 0); });
         }
 
+        private void BasicPayCancelBTN_Click(object sender, EventArgs e) {
+            RatesSaver.DeleteBasicPay(int.Parse(BasicPayGRD.SelectedRows[0].Cells[0].Value.ToString()));
+        }
         #endregion
 
         #region SSS Rates
@@ -282,6 +285,10 @@ namespace MSAMISUserInterface {
             catch (Exception ex) {
                 ShowErrorBox("SSS Contribution", ex.Message);
             }
+        }
+
+        private void SSSCancelBTN_Click(object sender, EventArgs e) {
+            RatesSaver.DeleteContrib(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id);
         }
 
         private void SssLoadTable() {
@@ -609,6 +616,10 @@ namespace MSAMISUserInterface {
             TaxExcemptPNL.Visible = false;
         }
 
+        private void TaxCancelPendingBTN_Click(object sender, EventArgs e) {
+            RatesSaver.DeleteContrib(((ComboBoxSss)TaxDateCMBX.SelectedItem).Id);
+        }
+
         private void TaxExSaveBTN_Click(object sender, EventArgs e) {
             if (double.Parse(TaxNewExemptBX.Value.ToString("N2")).Equals(0.00)) {
                 TaxTLTP.ToolTipTitle = "Tax Exemption Value";
@@ -628,6 +639,17 @@ namespace MSAMISUserInterface {
 
         private void TaxDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             LoadTaxTables();
+
+            if (TaxDateCMBX.Text.Contains("Pending")) {
+                TaxCancelPendingBTN.Visible = true;
+                TaxEditBTN.Location = new Point(347, -2);
+                TaxDateCMBX.Size = new Size(227, 25);
+            }
+            else {
+                TaxCancelPendingBTN.Visible = false;
+                TaxEditBTN.Location = new Point(423, -1);
+                TaxDateCMBX.Size = new Size(307, 25);
+            }
         }
 
         private void TaxSaveBTN_Click(object sender, EventArgs e) {
@@ -757,6 +779,10 @@ namespace MSAMISUserInterface {
 
         private void MultEditBTN_Click(object sender, EventArgs e) {
             MultEditMode(true);
+        }
+
+        private void MultCancelPendingBTN_Click(object sender, EventArgs e) {
+            RatesSaver.DeleteRate(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id);
         }
 
         private void MultEditMode(bool mode) {
@@ -900,5 +926,7 @@ namespace MSAMISUserInterface {
             LoadRatesMult();
             LoadGlobalPage();
         }
+
+
     }
 }
