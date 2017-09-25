@@ -180,6 +180,7 @@
             this.MultipliersDateCMBX = new System.Windows.Forms.ComboBox();
             this.TaxTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.RatesLoader = new System.ComponentModel.BackgroundWorker();
+            this.TaxCancelPendingBTN = new System.Windows.Forms.Button();
             this.RatesPNL.SuspendLayout();
             this.GlobalPNL.SuspendLayout();
             this.MultPNL.SuspendLayout();
@@ -546,6 +547,7 @@
             this.BasicPayCancelBTN.TabIndex = 240;
             this.BasicPayCancelBTN.Text = "CANCEL";
             this.BasicPayCancelBTN.UseVisualStyleBackColor = false;
+            this.BasicPayCancelBTN.Click += new System.EventHandler(this.BasicPayCancelBTN_Click);
             // 
             // AdjustBTN
             // 
@@ -1084,6 +1086,7 @@
             this.SSSCancelBTN.TabIndex = 302;
             this.SSSCancelBTN.Text = "CANCEL";
             this.SSSCancelBTN.UseVisualStyleBackColor = false;
+            this.SSSCancelBTN.Click += new System.EventHandler(this.SSSCancelBTN_Click);
             // 
             // WithPagePNL
             // 
@@ -1401,6 +1404,7 @@
             // 
             // TaxDatePNL
             // 
+            this.TaxDatePNL.Controls.Add(this.TaxCancelPendingBTN);
             this.TaxDatePNL.Controls.Add(this.TaxEditBTN);
             this.TaxDatePNL.Controls.Add(this.label7);
             this.TaxDatePNL.Controls.Add(this.TaxDateCMBX);
@@ -1422,7 +1426,7 @@
             this.TaxEditBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TaxEditBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.TaxEditBTN.ForeColor = System.Drawing.Color.White;
-            this.TaxEditBTN.Location = new System.Drawing.Point(423, -2);
+            this.TaxEditBTN.Location = new System.Drawing.Point(347, -2);
             this.TaxEditBTN.Name = "TaxEditBTN";
             this.TaxEditBTN.Size = new System.Drawing.Size(64, 29);
             this.TaxEditBTN.TabIndex = 295;
@@ -1435,12 +1439,12 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(17, 3);
+            this.label7.Location = new System.Drawing.Point(12, 3);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 19);
+            this.label7.Size = new System.Drawing.Size(92, 19);
             this.label7.TabIndex = 294;
-            this.label7.Text = "Withholding Tax Effectivity:";
+            this.label7.Text = "Tax Effectivity:";
             // 
             // TaxDateCMBX
             // 
@@ -1450,9 +1454,9 @@
             this.TaxDateCMBX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.TaxDateCMBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.TaxDateCMBX.FormattingEnabled = true;
-            this.TaxDateCMBX.Location = new System.Drawing.Point(204, 1);
+            this.TaxDateCMBX.Location = new System.Drawing.Point(110, 1);
             this.TaxDateCMBX.Name = "TaxDateCMBX";
-            this.TaxDateCMBX.Size = new System.Drawing.Size(205, 25);
+            this.TaxDateCMBX.Size = new System.Drawing.Size(227, 25);
             this.TaxDateCMBX.TabIndex = 293;
             this.TaxDateCMBX.SelectedIndexChanged += new System.EventHandler(this.TaxDateCMBX_SelectedIndexChanged);
             // 
@@ -2269,6 +2273,7 @@
             this.MultCancelPendingBTN.TabIndex = 358;
             this.MultCancelPendingBTN.Text = "CANCEL";
             this.MultCancelPendingBTN.UseVisualStyleBackColor = false;
+            this.MultCancelPendingBTN.Click += new System.EventHandler(this.MultCancelPendingBTN_Click);
             // 
             // MultEditBTN
             // 
@@ -2329,6 +2334,26 @@
             this.RatesLoader.WorkerReportsProgress = true;
             this.RatesLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RatesLoader_DoWork);
             // 
+            // TaxCancelPendingBTN
+            // 
+            this.TaxCancelPendingBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxCancelPendingBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.TaxCancelPendingBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TaxCancelPendingBTN.BackgroundImage")));
+            this.TaxCancelPendingBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TaxCancelPendingBTN.FlatAppearance.BorderSize = 0;
+            this.TaxCancelPendingBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.TaxCancelPendingBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.TaxCancelPendingBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TaxCancelPendingBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.TaxCancelPendingBTN.ForeColor = System.Drawing.Color.White;
+            this.TaxCancelPendingBTN.Location = new System.Drawing.Point(416, 0);
+            this.TaxCancelPendingBTN.Name = "TaxCancelPendingBTN";
+            this.TaxCancelPendingBTN.Size = new System.Drawing.Size(71, 25);
+            this.TaxCancelPendingBTN.TabIndex = 296;
+            this.TaxCancelPendingBTN.Text = "CANCEL";
+            this.TaxCancelPendingBTN.UseVisualStyleBackColor = false;
+            this.TaxCancelPendingBTN.Click += new System.EventHandler(this.TaxCancelPendingBTN_Click);
+            // 
             // PayrollConfigRates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2336,9 +2361,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(898, 598);
             this.ControlBox = false;
-            this.Controls.Add(this.WithPagePNL);
             this.Controls.Add(this.RatesPNL);
             this.Controls.Add(this.CloseBTN);
+            this.Controls.Add(this.WithPagePNL);
             this.Controls.Add(this.BasicPagePNL);
             this.Controls.Add(this.MultiplierPagePNL);
             this.Controls.Add(this.GlobalPagePNL);
@@ -2558,5 +2583,6 @@
         private System.Windows.Forms.Button BasicPayCancelBTN;
         private System.Windows.Forms.Label label4;
         private System.ComponentModel.BackgroundWorker RatesLoader;
+        private System.Windows.Forms.Button TaxCancelPendingBTN;
     }
 }

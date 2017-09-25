@@ -1,11 +1,9 @@
-﻿using System.Data.SqlClient;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using rylui;
-using System.Data;
 
 
 namespace MSAMISUserInterface {
@@ -14,6 +12,7 @@ namespace MSAMISUserInterface {
         public int Mode;
         public Shadow Refer;
         public string Names;
+        public string PayrollPeriod;
         public Payroll Pay;
         Font boldfont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
         Font myfont = FontFactory.GetFont("Consolas", 8, BaseColor.BLACK);
@@ -59,11 +58,44 @@ namespace MSAMISUserInterface {
                     PayslipSaveTo.Visible = true;
                     ApproveLBL.Visible = true;
                     ApproveLBL.Text = "Approved by: " + Pay.ApprovedBy;
+                    PayslipPanel.Visible = true;
+                    PayslipPreview();
                     break;
                 default:
                     NameLBL.Text = "Summary Report";
                     break;
             }
+        }
+
+        private void PayslipPreview() {
+            DCashAdvanceLBL.Text = CurrencyFormatNegative(Pay.CashAdvance);
+            DPagIbigLBL.Text = CurrencyFormatNegative(Pay.PagIbig);
+            DPhilHealthLBL.Text = CurrencyFormatNegative(Pay.PhilHealth);
+            DSSSLBL.Text = CurrencyFormatNegative(Pay.Sss);
+            DTotalLBL.Text = CurrencyFormatNegative(Pay.Deductions);
+
+            var wt = Pay.GetWithholdingTax();
+            DWithLBL.Text = CurrencyFormatNegative(wt.total);
+
+            B13LBL.Text = CurrencyFormat(Pay.ThirteenthMonthPay);
+            BAllowanceLBL.Text = CurrencyFormat(Pay.EmergencyAllowance);
+            BBondsLBL.Text = CurrencyFormat(Pay.CashBond);
+            BColaLBL.Text = CurrencyFormat(Pay.Cola);
+            BTotalLBL.Text = CurrencyFormat(Pay.Bonuses);
+
+            NetPayLBL.Text = "TOTAL PAY: " + CurrencyFormat(Pay.NetPay);
+
+            PayslipNameLBL.Text = Names.ToUpper();
+            PayslipPeriodLBL.Text = PayrollPeriod;
+
+        }
+
+        private static string CurrencyFormat(double money) {
+            return "₱ " + money.ToString("N2");
+        }
+
+        private static string CurrencyFormatNegative(double money) {
+            return "₱ -" + money.ToString("N2");
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
