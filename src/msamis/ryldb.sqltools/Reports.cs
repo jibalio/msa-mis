@@ -266,19 +266,19 @@ namespace MSAMISUserInterface
             //deductions
             Phrase Ded = new Phrase("DEDUCTIONS:" + newLine, boldunderfontPayslip);
             Phrase SSS = new Phrase("SSS: ", myfontPayslip);
-            Chunk ChunkSSS = new Chunk("Php " + pr.Sss + newLine);
+            Chunk ChunkSSS = new Chunk("-Php " + pr.Sss + newLine);
             SSS.Add(ChunkSSS);
             Phrase PHIC = new Phrase("PHIC: ", myfontPayslip);
-            Chunk ChunkPHIC = new Chunk("Php " + pr.PHIC + newLine);
+            Chunk ChunkPHIC = new Chunk("-Php " + pr.PHIC + newLine);
             PHIC.Add(ChunkPHIC);
             Phrase TaxWith = new Phrase("Tax Withhold: ", myfontPayslip);
-            Chunk ChunkTaxWith = new Chunk("Php " + pr.Withtax + newLine);
+            Chunk ChunkTaxWith = new Chunk("-Php " + pr.Withtax + newLine);
             TaxWith.Add(ChunkTaxWith);
             Phrase PagIbig = new Phrase("Pag-Ibig: ", myfontPayslip);
-            Chunk ChunkPagIbig = new Chunk("Php " + pr.HDMF + newLine);
+            Chunk ChunkPagIbig = new Chunk("-Php " + pr.HDMF + newLine);
             PagIbig.Add(ChunkPagIbig);
             Phrase CashAdv = new Phrase("Cash Advance: ", myfontPayslip);
-            Chunk ChunkCashAdv = new Chunk("Php " + pr.CashAdvance + newLine);
+            Chunk ChunkCashAdv = new Chunk("-Php " + pr.CashAdvance + newLine);
             CashAdv.Add(ChunkCashAdv);
 
             double TotalDedVal = pr.Sss + pr.PHIC + pr.Withtax + pr.HDMF + pr.CashAdvance; 
@@ -375,10 +375,13 @@ namespace MSAMISUserInterface
 
             PrintDialog printdg = new PrintDialog();
             PrintDocument pdoc = new PrintDocument();
+            
             //printdg.ShowDialog();
             if (printdg.ShowDialog() == DialogResult.OK)
             {
-                pdoc.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+                
+                //pdoc.PrinterSettings.PrinterName = printerName;
+                pdoc.PrinterSettings = printerSettings;
                 pdoc.PrinterSettings.PrintFileName = fileTempDir;
                 pdoc.PrinterSettings.PrintToFile = true;
                 pdoc.Print();
