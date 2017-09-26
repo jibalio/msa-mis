@@ -1522,9 +1522,6 @@ namespace MSAMISUserInterface {
                 SViewAssSearchClientCMBX.SelectedIndex = 0;
                 SViewAssCMBX.SelectedIndex = 0;
 
-                SViewAssViewDetailsBTN.Location = new Point(282, 600);
-                SViewAssUnassignBTN.Visible = false;
-
                 var dv = Client.GetClients().DefaultView;
                 dv.Sort = "name asc";
                 var dt = dv.ToTable();
@@ -1544,7 +1541,7 @@ namespace MSAMISUserInterface {
 
         private void SViewAssSearchClientCMBX_SelectedValueChanged(object sender, EventArgs e) {
             SViewAssCMBX.SelectedIndex = 0;
-            if (Login.AccountType != 1) SViewAssUnassignBTN.Visible = true;
+            if (Login.AccountType != 2) SViewAssUnassignBTN.Visible = true;
             else {
                 SViewAssUnassignBTN.Visible = false;
             }
@@ -1615,14 +1612,22 @@ namespace MSAMISUserInterface {
         }
 
         private void SViewAssGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
-            if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Inactive")) {
+            if (SViewAssGRD.SelectedRows.Count == 1) {
+                if (SViewAssGRD.SelectedRows[0].Cells[6].Value.ToString().Equals("Scheduled")) {
+                    SViewAssViewDetailsBTN.Visible = true;
+                    SViewAssUnassignBTN.Visible = false;
+                } else if (SViewAssGRD.SelectedRows[0].Cells[6].Value.ToString().Equals("Unscheduled")) {
+                    SViewAssViewDetailsBTN.Visible = true;
+                    if (Login.AccountType != 2 && SViewAssSearchClientCMBX.SelectedIndex != 0)
+                        SViewAssUnassignBTN.Visible = true;
+                }
+            } else if (SViewAssGRD.SelectedRows.Count > 1 && IsUnscheduled()) {
+                SViewAssViewDetailsBTN.Visible = false;
+                if (Login.AccountType != 2 && SViewAssSearchClientCMBX.SelectedIndex != 0)
+                    SViewAssUnassignBTN.Visible = true;
+            } else {
                 SViewAssViewDetailsBTN.Visible = false;
                 SViewAssUnassignBTN.Visible = false;
-            }
-            else if (SViewAssGRD.Rows[e.RowIndex].Cells[6].Value.ToString().Equals("Active")) {
-                SViewAssViewDetailsBTN.Visible = true;
-                if (Login.AccountType != 2)
-                    SViewAssUnassignBTN.Visible = true;
             }
         }
 

@@ -193,11 +193,11 @@ namespace MSAMISUserInterface {
 
         private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             try {
-                if (EmpListGRD.Rows.Count > 0) {
+                if (EmpListGRD.Rows.Count > 0) { 
+                    Gid = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
                     _currentRow.DefaultCellStyle.Font = new Font("Segoe UI", 10);
                     EmpListGRD.SelectedRows[0].DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                     _currentRow = EmpListGRD.SelectedRows[0];
-                    Gid = int.Parse(EmpListGRD.SelectedRows[0].Cells[0].Value.ToString());
                 }
             }
             catch (Exception exception) { Console.WriteLine(exception);}
@@ -362,11 +362,13 @@ namespace MSAMISUserInterface {
                     ApproveBTN.Visible = false;
                 }
                 if (_pay.PayrollStatus == Enumeration.PayrollStatus.Approved) {
-                    BonusAddBTN.Visible = false;
                     if (PeriodCMBX.SelectedIndex != 0) {
+                        BonusAddBTN.Visible = false;
                         ApproveBTN.Location = new Point(186, 388);
                         ApproveBTN.Text = "PAYSLIP";
                     } else {
+                        BonusAddBTN.Visible = true;
+                        ApproveBTN.Location = new Point(227, 388);
                         BonusAddBTN.Text = "UNAPPROVE";
                         ApproveBTN.Text = "PAYSLIP";
                     }
