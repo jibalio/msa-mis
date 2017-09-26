@@ -260,7 +260,10 @@ namespace MSAMISUserInterface {
         }
 
         private void BasicPayCancelBTN_Click(object sender, EventArgs e) {
-            RatesSaver.DeleteBasicPay(int.Parse(BasicPayGRD.SelectedRows[0].Cells[0].Value.ToString()));
+            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the pending rates?", "Cancel Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                RatesSaver.DeleteBasicPay(int.Parse(BasicPayGRD.SelectedRows[0].Cells[0].Value.ToString()));
+                LoadBasicPayPage();
+            }
         }
         #endregion
 
@@ -288,7 +291,10 @@ namespace MSAMISUserInterface {
         }
 
         private void SSSCancelBTN_Click(object sender, EventArgs e) {
-            RatesSaver.DeleteContrib(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id);
+            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the pending rates?", "Cancel Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                RatesSaver.DeleteContrib(((ComboBoxSss)SSSDateCMBX.SelectedItem).Id);
+                LoadSssPage();
+            }
         }
 
         private void SssLoadTable() {
@@ -617,7 +623,10 @@ namespace MSAMISUserInterface {
         }
 
         private void TaxCancelPendingBTN_Click(object sender, EventArgs e) {
-            RatesSaver.DeleteContrib(((ComboBoxSss)TaxDateCMBX.SelectedItem).Id);
+            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the pending rates?", "Cancel Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                RatesSaver.DeleteContrib(((ComboBoxSss)TaxDateCMBX.SelectedItem).Id);
+                LoadTaxPage();
+            }
         }
 
         private void TaxExSaveBTN_Click(object sender, EventArgs e) {
@@ -782,7 +791,10 @@ namespace MSAMISUserInterface {
         }
 
         private void MultCancelPendingBTN_Click(object sender, EventArgs e) {
-            RatesSaver.DeleteRate(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id);
+            if (RylMessageBox.ShowDialog("Are you sure you want to cancel the pending rates?", "Cancel Rates", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                RatesSaver.DeleteRate(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id);
+                LoadRatesMult();
+            }
         }
 
         private void MultEditMode(bool mode) {
