@@ -71,6 +71,13 @@ namespace MSAMISUserInterface {
         }
 
 
+        /// <summary>
+        /// Creates a payroll object directly from a DataRow.
+        /// Use this for direct instantiation from msadbarchive.
+        /// NOT COMPATIBLE with msadb.
+        /// Go to `InitMeApproved()` for msadb compatible method.
+        /// </summary>
+        /// <param name="dva"></param>
         public Payroll(DataRow dva) {
             this.GID = int.Parse(dva["GID"].ToString());
             this.period.period = int.Parse(dva["period"].ToString()); ;
@@ -96,8 +103,7 @@ namespace MSAMISUserInterface {
             this.TotalSummary = (Dictionary<string, HourCostPair>)_DeserializeObject(
                 System.Text.Encoding.Default.GetString((byte[])dva["totalsummary_serializable"])
             );
-            sw.Stop();
-            Console.WriteLine("Done\nObject Deserialization in Archive Method: {0}", sw.Elapsed.TotalSeconds);
+            string[] sssdetails = (string[])(Payroll._DeserializeObject(System.Text.Encoding.Default.GetString((byte[])dva["sssinfo_ser"])));
             
     }
 
@@ -345,6 +351,7 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteQuery(q);
 
             SQLTools.ExecuteQuery("call init_checkdate_guardstatus()");
+            
 
         }
 

@@ -23,7 +23,9 @@ namespace MSAMISUserInterface {
 
         public static void InitGuardStatusAndDutyAssignments() {
             // If duty starts now, and not yet activated..
-            var w = $@"call init_checkdate_guardstatus()";
+            var w = $@"call init_checkdate_assignments()";
+            var z = $@"call init_checkdate_guardstatus()";
+            SQLTools.ExecuteQuery(z);
             SQLTools.ExecuteQuery(w);
         }
 

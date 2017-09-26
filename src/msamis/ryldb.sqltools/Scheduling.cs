@@ -240,8 +240,9 @@ namespace MSAMISUserInterface {
                     }', UnassignedOn='{DateEffective:yyyy-MM-dd}' WHERE `gid`='{e["gid"]}';";
                 SQLTools.ExecuteNonQuery(q);
                 // 3.) Set guard to Inactive (BUT NOT DISMISSED)
-                q = @"UPDATE `msadb`.`guards` SET `GStatus`='" + Enumeration.GuardStatus.PendingPayroll + "' WHERE `GID`='" + e[0] + "'";
+                q = $@"UPDATE `msadb`.`guards` SET `GStatus`='{Enumeration.GuardStatus.PendingPayroll}' WHERE `GID`='{e[0]}'";
                 SQLTools.ExecuteNonQuery(q);
+                SQLTools.ExecuteQuery($@"call init_checkdate_gstatus_onapprove({e[0]})");
             }
             // Step 4
             UpdateRequestStatus(RequestId, Enumeration.RequestStatus.Approved, Login.LoggedInUser);
