@@ -149,7 +149,7 @@ namespace MSAMISUserInterface {
                         CloseBTN.Tag = "1";
                         Close();
                     }
-                } else if (Button.Equals("UPDATE")) {
+                } else if (Button.Equals("UPDATE") && RylMessageBox.ShowDialog("Editing this Duty Details will reset all connected attendance records.\nAre you sure you want to continue?", "Update Duty Details", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     var res = Scheduling.UpdateDutyDetail(Did, TimeInHrBX.Text, TimeInMinBX.Text,
                         TimeInAMPMBX.Text,
                         TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,

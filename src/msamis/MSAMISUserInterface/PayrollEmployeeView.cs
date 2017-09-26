@@ -175,14 +175,20 @@ namespace MSAMISUserInterface {
         }
 
         private void BonusAddBTN_Click_1(object sender, EventArgs e) {
-            var view = new PayrollAddAdjustments {
-                Pid = Gid,
-                Location = new Point(Location.X + 350, Location.Y),
-                Pay = _pay,
-                Refer = this,
-                Period = "for " + PeriodCMBX.Text
-            };
-            view.ShowDialog();
+            if (BonusAddBTN.Text.Equals("ADJUST")) {
+                var view = new PayrollAddAdjustments {
+                    Pid = Gid,
+                    Location = new Point(Location.X + 350, Location.Y),
+                    Pay = _pay,
+                    Refer = this,
+                    Period = "for " + PeriodCMBX.Text
+                };
+                view.ShowDialog();
+            } else {
+                if (RylMessageBox.ShowDialog("Are you sure you want to unapprove this payroll?", "Unapprove Payroll", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    //Something
+                }
+            }
         }
 
         private void EmpListGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
@@ -357,8 +363,13 @@ namespace MSAMISUserInterface {
                 }
                 if (_pay.PayrollStatus == Enumeration.PayrollStatus.Approved) {
                     BonusAddBTN.Visible = false;
-                    ApproveBTN.Location = new Point(186, 388);
-                    ApproveBTN.Text = "PAYSLIP";
+                    if (PeriodCMBX.SelectedIndex != 0) {
+                        ApproveBTN.Location = new Point(186, 388);
+                        ApproveBTN.Text = "PAYSLIP";
+                    } else {
+                        BonusAddBTN.Text = "UNAPPROVE";
+                        ApproveBTN.Text = "PAYSLIP";
+                    }
                 }
             }
         }
