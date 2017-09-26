@@ -38,6 +38,7 @@ namespace MSAMISUserInterface {
             _currentLabel = BasicLbl;
             _curLabelCon = BasicCon;
             LoadBasicPayPage();
+            RatesLoader.RunWorkerAsync();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -127,17 +128,14 @@ namespace MSAMISUserInterface {
 
         private void BasicPNL_Click(object sender, EventArgs e) {
             ChangePage(BasicPagePNL, BasicPNL, BasicLbl, BasicCon);
-            LoadBasicPayPage();
         }
 
         private void SSSPnl_Click(object sender, EventArgs e) {
             ChangePage(SSSPagePNL, SSSPnl, SSSlbl, SSScon);
-            LoadSssPage();
         }
 
         private void TaxPnl_Click(object sender, EventArgs e) {
             ChangePage(WithPagePNL, TaxPnl, TaxLbl, TaxConLbl);
-            LoadTaxPage();
         }
 
         private void MultPNL_MouseEnter(object sender, EventArgs e) {
@@ -158,12 +156,10 @@ namespace MSAMISUserInterface {
 
         private void MultPNL_MouseClick(object sender, MouseEventArgs e) {
             ChangePage(MultiplierPagePNL, MultPNL, MultLBL, MultConLBL);
-            LoadRatesMult();
         }
 
         private void GlobalPNL_MouseClick(object sender, MouseEventArgs e) {
             ChangePage(GlobalPagePNL, GlobalPNL, GlobalLBL, GlobalCon);
-            LoadGlobalPage();
         }
 
         #endregion
@@ -263,6 +259,9 @@ namespace MSAMISUserInterface {
             BeginInvoke((MethodInvoker) delegate { AdjustMBX.Select(0, 0); });
         }
 
+        private void BasicPayCancelBTN_Click(object sender, EventArgs e) {
+            RatesSaver.DeleteBasicPay(int.Parse(BasicPayGRD.SelectedRows[0].Cells[0].Value.ToString()));
+        }
         #endregion
 
         #region SSS Rates
@@ -274,7 +273,9 @@ namespace MSAMISUserInterface {
                     var effective = DateTime.Parse(row["date_effective"].ToString()).ToString("MMMM dd, yyyy");
                     var dissolved = row["date_dissolved"].ToString().Equals("Current")
                         ? "Current"
-                        : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy");
+                        : (row["date_dissolved"].ToString().Equals("Pending")
+                            ? "Pending"
+                            : DateTime.Parse(row["date_dissolved"].ToString()).ToString("MMMM dd, yyyy"));
                     SSSDateCMBX.Items.Add(
                         new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
                 }
@@ -284,6 +285,10 @@ namespace MSAMISUserInterface {
             catch (Exception ex) {
                 ShowErrorBox("SSS Contribution", ex.Message);
             }
+        }
+
+        private void SSSCancelBTN_Click(object sender, EventArgs e) {
+            RatesSaver.DeleteContrib(((ComboBoxSss) SSSDateCMBX.SelectedItem).Id);
         }
 
         private void SssLoadTable() {
@@ -611,6 +616,10 @@ namespace MSAMISUserInterface {
             TaxExcemptPNL.Visible = false;
         }
 
+        private void TaxCancelPendingBTN_Click(object sender, EventArgs e) {
+            RatesSaver.DeleteContrib(((ComboBoxSss)TaxDateCMBX.SelectedItem).Id);
+        }
+
         private void TaxExSaveBTN_Click(object sender, EventArgs e) {
             if (double.Parse(TaxNewExemptBX.Value.ToString("N2")).Equals(0.00)) {
                 TaxTLTP.ToolTipTitle = "Tax Exemption Value";
@@ -630,6 +639,17 @@ namespace MSAMISUserInterface {
 
         private void TaxDateCMBX_SelectedIndexChanged(object sender, EventArgs e) {
             LoadTaxTables();
+
+            if (TaxDateCMBX.Text.Contains("Pending")) {
+                TaxCancelPendingBTN.Visible = true;
+                TaxEditBTN.Location = new Point(347, -2);
+                TaxDateCMBX.Size = new Size(227, 25);
+            }
+            else {
+                TaxCancelPendingBTN.Visible = false;
+                TaxEditBTN.Location = new Point(423, -1);
+                TaxDateCMBX.Size = new Size(307, 25);
+            }
         }
 
         private void TaxSaveBTN_Click(object sender, EventArgs e) {
@@ -759,6 +779,10 @@ namespace MSAMISUserInterface {
 
         private void MultEditBTN_Click(object sender, EventArgs e) {
             MultEditMode(true);
+        }
+
+        private void MultCancelPendingBTN_Click(object sender, EventArgs e) {
+            RatesSaver.DeleteRate(((ComboBoxSss)MultipliersDateCMBX.SelectedItem).Id);
         }
 
         private void MultEditMode(bool mode) {
@@ -895,6 +919,14 @@ namespace MSAMISUserInterface {
 
 
         #endregion
+
+        private void RatesLoader_DoWork(object sender, DoWorkEventArgs e) {
+            LoadSssPage();
+            LoadTaxPage();
+            LoadRatesMult();
+            LoadGlobalPage();
+        }
+
 
     }
 }

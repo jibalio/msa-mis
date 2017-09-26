@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace MSAMISUserInterface {
     public class RatesSaver {
@@ -35,5 +36,24 @@ namespace MSAMISUserInterface {
             var query = SingleTransactionQuery.Substring(0, SingleTransactionQuery.Length - 1);
             SQLTools.ExecuteQuery(query);
         }
+
+
+        /// <summary>
+        /// Use only for pending dates. 
+        /// </summary>
+        public static void DeleteRate(int rates_id) {
+            string deletequery = $@"delete FROM msadb.rates where rid = {rates_id};";
+            SQLTools.ExecuteNonQuery(deletequery); 
+        }
+
+        public static void DeleteContrib(int contrib_id) {
+            SQLTools.ExecuteNonQuery($@"DELETE FROM contribdetails where contrib_id={contrib_id}");
+        }
+
+        public static void DeleteBasicPay(int BasicPayId) {
+            SQLTools.ExecuteNonQuery($@"delete FROM msadb.basicpay where bpid={BasicPayId};");
+        }
+        
+
     }
 }

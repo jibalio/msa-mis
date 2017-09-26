@@ -72,6 +72,7 @@
             this.Dep2Warn = new System.Windows.Forms.ToolTip(this.components);
             this.Dep3Warn = new System.Windows.Forms.ToolTip(this.components);
             this.GEditDetailsBTN = new System.Windows.Forms.Button();
+            this.CertifiersTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.DetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).BeginInit();
             this.SuspendLayout();
@@ -631,6 +632,13 @@
             this.GEditDetailsBTN.UseVisualStyleBackColor = false;
             this.GEditDetailsBTN.Click += new System.EventHandler(this.GEditDetailsBTN_Click);
             // 
+            // CertifiersTLTP
+            // 
+            this.CertifiersTLTP.AutoPopDelay = 3000;
+            this.CertifiersTLTP.InitialDelay = 500;
+            this.CertifiersTLTP.ReshowDelay = 100;
+            this.CertifiersTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
             // ClientsEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -714,5 +722,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Middle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Last;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
+        private System.Windows.Forms.ToolTip CertifiersTLTP;
     }
 }

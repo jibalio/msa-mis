@@ -3,13 +3,13 @@
   <SequenceDesignerModelMoniker Id="3f3627e5-4002-4de3-a338-829658658bfa" />
   <nestedChildShapes>
     <lifelineShape Id="e0e356a4-745d-4c14-8d96-5c7e8478129b" absoluteBounds="2.4364086964883316, 1, 0.15, 13.294228960786615" visible="true" visualStyleMode="Modified">
-      <lifelineMoniker Id="5d01023b-6368-4ee7-9103-4cd621a69e72" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+      <lifelineMoniker Id="5d01023b-6368-4ee7-9103-4cd621a69e72" LastKnownName="&lt;&lt;class&gt;&gt; SQLToolss" />
       <relativeChildShapes>
         <lifelineHoverShape Id="135146ee-f2b6-430f-a30d-36961d2bd8c9" absoluteBounds="2.4364086964883316, 1, 0, 13.25">
-          <lifelineMoniker Id="5d01023b-6368-4ee7-9103-4cd621a69e72" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+          <lifelineMoniker Id="5d01023b-6368-4ee7-9103-4cd621a69e72" LastKnownName="&lt;&lt;class&gt;&gt; SQLToolss" />
         </lifelineHoverShape>
-        <umlLifelineHeadShape Id="a10d3c50-b006-4d95-ba1a-e365211e959d" absoluteBounds="2.0114086964883318, 0.6, 1, 0.4" customColor="White" visualStyleMode="Modified">
-          <lifelineMoniker Id="5d01023b-6368-4ee7-9103-4cd621a69e72" LastKnownName="&lt;&lt;class&gt;&gt; SQLTools" />
+        <umlLifelineHeadShape Id="a10d3c50-b006-4d95-ba1a-e365211e959d" absoluteBounds="1.7482960513391006, 0.6, 1.5262252902984619, 0.4" customColor="White" visualStyleMode="Modified">
+          <lifelineMoniker Id="5d01023b-6368-4ee7-9103-4cd621a69e72" LastKnownName="&lt;&lt;class&gt;&gt; SQLToolss" />
           <relativeChildShapes />
         </umlLifelineHeadShape>
         <umlExecutionSpecificationShape Id="c53147a9-b0c8-406e-85e5-437020f74ec5" absoluteBounds="2.4364086964883316, 1.3135156285841712, 0.15, 7.1699999995529646" customColor="184, 204, 215" visualStyleMode="Modified">

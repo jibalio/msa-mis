@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text;
 using rylui;
-using System.Data;
+
 
 namespace MSAMISUserInterface {
     public partial class ReportsPreview : Form {
@@ -12,7 +12,10 @@ namespace MSAMISUserInterface {
         public int Mode;
         public Shadow Refer;
         public string Names;
+        public string PayrollPeriod;
         public Payroll Pay;
+        Font boldfont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+        Font myfont = FontFactory.GetFont("Consolas", 8, BaseColor.BLACK);
 
         public ReportsPreview() {
             InitializeComponent();
@@ -55,11 +58,44 @@ namespace MSAMISUserInterface {
                     PayslipSaveTo.Visible = true;
                     ApproveLBL.Visible = true;
                     ApproveLBL.Text = "Approved by: " + Pay.ApprovedBy;
+                    PayslipPanel.Visible = true;
+                    PayslipPreview();
                     break;
                 default:
                     NameLBL.Text = "Summary Report";
                     break;
             }
+        }
+
+        private void PayslipPreview() {
+            DCashAdvanceLBL.Text = CurrencyFormatNegative(Pay.CashAdvance);
+            DPagIbigLBL.Text = CurrencyFormatNegative(Pay.PagIbig);
+            DPhilHealthLBL.Text = CurrencyFormatNegative(Pay.PhilHealth);
+            DSSSLBL.Text = CurrencyFormatNegative(Pay.Sss);
+            DTotalLBL.Text = CurrencyFormatNegative(Pay.Deductions);
+
+            var wt = Pay.GetWithholdingTax();
+            DWithLBL.Text = CurrencyFormatNegative(wt.total);
+
+            B13LBL.Text = CurrencyFormat(Pay.ThirteenthMonthPay);
+            BAllowanceLBL.Text = CurrencyFormat(Pay.EmergencyAllowance);
+            BBondsLBL.Text = CurrencyFormat(Pay.CashBond);
+            BColaLBL.Text = CurrencyFormat(Pay.Cola);
+            BTotalLBL.Text = CurrencyFormat(Pay.Bonuses);
+
+            NetPayLBL.Text = "TOTAL PAY: " + CurrencyFormat(Pay.NetPay);
+
+            PayslipNameLBL.Text = Names.ToUpper();
+            PayslipPeriodLBL.Text = PayrollPeriod;
+
+        }
+
+        private static string CurrencyFormat(double money) {
+            return "₱ " + money.ToString("N2");
+        }
+
+        private static string CurrencyFormatNegative(double money) {
+            return "₱ -" + money.ToString("N2");
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -70,6 +106,10 @@ namespace MSAMISUserInterface {
         private void GuardsReport_FormClosing(object sender, FormClosingEventArgs e) {
             if (Mode !=5 ) Refer.Close();
         }
+
+        
+
+       
 
         private void LoadTable() {
             if (Mode != 5) TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
@@ -185,11 +225,12 @@ namespace MSAMISUserInterface {
                 }
             }
 
+            //
             var myfont = FontFactory.GetFont("Arial", 8, BaseColor.BLACK);
             var pdfTable = new PdfPTable(GReportGRD.ColumnCount);
             pdfTable.SetWidths(Reports.GetPDFFormat(formOrigin));
             pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
+            //pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.Padding = 3;
             pdfTable.WidthPercentage = 30;
             pdfTable.DefaultCell.BorderWidth = 1;
@@ -202,55 +243,77 @@ namespace MSAMISUserInterface {
             pdfTable = AddHeaders(pdfTable, formOrigin);
             //Add Data to PDF
 
-            
-                foreach (DataGridViewRow row in GReportGRD.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont))
-                        {
-                            PaddingTop = 5f,
-                            PaddingBottom = 8f
 
-                        };
+            foreach (DataGridViewRow row in GReportGRD.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+
+                    var newcell = new PdfPCell(new Phrase(cell.Value.ToString(), myfont))
+                    {
+                        PaddingTop = 5f,
+                        PaddingBottom = 8f
+
+                    };
+                    if (cell.ColumnIndex != 0 && formOrigin == 's')
+                    {
+
+                        newcell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                        pdfTable.AddCell(newcell);
+                    }
+                    else if (formOrigin == 'g')
+                    {
+                        if (!(cell.ColumnIndex == 0 || cell.ColumnIndex == 1))
+                        {
+                            newcell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                            pdfTable.AddCell(newcell);
+                        } else pdfTable.AddCell(newcell);
+                    }
+                    else
+                    {
+                        newcell.HorizontalAlignment = Element.ALIGN_LEFT;
                         pdfTable.AddCell(newcell);
                     }
                 }
-            var r = new Reports();
-            r.ExportToPDF(pdfTable, formOrigin);
+            }
+                var r = new Reports();
+                r.ExportToPDF(pdfTable, formOrigin);
         }
 
         public PdfPTable AddHeaders(PdfPTable pdfTable, char o) {
-            var headerfont = FontFactory.GetFont("Arial", 9, BaseColor.BLACK);
+            
             if (o == 'g') {
-                pdfTable.AddCell(new Phrase("Name", headerfont));
-                pdfTable.AddCell(new Phrase("Status", headerfont));
-                pdfTable.AddCell(new Phrase("Contact Number", headerfont));
-                pdfTable.AddCell(new Phrase("License Number", headerfont));
-                pdfTable.AddCell(new Phrase("SSS", headerfont));
-                pdfTable.AddCell(new Phrase("TIN Number", headerfont));
-                pdfTable.AddCell(new Phrase("PHIC", headerfont));
+
+                
+                pdfTable.AddCell(new Phrase("Name", boldfont));
+                pdfTable.AddCell(new Phrase("Status", boldfont));
+                pdfTable.AddCell(new Phrase("Contact Number", boldfont));
+                pdfTable.AddCell(new Phrase("License Number", boldfont));
+                pdfTable.AddCell(new Phrase("SSS", boldfont));
+                pdfTable.AddCell(new Phrase("TIN Number", boldfont));
+                pdfTable.AddCell(new Phrase("PHIC", boldfont));
             }
 
             else if (o == 'c') {
-                pdfTable.AddCell(new Phrase("Client Name", headerfont));
-                pdfTable.AddCell(new Phrase("Status", headerfont));
-                pdfTable.AddCell(new Phrase("Client Address", headerfont));
-                pdfTable.AddCell(new Phrase("Manager", headerfont));
-                pdfTable.AddCell(new Phrase("Contact Person", headerfont));
-                pdfTable.AddCell(new Phrase("Contact Number", headerfont));
+                
+                pdfTable.AddCell(new Phrase("Client Name", boldfont));
+                pdfTable.AddCell(new Phrase("Status", boldfont));
+                pdfTable.AddCell(new Phrase("Client Address", boldfont));
+                pdfTable.AddCell(new Phrase("Manager", boldfont));
+                pdfTable.AddCell(new Phrase("Contact Person", boldfont));
+                pdfTable.AddCell(new Phrase("Contact Number", boldfont));
             }
 
             else if (o == 'd') {
-                pdfTable.AddCell(new Phrase("Client Name", headerfont));
-                pdfTable.AddCell(new Phrase("Guards Assigned", headerfont));
-                pdfTable.AddCell(new Phrase("License Number", headerfont));
-                pdfTable.AddCell(new Phrase("Deployment Address", headerfont));
-                pdfTable.AddCell(new Phrase("Shift Start", headerfont));
-                pdfTable.AddCell(new Phrase("Shift End", headerfont));
-                pdfTable.AddCell(new Phrase("Shift Days", headerfont));
-                pdfTable.AddCell(new Phrase("Contract Start", headerfont));
-                pdfTable.AddCell(new Phrase("Contract End", headerfont));
+                pdfTable.AddCell(new Phrase("Client Name", boldfont));
+                pdfTable.AddCell(new Phrase("Guards Assigned", boldfont));
+                pdfTable.AddCell(new Phrase("License Number", boldfont));
+                pdfTable.AddCell(new Phrase("Deployment Address", boldfont));
+                pdfTable.AddCell(new Phrase("Shift Start", boldfont));
+                pdfTable.AddCell(new Phrase("Shift End", boldfont));
+                pdfTable.AddCell(new Phrase("Shift Days", boldfont));
+                pdfTable.AddCell(new Phrase("Contract Start", boldfont));
+                pdfTable.AddCell(new Phrase("Contract End", boldfont));
             }
             else if (o == 's') {
                 PdfPCell cell = new PdfPCell();
@@ -258,96 +321,96 @@ namespace MSAMISUserInterface {
                 cell.HorizontalAlignment = Element.ALIGN_CENTER;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
-                cell.Phrase = (new Phrase("Employee", headerfont));
+                cell.Phrase = (new Phrase("Employee", boldfont));
                 pdfTable.AddCell(cell);
-                cell.Phrase = (new Phrase("Days of Work", headerfont));
+                cell.Phrase = (new Phrase("Days of Work", boldfont));
                 pdfTable.AddCell(cell);
-                cell.Phrase = (new Phrase("Rate", headerfont));
+                cell.Phrase = (new Phrase("Rate", boldfont));
                 pdfTable.AddCell(cell);
-                cell.Phrase = (new Phrase("Total Regular Wage", headerfont));
+                cell.Phrase = (new Phrase("Total Regular Wage", boldfont));
                 pdfTable.AddCell(cell);
 
                 cell.Rowspan = 1;
                 cell.Colspan = 4;
 
-                cell.Phrase = (new Phrase("Overtime", headerfont));
+                cell.Phrase = (new Phrase("Overtime", boldfont));
                 pdfTable.AddCell(cell);
 
                 cell.Rowspan = 3;
                 cell.Colspan = 1;
 
-                cell.Phrase = (new Phrase("Total Amount", headerfont));
+                cell.Phrase = (new Phrase("Total Amount", boldfont));
                 pdfTable.AddCell(cell);
 
                 cell.Rowspan = 1;
                 cell.Colspan = 5;
 
-                cell.Phrase = (new Phrase("DEDUCTIONS", headerfont));
+                cell.Phrase = (new Phrase("DEDUCTIONS", boldfont));
                 pdfTable.AddCell(cell);
 
                 cell.Rowspan = 3;
                 cell.Colspan = 1;
 
-                cell.Phrase = (new Phrase("13th Month", headerfont));
+                cell.Phrase = (new Phrase("13th Month", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Cola", headerfont));
+                cell.Phrase = (new Phrase("Cola", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Cash Bond", headerfont));
+                cell.Phrase = (new Phrase("Cash Bond", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Emergency Allow.", headerfont));
+                cell.Phrase = (new Phrase("Emergency Allow.", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Net Amount Paid", headerfont));
+                cell.Phrase = (new Phrase("Net Amount Paid", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Signature of Payee", headerfont));
+                cell.Phrase = (new Phrase("Signature of Payee", boldfont));
                 pdfTable.AddCell(cell);
 
                 //Second Row
                 cell.Colspan = 2;
                 cell.Rowspan = 1;
 
-                cell.Phrase = (new Phrase("Regular Day", headerfont));
+                cell.Phrase = (new Phrase("Regular Day", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Sunday & Holiday", headerfont));
+                cell.Phrase = (new Phrase("Sunday & Holiday", boldfont));
                 pdfTable.AddCell(cell);
 
                 cell.Colspan = 1;
                 cell.Rowspan = 2;
 
-                cell.Phrase = (new Phrase("SSS", headerfont));
+                cell.Phrase = (new Phrase("SSS", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("PHIC", headerfont));
+                cell.Phrase = (new Phrase("PHIC", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Tax Withhold", headerfont));
+                cell.Phrase = (new Phrase("Tax Withhold", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("HDMF", headerfont));
+                cell.Phrase = (new Phrase("HDMF", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Cash Advance", headerfont));
+                cell.Phrase = (new Phrase("Cash Advance", boldfont));
                 pdfTable.AddCell(cell);
 
                 //Third Row
                 cell.Colspan = 1;
                 cell.Rowspan = 1;
 
-                cell.Phrase = (new Phrase("Hrs", headerfont));
+                cell.Phrase = (new Phrase("Hrs", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Amt", headerfont));
+                cell.Phrase = (new Phrase("Amt", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Hrs", headerfont));
+                cell.Phrase = (new Phrase("Hrs", boldfont));
                 pdfTable.AddCell(cell);
 
-                cell.Phrase = (new Phrase("Amt", headerfont));
+                cell.Phrase = (new Phrase("Amt", boldfont));
                 pdfTable.AddCell(cell);
 
             }

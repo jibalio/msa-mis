@@ -108,7 +108,7 @@ namespace MSAMISUserInterface {
         public DataTable GetAttendance(int month, int period, int year) {
             String q = $@"
                         select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
-							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
+							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_actual_hh,':',to_actual_mm,' ',to_actual_period) as Schedule,
                             timein,
                            TimeOut, 
                             ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total
@@ -134,17 +134,17 @@ namespace MSAMISUserInterface {
 
         public DataTable GetAttendance_View(int month, int period, int year) {
             String q = $@"
-                        select atid, dutydetails.did, 
-							CONCAT((DATE_FORMAT(date, '%d')), ' / ' ,
-							(CONCAT (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_hh,':',to_mm,SUBSTRING(to_period,1,1)))) as Schedule,
-                            concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as ti_to,
+                            select atid, dutydetails.did, 
+							    CONCAT((DATE_FORMAT(date, '%d')), ' / ' ,
+							    (CONCAT (ti_hh,':',ti_mm,' ',SUBSTRING(ti_period,1,1), '-',to_actual_hh,':',to_actual_mm,SUBSTRING(to_actual_period,1,1)))) as Schedule,
+                                concat( SUBSTRING(timein,1,7), '-' ,SUBSTRING(timeout,1,7)) as ti_to,
                             
-                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, timein, timeout, CONCAT(`year`, '-',period.month,'-', (DATE_FORMAT(date, '%d')), ' ') as Date
-                            from attendance
-                            left join dutydetails 
-                            on dutydetails.did=attendance.did
-                            left join period 
-                            on period.pid=attendance.pid
+                                ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, timein, timeout, CONCAT(`year`, '-',period.month,'-', (DATE_FORMAT(date, '%d')), ' ') as Date
+                                from attendance
+                                left join dutydetails 
+                                on dutydetails.did=attendance.did
+                                left join period 
+                                on period.pid=attendance.pid
                             where period = '{period}'
                             and month = '{month}'
                             and year = '{year}'    
@@ -181,11 +181,13 @@ namespace MSAMISUserInterface {
         public Hours GetAttendanceSummary() {
             
             String q = $@"
-                        select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
-							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_hh,':',to_mm,' ',to_period) as Schedule,
+                       select atid, dutydetails.did, DATE_FORMAT(date, '%Y-%m-%d') as Date, SUBSTRING(DAYNAME(DATE_FORMAT(date, '%Y-%m-%d')) FROM 1 FOR 3)  as day, 
+							concat (ti_hh,':',ti_mm,' ',ti_period, ' - ',to_actual_hh,':',to_actual_mm,' ',to_actual_period) as Schedule,
                             timein,
                            TimeOut, 
-                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, CONCAT(`year`, '-',period.month,'-', (DATE_FORMAT(date, '%d')), '  ') as Datex
+                            ' ' as normal_day, ' ' as normal_night, ' ' as holiday_day, ' ' as holiday_night, ' ' as total, CONCAT(`year`, '-',period.month,'-', (DATE_FORMAT(date, '%d')), '  ') as Datex,
+                            CONCAT(to_hh,':',to_mm,' ',to_period) as asto,
+                            CONCAT(ti_hh,':',ti_mm,' ',ti_period) as asti
                             from attendance
                             left join dutydetails 
                             on dutydetails.did=attendance.did
@@ -202,9 +204,11 @@ namespace MSAMISUserInterface {
             foreach (DataRow f in d.Rows) {
                 var sti = f["Datex"].ToString() + f["TimeIn"].ToString();
                 var sto = f["Datex"].ToString() + f["TimeOut"].ToString();
+                var sti_c = f["Datex"].ToString() + f["asti"].ToString();
+                var sto_c = f["Datex"].ToString() + f["asto"].ToString();
                 DateTime ti = DateTime.Parse(sti);
                 DateTime to = DateTime.Parse(sto);
-                HourProcessor proc = new HourProcessor(ti, to, ti, to);
+                HourProcessor proc = new HourProcessor(ti, to, DateTime.Parse(sti_c), DateTime.Parse(sto_c));
                 hourlist.Add(proc);
                 f["normal_day"] = proc.GetNormalDay();
                 f["normal_night"] = proc.GetNormalNight();
@@ -224,7 +228,7 @@ namespace MSAMISUserInterface {
                 h.normal_day += x.GetNormalDayTS();
                 h.normal_night += x.GetNormalNightTS(); ;
                 h.total += x.GetTotalTS();
-                TotalHours += x;
+                int pc = 1 + 1;
             }
             return h;
         }
@@ -233,6 +237,7 @@ namespace MSAMISUserInterface {
             HourProcessor h = TotalHours;
             string[] a = new string [24];
             string[] b = {
+                #region +Keys
                 "nsu_proper_day_normal",
                 "nsu_overtime_day_normal",
                 "sun_proper_day_normal",
@@ -257,10 +262,12 @@ namespace MSAMISUserInterface {
                 "nsu_overtime_night_special",
                 "sun_proper_night_special",
                 "sun_overtime_night_special"
+                #endregion
             };
+            
             for (int c = 0; c < b.Length; c++) {
-                TimeSpan ts = TotalHours.hp[b[c]];
-                a[c] = (((int) (ts.TotalHours / 60)).ToString() + ":" + ((int) ts.Minutes).ToString()).ToString() + "hrs.";
+                TimeSpan ts = h.hp[b[c]];
+                a[c] = (b[c][4]=='p'?"Regular":"Overtime")+": "+(((int) (ts.TotalHours)).ToString("00") + ":" + ((int) ts.Minutes).ToString("00")).ToString() + " hrs.";
             }
             return a;
         }

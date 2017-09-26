@@ -104,6 +104,7 @@ namespace MSAMISUserInterface {
             UsernameBX.Text = UsersGRD.SelectedRows[0].Cells[1].Value.ToString();
             CurrentBX.Clear();
             CurrentBX.Enabled = true;
+            CurrentPassPic.Visible = true;
             NewBX.Clear();
             UsersGRDPNL.Visible = false;
             EditUserPNL.Visible = true;
@@ -118,10 +119,10 @@ namespace MSAMISUserInterface {
 
         private void SaveBTN_Click(object sender, EventArgs e) {
             if (SaveBTN.Text.Equals("SAVE")) {
-                if (Account.ChangePassword(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), NewBX.Text,
-                    CurrentBX.Text)) {
+                if (Account.ChangePassword(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()), NewBX.Text.Replace("'", string.Empty),
+                    CurrentBX.Text.Replace("'", string.Empty))) {
                     Account.ChangeUsername(int.Parse(UsersGRD.SelectedRows[0].Cells[0].Value.ToString()),
-                        UsernameBX.Text);
+                        UsernameBX.Text.Replace("'", string.Empty));
                     LoadUsers();
                     CancelBTN.PerformClick();
                     RylMessageBox.ShowDialog("Account Details Changed", "Accounts Details",
@@ -135,7 +136,7 @@ namespace MSAMISUserInterface {
                 }
             }
             else {
-                Account.CreateUser(UsernameBX.Text, NewBX.Text, AdminRDBTN.Checked ? 1 : 2);
+                Account.CreateUser(UsernameBX.Text.Replace("'", string.Empty), NewBX.Text.Replace("'", string.Empty), AdminRDBTN.Checked ? 1 : 2);
                 LoadUsers();
                 CancelBTN.PerformClick();
                 RylMessageBox.ShowDialog("User was added", "Users",
@@ -163,6 +164,7 @@ namespace MSAMISUserInterface {
             CurrentBX.Clear();
             NewBX.Clear();
             CurrentBX.Enabled = false;
+            CurrentPassPic.Visible = false;
             UsersGRDPNL.Visible = false;
             EditUserPNL.Visible = true;
             CloseBTN.Visible = false;
@@ -172,8 +174,20 @@ namespace MSAMISUserInterface {
             SaveBTN.Text = "ADD";
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e) {
+        private void CurrentPassPic_MouseDown(object sender, MouseEventArgs e) {
+            CurrentBX.PasswordChar = '\0';
+        }
 
+        private void NewPassPic_MouseDown(object sender, MouseEventArgs e) {
+            NewBX.PasswordChar = '\0';
+        }
+
+        private void CurrentPassPic_MouseUp(object sender, MouseEventArgs e) {
+            CurrentBX.PasswordChar = '●';
+        }
+
+        private void NewPassPic_MouseUp(object sender, MouseEventArgs e) {
+            NewBX.PasswordChar = '●';
         }
     }
 }

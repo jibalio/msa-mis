@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using rylui;
 
@@ -32,13 +31,13 @@ namespace MSAMISUserInterface {
                 if (SpecialBTN.Checked) type = Enumeration.HolidayType.Special;
                 try {
                     if (AddBTN.Text.Equals("ADD")) {
-                        Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text, type, TransBox.Checked ? 0: 1);
+                        Holiday.AddHoliday(HoldaysCLNDR.SelectionRange, DescBX.Text.Replace("'", string.Empty), type, TransBox.Checked ? 0: 1);
                         DateLBL.Text = "Select date(s)";
                         DescBX.Text = "";
                     }
                     else {
                         Holiday.EditHoliday(int.Parse(HolidaysGRD.SelectedRows[0].Cells[0].Value.ToString()), HoldaysCLNDR.SelectionRange.Start, HoldaysCLNDR.SelectionRange.End,
-                            DescBX.Text,
+                            DescBX.Text.Replace("'", string.Empty),
                             type, TransBox.Checked ? 0 : 1);
                         CancelBTN.PerformClick();
                     }
@@ -173,18 +172,14 @@ namespace MSAMISUserInterface {
                 foreach (DataGridViewRow row in HolidaysGRD.Rows)
                     if (row.Cells[1].Value.ToString().Equals(row.Cells[2].Value.ToString())) {
                         var date = row.Cells[1].Value.ToString().Split(' ')[0];
-                        dts.Add(new DateTime(int.Parse(date.Split('/')[2]),
-                            int.Parse(date.Split('/')[0]),
-                            int.Parse(date.Split('/')[1])));
+                        dts.Add(DateTime.Parse(date));
                     }
                     else {
                         var count = int.Parse(row.Cells[2].Value.ToString().Split('/')[1]) -
                                     int.Parse(row.Cells[1].Value.ToString().Split('/')[1]);
                         for (var i = 0; i < count + 1; i++) {
                             var date = row.Cells[1].Value.ToString().Split(' ')[0];
-                            dts.Add(new DateTime(int.Parse(date.Split('/')[2]),
-                                int.Parse(date.Split('/')[0]),
-                                int.Parse(date.Split('/')[1]) + i));
+                            dts.Add(DateTime.Parse(date).AddDays(i));
                         }
                     }
                 HoldaysCLNDR.BoldedDates = dts.ToArray();

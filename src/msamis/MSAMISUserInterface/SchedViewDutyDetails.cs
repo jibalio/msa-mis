@@ -50,7 +50,6 @@ namespace MSAMISUserInterface {
             RefreshDutyDetails();
             RefreshCurrent();
             RefreshData();
-            RefreshAttendance();
         }
 
         public void RefreshData() {
@@ -118,6 +117,10 @@ namespace MSAMISUserInterface {
             DutyDetailsGRD.Select();
         }
 
+        private void AttendanceWorker_DoWork(object sender, DoWorkEventArgs e) {
+            RefreshAttendance();
+        }
+
         public void RefreshAttendance() {
             if (!Name.Equals("Archived")) {
                 AttendanceGRD.DataSource = _attendance.GetAttendance_View(
@@ -172,7 +175,7 @@ namespace MSAMISUserInterface {
                     : attendance.GetCertifiedBy();
 
                 try {
-                    string[] tooltip = _attendance.GetAttendanceTooltip();
+                    string[] tooltip = attendance.GetAttendanceTooltip();
 
                     OrdinaryDay.Items[3].Text = tooltip[0];
                     OrdinaryDay.Items[4].Text = tooltip[1];
@@ -218,9 +221,9 @@ namespace MSAMISUserInterface {
 
 
                 ACertifiedLBL.Text = attendance.Rows[0][1].ToString();
-                /*
+               
                 try {
-                    string[] tooltip = attendance.GetAttendanceTooltip();
+                    string[] tooltip = Archiver.GetAttendanceTooltip(Aid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
 
                     OrdinaryDay.Items[3].Text = tooltip[0];
                     OrdinaryDay.Items[4].Text = tooltip[1];
@@ -253,8 +256,6 @@ namespace MSAMISUserInterface {
                 catch (Exception exception) {
                     Console.WriteLine(exception);
                 }
-
-                */
 
             }
         }
@@ -344,7 +345,7 @@ namespace MSAMISUserInterface {
         }
 
         private void PeriodCMBX_SelectedIndexChanged(object sender, EventArgs e) {
-            RefreshAttendance();
+            AttendanceWorker.RunWorkerAsync();
             if (PeriodCMBX.SelectedIndex == 0) {
                 EditDaysBTN.Visible = true;
                 PeriodCMBX.Size = new Size(257, 25);
@@ -438,5 +439,7 @@ namespace MSAMISUserInterface {
         private void RDSLBL_MouseLeave(object sender, EventArgs e) {
             HidePop(OrdinaryDay);
         }
+
+
     }
 }

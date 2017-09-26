@@ -14,6 +14,7 @@ namespace MSAMISUserInterface {
         private Payroll _pay;
         public Shadow Refer;
         public MainForm Reference;
+        public string GuardName;
 
         public PayrollEmployeeView() {
             InitializeComponent();
@@ -53,6 +54,7 @@ namespace MSAMISUserInterface {
             else {
                 EmpListGRD.Enabled = false;
                 ArchivePNL.Visible = true;
+                ArchiveNameLBL.Text = GuardName;
                 LoadDetails();
             }
 
@@ -205,7 +207,7 @@ namespace MSAMISUserInterface {
                     foreach (DataRow row in Attendance.GetPeriods(Gid).Rows)
                         PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
                             int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
-                else
+                else 
                     foreach (DataRow row in Archiver.GetPeriods(Gid).Rows)
                         PeriodCMBX.Items.Add(new ComboBoxDays(int.Parse(row["month"].ToString()),
                             int.Parse(row["period"].ToString()), int.Parse(row["year"].ToString())));
@@ -278,9 +280,10 @@ namespace MSAMISUserInterface {
                     TaxPop.Items[3].Text = CurrencyFormat(wt.ExcessTax);
                     TaxPop.Items[5].Text = CurrencyFormat(wt.total);
 
-                    SSSPop.Items[1].Text = _pay.GetSSSDetails()[0];
-                    SSSPop.Items[3].Text = _pay.GetSSSDetails()[1];
-                    SSSPop.Items[5].Text = _pay.GetSSSDetails()[2];
+                    string[] sssdetails = _pay.GetSSSDetails();
+                    SSSPop.Items[1].Text = sssdetails[0];
+                    SSSPop.Items[3].Text = sssdetails[1];
+                    SSSPop.Items[5].Text = sssdetails[2];
                     DWithLBL.Text = CurrencyFormatNegative(wt.total);
                 }
             }
@@ -389,7 +392,8 @@ namespace MSAMISUserInterface {
                         Location = Location,
                         Names = EmpListGRD.SelectedRows[0].Cells[1].Value.ToString(),
                         Mode = 5,
-                        Pay = _pay
+                        Pay = _pay,
+                        PayrollPeriod = PeriodCMBX.Text
                     };
                     view.ShowDialog();
                 }

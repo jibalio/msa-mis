@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using IniParser;
 using IniParser.Model;
 
@@ -70,6 +72,24 @@ DefaultDirectory = C:\Docs
 ";
 
 
+
+
+        public static string SerializeHp(HourProcessor hp) {
+            using (MemoryStream stream = new MemoryStream()) {
+                new BinaryFormatter().Serialize(stream, hp);
+                return Convert.ToBase64String(stream.ToArray());
+            }
+        }
+
+        public static string SerializeStringArray(string[] hp) {
+            using (MemoryStream stream = new MemoryStream()) {
+                new BinaryFormatter().Serialize(stream, hp);
+                return Convert.ToBase64String(stream.ToArray());
+            }
+        }
+
+        
+
         public static readonly string PayrollIniContent =
             #region + string definition
             $@"[Payroll]
@@ -81,4 +101,8 @@ DefaultCola = 100.00
 DefaultEmer = 50.00";
 #endregion
     }
+
+
+
+
 }
