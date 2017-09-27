@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using rylui;
 
 namespace MSAMISUserInterface {
     public partial class SchedViewIncidentReport : Form {
@@ -23,15 +24,23 @@ namespace MSAMISUserInterface {
         }
 
         private void LoadData() {
-            var data = Scheduling.GetIncidentReport(Rid);
+            try {
+                var data = Scheduling.GetIncidentReport(Rid);
 
-            TypeDateLBL.Text = "Type: " + data.Rows[0][0] + "          Event Date: " + data.Rows[0][1];
-            LocationLBL.Text = data.Rows[0][2].ToString();
-            DescriptionBX.Text = data.Rows[0][3].ToString();
+                TypeDateLBL.Text = "Type: " + data.Rows[0][0] + "          Event Date: " + data.Rows[0][1];
+                LocationLBL.Text = data.Rows[0][2].ToString();
+                DescriptionBX.Text = data.Rows[0][3].ToString();
 
-            CertifiersGRD.DataSource = Scheduling.GetIncidentInvolved(Rid);
-            CertifiersGRD.Columns[0].Width = 270;
-            CertifiersGRD.Columns[1].Width = 100;
+                CertifiersGRD.DataSource = Scheduling.GetIncidentInvolved(Rid);
+                CertifiersGRD.Columns[0].Width = 270;
+                CertifiersGRD.Columns[1].Width = 100;
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                RylMessageBox.ShowDialog("No Incident Report found", "Incident Report", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                Close();
+            }
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
