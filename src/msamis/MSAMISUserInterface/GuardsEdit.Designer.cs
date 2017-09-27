@@ -182,11 +182,17 @@
             this.WorkPNL = new System.Windows.Forms.Panel();
             this.AddLBL = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.TypeOfficer = new System.Windows.Forms.RadioButton();
+            this.TypeGuard = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.TypeWarn = new System.Windows.Forms.ToolTip(this.components);
             this.PersonalPNL.SuspendLayout();
             this.FamilyPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DepGRD)).BeginInit();
             this.WorkPNL.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GenderLBL
@@ -1605,7 +1611,7 @@
             this.StatusLBL.BackColor = System.Drawing.Color.Transparent;
             this.StatusLBL.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.StatusLBL.ForeColor = System.Drawing.Color.White;
-            this.StatusLBL.Location = new System.Drawing.Point(52, 205);
+            this.StatusLBL.Location = new System.Drawing.Point(52, 238);
             this.StatusLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.StatusLBL.Name = "StatusLBL";
             this.StatusLBL.Size = new System.Drawing.Size(104, 19);
@@ -2159,6 +2165,65 @@
             this.panel3.Size = new System.Drawing.Size(550, 600);
             this.panel3.TabIndex = 234;
             // 
+            // TypeOfficer
+            // 
+            this.TypeOfficer.AutoSize = true;
+            this.TypeOfficer.Checked = true;
+            this.TypeOfficer.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.TypeOfficer.ForeColor = System.Drawing.Color.White;
+            this.TypeOfficer.Location = new System.Drawing.Point(56, 5);
+            this.TypeOfficer.Name = "TypeOfficer";
+            this.TypeOfficer.Size = new System.Drawing.Size(71, 23);
+            this.TypeOfficer.TabIndex = 235;
+            this.TypeOfficer.TabStop = true;
+            this.TypeOfficer.Text = "Officer";
+            this.TypeOfficer.UseVisualStyleBackColor = true;
+            this.TypeOfficer.CheckedChanged += new System.EventHandler(this.TypeOfficer_CheckedChanged);
+            // 
+            // TypeGuard
+            // 
+            this.TypeGuard.AutoSize = true;
+            this.TypeGuard.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.TypeGuard.ForeColor = System.Drawing.Color.White;
+            this.TypeGuard.Location = new System.Drawing.Point(142, 5);
+            this.TypeGuard.Name = "TypeGuard";
+            this.TypeGuard.Size = new System.Drawing.Size(65, 23);
+            this.TypeGuard.TabIndex = 236;
+            this.TypeGuard.Text = "Guard";
+            this.TypeGuard.UseVisualStyleBackColor = true;
+            this.TypeGuard.CheckedChanged += new System.EventHandler(this.TypeGuard_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(2, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 19);
+            this.label3.TabIndex = 237;
+            this.label3.Text = "Type:";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.TypeGuard);
+            this.panel1.Controls.Add(this.TypeOfficer);
+            this.panel1.Location = new System.Drawing.Point(51, 202);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(236, 33);
+            this.panel1.TabIndex = 238;
+            // 
+            // TypeWarn
+            // 
+            this.TypeWarn.AutoPopDelay = 3000;
+            this.TypeWarn.InitialDelay = 500;
+            this.TypeWarn.ReshowDelay = 100;
+            this.TypeWarn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
             // GuardsEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2187,6 +2252,7 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label41);
+            this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GuardsEdit";
@@ -2203,6 +2269,8 @@
             this.WorkPNL.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2364,5 +2432,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Middle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Last;
         private System.Windows.Forms.DataGridViewComboBoxColumn Rel;
+        private System.Windows.Forms.RadioButton TypeOfficer;
+        private System.Windows.Forms.RadioButton TypeGuard;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolTip TypeWarn;
     }
 }

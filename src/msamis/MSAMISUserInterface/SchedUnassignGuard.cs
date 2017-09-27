@@ -125,6 +125,7 @@ namespace MSAMISUserInterface {
             ReportPNL.Hide();
             GuardsLBL.ForeColor = _dark;
             ReportLBL.ForeColor = _light;
+            DateEffective.MinDate = DateTime.Now;
         }
 
         private void LoadPage() {

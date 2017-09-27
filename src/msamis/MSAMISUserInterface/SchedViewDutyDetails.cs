@@ -19,7 +19,10 @@ namespace MSAMISUserInterface {
         public SchedViewDutyDetails() {
             InitializeComponent();
             Opacity = 0;
-        }
+        } 
+
+
+
 
         private const int CsDropshadow = 0x20000;
 
@@ -43,6 +46,7 @@ namespace MSAMISUserInterface {
         }
 
         public void LoadPage() {
+            DateEffective.MinDate = DateTime.Now;
             if (!Name.Equals("Archived")) {
                 var p = Attendance.GetCurrentPayPeriod();
                 _attendance = new Attendance(Aid, p.month, p.period, p.year);
@@ -102,9 +106,9 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshDutyDetails() {
-            DutyDetailsGRD.DataSource = !Name.Equals("Archived")
-                ? Scheduling.GetDutyDetailsSummary(Aid)
-                : Archiver.GetDutyDetailsSummary(Aid);
+            DutyDetailsGRD.DataSource = Name.Equals("Archived")
+                ? Archiver.GetDutyDetailsSummary(Aid)
+                : Name.Equals("History") ? Scheduling.GetDutyDetailsSummaryHistory(Aid): Scheduling.GetDutyDetailsSummary(Aid);
             DutyDetailsGRD.Columns[0].Visible = false;
             DutyDetailsGRD.Columns[1].HeaderText = "TIME-IN";
             DutyDetailsGRD.Columns[2].HeaderText = "TIME-OUT";
@@ -122,19 +126,23 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshAttendance() {
-            if (!Name.Equals("Archived")) {
-                AttendanceGRD.DataSource = _attendance.GetAttendance_View(
-                    ((ComboBoxDays)PeriodCMBX.SelectedItem).Month,
-                    ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-                AttendanceGRD.Columns[8].Visible = false;
-                AttendanceGRD.Columns[9].Visible = false;
-                AttendanceGRD.Columns[10].Visible = false;
-                AttendanceGRD.Columns[11].Visible = false;
-            }
-            else {
-                AttendanceGRD.DataSource = Archiver.GetAttendance(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
-                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-            }
+            try {
+                if (!Name.Equals("Archived")) {
+                    AttendanceGRD.DataSource = _attendance.GetAttendance_View(
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
+                    AttendanceGRD.Columns[8].Visible = false;
+                    AttendanceGRD.Columns[9].Visible = false;
+                    AttendanceGRD.Columns[10].Visible = false;
+                    AttendanceGRD.Columns[11].Visible = false;
+                }
+                else {
+                    AttendanceGRD.DataSource = Archiver.GetAttendance(Gid,
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
+                }
+            
+          
 
             AttendanceGRD.Columns[0].Visible = false;
             AttendanceGRD.Columns[1].Visible = false;
@@ -223,7 +231,7 @@ namespace MSAMISUserInterface {
                 ACertifiedLBL.Text = attendance.Rows[0][1].ToString();
                
                 try {
-                    string[] tooltip = Archiver.GetAttendanceTooltip(Aid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+                    string[] tooltip = Archiver.GetAttendanceTooltip(Gid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
 
                     OrdinaryDay.Items[3].Text = tooltip[0];
                     OrdinaryDay.Items[4].Text = tooltip[1];
@@ -256,7 +264,10 @@ namespace MSAMISUserInterface {
                 catch (Exception exception) {
                     Console.WriteLine(exception);
                 }
-
+                
+            }
+            } catch (Exception e) {
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -324,16 +335,8 @@ namespace MSAMISUserInterface {
         }
 
         private void DismissBTN_Click(object sender, EventArgs e) {
-            var x = RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected schedule?",
-                "Dismiss Schedule", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (x == DialogResult.Yes) {
-                Scheduling.DismissDuty(_did);
-                LoadPage();
-            }
-            if (DutyDetailsGRD.Rows.Count == 0) {
-                DismissBTN.Visible = false;
-                EditDutyDetailsBTN.Visible = false;
-            }
+            DismissPNL.BringToFront();
+            DismissPNL.Show();
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
@@ -440,6 +443,22 @@ namespace MSAMISUserInterface {
             HidePop(OrdinaryDay);
         }
 
+        private void DismissCANCEL_Click(object sender, EventArgs e) {
+            DismissPNL.Hide();
+        }
 
+        private void DismissOK_Click(object sender, EventArgs e) {
+            var x = RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected schedule?",
+                "Dismiss Schedule", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (x == DialogResult.Yes) {
+                Scheduling.DismissDuty(_did, DateEffective.Value);
+                LoadPage();
+            }
+            if (DutyDetailsGRD.Rows.Count == 0) {
+                DismissBTN.Visible = false;
+                EditDutyDetailsBTN.Visible = false;
+                ErrorPNL.Visible = true;
+            }
+        }
     }
 }

@@ -444,7 +444,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
         #region DutyDetail Operations  (Add + Dismiss)  ✔Done
        
-        public static string AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
+        public static string AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days, DateTime DateEffective, DateTime DateDismissed) {
             bool isOverlap = HasOverlap(aid, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
             if (isOverlap) {
                 return ">";
@@ -460,21 +460,22 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         `TI_hh`, `TI_mm`, `TI_period`, 
                         `TO_hh`, `TO_mm`, `TO_period`,
                         `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`, 
-                        `DStatus`, `minutediff`,`to_actual_hh`,`to_actual_mm`,`to_actual_period`) 
+                        `DStatus`, `minutediff`,`to_actual_hh`,`to_actual_mm`,`to_actual_period`, `date_effective`, `date_dismissal`) 
                         VALUES 
                         ('{aid}',
                         '{TI_hr}','{TI_min}','{TI_ampm}',
                         '{to_props:hh}','{to_props:mm}','{to_props:tt}',
                         '{ToInt32(days.Mon)}','{ToInt32(days.Tue)}','{ToInt32(days.Wed)}','{ToInt32(days.Thu)}','{ToInt32(days.Fri)}',
                         '{ToInt32(days.Sat)}','{ToInt32(days.Sun)}',
-                        '{Enumeration.DutyDetailStatus.Active}', {(int)e.TotalMinutes},
-                        '{TO_hr}','{TO_min}','{TO_ampm}');
+                        '{Enumeration.DutyDetailStatus.Pending}', {(int)e.TotalMinutes},
+                        '{TO_hr}','{TO_min}','{TO_ampm}', '{DateEffective:yyyy-MM-dd}', '{DateDismissed:yyyy-MM-dd}');
                         ";
             
             //if (e.TotalHours > 8) { return "="; } else if (e.TotalHours < 8) { return "="; }
             SQLTools.ExecuteNonQuery(q);
             return "=";
         }
+
 
         public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
             string wq = $@"SELECT aid FROM msadb.dutydetails where did = '{did}';";
@@ -505,10 +506,18 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             return "=";
         }
 
-        public static void DismissDuty (int did) {
+        public static void UpdateDutyDetailDates(int did, DateTime de, DateTime dd) {
+            var q = $@"UPDATE `msadb`.`dutydetails` SET `date_effective`='{de:yyyy-MM-dd}', `date_dismissal`='{dd:yyyy-MM-dd}' WHERE `DID`='{did}';";
+            SQLTools.ExecuteNonQuery(q);
+        }
+
+        public static void DismissDuty (int did, DateTime dismissal_date) {
             // Set duty detail to inactive.
             // Previous duty na ni niya.
-            String q = "UPDATE `msadb`.`dutydetails` SET `DStatus`="+Enumeration.DutyDetailStatus.Inactive+" WHERE `DID`={0}";
+            String q = $@"UPDATE `msadb`.`dutydetails` 
+                            SET `DStatus`={Enumeration.DutyDetailStatus.Inactive},
+                            `Date_Dismissal`={dismissal_date:yyyy-MM-dd}
+                            WHERE `DID`={0}";
             q = String.Format(q, did);
             SQLTools.ExecuteNonQuery(q);
         }
@@ -603,13 +612,26 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_actual_hh,':',to_actual_mm,' ',to_actual_period) as TimeOut,
                     'days_columnMTWThFSSu' as days from 
-                    dutydetails where DStatus=1 and AID=" + AID);
+                    dutydetails dutydetails where DStatus=1 and AID=" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
             }
             return dt;
         }
 
+        public static DataTable GetDutyDetailsSummaryHistory(int AID) {
+            DataTable dt =
+                SQLTools.ExecuteQuery(@"
+                    select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
+                    concat (to_actual_hh,':',to_actual_mm,' ',to_actual_period) as TimeOut,
+                    'days_columnMTWThFSSu' as days from 
+                    dutydetails and AID =" + AID);
+            foreach (DataRow e in dt.Rows) {
+                e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
+            }
+            return dt;
+        }
+        
         /// <summary>
         /// Returns Individual Time elements of DutyDetail.
         /// </summary>
@@ -705,7 +727,9 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             }
         }
 
-
+        public static void CancelDismissal(int did) {
+            var q = $@"UPDATE `msadb`.`dutydetails` SET `date_dismissal`='9999-12-31' WHERE `DID`='{did}';";
+        }
 
 
 

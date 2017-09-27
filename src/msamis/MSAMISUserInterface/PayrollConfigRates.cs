@@ -136,6 +136,7 @@ namespace MSAMISUserInterface {
 
         private void TaxPnl_Click(object sender, EventArgs e) {
             ChangePage(WithPagePNL, TaxPnl, TaxLbl, TaxConLbl);
+            LoadTaxPage();
         }
 
         private void MultPNL_MouseEnter(object sender, EventArgs e) {
@@ -934,7 +935,7 @@ namespace MSAMISUserInterface {
 
         private void RatesLoader_DoWork(object sender, DoWorkEventArgs e) {
             LoadSssPage();
-            LoadTaxPage();
+           // LoadTaxPage();
             LoadRatesMult();
             LoadGlobalPage();
         }

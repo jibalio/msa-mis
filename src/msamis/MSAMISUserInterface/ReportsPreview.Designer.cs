@@ -37,23 +37,8 @@
             this.PayslipSaveTo = new System.Windows.Forms.Button();
             this.ApproveLBL = new System.Windows.Forms.Label();
             this.PayslipPanel = new System.Windows.Forms.Panel();
-            this.PayslipNameLBL = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.PayslipPeriodLBL = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.DSSSLBL = new System.Windows.Forms.Label();
-            this.WithHoldingLBL = new System.Windows.Forms.Label();
-            this.DPagIbigLBL = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.DTotalLBL = new System.Windows.Forms.Label();
-            this.DWithLBL = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.DPhilHealthLBL = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.DCashAdvanceLBL = new System.Windows.Forms.Label();
+            this.NetPayLBL = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.B13LBL = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.BAllowanceLBL = new System.Windows.Forms.Label();
@@ -65,8 +50,24 @@
             this.BColaLBL = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.NetPayLBL = new System.Windows.Forms.Label();
+            this.DCashAdvanceLBL = new System.Windows.Forms.Label();
+            this.DSSSLBL = new System.Windows.Forms.Label();
+            this.WithHoldingLBL = new System.Windows.Forms.Label();
+            this.DPagIbigLBL = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.DTotalLBL = new System.Windows.Forms.Label();
+            this.DWithLBL = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.DPhilHealthLBL = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.PayslipPeriodLBL = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.PayslipNameLBL = new System.Windows.Forms.Label();
+            this.PayslipPrint = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GReportGRD)).BeginInit();
             this.PayslipPanel.SuspendLayout();
@@ -202,7 +203,7 @@
             this.PayslipSaveTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PayslipSaveTo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PayslipSaveTo.ForeColor = System.Drawing.Color.White;
-            this.PayslipSaveTo.Location = new System.Drawing.Point(378, 526);
+            this.PayslipSaveTo.Location = new System.Drawing.Point(450, 529);
             this.PayslipSaveTo.Name = "PayslipSaveTo";
             this.PayslipSaveTo.Size = new System.Drawing.Size(131, 32);
             this.PayslipSaveTo.TabIndex = 19;
@@ -264,55 +265,172 @@
             this.PayslipPanel.TabIndex = 245;
             this.PayslipPanel.Visible = false;
             // 
-            // PayslipNameLBL
+            // NetPayLBL
             // 
-            this.PayslipNameLBL.AutoSize = true;
-            this.PayslipNameLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayslipNameLBL.Location = new System.Drawing.Point(24, 20);
-            this.PayslipNameLBL.Name = "PayslipNameLBL";
-            this.PayslipNameLBL.Size = new System.Drawing.Size(189, 16);
-            this.PayslipNameLBL.TabIndex = 0;
-            this.PayslipNameLBL.Text = "REGODON, RHYLE ABRAM P.";
+            this.NetPayLBL.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NetPayLBL.ForeColor = System.Drawing.Color.Black;
+            this.NetPayLBL.Location = new System.Drawing.Point(24, 563);
+            this.NetPayLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NetPayLBL.Name = "NetPayLBL";
+            this.NetPayLBL.Size = new System.Drawing.Size(196, 19);
+            this.NetPayLBL.TabIndex = 369;
+            this.NetPayLBL.Text = "TOTAL PAY: P15, 231";
+            this.NetPayLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // label9
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(327, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "THIS IS TO CERTIFY THAT I\'VE RECIEVED THE FULL";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(24, 526);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(318, 16);
+            this.label9.TabIndex = 368;
+            this.label9.Text = "PLEASE COUNT YOUR MONEY BEFORE LEAVING";
             // 
-            // label4
+            // B13LBL
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(24, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(291, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "MOUNT OF MY SALARY FOR THE PERIOD OF";
+            this.B13LBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.B13LBL.ForeColor = System.Drawing.Color.Black;
+            this.B13LBL.Location = new System.Drawing.Point(174, 361);
+            this.B13LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.B13LBL.Name = "B13LBL";
+            this.B13LBL.Size = new System.Drawing.Size(181, 21);
+            this.B13LBL.TabIndex = 367;
+            this.B13LBL.Text = "-23,289.29";
+            this.B13LBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // PayslipPeriodLBL
+            // label11
             // 
-            this.PayslipPeriodLBL.AutoSize = true;
-            this.PayslipPeriodLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayslipPeriodLBL.Location = new System.Drawing.Point(24, 84);
-            this.PayslipPeriodLBL.Name = "PayslipPeriodLBL";
-            this.PayslipPeriodLBL.Size = new System.Drawing.Size(136, 16);
-            this.PayslipPeriodLBL.TabIndex = 3;
-            this.PayslipPeriodLBL.Text = "2ND HALF OF 9/2017";
+            this.label11.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(24, 362);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 19);
+            this.label11.TabIndex = 366;
+            this.label11.Text = "Thirteenth Month:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label6
+            // BAllowanceLBL
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(24, 133);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "DEDUCTIONS";
+            this.BAllowanceLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BAllowanceLBL.ForeColor = System.Drawing.Color.Black;
+            this.BAllowanceLBL.Location = new System.Drawing.Point(174, 441);
+            this.BAllowanceLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BAllowanceLBL.Name = "BAllowanceLBL";
+            this.BAllowanceLBL.Size = new System.Drawing.Size(181, 21);
+            this.BAllowanceLBL.TabIndex = 365;
+            this.BAllowanceLBL.Text = "-23,289.29";
+            this.BAllowanceLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(24, 416);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 16);
+            this.label14.TabIndex = 363;
+            this.label14.Text = "Cash Bond";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(23, 471);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(196, 19);
+            this.label15.TabIndex = 361;
+            this.label15.Text = "Total Deductions";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // BTotalLBL
+            // 
+            this.BTotalLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTotalLBL.ForeColor = System.Drawing.Color.Black;
+            this.BTotalLBL.Location = new System.Drawing.Point(174, 465);
+            this.BTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BTotalLBL.Name = "BTotalLBL";
+            this.BTotalLBL.Size = new System.Drawing.Size(181, 30);
+            this.BTotalLBL.TabIndex = 362;
+            this.BTotalLBL.Text = "₱ -10,919.20";
+            this.BTotalLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // BBondsLBL
+            // 
+            this.BBondsLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBondsLBL.ForeColor = System.Drawing.Color.Black;
+            this.BBondsLBL.Location = new System.Drawing.Point(174, 414);
+            this.BBondsLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BBondsLBL.Name = "BBondsLBL";
+            this.BBondsLBL.Size = new System.Drawing.Size(181, 21);
+            this.BBondsLBL.TabIndex = 360;
+            this.BBondsLBL.Text = "-23,289.29";
+            this.BBondsLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(24, 443);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(140, 16);
+            this.label18.TabIndex = 359;
+            this.label18.Text = "Emergency Allowance:";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // BColaLBL
+            // 
+            this.BColaLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BColaLBL.ForeColor = System.Drawing.Color.Black;
+            this.BColaLBL.Location = new System.Drawing.Point(174, 387);
+            this.BColaLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BColaLBL.Name = "BColaLBL";
+            this.BColaLBL.Size = new System.Drawing.Size(181, 21);
+            this.BColaLBL.TabIndex = 358;
+            this.BColaLBL.Text = "-23,289.29";
+            this.BColaLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(24, 389);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(38, 16);
+            this.label20.TabIndex = 357;
+            this.label20.Text = "Cola:";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(24, 336);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 16);
+            this.label21.TabIndex = 356;
+            this.label21.Text = "BONUSES";
+            // 
+            // DCashAdvanceLBL
+            // 
+            this.DCashAdvanceLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DCashAdvanceLBL.ForeColor = System.Drawing.Color.Black;
+            this.DCashAdvanceLBL.Location = new System.Drawing.Point(174, 265);
+            this.DCashAdvanceLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DCashAdvanceLBL.Name = "DCashAdvanceLBL";
+            this.DCashAdvanceLBL.Size = new System.Drawing.Size(181, 21);
+            this.DCashAdvanceLBL.TabIndex = 355;
+            this.DCashAdvanceLBL.Text = "-23,289.29";
+            this.DCashAdvanceLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DSSSLBL
             // 
@@ -450,172 +568,75 @@
             this.label40.Text = "PHIC:";
             this.label40.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // DCashAdvanceLBL
+            // label6
             // 
-            this.DCashAdvanceLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DCashAdvanceLBL.ForeColor = System.Drawing.Color.Black;
-            this.DCashAdvanceLBL.Location = new System.Drawing.Point(174, 265);
-            this.DCashAdvanceLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.DCashAdvanceLBL.Name = "DCashAdvanceLBL";
-            this.DCashAdvanceLBL.Size = new System.Drawing.Size(181, 21);
-            this.DCashAdvanceLBL.TabIndex = 355;
-            this.DCashAdvanceLBL.Text = "-23,289.29";
-            this.DCashAdvanceLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(24, 133);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 16);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "DEDUCTIONS";
             // 
-            // B13LBL
+            // PayslipPeriodLBL
             // 
-            this.B13LBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.B13LBL.ForeColor = System.Drawing.Color.Black;
-            this.B13LBL.Location = new System.Drawing.Point(174, 361);
-            this.B13LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.B13LBL.Name = "B13LBL";
-            this.B13LBL.Size = new System.Drawing.Size(181, 21);
-            this.B13LBL.TabIndex = 367;
-            this.B13LBL.Text = "-23,289.29";
-            this.B13LBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.PayslipPeriodLBL.AutoSize = true;
+            this.PayslipPeriodLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayslipPeriodLBL.Location = new System.Drawing.Point(24, 84);
+            this.PayslipPeriodLBL.Name = "PayslipPeriodLBL";
+            this.PayslipPeriodLBL.Size = new System.Drawing.Size(136, 16);
+            this.PayslipPeriodLBL.TabIndex = 3;
+            this.PayslipPeriodLBL.Text = "2ND HALF OF 9/2017";
             // 
-            // label11
+            // label4
             // 
-            this.label11.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(24, 362);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(126, 19);
-            this.label11.TabIndex = 366;
-            this.label11.Text = "Thirteenth Month:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(24, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(291, 16);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "MOUNT OF MY SALARY FOR THE PERIOD OF";
             // 
-            // BAllowanceLBL
+            // label3
             // 
-            this.BAllowanceLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BAllowanceLBL.ForeColor = System.Drawing.Color.Black;
-            this.BAllowanceLBL.Location = new System.Drawing.Point(174, 441);
-            this.BAllowanceLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.BAllowanceLBL.Name = "BAllowanceLBL";
-            this.BAllowanceLBL.Size = new System.Drawing.Size(181, 21);
-            this.BAllowanceLBL.TabIndex = 365;
-            this.BAllowanceLBL.Text = "-23,289.29";
-            this.BAllowanceLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 41);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(327, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "THIS IS TO CERTIFY THAT I\'VE RECIEVED THE FULL";
             // 
-            // label14
+            // PayslipNameLBL
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(24, 416);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(72, 16);
-            this.label14.TabIndex = 363;
-            this.label14.Text = "Cash Bond";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.PayslipNameLBL.AutoSize = true;
+            this.PayslipNameLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayslipNameLBL.Location = new System.Drawing.Point(24, 20);
+            this.PayslipNameLBL.Name = "PayslipNameLBL";
+            this.PayslipNameLBL.Size = new System.Drawing.Size(189, 16);
+            this.PayslipNameLBL.TabIndex = 0;
+            this.PayslipNameLBL.Text = "REGODON, RHYLE ABRAM P.";
             // 
-            // label15
+            // PayslipPrint
             // 
-            this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(23, 471);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(196, 19);
-            this.label15.TabIndex = 361;
-            this.label15.Text = "Total Deductions";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // BTotalLBL
-            // 
-            this.BTotalLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTotalLBL.ForeColor = System.Drawing.Color.Black;
-            this.BTotalLBL.Location = new System.Drawing.Point(174, 465);
-            this.BTotalLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.BTotalLBL.Name = "BTotalLBL";
-            this.BTotalLBL.Size = new System.Drawing.Size(181, 30);
-            this.BTotalLBL.TabIndex = 362;
-            this.BTotalLBL.Text = "₱ -10,919.20";
-            this.BTotalLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // BBondsLBL
-            // 
-            this.BBondsLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BBondsLBL.ForeColor = System.Drawing.Color.Black;
-            this.BBondsLBL.Location = new System.Drawing.Point(174, 414);
-            this.BBondsLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.BBondsLBL.Name = "BBondsLBL";
-            this.BBondsLBL.Size = new System.Drawing.Size(181, 21);
-            this.BBondsLBL.TabIndex = 360;
-            this.BBondsLBL.Text = "-23,289.29";
-            this.BBondsLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(24, 443);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(140, 16);
-            this.label18.TabIndex = 359;
-            this.label18.Text = "Emergency Allowance:";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // BColaLBL
-            // 
-            this.BColaLBL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BColaLBL.ForeColor = System.Drawing.Color.Black;
-            this.BColaLBL.Location = new System.Drawing.Point(174, 387);
-            this.BColaLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.BColaLBL.Name = "BColaLBL";
-            this.BColaLBL.Size = new System.Drawing.Size(181, 21);
-            this.BColaLBL.TabIndex = 358;
-            this.BColaLBL.Text = "-23,289.29";
-            this.BColaLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(24, 389);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(38, 16);
-            this.label20.TabIndex = 357;
-            this.label20.Text = "Cola:";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(24, 336);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 16);
-            this.label21.TabIndex = 356;
-            this.label21.Text = "BONUSES";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(24, 526);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(318, 16);
-            this.label9.TabIndex = 368;
-            this.label9.Text = "PLEASE COUNT YOUR MONEY BEFORE LEAVING";
-            // 
-            // NetPayLBL
-            // 
-            this.NetPayLBL.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NetPayLBL.ForeColor = System.Drawing.Color.Black;
-            this.NetPayLBL.Location = new System.Drawing.Point(24, 563);
-            this.NetPayLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.NetPayLBL.Name = "NetPayLBL";
-            this.NetPayLBL.Size = new System.Drawing.Size(196, 19);
-            this.NetPayLBL.TabIndex = 369;
-            this.NetPayLBL.Text = "TOTAL PAY: P15, 231";
-            this.NetPayLBL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PayslipPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PayslipPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.PayslipPrint.BackgroundImage = global::MSAMISUserInterface.Properties.Resources.Button;
+            this.PayslipPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PayslipPrint.FlatAppearance.BorderSize = 0;
+            this.PayslipPrint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.PayslipPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            this.PayslipPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PayslipPrint.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayslipPrint.ForeColor = System.Drawing.Color.White;
+            this.PayslipPrint.Location = new System.Drawing.Point(313, 529);
+            this.PayslipPrint.Name = "PayslipPrint";
+            this.PayslipPrint.Size = new System.Drawing.Size(131, 32);
+            this.PayslipPrint.TabIndex = 246;
+            this.PayslipPrint.Text = "PRINT";
+            this.PayslipPrint.UseVisualStyleBackColor = false;
+            this.PayslipPrint.Visible = false;
             // 
             // ReportsPreview
             // 
@@ -624,6 +645,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(898, 598);
             this.ControlBox = false;
+            this.Controls.Add(this.PayslipPrint);
             this.Controls.Add(this.PayslipPanel);
             this.Controls.Add(this.ApproveLBL);
             this.Controls.Add(this.PayslipSaveTo);
@@ -688,5 +710,6 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label DPhilHealthLBL;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button PayslipPrint;
     }
 }

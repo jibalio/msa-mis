@@ -56,6 +56,7 @@ namespace MSAMISUserInterface {
                 case 5:
                     NameLBL.Text = "Payslip Details";
                     PayslipSaveTo.Visible = true;
+                    PayslipPrint.Visible = true;
                     ApproveLBL.Visible = true;
                     ApproveLBL.Text = "Approved by: " + Pay.ApprovedBy;
                     PayslipPanel.Visible = true;
