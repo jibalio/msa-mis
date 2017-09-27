@@ -141,7 +141,7 @@ namespace MSAMISUserInterface {
                     var res = Scheduling.AddDutyDetail(Aid, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text,
                         TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
                         new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
-                            _dutyDays[6], _dutyDays[0]));
+                            _dutyDays[6], _dutyDays[0]), DateEffectiveCheck.Checked ? DateEffective.Value : DateTime.Now, DateDismissedCheck.Checked ? DateDismissed.Value : new DateTime(9999,12,31)); 
                     if (res.Equals(">")) {
                         HoursTLTP.ToolTipTitle = "Duty Details";
                         HoursTLTP.Show("The specified schedule overlaps one of the current duty details.", HoursLBL, 2000);
@@ -156,6 +156,7 @@ namespace MSAMISUserInterface {
                         TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
                         new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
                             _dutyDays[6], _dutyDays[0]));
+                    Scheduling.UpdateDutyDetailDates(Did, DateEffective.Value, DateDismissed.Value);
                     if (res.Equals("<")) {
                         if (RylMessageBox.ShowDialog(
                                 "The schedule is less than 8hrs. Do you still want to add the details?", "Duty Hours",
@@ -187,8 +188,19 @@ namespace MSAMISUserInterface {
             }
         }
 
+
         #endregion
 
+        private void DateEffective_ValueChanged(object sender, EventArgs e) {
+            DateDismissed.MinDate = DateEffective.Value;
+        }
 
+        private void DateEffectiveCheck_CheckedChanged(object sender, EventArgs e) {
+            DateEffective.Enabled = DateEffectiveCheck.Checked;
+        }
+
+        private void DateDismissedCheck_CheckedChanged(object sender, EventArgs e) {
+            DateDismissed.Enabled = DateDismissedCheck.Checked;
+        }
     }
 }
