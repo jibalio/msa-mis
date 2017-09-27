@@ -166,6 +166,8 @@ namespace MSAMISUserInterface {
                 a[c] = (b[c][4] == 'p' ? "Regular" : "Overtime") + ": " + (((int)(ts.TotalHours)).ToString("00") + ":" + ((int)ts.Minutes).ToString("00")).ToString() + " hrs.";
             }
             return a;
+            
+            
         }
 
 
