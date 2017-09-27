@@ -503,12 +503,14 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         WHERE `DID`='{did}';
                          ";
             SQLTools.ExecuteNonQuery(q);
+            SQLTools.ExecuteNonQuery($@"DELETE FROM msadb.attendance where did={did}");
             return "=";
         }
 
         public static void UpdateDutyDetailDates(int did, DateTime de, DateTime dd) {
             var q = $@"UPDATE `msadb`.`dutydetails` SET `date_effective`='{de:yyyy-MM-dd}', `date_dismissal`='{dd:yyyy-MM-dd}' WHERE `DID`='{did}';";
             SQLTools.ExecuteNonQuery(q);
+            SQLTools.ExecuteNonQuery("call init_checkdate_dutydetail();");
         }
 
         public static void DismissDuty (int did, DateTime dismissal_date) {
@@ -607,15 +609,19 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         /// <param name="AID">Assignment ID</param>
         /// <returns>Columns: ["did", "TimeIn", "TimeOut", "Days"]</returns>
         public static DataTable GetDutyDetailsSummary (int AID) {
+            SQLTools.ExecuteNonQuery("call init_checkdate_dutydetail();");
             DataTable dt = 
                 SQLTools.ExecuteQuery(@"
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_actual_hh,':',to_actual_mm,' ',to_actual_period) as TimeOut,
                     'days_columnMTWThFSSu' as days, 
                     DATE_FORMAT(date_effective, '%Y-%m-%d') AS DateEffective, 
-                    DATE_FORMAT(date_dismissal, '%Y-%m-%d') AS DateDismissal  
+                    case DATE_FORMAT(date_dismissal, '%Y-%m-%d')
+						when '9999-12-31' then 'Not Set'
+						else DATE_FORMAT(date_dismissal, '%Y-%m-%d')
+                    end AS DateDismissal  
                from 
-					dutydetails dutydetails where DStatus=1 and AID=" + AID);
+					dutydetails  where (DStatus=1 or dstatus=3)  and AID=" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
             }

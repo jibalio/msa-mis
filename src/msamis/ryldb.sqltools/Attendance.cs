@@ -31,8 +31,7 @@ namespace MSAMISUserInterface {
             // So i need to retrieve ContractStart and ContractEnd of the request.
             int raid = int.Parse(drSdutyAssign["raid"].ToString());
             DataRow drra = SQLTools.ExecuteQuery($@"SELECT * FROM msadb.request_assign where raid='{raid}'").Rows[0];
-            DateTime cs = DateTime.Parse(drra["contractstart"].ToString());
-            DateTime ce = DateTime.Parse(drra["contractend"].ToString());
+            
             // Insert new period
             String ax = $@"INSERT IGNORE INTO `msadb`.`period` 
                             (`GID`, `month`, `period`, `year`, `cid`) VALUES 
@@ -40,8 +39,17 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery(ax);
             string ifn = SQLTools.getLastInsertedId("period", "pid");
 
-            DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun from dutydetails where AID =" + AID);
+
+            DataTable x = SQLTools.ExecuteQuery("select did, mon,tue,wed,thu,fri,sat,sun,date_effective, date_dismissal from dutydetails where AID =" + AID);
+            long tcs = DateTime.Parse(drra["contractstart"].ToString()).Ticks;
+            long tce = DateTime.Parse(drra["contractend"].ToString()).Ticks;
+            
             foreach (DataRow duties in x.Rows) {
+                long lcs = DateTime.Parse(duties["date_effective"].ToString()).Ticks;
+                long lce = DateTime.Parse(duties["date_dismissal"].ToString()).Ticks;
+                // COmpare kung later pa sa assigment span ang duty detail mag-effect.
+                DateTime cs = new DateTime(Math.Max(tcs, lcs));
+                DateTime ce = new DateTime(Math.Min(tce, lce));
                 List<int> dutydates = new List<int>();
                 int did = int.Parse(duties["did"].ToString());
                 if (duties["mon"].ToString() == "1") dutydates.AddRange(period.Mon);

@@ -33,6 +33,7 @@ namespace MSAMISUserInterface {
                     ");
                     SessionId = SQLTools.GetInt("select last_insert_id()");
                     SQLTools.ExecuteNonQuery($@"SET @cuser={SessionId};");
+                    SQLTools.ExecuteNonQuery($@"call init_checkdate_all");
                     return true;
                 }
                 else return false;
