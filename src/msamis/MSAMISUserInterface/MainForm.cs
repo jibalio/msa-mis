@@ -544,8 +544,8 @@ namespace MSAMISUserInterface {
 
         private void ReportsExportWorker_DoWork(object sender, DoWorkEventArgs e) {
             var rp = new ReportsPreview();
-            //rp.FormatPDF('d');
-            //rp.FormatPDF('s');
+            rp.FormatPDF('d');
+            rp.FormatPDF('s');
         }
 
         private void DMonthlyDutyReportPNL_MouseEnter(object sender, EventArgs e) {
@@ -2175,8 +2175,17 @@ namespace MSAMISUserInterface {
                         RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
                             "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-            }
-            else {
+            } else if (text.Equals("Print")) {
+                var FileName = PSummaryFilesLST.SelectedItems[0].SubItems[1].Text;
+                try {
+                    var rp = new ReportsPreview();
+                    //
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else {
                 if (RylMessageBox.ShowDialog(
                         "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
                         "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
@@ -2207,10 +2216,13 @@ namespace MSAMISUserInterface {
 
 
 
-        #endregion
 
         #endregion
 
+        #endregion
 
+        private void ControlBoxPanel_Paint(object sender, PaintEventArgs e) {
+
+        }
     }
 }

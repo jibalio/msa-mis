@@ -190,7 +190,18 @@ namespace MSAMISUserInterface {
                 q = $@"INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `iid`, `DateEffective`) VALUES ('{lid.ToString()}', '{ gid[c]}', '{IncidentId}', '{DateEffective:yyyy-MM-dd}');";
                 SQLTools.ExecuteNonQuery(q);
             }
-            
+        }
+
+        public static void AddUnassignmentRequestNoIncident(int cid, int[] gid, DateTime DateEffective) {
+            // 2b: Insert request
+            var q = "INSERT INTO `msadb`.`request` (`RequestType`, `CID`, `DateEntry`,`rstatus`) VALUES ('{0}', '{1}', '{2}','{3}')";
+            q = string.Format(q, Enumeration.RequestType.Dismissal, cid, SQLTools.getDateTime(), Enumeration.RequestStatus.Pending);
+            SQLTools.ExecuteNonQuery(q);
+            String lid = SQLTools.getLastInsertedId("request", "rid");
+            for (int c = 0; c < gid.Length; c++) {
+                q = $@"INSERT INTO `msadb`.`request_unassign` (`RID`, `gid`, `DateEffective`) VALUES ('{lid.ToString()}', '{ gid[c]}', '{DateEffective:yyyy-MM-dd}');";
+                SQLTools.ExecuteNonQuery(q);
+            }
         }
 
 

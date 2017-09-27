@@ -36,22 +36,30 @@ namespace MSAMISUserInterface {
                 var giDs = new int[GuardsGRD.RowCount];
                 for (var i = 0; i < GuardsGRD.RowCount; i++)
                     giDs[i] = int.Parse(GuardsGRD.Rows[i].Cells[0].Value.ToString());
-                Scheduling.AddUnassignmentRequest(Cid, giDs, IncidentTypeCMBX.SelectedIndex, Login.UserName,
-                    DateDTPKR.Value,
-                    LocationBX.Text.Replace("'", string.Empty), DescriptionBX.Text.Replace("'", string.Empty), DateEffective.Value);
 
-                try {
-                    _iid = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "IID"));
-                }
-                catch { }
-                try {
-                    foreach (DataGridViewRow row in DepsGRD.Rows) {
-                        InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()), row.Cells[1].Value.ToString().Replace("'", string.Empty),
-                            row.Cells[2].Value.ToString().Replace("'", string.Empty), row.Cells[3].Value.ToString().Replace("'", string.Empty));
+                if (EnableIncidentCHKBX.Checked) {
+                    Scheduling.AddUnassignmentRequest(Cid, giDs, IncidentTypeCMBX.SelectedIndex, Login.UserName,
+                        DateDTPKR.Value,
+                        LocationBX.Text.Replace("'", string.Empty), DescriptionBX.Text.Replace("'", string.Empty),
+                        DateEffective.Value);
+
+                    try {
+                        _iid = int.Parse(SQLTools.getLastInsertedId("IncidentReport", "IID"));
                     }
+                    catch { }
+                    try {
+                        foreach (DataGridViewRow row in DepsGRD.Rows) {
+                            InsertDependent(GetRelationshipIndex(row.Cells[4].Value.ToString()),
+                                row.Cells[1].Value.ToString().Replace("'", string.Empty),
+                                row.Cells[2].Value.ToString().Replace("'", string.Empty),
+                                row.Cells[3].Value.ToString().Replace("'", string.Empty));
+                        }
+                    }
+                    catch { }
                 }
-                catch { }
-
+                else {
+                    Scheduling.AddUnassignmentRequestNoIncident(Cid, giDs, DateEffective.Value);
+                }
                 RylMessageBox.ShowDialog("Your Request has been added", "Request Added", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 Reference.SchedLoadSidePnl();
@@ -111,7 +119,6 @@ namespace MSAMISUserInterface {
 
         private void Sched_DismissGuard_Load(object sender, EventArgs e) {
             LoadPage();
-            Location = new Point(Location.X + 175, Location.Y);
             FadeTMR.Start();
             IncidentTypeCMBX.SelectedIndex = 1;
             GuardsPNL.Show();
@@ -165,17 +172,22 @@ namespace MSAMISUserInterface {
                 ReportLBL.ForeColor = _light;
                 ret = false;
             }
-            GuardsPNL.Hide();
-            ReportPNL.Show();
-            GuardsLBL.ForeColor = _light;
-            ReportLBL.ForeColor = _dark;
-            if (LocationBX.Text.Equals("")) {
-                ShowToolTipOnBx(LocationTLTP, "Event Location", "Where did this incident happen?", LocationBX);
-                ret = false;
-            }
-            if (DescriptionBX.Text.Equals("")) {
-                ShowToolTipOnBx(DescriptionTLTP, "Event Description", "What happened in this incident?", DescriptionBX);
-                ret = false;
+            if (EnableIncidentCHKBX.Checked) {
+                if (LocationBX.Text.Equals("")) {
+                    ShowToolTipOnBx(LocationTLTP, "Event Location", "Where did this incident happen?", LocationBX);
+                    ret = false;
+                }
+                if (DescriptionBX.Text.Equals("")) {
+                    ShowToolTipOnBx(DescriptionTLTP, "Event Description", "What happened in this incident?",
+                        DescriptionBX);
+                    ret = false;
+                }
+                if (!ret) {
+                    GuardsPNL.Hide();
+                    ReportPNL.Show();
+                    GuardsLBL.ForeColor = _light;
+                    ReportLBL.ForeColor = _dark;
+                }
             }
             return ret;
         }
@@ -199,6 +211,10 @@ namespace MSAMISUserInterface {
         private void DelRowBTN_Click(object sender, EventArgs e) {
             if (DepsGRD.SelectedRows.Count > 0)
             DepsGRD.Rows.Remove(DepsGRD.SelectedRows[0]);
+        }
+
+        private void EnableIncidentCHKBX_CheckedChanged(object sender, EventArgs e) {
+            DisableIncidentPNL.Visible = !EnableIncidentCHKBX.Checked;
         }
     }
 }
