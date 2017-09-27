@@ -1805,6 +1805,19 @@ namespace MSAMISUserInterface {
             }
         }
 
+        private void SDutyDetailsPrintBTN_Click(object sender, EventArgs e) {
+            if (SSummaryFilesLST.Items.Count > 0) {
+                var FileName = SSummaryFilesLST.Items[0].SubItems[1].Text;
+                try {
+                    Reports.PrintPDF(FileName);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void SDutyDetailsPreviewBTN_Click(object sender, EventArgs e) {
             try {
                 Process.Start(SSummaryFilesLST.Items[0].SubItems[1].Text);
@@ -2174,6 +2187,19 @@ namespace MSAMISUserInterface {
                 if (PSummaryFilesLST.FocusedItem.Bounds.Contains(e.Location)) RightClickStrip.Show(Cursor.Position);
         }
 
+        private void PSalaryReportsPrintBTN_Click(object sender, EventArgs e) {
+            if (PSummaryFilesLST.Items.Count > 0) {
+                var FileName = PSummaryFilesLST.Items[0].SubItems[1].Text;
+                try {
+                    Reports.PrintPDF(FileName);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void PaySummaryRightClick(string text) {
             RightClickStrip.Hide();
             if (text.Equals("Open")) {
@@ -2232,5 +2258,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         #endregion
+
+
     }
 }
