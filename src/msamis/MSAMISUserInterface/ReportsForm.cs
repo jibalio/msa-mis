@@ -148,18 +148,9 @@ namespace MSAMISUserInterface {
             rp.FormatPDF('d');
 
             var r = new Reports();
-            DataTable approvedlist = Payroll.GetApprovedPayrollsList();
-            int gid, month, period, year;
-            int i;
-            //rylui.RylMessageBox.ShowDialog("Flag boiii");
-            for (i = 0; i < approvedlist.Rows.Count; i++)
-            {
-                gid = Convert.ToInt32(approvedlist.Rows[i][0]);
-                month = Convert.ToInt32(approvedlist.Rows[i][1]);
-                period = Convert.ToInt32(approvedlist.Rows[i][2]);
-                year = Convert.ToInt32(approvedlist.Rows[i][3]);
-                r.ExportPayslipPDF(gid, year, month, period);
-            }
+            r.ExportToPayslipPDF(Payroll.GetApprovedPayrollsList());
+
+            
 
         }
 

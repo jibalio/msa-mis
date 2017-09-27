@@ -1155,5 +1155,19 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             and pstatus = {Enumeration.PayrollStatus.Approved}";
             return SQLTools.ExecuteQuery(q);
         }
+
+        public static DataTable GetApprovedPayrollsList(int[] gids)
+        {
+            Attendance.Period px = Attendance.GetCurrentPayPeriod();
+            var q = $@"select gid, month, period, year from payroll
+            where month = {px.month}
+            and period = {px.period}
+            and year = {px.year}
+            and pstatus = {Enumeration.PayrollStatus.Approved}";
+            foreach (int x in gids) {
+                q += $" and gid={x} ";
+            }
+            return SQLTools.ExecuteQuery(q);
+        }
     }
 }
