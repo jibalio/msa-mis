@@ -101,6 +101,7 @@
         public class DutyDetailStatus {
             public static int Active = 1;
             public static int Inactive = 2;
+            public static int Pending = 3;
         }
 
         public class ClientStatus {

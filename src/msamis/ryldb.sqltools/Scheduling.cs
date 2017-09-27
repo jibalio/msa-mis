@@ -444,7 +444,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
         #region DutyDetail Operations  (Add + Dismiss)  ✔Done
        
-        public static string AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days, DateTime DateEffective) {
+        public static string AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days, DateTime DateEffective, DateTime DateDismissed) {
             bool isOverlap = HasOverlap(aid, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
             if (isOverlap) {
                 return ">";
@@ -460,15 +460,15 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                         `TI_hh`, `TI_mm`, `TI_period`, 
                         `TO_hh`, `TO_mm`, `TO_period`,
                         `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`, 
-                        `DStatus`, `minutediff`,`to_actual_hh`,`to_actual_mm`,`to_actual_period`, `date_effective`) 
+                        `DStatus`, `minutediff`,`to_actual_hh`,`to_actual_mm`,`to_actual_period`, `date_effective`, `date_dismissal`) 
                         VALUES 
                         ('{aid}',
                         '{TI_hr}','{TI_min}','{TI_ampm}',
                         '{to_props:hh}','{to_props:mm}','{to_props:tt}',
                         '{ToInt32(days.Mon)}','{ToInt32(days.Tue)}','{ToInt32(days.Wed)}','{ToInt32(days.Thu)}','{ToInt32(days.Fri)}',
                         '{ToInt32(days.Sat)}','{ToInt32(days.Sun)}',
-                        '{Enumeration.DutyDetailStatus.Active}', {(int)e.TotalMinutes},
-                        '{TO_hr}','{TO_min}','{TO_ampm}', '{DateEffective:yyyy-MM-dd}');
+                        '{Enumeration.DutyDetailStatus.Pending}', {(int)e.TotalMinutes},
+                        '{TO_hr}','{TO_min}','{TO_ampm}', '{DateEffective:yyyy-MM-dd}', '{DateDismissed:yyyy-MM-dd}');
                         ";
             
             //if (e.TotalHours > 8) { return "="; } else if (e.TotalHours < 8) { return "="; }
@@ -503,6 +503,11 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                          ";
             SQLTools.ExecuteNonQuery(q);
             return "=";
+        }
+
+        public static void UpdateDutyDetailDates(int did, DateTime de, DateTime dd) {
+            var q = $@"UPDATE `msadb`.`dutydetails` SET `date_effective`='{de:yyyy-MM-dd}', `date_dismissal`='{dd:yyyy-MM-dd}' WHERE `DID`='{did}';";
+            SQLTools.ExecuteNonQuery(q);
         }
 
         public static void DismissDuty (int did, DateTime dismissal_date) {
