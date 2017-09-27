@@ -476,6 +476,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             return "=";
         }
 
+
         public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
             string wq = $@"SELECT aid FROM msadb.dutydetails where did = '{did}';";
             int aid = SQLTools.GetInt(wq);
@@ -726,7 +727,9 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             }
         }
 
-
+        public static void CancelDismissal(int did) {
+            var q = $@"UPDATE `msadb`.`dutydetails` SET `date_dismissal`='9999-12-31' WHERE `DID`='{did}';";
+        }
 
 
 
