@@ -230,7 +230,7 @@ namespace MSAMISUserInterface {
                 ACertifiedLBL.Text = attendance.Rows[0][1].ToString();
                
                 try {
-                    string[] tooltip = Archiver.GetAttendanceTooltip(Aid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+                    string[] tooltip = Archiver.GetAttendanceTooltip(Gid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
 
                     OrdinaryDay.Items[3].Text = tooltip[0];
                     OrdinaryDay.Items[4].Text = tooltip[1];

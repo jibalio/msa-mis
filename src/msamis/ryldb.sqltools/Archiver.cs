@@ -127,7 +127,7 @@ namespace MSAMISUserInterface {
         public static  string[] GetAttendanceTooltip(int aid, int period, int month, int year) {
             string hpblob =
                 SQLTools.ExecuteSingleResult(
-                    $@"SELECT hp FROM msadbarchive.period where aid={aid} and period={period} and month = {
+                    $@"SELECT hp FROM msadbarchive.period where gid={aid} and period={period} and month = {
                             month
                         } and year={year};");
             HourProcessor h = (HourProcessor)Payroll._DeserializeObject(hpblob);
