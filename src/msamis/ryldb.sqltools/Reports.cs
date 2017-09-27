@@ -11,14 +11,15 @@ namespace MSAMISUserInterface
 {
     public class Reports
     {
+        public int flagAlign = 0;
         public SqlConnection conn;
         public String FilterText = "Search or filter";
         public String EmptyText = "";
         public static String ExtraQueryParams = "";
         public string summaryDate = "";
-        public Font myfontPayslip = FontFactory.GetFont("Arial", 5, BaseColor.BLACK);
-        public Font boldfontPayslip = FontFactory.GetFont("Arial", 5, Font.BOLD, BaseColor.BLACK);
-        public Font boldunderfontPayslip = FontFactory.GetFont("Arial", 5, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
+        public Font myfontPayslip = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
+        public Font boldfontPayslip = FontFactory.GetFont("Arial", 10, Font.BOLD, BaseColor.BLACK);
+        public Font boldunderfontPayslip = FontFactory.GetFont("Arial", 10, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
         public Font myfont = FontFactory.GetFont("Arial", 8, BaseColor.BLACK);
         public Font boldfont = FontFactory.GetFont("Arial", 8, Font.BOLD, BaseColor.BLACK);
         public Font boldunderfont = FontFactory.GetFont("Arial", 8, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
@@ -249,11 +250,24 @@ namespace MSAMISUserInterface
             return pdfDoc;
         }
 
-
         public void ExportToPayslipPDF(DataTable approvedList)
         {
             int gid, month, period, year;
             int i;
+
+
+            var PrintTable = new PdfPTable(2);
+            var alignTable = new PdfPTable(2);
+            
+            alignTable.DefaultCell.Padding = 3;
+            alignTable.WidthPercentage = 100;
+            alignTable.DefaultCell.BorderWidth = 0;
+            //alignTable.LockedWidth = true;
+
+            PrintTable.DefaultCell.Padding = 3;
+            PrintTable.WidthPercentage = 100;
+            PrintTable.DefaultCell.BorderWidth = 0;
+
             //rylui.RylMessageBox.ShowDialog("Flag boiii");
             for (i = 0; i < approvedList.Rows.Count; i++)
             {
@@ -261,6 +275,8 @@ namespace MSAMISUserInterface
                 month = Convert.ToInt32(approvedList.Rows[i][1]);
                 period = Convert.ToInt32(approvedList.Rows[i][2]);
                 year = Convert.ToInt32(approvedList.Rows[i][3]);
+                rylui.RylMessageBox.ShowDialog(gid.ToString() + month + period + year);
+
 
                 var newLine = Environment.NewLine;
                 PayrollReport pr = new PayrollReport(gid, year, month, period);
@@ -274,54 +290,62 @@ namespace MSAMISUserInterface
                 Chunk ChunkHeader2 = new Chunk(($@"{(p.period == 1 ? "1ST HALF" : "2ND HALF")} OF {p.month}/{p.year}") + newLine + newLine, boldfontPayslip);
                                             
                 Header.Add(ChunkHeader2);
-                //deductions
-                Phrase Ded = new Phrase("DEDUCTIONS:" + newLine, boldunderfontPayslip);
-                Phrase SSS = new Phrase("SSS: ", myfontPayslip);
-                Phrase ChunkSSS = new Phrase("₱" + pr.Sss.ToString("0.00") + newLine);
-                
-                Phrase PHIC = new Phrase("PHIC: ", myfontPayslip);
-                Chunk ChunkPHIC = new Chunk("Php " + pr.PHIC.ToString("₱0.00") + newLine);
-                PHIC.Add(ChunkPHIC);
-                Phrase TaxWith = new Phrase("Tax Withhold: ", myfontPayslip);
-                Chunk ChunkTaxWith = new Chunk("Php " + pr.Withtax.ToString("₱0.00") + newLine);
-                TaxWith.Add(ChunkTaxWith);
-                Phrase PagIbig = new Phrase("Pag-Ibig: ", myfontPayslip);
-                Chunk ChunkPagIbig = new Chunk("Php " + pr.HDMF.ToString("₱0.00") + newLine);
-                PagIbig.Add(ChunkPagIbig);
-                Phrase CashAdv = new Phrase("Cash Advance: ", myfontPayslip);
-                Chunk ChunkCashAdv = new Chunk("Php " + pr.CashAdvance.ToString("₱0.00") + newLine);
-                CashAdv.Add(ChunkCashAdv);
 
-                double TotalDedVal = pr.Sss + pr.PHIC + pr.Withtax + pr.HDMF + pr.CashAdvance; 
-                Phrase TotalDed = new Phrase("Total Deductions: ", boldfontPayslip);
-                Chunk ChunkTotalDed = new Chunk("Php " + TotalDedVal.ToString("₱0.00") + newLine + newLine);
-                TotalDed.Add(ChunkTotalDed);
+                //deductions
+
+                alignTable.AddCell(new Phrase("DEDUCTIONS:" + newLine, boldunderfontPayslip));
+                alignTable.AddCell(new Phrase(" ", boldunderfontPayslip));
+
+                alignTable.AddCell(new Phrase("SSS: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.Sss.ToString("0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("PHIC: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.PHIC.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Tax Withhold: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.Withtax.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Pag-Ibig: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.HDMF.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Cash Advance: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.CashAdvance.ToString("₱0.00"), myfontPayslip));
+
+                double TotalDedVal = pr.Sss + pr.PHIC + pr.Withtax + pr.HDMF + pr.CashAdvance;
+                alignTable.AddCell(new Phrase("Total Deductions: ", boldfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + TotalDedVal.ToString("₱0.00"), boldfontPayslip));
+
+                alignTable.AddCell(new Phrase(" "));
+                alignTable.AddCell(new Phrase(" "));
 
                 //Bonuses
-                Phrase Bon = new Phrase("BONUSES:" + newLine, boldunderfontPayslip);
-                Phrase ThirteenthMon = new Phrase("Thirteenth Month: ", myfontPayslip);
-                Chunk Chunk13Mon = new Chunk("Php " + pr.ThirteenthMonthPay.ToString("₱0.00") + newLine);
-                ThirteenthMon.Add(Chunk13Mon);
-                Phrase Cola = new Phrase("Cola: ", myfontPayslip);
-                Chunk ChunkCola = new Chunk("Php " + pr.Cola.ToString("₱0.00") + newLine);
-                Cola.Add(ChunkCola);
-                Phrase CashBond = new Phrase("Cash Bond: ", myfontPayslip);
-                Chunk ChunkCashBond = new Chunk("Php " + pr.CashBond.ToString("₱0.00") + newLine);
-                CashBond.Add(ChunkCashBond);
-                Phrase EmergencyAllow = new Phrase("Emergency Allowance: ", myfontPayslip);
-                Chunk ChunkEmergencyAllow = new Chunk("Php " + pr.EmergencyAllowance.ToString("₱0.00") + newLine);
-                EmergencyAllow.Add(ChunkEmergencyAllow);
+                alignTable.AddCell(new Phrase("BONUSES:", boldunderfontPayslip));
+                alignTable.AddCell(new Phrase("", boldunderfontPayslip));
+
+                alignTable.AddCell(new Phrase("Thirteenth Month: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.ThirteenthMonthPay.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Cola: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.Cola.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Cash Bond: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.CashBond.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Emergency Allowance: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.EmergencyAllowance.ToString("₱0.00"), myfontPayslip));
 
                 double TotalBonVal = pr.ThirteenthMonthPay + pr.Cola + pr.CashBond + pr.EmergencyAllowance;
-                Phrase TotalBon = new Phrase("Total Bonuses: ", boldfontPayslip);
-                Chunk ChunkTotalBon = new Chunk("Php " + TotalBonVal.ToString("₱0.00") + newLine + newLine);
-                TotalBon.Add(ChunkTotalBon);
+                alignTable.AddCell(new Phrase("Total Bonuses: ", boldfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + TotalBonVal.ToString("₱0.00"), boldfontPayslip));
 
-                Phrase Footer = new Phrase("PLEASE COUNT YOUR MONEY BEFORE LEAVING" + newLine + newLine, myfontPayslip);
+                alignTable.DefaultCell.Colspan = 2;
+                alignTable.AddCell(new Phrase(" "));
+                 
+                alignTable.AddCell(new Phrase("PLEASE COUNT YOUR MONEY BEFORE LEAVING", myfontPayslip));
 
-                Phrase Total = new Phrase("TOTAL PAY:", boldunderfontPayslip);
-                Chunk ChunkTotal = new Chunk("Php " + pr.NetAmountPaid.ToString("₱0.00") + newLine);
-                Total.Add(ChunkTotal);
+                alignTable.AddCell(new Phrase(" "));
+
+                alignTable.AddCell(new Phrase("TOTAL PAY: Php " + pr.NetAmountPaid.ToString("₱0.00"), boldunderfontPayslip));
 
                 //Export Content
 
@@ -340,38 +364,29 @@ namespace MSAMISUserInterface
                 }
                 using (FileStream stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
                 {
-                    Document pdfDoc = new Document(PageSize.A8, 10f, 10f, 10f, 10f);
+                    Document pdfDoc = getPDFSize(approvedList.Rows.Count);// new Document(PageSize.A8, 10f, 10f, 10f, 10f);
                     PdfWriter.GetInstance(pdfDoc, stream);
                     pdfDoc.Open();
                     pdfDoc.Add(Name);
                     pdfDoc.Add(Header);
 
-                    pdfDoc.Add(Ded);
-                    pdfDoc.Add(SSS);
-                    pdfDoc.Add(PHIC);
-                    pdfDoc.Add(TaxWith);
-                    pdfDoc.Add(PagIbig);
-                    pdfDoc.Add(CashAdv);
-                    pdfDoc.Add(TotalDed);
-
-                    pdfDoc.Add(Bon);
-                    pdfDoc.Add(ThirteenthMon);
-                    pdfDoc.Add(Cola);
-                    pdfDoc.Add(CashBond);
-                    pdfDoc.Add(EmergencyAllow);
-                    pdfDoc.Add(TotalBon);
-
-                    pdfDoc.Add(Footer);
-                    pdfDoc.Add(Total);
+                    pdfDoc.Add(alignTable);
                     pdfDoc.Close();
                     stream.Close();
                 }
                 //PrintPDF(filePath, fileName);
+                
             }
         }
 
+        private Document getPDFSize(int count)
+        {
+            if (count == 1)
+                return new Document(PageSize.A6, 10f, 10f, 10f, 10f);
+            else return new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+        }
 
-        public void PrintPDF(String fileName)
+        public static void PrintPDF(String fileName)
         {
             String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             String fileTempDir = filePath + "\\newTemp.pdf";

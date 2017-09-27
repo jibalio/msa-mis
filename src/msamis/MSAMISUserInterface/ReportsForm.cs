@@ -141,11 +141,13 @@ namespace MSAMISUserInterface {
         }
 
         private void ExportClientsSummaryBTN_Click(object sender, EventArgs e) {
+            /*
             var rp = new ReportsPreview();
             rp.FormatPDF('s');
             rp.FormatPDF('g');
             rp.FormatPDF('c');
             rp.FormatPDF('d');
+            */
 
             var r = new Reports();
             r.ExportToPayslipPDF(Payroll.GetApprovedPayrollsList());
