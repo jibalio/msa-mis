@@ -611,20 +611,30 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 SQLTools.ExecuteQuery(@"
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_actual_hh,':',to_actual_mm,' ',to_actual_period) as TimeOut,
-                    'days_columnMTWThFSSu' as days from 
-                    dutydetails dutydetails where DStatus=1 and AID=" + AID);
+                    'days_columnMTWThFSSu' as days, 
+                    DATE_FORMAT(date_effective, '%Y-%m-%d') AS DateEffective, 
+                    DATE_FORMAT(date_dismissal, '%Y-%m-%d') AS DateDismissal  
+               from 
+					dutydetails dutydetails where DStatus=1 and AID=" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
             }
             return dt;
         }
 
+        // NOTE: The dismissedOn field is different from DismissalDate.
+        // Dismissal date is th formal date of dismissal,
+        // Dismissed on is actual date of dismissal (e.g premautre dismissal).
+        // RATIONALE FOR NO STATUS: lmao pwede na man tan-awon ang datedismissal if pending pa ba o dili diba lmao.
         public static DataTable GetDutyDetailsSummaryHistory(int AID) {
             DataTable dt =
                 SQLTools.ExecuteQuery(@"
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_actual_hh,':',to_actual_mm,' ',to_actual_period) as TimeOut,
-                    'days_columnMTWThFSSu' as days from 
+                    'days_columnMTWThFSSu' as days,
+                    DATE_FORMAT(date_effective, '%Y-%m-%d') AS DateEffective, 
+                    DATE_FORMAT(DismissedOn, '%Y-%m-%d') AS DismissedOn                     
+                    from 
                     dutydetails and AID =" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
