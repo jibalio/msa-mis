@@ -50,6 +50,8 @@
             this.DaysTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.HoursTLTP = new System.Windows.Forms.ToolTip(this.components);
             this.FormLBL = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.DateEffective = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label20
@@ -546,6 +548,28 @@
             this.FormLBL.TabIndex = 141;
             this.FormLBL.Text = "Add Duty Detail";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label2.Location = new System.Drawing.Point(175, 443);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 19);
+            this.label2.TabIndex = 235;
+            this.label2.Text = "Date Effective:";
+            // 
+            // DateEffective
+            // 
+            this.DateEffective.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DateEffective.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.DateEffective.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateEffective.Location = new System.Drawing.Point(281, 440);
+            this.DateEffective.Name = "DateEffective";
+            this.DateEffective.Size = new System.Drawing.Size(101, 25);
+            this.DateEffective.TabIndex = 234;
+            // 
             // SchedAddDutyDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -553,6 +577,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(568, 598);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.DateEffective);
             this.Controls.Add(this.FormLBL);
             this.Controls.Add(this.SaBTN);
             this.Controls.Add(this.FBTN);
@@ -612,5 +638,7 @@
         private System.Windows.Forms.ToolTip DaysTLTP;
         private System.Windows.Forms.ToolTip HoursTLTP;
         private System.Windows.Forms.Label FormLBL;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker DateEffective;
     }
 }

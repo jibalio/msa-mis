@@ -17,6 +17,7 @@ namespace MSAMISUserInterface {
         private void Sched_AddDutyDetail_Load(object sender, EventArgs e) {
             FadeTMR.Start();
             AddBTN.Text = Button;
+            DateEffective.MinDate = DateTime.Now;
 
             if (Button.Equals("ADD")) {
                 TimeInHrBX.SelectedIndex = 0;

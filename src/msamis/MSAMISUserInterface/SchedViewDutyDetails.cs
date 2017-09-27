@@ -46,6 +46,7 @@ namespace MSAMISUserInterface {
         }
 
         public void LoadPage() {
+            DateEffective.MinDate = DateTime.Now;
             if (!Name.Equals("Archived")) {
                 var p = Attendance.GetCurrentPayPeriod();
                 _attendance = new Attendance(Aid, p.month, p.period, p.year);
@@ -266,7 +267,7 @@ namespace MSAMISUserInterface {
                 
             }
             } catch (Exception e) {
-
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -334,16 +335,8 @@ namespace MSAMISUserInterface {
         }
 
         private void DismissBTN_Click(object sender, EventArgs e) {
-            var x = RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected schedule?",
-                "Dismiss Schedule", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (x == DialogResult.Yes) {
-                Scheduling.DismissDuty(_did);
-                LoadPage();
-            }
-            if (DutyDetailsGRD.Rows.Count == 0) {
-                DismissBTN.Visible = false;
-                EditDutyDetailsBTN.Visible = false;
-            }
+            DismissPNL.BringToFront();
+            DismissPNL.Show();
         }
 
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
@@ -450,6 +443,22 @@ namespace MSAMISUserInterface {
             HidePop(OrdinaryDay);
         }
 
+        private void DismissCANCEL_Click(object sender, EventArgs e) {
+            DismissPNL.Hide();
+        }
 
+        private void DismissOK_Click(object sender, EventArgs e) {
+            var x = RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected schedule?",
+                "Dismiss Schedule", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (x == DialogResult.Yes) {
+                Scheduling.DismissDuty(_did, DateEffective.Value);
+                LoadPage();
+            }
+            if (DutyDetailsGRD.Rows.Count == 0) {
+                DismissBTN.Visible = false;
+                EditDutyDetailsBTN.Visible = false;
+                ErrorPNL.Visible = true;
+            }
+        }
     }
 }
