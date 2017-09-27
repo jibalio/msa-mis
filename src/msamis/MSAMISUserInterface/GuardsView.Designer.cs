@@ -867,7 +867,7 @@
             this.GIDLBL.BackColor = System.Drawing.Color.Transparent;
             this.GIDLBL.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.GIDLBL.ForeColor = System.Drawing.Color.White;
-            this.GIDLBL.Location = new System.Drawing.Point(117, 148);
+            this.GIDLBL.Location = new System.Drawing.Point(138, 148);
             this.GIDLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.GIDLBL.Name = "GIDLBL";
             this.GIDLBL.Size = new System.Drawing.Size(21, 19);
@@ -896,9 +896,9 @@
             this.label4.Location = new System.Drawing.Point(51, 148);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 19);
+            this.label4.Size = new System.Drawing.Size(83, 19);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Guard ID:";
+            this.label4.Text = "Guard Type:";
             // 
             // LNLBL
             // 
