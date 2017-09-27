@@ -13,6 +13,7 @@ namespace MSAMISUserInterface {
 
         private int _gender;
         private Label _label;
+        private int _guardType = 0;
 
         private Panel _panel;
         public string Button = "ADD";
@@ -826,6 +827,14 @@ namespace MSAMISUserInterface {
 
         private void AddRowBTN_Click(object sender, EventArgs e) {
             DepGRD.Rows.Add(-1, "First", "Middle", "Last", "");
+        }
+
+        private void TypeOfficer_CheckedChanged(object sender, EventArgs e) {
+            _guardType = TypeGuard.Checked ? 1 : 0;
+        }
+
+        private void TypeGuard_CheckedChanged(object sender, EventArgs e) {
+            _guardType = TypeGuard.Checked ? 1 : 0;
         }
     }
 }

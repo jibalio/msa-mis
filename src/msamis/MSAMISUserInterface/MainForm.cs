@@ -980,8 +980,16 @@ namespace MSAMISUserInterface {
                         "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     GuardsLoadReport();
                 }
-            }
-            else {
+            } else if (text.Equals("Print")) {
+                var FileName = GSummaryFilesLST.SelectedItems[0].SubItems[1].Text;
+                try {
+                    Reports.PrintPDF(FileName);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else {
                 if (RylMessageBox.ShowDialog(
                         "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
                         "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
@@ -1227,8 +1235,16 @@ namespace MSAMISUserInterface {
                         "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ClientsLoadSummary();
                 }
-            }
-            else {
+            } else if (text.Equals("Print")) {
+                var FileName = CSummaryFileLST.SelectedItems[0].SubItems[1].Text;
+                try {
+                    Reports.PrintPDF(FileName);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else {
                 if (RylMessageBox.ShowDialog(
                         "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
                         "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
@@ -1847,8 +1863,16 @@ namespace MSAMISUserInterface {
                         RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
                             "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-            }
-            else {
+            } else if (text.Equals("Print")) {
+                var FileName = SSummaryFilesLST.SelectedItems[0].SubItems[1].Text;
+                try {
+                    Reports.PrintPDF(FileName);
+                }
+                catch {
+                    RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
+                        "File Open Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else {
                 if (RylMessageBox.ShowDialog(
                         "Are you sure you want to delete the report for this month? \nThis action cannot be undone.",
                         "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
@@ -2178,8 +2202,7 @@ namespace MSAMISUserInterface {
             } else if (text.Equals("Print")) {
                 var FileName = PSummaryFilesLST.SelectedItems[0].SubItems[1].Text;
                 try {
-                    var rp = new ReportsPreview();
-                    //
+                    Reports.PrintPDF(FileName);
                 }
                 catch {
                     RylMessageBox.ShowDialog("File not found \nThe file must have been moved or corrupted",
@@ -2200,29 +2223,14 @@ namespace MSAMISUserInterface {
                 }
             }
         }
-
-
-
-
-
-
-
         #endregion
 
         #region PMS - Payslip Print
         private void PEmpListPrintBTN_Click(object sender, EventArgs e) {
             //No Function
         }
-
-
-
-
         #endregion
 
         #endregion
-
-        private void ControlBoxPanel_Paint(object sender, PaintEventArgs e) {
-
-        }
     }
 }

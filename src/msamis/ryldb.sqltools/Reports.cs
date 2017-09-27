@@ -371,7 +371,7 @@ namespace MSAMISUserInterface
         }
 
 
-        public void PrintPDF(String fileName)
+        public static void PrintPDF(String fileName)
         {
             String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             String fileTempDir = filePath + "\\newTemp.pdf";

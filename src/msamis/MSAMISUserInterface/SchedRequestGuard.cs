@@ -168,12 +168,12 @@ namespace MSAMISUserInterface {
             var ret = true;
             if (NeededBX.Value == 0) {
                 NeededTLTP.ToolTipTitle = "Guards Needed";
-                NeededTLTP.Show("Please specify how many guards the client needs", NeededBX);
+                NeededTLTP.Show("Please specify how many guards the client needs", NeededBX, 2000);
                 ret = false;
             }
             if (CheckAdd(AssBrgyBX, AssCityBX, AssStreetNameBX, AssStreetNoBX)) {
                 LocationTLTP.ToolTipTitle = "Location";
-                LocationTLTP.Show("Please specify or complete the fields", AssStreetNoBX);
+                LocationTLTP.Show("Please specify or complete the fields", AssStreetNoBX, 200);
                 ret = false;
             }
             if (!ret) {
