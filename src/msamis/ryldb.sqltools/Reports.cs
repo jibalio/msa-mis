@@ -277,8 +277,8 @@ namespace MSAMISUserInterface
                 //deductions
                 Phrase Ded = new Phrase("DEDUCTIONS:" + newLine, boldunderfontPayslip);
                 Phrase SSS = new Phrase("SSS: ", myfontPayslip);
-                Chunk ChunkSSS = new Chunk("₱" + pr.Sss.ToString("0.00") + newLine);
-                SSS.Add(ChunkSSS);
+                Phrase ChunkSSS = new Phrase("₱" + pr.Sss.ToString("0.00") + newLine);
+                
                 Phrase PHIC = new Phrase("PHIC: ", myfontPayslip);
                 Chunk ChunkPHIC = new Chunk("Php " + pr.PHIC.ToString("₱0.00") + newLine);
                 PHIC.Add(ChunkPHIC);
@@ -366,13 +366,14 @@ namespace MSAMISUserInterface
                     pdfDoc.Close();
                     stream.Close();
                 }
-                PrintPDF(filePath, fileName);
+                //PrintPDF(filePath, fileName);
             }
         }
 
 
-        public void PrintPDF(String filePath, String fileName)
+        public void PrintPDF(String fileName)
         {
+            String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             String fileTempDir = filePath + "\\newTemp.pdf";
             String fileDir = filePath + "\\" + fileName;
             if (File.Exists(fileTempDir))
