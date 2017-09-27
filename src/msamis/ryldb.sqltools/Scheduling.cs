@@ -603,13 +603,26 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_actual_hh,':',to_actual_mm,' ',to_actual_period) as TimeOut,
                     'days_columnMTWThFSSu' as days from 
-                    dutydetails where DStatus=1 and AID=" + AID);
+                    dutydetails dutydetails where DStatus=1 and AID=" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
             }
             return dt;
         }
 
+        public static DataTable GetDutyDetailsSummaryHistory(int AID) {
+            DataTable dt =
+                SQLTools.ExecuteQuery(@"
+                    select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
+                    concat (to_actual_hh,':',to_actual_mm,' ',to_actual_period) as TimeOut,
+                    'days_columnMTWThFSSu' as days from 
+                    dutydetails and AID =" + AID);
+            foreach (DataRow e in dt.Rows) {
+                e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
+            }
+            return dt;
+        }
+        
         /// <summary>
         /// Returns Individual Time elements of DutyDetail.
         /// </summary>

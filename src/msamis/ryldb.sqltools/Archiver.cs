@@ -127,7 +127,7 @@ namespace MSAMISUserInterface {
         public static  string[] GetAttendanceTooltip(int aid, int period, int month, int year) {
             string hpblob =
                 SQLTools.ExecuteSingleResult(
-                    $@"SELECT hp FROM msadbarchive.period where aid={aid} and period={period} and month = {
+                    $@"SELECT hp FROM msadbarchive.period where gid={aid} and period={period} and month = {
                             month
                         } and year={year};");
             HourProcessor h = (HourProcessor)Payroll._DeserializeObject(hpblob);
@@ -166,6 +166,8 @@ namespace MSAMISUserInterface {
                 a[c] = (b[c][4] == 'p' ? "Regular" : "Overtime") + ": " + (((int)(ts.TotalHours)).ToString("00") + ":" + ((int)ts.Minutes).ToString("00")).ToString() + " hrs.";
             }
             return a;
+            
+            
         }
 
 

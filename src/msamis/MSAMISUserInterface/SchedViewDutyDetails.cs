@@ -19,7 +19,10 @@ namespace MSAMISUserInterface {
         public SchedViewDutyDetails() {
             InitializeComponent();
             Opacity = 0;
-        }
+        } 
+
+
+
 
         private const int CsDropshadow = 0x20000;
 
@@ -122,19 +125,23 @@ namespace MSAMISUserInterface {
         }
 
         public void RefreshAttendance() {
-            if (!Name.Equals("Archived")) {
-                AttendanceGRD.DataSource = _attendance.GetAttendance_View(
-                    ((ComboBoxDays)PeriodCMBX.SelectedItem).Month,
-                    ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
-                AttendanceGRD.Columns[8].Visible = false;
-                AttendanceGRD.Columns[9].Visible = false;
-                AttendanceGRD.Columns[10].Visible = false;
-                AttendanceGRD.Columns[11].Visible = false;
-            }
-            else {
-                AttendanceGRD.DataSource = Archiver.GetAttendance(Gid, ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
-                    ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
-            }
+            try {
+                if (!Name.Equals("Archived")) {
+                    AttendanceGRD.DataSource = _attendance.GetAttendance_View(
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
+                    AttendanceGRD.Columns[8].Visible = false;
+                    AttendanceGRD.Columns[9].Visible = false;
+                    AttendanceGRD.Columns[10].Visible = false;
+                    AttendanceGRD.Columns[11].Visible = false;
+                }
+                else {
+                    AttendanceGRD.DataSource = Archiver.GetAttendance(Gid,
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
+                        ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
+                }
+            
+          
 
             AttendanceGRD.Columns[0].Visible = false;
             AttendanceGRD.Columns[1].Visible = false;
@@ -223,7 +230,7 @@ namespace MSAMISUserInterface {
                 ACertifiedLBL.Text = attendance.Rows[0][1].ToString();
                
                 try {
-                    string[] tooltip = Archiver.GetAttendanceTooltip(Aid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
+                    string[] tooltip = Archiver.GetAttendanceTooltip(Gid, ((ComboBoxDays)PeriodCMBX.SelectedItem).Period, ((ComboBoxDays)PeriodCMBX.SelectedItem).Month, ((ComboBoxDays)PeriodCMBX.SelectedItem).Year);
 
                     OrdinaryDay.Items[3].Text = tooltip[0];
                     OrdinaryDay.Items[4].Text = tooltip[1];
@@ -256,6 +263,9 @@ namespace MSAMISUserInterface {
                 catch (Exception exception) {
                     Console.WriteLine(exception);
                 }
+                
+            }
+            } catch (Exception e) {
 
             }
         }
