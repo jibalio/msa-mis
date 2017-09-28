@@ -58,7 +58,7 @@ namespace MSAMISUserInterface {
             ControlBoxPanel.BackColor = _dashboard;
 
             //Variable Initialization
-            ControlBoxTimeLBL.Text = "Logged in as " + User;
+            ControlBoxTimeLBL.Text = "Logged in as " + User + " (" + (Login.AccountType == 1 ? "Manager" : Login.AccountType == 2 ? "Clerk" : "Superuser") +")";
             TimeLBL.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy").ToUpper();
             _scurrentPanel = GViewAllPNL;
             _scurrentBtn = GViewAllPageBTN;
