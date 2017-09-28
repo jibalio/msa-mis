@@ -62,6 +62,7 @@ namespace MSAMISUserInterface {
                 MilTrainBX.Text = _dataTable.Rows[0]["MilitaryTrainings"].ToString();
                 EmergBX.Text = _dataTable.Rows[0]["EmergencyContact"].ToString();
                 EmergencyNoBX.Text = _dataTable.Rows[0]["EmergencyNo"].ToString();
+                TypeGuard.Checked = _dataTable.Rows[0]["gtype"].ToString().Equals("0");
             }
             catch (Exception ex) {
                 ShowErrorBox("Loading Guards", ex.Message);

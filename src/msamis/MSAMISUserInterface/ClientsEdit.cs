@@ -168,7 +168,11 @@ namespace MSAMISUserInterface {
                 NameTLTP.Show("Please enter client name", NameBX);
                 ret = false;
             }
-
+            if (BasicPayBX.Value.Equals(00.00)) {
+                BasicPayWarn.ToolTipTitle = "Basic Pay";
+                BasicPayWarn.Show("Please enter the basic pay for guard officers", BasicPayBX);
+                ret = false;
+            }
             if (LocationStreetNoBX.Text.Equals("") || LocationStreetNoBX.Text.Equals("No.") ||
                 LocationStreetNameBX.Text.Equals("") || LocationStreetNameBX.Text.Equals("Street Name") ||
                 LocationCityBX.Text.Equals("") || LocationCityBX.Text.Equals("City") ||

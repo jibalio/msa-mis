@@ -40,6 +40,9 @@
             this.LocationCityBX = new System.Windows.Forms.TextBox();
             this.LocationStreetNameBX = new System.Windows.Forms.TextBox();
             this.DetailsPNL = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.BasicPayBX = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.DelRowBTN = new System.Windows.Forms.Button();
             this.AddRowBTN = new System.Windows.Forms.Button();
             this.CertifiersGRD = new System.Windows.Forms.DataGridView();
@@ -73,12 +76,10 @@
             this.Dep3Warn = new System.Windows.Forms.ToolTip(this.components);
             this.GEditDetailsBTN = new System.Windows.Forms.Button();
             this.CertifiersTLTP = new System.Windows.Forms.ToolTip(this.components);
-            this.label13 = new System.Windows.Forms.Label();
-            this.BasicPayBX = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
+            this.BasicPayWarn = new System.Windows.Forms.ToolTip(this.components);
             this.DetailsPNL.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BasicPayBX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).BeginInit();
             this.SuspendLayout();
             // 
             // EmerLBL
@@ -260,6 +261,45 @@
             this.DetailsPNL.Name = "DetailsPNL";
             this.DetailsPNL.Size = new System.Drawing.Size(599, 415);
             this.DetailsPNL.TabIndex = 228;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label13.Location = new System.Drawing.Point(233, 143);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 20);
+            this.label13.TabIndex = 256;
+            this.label13.Text = "₱";
+            // 
+            // BasicPayBX
+            // 
+            this.BasicPayBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BasicPayBX.DecimalPlaces = 2;
+            this.BasicPayBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.BasicPayBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.BasicPayBX.Location = new System.Drawing.Point(255, 143);
+            this.BasicPayBX.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.BasicPayBX.Name = "BasicPayBX";
+            this.BasicPayBX.Size = new System.Drawing.Size(120, 21);
+            this.BasicPayBX.TabIndex = 255;
+            this.BasicPayBX.ThousandsSeparator = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label2.Location = new System.Drawing.Point(85, 143);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 19);
+            this.label2.TabIndex = 254;
+            this.label2.Text = "Officer Basic Pay";
             // 
             // DelRowBTN
             // 
@@ -646,44 +686,12 @@
             this.CertifiersTLTP.ReshowDelay = 100;
             this.CertifiersTLTP.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
-            // label13
+            // BasicPayWarn
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label13.Location = new System.Drawing.Point(233, 143);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(18, 20);
-            this.label13.TabIndex = 256;
-            this.label13.Text = "₱";
-            // 
-            // BasicPayBX
-            // 
-            this.BasicPayBX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BasicPayBX.DecimalPlaces = 2;
-            this.BasicPayBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.BasicPayBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.BasicPayBX.Location = new System.Drawing.Point(255, 143);
-            this.BasicPayBX.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.BasicPayBX.Name = "BasicPayBX";
-            this.BasicPayBX.Size = new System.Drawing.Size(120, 21);
-            this.BasicPayBX.TabIndex = 255;
-            this.BasicPayBX.ThousandsSeparator = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(85, 143);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 19);
-            this.label2.TabIndex = 254;
-            this.label2.Text = "Officer Basic Pay";
+            this.BasicPayWarn.AutoPopDelay = 3000;
+            this.BasicPayWarn.InitialDelay = 500;
+            this.BasicPayWarn.ReshowDelay = 100;
+            this.BasicPayWarn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             // 
             // ClientsEdit
             // 
@@ -717,8 +725,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Clients_Edit_KeyDown);
             this.DetailsPNL.ResumeLayout(false);
             this.DetailsPNL.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BasicPayBX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CertifiersGRD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -773,5 +781,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown BasicPayBX;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip BasicPayWarn;
     }
 }

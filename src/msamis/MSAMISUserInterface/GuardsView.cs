@@ -135,7 +135,7 @@ namespace MSAMISUserInterface {
                 if (!Name.Equals("Archived")) {
                     try {
                         _dataTable = Guard.GetGuardsBasicData(Gid);
-                        GIDLBL.Text = Gid.ToString();
+                        GIDLBL.Text = _dataTable.Rows[0]["gtype"].ToString().Equals("0") ? "Regular" : "Officer";
                         LNLBL.Text = _dataTable.Rows[0]["fn"] + " " + _dataTable.Rows[0]["mn"];
                         LLBL.Text = _dataTable.Rows[0]["ln"] + ", ";
                         StatusLBL.Text = GetStatus(_dataTable);
@@ -198,7 +198,7 @@ namespace MSAMISUserInterface {
                 else {
                     try {
                         _dataTable = Archiver.GetGuardsBasicData(Gid);
-                        GIDLBL.Text = Gid.ToString();
+                        GIDLBL.Text = _dataTable.Rows[0]["gtype"].Equals("0") ? "Regular" : "Officer";
                         LNLBL.Text = _dataTable.Rows[0]["fn"] + " " + _dataTable.Rows[0]["mn"];
                         LLBL.Text = _dataTable.Rows[0]["ln"] + ", ";
                         StatusLBL.Text = "Archived";
