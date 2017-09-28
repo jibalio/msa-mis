@@ -132,6 +132,7 @@ namespace MSAMISUserInterface {
 
         private void SSSPnl_Click(object sender, EventArgs e) {
             ChangePage(SSSPagePNL, SSSPnl, SSSlbl, SSScon);
+            LoadSssPage();
         }
 
         private void TaxPnl_Click(object sender, EventArgs e) {
@@ -157,10 +158,12 @@ namespace MSAMISUserInterface {
 
         private void MultPNL_MouseClick(object sender, MouseEventArgs e) {
             ChangePage(MultiplierPagePNL, MultPNL, MultLBL, MultConLBL);
+            LoadRatesMult();
         }
 
         private void GlobalPNL_MouseClick(object sender, MouseEventArgs e) {
             ChangePage(GlobalPagePNL, GlobalPNL, GlobalLBL, GlobalCon);
+            LoadGlobalPage();
         }
 
         #endregion
@@ -934,12 +937,7 @@ namespace MSAMISUserInterface {
         #endregion
 
         private void RatesLoader_DoWork(object sender, DoWorkEventArgs e) {
-            LoadSssPage();
            // LoadTaxPage();
-            LoadRatesMult();
-            LoadGlobalPage();
         }
-
-
     }
 }
