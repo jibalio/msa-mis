@@ -142,8 +142,6 @@ namespace MSAMISUserInterface {
                         ((ComboBoxDays) PeriodCMBX.SelectedItem).Month,
                         ((ComboBoxDays) PeriodCMBX.SelectedItem).Period, ((ComboBoxDays) PeriodCMBX.SelectedItem).Year);
                 }
-            
-          
 
             AttendanceGRD.Columns[0].Visible = false;
             AttendanceGRD.Columns[1].Visible = false;
@@ -401,6 +399,10 @@ namespace MSAMISUserInterface {
             cms.Show(cntrl, new Point(cntrl.Size.Width + 5, -cms.Height+cntrl.Height));
         }
 
+        private static void ShowPopup2(ToolStripDropDown cms, Control cntrl) {
+            cms.Show(cntrl, new Point(-cms.Size.Width - 5, -cms.Height + cntrl.Height));
+        }
+
         private static void HidePop(Control cms) {
             cms.Hide();
         }
@@ -414,11 +416,11 @@ namespace MSAMISUserInterface {
         }
 
         private void HDSLBL_MouseEnter(object sender, EventArgs e) {
-            ShowPopup(HolidayDay, HDSLBL);
+            ShowPopup2(HolidayDay, HDSLBL);
         }
 
         private void HNSLBL_MouseEnter(object sender, EventArgs e) {
-            ShowPopup(HolidayNight, HNSLBL);
+            ShowPopup2(HolidayNight, HNSLBL);
         }
 
         private void HNSLBL_MouseLeave(object sender, EventArgs e) {

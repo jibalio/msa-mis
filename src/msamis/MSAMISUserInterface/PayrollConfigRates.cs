@@ -286,7 +286,6 @@ namespace MSAMISUserInterface {
                         new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
                 }
                 if (SSSDateCMBX.Items.Count > 0) SSSDateCMBX.SelectedIndex = 0;
-                SssLoadTable();
             }
             catch (Exception ex) {
                 ShowErrorBox("SSS Contribution", ex.Message);

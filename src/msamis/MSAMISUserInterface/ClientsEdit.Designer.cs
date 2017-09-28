@@ -100,7 +100,7 @@
             this.label86.AutoSize = true;
             this.label86.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label86.Location = new System.Drawing.Point(85, 81);
+            this.label86.Location = new System.Drawing.Point(84, 81);
             this.label86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label86.Name = "label86";
             this.label86.Size = new System.Drawing.Size(103, 19);
@@ -170,7 +170,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label23.Location = new System.Drawing.Point(85, 112);
+            this.label23.Location = new System.Drawing.Point(84, 112);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(80, 19);
@@ -279,7 +279,7 @@
             this.BasicPayBX.DecimalPlaces = 2;
             this.BasicPayBX.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.BasicPayBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.BasicPayBX.Location = new System.Drawing.Point(255, 143);
+            this.BasicPayBX.Location = new System.Drawing.Point(255, 144);
             this.BasicPayBX.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -295,7 +295,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(85, 143);
+            this.label2.Location = new System.Drawing.Point(84, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 19);
             this.label2.TabIndex = 254;
@@ -354,7 +354,7 @@
             this.CertifiersGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             dataGridViewCellStyle1.NullValue = "-";
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.WhiteSmoke;

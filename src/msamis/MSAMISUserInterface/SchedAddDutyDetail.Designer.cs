@@ -414,7 +414,7 @@
             this.SuBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SuBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.SuBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SuBTN.Location = new System.Drawing.Point(112, 324);
+            this.SuBTN.Location = new System.Drawing.Point(113, 324);
             this.SuBTN.Name = "SuBTN";
             this.SuBTN.Size = new System.Drawing.Size(40, 40);
             this.SuBTN.TabIndex = 6;
@@ -431,7 +431,7 @@
             this.MBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.MBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.MBTN.Location = new System.Drawing.Point(158, 324);
+            this.MBTN.Location = new System.Drawing.Point(159, 324);
             this.MBTN.Name = "MBTN";
             this.MBTN.Size = new System.Drawing.Size(40, 40);
             this.MBTN.TabIndex = 7;
@@ -448,7 +448,7 @@
             this.TBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.TBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.TBTN.Location = new System.Drawing.Point(204, 324);
+            this.TBTN.Location = new System.Drawing.Point(205, 324);
             this.TBTN.Name = "TBTN";
             this.TBTN.Size = new System.Drawing.Size(40, 40);
             this.TBTN.TabIndex = 8;
@@ -465,7 +465,7 @@
             this.WBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.WBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.WBTN.Location = new System.Drawing.Point(250, 324);
+            this.WBTN.Location = new System.Drawing.Point(251, 324);
             this.WBTN.Name = "WBTN";
             this.WBTN.Size = new System.Drawing.Size(40, 40);
             this.WBTN.TabIndex = 9;
@@ -482,7 +482,7 @@
             this.ThBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ThBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.ThBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.ThBTN.Location = new System.Drawing.Point(296, 324);
+            this.ThBTN.Location = new System.Drawing.Point(297, 324);
             this.ThBTN.Name = "ThBTN";
             this.ThBTN.Size = new System.Drawing.Size(40, 40);
             this.ThBTN.TabIndex = 10;
@@ -499,7 +499,7 @@
             this.FBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.FBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.FBTN.Location = new System.Drawing.Point(342, 324);
+            this.FBTN.Location = new System.Drawing.Point(343, 324);
             this.FBTN.Name = "FBTN";
             this.FBTN.Size = new System.Drawing.Size(40, 40);
             this.FBTN.TabIndex = 11;
@@ -516,7 +516,7 @@
             this.SaBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaBTN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.SaBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.SaBTN.Location = new System.Drawing.Point(388, 324);
+            this.SaBTN.Location = new System.Drawing.Point(389, 324);
             this.SaBTN.Name = "SaBTN";
             this.SaBTN.Size = new System.Drawing.Size(40, 40);
             this.SaBTN.TabIndex = 12;
@@ -555,7 +555,7 @@
             this.DateEffective.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
             this.DateEffective.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DateEffective.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateEffective.Location = new System.Drawing.Point(293, 405);
+            this.DateEffective.Location = new System.Drawing.Point(290, 405);
             this.DateEffective.Name = "DateEffective";
             this.DateEffective.Size = new System.Drawing.Size(101, 25);
             this.DateEffective.TabIndex = 234;
@@ -567,7 +567,7 @@
             this.DateDismissed.Enabled = false;
             this.DateDismissed.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DateDismissed.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateDismissed.Location = new System.Drawing.Point(293, 449);
+            this.DateDismissed.Location = new System.Drawing.Point(290, 449);
             this.DateDismissed.Name = "DateDismissed";
             this.DateDismissed.Size = new System.Drawing.Size(101, 25);
             this.DateDismissed.TabIndex = 236;
@@ -575,12 +575,12 @@
             // DateDismissedCheck
             // 
             this.DateDismissedCheck.AutoSize = true;
-            this.DateDismissedCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DateDismissedCheck.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.DateDismissedCheck.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DateDismissedCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DateDismissedCheck.Location = new System.Drawing.Point(160, 450);
+            this.DateDismissedCheck.Location = new System.Drawing.Point(157, 450);
             this.DateDismissedCheck.Name = "DateDismissedCheck";
-            this.DateDismissedCheck.Size = new System.Drawing.Size(118, 23);
+            this.DateDismissedCheck.Size = new System.Drawing.Size(127, 24);
             this.DateDismissedCheck.TabIndex = 239;
             this.DateDismissedCheck.Text = "Date Dismissed";
             this.DateDismissedCheck.UseVisualStyleBackColor = true;
@@ -591,7 +591,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(182, 407);
+            this.label2.Location = new System.Drawing.Point(179, 407);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 19);

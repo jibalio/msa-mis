@@ -295,6 +295,8 @@
             // 
             // InitData
             // 
+            this.InitData.WorkerReportsProgress = true;
+            this.InitData.WorkerSupportsCancellation = true;
             this.InitData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.InitData_DoWork);
             // 
             // LoginForm

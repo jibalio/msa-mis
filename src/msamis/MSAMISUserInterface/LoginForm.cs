@@ -37,30 +37,32 @@ namespace MSAMISUserInterface {
         }
 
         private void Logins() {
-            if (PasswordBX.Text.Equals("")) {
-                PasswordTLTP.ToolTipTitle = "Password";
-                PasswordTLTP.Show("Please enter your password", PasswordBX);
-            }
-            else if (UsernameBX.Text.Equals("")) {
-                UsernameTLTP.ToolTipTitle = "Username";
-                UsernameTLTP.Show("Please enter your username", UsernameBX);
-            }
-            else {
-                if (Login.Authenticate(UsernameBX.Text, PasswordBX.Text)) {
-                    ErrorLBL.Visible = false;
-                    PasswordBX.Clear();
-                    UsernameBX.SelectAll();
-                    var mf = new MainForm {
-                        Opacity = 0,
-                        Lf = this,
-                        Location = new Point(Location.X - 50, Location.Y - 66),
-                        User = UsernameBX.Text[0].ToString().ToUpper() + UsernameBX.Text.Substring(1).ToLower()
-                    };
-                    mf.Show();
-                    Hide();
+            if (!InitData.IsBusy) {
+                if (PasswordBX.Text.Equals("")) {
+                    PasswordTLTP.ToolTipTitle = "Password";
+                    PasswordTLTP.Show("Please enter your password", PasswordBX);
+                }
+                else if (UsernameBX.Text.Equals("")) {
+                    UsernameTLTP.ToolTipTitle = "Username";
+                    UsernameTLTP.Show("Please enter your username", UsernameBX);
                 }
                 else {
-                    ErrorLBL.Visible = true;
+                    if (Login.Authenticate(UsernameBX.Text, PasswordBX.Text)) {
+                        ErrorLBL.Visible = false;
+                        PasswordBX.Clear();
+                        UsernameBX.SelectAll();
+                        var mf = new MainForm {
+                            Opacity = 0,
+                            Lf = this,
+                            Location = new Point(Location.X - 50, Location.Y - 66),
+                            User = UsernameBX.Text[0].ToString().ToUpper() + UsernameBX.Text.Substring(1).ToLower()
+                        };
+                        mf.Show();
+                        Hide();
+                    }
+                    else {
+                        ErrorLBL.Visible = true;
+                    }
                 }
             }
         }
@@ -146,12 +148,9 @@ namespace MSAMISUserInterface {
 
         #endregion
 
-        private void LoginForm_Load(object sender, EventArgs e) {
-
-        }
-
         private void InitData_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e) {
             Data.InitData();
+            InitData.CancelAsync();
         }
     }
 }
