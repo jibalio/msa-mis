@@ -792,6 +792,7 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
         #region + GetGuardsList Methods Min/Max
 
         public static DataTable GetGuardsPayrollMain(string search, int status) {
+            Attendance.Period per = Attendance.GetCurrentPeriod();
             string q;
             if (status == -1) {
                 q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
@@ -816,7 +817,8 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
                                                 left join period on guards.gid=period.gid
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
-                                                where RequestType = 1 " + search + " AND fn is not null group by guards.gid ";
+                                                where RequestType = 1 " + search + " AND fn is not null " +
+                    $"                          AND payroll.period = {per.period} AND payroll.month = {per.month} AND payroll.year = {per.year} group by guards.gid ";
             }
             else {
                 q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
@@ -839,7 +841,8 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
 												left join payroll on guards.gid=payroll.gid
                                                 where RequestType = 1 " + search + " AND fn is not null AND pstatus = '" + status +
 
-                    "' group by guards.gid ";
+                    "' " +
+                    $"                          AND payroll.period = {per.period} AND payroll.month = {per.month} AND payroll.year = {per.year} group by guards.gid "; 
 
 
             }

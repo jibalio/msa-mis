@@ -697,7 +697,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         /// This is for EDIT. Pulos sa did kay para i-exclude ni pag check sa updae.
         public static bool HasOverlap(int aid, int did, string ti, string to, Days days, DateTime deff, DateTime dend) {
             string q = $@"SELECT * FROM msadb.dutydetails where aid = {aid} and did<>{did}
-                        and date_effective>='12-31-2017' and date_dismissal<'12-31-2017';";
+                        and date_effective>='{deff:yyyy-MM-dd}' and date_dismissal<'{dend:yyyy-MM-dd}';";
             DataTable dt = SQLTools.ExecuteQuery(q);
             Dictionary<string, string> date = new Dictionary<string, string> {
                 {"Sun","2017-09-03 "},

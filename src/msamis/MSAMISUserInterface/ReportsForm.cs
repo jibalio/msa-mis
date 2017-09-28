@@ -141,18 +141,22 @@ namespace MSAMISUserInterface {
         }
 
         private void ExportClientsSummaryBTN_Click(object sender, EventArgs e) {
-            /*
+            
             var rp = new ReportsPreview();
-            rp.FormatPDF('s');
+
+            /*
+            srp.FormatPDF('s');1
             rp.FormatPDF('g');
             rp.FormatPDF('c');
-            rp.FormatPDF('d');
-            */
-
-            var r = new Reports();
-            r.ExportToPayslipPDF(Payroll.GetApprovedPayrollsList());
-
             
+            */
+            var r = new Reports();
+            r.PrintPayslipPDF();
+            rp.FormatPDF('d');
+            //
+            //r.ExportToPayslipPDF(Payroll.GetApprovedPayrollsList());
+
+
 
         }
 
