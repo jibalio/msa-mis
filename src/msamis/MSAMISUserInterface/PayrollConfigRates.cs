@@ -38,7 +38,6 @@ namespace MSAMISUserInterface {
             _currentLabel = BasicLbl;
             _curLabelCon = BasicCon;
             LoadBasicPayPage();
-            RatesLoader.RunWorkerAsync();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {
@@ -132,6 +131,7 @@ namespace MSAMISUserInterface {
 
         private void SSSPnl_Click(object sender, EventArgs e) {
             ChangePage(SSSPagePNL, SSSPnl, SSSlbl, SSScon);
+            LoadSssPage();
         }
 
         private void TaxPnl_Click(object sender, EventArgs e) {
@@ -157,10 +157,12 @@ namespace MSAMISUserInterface {
 
         private void MultPNL_MouseClick(object sender, MouseEventArgs e) {
             ChangePage(MultiplierPagePNL, MultPNL, MultLBL, MultConLBL);
+            LoadRatesMult();
         }
 
         private void GlobalPNL_MouseClick(object sender, MouseEventArgs e) {
             ChangePage(GlobalPagePNL, GlobalPNL, GlobalLBL, GlobalCon);
+            LoadGlobalPage();
         }
 
         #endregion
@@ -454,7 +456,7 @@ namespace MSAMISUserInterface {
                     "SSS Contribution", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else {
-                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates? Unsaved changes will be lost.",
+                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates?",
                         "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     try {
                         Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
@@ -932,14 +934,5 @@ namespace MSAMISUserInterface {
 
 
         #endregion
-
-        private void RatesLoader_DoWork(object sender, DoWorkEventArgs e) {
-            LoadSssPage();
-           // LoadTaxPage();
-            LoadRatesMult();
-            LoadGlobalPage();
-        }
-
-
     }
 }

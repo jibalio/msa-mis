@@ -713,11 +713,11 @@ select bpid, amount,start,end, case status when 1 then 'Active' when 2 then 'Pen
             var up = "call init_checkdate_all()";
             SQLTools.ExecuteQuery(up);
             var q = @"
-select bpid, amount,start,case
+select bpid, amount, (DATE_FORMAT( end, '%Y-%m-%d')) as start,case
 when (`end`='9999-12-31' and status=2) then 'Pending' 
 when (`end`='9999-12-31' and status=1) then 'Current' 
-when end then end
-end as 'end', case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc;";
+when (`end`) then (DATE_FORMAT( end, '%Y-%m-%d'))
+end as `end`, case status when 1 then 'Active' when 2 then 'Pending' when 0 then 'Inactive' end as status from basicpay order by start desc;";
             return SQLTools.ExecuteQuery(q);
         }
 
