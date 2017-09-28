@@ -666,7 +666,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         public static DataTable GetDutyDetailsDetails(int DID) {
             String q = @"select ti_hh, ti_mm, ti_period,
 		                to_actual_hh as 'to_hh', to_actual_mm as 'to_mm', to_actual_period as 'to_period', date_effective, date_dismissal
-                        from dutydetails  where DStatus=1 and did=" + DID;
+                        from dutydetails  where did=" + DID;
             return SQLTools.ExecuteQuery(q);
         }
         /// <summary>
