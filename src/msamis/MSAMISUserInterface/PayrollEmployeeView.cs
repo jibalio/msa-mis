@@ -109,6 +109,7 @@ namespace MSAMISUserInterface {
         }
 
         private void CloseBTN_Click(object sender, EventArgs e) {
+            Reference.PayLoadEmployeeList();
             Close();
         }
 
@@ -187,7 +188,10 @@ namespace MSAMISUserInterface {
             } else {
                 if (RylMessageBox.ShowDialog("Are you sure you want to unapprove this payroll?", "Unapprove Payroll", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     _pay.RollbackApproval();
+                    BonusAddBTN.Text = "ADJUST";
+                    ApproveBTN.Text = "APPROVE";
                     LoadDetails();
+                    LoadComputations();
                 }
             }
         }
@@ -395,6 +399,7 @@ namespace MSAMISUserInterface {
                 }
                 else {
                     _pay.Approve();
+                    LoadDetails();
                     LoadComputations();
                     CheckButtons();
                     Reference.PayLoadEmployeeList();
