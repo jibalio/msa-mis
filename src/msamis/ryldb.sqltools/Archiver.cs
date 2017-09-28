@@ -217,7 +217,7 @@ namespace MSAMISUserInterface {
                 SQLTools.ExecuteQuery(@"
                     select did, concat (ti_hh,':',ti_mm,' ',ti_period) as TimeIn,
                     concat (to_hh,':',to_mm,' ',to_period) as TimeOut,
-                    'days_columnMTWThFSSu' as days from 
+                    'days_columnMTWThFSSu' as days,  DATE_FORMAT(date_effective, '%Y-%m-%d') as 'Start Date',  DATE_FORMAT(dismissedon, '%Y-%m-%d') as 'End Date' from 
                     msadbarchive.dutydetails where AID=" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
