@@ -757,6 +757,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
         public static void CancelDismissal(int did) {
             var q = $@"UPDATE `msadb`.`dutydetails` SET `date_dismissal`='9999-12-31' WHERE `DID`='{did}';";
+            SQLTools.ExecuteNonQuery(q);
         }
 
 
