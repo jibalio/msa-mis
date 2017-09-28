@@ -8,6 +8,7 @@ namespace MSAMISUserInterface {
     public partial class SchedAddDutyDetail : Form {
         private readonly bool[] _dutyDays = new bool[7];
         public string Button = "ADD";
+        public DateTime MaxDate;
         public int Aid { get; set; }
         public int Did { get; set; }
         public SchedViewDutyDetails Refer { get; set; }
@@ -17,7 +18,6 @@ namespace MSAMISUserInterface {
         private void Sched_AddDutyDetail_Load(object sender, EventArgs e) {
             FadeTMR.Start();
             AddBTN.Text = Button;
-
             if (Button.Equals("ADD")) {
                 TimeInHrBX.SelectedIndex = 0;
                 TimeInMinBX.SelectedIndex = 0;
@@ -43,6 +43,7 @@ namespace MSAMISUserInterface {
                     DateDismissedCheck.Checked = true;
                 }
 
+                DateDismissed.MaxDate = MaxDate;
                 var temp = Scheduling.GetDays(Did).Value;
                 if (temp[0]) MBTN.PerformClick();
                 if (temp[1]) TBTN.PerformClick();

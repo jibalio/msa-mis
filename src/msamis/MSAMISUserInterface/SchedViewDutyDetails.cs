@@ -294,6 +294,7 @@ namespace MSAMISUserInterface {
                 Button = "UPDATE",
                 Refer = this,
                 Did = _did,
+                MaxDate = DateTime.Parse(EndLBL.Text),
                 Location = new Point(Location.X + 330, Location.Y)
             };
             view.ShowDialog();
