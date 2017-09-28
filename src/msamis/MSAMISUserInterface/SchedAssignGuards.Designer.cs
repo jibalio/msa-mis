@@ -262,7 +262,6 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.AssignedGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.AssignedGRD.RowHeadersVisible = false;
-            this.AssignedGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.AssignedGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AssignedGRD.Size = new System.Drawing.Size(478, 283);
             this.AssignedGRD.TabIndex = 142;
