@@ -445,7 +445,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
         #region DutyDetail Operations  (Add + Dismiss)  ✔Done
        
         public static string AddDutyDetail(int aid, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days, DateTime DateEffective, DateTime DateDismissed) {
-            bool isOverlap = HasOverlap(aid, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
+            bool isOverlap = HasOverlap(aid, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days, DateEffective, DateDismissed);
             if (isOverlap) {
                 return ">";
             }
@@ -478,9 +478,19 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
 
 
         public static string UpdateDutyDetail(int did, String TI_hr, String TI_min, String TI_ampm, String TO_hr, String TO_min, String TO_ampm, Days days) {
-            string wq = $@"SELECT aid FROM msadb.dutydetails where did = '{did}';";
-            int aid = SQLTools.GetInt(wq);
-            bool isOverlap = HasOverlap(aid,did, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days);
+            string wq = $@"SELECT * FROM msadb.dutydetails where did = '{did}';";
+            DataTable dt = SQLTools.ExecuteQuery(wq);
+            int aid;
+            if (dt.Rows.Count != 0)
+                aid = int.Parse(dt.Rows[0]["aid"].ToString());
+            else {
+                MessageBox.Show("No duty details found.");
+                return "X";
+            }
+
+            DateTime deff = DateTime.Parse(dt.Rows[0]["date_effective"].ToString());
+            DateTime dend = DateTime.Parse(dt.Rows[0]["date_dismissal"].ToString());
+            bool isOverlap = HasOverlap(aid,did, ($@"{TI_hr}:{TI_min}"), ($@"{TO_hr}:{TO_min}"), days, deff, dend);
             if (isOverlap) {
                 return "olap";
             }
@@ -518,10 +528,10 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             // Previous duty na ni niya.
             String q = $@"UPDATE `msadb`.`dutydetails` 
                             SET `DStatus`={Enumeration.DutyDetailStatus.Inactive},
-                            `Date_Dismissal`={dismissal_date:yyyy-MM-dd}
-                            WHERE `DID`={0}";
-            q = String.Format(q, did);
+                            `Date_Dismissal`='{dismissal_date:yyyy-MM-dd}'
+                            WHERE `DID`={did}";
             SQLTools.ExecuteNonQuery(q);
+            Console.WriteLine(q);
         }
         #endregion
 
@@ -678,12 +688,14 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                 );
         }
 
-        public static bool HasOverlap(int aid, string ti, string to, Days days) {
-            return HasOverlap(aid, 0, ti, to, days);
+        public static bool HasOverlap(int aid, string ti, string to, Days days, DateTime deff, DateTime dend) {
+            return HasOverlap(aid, 0, ti, to, days, deff, dend);
         }
 
-        public static bool HasOverlap(int aid, int did, string ti, string to, Days days) {
-            string q = $@"SELECT * FROM msadb.dutydetails where aid = {aid} and did<>{did};";
+        /// This is for EDIT. Pulos sa DFD
+        public static bool HasOverlap(int aid, int did, string ti, string to, Days days, DateTime deff, DateTime dend) {
+            string q = $@"SELECT * FROM msadb.dutydetails where aid = {aid} and did<>{did}
+                        and date_effective>='12-31-2017' and date_dismissal<'12-31-2017';";
             DataTable dt = SQLTools.ExecuteQuery(q);
             Dictionary<string, string> date = new Dictionary<string, string> {
                 {"Sun","2017-09-03 "},

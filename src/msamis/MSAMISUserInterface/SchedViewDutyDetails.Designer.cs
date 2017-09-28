@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchedViewDutyDetails));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientLBL = new System.Windows.Forms.Label();
             this.FirstNameLBL = new System.Windows.Forms.Label();
@@ -47,9 +47,6 @@
             this.LocationLBL = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ErrorPNL = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.AttendanceLBL = new System.Windows.Forms.Label();
             this.AttendancePNL = new System.Windows.Forms.Panel();
             this.MainAttendancePNL = new System.Windows.Forms.Panel();
@@ -69,6 +66,16 @@
             this.AHNightLBL = new System.Windows.Forms.Label();
             this.RDSLBL = new System.Windows.Forms.Label();
             this.AShiftLBL = new System.Windows.Forms.Label();
+            this.ErrorPNL = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.DismissPNL = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.DateEffective = new System.Windows.Forms.DateTimePicker();
+            this.DismissCANCEL = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.DismissOK = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Header = new System.Windows.Forms.ToolTip(this.components);
             this.EndLBL = new System.Windows.Forms.Label();
@@ -128,27 +135,20 @@
             this.toolStripTextBox41 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox42 = new System.Windows.Forms.ToolStripTextBox();
             this.AttendanceWorker = new System.ComponentModel.BackgroundWorker();
-            this.DismissPNL = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.DismissCANCEL = new System.Windows.Forms.Button();
-            this.DismissOK = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.DateEffective = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.ErrorPNL.SuspendLayout();
             this.AttendancePNL.SuspendLayout();
             this.MainAttendancePNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).BeginInit();
+            this.ErrorPNL.SuspendLayout();
+            this.DismissPNL.SuspendLayout();
             this.OrdinaryDay.SuspendLayout();
             this.OrdinaryNight.SuspendLayout();
             this.HolidayDay.SuspendLayout();
             this.HolidayNight.SuspendLayout();
-            this.DismissPNL.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -240,6 +240,7 @@
             // 
             // DutyDetailsPNL
             // 
+            this.DutyDetailsPNL.Controls.Add(this.ErrorPNL);
             this.DutyDetailsPNL.Controls.Add(this.DutyDetailsGRD);
             this.DutyDetailsPNL.Controls.Add(this.flowLayoutPanel1);
             this.DutyDetailsPNL.Location = new System.Drawing.Point(27, 101);
@@ -257,37 +258,37 @@
             this.DutyDetailsGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DutyDetailsGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.DutyDetailsGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle19.NullValue = "-";
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DutyDetailsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle13.NullValue = "-";
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DutyDetailsGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.DutyDetailsGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DutyDetailsGRD.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DutyDetailsGRD.DefaultCellStyle = dataGridViewCellStyle14;
             this.DutyDetailsGRD.EnableHeadersVisualStyles = false;
             this.DutyDetailsGRD.Location = new System.Drawing.Point(31, 14);
             this.DutyDetailsGRD.MultiSelect = false;
             this.DutyDetailsGRD.Name = "DutyDetailsGRD";
             this.DutyDetailsGRD.ReadOnly = true;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DutyDetailsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DutyDetailsGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.DutyDetailsGRD.RowHeadersVisible = false;
             this.DutyDetailsGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DutyDetailsGRD.Size = new System.Drawing.Size(489, 356);
@@ -398,46 +399,11 @@
             this.panel3.Controls.Add(this.DutyDetailsLBL);
             this.panel3.Controls.Add(this.DutyDetailsPNL);
             this.panel3.Controls.Add(this.AttendancePNL);
-            this.panel3.Controls.Add(this.ErrorPNL);
             this.panel3.Controls.Add(this.DismissPNL);
             this.panel3.Location = new System.Drawing.Point(329, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(570, 600);
             this.panel3.TabIndex = 241;
-            // 
-            // ErrorPNL
-            // 
-            this.ErrorPNL.Controls.Add(this.label3);
-            this.ErrorPNL.Controls.Add(this.label6);
-            this.ErrorPNL.Location = new System.Drawing.Point(25, 38);
-            this.ErrorPNL.Name = "ErrorPNL";
-            this.ErrorPNL.Size = new System.Drawing.Size(526, 460);
-            this.ErrorPNL.TabIndex = 273;
-            this.ErrorPNL.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(140, 198);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(246, 30);
-            this.label3.TabIndex = 123;
-            this.label3.Text = "No Duty Details Found";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(186, 236);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(154, 19);
-            this.label6.TabIndex = 272;
-            this.label6.Text = "Please add a duty detail";
             // 
             // AttendanceLBL
             // 
@@ -496,37 +462,37 @@
             this.AttendanceGRD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AttendanceGRD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.AttendanceGRD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle22.NullValue = "-";
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AttendanceGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle16.NullValue = "-";
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AttendanceGRD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.AttendanceGRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AttendanceGRD.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AttendanceGRD.DefaultCellStyle = dataGridViewCellStyle17;
             this.AttendanceGRD.EnableHeadersVisualStyles = false;
             this.AttendanceGRD.Location = new System.Drawing.Point(3, 49);
             this.AttendanceGRD.MultiSelect = false;
             this.AttendanceGRD.Name = "AttendanceGRD";
             this.AttendanceGRD.ReadOnly = true;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AttendanceGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(114)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AttendanceGRD.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.AttendanceGRD.RowHeadersVisible = false;
             this.AttendanceGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AttendanceGRD.ShowCellToolTips = false;
@@ -730,6 +696,141 @@
             this.AShiftLBL.Size = new System.Drawing.Size(65, 25);
             this.AShiftLBL.TabIndex = 264;
             this.AShiftLBL.Text = "23 hrs";
+            // 
+            // ErrorPNL
+            // 
+            this.ErrorPNL.Controls.Add(this.label3);
+            this.ErrorPNL.Controls.Add(this.label6);
+            this.ErrorPNL.Location = new System.Drawing.Point(4, 3);
+            this.ErrorPNL.Name = "ErrorPNL";
+            this.ErrorPNL.Size = new System.Drawing.Size(516, 399);
+            this.ErrorPNL.TabIndex = 273;
+            this.ErrorPNL.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(140, 133);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(246, 30);
+            this.label3.TabIndex = 123;
+            this.label3.Text = "No Duty Details Found";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(186, 171);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(154, 19);
+            this.label6.TabIndex = 272;
+            this.label6.Text = "Please add a duty detail";
+            // 
+            // DismissPNL
+            // 
+            this.DismissPNL.Controls.Add(this.label9);
+            this.DismissPNL.Controls.Add(this.DateEffective);
+            this.DismissPNL.Controls.Add(this.DismissCANCEL);
+            this.DismissPNL.Controls.Add(this.label7);
+            this.DismissPNL.Controls.Add(this.DismissOK);
+            this.DismissPNL.Controls.Add(this.label8);
+            this.DismissPNL.Location = new System.Drawing.Point(25, 51);
+            this.DismissPNL.Name = "DismissPNL";
+            this.DismissPNL.Size = new System.Drawing.Size(526, 519);
+            this.DismissPNL.TabIndex = 274;
+            this.DismissPNL.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label9.Location = new System.Drawing.Point(154, 226);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 19);
+            this.label9.TabIndex = 274;
+            this.label9.Text = "Date Effective:";
+            // 
+            // DateEffective
+            // 
+            this.DateEffective.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DateEffective.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.DateEffective.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateEffective.Location = new System.Drawing.Point(260, 223);
+            this.DateEffective.Name = "DateEffective";
+            this.DateEffective.Size = new System.Drawing.Size(101, 25);
+            this.DateEffective.TabIndex = 273;
+            // 
+            // DismissCANCEL
+            // 
+            this.DismissCANCEL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DismissCANCEL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.DismissCANCEL.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DismissCANCEL.BackgroundImage")));
+            this.DismissCANCEL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DismissCANCEL.FlatAppearance.BorderSize = 0;
+            this.DismissCANCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.DismissCANCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
+            this.DismissCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DismissCANCEL.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.DismissCANCEL.ForeColor = System.Drawing.Color.White;
+            this.DismissCANCEL.Location = new System.Drawing.Point(260, 348);
+            this.DismissCANCEL.Name = "DismissCANCEL";
+            this.DismissCANCEL.Size = new System.Drawing.Size(80, 29);
+            this.DismissCANCEL.TabIndex = 4;
+            this.DismissCANCEL.Text = "CANCEL";
+            this.DismissCANCEL.UseVisualStyleBackColor = false;
+            this.DismissCANCEL.Visible = false;
+            this.DismissCANCEL.Click += new System.EventHandler(this.DismissCANCEL_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label7.Location = new System.Drawing.Point(102, 86);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(302, 30);
+            this.label7.TabIndex = 123;
+            this.label7.Text = "Dismiss Schedule from Duty";
+            // 
+            // DismissOK
+            // 
+            this.DismissOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DismissOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.DismissOK.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DismissOK.BackgroundImage")));
+            this.DismissOK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DismissOK.FlatAppearance.BorderSize = 0;
+            this.DismissOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
+            this.DismissOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
+            this.DismissOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DismissOK.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.DismissOK.ForeColor = System.Drawing.Color.White;
+            this.DismissOK.Location = new System.Drawing.Point(172, 348);
+            this.DismissOK.Name = "DismissOK";
+            this.DismissOK.Size = new System.Drawing.Size(80, 29);
+            this.DismissOK.TabIndex = 2;
+            this.DismissOK.Text = "OK";
+            this.DismissOK.UseVisualStyleBackColor = false;
+            this.DismissOK.Click += new System.EventHandler(this.DismissOK_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label8.Location = new System.Drawing.Point(103, 123);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(291, 19);
+            this.label8.TabIndex = 272;
+            this.label8.Text = "When would you like to dismiss this schedule?";
             // 
             // label2
             // 
@@ -1379,107 +1480,6 @@
             // 
             this.AttendanceWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.AttendanceWorker_DoWork);
             // 
-            // DismissPNL
-            // 
-            this.DismissPNL.Controls.Add(this.label9);
-            this.DismissPNL.Controls.Add(this.DateEffective);
-            this.DismissPNL.Controls.Add(this.DismissCANCEL);
-            this.DismissPNL.Controls.Add(this.label7);
-            this.DismissPNL.Controls.Add(this.DismissOK);
-            this.DismissPNL.Controls.Add(this.label8);
-            this.DismissPNL.Location = new System.Drawing.Point(25, 51);
-            this.DismissPNL.Name = "DismissPNL";
-            this.DismissPNL.Size = new System.Drawing.Size(526, 519);
-            this.DismissPNL.TabIndex = 274;
-            this.DismissPNL.Visible = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(102, 86);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(302, 30);
-            this.label7.TabIndex = 123;
-            this.label7.Text = "Dismiss Schedule from Duty";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label8.Location = new System.Drawing.Point(103, 123);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(291, 19);
-            this.label8.TabIndex = 272;
-            this.label8.Text = "When would you like to dismiss this schedule?";
-            // 
-            // DismissCANCEL
-            // 
-            this.DismissCANCEL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DismissCANCEL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.DismissCANCEL.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DismissCANCEL.BackgroundImage")));
-            this.DismissCANCEL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DismissCANCEL.FlatAppearance.BorderSize = 0;
-            this.DismissCANCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.DismissCANCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(81)))));
-            this.DismissCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DismissCANCEL.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.DismissCANCEL.ForeColor = System.Drawing.Color.White;
-            this.DismissCANCEL.Location = new System.Drawing.Point(260, 348);
-            this.DismissCANCEL.Name = "DismissCANCEL";
-            this.DismissCANCEL.Size = new System.Drawing.Size(80, 29);
-            this.DismissCANCEL.TabIndex = 4;
-            this.DismissCANCEL.Text = "CANCEL";
-            this.DismissCANCEL.UseVisualStyleBackColor = false;
-            this.DismissCANCEL.Visible = false;
-            this.DismissCANCEL.Click += new System.EventHandler(this.DismissCANCEL_Click);
-            // 
-            // DismissOK
-            // 
-            this.DismissOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DismissOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DismissOK.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DismissOK.BackgroundImage")));
-            this.DismissOK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DismissOK.FlatAppearance.BorderSize = 0;
-            this.DismissOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(87)))), ((int)(((byte)(112)))));
-            this.DismissOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(149)))), ((int)(((byte)(191)))));
-            this.DismissOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DismissOK.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.DismissOK.ForeColor = System.Drawing.Color.White;
-            this.DismissOK.Location = new System.Drawing.Point(172, 348);
-            this.DismissOK.Name = "DismissOK";
-            this.DismissOK.Size = new System.Drawing.Size(80, 29);
-            this.DismissOK.TabIndex = 2;
-            this.DismissOK.Text = "OK";
-            this.DismissOK.UseVisualStyleBackColor = false;
-            this.DismissOK.Click += new System.EventHandler(this.DismissOK_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label9.Location = new System.Drawing.Point(154, 226);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(93, 19);
-            this.label9.TabIndex = 274;
-            this.label9.Text = "Date Effective:";
-            // 
-            // DateEffective
-            // 
-            this.DateEffective.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DateEffective.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.DateEffective.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateEffective.Location = new System.Drawing.Point(260, 223);
-            this.DateEffective.Name = "DateEffective";
-            this.DateEffective.Size = new System.Drawing.Size(101, 25);
-            this.DateEffective.TabIndex = 273;
-            // 
             // SchedViewDutyDetails
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -1510,12 +1510,14 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.ErrorPNL.ResumeLayout(false);
-            this.ErrorPNL.PerformLayout();
             this.AttendancePNL.ResumeLayout(false);
             this.MainAttendancePNL.ResumeLayout(false);
             this.MainAttendancePNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).EndInit();
+            this.ErrorPNL.ResumeLayout(false);
+            this.ErrorPNL.PerformLayout();
+            this.DismissPNL.ResumeLayout(false);
+            this.DismissPNL.PerformLayout();
             this.OrdinaryDay.ResumeLayout(false);
             this.OrdinaryDay.PerformLayout();
             this.OrdinaryNight.ResumeLayout(false);
@@ -1524,8 +1526,6 @@
             this.HolidayDay.PerformLayout();
             this.HolidayNight.ResumeLayout(false);
             this.HolidayNight.PerformLayout();
-            this.DismissPNL.ResumeLayout(false);
-            this.DismissPNL.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
