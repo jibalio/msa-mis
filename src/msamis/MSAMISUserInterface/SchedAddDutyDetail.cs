@@ -134,7 +134,6 @@ namespace MSAMISUserInterface {
             }
             return ret;
         }
-
         private void AddBTN_Click(object sender, EventArgs e) {
             if (DataValidation()) {
                 if (Button.Equals("ADD")) {
@@ -156,7 +155,8 @@ namespace MSAMISUserInterface {
                         TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
                         new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
                             _dutyDays[6], _dutyDays[0]));
-                    Scheduling.UpdateDutyDetailDates(Did, DateEffective.Value, DateDismissed.Value);
+                    if (DateDismissedCheck.Checked && DateEffective.Checked) Scheduling.UpdateDutyDetailDates(Did, DateEffective.Value, DateDismissed.Value);
+                    if (!DateDismissedCheck.Checked) Scheduling.CancelDismissal(Did);
                     if (res.Equals("<")) {
                         if (RylMessageBox.ShowDialog(
                                 "The schedule is less than 8hrs. Do you still want to add the details?", "Duty Hours",

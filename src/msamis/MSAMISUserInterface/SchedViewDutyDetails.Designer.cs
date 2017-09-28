@@ -39,6 +39,9 @@
             this.CloseBTN = new System.Windows.Forms.Button();
             this.FadeTMR = new System.Windows.Forms.Timer(this.components);
             this.DutyDetailsPNL = new System.Windows.Forms.Panel();
+            this.ErrorPNL = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.DutyDetailsGRD = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.DismissBTN = new System.Windows.Forms.Button();
@@ -66,9 +69,6 @@
             this.AHNightLBL = new System.Windows.Forms.Label();
             this.RDSLBL = new System.Windows.Forms.Label();
             this.AShiftLBL = new System.Windows.Forms.Label();
-            this.ErrorPNL = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.DismissPNL = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.DateEffective = new System.Windows.Forms.DateTimePicker();
@@ -137,13 +137,13 @@
             this.AttendanceWorker = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.DutyDetailsPNL.SuspendLayout();
+            this.ErrorPNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.AttendancePNL.SuspendLayout();
             this.MainAttendancePNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).BeginInit();
-            this.ErrorPNL.SuspendLayout();
             this.DismissPNL.SuspendLayout();
             this.OrdinaryDay.SuspendLayout();
             this.OrdinaryNight.SuspendLayout();
@@ -247,6 +247,40 @@
             this.DutyDetailsPNL.Name = "DutyDetailsPNL";
             this.DutyDetailsPNL.Size = new System.Drawing.Size(524, 485);
             this.DutyDetailsPNL.TabIndex = 233;
+            // 
+            // ErrorPNL
+            // 
+            this.ErrorPNL.Controls.Add(this.label3);
+            this.ErrorPNL.Controls.Add(this.label6);
+            this.ErrorPNL.Location = new System.Drawing.Point(4, 3);
+            this.ErrorPNL.Name = "ErrorPNL";
+            this.ErrorPNL.Size = new System.Drawing.Size(516, 399);
+            this.ErrorPNL.TabIndex = 273;
+            this.ErrorPNL.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label3.Location = new System.Drawing.Point(140, 133);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(246, 30);
+            this.label3.TabIndex = 123;
+            this.label3.Text = "No Duty Details Found";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label6.Location = new System.Drawing.Point(186, 171);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(154, 19);
+            this.label6.TabIndex = 272;
+            this.label6.Text = "Please add a duty detail";
             // 
             // DutyDetailsGRD
             // 
@@ -696,40 +730,6 @@
             this.AShiftLBL.Size = new System.Drawing.Size(65, 25);
             this.AShiftLBL.TabIndex = 264;
             this.AShiftLBL.Text = "23 hrs";
-            // 
-            // ErrorPNL
-            // 
-            this.ErrorPNL.Controls.Add(this.label3);
-            this.ErrorPNL.Controls.Add(this.label6);
-            this.ErrorPNL.Location = new System.Drawing.Point(4, 3);
-            this.ErrorPNL.Name = "ErrorPNL";
-            this.ErrorPNL.Size = new System.Drawing.Size(516, 399);
-            this.ErrorPNL.TabIndex = 273;
-            this.ErrorPNL.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(140, 133);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(246, 30);
-            this.label3.TabIndex = 123;
-            this.label3.Text = "No Duty Details Found";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(186, 171);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(154, 19);
-            this.label6.TabIndex = 272;
-            this.label6.Text = "Please add a duty detail";
             // 
             // DismissPNL
             // 
@@ -1506,6 +1506,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.DutyDetailsPNL.ResumeLayout(false);
+            this.ErrorPNL.ResumeLayout(false);
+            this.ErrorPNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DutyDetailsGRD)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1514,8 +1516,6 @@
             this.MainAttendancePNL.ResumeLayout(false);
             this.MainAttendancePNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendanceGRD)).EndInit();
-            this.ErrorPNL.ResumeLayout(false);
-            this.ErrorPNL.PerformLayout();
             this.DismissPNL.ResumeLayout(false);
             this.DismissPNL.PerformLayout();
             this.OrdinaryDay.ResumeLayout(false);

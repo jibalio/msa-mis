@@ -453,6 +453,7 @@ namespace MSAMISUserInterface {
             if (x == DialogResult.Yes) {
                 Scheduling.DismissDuty(_did, DateEffective.Value);
                 LoadPage();
+                DismissPNL.Hide();
             }
             if (DutyDetailsGRD.Rows.Count == 0) {
                 DismissBTN.Visible = false;
