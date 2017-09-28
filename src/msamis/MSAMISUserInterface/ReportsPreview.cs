@@ -428,7 +428,8 @@ namespace MSAMISUserInterface {
             };
             if (savefile.ShowDialog() == DialogResult.OK)
                 try {
-                    
+                    var r = new Reports();
+                    r.ExportToPayslipPDFOne(Payroll.GetApprovedPayrollsList(new int[]{Pay.GID}), savefile.FileName);
                 }
                 catch {
                     RylMessageBox.ShowDialog("The payslip was not exported.","Export Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);

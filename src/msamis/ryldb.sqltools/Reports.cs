@@ -157,8 +157,8 @@ namespace MSAMISUserInterface
         {
             
             //Exporting to PDF
-            String fileName = GetFileName(formOrigin);
-            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
+            var fileName = GetFileName(formOrigin);
+            var filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             if (!Directory.Exists(filePath))
                 Directory.CreateDirectory(filePath);
 
@@ -172,9 +172,9 @@ namespace MSAMISUserInterface
                 } else File.Delete(filePath + "\\" + fileName);
         }
 
-            using (FileStream stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
+            using (var stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
             {
-                Document pdfDoc = new Document(PageSize.LEGAL.Rotate(), 10f, 10f, 10f, 0f);
+                var pdfDoc = new Document(PageSize.LEGAL.Rotate(), 10f, 10f, 10f, 0f);
                 PdfWriter.GetInstance(pdfDoc, stream);
                 pdfDoc.Open();
                 pdfDoc = addSummaryInfo(pdfDoc, formOrigin);
@@ -189,13 +189,13 @@ namespace MSAMISUserInterface
         {
 
             if (o == 'g') {
-                Phrase Header = new Phrase();
-                Chunk HeaderChunk = new Chunk("Total Guards: ", boldfont);
-                Chunk HeaderChunk1 = new Chunk(GetSummaryTotal(o, 2).ToString() + "    ", myfont);
-                Chunk HeaderChunk2 = new Chunk("Total Guards Active: ", boldfont);
-                Chunk HeaderChunk3 = new Chunk(GetSummaryTotal(o, 1).ToString() + "    ", myfont);
-                Chunk HeaderChunk4 = new Chunk("Total Guards Inactive: ", boldfont);
-                Chunk HeaderChunk5 = new Chunk(GetSummaryTotal(o, 0).ToString(), myfont);
+                var Header = new Phrase();
+                var HeaderChunk = new Chunk("Total Guards: ", boldfont);
+                var HeaderChunk1 = new Chunk(GetSummaryTotal(o, 2).ToString() + "    ", myfont);
+                var HeaderChunk2 = new Chunk("Total Guards Active: ", boldfont);
+                var HeaderChunk3 = new Chunk(GetSummaryTotal(o, 1).ToString() + "    ", myfont);
+                var HeaderChunk4 = new Chunk("Total Guards Inactive: ", boldfont);
+                var HeaderChunk5 = new Chunk(GetSummaryTotal(o, 0).ToString(), myfont);
                 Header.Add(HeaderChunk);
                 Header.Add(HeaderChunk1);
                 Header.Add(HeaderChunk2);
@@ -248,6 +248,114 @@ namespace MSAMISUserInterface
                 pdfDoc.Add(Header);
             }
             return pdfDoc;
+        }
+
+        public void ExportToPayslipPDFOne(DataTable approvedList, string file) {
+            int i;
+            var PrintTable = new PdfPTable(2);
+            var alignTable = new PdfPTable(2);
+
+            alignTable.DefaultCell.Padding = 3;
+            alignTable.WidthPercentage = 100;
+            alignTable.DefaultCell.BorderWidth = 0;
+            //alignTable.LockedWidth = true;
+
+            PrintTable.DefaultCell.Padding = 3;
+            PrintTable.WidthPercentage = 100;
+            PrintTable.DefaultCell.BorderWidth = 0;
+
+            //rylui.RylMessageBox.ShowDialog("Flag boiii");
+            for (i = 0; i < approvedList.Rows.Count; i++) {
+                var gid = Convert.ToInt32(approvedList.Rows[i][0]);
+                var month = Convert.ToInt32(approvedList.Rows[i][1]);
+                var period = Convert.ToInt32(approvedList.Rows[i][2]);
+                var year = Convert.ToInt32(approvedList.Rows[i][3]);
+                rylui.RylMessageBox.ShowDialog(gid.ToString() + month + period + year);
+
+
+                var newLine = Environment.NewLine;
+                var pr = new PayrollReport(gid, year, month, period);
+                var p = Attendance.GetCurrentPayPeriod();
+                //Content
+                //Name
+                var GuardFullName = pr.LN.ToUpper() + ", " + pr.FN.ToUpper() + " " + pr.MN[0].ToString().ToUpper() + ".";
+                var Name = new Phrase(GuardFullName + newLine, boldfontPayslip);
+
+                var Header = new Phrase("THIS IS TO CERTIFY THAT I'VE RECEIVED THE FULL AMOUNT OF MY SALARY FOR THE PERIOD OF ", myfontPayslip);
+                var ChunkHeader2 = new Chunk(($@"{(p.period == 1 ? "1ST HALF" : "2ND HALF")} OF {p.month}/{p.year}") + newLine + newLine, boldfontPayslip);
+
+                Header.Add(ChunkHeader2);
+
+                //deductions
+
+                alignTable.AddCell(new Phrase("DEDUCTIONS:" + newLine, boldunderfontPayslip));
+                alignTable.AddCell(new Phrase(" ", boldunderfontPayslip));
+
+                alignTable.AddCell(new Phrase("SSS: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.Sss.ToString("0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("PHIC: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.PHIC.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Tax Withhold: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.Withtax.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Pag-Ibig: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.HDMF.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Cash Advance: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.CashAdvance.ToString("₱0.00"), myfontPayslip));
+
+                var TotalDedVal = pr.Sss + pr.PHIC + pr.Withtax + pr.HDMF + pr.CashAdvance;
+                alignTable.AddCell(new Phrase("Total Deductions: ", boldfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + TotalDedVal.ToString("₱0.00"), boldfontPayslip));
+
+                alignTable.AddCell(new Phrase(" "));
+                alignTable.AddCell(new Phrase(" "));
+
+                //Bonuses
+                alignTable.AddCell(new Phrase("BONUSES:", boldunderfontPayslip));
+                alignTable.AddCell(new Phrase("", boldunderfontPayslip));
+
+                alignTable.AddCell(new Phrase("Thirteenth Month: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.ThirteenthMonthPay.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Cola: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.Cola.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Cash Bond: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.CashBond.ToString("₱0.00"), myfontPayslip));
+
+                alignTable.AddCell(new Phrase("Emergency Allowance: ", myfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + pr.EmergencyAllowance.ToString("₱0.00"), myfontPayslip));
+
+                var TotalBonVal = pr.ThirteenthMonthPay + pr.Cola + pr.CashBond + pr.EmergencyAllowance;
+                alignTable.AddCell(new Phrase("Total Bonuses: ", boldfontPayslip));
+                alignTable.AddCell(new Phrase("Php " + TotalBonVal.ToString("₱0.00"), boldfontPayslip));
+
+                alignTable.DefaultCell.Colspan = 2;
+                alignTable.AddCell(new Phrase(" "));
+
+                alignTable.AddCell(new Phrase("PLEASE COUNT YOUR MONEY BEFORE LEAVING", myfontPayslip));
+
+                alignTable.AddCell(new Phrase(" "));
+
+                alignTable.AddCell(new Phrase("TOTAL PAY: Php " + pr.NetAmountPaid.ToString("₱0.00"), boldunderfontPayslip));
+
+                //Export Content
+                
+                using (var stream = new FileStream(file, FileMode.Create)) {
+                    var pdfDoc = getPDFSize(approvedList.Rows.Count);// new Document(PageSize.A8, 10f, 10f, 10f, 10f);
+                    PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(Name);
+                    pdfDoc.Add(Header);
+
+                    pdfDoc.Add(alignTable);
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+            }
         }
 
         public void ExportToPayslipPDF(DataTable approvedList)
