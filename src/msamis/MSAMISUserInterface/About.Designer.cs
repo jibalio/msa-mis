@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.UsersPNL = new System.Windows.Forms.Panel();
             this.EditUserPNL = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.NewPassPic = new System.Windows.Forms.PictureBox();
             this.CurrentPassPic = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -73,7 +74,7 @@
             this.RemoveBTN = new System.Windows.Forms.Button();
             this.EditBTN = new System.Windows.Forms.Button();
             this.UsersGRD = new System.Windows.Forms.DataGridView();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.AboutPNL.SuspendLayout();
             this.UsersPNL.SuspendLayout();
@@ -320,6 +321,7 @@
             // 
             // EditUserPNL
             // 
+            this.EditUserPNL.Controls.Add(this.label18);
             this.EditUserPNL.Controls.Add(this.label17);
             this.EditUserPNL.Controls.Add(this.NewPassPic);
             this.EditUserPNL.Controls.Add(this.CurrentPassPic);
@@ -345,6 +347,18 @@
             this.EditUserPNL.Size = new System.Drawing.Size(373, 378);
             this.EditUserPNL.TabIndex = 173;
             this.EditUserPNL.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label17.Location = new System.Drawing.Point(163, 285);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(171, 15);
+            this.label17.TabIndex = 241;
+            this.label17.Text = "* Cannot contain single quotes,";
             // 
             // NewPassPic
             // 
@@ -735,17 +749,17 @@
             this.UsersGRD.Size = new System.Drawing.Size(328, 305);
             this.UsersGRD.TabIndex = 6;
             // 
-            // label17
+            // label18
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label17.Location = new System.Drawing.Point(136, 287);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(195, 19);
-            this.label17.TabIndex = 241;
-            this.label17.Text = "* Cannot contain single quotes";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label18.Location = new System.Drawing.Point(173, 302);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(160, 15);
+            this.label18.TabIndex = 242;
+            this.label18.Text = "single quotes will be omitted.";
             // 
             // About
             // 
@@ -831,5 +845,6 @@
         private System.Windows.Forms.PictureBox NewPassPic;
         private System.Windows.Forms.PictureBox CurrentPassPic;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }

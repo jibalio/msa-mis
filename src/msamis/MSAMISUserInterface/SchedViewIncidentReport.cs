@@ -26,7 +26,11 @@ namespace MSAMISUserInterface {
         private void LoadData() {
             try {
                 var data = Scheduling.GetIncidentReport(Rid);
-
+                if (data.Rows[0][0].ToString().Equals("")) {
+                    RylMessageBox.ShowDialog("No Incident Report found", "Incident Report", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    Close();
+                }
                 TypeDateLBL.Text = "Type: " + data.Rows[0][0] + "          Event Date: " + data.Rows[0][1];
                 LocationLBL.Text = data.Rows[0][2].ToString();
                 DescriptionBX.Text = data.Rows[0][3].ToString();
@@ -37,9 +41,6 @@ namespace MSAMISUserInterface {
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
-                RylMessageBox.ShowDialog("No Incident Report found", "Incident Report", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                Close();
             }
         }
 

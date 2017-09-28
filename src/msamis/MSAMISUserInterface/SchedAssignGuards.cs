@@ -123,7 +123,6 @@ namespace MSAMISUserInterface {
             AssignedLBL.Text = "Assigned Guards (" + AssignedGRD.Rows.Count + ")";
             AvailableLBL.Text = "Available Guards (" + AvailableGRD.Rows.Count + ")";
             AssignedGRD.Sort(AssignedGRD.Columns[1], ListSortDirection.Ascending);
-            AvailableGRD.Sort(AvailableGRD.Columns[1], ListSortDirection.Ascending);
         }
 
         private void AssignedLBL_Click(object sender, EventArgs e) {

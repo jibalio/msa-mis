@@ -461,8 +461,8 @@
             this.panel2.Controls.Add(this.AssignedLBL);
             this.panel2.Controls.Add(this.ConfirmBTN);
             this.panel2.Controls.Add(this.AvailableLBL);
-            this.panel2.Controls.Add(this.AssignedPNL);
             this.panel2.Controls.Add(this.AvailablePNL);
+            this.panel2.Controls.Add(this.AssignedPNL);
             this.panel2.Location = new System.Drawing.Point(-1, 135);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(550, 467);

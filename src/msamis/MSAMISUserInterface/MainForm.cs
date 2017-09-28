@@ -473,6 +473,7 @@ namespace MSAMISUserInterface {
             bool[] pnl = {DPaydayNotifPNL.Visible, DDutyDetailNotifPNL.Visible, DSalaryReportNotifPNL.Visible};
             var loc1 = new Point(DPaydayNotifPNL.Location.X, 208);
             var loc2 = new Point(DPaydayNotifPNL.Location.X, 310);
+            var loc3 = new Point(DPaydayNotifPNL.Location.X, 413);
             if (pnl[0]) if (!pnl[1]) DSalaryReportNotifPNL.Location = loc2;
             if (pnl[1])
                 if (!pnl[0]) {
@@ -480,6 +481,11 @@ namespace MSAMISUserInterface {
                     DSalaryReportNotifPNL.Location = loc2;
                 }
             if (pnl[2]) if (!pnl[0] && !pnl[1]) DSalaryReportNotifPNL.Location = loc1;
+            if (pnl[0] && pnl[1] && pnl[2]) {
+                DPaydayNotifPNL.Location = loc1;
+                DDutyDetailNotifPNL.Location = loc2;
+                DSalaryReportNotifPNL.Location = loc3;
+            }
         }
 
         private void NotifLayout() {
@@ -2251,10 +2257,9 @@ namespace MSAMISUserInterface {
         private void PEmpListPrintBTN_Click(object sender, EventArgs e) {
 
         }
-        #endregion
 
         #endregion
 
-
+        #endregion
     }
 }
