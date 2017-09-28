@@ -76,7 +76,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Exporting";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exporting_FormClosing);
             this.Load += new System.EventHandler(this.Exporting_Load);
             this.Shown += new System.EventHandler(this.Exporting_Shown);

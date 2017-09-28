@@ -14,8 +14,17 @@ namespace MSAMISUserInterface {
             Opacity = 0;
         }
 
+        private const int CsDropshadow = 0x20000;
+
+        protected override CreateParams CreateParams {
+            get {
+                var cp = base.CreateParams;
+                cp.ClassStyle |= CsDropshadow;
+                return cp;
+            }
+        }
+
         private void Exporting_Load(object sender, EventArgs e) {
-            Location = new Point(Location.X + 430, Location.Y + 210);
             label69.Text = "Exporting to PDF";
             label68.Text = "Please wait...";
             FadeInTMR.Start();

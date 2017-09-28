@@ -13,7 +13,7 @@ namespace MSAMISUserInterface {
 
         private int _gender;
         private Label _label;
-        private int _guardType = 0;
+        private int _guardType = 1;
 
         private Panel _panel;
         public string Button = "ADD";
@@ -479,7 +479,7 @@ namespace MSAMISUserInterface {
                             _gender, HeightBX.Text.Replace(".", string.Empty), WeightBX.Text.Replace(".", string.Empty), ReligionBX.Text.Replace("'", string.Empty), CVStatusBX.SelectedIndex,
                             CellNoBX.Text.Replace(".", string.Empty), TellNoBX.Text.Replace(".", string.Empty), LicenseNoBX.Text, SSSNoBX.Text, TINNoBX.Text,
                             PhilHealthBX.Text, PrevAgencyBX.Text.Replace("'", string.Empty), PrevAssBX.Text.Replace("'", string.Empty), EdAttBX.SelectedIndex, CourseBX.Text,
-                            MilTrainBX.Text.Replace("'", string.Empty), EmergBX.Text.Replace("'", string.Empty), EmergencyNoBX.Text.Replace("'", string.Empty));
+                            MilTrainBX.Text.Replace("'", string.Empty), EmergBX.Text.Replace("'", string.Empty), EmergencyNoBX.Text.Replace("'", string.Empty), _guardType);
                     }
                     catch (Exception ex) {
                         ShowErrorBox("Saving Guards", ex.Message);
@@ -526,6 +526,7 @@ namespace MSAMISUserInterface {
                             CVStatusBX.SelectedIndex, CellNoBX.Text.Replace(".", string.Empty), TellNoBX.Text.Replace(".", string.Empty), LicenseNoBX.Text, SSSNoBX.Text,
                             TINNoBX.Text, PhilHealthBX.Text, PrevAgencyBX.Text.Replace("'", string.Empty), PrevAssBX.Text.Replace("'", string.Empty), EdAttBX.SelectedIndex,
                             CourseBX.Text.Replace("'", string.Empty), MilTrainBX.Text.Replace("'", string.Empty), EmergBX.Text.Replace("'", string.Empty), EmergencyNoBX.Text.Replace("'", string.Empty));
+                       Guard.UpdateGuardType(Gid, _guardType);
                     }
 
                     catch (Exception ex) {
@@ -830,11 +831,11 @@ namespace MSAMISUserInterface {
         }
 
         private void TypeOfficer_CheckedChanged(object sender, EventArgs e) {
-            _guardType = TypeGuard.Checked ? 1 : 0;
+            _guardType = TypeGuard.Checked ? 0 : 1;
         }
 
         private void TypeGuard_CheckedChanged(object sender, EventArgs e) {
-            _guardType = TypeGuard.Checked ? 1 : 0;
+            _guardType = TypeGuard.Checked ? 0 : 1;
         }
     }
 }
