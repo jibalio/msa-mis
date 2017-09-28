@@ -169,6 +169,7 @@
             this.AcceptButton = this.btn2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btn1;
             this.ClientSize = new System.Drawing.Size(462, 225);
