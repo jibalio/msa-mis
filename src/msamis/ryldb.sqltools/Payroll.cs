@@ -15,11 +15,13 @@ namespace MSAMISUserInterface {
     /// <summary>
     /// Do not serialize objects when payroll is pending.
     /// </summary>
-    
+
+   
     public class Payroll {
 
         public string ApprovedBy;
-        
+        int gtype;
+        private int cidt;
         #region Constructors
 
         private DataRow DbValues;
@@ -41,7 +43,7 @@ namespace MSAMISUserInterface {
             DataTable d =
                 SQLTools.ExecuteQuery(
                     $@"select count(*) as `c` from payroll where gid={GID} AND month={month} AND period={period} AND year={year}");
-            this._BasicPayHourly = _GetMyBasicPays() / 8.00;
+            
             // If record is not present yet (while object is created).
             if (d.Rows[0][0].ToString() == "0") {
                 string insertionquery = $@"
@@ -52,16 +54,16 @@ namespace MSAMISUserInterface {
                     '{RetrieveDefaultCola()}', '{RetrieveDefaultEmergency()}', '{Enumeration.PayrollStatus.Pending}');";
                 SQLTools.ExecuteNonQuery(insertionquery);
             }
-
             DbValues =
                 SQLTools.ExecuteQuery(
                     $@"select 
-                        pid, gid, month, period, year, rates_id, cashbond, 
-                        thirteenth, cola, sss, pagibig,philhealth,withtax,
-                        cashadv, emergencyallowance,totalsummary_serializable,
-                         hc_serializable,lastmodified, pstatus, basicpayhourly, uname, sssinfo_ser
+                        payroll.pid, payroll.gid, month, period, year, rates_id, cashbond, 
+                        thirteenth, cola, payroll.sss, payroll.pagibig,payroll.philhealth,payroll.withtax,
+                        payroll.cashadv, payroll.emergencyallowance,payroll.totalsummary_serializable,
+                         hc_serializable,lastmodified, pstatus, basicpayhourly, uname, sssinfo_ser, gtype
                           from payroll left join account on payroll.approvedby=account.accid 
-                        where gid={GID} AND month={month} AND period={period} AND year={year}").Rows[0];
+                            left join guards on guards.gid=payroll.gid
+                        where guards.gid={GID} AND month={month} AND period={period} AND year={year}").Rows[0];
             this._PayrollId = int.Parse(DbValues["PID"].ToString());
             this.ApprovedBy = DbValues["uname"].ToString();
             if (DbValues["pstatus"].ToString() == Enumeration.PayrollStatus.Approved.ToString()) {
@@ -148,6 +150,8 @@ namespace MSAMISUserInterface {
         }
 
         private void _InitMeSoftly(int month, int year) {
+            this.gtype = int.Parse(DbValues["gtype"].ToString());
+            this._BasicPayHourly = _GetMyBasicPays() / 8.00;
             this._viewmode = 0;
             this._InitRates();
             ComputeHours();
@@ -362,7 +366,14 @@ namespace MSAMISUserInterface {
         #region  Computationes
 
         private double _GetMyBasicPays() {
-            return double.Parse(SQLTools.ExecuteSingleResult("select amount from basicpay where status=1"));
+            double bpay;
+            if (gtype==0)
+                bpay =  double.Parse(SQLTools.ExecuteSingleResult("select amount from basicpay where status=1"));
+            // hax for the meantime, get ofcrate of latest assingia
+            else bpay = double.Parse(SQLTools.ExecuteSingleResult($@"SELECT ofcrate FROM msadb.sduty_assignment 
+	                                                left join client on sduty_assignment.cid = client.cid  where
+                                                    gid={this.GID} order by assignedon desc limit 1;"));
+            return bpay; 
         }
 
         private void Compute(bool checkthirteen) {
