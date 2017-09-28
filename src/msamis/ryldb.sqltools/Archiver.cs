@@ -117,7 +117,8 @@ namespace MSAMISUserInterface {
 
         public static DataTable GetAttendanceSummary(int year, int month, int period, int gid) {
            return SQLTools.ExecuteQuery(
-                $@"SELECT pid, certby, holiday_day, holiday_night, normal_day, normal_night, total FROM msadbarchive.period
+                $@"SELECT pid, concat(ln,', ',fn,' ',mn) as 'certby', holiday_day, holiday_night, normal_day, normal_night, total FROM msadbarchive.period
+                left join msadb.certifier on msadb.certifier.ccid = msadbarchive.period.certby
                 where month = {month}
                 and period={period}
                 and year = {year}

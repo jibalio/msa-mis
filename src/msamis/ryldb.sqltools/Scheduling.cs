@@ -522,7 +522,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
             SQLTools.ExecuteNonQuery(q);
             SQLTools.ExecuteNonQuery("call init_checkdate_dutydetail();");
         }
-
+        
         public static void DismissDuty (int did, DateTime dismissal_date) {
             // Set duty detail to inactive.
             // Previous duty na ni niya.

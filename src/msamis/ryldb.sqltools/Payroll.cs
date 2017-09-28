@@ -1169,5 +1169,9 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             }
             return SQLTools.ExecuteQuery(q);
         }
+
+        public void RollbackApproval() {
+            SQLTools.ExecuteNonQuery($@"UPDATE `msadb`.`payroll` SET `pstatus`='0' WHERE `PID`='{_PayrollId}';");
+        }
     }
 }
