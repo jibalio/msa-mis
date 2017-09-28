@@ -30,6 +30,7 @@ namespace MSAMISUserInterface {
                 ManagerBX.Text = dt.Rows[0]["Manager"].ToString();
                 ContactBX.Text = dt.Rows[0]["ContactPerson"].ToString();
                 ContactNoBX.Text = dt.Rows[0]["ContactNo"].ToString();
+                BasicPayBX.Value = decimal.Parse(dt.Rows[0]["ofcrate"].ToString());
                 try {
                     var dataTable = Client.GetCertifiers(Cid);
                     foreach (DataRow row in dataTable.Rows) {

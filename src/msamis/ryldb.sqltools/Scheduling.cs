@@ -86,9 +86,9 @@ namespace MSAMISUserInterface {
             string endx = end.Substring(14);
             string startx = start.Substring(15);
             String q = $@"select guards.gid, concat(ln,', ',fn,' ',mn) as name,
-                         concat(address.streetno, ', ', address.street, ', ', address.brgy, ', ', address.city) as Location, request_assign.ContractStart, request_assign.ContractEnd,
-                            msadb.count_assign(guards.gid) as Num from guards
-                            
+                         concat(address.streetno, ', ', address.street, ', ', address.brgy, ', ', address.city) as Location, request_assign.ContractStart, request_assign.ContractEnd,             
+                            (select count(*) from sduty_assignment where sduty_assignment.GID = guards.gid) AS prio
+                            from guards
 	                        left join sduty_assignment on sduty_assignment.gid = guards.gid
                             left join address on address.gid = guards.gid
                             left join request_assign on request_assign.RAID = sduty_assignment.raid
@@ -96,7 +96,7 @@ namespace MSAMISUserInterface {
                             (gstatus = {Enumeration.GuardStatus.Inactive} or
                             (gstatus= {Enumeration.GuardStatus.PendingPayroll}) or
                             (GStatus <> 1 or (request_assign.ContractStart > '{DateTime.Parse(endx).ToString("yyyy-MM-dd")}' or (request_assign.ContractEnd < '{DateTime.Parse(startx).ToString("yyyy-MM-dd")}')))) ";
-            return SQLTools.ExecuteQuery(q + searchkeyword + "order by num desc,  name asc");
+            return SQLTools.ExecuteQuery(q + searchkeyword + "order by prio ASC, name asc");
         }
 
 

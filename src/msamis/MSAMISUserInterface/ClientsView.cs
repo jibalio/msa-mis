@@ -73,6 +73,7 @@ namespace MSAMISUserInterface {
                 ManagerLBL.Text = dt.Rows[0]["Manager"].ToString();
                 ContactLBL.Text = dt.Rows[0]["ContactPerson"].ToString();
                 ContactNoLBL.Text = dt.Rows[0]["ContactNo"].ToString();
+                BasicPayLBL.Text = "₱ " + dt.Rows[0]["ofcrate"];
                 try {
                     CertifiersGRD.DataSource = Client.GetCertifiersView(Cid);
                     CertifiersGRD.Columns[0].Visible = false;
