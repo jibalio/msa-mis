@@ -67,15 +67,15 @@ namespace MSAMISUserInterface {
             return SQLTools.ExecuteQuery(q);
         }
 
-        public static void AddClient(string name, string streetNo, string street, string brgy, string city, string contactPerson, string contactNo, string Manager) {
+        public static void AddClient(string name, string streetNo, string street, string brgy, string city, string contactPerson, string contactNo, string Manager, double OfficerRate) {
             String q =$@"INSERT INTO `msadb`.`Client` 
-                        (`Name`, `ClientStreetNo`, `ClientStreet`,`ClientBrgy`,`ClientCity`,`ContactPerson`,`ContactNo`,`Manager`,`CStatus` ) 
-                        VALUES ('{name}', '{streetNo}', '{street}', '{brgy}', '{city}', '{contactPerson}', '{contactNo}', '{Manager}', '{Enumeration.ClientStatus.Inactive}');";
+                        (`Name`, `ClientStreetNo`, `ClientStreet`,`ClientBrgy`,`ClientCity`,`ContactPerson`,`ContactNo`,`Manager`,`CStatus` ,`ofcrate` ) 
+                        VALUES ('{name}', '{streetNo}', '{street}', '{brgy}', '{city}', '{contactPerson}', '{contactNo}', '{Manager}', '{Enumeration.ClientStatus.Inactive}', '{OfficerRate}');";
             SQLTools.ExecuteNonQuery(q);
         }
 
         public static void UpdateClient(string Cid, string name, string streetNo, string street, string brgy,
-            string city, string contactPerson, string contactNo, string Manager) {
+            string city, string contactPerson, string contactNo, string Manager, double OfficerRate) {
             var q =  $@"UPDATE `msadb`.`Client` SET 
                                 `Name` = '{name}', 
                                 `ClientStreetNo` = '{streetNo}', 
@@ -84,7 +84,8 @@ namespace MSAMISUserInterface {
                                 `ClientCity`= '{city}',
                                 `ContactPerson`= '{contactPerson}',
                                 `ContactNo`= '{contactNo}',
-                                `Manager`= '{Manager}'
+                                `Manager`= '{Manager}',
+                                `OfcRate`={OfficerRate}
                                 WHERE CID = '{Cid}';";
             SQLTools.ExecuteNonQuery(q);
         }
