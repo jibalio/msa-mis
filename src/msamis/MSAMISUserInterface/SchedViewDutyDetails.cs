@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using rylui;
 
 namespace MSAMISUserInterface {
     public partial class SchedViewDutyDetails : Form {
@@ -42,11 +41,9 @@ namespace MSAMISUserInterface {
             }
             LoadPage();
             FadeTMR.Start();
-            if (Login.AccountType == 2) DismissBTN.Visible = false;
         }
 
         public void LoadPage() {
-            DateEffective.MinDate = DateTime.Now;
             if (!Name.Equals("Archived")) {
                 var p = Attendance.GetCurrentPayPeriod();
                 _attendance = new Attendance(Aid, p.month, p.period, p.year);
@@ -113,10 +110,14 @@ namespace MSAMISUserInterface {
             DutyDetailsGRD.Columns[1].HeaderText = "TIME-IN";
             DutyDetailsGRD.Columns[2].HeaderText = "TIME-OUT";
             DutyDetailsGRD.Columns[3].HeaderText = "DAYS";
+            DutyDetailsGRD.Columns[4].HeaderText = "EFFECTIVE";
+            DutyDetailsGRD.Columns[5].HeaderText = "DISMISSED";
 
-            DutyDetailsGRD.Columns[1].Width = 150;
-            DutyDetailsGRD.Columns[2].Width = 150;
-            DutyDetailsGRD.Columns[3].Width = 150;
+            DutyDetailsGRD.Columns[1].Width = 95;
+            DutyDetailsGRD.Columns[2].Width = 95;
+            DutyDetailsGRD.Columns[3].Width = 95;
+            DutyDetailsGRD.Columns[4].Width = 100;
+            DutyDetailsGRD.Columns[5].Width = 100;
 
             DutyDetailsGRD.Select();
         }
@@ -323,22 +324,15 @@ namespace MSAMISUserInterface {
         private void DutyDetailsGRD_CellEnter(object sender, DataGridViewCellEventArgs e) {
             if (DutyDetailsGRD.SelectedRows.Count > 0) {
                 _did = int.Parse(DutyDetailsGRD.SelectedRows[0].Cells[0].Value.ToString());
-                if (Login.AccountType != 2) DismissBTN.Visible = true;
                 EditDutyDetailsBTN.Visible = true;
 
                 if (Name.Equals("Archived") || Name.Equals("History")) {
                     AddDutyDetailsBTN.Visible = false;
-                    DismissBTN.Visible = false;
                     EditDutyDetailsBTN.Visible = false;
                 }
             }
         }
-
-        private void DismissBTN_Click(object sender, EventArgs e) {
-            DismissPNL.BringToFront();
-            DismissPNL.Show();
-        }
-
+        
         private void CloseBTN_MouseEnter(object sender, EventArgs e) {
             CloseBTN.ForeColor = Color.White;
         }
@@ -441,25 +435,6 @@ namespace MSAMISUserInterface {
 
         private void RDSLBL_MouseLeave(object sender, EventArgs e) {
             HidePop(OrdinaryDay);
-        }
-
-        private void DismissCANCEL_Click(object sender, EventArgs e) {
-            DismissPNL.Hide();
-        }
-
-        private void DismissOK_Click(object sender, EventArgs e) {
-            var x = RylMessageBox.ShowDialog("Are you sure you want to dismiss the selected schedule?",
-                "Dismiss Schedule", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (x == DialogResult.Yes) {
-                Scheduling.DismissDuty(_did, DateEffective.Value);
-                LoadPage();
-                DismissPNL.Hide();
-            }
-            if (DutyDetailsGRD.Rows.Count == 0) {
-                DismissBTN.Visible = false;
-                EditDutyDetailsBTN.Visible = false;
-                ErrorPNL.Visible = true;
-            }
         }
     }
 }

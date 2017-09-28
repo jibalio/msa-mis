@@ -17,7 +17,6 @@ namespace MSAMISUserInterface {
         private void Sched_AddDutyDetail_Load(object sender, EventArgs e) {
             FadeTMR.Start();
             AddBTN.Text = Button;
-            DateEffective.MinDate = DateTime.Now;
 
             if (Button.Equals("ADD")) {
                 TimeInHrBX.SelectedIndex = 0;
@@ -26,6 +25,8 @@ namespace MSAMISUserInterface {
                 TimeOutAMPMBX.SelectedIndex = 0;
                 TimeOutHrBX.SelectedIndex = 0;
                 TimeOutMinBX.SelectedIndex = 0;
+                DateDismissedCheck.Checked = true;
+                DateEffective.MinDate = DateTime.Now;
             }
             else {
                 var dt = Scheduling.GetDutyDetailsDetails(Did);
@@ -35,6 +36,12 @@ namespace MSAMISUserInterface {
                 TimeOutHrBX.SelectedIndex = int.Parse(dt.Rows[0][3].ToString()) - 1;
                 TimeOutMinBX.SelectedIndex = int.Parse(dt.Rows[0][4].ToString());
                 TimeOutAMPMBX.Text = dt.Rows[0][5].ToString();
+                DateEffective.Value = DateTime.Parse(dt.Rows[0][6].ToString());
+
+                if (DateTime.Parse(dt.Rows[0][7].ToString()).Year != 9999) {
+                    DateDismissed.Value = DateTime.Parse(dt.Rows[0][7].ToString());
+                    DateDismissedCheck.Checked = true;
+                }
 
                 var temp = Scheduling.GetDays(Did).Value;
                 if (temp[0]) MBTN.PerformClick();
@@ -140,7 +147,7 @@ namespace MSAMISUserInterface {
                     var res = Scheduling.AddDutyDetail(Aid, TimeInHrBX.Text, TimeInMinBX.Text, TimeInAMPMBX.Text,
                         TimeOutHrBX.Text, TimeOutMinBX.Text, TimeOutAMPMBX.Text,
                         new Scheduling.Days(_dutyDays[1], _dutyDays[2], _dutyDays[3], _dutyDays[4], _dutyDays[5],
-                            _dutyDays[6], _dutyDays[0]), DateEffectiveCheck.Checked ? DateEffective.Value : DateTime.Now, DateDismissedCheck.Checked ? DateDismissed.Value : new DateTime(9999,12,31)); 
+                            _dutyDays[6], _dutyDays[0]), DateEffective.Value, DateDismissedCheck.Checked ? DateDismissed.Value : new DateTime(9999,12,31)); 
                     if (res.Equals(">")) {
                         HoursTLTP.ToolTipTitle = "Duty Details";
                         HoursTLTP.Show("The specified schedule overlaps one of the current duty details.", HoursLBL, 2000);
@@ -193,10 +200,6 @@ namespace MSAMISUserInterface {
 
         private void DateEffective_ValueChanged(object sender, EventArgs e) {
             DateDismissed.MinDate = DateEffective.Value;
-        }
-
-        private void DateEffectiveCheck_CheckedChanged(object sender, EventArgs e) {
-            DateEffective.Enabled = DateEffectiveCheck.Checked;
         }
 
         private void DateDismissedCheck_CheckedChanged(object sender, EventArgs e) {

@@ -52,8 +52,8 @@
             this.FormLBL = new System.Windows.Forms.Label();
             this.DateEffective = new System.Windows.Forms.DateTimePicker();
             this.DateDismissed = new System.Windows.Forms.DateTimePicker();
-            this.DateEffectiveCheck = new System.Windows.Forms.CheckBox();
             this.DateDismissedCheck = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label20
@@ -553,7 +553,6 @@
             // DateEffective
             // 
             this.DateEffective.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DateEffective.Enabled = false;
             this.DateEffective.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.DateEffective.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DateEffective.Location = new System.Drawing.Point(293, 405);
@@ -573,20 +572,6 @@
             this.DateDismissed.Size = new System.Drawing.Size(101, 25);
             this.DateDismissed.TabIndex = 236;
             // 
-            // DateEffectiveCheck
-            // 
-            this.DateEffectiveCheck.AutoSize = true;
-            this.DateEffectiveCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DateEffectiveCheck.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.DateEffectiveCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.DateEffectiveCheck.Location = new System.Drawing.Point(160, 406);
-            this.DateEffectiveCheck.Name = "DateEffectiveCheck";
-            this.DateEffectiveCheck.Size = new System.Drawing.Size(106, 23);
-            this.DateEffectiveCheck.TabIndex = 238;
-            this.DateEffectiveCheck.Text = "Date Effective";
-            this.DateEffectiveCheck.UseVisualStyleBackColor = true;
-            this.DateEffectiveCheck.CheckedChanged += new System.EventHandler(this.DateEffectiveCheck_CheckedChanged);
-            // 
             // DateDismissedCheck
             // 
             this.DateDismissedCheck.AutoSize = true;
@@ -601,6 +586,18 @@
             this.DateDismissedCheck.UseVisualStyleBackColor = true;
             this.DateDismissedCheck.CheckedChanged += new System.EventHandler(this.DateDismissedCheck_CheckedChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label2.Location = new System.Drawing.Point(182, 407);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 19);
+            this.label2.TabIndex = 240;
+            this.label2.Text = "Date Effective";
+            // 
             // SchedAddDutyDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -608,8 +605,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(568, 598);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.DateDismissedCheck);
-            this.Controls.Add(this.DateEffectiveCheck);
             this.Controls.Add(this.DateDismissed);
             this.Controls.Add(this.DateEffective);
             this.Controls.Add(this.FormLBL);
@@ -673,7 +670,7 @@
         private System.Windows.Forms.Label FormLBL;
         private System.Windows.Forms.DateTimePicker DateEffective;
         private System.Windows.Forms.DateTimePicker DateDismissed;
-        private System.Windows.Forms.CheckBox DateEffectiveCheck;
         private System.Windows.Forms.CheckBox DateDismissedCheck;
+        private System.Windows.Forms.Label label2;
     }
 }
