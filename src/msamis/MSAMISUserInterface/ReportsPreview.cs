@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
@@ -426,8 +427,12 @@ namespace MSAMISUserInterface {
                 Filter = "Portable Document Format (.pdf)|*.pdf"
             };
             if (savefile.ShowDialog() == DialogResult.OK)
-                RylMessageBox.ShowDialog("Saved");
-            //  File.Copy(SSummaryFilesLST.Items[0].SubItems[1].Text, savefile.FileName, true);
+                try {
+                    
+                }
+                catch {
+                    RylMessageBox.ShowDialog("The payslip was not exported.","Export Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
         }
     }
 }
