@@ -456,7 +456,7 @@ namespace MSAMISUserInterface {
                     "SSS Contribution", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else {
-                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates? Unsaved changes will be lost.",
+                if (RylMessageBox.ShowDialog("Are you sure you want to adjust the current SSS Contribution rates?",
                         "SSS Contribution", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     try {
                         Payroll.SetSssContrib(SSSGRD, SSSDateTimePKR.Value);
@@ -934,9 +934,5 @@ namespace MSAMISUserInterface {
 
 
         #endregion
-
-        private void RatesLoader_DoWork(object sender, DoWorkEventArgs e) {
-           // LoadTaxPage();
-        }
     }
 }
