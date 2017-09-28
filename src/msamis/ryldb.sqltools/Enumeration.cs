@@ -86,6 +86,11 @@
             public static int Involved = 1;
             public static int Witness = 2;
         }
+
+        public class GuardType {
+            public static int Regular = 0;
+            public static int Officer = 1;
+        }
         
         public class AssignmentStatus {
             public static int Active = 1;

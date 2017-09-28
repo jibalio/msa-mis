@@ -30,7 +30,7 @@ namespace MSAMISUserInterface {
                                 when {Enumeration.GuardStatus.Inactive} then 'Inactive' 
                                 when {Enumeration.GuardStatus.PendingPayroll} then 'Pending Payroll'
                                 end as 'STATUS', 
-                            bdate as BIRTHDATE, case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER', 
+                            case gtype when 0 then 'Regular' when 1 then 'Officer' end as 'RANK', case gender when 1 then 'Male' when 2 then 'Female' end as 'GENDER',
                             cellno as 'CONTACTNO' 
                             FROM Guards ";
                 orderbyclause = "ORDER BY NAME ASC;";
@@ -73,8 +73,8 @@ namespace MSAMISUserInterface {
             SQLTools.ExecuteNonQuery(_);
         }
 
-        public static void AddGuardBasicInfo(string FirstNameBX,string MiddleNameBX, string LastNameBX, DateTime BirthdateBX, int gender, string HeightBX,string WeightBX,string ReligionBX,int CVStatusBX,string CellNoBX,string TellNoBX,string LicenseNoBX,string SSSNoBX,string TINNoBX,string PhilHealthBX,string PrevAgencyBX,string PrevAssBX,int EdAttBX,string CourseBX,string MilTrainBX,string EmergBX,string EmergencyNoBX) {
-            SQLTools.ExecuteNonQuery("INSERT INTO Guards(FN, MN, LN, GStatus, BDate, Gender, Height, Weight, Religion, CivilStatus, CellNo, TelNo, LicenseNo, SSS, TIN, PhilHealth, PrevAgency, PrevAss, EdAtt, Course, MilitaryTrainings, EmergencyContact, EmergencyNo) VALUES ('" + FirstNameBX + "','" + MiddleNameBX + "','" + LastNameBX + "','" + Enumeration.GuardStatus.Inactive + "','" + BirthdateBX.Month + "/" + BirthdateBX.Day + "/" + BirthdateBX.Year + "','" + gender + "','" + HeightBX + "','" + WeightBX + "','" + ReligionBX + "','" + CVStatusBX + "','" + CellNoBX + "','" + TellNoBX + "','" + LicenseNoBX + "','" + SSSNoBX + "','" + TINNoBX + "','" + PhilHealthBX + "','" + PrevAgencyBX + "','" + PrevAssBX + "','" + EdAttBX + "','" + CourseBX + "','" + MilTrainBX + "','" + EmergBX + "','" + EmergencyNoBX + "')");
+        public static void AddGuardBasicInfo(string FirstNameBX,string MiddleNameBX, string LastNameBX, DateTime BirthdateBX, int gender, string HeightBX,string WeightBX,string ReligionBX,int CVStatusBX,string CellNoBX,string TellNoBX,string LicenseNoBX,string SSSNoBX,string TINNoBX,string PhilHealthBX,string PrevAgencyBX,string PrevAssBX,int EdAttBX,string CourseBX,string MilTrainBX,string EmergBX,string EmergencyNoBX, int gtype) {
+            SQLTools.ExecuteNonQuery(@"INSERT INTO Guards(FN, MN, LN, GStatus, BDate, Gender, Height, Weight, Religion, CivilStatus, CellNo, TelNo, LicenseNo, SSS, TIN, PhilHealth, PrevAgency, PrevAss, EdAtt, Course, MilitaryTrainings, EmergencyContact, EmergencyNo, gtype) VALUES ('" + FirstNameBX + "','" + MiddleNameBX + "','" + LastNameBX + "','" + Enumeration.GuardStatus.Inactive + "','" + BirthdateBX.Month + "/" + BirthdateBX.Day + "/" + BirthdateBX.Year + "','" + gender + "','" + HeightBX + "','" + WeightBX + "','" + ReligionBX + "','" + CVStatusBX + "','" + CellNoBX + "','" + TellNoBX + "','" + LicenseNoBX + "','" + SSSNoBX + "','" + TINNoBX + "','" + PhilHealthBX + "','" + PrevAgencyBX + "','" + PrevAssBX + "','" + EdAttBX + "','" + CourseBX + "','" + MilTrainBX + "','" + EmergBX + "','" + EmergencyNoBX + $"', '{gtype}')");
         }
 
         public static void AddGuardsDependent(int Gid, int Rel, string First, string Middle, string Last) {
@@ -100,6 +100,10 @@ namespace MSAMISUserInterface {
 
         public static void UpdateGuardBasicInfo(int Gid, string FirstNameBX, string MiddleNameBX, string LastNameBX, DateTime BirthdateBX, int gender, string HeightBX, string WeightBX, string ReligionBX, int CVStatusBX, string CellNoBX, string TellNoBX, string LicenseNoBX, string SSSNoBX, string TINNoBX, string PhilHealthBX, string PrevAgencyBX, string PrevAssBX, int EdAttBX, string CourseBX, string MilTrainBX, string EmergBX, string EmergencyNoBX) {
             SQLTools.ExecuteNonQuery("UPDATE Guards SET FN = '" + FirstNameBX + "', MN = '" + MiddleNameBX + "', LN = '" + LastNameBX + "', BDate = '" + BirthdateBX.Month + "/" + BirthdateBX.Day + "/" + BirthdateBX.Year + "', Gender =  '" + gender + "', Height = '" + HeightBX + "', Weight = '" + WeightBX + "', Religion = '" + ReligionBX + "', CivilStatus = '" + CVStatusBX + "', CellNo = '" + CellNoBX + "', TelNo = '" + TellNoBX + "', LicenseNo = '" + LicenseNoBX + "', SSS = '" + SSSNoBX + "', TIN = '" + TINNoBX + "', PhilHealth = '" + PhilHealthBX + "', PrevAgency = '" + PrevAgencyBX + "', PrevAss = '" + PrevAssBX + "', EdAtt = '" + EdAttBX + "', Course = '" + CourseBX + "', MilitaryTrainings = '" + MilTrainBX + "', EmergencyContact = '" + EmergBX + "', EmergencyNo = '" + EmergencyNoBX + "' WHERE GID=" + Gid);
+        }
+
+        public static void UpdateGuardType(int gid, int gtype) {
+            SQLTools.ExecuteNonQuery($@"UPDATE `msadb`.`guards` SET `gtype`='{gtype}' WHERE `GID`='{gid}';");
         }
     }
 }
