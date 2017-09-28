@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Data;
 using System.Drawing.Printing;
+using System.Linq;
 
 namespace MSAMISUserInterface
 {
@@ -494,6 +495,15 @@ namespace MSAMISUserInterface
             else return new Document(PageSize.A4, 10f, 10f, 10f, 10f);
         }
 
+        public void PrintPayslipPDF()
+        {
+            String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
+            var dirInfo = new DirectoryInfo(filePath);
+            var file = (from f in dirInfo.GetFiles("Payslip*.pdf") orderby f.LastWriteTime descending select f).First();
+            rylui.RylMessageBox.ShowDialog(file.Name.ToString());
+
+        }
+
         public static void PrintPDF(String fileName)
         {
             String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
@@ -624,6 +634,18 @@ namespace MSAMISUserInterface
                     return new String[] { "", "", "" };
             }
             return id;
+        }
+
+        private void DataChecker(DataTable dt)
+        {
+            if (dt.Rows.Count == 0)
+            {
+                DialogResult dr = rylui.RylMessageBox.ShowDialog("You don't seem to have any data for printing", "", MessageBoxButtons.OK);
+                if (dr == DialogResult.OK)
+                {
+                    //do Something to close
+                }
+            }
         }
     }
 }
