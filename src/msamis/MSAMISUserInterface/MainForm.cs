@@ -67,10 +67,6 @@ namespace MSAMISUserInterface {
             //Initial Methods
             FadeTMR.Start();
             DailyQuote();
-            BackgroundWorker.RunWorkerAsync();
-        }
-
-        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e) {
             CheckPayday();
             NotifTMR.Start();
         }
@@ -2253,7 +2249,7 @@ namespace MSAMISUserInterface {
 
         #region PMS - Payslip Print
         private void PEmpListPrintBTN_Click(object sender, EventArgs e) {
-            //No Function
+
         }
         #endregion
 
