@@ -38,7 +38,6 @@ namespace MSAMISUserInterface {
             _currentLabel = BasicLbl;
             _curLabelCon = BasicCon;
             LoadBasicPayPage();
-            RatesLoader.RunWorkerAsync();
         }
 
         private void FadeTMR_Tick(object sender, EventArgs e) {

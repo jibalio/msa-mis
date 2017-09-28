@@ -186,7 +186,7 @@ namespace MSAMISUserInterface {
                 };
                 view.ShowDialog();
             } else {
-                if (RylMessageBox.ShowDialog("Are you sure you want to unapprove this payroll?", "Unapprove Payroll", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                if (RylMessageBox.ShowDialog("Are you sure you want to unapprove this payroll? This will recalculate the values.\nAre you sure you want to continue?", "Unapprove Payroll", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     _pay.RollbackApproval();
                     BonusAddBTN.Text = "ADJUST";
                     ApproveBTN.Text = "APPROVE";
