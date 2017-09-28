@@ -186,7 +186,8 @@ namespace MSAMISUserInterface {
                 view.ShowDialog();
             } else {
                 if (RylMessageBox.ShowDialog("Are you sure you want to unapprove this payroll?", "Unapprove Payroll", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                    //Something
+                    _pay.RollbackApproval();
+                    LoadDetails();
                 }
             }
         }
