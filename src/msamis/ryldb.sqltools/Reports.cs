@@ -527,7 +527,7 @@ namespace MSAMISUserInterface
             if (printdg.ShowDialog() == DialogResult.OK)
             {
                 pdoc.PrinterSettings.PrinterName = printdg.PrinterSettings.PrinterName;
-                pdoc.DocumentName = fileName;
+                pdoc.DocumentName = fileTempDir;
                 pdoc.PrinterSettings.PrintFileName = fileTempDir;
                 pdoc.PrinterSettings.PrintToFile = true;
                 pdoc.Print();
