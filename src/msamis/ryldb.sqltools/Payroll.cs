@@ -23,7 +23,7 @@ namespace MSAMISUserInterface {
         int gtype;
         private int cidt;
         #region Constructors
-
+        public int pstatus { get; set; }
         private DataRow DbValues;
         /// <summary>
         /// Creates a payroll object for a specified guard during a specific
@@ -33,6 +33,7 @@ namespace MSAMISUserInterface {
         /// <param name="month">Month of payroll</param>
         /// <param name="period">Period of payroll [1/2]</param>
         /// <param name="year">Year of payroll</param>
+        
         public Payroll(int GID, int month, int period, int year) {
             sw.Start();
             this.GID = GID;
@@ -143,7 +144,7 @@ namespace MSAMISUserInterface {
             this._dateeffectivesss = sssdetails[0];
             this._rangesss = sssdetails[1];
             this._amountsss = sssdetails[2];
-
+            this.pstatus = int.Parse(DbValues["pstatus"].ToString());
 
             sw.Stop();
             Console.WriteLine("Done\nObject Deserialization Method: {0}", sw.Elapsed.TotalSeconds);

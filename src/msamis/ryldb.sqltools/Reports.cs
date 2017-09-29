@@ -271,8 +271,6 @@ namespace MSAMISUserInterface
                 var month = Convert.ToInt32(approvedList.Rows[i][1]);
                 var period = Convert.ToInt32(approvedList.Rows[i][2]);
                 var year = Convert.ToInt32(approvedList.Rows[i][3]);
-                rylui.RylMessageBox.ShowDialog(gid.ToString() + month + period + year);
-
 
                 var newLine = Environment.NewLine;
                 var pr = new PayrollReport(gid, year, month, period);
@@ -384,7 +382,6 @@ namespace MSAMISUserInterface
                 month = Convert.ToInt32(approvedList.Rows[i][1]);
                 period = Convert.ToInt32(approvedList.Rows[i][2]);
                 year = Convert.ToInt32(approvedList.Rows[i][3]);
-                rylui.RylMessageBox.ShowDialog(gid.ToString() + month + period + year);
 
 
                 var newLine = Environment.NewLine;

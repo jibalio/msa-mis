@@ -2255,7 +2255,12 @@ namespace MSAMISUserInterface {
 
         #region PMS - Payslip Print
         private void PEmpListPrintBTN_Click(object sender, EventArgs e) {
-
+            int[] _gids = new int[PEmpListGRD.SelectedRows.Count];
+            for (int i =0; i< PEmpListGRD.SelectedRows.Count; i++) {
+                _gids[i] = int.Parse(PEmpListGRD.SelectedRows[i].Cells[0].Value.ToString());
+            }
+            var rp = new Reports();
+            rp.ExportToPayslipPDF(Payroll.GetApprovedPayrollsList(_gids),true);
         }
 
         #endregion
