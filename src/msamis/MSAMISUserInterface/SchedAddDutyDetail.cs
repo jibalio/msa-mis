@@ -9,6 +9,7 @@ namespace MSAMISUserInterface {
         private readonly bool[] _dutyDays = new bool[7];
         public string Button = "ADD";
         public DateTime MaxDate;
+        public DateTime MinDate;
         public int Aid { get; set; }
         public int Did { get; set; }
         public SchedViewDutyDetails Refer { get; set; }
@@ -44,6 +45,8 @@ namespace MSAMISUserInterface {
                 }
 
                 DateDismissed.MaxDate = MaxDate;
+                DateEffective.MinDate = MinDate;
+
                 var temp = Scheduling.GetDays(Did).Value;
                 if (temp[0]) MBTN.PerformClick();
                 if (temp[1]) TBTN.PerformClick();

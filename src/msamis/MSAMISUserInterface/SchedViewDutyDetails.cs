@@ -85,6 +85,9 @@ namespace MSAMISUserInterface {
             else {
                 ErrorPNL.Visible = false;
             }
+            
+            RefreshDutyDetails();
+            RefreshCurrent();
         }
 
         public void RefreshCurrent() {
@@ -295,6 +298,7 @@ namespace MSAMISUserInterface {
                 Refer = this,
                 Did = _did,
                 MaxDate = DateTime.Parse(EndLBL.Text),
+                MinDate = DateTime.Parse(StartLBL.Text),
                 Location = new Point(Location.X + 330, Location.Y)
             };
             view.ShowDialog();
