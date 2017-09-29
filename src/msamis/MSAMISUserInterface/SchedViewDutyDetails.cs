@@ -85,9 +85,6 @@ namespace MSAMISUserInterface {
             else {
                 ErrorPNL.Visible = false;
             }
-            
-            RefreshDutyDetails();
-            RefreshCurrent();
         }
 
         public void RefreshCurrent() {
