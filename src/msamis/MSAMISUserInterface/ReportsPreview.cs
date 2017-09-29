@@ -161,51 +161,7 @@ namespace MSAMISUserInterface {
                 #endregion
             }
         }
-        /*
-        public DataTable formatSalaryReportTable()
-        {
-             dt;
-            var approvedlist = Payroll.GetApprovedPayrollsList();
-            int gid, month, period, year;
-            int i;
-            for (i = 0; i < Payroll.GetApprovedPayrollsList().Rows.Count; i++)
-            {
-                gid = Convert.ToInt32(approvedlist.Rows[i][0]);
-                month = Convert.ToInt32(approvedlist.Rows[i][1]);
-                period = Convert.ToInt32(approvedlist.Rows[i][2]);
-                year = Convert.ToInt32(approvedlist.Rows[i][3]);
-                PayrollReport pr = new PayrollReport(gid, year, month, period);
 
-
-                DataRow dr = dt.NewRow(pr.LN + ", " + pr.FN + pr.MN, pr.DaysOfWork, pr.Rate, pr.TotalRegularWage, pr.overtime.RegularDay.hour, pr.overtime.RegularDay.total, pr.overtime.SundayAndHoliday.hour, pr.overtime.SundayAndHoliday, pr.TotalAmount, pr.Sss, pr.PHIC, pr.Withtax, pr.HDMF, pr.CashAdvance, pr.ThirteenthMonthPay, pr.Cola, pr.CashBond, pr.EmergencyAllowance, pr.NetAmountPaid, "");
-                dt.Rows.InsertAt(dr, i);
-                //add data
-                //GReportGRD.Rows.Add(pr.LN + ", " + pr.FN + pr.MN, pr.DaysOfWork, pr.Rate, pr.TotalRegularWage, pr.overtime.RegularDay.hour, pr.overtime.RegularDay.total, pr.overtime.SundayAndHoliday.hour, pr.overtime.SundayAndHoliday, pr.TotalAmount, pr.Sss, pr.PHIC, pr.Withtax, pr.HDMF, pr.CashAdvance, pr.ThirteenthMonthPay, pr.Cola, pr.CashBond, pr.EmergencyAllowance, pr.NetAmountPaid, "");
-                [i].Cells[0].Value = pr.LN + ", " + pr.FN + pr.MN;
-                GReportGRD.Rows[i].Cells[1].Value = pr.DaysOfWork;
-                GReportGRD.Rows[i].Cells[2].Value = pr.Rate;
-                GReportGRD.Rows[i].Cells[3].Value = pr.TotalRegularWage;
-                GReportGRD.Rows[i].Cells[4].Value = pr.overtime.RegularDay.hour;
-                GReportGRD.Rows[i].Cells[5].Value = pr.overtime.RegularDay.total;
-                GReportGRD.Rows[i].Cells[6].Value = pr.overtime.SundayAndHoliday.hour;
-                GReportGRD.Rows[i].Cells[7].Value = pr.overtime.SundayAndHoliday;
-                GReportGRD.Rows[i].Cells[8].Value = pr.TotalAmount;
-                GReportGRD.Rows[i].Cells[9].Value = pr.Sss;
-                GReportGRD.Rows[i].Cells[10].Value = pr.PHIC;
-                GReportGRD.Rows[i].Cells[11].Value = pr.Withtax;
-                GReportGRD.Rows[i].Cells[12].Value = pr.HDMF;
-                GReportGRD.Rows[i].Cells[13].Value = pr.CashAdvance;
-                GReportGRD.Rows[i].Cells[14].Value = pr.ThirteenthMonthPay;
-                GReportGRD.Rows[i].Cells[15].Value = pr.Cola;
-                GReportGRD.Rows[i].Cells[16].Value = pr.CashBond;
-                GReportGRD.Rows[i].Cells[17].Value = pr.EmergencyAllowance;
-                GReportGRD.Rows[i].Cells[18].Value = pr.NetAmountPaid;
-                GReportGRD.Rows[i].Cells[19].Value = "";
-                
-            }
-            return dt;
-        }
-        */
 
         #region RylBlock
 
@@ -282,8 +238,8 @@ namespace MSAMISUserInterface {
                 r.ExportToPDF(pdfTable, formOrigin);
         }
 
-        public PdfPTable AddHeaders(PdfPTable pdfTable, char o) {
-            
+        public PdfPTable AddHeaders(PdfPTable pdfTable, char o) {            
+
             if (o == 'g') {
 
                 
