@@ -296,6 +296,14 @@ namespace MSAMISUserInterface {
                     SSSPop.Items[3].Text = sssdetails[1];
                     SSSPop.Items[5].Text = sssdetails[2];
                     DWithLBL.Text = CurrencyFormatNegative(wt.total);
+
+                    if(_pay.PayrollStatus == 2 && PeriodCMBX.SelectedIndex == 1) {
+                        BonusAddBTN.Text = "UNAPPROVE";
+                        ApproveBTN.Text = "PAYSLIP";
+                    } else {
+                        BonusAddBTN.Text = "ADJUST";
+                        ApproveBTN.Text = "APPROVE";
+                    }
                 }
             }
             catch (Exception ex) {
