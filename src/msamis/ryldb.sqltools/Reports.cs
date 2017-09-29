@@ -21,6 +21,7 @@ namespace MSAMISUserInterface
         public Font myfontPayslip = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
         public Font boldfontPayslip = FontFactory.GetFont("Arial", 10, Font.BOLD, BaseColor.BLACK);
         public Font boldunderfontPayslip = FontFactory.GetFont("Arial", 10, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
+        public Font reportHeaderFont = FontFactory.GetFont("Arial", 12, Font.BOLD, BaseColor.BLACK);
         public Font myfont = FontFactory.GetFont("Arial", 8, BaseColor.BLACK);
         public Font boldfont = FontFactory.GetFont("Arial", 8, Font.BOLD, BaseColor.BLACK);
         public Font boldunderfont = FontFactory.GetFont("Arial", 8, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
@@ -179,11 +180,27 @@ namespace MSAMISUserInterface
                 PdfWriter.GetInstance(pdfDoc, stream);
                 pdfDoc.Open();
                 pdfDoc = addSummaryInfo(pdfDoc, formOrigin);
+                //pdfDoc.Add(ReportHeader);
+                pdfDoc.Add(getTitlePhrase(formOrigin));
                 pdfDoc.Add(pdfTable);
                 pdfDoc.Close();
                 stream.Close();
             }
         //PrintPDF(filePath, fileName);
+        }
+
+        private Phrase getTitlePhrase(char o)
+        {
+            if (o == 'g')
+                return new Phrase("GUARDS SUMMARY", reportHeaderFont);
+            else if (o == 'c')
+                return new Phrase("CLIENTS SUMMARY", reportHeaderFont);
+            else if (o == 'd')
+                return new Phrase("DUTY DETAIL REPORT", reportHeaderFont);
+            else if (o == 's')
+                return new Phrase("SALARY REPORT", reportHeaderFont);
+            else
+                return new Phrase("");
         }
 
         public Document addSummaryInfo(Document pdfDoc, char o)
@@ -347,6 +364,8 @@ namespace MSAMISUserInterface
                     var pdfDoc = getPDFSize(approvedList.Rows.Count);// new Document(PageSize.A8, 10f, 10f, 10f, 10f);
                     PdfWriter.GetInstance(pdfDoc, stream);
                     pdfDoc.Open();
+                    
+
                     pdfDoc.Add(Name);
                     pdfDoc.Add(Header);
 
@@ -524,7 +543,7 @@ namespace MSAMISUserInterface
             if (printdg.ShowDialog() == DialogResult.OK)
             {
                 pdoc.PrinterSettings.PrinterName = printdg.PrinterSettings.PrinterName;
-                pdoc.DocumentName = fileName;
+                pdoc.DocumentName = fileTempDir;
                 pdoc.PrinterSettings.PrintFileName = fileTempDir;
                 pdoc.PrinterSettings.PrintToFile = true;
                 pdoc.Print();
