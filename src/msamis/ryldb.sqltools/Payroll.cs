@@ -1184,10 +1184,13 @@ left join contribdetails on contribdetails.contrib_id=withtax_bracket.contrib_id
             where month = {px.month}
             and period = {px.period}
             and year = {px.year}
-            and pstatus = {Enumeration.PayrollStatus.Approved}";
+            and pstatus = {Enumeration.PayrollStatus.Approved} AND (";
+            int y = 0;
             foreach (int x in gids) {
-                q += $" and gid={x} ";
+                y++;
+                q += $" {(y!=1? " OR ":"")} gid={x} ";
             }
+            q += ")";
             return SQLTools.ExecuteQuery(q);
         }
 
