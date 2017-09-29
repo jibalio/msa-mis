@@ -26,6 +26,7 @@ namespace MSAMISUserInterface
         public Font boldfont = FontFactory.GetFont("Arial", 8, Font.BOLD, BaseColor.BLACK);
         public Font boldunderfont = FontFactory.GetFont("Arial", 8, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
         public Font testFont = FontFactory.GetFont("Segoe UI", 10, BaseColor.BLACK);
+        public String fileName;
 
         #region Guards Report
 
@@ -384,7 +385,7 @@ namespace MSAMISUserInterface
             int gid, month, period, year;
             int i;
 
-
+            
             var PrintTable = new PdfPTable(2);
             var alignTable = new PdfPTable(2);
             
@@ -477,7 +478,7 @@ namespace MSAMISUserInterface
 
                 //Export Content
 
-                String fileName = "Payslip" + pr.LN + pr.FN + pr.FN + ($@"{p.year}-{p.month}-{(p.period == 1?"1st_Half":"2nd_Half")}")+".pdf";
+                fileName = "Payslip" + pr.LN + pr.FN + pr.FN + ($@"{p.year}-{p.month}-{(p.period == 1?"1st_Half":"2nd_Half")}")+".pdf";
                 string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
                 if (!Directory.Exists(filePath))
                     Directory.CreateDirectory(filePath);
@@ -502,10 +503,11 @@ namespace MSAMISUserInterface
                     pdfDoc.Close();
                     stream.Close();
                 }
-                if (printFlag == true)
-                {
-                    PrintPDF(fileName);
-                }
+                
+            }
+            if (printFlag == true)
+            {
+                PrintPDF(fileName);
             }
         }
 
