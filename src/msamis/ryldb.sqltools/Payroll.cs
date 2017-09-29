@@ -796,9 +796,9 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
             if (status == -1) {
                 q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
-                                                            WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL)
+                                                            WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL and certby is not null)
                                                             THEN 'Yes'
-                                                            ELSE 'No Attendance Details Found'
+                                                            ELSE 'No Attendance Details'
                                                         END
                                                       ) AS attendance, 
 
@@ -826,9 +826,9 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
             else {
                 q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
                                                         CASE 
-                                                            WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL)
+                                                            WHEN (period.pid IS NOT NULL AND dutydetails.did IS NOT NULL and certby is not null)
                                                             THEN 'Yes'
-                                                            ELSE 'No Attendance Details Found'
+                                                            ELSE 'No Attendance Details'
                                                         END
                                                       ) AS attendance,  case pstatus
             when {Enumeration.PayrollStatus.Approved} then 'Approved'
