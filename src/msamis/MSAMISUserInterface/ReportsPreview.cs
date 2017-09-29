@@ -195,9 +195,18 @@ namespace MSAMISUserInterface {
             pdfTable.HorizontalAlignment = 1;
             pdfTable.TotalWidth = 1000f;
             pdfTable.LockedWidth = true;
+            PdfPTable pdfReportHeader = new PdfPTable(1);
+            pdfReportHeader.DefaultCell.Padding = 3;
+            pdfReportHeader.WidthPercentage = 30;
+            pdfReportHeader.DefaultCell.BorderWidth = 0;
+            pdfReportHeader.TotalWidth = 1000f;
+            pdfReportHeader.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
 
             //Add Headers Here
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            Reports r = new Reports();
+            pdfReportHeader.AddCell (r.getTitlePhrase(formOrigin));
+
             pdfTable = AddHeaders(pdfTable, formOrigin);
             //Add Data to PDF
 
@@ -234,11 +243,11 @@ namespace MSAMISUserInterface {
                     }
                 }
             }
-                var r = new Reports();
-                r.ExportToPDF(pdfTable, formOrigin);
+                
+                r.ExportToPDF(pdfReportHeader, pdfTable, formOrigin);
         }
 
-        public PdfPTable AddHeaders(PdfPTable pdfTable, char o) {            
+        public PdfPTable AddHeaders(PdfPTable pdfTable, char o) {
 
             if (o == 'g') {
 
