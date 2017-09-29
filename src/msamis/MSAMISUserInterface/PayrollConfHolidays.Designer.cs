@@ -118,7 +118,7 @@
             this.HolidaysGRD.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.HolidaysGRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HolidaysGRD.ShowCellToolTips = false;
-            this.HolidaysGRD.Size = new System.Drawing.Size(466, 180);
+            this.HolidaysGRD.Size = new System.Drawing.Size(484, 180);
             this.HolidaysGRD.TabIndex = 157;
             // 
             // label1
