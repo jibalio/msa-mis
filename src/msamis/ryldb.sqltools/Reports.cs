@@ -21,7 +21,7 @@ namespace MSAMISUserInterface
         public Font myfontPayslip = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
         public Font boldfontPayslip = FontFactory.GetFont("Arial", 10, Font.BOLD, BaseColor.BLACK);
         public Font boldunderfontPayslip = FontFactory.GetFont("Arial", 10, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
-        public Font reportHeaderFont = FontFactory.GetFont("Arial", 12, Font.BOLD, BaseColor.BLACK);
+        public Font reportHeaderFont = FontFactory.GetFont("Arial", 14, Font.BOLD, BaseColor.BLACK);
         public Font myfont = FontFactory.GetFont("Arial", 8, BaseColor.BLACK);
         public Font boldfont = FontFactory.GetFont("Arial", 8, Font.BOLD, BaseColor.BLACK);
         public Font boldunderfont = FontFactory.GetFont("Arial", 8, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
@@ -155,7 +155,7 @@ namespace MSAMISUserInterface
             return 0;
         }
 
-        public void ExportToPDF(PdfPTable pdfTable, char formOrigin)
+        public void ExportToPDF(PdfPTable HeaderTable, PdfPTable pdfTable, char formOrigin)
         {
             
             //Exporting to PDF
@@ -181,7 +181,9 @@ namespace MSAMISUserInterface
                 pdfDoc.Open();
                 pdfDoc = addSummaryInfo(pdfDoc, formOrigin);
                 //pdfDoc.Add(ReportHeader);
-                pdfDoc.Add(getTitlePhrase(formOrigin));
+                
+                pdfDoc.Add(HeaderTable);
+                //Add Spacing
                 pdfDoc.Add(pdfTable);
                 pdfDoc.Close();
                 stream.Close();
@@ -189,8 +191,9 @@ namespace MSAMISUserInterface
         //PrintPDF(filePath, fileName);
         }
 
-        private Phrase getTitlePhrase(char o)
+        public Phrase getTitlePhrase(char o)
         {
+            
             if (o == 'g')
                 return new Phrase("GUARDS SUMMARY", reportHeaderFont);
             else if (o == 'c')
@@ -368,7 +371,7 @@ namespace MSAMISUserInterface
 
                     pdfDoc.Add(Name);
                     pdfDoc.Add(Header);
-
+                    
                     pdfDoc.Add(alignTable);
                     pdfDoc.Close();
                     stream.Close();
