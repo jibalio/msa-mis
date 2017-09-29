@@ -28,7 +28,7 @@ namespace MSAMISUserInterface
         public Font boldunderfont = FontFactory.GetFont("Arial", 8, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
         public Font testFont = FontFactory.GetFont("Segoe UI", 10, BaseColor.BLACK);
         public String fileName;
-       // public String LetterHeadImage = Properties.Resources.LetterHead.png;
+        //public String LetterHeadImage = Properties.Resources.LetterHead.png;
 
         #region Guards Report
 
