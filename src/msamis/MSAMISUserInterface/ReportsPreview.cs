@@ -391,5 +391,10 @@ namespace MSAMISUserInterface {
                     RylMessageBox.ShowDialog("The payslip was not exported.","Export Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
         }
+
+        private void PayslipPrint_Click(object sender, EventArgs e) {
+            var rp = new Reports();
+            rp.ExportToPayslipPDF(Payroll.GetApprovedPayrollsList(new []{Pay.GID}), true);
+        }
     }
 }

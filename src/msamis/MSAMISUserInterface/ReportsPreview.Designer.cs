@@ -637,6 +637,7 @@
             this.PayslipPrint.Text = "PRINT";
             this.PayslipPrint.UseVisualStyleBackColor = false;
             this.PayslipPrint.Visible = false;
+            this.PayslipPrint.Click += new System.EventHandler(this.PayslipPrint_Click);
             // 
             // ReportsPreview
             // 
