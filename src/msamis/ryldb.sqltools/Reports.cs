@@ -359,7 +359,7 @@ namespace MSAMISUserInterface
             }
         }
 
-        public void ExportToPayslipPDF(DataTable approvedList)
+        public void ExportToPayslipPDF(DataTable approvedList, bool printFlag)
         {
             int gid, month, period, year;
             int i;
@@ -483,8 +483,10 @@ namespace MSAMISUserInterface
                     pdfDoc.Close();
                     stream.Close();
                 }
-                //PrintPDF(filePath, fileName);
-                
+                if (printFlag == true)
+                {
+                    PrintPDF(fileName);
+                }
             }
         }
 
@@ -500,7 +502,6 @@ namespace MSAMISUserInterface
             String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             var dirInfo = new DirectoryInfo(filePath);
             var file = (from f in dirInfo.GetFiles("Payslip*.pdf") orderby f.LastWriteTime descending select f).First();
-            rylui.RylMessageBox.ShowDialog(file.Name.ToString());
 
         }
 
@@ -509,8 +510,8 @@ namespace MSAMISUserInterface
             String filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
             String fileTempDir = filePath + "\\newTemp.pdf";
             String fileDir = filePath + "\\" + fileName;
-            if (File.Exists(fileTempDir))
-                File.Delete(fileTempDir);
+           if (File.Exists(fileTempDir))
+               File.Delete(fileTempDir);
             foreach (string printer in PrinterSettings.InstalledPrinters)
                 Console.WriteLine(printer);
             var printerSettings = new PrinterSettings();
@@ -526,15 +527,16 @@ namespace MSAMISUserInterface
             if (printdg.ShowDialog() == DialogResult.OK)
             {
                 pdoc.PrinterSettings.PrinterName = printdg.PrinterSettings.PrinterName;
-                pdoc.DocumentName = fileDir;
+                pdoc.DocumentName = fileName;
                 pdoc.PrinterSettings.PrintFileName = fileTempDir;
                 pdoc.PrinterSettings.PrintToFile = true;
-
                 pdoc.Print();
             }
             if (File.Exists(fileTempDir))
                 File.Delete(fileTempDir);
         }
+
+
         
 
         public static String GetFileName(char o)
