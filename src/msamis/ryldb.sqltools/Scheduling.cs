@@ -653,7 +653,7 @@ from guards left join sduty_assignment on guards.gid = sduty_assignment.gid
                     DATE_FORMAT(date_effective, '%Y-%m-%d') AS DateEffective, 
                     DATE_FORMAT(DismissedOn, '%Y-%m-%d') AS DismissedOn                     
                     from 
-                    dutydetails and AID =" + AID);
+                    dutydetails where AID =" + AID);
             foreach (DataRow e in dt.Rows) {
                 e.SetField("days", GetDays(int.Parse(e["did"].ToString())).ToString());
             }
