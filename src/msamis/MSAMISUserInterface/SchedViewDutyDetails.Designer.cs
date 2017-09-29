@@ -1345,6 +1345,7 @@
             // 
             // AttendanceWorker
             // 
+            this.AttendanceWorker.WorkerSupportsCancellation = true;
             this.AttendanceWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.AttendanceWorker_DoWork);
             // 
             // SchedViewDutyDetails
