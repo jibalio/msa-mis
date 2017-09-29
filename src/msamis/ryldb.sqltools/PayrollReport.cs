@@ -125,7 +125,7 @@ namespace MSAMISUserInterface {
                 hc["sun_overtime_night_special"] +
                 hc["sun_overtime_night_regular"];
 
-            this.NetAmountPaid = TotalSummary["total"].total;
+            this.NetAmountPaid = TotalSummary["total"].total + this.CashAdvance + this.CashBond + this.Cola + this.EmergencyAllowance - this.HDMF - this.PHIC - this.Sss + this.ThirteenthMonthPay - this.Withtax;
         }
 
         public double Rate { get; set; }
