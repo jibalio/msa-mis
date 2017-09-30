@@ -21,6 +21,7 @@ namespace MSAMISUserInterface {
 
         #region Constructors
         public Attendance(int AID, int month, int periodx, int year) {
+            SQLTools.ExecuteNonQuery($@"call msadb.init_checkdate_all();");
             this.AID = AID;
             period = new Period(periodx, month, year);
             Console.Write(period.period);
