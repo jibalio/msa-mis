@@ -127,8 +127,7 @@ namespace MSAMISUserInterface {
                 GReportGRD.Columns[6].HeaderText = "PHIC";
 
                 #region Format Table
-
-                GReportGRD.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                
                 GReportGRD.Columns[0].Width = 260;
                 GReportGRD.Columns[1].Width = 70;
                 GReportGRD.Columns[2].Width = 140;
@@ -155,7 +154,6 @@ namespace MSAMISUserInterface {
                 GReportGRD.Columns[3].Width = 170;
                 GReportGRD.Columns[4].Width = 170;
                 GReportGRD.Columns[5].Width = 110;
-                GReportGRD.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 GReportGRD.Sort(GReportGRD.Columns[1], ListSortDirection.Ascending);
 
                 #endregion
