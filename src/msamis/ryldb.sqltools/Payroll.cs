@@ -348,6 +348,7 @@ namespace MSAMISUserInterface {
           //  string appby = SQLTools.ExecuteQuery("SELECT * FROM msadb.loginhistory order by logintime desc limit 1;").Rows["uid"].ToString();
             string q = $@" 
                 UPDATE `msadb`.`payroll` SET `rates_id`='{this.rates_id}', `withtax`='{this.Withtax}', `sss`={this.Sss},
+                `pagibig`='{this.PagIbig}', philhealth='{this.PhilHealth}',
                 `totalsummary_serializable`='{serialized_totalsummary}', `hc_serializable`='{serialized_hc}',
                 `pstatus`={Enumeration.PayrollStatus.Approved}, `basicpayhourly`={_BasicPayHourly}, `approvedby`='{Login.LoggedInUser}',
                 `sssinfo_ser`='{Data.SerializeStringArray(this.GetSSSDetails())}'
@@ -498,14 +499,11 @@ namespace MSAMISUserInterface {
 
         private void ComputeDeductions() {
             Sss = ComputeSSS(GetSssContribId(new DateTime(period.year, period.month, period.period == 1 ? 1 : 16)));
-            if (period.period == 2) {
+            
                 PagIbig = RetriveDefaultPagibig();
                 PhilHealth = RetrieveDefaultPhilhealth();
-            }
-            else {
-                PagIbig = 0;
-                PhilHealth = 0;
-            }
+            
+            
             CashAdvance = double.Parse(DbValues["cashadv"].ToString());
             ComputeWithTax(TaxableIncome, Excess);
         }
@@ -806,6 +804,7 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
                 case pstatus
             when {Enumeration.PayrollStatus.Approved} then 'Approved'
             when {Enumeration.PayrollStatus.Pending} then 'Pending'
+             else coalesce(pstatus,'Pending')
             end as pstatus
 
  
@@ -818,7 +817,10 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
                                                 where RequestType = 1 " + search + " AND fn is not null " +
-                    $"                          AND payroll.period = {per.period} AND payroll.month = {per.month} AND payroll.year = {per.year} group by guards.gid ";
+                    $@"                          AND 
+                                                ((payroll.period = {per.period} AND payroll.month = {per.month} AND payroll.year = {per.year}) 
+                                                OR
+                                                (payroll.period is null AND (period.period = {per.period} AND period.month={per.month} AND period.year = {per.year})))  group by guards.gid ";
             }
             else {
                 q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
@@ -830,6 +832,7 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
                                                       ) AS attendance,  case pstatus
             when {Enumeration.PayrollStatus.Approved} then 'Approved'
             when {Enumeration.PayrollStatus.Pending} then 'Pending'
+             else coalesce(pstatus,'Pending')
             end as pstatus
                                                 from request
                                                 left join client on client.cid=request.cid
@@ -842,7 +845,10 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
                                                 where RequestType = 1 " + search + " AND fn is not null AND pstatus = '" + status +
 
                     "' " +
-                    $"                          AND payroll.period = {per.period} AND payroll.month = {per.month} AND payroll.year = {per.year} group by guards.gid "; 
+                    $@"                           AND 
+                                                ((payroll.period = {per.period} AND payroll.month = {per.month} AND payroll.year = {per.year}) 
+                                                OR
+                                                (payroll.period is null AND (period.period = {per.period} AND period.period={per.month} AND period.year = {per.year}))) group by guards.gid "; 
 
 
             }
