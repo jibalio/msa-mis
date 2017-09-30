@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.UsersPNL = new System.Windows.Forms.Panel();
             this.EditUserPNL = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.NewPassPic = new System.Windows.Forms.PictureBox();
             this.CurrentPassPic = new System.Windows.Forms.PictureBox();
@@ -74,7 +75,6 @@
             this.RemoveBTN = new System.Windows.Forms.Button();
             this.EditBTN = new System.Windows.Forms.Button();
             this.UsersGRD = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.AboutPNL.SuspendLayout();
             this.UsersPNL.SuspendLayout();
@@ -263,12 +263,12 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label5.Location = new System.Drawing.Point(183, 159);
+            this.label5.Location = new System.Drawing.Point(195, 159);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(213, 21);
+            this.label5.Size = new System.Drawing.Size(199, 21);
             this.label5.TabIndex = 243;
-            this.label5.Text = "SADMakaSys ver 0.4.187b1";
+            this.label5.Text = "SADMakaSys ver 1.1209a";
             // 
             // label6
             // 
@@ -347,6 +347,18 @@
             this.EditUserPNL.Size = new System.Drawing.Size(373, 378);
             this.EditUserPNL.TabIndex = 173;
             this.EditUserPNL.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
+            this.label18.Location = new System.Drawing.Point(173, 302);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(160, 15);
+            this.label18.TabIndex = 242;
+            this.label18.Text = "single quotes will be omitted.";
             // 
             // label17
             // 
@@ -749,18 +761,6 @@
             this.UsersGRD.Size = new System.Drawing.Size(328, 305);
             this.UsersGRD.TabIndex = 6;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(64)))), ((int)(((byte)(82)))));
-            this.label18.Location = new System.Drawing.Point(173, 302);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(160, 15);
-            this.label18.TabIndex = 242;
-            this.label18.Text = "single quotes will be omitted.";
-            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -772,8 +772,8 @@
             this.Controls.Add(this.UsersLBL);
             this.Controls.Add(this.AboutLBL);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.UsersPNL);
             this.Controls.Add(this.AboutPNL);
+            this.Controls.Add(this.UsersPNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "About";
             this.ShowInTaskbar = false;
