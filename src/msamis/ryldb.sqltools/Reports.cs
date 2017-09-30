@@ -31,6 +31,9 @@ namespace MSAMISUserInterface
         public String fileName;
         public Image LetterHeadImage  = Resources.ResourceManager.GetObject("Letterhead.png") as Image;
 
+        Font LetterHeadFont = FontFactory.GetFont("Arial", 18, iTextSharp.text.Font.BOLD, BaseColor.BLUE);
+        Font LetterHeadFontSmall = FontFactory.GetFont("Arial", 10, BaseColor.BLACK);
+
         #region Guards Report
 
         public static DataTable GetGuardsList()
@@ -161,7 +164,9 @@ namespace MSAMISUserInterface
 
         public void ExportToPDF(PdfPTable HeaderTable, PdfPTable pdfTable, char formOrigin)
         {
-            
+
+
+            var newLine = Environment.NewLine;
             //Exporting to PDF
             var fileName = GetFileName(formOrigin);
             var filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "MSAMIS Reports";
@@ -180,9 +185,22 @@ namespace MSAMISUserInterface
 
             using (var stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
             {
-                var pdfDoc = new Document(PageSize.LEGAL.Rotate(), 10f, 10f, 10f, 0f);
+                var pdfDoc = new Document(PageSize.LEGAL.Rotate(), 30f, 50f, 30f, 50f);
                 PdfWriter.GetInstance(pdfDoc, stream);
                 pdfDoc.Open();
+                PdfPTable LHTable = new PdfPTable(1);
+                LHTable.WidthPercentage = 100;
+                LHTable.DefaultCell.BorderWidth = 0;
+                LHTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+
+                Phrase LetterHead = new Phrase("MAKABAYAN SECURITY AGENCY" + newLine, LetterHeadFont);
+                Phrase letterhead1 = new Phrase("168 Margarita Village, First Avenue, Bajada, Davao City, 8000 Davao del Sur" + newLine, LetterHeadFontSmall);
+                Phrase letterhead2 = new Phrase("Tel. No.: (082) 221 2365          Fax No.: +63 (82) 226.9715" + newLine, LetterHeadFontSmall);
+
+                LHTable.AddCell(LetterHead);
+                LHTable.AddCell(letterhead1);
+                LHTable.AddCell(letterhead2);
+                pdfDoc.Add(LHTable);
                 pdfDoc = addSummaryInfo(pdfDoc, formOrigin);
                 //pdfDoc.Add(ReportHeader);
                 
@@ -371,7 +389,6 @@ namespace MSAMISUserInterface
                     var pdfDoc = getPDFSize(approvedList.Rows.Count);// new Document(PageSize.A8, 10f, 10f, 10f, 10f);
                     PdfWriter.GetInstance(pdfDoc, stream);
                     pdfDoc.Open();
-                    
 
                     pdfDoc.Add(Name);
                     pdfDoc.Add(Header);
