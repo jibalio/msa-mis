@@ -187,6 +187,8 @@ namespace MSAMISUserInterface {
                 if (Payroll.GetCurrentBasicPay().Length == 7)
                     CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay().Insert(1, " ");
                 else CBasicPay.Text = "₱ " + Payroll.GetCurrentBasicPay();
+
+                StartDate.MinDate = DateTime.Now;
             }
             catch (Exception ex) {
                 ShowErrorBox("Basic Pay", ex.Message);
@@ -286,6 +288,9 @@ namespace MSAMISUserInterface {
                         new ComboBoxSss(int.Parse(row["contrib_id"].ToString()), effective, dissolved));
                 }
                 if (SSSDateCMBX.Items.Count > 0) SSSDateCMBX.SelectedIndex = 0;
+
+
+                SSSDateTimePKR.MinDate = DateTime.Now;
             }
             catch (Exception ex) {
                 ShowErrorBox("SSS Contribution", ex.Message);
@@ -513,6 +518,9 @@ namespace MSAMISUserInterface {
                 }
                 if (TaxDateCMBX.Items.Count > 0) TaxDateCMBX.SelectedIndex = 0;
                 LoadTaxTables();
+
+
+                TaxDateDTPKR.MinDate = DateTime.Now;
             }
             catch (Exception ex) {
                 ShowErrorBox("Withholding Tax", ex.Message);
@@ -782,6 +790,8 @@ namespace MSAMISUserInterface {
                 }
                 MultipliersDateCMBX.SelectedIndex = 0;
                 MultLoadValues();
+
+                MultDTPKR.MinDate = DateTime.Now;
             }
             catch (Exception ex) {
                 ShowErrorBox("Rates Multiplier", ex.Message);
