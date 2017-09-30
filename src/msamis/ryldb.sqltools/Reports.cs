@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Drawing.Printing;
 using System.Linq;
+using MySql.Data.MySqlClient.Properties;
 using rylui;
 
 namespace MSAMISUserInterface
@@ -28,7 +29,7 @@ namespace MSAMISUserInterface
         public Font boldunderfont = FontFactory.GetFont("Arial", 8, Font.BOLD | Font.UNDERLINE, BaseColor.BLACK);
         public Font testFont = FontFactory.GetFont("Segoe UI", 10, BaseColor.BLACK);
         public String fileName;
-        //public String LetterHeadImage = Properties.Resources.LetterHead.png;
+        public Image LetterHeadImage  = Resources.ResourceManager.GetObject("Letterhead.png") as Image;
 
         #region Guards Report
 
