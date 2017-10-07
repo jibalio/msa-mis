@@ -16,6 +16,7 @@ namespace MSAMISUserInterface {
         public string PayrollPeriod;
         public Payroll Pay;
         Font boldfont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+        
         Font myfont = FontFactory.GetFont("Consolas", 8, BaseColor.BLACK);
 
         public ReportsPreview() {
@@ -247,6 +248,7 @@ namespace MSAMISUserInterface {
 
         public PdfPTable AddHeaders(PdfPTable pdfTable, char o) {
 
+            
             if (o == 'g') {
 
                 
