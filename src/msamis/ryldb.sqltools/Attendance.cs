@@ -8,8 +8,6 @@ using System.Linq;
 using static System.String;
 
 namespace MSAMISUserInterface {
-
-
     public class Attendance {
 
         private class ate_internal {

@@ -817,11 +817,7 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
                                                 left join period on guards.gid=period.gid
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
-                                                where RequestType = 1 " + search + " AND fn is not null " +
-                    $@"                          AND 
-                                                ((payroll.period = {per.period} AND payroll.month = {per.month} AND payroll.year = {per.year}) 
-                                                OR
-                                                (payroll.period is null AND (period.period = {per.period} AND period.month={per.month} AND period.year = {per.year})))  group by guards.gid ";
+                                                where RequestType = 1 " + search + " AND fn is not null " + " group by guards.gid ";
             }
             else {
                 q = $@"     select guards.gid, concat(ln,', ',fn,' ',mn) as name, client.name, (
@@ -843,13 +839,7 @@ else date_dissolved end as date_dissolved from contribdetails where type='{
                                                 left join period on guards.gid=period.gid
 												left join dutydetails on dutydetails.aid=sduty_assignment.aid
 												left join payroll on guards.gid=payroll.gid
-                                                where RequestType = 1 " + search + " AND fn is not null AND pstatus = '" + status +
-
-                    "' " +
-                    $@"                           AND 
-                                                ((payroll.period = {per.period} AND payroll.month = {per.month} AND payroll.year = {per.year}) 
-                                                OR
-                                                (payroll.period is null AND (period.period = {per.period} AND period.period={per.month} AND period.year = {per.year}))) group by guards.gid "; 
+                                                where RequestType = 1 " + search + " group by guards.gid "; 
 
 
             }
