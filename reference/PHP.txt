@@ -1,0 +1,22 @@
+$myword = "art";
+
+$mN = str_split ($myword);
+
+$arr = array("rr");
+
+
+
+for ($i = 0; $i < count($arr); $i++){
+  $word = str_split ($arr[$i]);
+      
+      if (count($word) <= count($mN)){
+      $check = true;
+              for ($j = 0; $j < count($mN); $j++){
+              if (in_array ( $mN[$j] , $word) == false) {$check = false;}
+                    
+          } 
+		  
+		if ($check) echo $arr[$i]."\n";
+    }
+      
+}
