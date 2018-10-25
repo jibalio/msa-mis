@@ -1,7 +1,6 @@
-# MSA-MIS
-An information system for Makabayan Security Agency written in C# &#x1F499;&#x1F499;&#x1F499;
 
-![](http://dl.dropbox.com/s/a0viv74tw3tii5b/happycommit.png?dl=1)
+# MSA-MIS
+An information system for MSA.
 
 ## Setting-up
 ### References
@@ -29,9 +28,6 @@ Get SQL Dump [here](https://github.com/lerycibalio/msa-mis/tree/master/sql).
 - Dump Triggers
 - Include Create Schema *(MySql Workbench 6.3+ only)*
 
-## About
-
-Get full paper [here](http://dl.dropbox.com/s/itqlfhgvn9rgm1o/MSAMIS%2097.docx?dl=1).
 ### Modules
 * Guard Management Module
 * Client Management Module
